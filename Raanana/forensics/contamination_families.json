@@ -1,0 +1,160 @@
+{
+  "zone": "Raanana",
+  "forensics_analysis": {
+    "TCE_decay_chain": {
+      "primary_contaminant": "TCE (Trichloroethylene)",
+      "decay_products": [
+        "cis-1,2-DCE (cis-1,2-Dichloroethylene)",
+        "trans-1,2-DCE (trans-1,2-Dichloroethylene)",
+        "Vinyl chloride"
+      ],
+      "significance": "TCE is a major detected contaminant showing increasing trend 1999-2008",
+      "forensic_implications": "Presence of decay products indicates TCE contamination may be historically persistent or from multiple time periods",
+      "boreholes_affected": [
+        "R-001",
+        "R-004"
+      ],
+      "detected_species": {
+        "TCE": {
+          "detected_boreholes": [
+            "R-001",
+            "R-004"
+          ],
+          "trend": "increasing 1999-2008",
+          "peak_concentration_ppb": 31.8,
+          "peak_year": 2006
+        },
+        "cis-1,2-DCE": {
+          "detected_boreholes": [
+            "R-001"
+          ],
+          "concentration_ppb": 1.04,
+          "year": 1999,
+          "interpretation": "Early stage degradation product"
+        },
+        "trans-1,2-DCE": {
+          "detected_boreholes": [
+            "R-001"
+          ],
+          "concentration_ppb": 2.3,
+          "year": 1999,
+          "interpretation": "Alternative degradation pathway"
+        }
+      }
+    },
+    "chlorinated_compounds": {
+      "family_members": [
+        "1,2-DCA (1,2-Dichloroethane)",
+        "Dichloromethane",
+        "Chloroform",
+        "Chloromethane"
+      ],
+      "significance": "Multiple chlorinated species suggesting multiple sources or historical industrial activities",
+      "boreholes_with_detections": [
+        "R-001",
+        "R-004"
+      ],
+      "forensic_patterns": {
+        "1,2-DCA": {
+          "concentration_trend": "volatile",
+          "noted_spike": "2006",
+          "interpretation": "Possible mobilization event or new source activation",
+          "source_industries": [
+            "Organic chemical synthesis",
+            "Solvent production"
+          ]
+        },
+        "Chloroform": {
+          "concentration_trend": "stable-elevated",
+          "persistence": "Present 1999-2008 with minimal change",
+          "interpretation": "Long-term background contamination, possibly from older spill"
+        }
+      }
+    },
+    "heavy_metals": {
+      "primary_metals": [
+        "Iron (Fe)",
+        "Manganese (Mn)",
+        "Zinc (Zn)",
+        "Copper (Cu)",
+        "Lead (Pb)",
+        "Cadmium (Cd)"
+      ],
+      "expected_sources": [
+        "Metal processing facility (I-003)",
+        "Industrial discharge",
+        "Leaching from geological materials"
+      ],
+      "co_occurrence_analysis": "Heavy metals expected in boreholes near I-003 but TCE/chlorinated compound profile suggests separate source"
+    },
+    "PFAS_family": {
+      "status": "Not detected in TAHAL 2008 data (pre-PFAS awareness era)",
+      "recommended_addition": "PFAS should be added to monitoring parameters for Raanana from 2021 onwards",
+      "relevant_boreholes": [
+        "R-001",
+        "R-004"
+      ],
+      "potential_sources": [
+        "Firefighting foam (if airport/military near zone)",
+        "AFFF-contaminated groundwater migration",
+        "Industrial processes (fluorine chemistry)"
+      ]
+    },
+    "co_occurrence_patterns": {
+      "pattern_1": {
+        "contaminants": [
+          "TCE",
+          "Chlorinated compounds (1,2-DCA, DCE)",
+          "Chloroform"
+        ],
+        "boreholes": [
+          "R-001",
+          "R-004"
+        ],
+        "source_signature": "Organic chemical synthesis facility (I-001)",
+        "interpretation": "TCE likely solvent for chemical reactions; chlorinated compounds byproducts"
+      },
+      "pattern_2": {
+        "contaminants": [
+          "Dichloromethane",
+          "VOCs"
+        ],
+        "boreholes": [
+          "R-002"
+        ],
+        "source_signature": "Possible pharmaceutical manufacturing (I-002)",
+        "interpretation": "Pharmaceutical process residues"
+      }
+    },
+    "temporal_forensics": {
+      "1999_2008_period": {
+        "emerging_contaminants": [
+          "TCE",
+          "1,2-DCA spike in 2006"
+        ],
+        "interpretation": "Suggests ongoing release from identified sources or mobilization of aged contamination"
+      },
+      "anomalies": {
+        "2004_decrease": {
+          "parameter": "TCE",
+          "boreholes": [
+            "R-004"
+          ],
+          "observation": "Temporary drop from 18 to 0.9 ppb then return to 18 ppb in 2006",
+          "hypothesis": "Sampling artifact, analytical error, or transient flow variation"
+        },
+        "2006_spike": {
+          "parameter": "1,2-DCA",
+          "boreholes": [
+            "R-001"
+          ],
+          "observation": "Spike from 5 to 50 ppb",
+          "hypothesis": "New source activation or mobilization event"
+        }
+      }
+    },
+    "recommendation_for_phase_3": "Integrate flow direction with forensic analysis to predict future plume migration and identify potential remediation strategies"
+  },
+  "source_document": "TAHAL 2008 Part B Table 10.6 and Part B pages 53-67",
+  "extraction_notes": "Forensic interpretation based on documented contamination patterns and industry types; expert hydrogeologist review recommended"
+}

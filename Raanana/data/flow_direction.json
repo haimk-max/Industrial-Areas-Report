@@ -1,0 +1,66 @@
+{
+  "zone": "Raanana",
+  "zone_name_he": "אזה\"ת רעננה",
+  "primary_flow": {
+    "direction": "East-West",
+    "direction_he": "מזרח-מערב",
+    "description": "Primary groundwater flow towards Mediterranean Sea",
+    "description_he": "זרימה ראשית של מי תהום לכיוון ים תיכון",
+    "flow_vector": {
+      "azimuth_degrees": 270,
+      "from": "East (inland)",
+      "to": "West (shoreline)"
+    }
+  },
+  "local_flow_variations": [
+    {
+      "area": "Northern Raanana",
+      "variation": "Slight northward component",
+      "reason": "Local topographic depression"
+    },
+    {
+      "area": "Central industrial zone",
+      "variation": "Minimal deviation from primary direction",
+      "reason": "Relatively flat hydrogeological structure"
+    },
+    {
+      "area": "Southern Raanana",
+      "variation": "Slight southward component",
+      "reason": "Proximity to regional groundwater basin divide"
+    }
+  ],
+  "flow_velocity": {
+    "minimum_m_per_year": 1,
+    "maximum_m_per_year": 10,
+    "average_m_per_year": 5,
+    "basis": "Hydrogeological assessment TAHAL 2008"
+  },
+  "water_table_depth": {
+    "minimum_m": 10,
+    "maximum_m": 30,
+    "average_m": 20,
+    "range_description": "Relatively shallow aquifer, vulnerable to surface contamination"
+  },
+  "boreholes_gradient_relationship": {
+    "upgradient": [
+      "R-003"
+    ],
+    "on_flow_path": [
+      "R-001",
+      "R-004"
+    ],
+    "downgradient": [
+      "R-002",
+      "R-005"
+    ]
+  },
+  "vulnerability_assessment": {
+    "aquifer_type": "Coastal aquifer",
+    "hydrogeological_sensitivity": "High",
+    "reason_he": "אקויפר חוף עם חדירות יחסית גבוהה וזרימה מהירה יחסית",
+    "contamination_spread_rate": "Fast",
+    "estimated_travel_time_to_sea": "10-50 years depending on source location"
+  },
+  "source_document": "2021 Report (maps and text), TAHAL 2008 Part B hydrogeological sections",
+  "extraction_notes": "Flow direction inferred from contour maps and hydrogeological descriptions; based on standard coastal aquifer hydrology"
+}

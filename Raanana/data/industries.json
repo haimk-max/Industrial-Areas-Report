@@ -1,0 +1,72 @@
+{
+  "zone": "Raanana",
+  "zone_name_he": "אזה\"ת רעננה",
+  "industries": [
+    {
+      "id": "I-001",
+      "name": "Chemical Manufacturing Facility A",
+      "name_he": "מפעל ייצור כימיקלים א'",
+      "type": "Chemicals",
+      "category": "Organic Chemicals Synthesis",
+      "easting": 191400,
+      "northing": 707100,
+      "potential_contaminants": [
+        "TCE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "Dichloromethane"
+      ],
+      "risk_level": "high",
+      "notes": "Primary suspected source of TCE and chlorinated compounds in boreholes R-001, R-004"
+    },
+    {
+      "id": "I-002",
+      "name": "Pharmaceutical Manufacturing Facility B",
+      "name_he": "מפעל ייצור תרופות ב'",
+      "type": "Pharmaceuticals",
+      "category": "Active Pharmaceutical Ingredients",
+      "easting": 191600,
+      "northing": 706800,
+      "potential_contaminants": [
+        "Organic solvents",
+        "VOCs",
+        "Pharmaceuticals",
+        "Heavy metals"
+      ],
+      "risk_level": "medium",
+      "notes": "Secondary source; pharmaceutical residues detected in groundwater"
+    },
+    {
+      "id": "I-003",
+      "name": "Light Manufacturing & Assembly",
+      "name_he": "ייצור קל והרכבה",
+      "type": "Light Manufacturing",
+      "category": "Metal Processing",
+      "easting": 191700,
+      "northing": 706500,
+      "potential_contaminants": [
+        "Heavy metals",
+        "VOCs",
+        "Degreasing agents"
+      ],
+      "risk_level": "medium-low",
+      "notes": "Minor contributor; primarily heavy metals"
+    }
+  ],
+  "flow_affected_boreholes": {
+    "I-001": [
+      "R-001",
+      "R-004"
+    ],
+    "I-002": [
+      "R-002",
+      "R-003"
+    ],
+    "I-003": [
+      "R-003"
+    ]
+  },
+  "source_document": "TAHAL 2008 Part B pages 53-67, 2021 Report pages 15-16",
+  "extraction_notes": "Industries identified from maps and descriptions; specific facility names anonymized as per data sensitivity"
+}

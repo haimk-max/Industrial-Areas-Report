@@ -1,0 +1,6 @@
+borehole_id,name,zone,easting,northing,depth_m,geological_layer,classification,source_document,extraction_notes
+R-001,Raanana Monitoring 1,Raanana,191392,707257,30,A2,natural,TAHAL 2008 Part B p.53,Primary monitoring borehole
+R-002,Raanana Monitoring 2,Raanana,191550,706639,30,AB,column,TAHAL 2008 Part B p.53,Secondary monitoring borehole
+R-003,Raanana Monitoring 3,Raanana,191753,706008,40,AB,natural,TAHAL 2008 Part B p.53,Downgradient borehole
+R-004,Raanana Critical 1,Raanana,191830,707500,88.5,B3,charged,TAHAL 2008 Part B p.54,High-priority monitoring - shown increase 2004-2008
+R-005,Raanana Critical 2,Raanana,191750,706420,48.5,B2,charged,TAHAL 2008 Part B p.54,High-priority monitoring - shown increase 2004-2008
