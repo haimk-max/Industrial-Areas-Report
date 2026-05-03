@@ -4,9 +4,9 @@
 
 | Classification | Count |
 |---|---|
-| ALERT | 1 |
-| WATCH | 2 |
-| STABLE | 25 |
+| ALERT | 0 |
+| WATCH | 0 |
+| STABLE | 26 |
 | DECREASING | 0 |
 | NONE | 548 |
 
@@ -18,14 +18,11 @@
 
 | Borehole | Parameter | n5 | SNR | MK p-value |
 |---|---|---|---|---|
-| raanana_p_25 | NO3 | 85 | 0.569 | 0.0000 |
 
 ## WATCH classifications (first 20)
 
 | Borehole | Parameter | n5 | SNR | MK p-value |
 |---|---|---|---|---|
-| raanana_nd_paz_hanofer | ORP | 4 | 1.575 | 0.3082 |
-| raanana_p_25 | CHLF | 8 | 1.498 | 0.0171 |
 
 ## Validation
 - Entry criteria applied (n≥4, has_detection, n5≥1): ✅
