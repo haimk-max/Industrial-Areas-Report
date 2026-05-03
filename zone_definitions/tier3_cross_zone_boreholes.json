@@ -1,0 +1,35 @@
+{
+  "_description": "Tier 3: Manually specified cross-zone boreholes (upgradient, downgradient, neighboring plumes). Empty until Phase 2 multi-zone expansion.",
+  "_note": "Add entries here when a borehole outside the zone polygon is known to influence or be influenced by the zone.",
+  "raanana": {
+    "zone_name_he": "אזה\"ת רעננה",
+    "upgradient": [],
+    "downgradient": [
+      {
+        "borehole_id": "raanana_p_25",
+        "reason": "פ רעננה 25 ממוקם מערבית לכל קידוחי הניטור; TCE זוהה שם (14.1 µg/L, 2023) — עדות ל-plume CVOC המתפשט ממערב",
+        "distance_m_from_zone_edge": 300,
+        "flow_influence": "outgoing_cvoc_plume",
+        "added_by": "manual_analysis_may2026"
+      }
+    ],
+    "influencing_neighbors": []
+  },
+  "ashkelon_south": {"zone_name_he": "אשקלון דרום", "upgradient": [], "downgradient": [], "influencing_neighbors": []},
+  "ashkelon_north": {"zone_name_he": "אשקלון צפון", "upgradient": [], "downgradient": [], "influencing_neighbors": []},
+  "ashdod_south": {"zone_name_he": "אשדוד דרום", "upgradient": [], "downgradient": [], "influencing_neighbors": []},
+  "yavne": {"zone_name_he": "יבנה", "upgradient": [], "downgradient": [], "influencing_neighbors": []},
+  "bnei_ram": {"zone_name_he": "בני רם", "upgradient": [], "downgradient": [], "influencing_neighbors": []},
+  "rehovot_kramtech": {"zone_name_he": "רחובות קרמטק", "upgradient": [], "downgradient": [], "influencing_neighbors": []},
+  "nes_ziona_rehovot_sci_park": {"zone_name_he": "נס ציונה רחובות פארק מדע", "upgradient": [], "downgradient": [], "influencing_neighbors": []},
+  "nes_ziona": {"zone_name_he": "נס ציונה", "upgradient": [], "downgradient": [], "influencing_neighbors": []},
+  "rishon_letzion_west": {"zone_name_he": "ראשון לציון מערב", "upgradient": [], "downgradient": [], "influencing_neighbors": []},
+  "rishon_letzion_east": {"zone_name_he": "ראשון לציון מזרח", "upgradient": [], "downgradient": [], "influencing_neighbors": []},
+  "bat_yam": {"zone_name_he": "בת ים", "upgradient": [], "downgradient": [], "influencing_neighbors": []},
+  "holon": {"zone_name_he": "חולון", "upgradient": [], "downgradient": [], "influencing_neighbors": []},
+  "even_yehuda": {"zone_name_he": "אבן יהודה", "upgradient": [], "downgradient": [], "influencing_neighbors": []},
+  "sapir_netanya": {"zone_name_he": "ספיר נתניה", "upgradient": [], "downgradient": [], "influencing_neighbors": []},
+  "kiryat_eliezer_netanya": {"zone_name_he": "קרית אליעזר נתניה", "upgradient": [], "downgradient": [], "influencing_neighbors": []},
+  "hadera": {"zone_name_he": "חדרה", "upgradient": [], "downgradient": [], "influencing_neighbors": []},
+  "or_akiva": {"zone_name_he": "אור עקיבא", "upgradient": [], "downgradient": [], "influencing_neighbors": []}
+}

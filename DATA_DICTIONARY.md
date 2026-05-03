@@ -1,276 +1,243 @@
-# Data Dictionary - Industrial Areas Report
+# DATA_DICTIONARY.md — Industrial Areas Report
 
-## Project Overview
-Structured system for generating professional reports and monitoring dashboards for groundwater quality in industrial areas. Demonstration zone: **Raanana (אזה"ת רעננה)**
-
-## Information Architecture
-
-### Layer 1: Current Monitoring Data (Ground Truth)
-- **Location**: `Water Quality Data/` directory
-- **Purpose**: Most up-to-date internal monitoring data
-- **Source**: Current annual monitoring campaigns
-- **Content**: Latest borehole measurements, contamination levels, trend data
-
-### Layer 2: 2021 Baseline Report (Official Context)
-- **Location**: `Base-Report/` directory
-- **Source PDF**: "Water Quality Control in Industrial Areas Monitoring System in Coastal Aquifer 2021.pdf"
-- **Coverage**: 18 industrial zones, regional overview
-- **Role**: Official context layer, NOT a comparison table
-
-### Layer 3: TAHAL 2008 Historical (Planning Depth)
-- **Location**: `Base-Report/` directory
-- **Source PDFs**: Parts A & B of 2008 assessment
-- **Coverage**: Historical methodology (1999-2008), borehole selection criteria, risk framework
-- **Role**: Historical-planning depth layer
-
-### Layer 4: Contaminants Groups Forensics (Analysis)
-- **Location**: `Raanana/forensics/` directory
-- **Content**: Deep forensic analysis, source attribution, temporal patterns
-- **Role**: Analytical layer for interpretation
-
-### Layer 5: External Data (Enrichment)
-- **Location**: `External Data/` directory
-- **Sources**: MAFLAS/PRTR registry, Ministry databases, web searches
-- **Role**: Contextual enrichment of analysis
+Reference for all CSV and JSON schemas used in the project.
 
 ---
 
-## Raanana Zone Data Files
+## Raanana/data/boreholes.csv
 
-### 1. **boreholes.csv**
-Master registry of all monitoring boreholes in Raanana zone.
+One row per borehole.
 
-**Columns**:
-- `borehole_id`: Unique identifier (R-001, R-002, etc.)
-- `name`: Human-readable borehole name
-- `zone`: Zone assignment (always "Raanana" for this file)
-- `easting`: UTM X coordinate (Israeli coordinate system)
-- `northing`: UTM Y coordinate (Israeli coordinate system)
-- `depth_m`: Total drilling depth in meters
-- `geological_layer`: Hydrogeological layer designation (A2, AB, B2, B3)
-- `classification`: Borehole type per TAHAL 2008:
-  - `natural`: No direct contamination link
-  - `column`: Partial distance from contamination source
-  - `charged`: Within or near active contamination
-- `source_document`: Citation to source (e.g., "TAHAL 2008 Part B p.53")
-- `extraction_notes`: Notes on data extraction or interpretation
+| Column | Type | Description |
+|--------|------|-------------|
+| canonical_id | string | Unique borehole ID (snake_case, e.g. `raanana_nt_1`) |
+| name_he | string | Hebrew display name (e.g. `נת רעננה 1`) |
+| excel_borehole_id | string | Original numeric ID from Excel source |
+| itm_easting | integer | ITM easting (EPSG:2039, meters). Derived by ×1000 from Excel km format. |
+| itm_northing | integer | ITM northing (EPSG:2039, meters) |
+| basin | string | Aquifer basin (e.g. `חוף` = coastal) |
+| purpose | string | Purpose in Hebrew (e.g. `ניטור תעשיה`) |
+| borehole_type | string | Type code: `industrial_monitoring`, `fuel_monitoring`, `private_production` |
+| monitoring_site | string | Site label from Excel |
+| contamination_type | string | Contamination type code from Excel |
 
-**Data Quality**:
-- UTM coordinates verified against maps in 2021 Report and TAHAL 2008
-- Depths cross-checked against geological profiles
-- Classifications based on proximity to industrial facilities
+**Source**: `scripts/parse_excel.py` from Excel columns 0–8.
 
 ---
 
-### 2. **concentrations.csv**
-Historical and current contamination measurements across all parameters and years.
+## Raanana/data/measurements.csv
 
-**Columns**:
-- `borehole_id`: Reference to boreholes.csv
-- `parameter`: Contaminant name (TCE, 1,2-DCA, Chloroform, etc.)
-- `year`: Measurement year (1999-2021)
-- `concentration`: Measured concentration value
-- `unit`: Concentration unit (ppb, mg/L, ng/L)
-- `severity_index`: Calculated severity grade (0-8) per methodology
-- `status`: Assessment status (detected, elevated, high, low, etc.)
-- `source_document`: Citation to measurement source
-- `notes`: Interpretation or observation (e.g., "Significant increase from 1999")
+One row per measurement event (borehole × date × parameter). 2,613 rows (2011–2026).
 
-**Severity Index Scale** (from 2021 Report):
-```
-Index = (C_measured / C_standard) × 100
+| Column | Type | Description |
+|--------|------|-------------|
+| canonical_id | string | Borehole canonical ID (FK → boreholes.csv) |
+| name_he | string | Borehole Hebrew name (denormalized for convenience) |
+| param_code | string | Parameter symbol from Excel (e.g. `TCEY`, `PFOA`, `NO3`) |
+| param_name | string | Parameter full name in Hebrew |
+| date | string | Measurement date (ISO 8601, YYYY-MM-DD) |
+| year | integer | Year extracted from date |
+| concentration | float or blank | Measured concentration. Blank = not analyzed. |
+| unit | string | Unit of measurement (e.g. `microgr/L`, `MG/L`, `NTU`) |
+| is_below_lod | boolean | True if value is a LOD marker (e.g. `<0.5`). Concentration = LOD value. |
+| sample_id | string | Lab sample reference number |
+| lab | string | Laboratory name |
+| sample_depth_m | float | Sampling depth in meters (if available) |
+| drinking_water_standard | float or blank | Israeli drinking water standard for this parameter |
+| percent_of_standard | float or blank | `(concentration / standard) × 100`. Blank if no standard. |
 
-0: No contamination
-1: 0 < C ≤ 30
-2: 30 < C ≤ 60
-3: 60 < C ≤ 90
-4: 90 < C ≤ 1,870
-5: 1,870 < C ≤ 4,080
-6: 4,080 < C ≤ 7,180
-7: 7,180 < C ≤ 10,000
-8: C > 10,000
-```
-
-**Data Quality**:
-- All values extracted from TAHAL 2008 Part B Table 10.6
-- Units standardized to ppb for consistency
-- Severity indices recalculated from source values
+**Key Notes**:
+- `TPFAS` and `BETK` are **excluded** — they are calculated sums that double-count individual species.
+- `is_below_lod=True`: the `concentration` column holds the LOD value, not a real measurement. Treated as `LOD/2` in trend analysis (half_lod method, per `config/analysis_config.yaml`).
 
 ---
 
-### 3. **industries.json**
-Industrial facilities in Raanana zone and their potential contamination linkages.
+## Raanana/data/parameters.csv
 
-**Top-Level Fields**:
-- `zone`: Zone identifier
-- `zone_name_he`: Hebrew zone name
-- `industries`: Array of industrial facility records
-- `flow_affected_boreholes`: Mapping of industry → affected boreholes
+One row per unique parameter detected in Raanana measurements (179 parameters).
 
-**Industry Record Fields**:
-- `id`: Facility identifier (I-001, I-002, etc.)
-- `name`: English facility name
-- `name_he`: Hebrew facility name
-- `type`: Industry category (Chemicals, Pharmaceuticals, Light Manufacturing, etc.)
-- `category`: Specific subcategory
-- `easting`, `northing`: Facility location coordinates
-- `potential_contaminants`: List of contaminants this facility could produce
-- `risk_level`: Qualitative risk assessment (low, medium, high, etc.)
-- `notes`: Contextual information
-
-**Data Quality**:
-- Industry locations inferred from maps in 2021 Report and TAHAL 2008
-- Facility names anonymized due to data sensitivity
-- Contamination linkages based on industry process knowledge
+| Column | Type | Description |
+|--------|------|-------------|
+| param_code | string | Symbol (e.g. `TCEY`) |
+| param_name | string | Full name |
+| unit | string | Measurement unit |
+| drinking_water_standard | float or blank | Israeli standard |
+| family | string | Contaminant family: CVOC, PFAS, BTEX, THM, Nitrates, Metals, Major_ions, etc. |
+| is_calculated | boolean | True for TPFAS, BETK — excluded from trend analysis |
 
 ---
 
-### 4. **flow_direction.json**
-Groundwater flow patterns, velocity, and aquifer vulnerability assessment.
+## Raanana/data/trends.csv
 
-**Top-Level Sections**:
-- `primary_flow`: Main groundwater direction
-- `local_flow_variations`: Regional deviations from primary direction
-- `flow_velocity`: Estimated m/year with min/max/average
-- `water_table_depth`: Depth to groundwater (m)
-- `boreholes_gradient_relationship`: Upgradient/on-gradient/downgradient classification
-- `vulnerability_assessment`: Aquifer sensitivity and contamination spread rate
+One row per (borehole, parameter) pair analyzed for trend (576 rows). Generated by `scripts/trend_analysis.py`.
 
-**Data Quality**:
-- Flow direction based on contour interpretation from 2021 Report maps
-- Not field-measured; based on hydrogeological theory
-- Velocity estimates from TAHAL 2008 hydrogeological section
+| Column | Type | Description |
+|--------|------|-------------|
+| borehole_id | string | Canonical borehole ID |
+| parameter | string | Parameter code |
+| n | integer | Total number of measurements |
+| n5 | integer | Measurements in 5-year window (2020-01-01 onward) |
+| has_detection | boolean | True if ≥1 measurement > 0 |
+| mk_z_5y | float or blank | Mann-Kendall Z statistic (5y window). Blank if n5 < 3. |
+| mk_p_5y | float or blank | MK two-tailed p-value (5y window) |
+| mk_z_full | float or blank | MK Z (full record, informational only) |
+| mk_p_full | float or blank | MK p (full record) |
+| snr_5y | float or blank | Signal-to-Noise Ratio in 5y window. Blank if n5 < 4. |
+| soft_trigger | boolean | True if last 2 values in 5y window are rising |
+| classification | string | ALERT / WATCH / STABLE / DECREASING / NONE |
+| last_two_5y | string | Last two adjusted concentrations in 5y window (for audit trail) |
+| crossed_standard | boolean | True if any measurement exceeded drinking water standard |
+| drinking_water_standard | float or blank | Standard used for crossed_standard test |
 
----
-
-### 5. **forensics/contamination_families.json**
-Deep analytical interpretation of contamination patterns and source attribution.
-
-**Top-Level Sections**:
-- `TCE_decay_chain`: TCE and its degradation products (DCE, vinyl chloride)
-- `chlorinated_compounds`: 1,2-DCA, dichloromethane, chloroform
-- `heavy_metals`: Fe, Mn, Zn, Cu, Pb, Cd
-- `PFAS_family`: Per- and Polyfluoroalkyl substances (not in TAHAL 2008, recommendation for addition)
-- `co_occurrence_patterns`: Which contaminants appear together (source signatures)
-- `temporal_forensics`: Trends over time, anomalies, hypotheses
-
-**Forensic Interpretation**:
-- Pattern 1: TCE + chlorinated compounds → Chemical synthesis facility (I-001)
-- Pattern 2: Dichloromethane + VOCs → Pharmaceutical manufacturing (I-002)
-- Anomalies flagged for expert review (e.g., 2004 TCE drop followed by 2006 spike)
-
-**Data Quality**:
-- All interpretations based on documented contaminant patterns
-- Source attributions supported by industry type and location
-- Hypotheses marked as requiring expert validation
+**Classification Logic** (thresholds in `config/analysis_config.yaml`):
+1. `crossed_standard` computed before entry criteria check (flags single-event exceedances even for n=1)
+2. Entry criteria: `n ≥ 4 AND has_detection AND n5 ≥ 1` — series not meeting criteria → NONE
+3. SNR < 0.3 → NONE (SNR gating overrides MK significance)
+4. ALERT: `soft_trigger=True` + MK p < 0.10 (strong SNR ≥ 1.0) or p < 0.05 (moderate SNR 0.3–1.0)
+5. WATCH: partial signal (trigger OR MK, not both at threshold)
+6. STABLE/DECREASING: MK significant in opposite direction
+7. NONE: everything else
 
 ---
 
-## Contamination Families Reference
+## base_layer/tahal_2008/{zone_id}.json
 
-### Volatil Organic Compounds (VOCs) - Light Solvents/Dyes
-- TCE (Trichloroethylene) - Primary detected
-- Benzene, Toluene, Xylene (BTEX)
-- Dichloromethane
+Historical borehole and industry data from TAHAL 2008 Part B (18 files).
 
-### Chlorinated Compounds
-- 1,2-DCA (1,2-Dichloroethane) - Highly volatile
-- cis-1,2-DCE, trans-1,2-DCE (Dichloroethylene isomers)
-- Chloroform - Persistent disinfection byproduct
-
-### Fuel-Related
-- MTBE (Methyl tert-butyl ether)
-- TBA (tert-Butyl alcohol)
-
-### Heavy Metals
-- Iron (Fe), Manganese (Mn), Zinc (Zn)
-- Copper (Cu), Lead (Pb), Cadmium (Cd)
-
-### PFAS (Per- and Polyfluoroalkyl Substances)
-- PFOA, PFOS - Priority compounds
-- Chain-length variants
-- **Note**: Not in TAHAL 2008 data; recommended addition post-2021
-
-### Nutrients & General
-- Nitrate (NO₃⁻), Nitrite (NO₂⁻), Ammonium (NH₄⁺)
-- pH, Electrical Conductivity (EC)
-- Total Organic Carbon (TOC)
-- Biological Oxygen Demand (BOD), Chemical Oxygen Demand (COD)
+| Field | Type | Description |
+|-------|------|-------------|
+| zone_id | string | Zone identifier (snake_case) |
+| zone_name_he | string | Hebrew zone name |
+| source_document | string | Source citation (document + pages) |
+| extraction_status | string | `complete` (Raanana) or `manual_pending` (17 other zones) |
+| extraction_notes | string | Notes on extraction quality or pending work |
+| boreholes | array | `{id, name, name_he, coordinates: {easting, northing}, depth_m, geological_layer, classification, source_document_page}` |
+| measurements_1999_2008 | array | Historical measurements `{borehole_id, parameter, unit, year, concentration, source_page}` |
+| industries | array | `{id, name, type, coordinates, potential_contaminants, risk_level, source_page}` |
+| risk_assessment | object | `{overall_risk, aquifer_type, vulnerability, contamination_spread_rate, source_document_page}` |
 
 ---
 
-## Methodology
+## base_layer/report_2021/{zone_id}.json
 
-### Trend Identification
-1. **Data Point Mapping**: Plot all historical measurements chronologically
-2. **Linear Regression**: Calculate slope and R² for trend significance
-3. **Multi-Period Segmentation**: Compare 1999-2008 vs 2008-2015 vs 2015-2021
-4. **Moving Average**: Smooth noise to reveal underlying trends
-5. **Anomaly Detection**: Flag points deviating significantly from trend
-6. **Classification**: Label as Increasing/Stable/Decreasing/Volatile/Stable-Low
+Zone data from the 2021 Water Quality Report (18 files).
 
-### Severity Index Calculation
-```
-Index = (C_measured / C_standard) × 100
-```
-Then assign grade 0-8 based on reference table in 2021 Report.
-
-### Risk Assessment Framework
-- Proximity to active industry
-- Borehole depth and geological vulnerability
-- Distance from shoreline and water table
-- Groundwater flow direction (up/on/down-gradient)
-- Pollution source identification
-
-### Borehole Classification (TAHAL 2008)
-- **Natural**: No direct contamination link
-- **Column**: Partial distance from contamination source
-- **Charged**: Within or near active contamination
+| Field | Type | Description |
+|-------|------|-------------|
+| zone_id | string | Zone identifier |
+| zone_name_he | string | Hebrew zone name |
+| max_industry_index | integer | Maximum severity index recorded (0–8 scale) |
+| n_monitoring_boreholes | integer | Active monitoring boreholes count in 2021 |
+| median_index | float | Median severity index across zone boreholes |
+| boreholes_2021 | array | Boreholes active in 2021 with coordinates |
+| exceedance_parameters | array | Parameters exceeding standard with concentration and severity |
+| monitoring_recommendations | object | Recommended frequency and parameters |
 
 ---
 
-## Data Validation & Quality Assurance
+## base_layer/parameters_dictionary.json
 
-### Source Attribution
-Every data point must cite its source:
-- TAHAL 2008 Part A/B with page number
-- 2021 Report with page number
-- External database with access date
+Unified parameter dictionary from all three data sources (183 entries).
 
-### Recalculation Verification
-- Severity indices recalculated from raw concentrations
-- Trend slopes verified against source document interpretations
-- Boreholes coordinates checked against maps
-
-### Edge Cases & Limitations
-- **Data Gap 2008-2021**: Available measurements only, no interpolation
-- **PFAS Absent**: Pre-dates PFAS awareness; add from 2021+ data
-- **Industrial Attribution**: Requires expert judgment; forensics flag uncertainties
-- **Flow Direction**: Estimated from hydrogeology, not field-measured
+| Field | Type | Description |
+|-------|------|-------------|
+| code | string | Parameter symbol |
+| name | string | English name |
+| name_he | string | Hebrew name |
+| unit | string | Standard unit |
+| family | string | Contaminant family |
+| drinking_water_standard | float or null | Israeli standard |
+| is_calculated | boolean | True for TPFAS, BETK (excluded from analysis) |
+| pfas_sub_family | string or null | `S_chain` or `A_chain` for PFAS species |
+| sources | array | Documents where this parameter appears |
 
 ---
 
-## Next Phases
+## zone_definitions/tier1_historical_boreholes.json
 
-### Phase 2: Historical Data Integration
-- Extract all 2021 data from official report
-- Merge with TAHAL 2008 historical data
-- Validate date ranges and parameter coverage
-- Flag any inconsistencies for expert review
+Tier 1 borehole lists: auto-included, historically documented in TAHAL 2008 + 2021 Report.
 
-### Phase 3: Drilling Card & Report Generation
-- Per-borehole summary cards with maps, trends, risk assessment
-- Zone-level report with regional context
-- Forensics section with source attribution
-- Recommendations based on trends and severity
-
-### Phase 4: System Validation & Annual Cycle
-- Expert review of methodology alignment
-- Validation against regulatory standards
-- Approved report becomes context layer for next year
+| Field | Description |
+|-------|-------------|
+| `{zone_id}.tahal_2008_boreholes` | Canonical IDs documented in TAHAL 2008 |
+| `{zone_id}.report_2021_boreholes` | Canonical IDs documented in 2021 Report |
+| `{zone_id}.sources` | Document + page citations |
 
 ---
 
-**Document Version**: 1.0  
-**Date**: 2026-04-29  
-**Raanana Data Extraction Status**: Complete for TAHAL 2008; Pending 2021 integration
+## zone_definitions/zone_polygons.json
+
+Zone boundary polygons for Tier 2 spatial borehole selection.
+
+| Field | Description |
+|-------|-------------|
+| `{zone_id}.polygon` | `[[easting, northing], ...]` vertices in ITM meters (EPSG:2039) |
+| `{zone_id}.buffer_m` | Buffer in meters; boreholes within polygon ± buffer are included (default: 500) |
+| `{zone_id}.crs` | Always `ITM_EPSG2039` |
+
+---
+
+## zone_definitions/tier3_cross_zone_boreholes.json
+
+Tier 3 manual cross-zone additions (upgradient/downgradient/neighboring plumes).
+
+Each entry: `{borehole_id, reason, distance_m_from_zone_edge, flow_influence, added_by}`
+
+| Key | Description |
+|-----|-------------|
+| `upgradient` | Boreholes upstream of contamination flow (potential source side) |
+| `downgradient` | Boreholes downstream (contamination receptor side) |
+| `influencing_neighbors` | Adjacent zone boreholes with cross-plume influence |
+
+---
+
+## crosswalks/borehole_id_mapping.json
+
+Maps borehole IDs between data sources to canonical IDs.
+
+| Field | Description |
+|-------|-------------|
+| `tahal_2008_id` | ID used in TAHAL 2008 Part B |
+| `report_2021_id` | ID used in 2021 Report |
+| `excel_name_he` | Hebrew name in Excel source file |
+| `current_canonical_id` | Authoritative ID used throughout all scripts |
+| `itm_easting/northing` | Verified ITM coordinates |
+| `source_attribution` | How the ID match was verified (coordinate comparison, etc.) |
+
+---
+
+## Raanana/forensics/contamination_families.json
+
+Forensics analysis output. Generated by `scripts/forensics_analyzer.py`.
+
+| Key | Description |
+|-----|-------------|
+| `boreholes_analyzed` | List of canonical IDs |
+| `decay_chains` | Per-borehole reductive dechlorination chains (PCE→TCE→DCE→VC, TCA→DCA) |
+| `source_signatures` | Per-borehole source attribution: AFFF_foam, Fuel_station, CVOC_industry, Industrial_PFAS |
+| `co_occurrence` | Zone-level parameter co-occurrence (pairs detected in ≥2 boreholes) |
+| `critical_exceedances` | Top-10 exceedances per borehole, sorted by % of standard |
+| `contamination_families` | Parameters in ≥2 boreholes: `{code: {boreholes: [...], n_boreholes: N}}` |
+
+---
+
+## scripts/chart_presets.json
+
+Chart palette and compound ordering for stacked bar charts.
+
+| Key | Description |
+|-----|-------------|
+| `presets.{name}.title_template` | Chart title (Hebrew, absolute mode) |
+| `presets.{name}.title_pct_template` | Chart title (Hebrew, percent mode) |
+| `presets.{name}.codes` | Ordered list of compound codes (stacking order, bottom first) |
+| `presets.{name}.colors` | Hex color per compound (same order as codes) |
+| `presets.{name}.groups` | For grouped presets (PFAS): `{S: {codes, colors}, A: {codes, colors}}` |
+| `presets.{name}.display_names` | Human-readable label per code for legend |
+| `presets.{name}.unit` | Y-axis unit |
+| `presets.{name}.dual_chart` | True = generate both absolute + 100% stacked variants |
+
+**TPFAS must never appear in any preset** (calculated sum → double-counting).
+
+---
+
+*Last updated: May 2026 | Maintained with parse_excel.py, trend_analysis.py, forensics_analyzer.py*

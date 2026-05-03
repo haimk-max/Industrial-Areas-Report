@@ -1,0 +1,125 @@
+{
+  "_description": "Tier 1: Historically documented boreholes from TAHAL 2008 and 2021 Report. Auto-included for each zone.",
+  "_note": "raanana canonical IDs verified against Excel crosswalk. Other zones marked pending.",
+  "raanana": {
+    "zone_name_he": "אזה\"ת רעננה",
+    "tahal_2008_boreholes": [
+      "raanana_nt_1",
+      "raanana_nt_2",
+      "raanana_nt_3",
+      "raanana_nd_paz_hanofer",
+      "raanana_nd_turbine"
+    ],
+    "report_2021_boreholes": [
+      "raanana_nt_1",
+      "raanana_nt_2",
+      "raanana_nt_3"
+    ],
+    "sources": [
+      "TAHAL 2008 Part B pages 53-67",
+      "2021 Report Table 14 page 35"
+    ]
+  },
+  "ashkelon_south": {
+    "zone_name_he": "אשקלון דרום",
+    "tahal_2008_boreholes": [],
+    "report_2021_boreholes": [],
+    "sources": ["pending — requires manual extraction from TAHAL 2008 Part B"]
+  },
+  "ashkelon_north": {
+    "zone_name_he": "אשקלון צפון",
+    "tahal_2008_boreholes": [],
+    "report_2021_boreholes": [],
+    "sources": ["pending — requires manual extraction from TAHAL 2008 Part B"]
+  },
+  "ashdod_south": {
+    "zone_name_he": "אשדוד דרום",
+    "tahal_2008_boreholes": [],
+    "report_2021_boreholes": [],
+    "sources": ["pending"]
+  },
+  "yavne": {
+    "zone_name_he": "יבנה",
+    "tahal_2008_boreholes": [],
+    "report_2021_boreholes": [],
+    "sources": ["pending"]
+  },
+  "bnei_ram": {
+    "zone_name_he": "בני רם",
+    "tahal_2008_boreholes": [],
+    "report_2021_boreholes": [],
+    "sources": ["pending"]
+  },
+  "rehovot_kramtech": {
+    "zone_name_he": "רחובות קרמטק",
+    "tahal_2008_boreholes": [],
+    "report_2021_boreholes": [],
+    "sources": ["pending"]
+  },
+  "nes_ziona_rehovot_sci_park": {
+    "zone_name_he": "נס ציונה רחובות פארק מדע",
+    "tahal_2008_boreholes": [],
+    "report_2021_boreholes": [],
+    "sources": ["pending"]
+  },
+  "nes_ziona": {
+    "zone_name_he": "נס ציונה",
+    "tahal_2008_boreholes": [],
+    "report_2021_boreholes": [],
+    "sources": ["pending"]
+  },
+  "rishon_letzion_west": {
+    "zone_name_he": "ראשון לציון מערב",
+    "tahal_2008_boreholes": [],
+    "report_2021_boreholes": [],
+    "sources": ["pending"]
+  },
+  "rishon_letzion_east": {
+    "zone_name_he": "ראשון לציון מזרח",
+    "tahal_2008_boreholes": [],
+    "report_2021_boreholes": [],
+    "sources": ["pending"]
+  },
+  "bat_yam": {
+    "zone_name_he": "בת ים",
+    "tahal_2008_boreholes": [],
+    "report_2021_boreholes": [],
+    "sources": ["pending"]
+  },
+  "holon": {
+    "zone_name_he": "חולון",
+    "tahal_2008_boreholes": [],
+    "report_2021_boreholes": [],
+    "sources": ["pending — 2021 Report Table 13 page 32 available"]
+  },
+  "even_yehuda": {
+    "zone_name_he": "אבן יהודה",
+    "tahal_2008_boreholes": [],
+    "report_2021_boreholes": [],
+    "sources": ["pending"]
+  },
+  "sapir_netanya": {
+    "zone_name_he": "ספיר נתניה",
+    "tahal_2008_boreholes": [],
+    "report_2021_boreholes": [],
+    "sources": ["pending"]
+  },
+  "kiryat_eliezer_netanya": {
+    "zone_name_he": "קרית אליעזר נתניה",
+    "tahal_2008_boreholes": [],
+    "report_2021_boreholes": [],
+    "sources": ["pending"]
+  },
+  "hadera": {
+    "zone_name_he": "חדרה",
+    "tahal_2008_boreholes": [],
+    "report_2021_boreholes": [],
+    "sources": ["pending"]
+  },
+  "or_akiva": {
+    "zone_name_he": "אור עקיבא",
+    "tahal_2008_boreholes": [],
+    "report_2021_boreholes": [],
+    "sources": ["pending"]
+  }
+}

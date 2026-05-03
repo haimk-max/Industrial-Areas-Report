@@ -119,14 +119,49 @@ Before implementing data processing:
   - ✓ All findings traced to source documents (page numbers cited)
   - ✓ Risk scores calculated per methodology
 
-**Phase 4: System Validation** (IN PROGRESS)
-- Goal: Generate R-002, R-003, R-005 drilling cards; validate against expert review
+**Phase A–C: Real Data Pipeline** ✓ COMPLETE (May 2026)
+- Goal: Replace placeholder data with real 2011–2026 Excel measurements; statistical trend engine; charts
+- Verify:
+  - ✓ 7 real boreholes from Excel (raanana_nt_1 through raanana_p_25)
+  - ✓ 2,613 measurements (TPFAS excluded); 179 parameters
+  - ✓ Mann-Kendall trend engine (tie-corrected, SNR gating, soft_trigger=2 measurements)
+  - ✓ ALERT: NO₃ at p_25; WATCH: CHLF at p_25, ORP at paz_hanofer
+  - ✓ 36 parameter/borehole pairs crossed drinking water standard
+  - ✓ 15 charts generated: PFAS, CVOC, BTEX, THM, 7 trend charts
+  - ✓ Forensics: 7 decay chains, 14 source signatures, 758 co-occurrence pairs
+  - ✓ PFAS at turbine station: PFHxS 1,160%, PFOA 524% (July 2025 — critical new finding)
+
+**Phase D: Hebrew Reports** ✓ COMPLETE (May 2026)
+- Goal: Professional Hebrew zone summary + 7 drilling cards from real data
+- Verify:
+  - ✓ Zone summary report with 4 critical contamination findings (TCE, PCE, PFAS, Benzene)
+  - ✓ 7 individual drilling cards (nt1, nt2, nt3, nd_paz, nd_turbine, p18, p25)
+  - ✓ All findings sourced to Excel (borehole/date) or TAHAL/2021 (page number)
+  - ✓ Limitations and data gaps explicitly stated
+
+**Phase E: Zone Selection** ✓ COMPLETE (May 2026)
+- Goal: 3-tier borehole selection mechanism for scalability
+- Verify:
+  - ✓ zone_definitions/tier1_historical_boreholes.json (18 zones)
+  - ✓ zone_definitions/zone_polygons.json (18 zones, Raanana polygon defined)
+  - ✓ zone_definitions/tier3_cross_zone_boreholes.json (18 zones)
+  - ✓ scripts/select_boreholes.py — Raanana selects all 7 boreholes (5 Tier1 + 2 Tier2)
+
+**Phase F: Tests** ✓ COMPLETE (May 2026)
+- Goal: Automated regression tests for trend engine and chart presets
+- Verify:
+  - ✓ 25 tests passing: test_preprocess.py (8), test_chart_presets.py (9), test_borehole_selection.py (8)
+  - ✓ Golden dataset: 144 measurements, 10 expected trend classifications
+  - ✓ Key invariants guarded: ALERT/WATCH classifications, soft_trigger=2, SNR gating, crossed_standard before entry criteria
+
+**Phase 4: System Validation** (PENDING expert review)
+- Goal: Expert hydrogeologist review; PFAS alert to regulators; boron anomaly investigation
 - Plan:
-  1. Complete R-002, R-003, R-005 drilling cards → Verify coverage of all boreholes
-  2. Generate per-parameter summary tables → Verify trend calculations match zone report
-  3. Create CLAUDE.md project governance → Verify alignment with best practices
-  4. Schedule expert review → Coordinate with hydrogeologist and regulatory contact
-  5. Integrate 2021 measurements → Validate trend continuation/reversal
+  1. PFAS dip sampling at turbine station (Q3 2026) — top priority
+  2. Expert review of forensic attributions (decay chains, source signatures)
+  3. Boron anomaly investigation (2019-07-22 readings at nt_2, nt_3)
+  4. Regulatory reporting for PFAS exceedances
+  5. Phase 2 expansion to additional zones (post-expert validation)
 
 ---
 
@@ -140,11 +175,14 @@ Before implementing data processing:
 5. **Cross-Reference Validation**: When integrating TAHAL 2008 and 2021 data, flag discrepancies for expert review
 
 ### Reporting Standards
-1. **Drilling Card Format**: Header (ID, coordinates, depth, classification) → Geology → Contamination trends → Forensics → Recommendations
-2. **Trend Interpretation**: State trend mathematically (slope, R²), then interpret in context of facility operations
-3. **Risk Communication**: Use matrix format with weighted factors; final score ranges 1-10
-4. **Recommendation Hierarchy**: Immediate (2024-2026), Medium-term (2026-2030), Long-term (2030+)
-5. **Limitations Statement**: Every report section that relies on assumptions includes "Limitations" callout
+1. **Drilling Card Format**: Header (ID, coordinates, depth, classification) → Contamination findings → Trend analysis → Forensics → Limitations → Recommendations
+2. **Trend Interpretation**: State trend classification (ALERT/WATCH/STABLE/DECREASING/NONE), MK z and p values, SNR, soft_trigger; interpret in context of facility operations. Do NOT use "linear regression" — the engine is Mann-Kendall.
+3. **Trend Methodology**: Mann-Kendall (tie-corrected variance, continuity-corrected Z) with SNR gating. Soft trigger = 2 consecutive rising values in 5y window (NOT 3). Config in `config/analysis_config.yaml`.
+4. **TPFAS Exclusion**: Always exclude TPFAS (total PFAS) and BETK from analysis — they are calculated sums. Individual species (PFHxS, PFOA, etc.) are the canonical representation.
+5. **Crossed Standard**: `crossed_standard` flag is set BEFORE entry criteria check so single-measurement exceedances are always captured.
+6. **Risk Communication**: Present as % of drinking water standard, classification tier, and trend.
+7. **Recommendation Hierarchy**: Immediate (2026), Short-term (2026–2027), Long-term (2027+)
+8. **Limitations Statement**: Every report section with assumptions includes "Limitations" callout
 
 ### Coordination Requirements
 1. **Source Facility Changes**: Before updating risk assessments, query facility operators about production changes
@@ -209,17 +247,22 @@ Before committing code or reports:
 
 ## 8. Scaling from Raanana to Full System
 
-### Current State (Raanana Only)
-- 1 zone, 5 boreholes, 3 parameters, 1999-2008 historical data
-- Manually created CSVs and reports
-- Ad-hoc consolidation script
+### Current State (Raanana — Phases A–F Complete)
+- 1 zone, 7 boreholes (real 2011–2026 data), 179 parameters, 2,613 measurements
+- Full pipeline: parse_excel → trend_analysis → forensics_analyzer → generate_charts
+- 7 drilling cards + zone summary report in Hebrew
+- 25 automated tests passing (test_preprocess, test_chart_presets, test_borehole_selection)
+- Tier 1/2/3 borehole selection in zone_definitions/
+- base_layer/ seeded for all 18 zones (Raanana complete; 17 others manual_pending)
 
-### Scalability Plan (18 Zones)
-- **Data**: Extend boreholes.csv and concentrations.csv with zone column
-- **Scripts**: Modify consolidate_data.py to accept `--zone` parameter
-- **Templates**: Reuse drilling_card_R-001.md format for all boreholes
-- **Automation**: Create zone_summary_generator.py to batch-produce zone reports
-- **No new schemas**: Current design supports full 18-zone expansion
+### Adding a New Zone (Phase 2)
+1. `zone_definitions/tier1_historical_boreholes.json` — add zone's historical borehole IDs
+2. `zone_definitions/zone_polygons.json` — define zone polygon in ITM coordinates
+3. `scripts/parse_excel.py --zone <new_zone>` — extract measurements from Excel
+4. `scripts/trend_analysis.py --zone <new_zone>` — run MK trend engine
+5. `scripts/forensics_analyzer.py --zone <new_zone>` — forensics analysis
+6. `scripts/generate_charts.py --zone <new_zone>` — charts
+7. Write zone summary report + drilling cards (Raanana as template)
 
 ### Implementation Trigger
 - After Phase 4 expert validation on Raanana (Q3 2026)
@@ -285,17 +328,19 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 5. ✓ Documentation: CLAUDE.md and DATA_DICTIONARY updated
 
 **Project Success Criteria** (Phase 4 completion):
-1. ✓ All 5 Raanana boreholes have drilling cards
-2. ✓ Zone summary report synthesizes all data layers
+1. ✓ All 7 Raanana boreholes have drilling cards (nt1, nt2, nt3, nd_paz, nd_turbine, p18, p25)
+2. ✓ Zone summary report synthesizes all data layers (4 contamination foci, trend table, forensics)
 3. ✓ Forensic analysis links contaminants to source facilities with confidence levels
-4. ✓ Risk matrix calculated and validated
-5. ✓ 2021 baseline integrated and compared with historical
-6. ✓ Expert hydrogologist review completed
-7. ✓ System designed to scale from 1 zone (Raanana) to 18 zones without redesign
-8. ✓ CLAUDE.md and project governance documented
+4. ✓ PFAS at turbine station flagged for urgent regulatory attention
+5. ✓ Real 2011–2026 data integrated (replacing placeholder data)
+6. ✓ 25 automated tests passing (regression guard on trend engine)
+7. ✓ System designed to scale from 1 zone to 18 zones (--zone flag, zone_definitions/, select_boreholes.py)
+8. ✓ CLAUDE.md and DATA_DICTIONARY.md updated
+9. ⏳ Expert hydrogeologist review — pending (Q3 2026)
+10. ⏳ PFAS regulatory reporting — pending (Q3 2026)
 
 ---
 
-**Project Status**: Phase 3 Complete (R-001, R-004 drilling cards + zone summary) | Phase 4 In Progress  
-**Last Updated**: April 29, 2026  
-**Next Review**: May 15, 2026 (Phase 4 milestone: R-002, R-003, R-005 cards complete)
+**Project Status**: Phases A–F Complete (real data pipeline, trend engine, charts, Hebrew reports, tests) | Phase 4 (expert validation) In Progress  
+**Last Updated**: May 3, 2026  
+**Next Review**: Q3 2026 (PFAS confirmatory sampling at turbine station; expert validation)
