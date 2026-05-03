@@ -65,28 +65,31 @@ def golden_trends(golden_dir):
     return _load_golden_trends(golden_dir)
 
 
-def test_golden_alert_classification(golden_dir):
-    """NO3 at p_25 must be classified ALERT — regression guard."""
+def test_golden_increasing_classification(golden_dir):
+    """NO3 at p_25 must be classified INCREASING (strong rising MK trend)."""
     meas = _load_golden_measurements(golden_dir)
     rows = meas.get(("raanana_p_25", "NO3"), [])
     assert rows, "NO3 measurements for p_25 must exist in golden dataset"
 
     result = _run("raanana_p_25", "NO3", rows, 70.0)
-    assert result.classification == "ALERT", (
-        f"NO3 at p_25 must be ALERT; got {result.classification}. "
-        "Check if soft_trigger or MK gating changed."
+    assert result.classification == "INCREASING", (
+        f"NO3 at p_25 must be INCREASING; got {result.classification}. "
+        "Check if MK gating changed."
+    )
+    assert "Rising trend" in result.trend_description, (
+        f"trend_description must contain 'Rising trend'; got: {result.trend_description}"
     )
 
 
-def test_golden_watch_classification(golden_dir):
-    """Chloroform at p_25 must be classified WATCH."""
+def test_golden_chlf_increasing_classification(golden_dir):
+    """Chloroform at p_25 must be classified INCREASING (significant MK rising)."""
     meas = _load_golden_measurements(golden_dir)
     rows = meas.get(("raanana_p_25", "CHLF"), [])
     assert rows, "CHLF measurements for p_25 must exist"
 
     result = _run("raanana_p_25", "CHLF", rows, 80.0)
-    assert result.classification == "WATCH", (
-        f"CHLF at p_25 must be WATCH; got {result.classification}"
+    assert result.classification == "INCREASING", (
+        f"CHLF at p_25 must be INCREASING; got {result.classification}"
     )
 
 
@@ -114,24 +117,36 @@ def test_pfas_single_measurement_crossed_standard(golden_dir):
     assert result.classification == "NONE", "Single measurement must yield NONE (n<min_n=4)"
 
 
-def test_soft_trigger_uses_2_measurements_not_3():
-    """Soft trigger fires on 2 consecutive rising values (not 3). Regression guard."""
+def test_no_soft_trigger_field():
+    """TrendResult must NOT have a soft_trigger field (V2 removal)."""
+    from scripts.preprocess import TrendResult
+    result = TrendResult(borehole_id="test", parameter="TEST")
+    assert not hasattr(result, "soft_trigger"), (
+        "soft_trigger field must be removed from TrendResult in V2. "
+        "Do NOT re-add it."
+    )
+
+
+def test_trend_description_populated():
+    """analyze_series must always populate trend_description."""
+    # Enough data across 5y window + older years for strong SNR
     rows = [
-        {"date": "2018-01-01", "concentration": "1.0", "is_below_lod": "False"},
-        {"date": "2019-01-01", "concentration": "1.5", "is_below_lod": "False"},
-        {"date": "2021-01-01", "concentration": "2.0", "is_below_lod": "False"},
-        {"date": "2022-01-01", "concentration": "3.0", "is_below_lod": "False"},
+        {"date": "2015-01-01", "concentration": "1.0", "is_below_lod": "False"},
+        {"date": "2017-01-01", "concentration": "3.0", "is_below_lod": "False"},
+        {"date": "2020-01-01", "concentration": "5.0", "is_below_lod": "False"},
+        {"date": "2021-01-01", "concentration": "8.0", "is_below_lod": "False"},
+        {"date": "2022-01-01", "concentration": "12.0", "is_below_lod": "False"},
+        {"date": "2023-01-01", "concentration": "18.0", "is_below_lod": "False"},
     ]
     result = _run("test_bh", "TEST", rows, None)
-    assert result.soft_trigger is True, (
-        "Soft trigger must fire when last 2 values in 5y window are rising. "
-        "Do NOT revert to requiring 3 consecutive values."
+    assert result.trend_description, "trend_description must be non-empty"
+    assert "Mann-Kendall" in result.trend_description, (
+        "trend_description must include Mann-Kendall statistics"
     )
 
 
 def test_snr_below_threshold_gives_none():
     """SNR < 0.3 must yield NONE classification even if MK is significant."""
-    # Use years entirely within the 5y window (2020+), very flat values → low SNR
     rows = [
         {"date": f"202{i}-01-01", "concentration": f"{1.0 + i * 0.001}", "is_below_lod": "False"}
         for i in range(5)

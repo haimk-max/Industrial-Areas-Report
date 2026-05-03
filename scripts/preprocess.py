@@ -1,15 +1,15 @@
 """Phase B: Statistical engine — Mann-Kendall + SNR gating + trend classification.
 
-Implements the exact methodology from the water-quality-trends-dashboard project:
+Implements the methodology from the water-quality-trends-dashboard project (V2 simplification):
 
-Entry criteria:       n ≥ 4  AND  has_detection  AND  n5 ≥ 1
-Soft trigger (2-pt):  (n5 ≥ 2) and (adj_vals[idx5[-1]] > adj_vals[idx5[-2]])
-Mann-Kendall:         tie-corrected variance + continuity-corrected Z
-                      5-year window (2020+) drives classification; full record informational
-SNR gating:           ≥1.0 strong (p<0.10), 0.3–1.0 moderate (p<0.05), <0.3 → NONE
-Below-LOD treatment:  half_lod (default per config)
+Entry criteria:  n ≥ 4  AND  has_detection  AND  n5 ≥ 1
+Mann-Kendall:    tie-corrected variance + continuity-corrected Z
+                 5-year window (2020+) drives classification; full record informational
+SNR gating:      ≥1.0 strong (p<0.10), 0.3–1.0 moderate (p<0.05), <0.3 → NONE
+Below-LOD:       half_lod (default per config)
 
-Classification: ALERT | WATCH | STABLE | DECREASING | NONE
+Classification: INCREASING | DECREASING | STABLE | NONE
+trend_description: plain-language string with Mann-Kendall Z and p-value
 """
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ from typing import Literal
 import numpy as np
 
 
-Classification = Literal["ALERT", "WATCH", "STABLE", "DECREASING", "NONE"]
+Classification = Literal["INCREASING", "DECREASING", "STABLE", "NONE"]
 
 WINDOW_5Y_START = date(2020, 1, 1)
 
@@ -52,9 +52,8 @@ class TrendResult:
     mk_z_full: float | None = None
     mk_p_full: float | None = None
     # Classification components
-    soft_trigger: bool = False
     classification: Classification = "NONE"
-    last_two_5y: str | None = None    # repr of last two adjusted values in 5y window
+    trend_description: str = ""
     crossed_standard: bool = False
     drinking_water_standard: float | None = None
     # Config snapshot
@@ -170,8 +169,6 @@ def analyze_series(
     min_n5_for_mk = mk_cfg.get("min_n5_for_classification", 3)
     window_5y_start_str = mk_cfg.get("window_5y_start", "2020-01-01")
     window_5y_start = date.fromisoformat(window_5y_start_str)
-    soft_trigger_window = trend_cfg.get("soft_trigger", {}).get("window_size", 2)
-
     snr_strong_min = snr_cfg.get("strong", {}).get("min_snr", 1.0)
     snr_strong_p = snr_cfg.get("strong", {}).get("mk_p_cutoff", 0.10)
     snr_moderate_min = snr_cfg.get("moderate", {}).get("min_snr", 0.3)
@@ -214,13 +211,7 @@ def analyze_series(
         result.classification = "NONE"
         return result
 
-    # ── Soft trigger (2 measurements in 5y window) ───────────────────────────
     adj_vals = [v for _, v in adj_pairs]
-    if result.n5 >= soft_trigger_window:
-        last_val = adj_vals[idx5[-1]]
-        prev_val = adj_vals[idx5[-2]]
-        result.soft_trigger = last_val > prev_val
-        result.last_two_5y = f"{prev_val:.3g} → {last_val:.3g}"
 
     # ── MK full record ────────────────────────────────────────────────────────
     if len(adj_vals) >= 3:
@@ -246,8 +237,8 @@ def analyze_series(
     p5 = result.mk_p_5y
 
     if snr < snr_moderate_min:
-        # Weak signal — cannot distinguish trend from noise
         result.classification = "NONE"
+        result.trend_description = "Insufficient signal for trend assessment (SNR below threshold)"
         return result
 
     # Determine significance threshold based on SNR tier
@@ -260,16 +251,23 @@ def analyze_series(
     increasing = (z5 is not None and z5 > 0)
     decreasing = (z5 is not None and z5 < 0)
 
-    if result.soft_trigger and mk_significant and increasing:
-        result.classification = "ALERT"
-    elif result.soft_trigger and increasing:
-        result.classification = "WATCH"
-    elif mk_significant and increasing:
-        result.classification = "WATCH"
+    if mk_significant and increasing:
+        result.classification = "INCREASING"
     elif mk_significant and decreasing:
         result.classification = "DECREASING"
     else:
         result.classification = "STABLE"
+
+    # Plain-language description with Mann-Kendall statistics
+    if z5 is not None and p5 is not None:
+        if result.classification == "INCREASING":
+            result.trend_description = f"Rising trend (p={p5:.3f}); Mann-Kendall Z={z5:.2f}"
+        elif result.classification == "DECREASING":
+            result.trend_description = f"Declining trend (p={p5:.3f}); Mann-Kendall Z={z5:.2f}"
+        else:
+            result.trend_description = f"No significant trend (p={p5:.3f}); Mann-Kendall Z={z5:.2f}"
+    else:
+        result.trend_description = "Insufficient 5-year data for Mann-Kendall classification"
 
     return result
 
