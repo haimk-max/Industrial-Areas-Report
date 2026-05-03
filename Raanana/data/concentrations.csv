@@ -1,0 +1,19 @@
+borehole_id,parameter,year,concentration,unit,severity_index,status,source_document,notes
+R-001,TCE,1999,5.2,ppb,4,detected,TAHAL 2008 Part B Table 10.6,Initial baseline
+R-001,TCE,2004,20.6,ppb,5,elevated,TAHAL 2008 Part B Table 10.6,Significant increase from 1999
+R-001,TCE,2006,31.8,ppb,6,high,TAHAL 2008 Part B Table 10.6,Continuing trend
+R-001,TCE,2008,27.7,ppb,6,high,TAHAL 2008 Part B Table 10.6,Stable from 2006
+R-001,"1,2-DCA",1999,100,ppb,5,elevated,TAHAL 2008 Part B Table 10.6,Initial detection
+R-001,"1,2-DCA",2004,5,ppb,3,low,TAHAL 2008 Part B Table 10.6,Decrease but still detected
+R-001,"1,2-DCA",2006,50,ppb,5,elevated,TAHAL 2008 Part B Table 10.6,Spike - potential new source or mobilization
+R-001,"1,2-DCA",2008,40,ppb,5,elevated,TAHAL 2008 Part B Table 10.6,Continues elevated
+R-004,TCE,1999,18,ppb,5,elevated,TAHAL 2008 Part B Table 10.6,Baseline measurement
+R-004,TCE,2004,0.9,ppb,2,low,TAHAL 2008 Part B Table 10.6,Significant decrease
+R-004,TCE,2006,18,ppb,5,elevated,TAHAL 2008 Part B Table 10.6,Return to elevated levels
+R-004,TCE,2008,18,ppb,5,elevated,TAHAL 2008 Part B Table 10.6,Stable
+R-004,"1,2-DCA",1999,100,ppb,5,elevated,TAHAL 2008 Part B Table 10.6,High initial level
+R-004,"1,2-DCA",2008,40,ppb,5,elevated,TAHAL 2008 Part B Table 10.6,Still elevated after 9 years
+R-001,Chloroform,1999,27.7,ppb,5,elevated,TAHAL 2008 Part B Table 10.6,Persistent contamination
+R-001,Chloroform,2008,20.2,ppb,5,elevated,TAHAL 2008 Part B Table 10.6,Slight decrease but still elevated
+R-004,Chloroform,1999,27.7,ppb,5,elevated,TAHAL 2008 Part B Table 10.6,Baseline
+R-004,Chloroform,2008,20.2,ppb,5,elevated,TAHAL 2008 Part B Table 10.6,Slight decrease

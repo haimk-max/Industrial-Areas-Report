@@ -1,0 +1,56 @@
+{
+  "zone": "Raanana",
+  "zone_name_he": "אזה\"ת רעננה",
+  "report_year": 2021,
+  "source_document": "Water Quality Control in Industrial Areas Monitoring System in Coastal Aquifer 2021.pdf",
+  "zone_position": "Zone #2 among 18 industrial zones",
+  "risk_classification": "Medium (בינוני)",
+  "severity_index_2021": 3,
+  "zone_summary_table": {
+    "source_page": 49,
+    "median_contamination_levels": "Zone 2 (Raanana)",
+    "overall_assessment": "Medium risk classification"
+  },
+  "overview_location": {
+    "map_pages": "15-16",
+    "figure_3_location": "Page 11, Table 3"
+  },
+  "data_integration_notes": {
+    "historical_data": "1999-2008 data extracted from TAHAL 2008 Part B",
+    "current_data": "2021 assessment and severity index from 2021 Report",
+    "data_gap": "2008-2021 interim period - limited data points",
+    "boreholes_covered": "Minimum 5 boreholes with historical data; 2021 report confirms continued monitoring",
+    "new_parameters_expected": [
+      "PFAS (if included in 2021 monitoring)",
+      "Pharmaceuticals (if tested)",
+      "Updated heavy metals analysis"
+    ]
+  },
+  "comparative_analysis": {
+    "risk_classification_comparison": {
+      "TAHAL_2008_assessment": "Medium-High (בינוני-גבוה)",
+      "2021_assessment": "Medium (בינוני)",
+      "interpretation": "Slight improvement or stabilization in risk classification over 13 years"
+    },
+    "severity_index_2021": {
+      "value": 3,
+      "interpretation": "Within medium range; indicates active contamination but not critical"
+    }
+  },
+  "outstanding_data_requirements": {
+    "from_2021_report": [
+      "Specific 2021 borehole measurements (concentration values)",
+      "Updated borehole list - confirmation of 5 boreholes or changes",
+      "Parameter-specific 2021 measurements for trend continuation",
+      "Updated groundwater flow direction assessment",
+      "Updated industrial facility status (still operational or remediated)"
+    ],
+    "next_action": "Extract detailed concentration data from 2021 Report tables (if available) for boreholes R-001 through R-005"
+  },
+  "extraction_confidence": {
+    "zone_identification": "High - clearly identified as zone #2",
+    "risk_classification": "High - explicitly stated as 'medium' (בינוני)",
+    "severity_index": "Medium - inferred from zone summary table",
+    "specific_measurements": "Pending - detailed table review required"
+  }
+}

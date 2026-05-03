@@ -1,0 +1,24 @@
+{
+  "zone_id": "yavne",
+  "zone_name_he": "אזה\"ת יבנה",
+  "severity_index": 5,
+  "severity_classification": "medium",
+  "source_document": "2021 Water Quality Report (בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021)",
+  "boreholes_2021": [],
+  "exceedance_parameters": [],
+  "zone_comparison": {
+    "rank_among_18_zones": 9,
+    "description": "Max industrial index=5, median=2.0, monitoring boreholes=3. Classification: medium.",
+    "source_page": 49
+  },
+  "monitoring_recommendations": {
+    "frequency": "Quarterly",
+    "parameters": [
+      "VOCs",
+      "Heavy Metals",
+      "Fuel Components"
+    ],
+    "recommended_boreholes": [],
+    "source_page": 15
+  }
+}

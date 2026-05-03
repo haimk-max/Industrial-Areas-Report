@@ -1,0 +1,33 @@
+{
+  "_description": "Synonym/alias mapping across TAHAL 2008, 2021 Report, and Excel parameter codes.",
+  "_note": "TPFAS (total_pfas) is a calculated sum — ALWAYS excluded from analysis to avoid double-counting.",
+  "excluded_calculated": [
+    {
+      "code": "TPFAS",
+      "name": "total_pfas",
+      "reason": "Calculated sum of individual PFAS species. Including it causes double-counting with PFOA, PFOS, PFHxS, etc.",
+      "action": "filter_before_analysis"
+    },
+    {
+      "code": "BETK",
+      "name": "BETA RAD. CORRECTED FOR K",
+      "reason": "Derived from BETA radioactivity measurement (K-corrected). Use BETA for trend analysis.",
+      "action": "filter_before_analysis"
+    }
+  ],
+  "parameter_aliases": [
+    {"canonical": "TCEY", "aliases": ["TCE", "Trichloroethylene", "טריכלורואתילן"], "tahal_2008_name": "TCE"},
+    {"canonical": "TECE", "aliases": ["PCE", "Tetrachloroethylene", "PERC", "טטרכלורואתילן"], "tahal_2008_name": "PCE"},
+    {"canonical": "CDCE", "aliases": ["cis-1,2-DCE", "cis-DCE", "CIS DCE"], "tahal_2008_name": "cis-1,2-DCE"},
+    {"canonical": "TDCE", "aliases": ["trans-1,2-DCE", "trans-DCE"], "tahal_2008_name": "trans-1,2-DCE"},
+    {"canonical": "DCEY", "aliases": ["1,1-DCE", "Vinylidene chloride"], "tahal_2008_name": "1,1-DCE"},
+    {"canonical": "VYCL", "aliases": ["VC", "Vinyl chloride", "כלוריד ויניל"], "tahal_2008_name": "Vinyl Chloride"},
+    {"canonical": "DCET", "aliases": ["1,2-DCA", "1,2-Dichloroethane", "אתן דיכלורי 1,2"], "tahal_2008_name": "1,2-DCA"},
+    {"canonical": "CHLF", "aliases": ["Chloroform", "CHCl3", "Trichloromethane", "כלורופורם"], "tahal_2008_name": "Chloroform"},
+    {"canonical": "BENZ", "aliases": ["Benzene", "בנזן"], "tahal_2008_name": "Benzene"},
+    {"canonical": "PFOA", "aliases": ["Per-FluoroOctanoic Acid", "Perfluorooctanoic acid", "C8-acid"], "tahal_2008_name": null},
+    {"canonical": "PFOS", "aliases": ["Per-FluoroOctaneSulfonate", "Perfluorooctanesulfonate", "C8-sulfonate"], "tahal_2008_name": null},
+    {"canonical": "PFHxS", "aliases": ["Perfluorohexanesulfonic acid", "C6-sulfonate"], "tahal_2008_name": null}
+  ],
+  "_last_updated": "2026-05-03"
+}

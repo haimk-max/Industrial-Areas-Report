@@ -1,0 +1,24 @@
+{
+  "zone_id": "rishon_letzion_west",
+  "zone_name_he": "אזה\"ת ראשון לציון מערב",
+  "severity_index": 4,
+  "severity_classification": "medium",
+  "source_document": "2021 Water Quality Report (בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021)",
+  "boreholes_2021": [],
+  "exceedance_parameters": [],
+  "zone_comparison": {
+    "rank_among_18_zones": 10,
+    "description": "Max industrial index=4, median=1.6, monitoring boreholes=9. Classification: medium.",
+    "source_page": 49
+  },
+  "monitoring_recommendations": {
+    "frequency": "Semi-annual",
+    "parameters": [
+      "VOCs",
+      "Heavy Metals",
+      "Fuel Components"
+    ],
+    "recommended_boreholes": [],
+    "source_page": 25
+  }
+}

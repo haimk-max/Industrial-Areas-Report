@@ -1,0 +1,1659 @@
+{
+  "zone_id": "raanana",
+  "zone_name_he": "אזה\"ת רעננה",
+  "source": "/home/user/Industrial-Areas-Report/Raanana/data/measurements.csv",
+  "boreholes_analyzed": [
+    "raanana_p_25",
+    "raanana_p_18",
+    "raanana_nt_1",
+    "raanana_nt_2",
+    "raanana_nd_paz_hanofer",
+    "raanana_nt_3",
+    "raanana_nd_turbine"
+  ],
+  "contamination_families": {
+    "T": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nd_paz_hanofer",
+        "raanana_nt_3",
+        "raanana_nd_turbine"
+      ],
+      "n_boreholes": 6
+    },
+    "EC": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nd_paz_hanofer",
+        "raanana_nt_3",
+        "raanana_nd_turbine"
+      ],
+      "n_boreholes": 6
+    },
+    "NO3": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_p_18",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 5
+    },
+    "CL": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_p_18",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 5
+    },
+    "CA": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_p_18",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 5
+    },
+    "Mg": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_p_18",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 5
+    },
+    "B": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_p_18",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 5
+    },
+    "CR": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_p_18",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 5
+    },
+    "K": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_p_18",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 5
+    },
+    "NA": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_p_18",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 5
+    },
+    "SO4": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_p_18",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 5
+    },
+    "BR": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_p_18",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 5
+    },
+    "HCO3": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_p_18",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 5
+    },
+    "SR": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_p_18",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 5
+    },
+    "MTBE": {
+      "boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nd_paz_hanofer",
+        "raanana_nt_3",
+        "raanana_nd_turbine"
+      ],
+      "n_boreholes": 5
+    },
+    "DO": {
+      "boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nd_paz_hanofer",
+        "raanana_nt_3",
+        "raanana_nd_turbine"
+      ],
+      "n_boreholes": 5
+    },
+    "ORP": {
+      "boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nd_paz_hanofer",
+        "raanana_nt_3",
+        "raanana_nd_turbine"
+      ],
+      "n_boreholes": 5
+    },
+    "PHFD": {
+      "boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nd_paz_hanofer",
+        "raanana_nt_3",
+        "raanana_nd_turbine"
+      ],
+      "n_boreholes": 5
+    },
+    "CHLF": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 4
+    },
+    "TCEY": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 4
+    },
+    "BA": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 4
+    },
+    "MN": {
+      "boreholes": [
+        "raanana_p_18",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 4
+    },
+    "NI": {
+      "boreholes": [
+        "raanana_p_18",
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 4
+    },
+    "BENZ": {
+      "boreholes": [
+        "raanana_nt_1",
+        "raanana_nd_paz_hanofer",
+        "raanana_nt_3",
+        "raanana_nd_turbine"
+      ],
+      "n_boreholes": 4
+    },
+    "TOLU": {
+      "boreholes": [
+        "raanana_nt_2",
+        "raanana_nd_paz_hanofer",
+        "raanana_nt_3",
+        "raanana_nd_turbine"
+      ],
+      "n_boreholes": 4
+    },
+    "DCEY": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_nt_1",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 3
+    },
+    "TURB": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_nd_paz_hanofer",
+        "raanana_nd_turbine"
+      ],
+      "n_boreholes": 3
+    },
+    "CDCE": {
+      "boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 3
+    },
+    "TECE": {
+      "boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 3
+    },
+    "CU": {
+      "boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 3
+    },
+    "FE++": {
+      "boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 3
+    },
+    "FE": {
+      "boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 3
+    },
+    "ZN": {
+      "boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 3
+    },
+    "WDEP": {
+      "boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 3
+    },
+    "TN-N": {
+      "boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 3
+    },
+    "TOC": {
+      "boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 3
+    },
+    "ETBN": {
+      "boreholes": [
+        "raanana_nd_paz_hanofer",
+        "raanana_nt_3",
+        "raanana_nd_turbine"
+      ],
+      "n_boreholes": 3
+    },
+    "XYLE": {
+      "boreholes": [
+        "raanana_nd_paz_hanofer",
+        "raanana_nt_3",
+        "raanana_nd_turbine"
+      ],
+      "n_boreholes": 3
+    },
+    "TDS": {
+      "boreholes": [
+        "raanana_p_25",
+        "raanana_p_18"
+      ],
+      "n_boreholes": 2
+    },
+    "DCET1": {
+      "boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 2
+    },
+    "TCFM": {
+      "boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 2
+    },
+    "CCL4": {
+      "boreholes": [
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
+      "n_boreholes": 2
+    },
+    "ECFD": {
+      "boreholes": [
+        "raanana_nd_paz_hanofer",
+        "raanana_nd_turbine"
+      ],
+      "n_boreholes": 2
+    },
+    "TUF": {
+      "boreholes": [
+        "raanana_nd_paz_hanofer",
+        "raanana_nd_turbine"
+      ],
+      "n_boreholes": 2
+    }
+  },
+  "decay_chains": {
+    "raanana_nt_1": [
+      {
+        "chain_name": "PCE_TCE_DCE_VC",
+        "detected_members": [
+          "TECE",
+          "TCEY",
+          "CDCE",
+          "DCEY"
+        ],
+        "presence_ratio": 0.667,
+        "daughter_exceeds_parent": [
+          [
+            "TECE",
+            "TCEY"
+          ]
+        ],
+        "confidence": "HIGH",
+        "interpretation": "Active reductive dechlorination likely — multiple chain members detected; daughter products exceed parent (ongoing degradation)"
+      },
+      {
+        "chain_name": "TCA_DCA_DCE",
+        "detected_members": [
+          "TCET",
+          "DCET1",
+          "DCEY"
+        ],
+        "presence_ratio": 1.0,
+        "daughter_exceeds_parent": [
+          [
+            "DCET1",
+            "DCEY"
+          ]
+        ],
+        "confidence": "HIGH",
+        "interpretation": "Active reductive dechlorination likely — multiple chain members detected; daughter products exceed parent (ongoing degradation)"
+      }
+    ],
+    "raanana_nt_2": [
+      {
+        "chain_name": "PCE_TCE_DCE_VC",
+        "detected_members": [
+          "TECE",
+          "TCEY",
+          "CDCE"
+        ],
+        "presence_ratio": 0.5,
+        "daughter_exceeds_parent": [
+          [
+            "TECE",
+            "TCEY"
+          ]
+        ],
+        "confidence": "HIGH",
+        "interpretation": "Active reductive dechlorination likely — multiple chain members detected; daughter products exceed parent (ongoing degradation)"
+      }
+    ],
+    "raanana_nt_3": [
+      {
+        "chain_name": "PCE_TCE_DCE_VC",
+        "detected_members": [
+          "TECE",
+          "TCEY",
+          "CDCE",
+          "DCEY"
+        ],
+        "presence_ratio": 0.667,
+        "daughter_exceeds_parent": [],
+        "confidence": "HIGH",
+        "interpretation": "Active reductive dechlorination likely — multiple chain members detected"
+      },
+      {
+        "chain_name": "TCA_DCA_DCE",
+        "detected_members": [
+          "DCET1",
+          "DCEY"
+        ],
+        "presence_ratio": 0.667,
+        "daughter_exceeds_parent": [
+          [
+            "DCET1",
+            "DCEY"
+          ]
+        ],
+        "confidence": "MEDIUM",
+        "interpretation": "Partial chain detected — possible degradation"
+      }
+    ],
+    "raanana_p_25": [
+      {
+        "chain_name": "PCE_TCE_DCE_VC",
+        "detected_members": [
+          "TCEY",
+          "DCEY"
+        ],
+        "presence_ratio": 0.333,
+        "daughter_exceeds_parent": [],
+        "confidence": "MEDIUM",
+        "interpretation": "Partial chain detected — possible degradation"
+      },
+      {
+        "chain_name": "TCA_DCA_DCE",
+        "detected_members": [
+          "DCEY"
+        ],
+        "presence_ratio": 0.333,
+        "daughter_exceeds_parent": [],
+        "confidence": "LOW",
+        "interpretation": "Single chain member — source without degradation evidence"
+      }
+    ]
+  },
+  "source_signatures": {
+    "raanana_nd_paz_hanofer": [
+      {
+        "signature": "Fuel_station",
+        "confidence": "HIGH",
+        "detected_indicators": [
+          "BENZ",
+          "ETBN",
+          "XYLE",
+          "TOLU",
+          "MTBE"
+        ],
+        "dominant_compound": "XYLE",
+        "max_concentration": 30.0,
+        "notes": "BTEX contamination with MTBE — confirms fuel station source (gasoline)"
+      }
+    ],
+    "raanana_nd_turbine": [
+      {
+        "signature": "Mixed_PFAS",
+        "confidence": "MEDIUM",
+        "detected_indicators": [
+          "PFDS",
+          "82FTS",
+          "PFOS",
+          "6:2FT",
+          "PFBS",
+          "PFHxS",
+          "FOSA",
+          "PFHpS",
+          "PFNA",
+          "PFHxA",
+          "PFBA",
+          "PFHpA",
+          "PFDoA",
+          "PFUnA",
+          "PFDA",
+          "PFOA",
+          "PFPeA"
+        ],
+        "dominant_compound": "PFHxS",
+        "max_concentration": 1.16,
+        "notes": "Mixed S/A PFAS profile — source unclear (AFFF + industrial or industrial fluorinated)"
+      },
+      {
+        "signature": "Fuel_station",
+        "confidence": "HIGH",
+        "detected_indicators": [
+          "BENZ",
+          "ETBN",
+          "XYLE",
+          "TOLU",
+          "MTBE"
+        ],
+        "dominant_compound": "XYLE",
+        "max_concentration": 5.0,
+        "notes": "BTEX contamination with MTBE — confirms fuel station source (gasoline)"
+      }
+    ],
+    "raanana_nt_1": [
+      {
+        "signature": "Fuel_station",
+        "confidence": "HIGH",
+        "detected_indicators": [
+          "BENZ",
+          "MTBE"
+        ],
+        "dominant_compound": "BENZ",
+        "max_concentration": 1.0,
+        "notes": "BTEX contamination with MTBE — confirms fuel station source (gasoline)"
+      },
+      {
+        "signature": "CVOC_industry",
+        "confidence": "HIGH",
+        "detected_indicators": [
+          "DCEY",
+          "DCET1",
+          "CDCE",
+          "TECE",
+          "TCEY",
+          "TCET"
+        ],
+        "dominant_compound": "TCEY",
+        "max_concentration": 817.0,
+        "notes": "Chlorinated solvent contamination — likely industrial degreasing/dry cleaning source"
+      },
+      {
+        "signature": "THM_disinfection_byproduct",
+        "confidence": "MEDIUM",
+        "detected_indicators": [
+          "CHLF"
+        ],
+        "dominant_compound": "CHLF",
+        "max_concentration": 1.0,
+        "notes": "Trihalomethanes — likely disinfection byproducts from treated water"
+      }
+    ],
+    "raanana_nt_2": [
+      {
+        "signature": "Fuel_station",
+        "confidence": "HIGH",
+        "detected_indicators": [
+          "TOLU",
+          "MTBE"
+        ],
+        "dominant_compound": "TOLU",
+        "max_concentration": 17.99,
+        "notes": "BTEX contamination with MTBE — confirms fuel station source (gasoline)"
+      },
+      {
+        "signature": "CVOC_industry",
+        "confidence": "HIGH",
+        "detected_indicators": [
+          "CDCE",
+          "TECE",
+          "TCEY",
+          "CCL4"
+        ],
+        "dominant_compound": "TCEY",
+        "max_concentration": 24.02,
+        "notes": "Chlorinated solvent contamination — likely industrial degreasing/dry cleaning source"
+      },
+      {
+        "signature": "THM_disinfection_byproduct",
+        "confidence": "MEDIUM",
+        "detected_indicators": [
+          "CHLF"
+        ],
+        "dominant_compound": "CHLF",
+        "max_concentration": 2.96,
+        "notes": "Trihalomethanes — likely disinfection byproducts from treated water"
+      }
+    ],
+    "raanana_nt_3": [
+      {
+        "signature": "Fuel_station",
+        "confidence": "HIGH",
+        "detected_indicators": [
+          "BENZ",
+          "ETBN",
+          "XYLE",
+          "TOLU",
+          "MTBE"
+        ],
+        "dominant_compound": "XYLE",
+        "max_concentration": 46.36,
+        "notes": "BTEX contamination with MTBE — confirms fuel station source (gasoline)"
+      },
+      {
+        "signature": "CVOC_industry",
+        "confidence": "HIGH",
+        "detected_indicators": [
+          "DCEY",
+          "DCET1",
+          "CDCE",
+          "TECE",
+          "TCEY",
+          "DCET",
+          "CCL4"
+        ],
+        "dominant_compound": "TECE",
+        "max_concentration": 105.474,
+        "notes": "Chlorinated solvent contamination — likely industrial degreasing/dry cleaning source"
+      },
+      {
+        "signature": "THM_disinfection_byproduct",
+        "confidence": "MEDIUM",
+        "detected_indicators": [
+          "CHLF"
+        ],
+        "dominant_compound": "CHLF",
+        "max_concentration": 3.67,
+        "notes": "Trihalomethanes — likely disinfection byproducts from treated water"
+      }
+    ],
+    "raanana_p_25": [
+      {
+        "signature": "CVOC_industry",
+        "confidence": "MEDIUM",
+        "detected_indicators": [
+          "DCEY",
+          "TCEY"
+        ],
+        "dominant_compound": "TCEY",
+        "max_concentration": 14.1,
+        "notes": "Chlorinated solvent contamination — likely industrial degreasing/dry cleaning source"
+      },
+      {
+        "signature": "THM_disinfection_byproduct",
+        "confidence": "MEDIUM",
+        "detected_indicators": [
+          "CHLF"
+        ],
+        "dominant_compound": "CHLF",
+        "max_concentration": 0.5,
+        "notes": "Trihalomethanes — likely disinfection byproducts from treated water"
+      }
+    ]
+  },
+  "co_occurrence": {
+    "top_pairs": [
+      {
+        "param_a": "EC",
+        "param_b": "T",
+        "n_boreholes": 6
+      },
+      {
+        "param_a": "B",
+        "param_b": "BR",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "B",
+        "param_b": "CA",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "B",
+        "param_b": "CL",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "B",
+        "param_b": "CR",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "B",
+        "param_b": "HCO3",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "B",
+        "param_b": "K",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "B",
+        "param_b": "Mg",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "B",
+        "param_b": "NA",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "B",
+        "param_b": "NO3",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "B",
+        "param_b": "SO4",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "B",
+        "param_b": "SR",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "BR",
+        "param_b": "CA",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "BR",
+        "param_b": "CL",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "BR",
+        "param_b": "CR",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "BR",
+        "param_b": "HCO3",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "BR",
+        "param_b": "K",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "BR",
+        "param_b": "Mg",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "BR",
+        "param_b": "NA",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "BR",
+        "param_b": "NO3",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "BR",
+        "param_b": "SO4",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "BR",
+        "param_b": "SR",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "CA",
+        "param_b": "CL",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "CA",
+        "param_b": "CR",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "CA",
+        "param_b": "HCO3",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "CA",
+        "param_b": "K",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "CA",
+        "param_b": "Mg",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "CA",
+        "param_b": "NA",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "CA",
+        "param_b": "NO3",
+        "n_boreholes": 5
+      },
+      {
+        "param_a": "CA",
+        "param_b": "SO4",
+        "n_boreholes": 5
+      }
+    ],
+    "detected_per_borehole": {
+      "raanana_p_25": [
+        "ALFA",
+        "B",
+        "BA",
+        "BR",
+        "CA",
+        "CHLF",
+        "CL",
+        "CR",
+        "DCEY",
+        "EC",
+        "F",
+        "HARD",
+        "HCO3",
+        "K",
+        "Mg",
+        "NA",
+        "NO3",
+        "PHLB",
+        "SIO2",
+        "SO4",
+        "SR",
+        "T",
+        "TCEY",
+        "TDS",
+        "TP-P",
+        "TURB",
+        "U",
+        "UV"
+      ],
+      "raanana_p_18": [
+        "AL",
+        "AS",
+        "B",
+        "BR",
+        "CA",
+        "CL",
+        "CO",
+        "CR",
+        "HCO3",
+        "K",
+        "LI",
+        "MN",
+        "Mg",
+        "NA",
+        "NI",
+        "NO3",
+        "SE",
+        "SO4",
+        "SR",
+        "TDS"
+      ],
+      "raanana_nt_1": [
+        "B",
+        "BA",
+        "BENZ",
+        "BR",
+        "CA",
+        "CDCE",
+        "CHLF",
+        "CL",
+        "CR",
+        "CU",
+        "DCET1",
+        "DCEY",
+        "DO",
+        "EC",
+        "FE",
+        "FE++",
+        "HCO3",
+        "K",
+        "MN",
+        "MTBE",
+        "Mg",
+        "NA",
+        "NI",
+        "NO3",
+        "ORP",
+        "PHFD",
+        "SO4",
+        "SR",
+        "T",
+        "TCET",
+        "TCEY",
+        "TCFM",
+        "TECE",
+        "TN-N",
+        "TOC",
+        "WDEP",
+        "ZN"
+      ],
+      "raanana_nt_2": [
+        "B",
+        "BA",
+        "BR",
+        "CA",
+        "CCL4",
+        "CDCE",
+        "CHLF",
+        "CL",
+        "CR",
+        "CU",
+        "DO",
+        "EC",
+        "FE",
+        "FE++",
+        "HCO3",
+        "K",
+        "MN",
+        "MTBE",
+        "Mg",
+        "NA",
+        "NI",
+        "NO3",
+        "ORP",
+        "PHFD",
+        "SO4",
+        "SR",
+        "T",
+        "TCEY",
+        "TECE",
+        "TN-N",
+        "TOC",
+        "TOLU",
+        "WDEP",
+        "ZN"
+      ],
+      "raanana_nd_paz_hanofer": [
+        "BENZ",
+        "DO",
+        "EC",
+        "ECFD",
+        "ETBN",
+        "MTBE",
+        "ORP",
+        "PHFD",
+        "T",
+        "TOLU",
+        "TUF",
+        "TURB",
+        "XYLE"
+      ],
+      "raanana_nt_3": [
+        "B",
+        "BA",
+        "BENZ",
+        "BR",
+        "CA",
+        "CCL4",
+        "CDCE",
+        "CHLF",
+        "CL",
+        "CR",
+        "CU",
+        "DCET",
+        "DCET1",
+        "DCEY",
+        "DCPN",
+        "DO",
+        "EC",
+        "ETBN",
+        "FE",
+        "FE++",
+        "HCO3",
+        "K",
+        "MN",
+        "MTBE",
+        "Mg",
+        "NA",
+        "NI",
+        "NO3",
+        "ORP",
+        "PHFD",
+        "SO4",
+        "SR",
+        "T",
+        "TCEY",
+        "TCFM",
+        "TECE",
+        "TN-N",
+        "TOC",
+        "TOLU",
+        "WDEP",
+        "XYLE",
+        "ZN"
+      ],
+      "raanana_nd_turbine": [
+        "6:2FT",
+        "82FTS",
+        "BENZ",
+        "DO",
+        "EC",
+        "ECFD",
+        "ETBN",
+        "FOSA",
+        "MOL",
+        "MTBE",
+        "ORP",
+        "PFBA",
+        "PFBS",
+        "PFDA",
+        "PFDS",
+        "PFDoA",
+        "PFHpA",
+        "PFHpS",
+        "PFHxA",
+        "PFHxS",
+        "PFNA",
+        "PFOA",
+        "PFOS",
+        "PFPeA",
+        "PFUnA",
+        "PHFD",
+        "T",
+        "TOLU",
+        "TPH",
+        "TUF",
+        "TURB",
+        "XYLE"
+      ]
+    }
+  },
+  "critical_exceedances": {
+    "raanana_nd_paz_hanofer": [
+      {
+        "param_code": "TURB",
+        "param_name": "TURBIDITY NTU",
+        "date": "2011-09-06",
+        "concentration": 13.4,
+        "unit": "NTU",
+        "drinking_water_standard": 1.0,
+        "percent_of_standard": 1340.0
+      },
+      {
+        "param_code": "TURB",
+        "param_name": "TURBIDITY NTU",
+        "date": "2015-05-17",
+        "concentration": 10.1,
+        "unit": "NTU",
+        "drinking_water_standard": 1.0,
+        "percent_of_standard": 1010.0
+      },
+      {
+        "param_code": "TURB",
+        "param_name": "TURBIDITY NTU",
+        "date": "2011-03-02",
+        "concentration": 9.2,
+        "unit": "NTU",
+        "drinking_water_standard": 1.0,
+        "percent_of_standard": 920.0
+      },
+      {
+        "param_code": "TUF",
+        "param_name": "TURBIDITY IN FIELD",
+        "date": "2013-04-14",
+        "concentration": 4.4,
+        "unit": "NTU",
+        "drinking_water_standard": 1.0,
+        "percent_of_standard": 440.0
+      },
+      {
+        "param_code": "TUF",
+        "param_name": "TURBIDITY IN FIELD",
+        "date": "2012-04-24",
+        "concentration": 4.2,
+        "unit": "NTU",
+        "drinking_water_standard": 1.0,
+        "percent_of_standard": 420.0
+      },
+      {
+        "param_code": "TUF",
+        "param_name": "TURBIDITY IN FIELD",
+        "date": "2014-04-27",
+        "concentration": 2.5,
+        "unit": "NTU",
+        "drinking_water_standard": 1.0,
+        "percent_of_standard": 250.0
+      },
+      {
+        "param_code": "BENZ",
+        "param_name": "BENZENE",
+        "date": "2019-10-23",
+        "concentration": 10.0,
+        "unit": "microgr/L",
+        "drinking_water_standard": 5.0,
+        "percent_of_standard": 200.0
+      },
+      {
+        "param_code": "TURB",
+        "param_name": "TURBIDITY NTU",
+        "date": "2016-05-25",
+        "concentration": 1.9,
+        "unit": "NTU",
+        "drinking_water_standard": 1.0,
+        "percent_of_standard": 190.0
+      },
+      {
+        "param_code": "TURB",
+        "param_name": "TURBIDITY NTU",
+        "date": "2017-06-04",
+        "concentration": 1.79,
+        "unit": "NTU",
+        "drinking_water_standard": 1.0,
+        "percent_of_standard": 179.0
+      },
+      {
+        "param_code": "TURB",
+        "param_name": "TURBIDITY NTU",
+        "date": "2018-05-21",
+        "concentration": 1.79,
+        "unit": "NTU",
+        "drinking_water_standard": 1.0,
+        "percent_of_standard": 179.0
+      }
+    ],
+    "raanana_nd_turbine": [
+      {
+        "param_code": "PFHxS",
+        "param_name": "Perfluorohexanesulfonic acid",
+        "date": "2025-07-30",
+        "concentration": 1.16,
+        "unit": "microgr/L",
+        "drinking_water_standard": 0.1,
+        "percent_of_standard": 1160.0
+      },
+      {
+        "param_code": "PFOA",
+        "param_name": "Per-FluoroOctanoic Acid",
+        "date": "2025-07-30",
+        "concentration": 0.524,
+        "unit": "microgr/L",
+        "drinking_water_standard": 0.1,
+        "percent_of_standard": 524.0
+      },
+      {
+        "param_code": "TURB",
+        "param_name": "TURBIDITY NTU",
+        "date": "2015-02-02",
+        "concentration": 4.5,
+        "unit": "NTU",
+        "drinking_water_standard": 1.0,
+        "percent_of_standard": 450.0
+      },
+      {
+        "param_code": "TURB",
+        "param_name": "TURBIDITY NTU",
+        "date": "2011-06-28",
+        "concentration": 2.2,
+        "unit": "NTU",
+        "drinking_water_standard": 1.0,
+        "percent_of_standard": 220.0
+      },
+      {
+        "param_code": "PFHxA",
+        "param_name": "Perfluorohexanoic acid",
+        "date": "2025-07-30",
+        "concentration": 0.159,
+        "unit": "microgr/L",
+        "drinking_water_standard": 0.1,
+        "percent_of_standard": 159.0
+      },
+      {
+        "param_code": "PFPeA",
+        "param_name": "Perfluoropentanoic acid",
+        "date": "2025-07-30",
+        "concentration": 0.133,
+        "unit": "microgr/L",
+        "drinking_water_standard": 0.1,
+        "percent_of_standard": 133.0
+      },
+      {
+        "param_code": "TURB",
+        "param_name": "TURBIDITY NTU",
+        "date": "2019-02-28",
+        "concentration": 1.3,
+        "unit": "NTU",
+        "drinking_water_standard": 1.0,
+        "percent_of_standard": 130.0
+      }
+    ],
+    "raanana_nt_1": [
+      {
+        "param_code": "TCEY",
+        "param_name": "TRICHLORO ETHYLENE",
+        "date": "2019-07-22",
+        "concentration": 817.0,
+        "unit": "microgr/L",
+        "drinking_water_standard": 7.5,
+        "percent_of_standard": 10893.33
+      },
+      {
+        "param_code": "TCEY",
+        "param_name": "TRICHLORO ETHYLENE",
+        "date": "2015-06-28",
+        "concentration": 607.59,
+        "unit": "microgr/L",
+        "drinking_water_standard": 7.5,
+        "percent_of_standard": 8101.2
+      },
+      {
+        "param_code": "TCEY",
+        "param_name": "TRICHLORO ETHYLENE",
+        "date": "2016-02-29",
+        "concentration": 485.04,
+        "unit": "microgr/L",
+        "drinking_water_standard": 7.5,
+        "percent_of_standard": 6467.2
+      },
+      {
+        "param_code": "TCEY",
+        "param_name": "TRICHLORO ETHYLENE",
+        "date": "2017-06-11",
+        "concentration": 478.0,
+        "unit": "microgr/L",
+        "drinking_water_standard": 7.5,
+        "percent_of_standard": 6373.33
+      },
+      {
+        "param_code": "TCEY",
+        "param_name": "TRICHLORO ETHYLENE",
+        "date": "2022-01-10",
+        "concentration": 147.477,
+        "unit": "microgr/L",
+        "drinking_water_standard": 7.5,
+        "percent_of_standard": 1966.36
+      },
+      {
+        "param_code": "B",
+        "param_name": "BORON AS B",
+        "date": "2019-07-22",
+        "concentration": 17.322,
+        "unit": "MG/L",
+        "drinking_water_standard": 1.0,
+        "percent_of_standard": 1732.2
+      },
+      {
+        "param_code": "TCEY",
+        "param_name": "TRICHLORO ETHYLENE",
+        "date": "2025-07-29",
+        "concentration": 94.79,
+        "unit": "microgr/L",
+        "drinking_water_standard": 7.5,
+        "percent_of_standard": 1263.87
+      },
+      {
+        "param_code": "TECE",
+        "param_name": "TETRACHLORO ETHYLENE",
+        "date": "2017-06-11",
+        "concentration": 28.79,
+        "unit": "microgr/L",
+        "drinking_water_standard": 10.0,
+        "percent_of_standard": 287.9
+      },
+      {
+        "param_code": "CA",
+        "param_name": "CALCIUM AS CA",
+        "date": "2025-07-29",
+        "concentration": 133.0,
+        "unit": "MG/L",
+        "drinking_water_standard": 80.0,
+        "percent_of_standard": 166.25
+      },
+      {
+        "param_code": "TECE",
+        "param_name": "TETRACHLORO ETHYLENE",
+        "date": "2025-07-29",
+        "concentration": 15.65,
+        "unit": "microgr/L",
+        "drinking_water_standard": 10.0,
+        "percent_of_standard": 156.5
+      }
+    ],
+    "raanana_nt_2": [
+      {
+        "param_code": "B",
+        "param_name": "BORON AS B",
+        "date": "2019-07-22",
+        "concentration": 61.208,
+        "unit": "MG/L",
+        "drinking_water_standard": 1.0,
+        "percent_of_standard": 6120.8
+      },
+      {
+        "param_code": "TCEY",
+        "param_name": "TRICHLORO ETHYLENE",
+        "date": "2015-06-28",
+        "concentration": 24.02,
+        "unit": "microgr/L",
+        "drinking_water_standard": 7.5,
+        "percent_of_standard": 320.27
+      },
+      {
+        "param_code": "TCEY",
+        "param_name": "TRICHLORO ETHYLENE",
+        "date": "2019-07-22",
+        "concentration": 13.04,
+        "unit": "microgr/L",
+        "drinking_water_standard": 7.5,
+        "percent_of_standard": 173.87
+      },
+      {
+        "param_code": "NO3",
+        "param_name": "NITRATE AS NO3",
+        "date": "2024-09-03",
+        "concentration": 121.1,
+        "unit": "MG/L",
+        "drinking_water_standard": 70.0,
+        "percent_of_standard": 173.0
+      },
+      {
+        "param_code": "CA",
+        "param_name": "CALCIUM AS CA",
+        "date": "2025-07-29",
+        "concentration": 130.0,
+        "unit": "MG/L",
+        "drinking_water_standard": 80.0,
+        "percent_of_standard": 162.5
+      },
+      {
+        "param_code": "NO3",
+        "param_name": "NITRATE AS NO3",
+        "date": "2025-07-29",
+        "concentration": 106.4,
+        "unit": "MG/L",
+        "drinking_water_standard": 70.0,
+        "percent_of_standard": 152.0
+      },
+      {
+        "param_code": "CA",
+        "param_name": "CALCIUM AS CA",
+        "date": "2024-09-03",
+        "concentration": 120.0,
+        "unit": "MG/L",
+        "drinking_water_standard": 80.0,
+        "percent_of_standard": 150.0
+      },
+      {
+        "param_code": "NI",
+        "param_name": "NICKEL AS NI",
+        "date": "2018-07-16",
+        "concentration": 24.402,
+        "unit": "microgr/L",
+        "drinking_water_standard": 20.0,
+        "percent_of_standard": 122.01
+      },
+      {
+        "param_code": "CR",
+        "param_name": "CHROMIUM AS CR",
+        "date": "2014-10-30",
+        "concentration": 54.4,
+        "unit": "microgr/L",
+        "drinking_water_standard": 50.0,
+        "percent_of_standard": 108.8
+      },
+      {
+        "param_code": "CR",
+        "param_name": "CHROMIUM AS CR",
+        "date": "2012-06-25",
+        "concentration": 53.2,
+        "unit": "microgr/L",
+        "drinking_water_standard": 50.0,
+        "percent_of_standard": 106.4
+      }
+    ],
+    "raanana_nt_3": [
+      {
+        "param_code": "B",
+        "param_name": "BORON AS B",
+        "date": "2019-07-22",
+        "concentration": 82.805,
+        "unit": "MG/L",
+        "drinking_water_standard": 1.0,
+        "percent_of_standard": 8280.5
+      },
+      {
+        "param_code": "TECE",
+        "param_name": "TETRACHLORO ETHYLENE",
+        "date": "2024-09-04",
+        "concentration": 105.474,
+        "unit": "microgr/L",
+        "drinking_water_standard": 10.0,
+        "percent_of_standard": 1054.74
+      },
+      {
+        "param_code": "TCEY",
+        "param_name": "TRICHLORO ETHYLENE",
+        "date": "2015-06-28",
+        "concentration": 74.6,
+        "unit": "microgr/L",
+        "drinking_water_standard": 7.5,
+        "percent_of_standard": 994.67
+      },
+      {
+        "param_code": "TECE",
+        "param_name": "TETRACHLORO ETHYLENE",
+        "date": "2025-07-29",
+        "concentration": 85.5,
+        "unit": "microgr/L",
+        "drinking_water_standard": 10.0,
+        "percent_of_standard": 855.0
+      },
+      {
+        "param_code": "TCEY",
+        "param_name": "TRICHLORO ETHYLENE",
+        "date": "2016-02-29",
+        "concentration": 49.4,
+        "unit": "microgr/L",
+        "drinking_water_standard": 7.5,
+        "percent_of_standard": 658.67
+      },
+      {
+        "param_code": "TECE",
+        "param_name": "TETRACHLORO ETHYLENE",
+        "date": "2019-07-22",
+        "concentration": 49.0,
+        "unit": "microgr/L",
+        "drinking_water_standard": 10.0,
+        "percent_of_standard": 490.0
+      },
+      {
+        "param_code": "DCET",
+        "param_name": "DICHLOROETHANE1,2",
+        "date": "2016-02-29",
+        "concentration": 9.4,
+        "unit": "microgr/L",
+        "drinking_water_standard": 4.0,
+        "percent_of_standard": 235.0
+      },
+      {
+        "param_code": "TCEY",
+        "param_name": "TRICHLORO ETHYLENE",
+        "date": "2017-06-11",
+        "concentration": 17.44,
+        "unit": "microgr/L",
+        "drinking_water_standard": 7.5,
+        "percent_of_standard": 232.53
+      },
+      {
+        "param_code": "TECE",
+        "param_name": "TETRACHLORO ETHYLENE",
+        "date": "2017-06-11",
+        "concentration": 22.94,
+        "unit": "microgr/L",
+        "drinking_water_standard": 10.0,
+        "percent_of_standard": 229.4
+      },
+      {
+        "param_code": "FE",
+        "param_name": "IRON TOTAL AS FE",
+        "date": "2014-10-30",
+        "concentration": 2040.0,
+        "unit": "microgr/L",
+        "drinking_water_standard": 1000.0,
+        "percent_of_standard": 204.0
+      }
+    ],
+    "raanana_p_18": [
+      {
+        "param_code": "NO3",
+        "param_name": "NITRATE AS NO3",
+        "date": "2011-05-02",
+        "concentration": 166.7,
+        "unit": "MG/L",
+        "drinking_water_standard": 70.0,
+        "percent_of_standard": 238.14
+      },
+      {
+        "param_code": "NO3",
+        "param_name": "NITRATE AS NO3",
+        "date": "2011-05-02",
+        "concentration": 166.673,
+        "unit": "MG/L",
+        "drinking_water_standard": 70.0,
+        "percent_of_standard": 238.1
+      },
+      {
+        "param_code": "CA",
+        "param_name": "CALCIUM AS CA",
+        "date": "2011-05-02",
+        "concentration": 133.014,
+        "unit": "MG/L",
+        "drinking_water_standard": 80.0,
+        "percent_of_standard": 166.27
+      },
+      {
+        "param_code": "CA",
+        "param_name": "CALCIUM AS CA",
+        "date": "2011-05-02",
+        "concentration": 133.0,
+        "unit": "MG/L",
+        "drinking_water_standard": 80.0,
+        "percent_of_standard": 166.25
+      }
+    ],
+    "raanana_p_25": [
+      {
+        "param_code": "TCEY",
+        "param_name": "TRICHLORO ETHYLENE",
+        "date": "2023-09-11",
+        "concentration": 14.1,
+        "unit": "microgr/L",
+        "drinking_water_standard": 7.5,
+        "percent_of_standard": 188.0
+      },
+      {
+        "param_code": "HARD",
+        "param_name": "HARDNESS AS CACO3",
+        "date": "2023-03-06",
+        "concentration": 375.8,
+        "unit": "MG/L",
+        "drinking_water_standard": 200.0,
+        "percent_of_standard": 187.9
+      },
+      {
+        "param_code": "TCEY",
+        "param_name": "TRICHLORO ETHYLENE",
+        "date": "2024-08-04",
+        "concentration": 12.9,
+        "unit": "microgr/L",
+        "drinking_water_standard": 7.5,
+        "percent_of_standard": 172.0
+      },
+      {
+        "param_code": "TCEY",
+        "param_name": "TRICHLORO ETHYLENE",
+        "date": "2024-05-19",
+        "concentration": 12.6,
+        "unit": "microgr/L",
+        "drinking_water_standard": 7.5,
+        "percent_of_standard": 168.0
+      },
+      {
+        "param_code": "TCEY",
+        "param_name": "TRICHLORO ETHYLENE",
+        "date": "2024-11-03",
+        "concentration": 12.2,
+        "unit": "microgr/L",
+        "drinking_water_standard": 7.5,
+        "percent_of_standard": 162.67
+      },
+      {
+        "param_code": "TCEY",
+        "param_name": "TRICHLORO ETHYLENE",
+        "date": "2025-05-05",
+        "concentration": 11.5,
+        "unit": "microgr/L",
+        "drinking_water_standard": 7.5,
+        "percent_of_standard": 153.33
+      },
+      {
+        "param_code": "CA",
+        "param_name": "CALCIUM AS CA",
+        "date": "2025-03-02",
+        "concentration": 121.3,
+        "unit": "MG/L",
+        "drinking_water_standard": 80.0,
+        "percent_of_standard": 151.62
+      },
+      {
+        "param_code": "CA",
+        "param_name": "CALCIUM AS CA",
+        "date": "2025-03-02",
+        "concentration": 121.3,
+        "unit": "MG/L",
+        "drinking_water_standard": 80.0,
+        "percent_of_standard": 151.62
+      },
+      {
+        "param_code": "CA",
+        "param_name": "CALCIUM AS CA",
+        "date": "2022-11-07",
+        "concentration": 120.0,
+        "unit": "MG/L",
+        "drinking_water_standard": 80.0,
+        "percent_of_standard": 150.0
+      },
+      {
+        "param_code": "TCEY",
+        "param_name": "TRICHLORO ETHYLENE",
+        "date": "2023-10-16",
+        "concentration": 10.9,
+        "unit": "microgr/L",
+        "drinking_water_standard": 7.5,
+        "percent_of_standard": 145.33
+      }
+    ]
+  }
+}

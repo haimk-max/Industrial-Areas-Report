@@ -1,0 +1,51 @@
+{
+  "_description": "Tier 2: Zone boundary polygons in ITM coordinates (EPSG:2039, meters). Boreholes within polygon ± buffer_m are auto-included.",
+  "_note": "Raanana polygon derived from borehole positions + zone boundary estimates. Other zones pending.",
+  "_coordinate_system": "ITM (Israeli Transverse Mercator, EPSG:2039), units: meters",
+  "raanana": {
+    "zone_name_he": "אזה\"ת רעננה",
+    "polygon": [
+      [187500, 677400],
+      [189600, 677400],
+      [189600, 678800],
+      [187500, 678800],
+      [187500, 677400]
+    ],
+    "buffer_m": 500,
+    "crs": "ITM_EPSG2039",
+    "sources": [
+      "Approximated from borehole positions in Excel (E 187951–189345, N 677569–678575)",
+      "Buffer 500m per config/analysis_config.yaml spatial.polygon_buffer_m"
+    ],
+    "notes": "Convex hull around 7 known boreholes with 500m buffer. Refine with official zone maps when available."
+  },
+  "ashkelon_south": {
+    "zone_name_he": "אשקלון דרום",
+    "polygon": [],
+    "buffer_m": 500,
+    "crs": "ITM_EPSG2039",
+    "sources": ["pending — derive from 2021 Report maps"]
+  },
+  "ashkelon_north": {
+    "zone_name_he": "אשקלון צפון",
+    "polygon": [],
+    "buffer_m": 500,
+    "crs": "ITM_EPSG2039",
+    "sources": ["pending"]
+  },
+  "ashdod_south": {"zone_name_he": "אשדוד דרום", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
+  "yavne": {"zone_name_he": "יבנה", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
+  "bnei_ram": {"zone_name_he": "בני רם", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
+  "rehovot_kramtech": {"zone_name_he": "רחובות קרמטק", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
+  "nes_ziona_rehovot_sci_park": {"zone_name_he": "נס ציונה רחובות פארק מדע", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
+  "nes_ziona": {"zone_name_he": "נס ציונה", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
+  "rishon_letzion_west": {"zone_name_he": "ראשון לציון מערב", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
+  "rishon_letzion_east": {"zone_name_he": "ראשון לציון מזרח", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
+  "bat_yam": {"zone_name_he": "בת ים", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
+  "holon": {"zone_name_he": "חולון", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
+  "even_yehuda": {"zone_name_he": "אבן יהודה", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
+  "sapir_netanya": {"zone_name_he": "ספיר נתניה", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
+  "kiryat_eliezer_netanya": {"zone_name_he": "קרית אליעזר נתניה", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
+  "hadera": {"zone_name_he": "חדרה", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
+  "or_akiva": {"zone_name_he": "אור עקיבא", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]}
+}

@@ -1,0 +1,162 @@
+{
+  "zone_id": "raanana",
+  "zone_name_he": "אזה\"ת רעננה",
+  "severity_index": 7,
+  "severity_classification": "very_high",
+  "source_document": "2021 Water Quality Report (בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021)",
+  "boreholes_2021": [
+    {
+      "id": "raanana_bh_01",
+      "name": "נד פז הנופר",
+      "name_he": "נד פז הנופר",
+      "coordinates": {
+        "easting": 0.0,
+        "northing": 0.0,
+        "crs": "unknown"
+      },
+      "depth_m": null,
+      "geological_layer": null,
+      "classification": null,
+      "source_document_page": 35
+    },
+    {
+      "id": "raanana_bh_02",
+      "name": "נת רעננה 1",
+      "name_he": "נת רעננה 1",
+      "coordinates": {
+        "easting": 0.0,
+        "northing": 0.0,
+        "crs": "unknown"
+      },
+      "depth_m": null,
+      "geological_layer": null,
+      "classification": null,
+      "source_document_page": 35
+    },
+    {
+      "id": "raanana_bh_03",
+      "name": "נת רעננה 2",
+      "name_he": "נת רעננה 2",
+      "coordinates": {
+        "easting": 0.0,
+        "northing": 0.0,
+        "crs": "unknown"
+      },
+      "depth_m": null,
+      "geological_layer": null,
+      "classification": null,
+      "source_document_page": 35
+    },
+    {
+      "id": "raanana_bh_04",
+      "name": "נת רעננה 3",
+      "name_he": "נת רעננה 3",
+      "coordinates": {
+        "easting": 0.0,
+        "northing": 0.0,
+        "crs": "unknown"
+      },
+      "depth_m": null,
+      "geological_layer": null,
+      "classification": null,
+      "source_document_page": 35
+    },
+    {
+      "id": "raanana_bh_05",
+      "name": "נד תחנת טורבינות גז רעננה",
+      "name_he": "נד תחנת טורבינות גז רעננה",
+      "coordinates": {
+        "easting": 0.0,
+        "northing": 0.0,
+        "crs": "unknown"
+      },
+      "depth_m": null,
+      "geological_layer": null,
+      "classification": null,
+      "source_document_page": 35
+    }
+  ],
+  "exceedance_parameters": [
+    {
+      "borehole_id": "נד פז הנופר",
+      "parameter": "Fuel Components (BTEX)",
+      "unit": "index_0_to_8",
+      "concentration": 2.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 2,
+      "source_page": 36
+    },
+    {
+      "borehole_id": "נת רעננה 1",
+      "parameter": "Volatile Organic Compounds (industrial)",
+      "unit": "index_0_to_8",
+      "concentration": 7.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 7,
+      "source_page": 36
+    },
+    {
+      "borehole_id": "נת רעננה 2",
+      "parameter": "Volatile Organic Compounds (industrial)",
+      "unit": "index_0_to_8",
+      "concentration": 4.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 4,
+      "source_page": 36
+    },
+    {
+      "borehole_id": "נת רעננה 3",
+      "parameter": "Volatile Organic Compounds (industrial)",
+      "unit": "index_0_to_8",
+      "concentration": 4.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 4,
+      "source_page": 36
+    },
+    {
+      "borehole_id": "נת רעננה 3",
+      "parameter": "Fuel Components (BTEX)",
+      "unit": "index_0_to_8",
+      "concentration": 1.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 1,
+      "source_page": 36
+    },
+    {
+      "borehole_id": "נת רעננה 3",
+      "parameter": "Heavy Metals",
+      "unit": "index_0_to_8",
+      "concentration": 1.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 1,
+      "source_page": 36
+    }
+  ],
+  "zone_comparison": {
+    "rank_among_18_zones": 2,
+    "description": "Max industrial index=7, median=5.0, monitoring boreholes=3. Classification: very_high.",
+    "source_page": 49
+  },
+  "monitoring_recommendations": {
+    "frequency": "Quarterly",
+    "parameters": [
+      "VOCs",
+      "Heavy Metals",
+      "Fuel Components"
+    ],
+    "recommended_boreholes": [
+      "נד פז הנופר",
+      "נת רעננה 1",
+      "נת רעננה 2",
+      "נת רעננה 3",
+      "נד תחנת טורבינות גז רעננה"
+    ],
+    "source_page": 35
+  }
+}

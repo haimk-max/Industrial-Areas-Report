@@ -1,0 +1,65 @@
+# Single source of truth for all algorithmic parameters.
+# Changing any value here changes behavior across all scripts. No hardcoding.
+
+trend_analysis:
+  entry_criteria:
+    min_n: 4              # Minimum total measurements for analysis
+    min_n5: 1             # Minimum 5-year-window measurements
+  soft_trigger:
+    window_size: 2        # Last N measurements must be strictly increasing
+                          # Intentionally 2 (was 3) for more ALERT/WATCH classifications
+  mann_kendall:
+    window_5y_start: "2020-01-01"
+    min_n5_for_classification: 3
+    tie_corrected_variance: true
+    continuity_corrected_z: true
+  snr_thresholds:
+    strong:
+      min_snr: 1.0
+      mk_p_cutoff: 0.10
+    moderate:
+      min_snr: 0.3
+      mk_p_cutoff: 0.05
+    # Below moderate: trend = NONE regardless of MK
+  below_lod:
+    treatment: "half_lod"   # alternatives: "zero", "lod", "omit"
+  classification_labels:
+    alert: "ALERT"
+    watch: "WATCH"
+    stable: "STABLE"
+    decreasing: "DECREASING"
+    none: "NONE"
+
+spatial:
+  polygon_buffer_m: 500
+  coordinate_system_target: "EPSG:2039"   # Israeli Transverse Mercator (ITM)
+  coordinate_system_legacy:
+    # Excel coords appear in km*1000 truncated; assume ITM with implicit *1000 scale
+    excel_assumed_crs: "EPSG:2039"
+    excel_unit_scale: 1000.0
+
+severity_index:
+  # Per 2021 Report methodology (8 levels based on % of drinking water standard)
+  thresholds_pct_of_standard:
+    level_0: 0
+    level_1: 10
+    level_2: 25
+    level_3: 50
+    level_4: 75
+    level_5: 100
+    level_6: 200
+    level_7: 500
+    level_8: 1000
+
+calculated_parameters_to_exclude:
+  # Sums or computed values that would cause double counting
+  - "TPFAS"
+  - "Total PFAS"
+  - "סך PFAS"
+
+charts:
+  output_dpi: 300
+  default_figsize_inches: [12, 5]
+  hebrew_rendering:
+    use_arabic_reshaper: true
+    use_python_bidi: true

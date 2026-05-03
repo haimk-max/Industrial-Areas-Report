@@ -1,0 +1,145 @@
+canonical_id,name_he,param_code,param_name,date,year,concentration,unit,is_below_lod,sample_id,lab,sample_depth_m,drinking_water_standard,percent_of_standard
+raanana_p_25,פ רעננה 25,CHLF,CHLOROFORM,2019-02-25,2019,0.0,microgr/L,False,1350945.0,משרד הבריאותאבוכביר,,80.0,0.0
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2019-02-25,2019,1.5,microgr/L,False,1350945.0,משרד הבריאותאבוכביר,,7.5,20.0
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2019-03-04,2019,84.931,MG/L,False,1350946.0,משרד הבריאותאבוכביר,,70.0,121.33
+raanana_p_25,פ רעננה 25,CHLF,CHLOROFORM,2019-05-21,2019,0.0,microgr/L,False,1350947.0,משרד הבריאותאבוכביר,,80.0,0.0
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2019-05-21,2019,2.6,microgr/L,False,1350947.0,משרד הבריאותאבוכביר,,7.5,34.67
+raanana_p_25,פ רעננה 25,CHLF,CHLOROFORM,2019-08-20,2019,0.0,microgr/L,False,1351544.0,משרד הבריאותאבוכביר,,80.0,0.0
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2019-08-20,2019,1.9,microgr/L,False,1351544.0,משרד הבריאותאבוכביר,,7.5,25.33
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2020-02-09,2020,39.203,MG/L,False,1369777.0,משרד הבריאותאבוכביר,,70.0,56.0
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2020-05-04,2020,78.841,MG/L,False,1369778.0,משרד הבריאותאבוכביר,,70.0,112.63
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2020-08-02,2020,65.805,MG/L,False,1369779.0,משרד הבריאותאבוכביר,,70.0,94.01
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2020-11-08,2020,42.047,MG/L,False,1369780.0,משרד הבריאותאבוכביר,,70.0,60.07
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2020-12-16,2020,43.032,MG/L,False,1369781.0,משרד הבריאותאבוכביר,,70.0,61.47
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2021-01-03,2021,42.478,MG/L,False,1426677.0,בקטוכם,,70.0,60.68
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2021-03-01,2021,42.903,MG/L,False,1426679.0,בקטוכם,,70.0,61.29
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2021-04-12,2021,41.757,MG/L,False,1426678.0,בקטוכם,,70.0,59.65
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2021-05-02,2021,31.305,MG/L,False,1426680.0,בקטוכם,,70.0,44.72
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2021-08-10,2021,42.596,MG/L,False,1426681.0,בקטוכם,,70.0,60.85
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2021-11-02,2021,45.0,MG/L,False,1426682.0,בקטוכם,,70.0,64.29
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2021-11-08,2021,49.436,MG/L,False,1426683.0,בקטוכם,,70.0,70.62
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2021-11-29,2021,46.0,MG/L,False,1426684.0,בקטוכם,,70.0,65.71
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2021-12-05,2021,47.0,MG/L,False,1426685.0,בקטוכם,,70.0,67.14
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2021-12-13,2021,46.0,MG/L,False,1426686.0,בקטוכם,,70.0,65.71
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2021-12-20,2021,49.0,MG/L,False,1426687.0,בקטוכם,,70.0,70.0
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2021-12-26,2021,47.0,MG/L,False,1426688.0,בקטוכם,,70.0,67.14
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-01-04,2022,48.0,MG/L,False,1453621.0,בקטוכם,,70.0,68.57
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-01-09,2022,46.0,MG/L,False,1453622.0,בקטוכם,,70.0,65.71
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-01-24,2022,47.0,MG/L,False,1453623.0,בקטוכם,,70.0,67.14
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-02-01,2022,50.4,MG/L,False,1453624.0,בקטוכם,,70.0,72.0
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-02-06,2022,48.0,MG/L,False,1453625.0,בקטוכם,,70.0,68.57
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-02-20,2022,49.0,MG/L,False,1453626.0,בקטוכם,,70.0,70.0
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-03-07,2022,49.0,MG/L,False,1453627.0,בקטוכם,,70.0,70.0
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-03-21,2022,49.0,MG/L,False,1453628.0,בקטוכם,,70.0,70.0
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-04-05,2022,50.0,MG/L,False,1453629.0,בקטוכם,,70.0,71.43
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-04-24,2022,52.0,MG/L,False,1453630.0,בקטוכם,,70.0,74.29
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-05-02,2022,51.0,MG/L,False,1453631.0,בקטוכם,,70.0,72.86
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-05-10,2022,52.759,MG/L,False,1453632.0,בקטוכם,,70.0,75.37
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-05-17,2022,57.772,MG/L,False,1453633.0,בקטוכם,,70.0,82.53
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-06-01,2022,51.0,MG/L,False,1453635.0,בקטוכם,,70.0,72.86
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-06-07,2022,5.9,MG/L,False,1442286.0,מעבדה לאומית לניטור,,70.0,8.43
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-06-13,2022,52.0,MG/L,False,1453636.0,בקטוכם,,70.0,74.29
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-07-04,2022,53.0,MG/L,False,1453637.0,בקטוכם,,70.0,75.71
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-07-17,2022,53.0,MG/L,False,1453638.0,בקטוכם,,70.0,75.71
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-08-01,2022,53.0,MG/L,False,1453639.0,בקטוכם,,70.0,75.71
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-08-02,2022,54.628,MG/L,False,1453640.0,בקטוכם,,70.0,78.04
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-08-22,2022,53.0,MG/L,False,1453641.0,בקטוכם,,70.0,75.71
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-09-06,2022,53.0,MG/L,False,1453642.0,בקטוכם,,70.0,75.71
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-09-19,2022,54.0,MG/L,False,1453644.0,בקטוכם,,70.0,77.14
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-10-18,2022,53.0,MG/L,False,1453645.0,בקטוכם,,70.0,75.71
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-10-25,2022,55.0,MG/L,False,1453646.0,בקטוכם,,70.0,78.57
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-11-06,2022,54.0,MG/L,False,1453647.0,בקטוכם,,70.0,77.14
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-11-07,2022,52.337,MG/L,False,1453649.0,בקטוכם,,70.0,74.77
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-11-13,2022,53.24,MG/L,False,1453650.0,בקטוכם,,70.0,76.06
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-11-21,2022,54.0,MG/L,False,1453651.0,בקטוכם,,70.0,77.14
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-12-06,2022,55.0,MG/L,False,1453652.0,בקטוכם,,70.0,78.57
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2022-12-18,2022,52.7,MG/L,False,1453653.0,בקטוכם,,70.0,75.29
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2023-01-09,2023,54.1,MG/L,False,1528252.0,בקטוכם,,70.0,77.29
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2023-01-10,2023,52.577,MG/L,False,1528253.0,בקטוכם,,70.0,75.11
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2023-02-06,2023,54.4,MG/L,False,1528254.0,בקטוכם,,70.0,77.71
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2023-03-06,2023,53.574,MG/L,False,1528255.0,בקטוכם,,70.0,76.53
+raanana_p_25,פ רעננה 25,CHLF,CHLOROFORM,2023-03-12,2023,0.3,microgr/L,False,1528256.0,בקטוכם,,80.0,0.38
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2023-03-12,2023,51.262,MG/L,False,1528256.0,בקטוכם,,70.0,73.23
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2023-03-12,2023,9.2,microgr/L,False,1528256.0,בקטוכם,,7.5,122.67
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2023-04-16,2023,8.323,MG/L,False,1528257.0,בקטוכם,,70.0,11.89
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2023-05-08,2023,8.985,MG/L,False,1528258.0,בקטוכם,,70.0,12.84
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2023-06-25,2023,55.8,MG/L,False,1448919.0,מעבדה לאומית לניטור,,70.0,79.71
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2023-07-04,2023,76.545,MG/L,False,1528259.0,בקטוכם,,70.0,109.35
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2023-07-05,2023,59.1,MG/L,False,1528260.0,בקטוכם,,70.0,84.43
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2023-08-08,2023,57.1,MG/L,False,1528261.0,בקטוכם,,70.0,81.57
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2023-09-11,2023,14.1,microgr/L,False,1528262.0,בקטוכם,,7.5,188.0
+raanana_p_25,פ רעננה 25,CHLF,CHLOROFORM,2023-10-16,2023,0.4,microgr/L,False,1528263.0,בקטוכם,,80.0,0.5
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2023-10-16,2023,58.9,MG/L,False,1528263.0,בקטוכם,,70.0,84.14
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2023-10-16,2023,10.9,microgr/L,False,1528263.0,בקטוכם,,7.5,145.33
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2023-11-06,2023,48.286,MG/L,False,1528264.0,בקטוכם,,70.0,68.98
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2023-11-27,2023,10.9,microgr/L,False,1528265.0,בקטוכם,,7.5,145.33
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2024-01-17,2024,59.0,MG/L,False,1528266.0,בקטוכם,,70.0,84.29
+raanana_p_25,פ רעננה 25,CHLF,CHLOROFORM,2024-02-05,2024,0.3,microgr/L,False,1528267.0,בקטוכם,,80.0,0.38
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2024-02-05,2024,10.8,microgr/L,False,1528267.0,בקטוכם,,7.5,144.0
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2024-03-04,2024,46.362,MG/L,False,1528268.0,בקטוכם,,70.0,66.23
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2024-04-09,2024,58.0,MG/L,False,1528269.0,בקטוכם,,70.0,82.86
+raanana_p_25,פ רעננה 25,CHLF,CHLOROFORM,2024-05-19,2024,0.4,microgr/L,False,1528270.0,בקטוכם,,80.0,0.5
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2024-05-19,2024,54.8,MG/L,False,1528270.0,בקטוכם,,70.0,78.29
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2024-05-19,2024,12.6,microgr/L,False,1528270.0,בקטוכם,,7.5,168.0
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2024-06-04,2024,61.5,MG/L,False,1494605.0,מעבדה לאומית לניטור,,70.0,87.86
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2024-06-04,2024,68.007,MG/L,False,1528271.0,בקטוכם,,70.0,97.15
+raanana_p_25,פ רעננה 25,PFHxS,Perfluorohexanesulfonic acid,2024-06-04,2024,0.0,microgr/L,False,1529566.0,מעבדה לאומית לניטור,,0.1,0.0
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2024-07-03,2024,62.0,MG/L,False,1542882.0,בקטוכם,,70.0,88.57
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2024-08-04,2024,12.9,microgr/L,False,1542883.0,בקטוכם,,7.5,172.0
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2024-09-03,2024,64.588,MG/L,False,1542884.0,בקטוכם,,70.0,92.27
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2024-10-06,2024,62.0,MG/L,False,1542885.0,בקטוכם,,70.0,88.57
+raanana_p_25,פ רעננה 25,CHLF,CHLOROFORM,2024-11-03,2024,0.4,microgr/L,False,1542886.0,בקטוכם,,80.0,0.5
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2024-11-03,2024,12.2,microgr/L,False,1542886.0,בקטוכם,,7.5,162.67
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2024-12-08,2024,66.727,MG/L,False,1542887.0,בקטוכם,,70.0,95.32
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2025-02-02,2025,8.9,microgr/L,False,1542888.0,בקטוכם,,7.5,118.67
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2025-02-02,2025,8.9,microgr/L,False,1550250.0,משרד הבריאותאבוכביר,,7.5,118.67
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2025-02-09,2025,29.236,MG/L,False,1542889.0,בקטוכם,,70.0,41.77
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2025-02-09,2025,29.236,MG/L,False,1550251.0,משרד הבריאותאבוכביר,,70.0,41.77
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2025-02-11,2025,65.0,MG/L,False,1542890.0,בקטוכם,,70.0,92.86
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2025-02-11,2025,65.0,MG/L,False,1550252.0,משרד הבריאותאבוכביר,,70.0,92.86
+raanana_p_25,פ רעננה 25,CHLF,CHLOROFORM,2025-03-02,2025,0.5,microgr/L,False,1542891.0,בקטוכם,,80.0,0.62
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2025-03-02,2025,52.642,MG/L,False,1542891.0,בקטוכם,,70.0,75.2
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2025-03-02,2025,10.4,microgr/L,False,1542891.0,בקטוכם,,7.5,138.67
+raanana_p_25,פ רעננה 25,CHLF,CHLOROFORM,2025-03-02,2025,0.5,microgr/L,False,1550253.0,משרד הבריאותאבוכביר,,80.0,0.62
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2025-03-02,2025,52.642,MG/L,False,1550253.0,משרד הבריאותאבוכביר,,70.0,75.2
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2025-03-02,2025,10.4,microgr/L,False,1550253.0,משרד הבריאותאבוכביר,,7.5,138.67
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2025-04-07,2025,64.0,MG/L,False,1550254.0,משרד הבריאותאבוכביר,,70.0,91.43
+raanana_p_25,פ רעננה 25,CHLF,CHLOROFORM,2025-05-05,2025,0.5,microgr/L,False,1550255.0,משרד הבריאותאבוכביר,,80.0,0.62
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2025-05-05,2025,11.5,microgr/L,False,1550255.0,משרד הבריאותאבוכביר,,7.5,153.33
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2025-05-11,2025,60.814,MG/L,False,1550256.0,משרד הבריאותאבוכביר,,70.0,86.88
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2025-06-04,2025,74.7,MG/L,False,1544075.0,מעבדה לאומית לניטור,,70.0,106.71
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2025-07-01,2025,66.0,MG/L,False,1550257.0,משרד הבריאותאבוכביר,,70.0,94.29
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2025-08-03,2025,10.8,microgr/L,False,1550258.0,משרד הבריאותאבוכביר,,7.5,144.0
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2025-08-10,2025,70.87,MG/L,False,1550259.0,משרד הבריאותאבוכביר,,70.0,101.24
+raanana_p_25,פ רעננה 25,PFHxS,Perfluorohexanesulfonic acid,2025-08-10,2025,0.0,microgr/L,False,1550259.0,משרד הבריאותאבוכביר,,0.1,0.0
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2025-10-22,2025,70.0,MG/L,False,1550260.0,משרד הבריאותאבוכביר,,70.0,100.0
+raanana_p_25,פ רעננה 25,TCEY,TRICHLORO ETHYLENE,2025-11-10,2025,10.5,microgr/L,False,1550261.0,משרד הבריאותאבוכביר,,7.5,140.0
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2025-11-18,2025,68.526,MG/L,False,1550262.0,משרד הבריאותאבוכביר,,70.0,97.89
+raanana_p_25,פ רעננה 25,NO3,NITRATE AS NO3,2026-02-22,2026,69.055,MG/L,False,1550263.0,משרד הבריאותאבוכביר,,70.0,98.65
+raanana_nt_1,נת רעננה 1,NO3,NITRATE AS NO3,2012-06-07,2012,3.02,MG/L,False,861364,מעבדה לאומית לניטור,,70.0,4.31
+raanana_nt_1,נת רעננה 1,CHLF,CHLOROFORM,2012-06-25,2012,0.0,microgr/L,False,861087,אמינולב,,80.0,0.0
+raanana_nt_1,נת רעננה 1,TCEY,TRICHLORO ETHYLENE,2012-06-25,2012,0.0,microgr/L,False,861087,אמינולב,,7.5,0.0
+raanana_nt_1,נת רעננה 1,NO3,NITRATE AS NO3,2012-06-25,2012,4.93,MG/L,False,861365,מעבדה לאומית לניטור,,70.0,7.04
+raanana_nt_1,נת רעננה 1,CHLF,CHLOROFORM,2012-08-06,2012,0.0,microgr/L,False,861096,אמינולב,,80.0,0.0
+raanana_nt_1,נת רעננה 1,TCEY,TRICHLORO ETHYLENE,2012-08-06,2012,0.0,microgr/L,False,861096,אמינולב,,7.5,0.0
+raanana_nt_1,נת רעננה 1,NO3,NITRATE AS NO3,2012-08-06,2012,5.41,MG/L,False,861366,מעבדה לאומית לניטור,,70.0,7.73
+raanana_nt_1,נת רעננה 1,CHLF,CHLOROFORM,2015-06-28,2015,0.0,microgr/L,False,912913,מעבדה לאומית לניטור,,80.0,0.0
+raanana_nt_1,נת רעננה 1,TCEY,TRICHLORO ETHYLENE,2015-06-28,2015,607.59,microgr/L,False,912913,מעבדה לאומית לניטור,,7.5,8101.2
+raanana_nt_1,נת רעננה 1,CHLF,CHLOROFORM,2016-02-29,2016,0.0,microgr/L,False,958230,מעבדה לאומית לניטור,,80.0,0.0
+raanana_nt_1,נת רעננה 1,TCEY,TRICHLORO ETHYLENE,2016-02-29,2016,485.04,microgr/L,False,958230,מעבדה לאומית לניטור,,7.5,6467.2
+raanana_nt_1,נת רעננה 1,CHLF,CHLOROFORM,2017-06-11,2017,0.0,microgr/L,False,977629,מעבדה לאומית לניטור,,80.0,0.0
+raanana_nt_1,נת רעננה 1,TCEY,TRICHLORO ETHYLENE,2017-06-11,2017,478.0,microgr/L,False,977629,מעבדה לאומית לניטור,,7.5,6373.33
+raanana_nt_1,נת רעננה 1,CHLF,CHLOROFORM,2018-07-16,2018,0.0,microgr/L,False,1253424.0,מעבדה לאומית לניטור,,80.0,0.0
+raanana_nt_1,נת רעננה 1,TCEY,TRICHLORO ETHYLENE,2018-07-16,2018,0.0,microgr/L,False,1253424.0,מעבדה לאומית לניטור,,7.5,0.0
+raanana_nt_1,נת רעננה 1,CHLF,CHLOROFORM,2019-07-22,2019,0.0,microgr/L,False,1299072.0,מעבדה לאומית לניטור,,80.0,0.0
+raanana_nt_1,נת רעננה 1,TCEY,TRICHLORO ETHYLENE,2019-07-22,2019,817.0,microgr/L,False,1299072.0,מעבדה לאומית לניטור,,7.5,10893.33
+raanana_nt_1,נת רעננה 1,CHLF,CHLOROFORM,2022-01-10,2022,0.0,microgr/L,False,1448165.0,מעבדה לאומית לניטור,,80.0,0.0
+raanana_nt_1,נת רעננה 1,NO3,NITRATE AS NO3,2022-01-10,2022,1.573,MG/L,False,1448165.0,מעבדה לאומית לניטור,,70.0,2.25
+raanana_nt_1,נת רעננה 1,TCEY,TRICHLORO ETHYLENE,2022-01-10,2022,147.477,microgr/L,False,1448165.0,מעבדה לאומית לניטור,,7.5,1966.36
+raanana_nt_1,נת רעננה 1,NO3,NITRATE AS NO3,2024-09-04,2024,92.73,MG/L,False,1529567.0,מעבדה לאומית לניטור,,70.0,132.47
+raanana_nt_1,נת רעננה 1,CHLF,CHLOROFORM,2025-07-29,2025,1.0,microgr/L,True,1547787.0,מעבדה לאומית לניטור,,80.0,1.25
+raanana_nt_1,נת רעננה 1,NO3,NITRATE AS NO3,2025-07-29,2025,96.9,MG/L,False,1547787.0,מעבדה לאומית לניטור,,70.0,138.43
+raanana_nt_1,נת רעננה 1,TCEY,TRICHLORO ETHYLENE,2025-07-29,2025,94.79,microgr/L,False,1547787.0,מעבדה לאומית לניטור,,7.5,1263.87
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,CHLF,CHLOROFORM,2023-11-14,2023,0.0,microgr/L,False,1505910.0,אמינולב,,80.0,0.0
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,TCEY,TRICHLORO ETHYLENE,2023-11-14,2023,0.0,microgr/L,False,1505910.0,אמינולב,,7.5,0.0
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,PFHxS,Perfluorohexanesulfonic acid,2025-07-30,2025,1.16,microgr/L,False,1549254.0,בקטוכם,,0.1,1160.0

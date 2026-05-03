@@ -1,0 +1,527 @@
+{
+  "zone_id": "holon",
+  "zone_name_he": "אזה\"ת חולון",
+  "severity_index": 7,
+  "severity_classification": "very_high",
+  "source_document": "2021 Water Quality Report (בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021)",
+  "boreholes_2021": [
+    {
+      "id": "holon_bh_01",
+      "name": "נת חולון 1",
+      "name_he": "נת חולון 1",
+      "coordinates": {
+        "easting": 0.0,
+        "northing": 0.0,
+        "crs": "unknown"
+      },
+      "depth_m": null,
+      "geological_layer": null,
+      "classification": null,
+      "source_document_page": 31
+    },
+    {
+      "id": "holon_bh_02",
+      "name": "נת חולון 2",
+      "name_he": "נת חולון 2",
+      "coordinates": {
+        "easting": 0.0,
+        "northing": 0.0,
+        "crs": "unknown"
+      },
+      "depth_m": null,
+      "geological_layer": null,
+      "classification": null,
+      "source_document_page": 31
+    },
+    {
+      "id": "holon_bh_03",
+      "name": "נת חולון 3",
+      "name_he": "נת חולון 3",
+      "coordinates": {
+        "easting": 0.0,
+        "northing": 0.0,
+        "crs": "unknown"
+      },
+      "depth_m": null,
+      "geological_layer": null,
+      "classification": null,
+      "source_document_page": 31
+    },
+    {
+      "id": "holon_bh_04",
+      "name": "נת חולון 10",
+      "name_he": "נת חולון 10",
+      "coordinates": {
+        "easting": 0.0,
+        "northing": 0.0,
+        "crs": "unknown"
+      },
+      "depth_m": null,
+      "geological_layer": null,
+      "classification": null,
+      "source_document_page": 31
+    },
+    {
+      "id": "holon_bh_05",
+      "name": "נת חולון 11",
+      "name_he": "נת חולון 11",
+      "coordinates": {
+        "easting": 0.0,
+        "northing": 0.0,
+        "crs": "unknown"
+      },
+      "depth_m": null,
+      "geological_layer": null,
+      "classification": null,
+      "source_document_page": 31
+    },
+    {
+      "id": "holon_bh_06",
+      "name": "נת חולון 12",
+      "name_he": "נת חולון 12",
+      "coordinates": {
+        "easting": 0.0,
+        "northing": 0.0,
+        "crs": "unknown"
+      },
+      "depth_m": null,
+      "geological_layer": null,
+      "classification": null,
+      "source_document_page": 31
+    },
+    {
+      "id": "holon_bh_07",
+      "name": "נת חולון 14",
+      "name_he": "נת חולון 14",
+      "coordinates": {
+        "easting": 0.0,
+        "northing": 0.0,
+        "crs": "unknown"
+      },
+      "depth_m": null,
+      "geological_layer": null,
+      "classification": null,
+      "source_document_page": 31
+    },
+    {
+      "id": "holon_bh_08",
+      "name": "נת חולון 16",
+      "name_he": "נת חולון 16",
+      "coordinates": {
+        "easting": 0.0,
+        "northing": 0.0,
+        "crs": "unknown"
+      },
+      "depth_m": null,
+      "geological_layer": null,
+      "classification": null,
+      "source_document_page": 31
+    },
+    {
+      "id": "holon_bh_09",
+      "name": "נד אגד רוזא",
+      "name_he": "נד אגד רוזא",
+      "coordinates": {
+        "easting": 0.0,
+        "northing": 0.0,
+        "crs": "unknown"
+      },
+      "depth_m": null,
+      "geological_layer": null,
+      "classification": null,
+      "source_document_page": 31
+    },
+    {
+      "id": "holon_bh_10",
+      "name": "נד אגד רוזא 2",
+      "name_he": "נד אגד רוזא 2",
+      "coordinates": {
+        "easting": 0.0,
+        "northing": 0.0,
+        "crs": "unknown"
+      },
+      "depth_m": null,
+      "geological_layer": null,
+      "classification": null,
+      "source_document_page": 31
+    },
+    {
+      "id": "holon_bh_11",
+      "name": "נד אגד רוזא 3",
+      "name_he": "נד אגד רוזא 3",
+      "coordinates": {
+        "easting": 0.0,
+        "northing": 0.0,
+        "crs": "unknown"
+      },
+      "depth_m": null,
+      "geological_layer": null,
+      "classification": null,
+      "source_document_page": 31
+    },
+    {
+      "id": "holon_bh_12",
+      "name": "נד אגד רוזא 4",
+      "name_he": "נד אגד רוזא 4",
+      "coordinates": {
+        "easting": 0.0,
+        "northing": 0.0,
+        "crs": "unknown"
+      },
+      "depth_m": null,
+      "geological_layer": null,
+      "classification": null,
+      "source_document_page": 31
+    }
+  ],
+  "exceedance_parameters": [
+    {
+      "borehole_id": "נת חולון 1",
+      "parameter": "Volatile Organic Compounds (industrial)",
+      "unit": "index_0_to_8",
+      "concentration": 4.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 4,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 1",
+      "parameter": "Fuel Components (BTEX)",
+      "unit": "index_0_to_8",
+      "concentration": 4.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 4,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 1",
+      "parameter": "Heavy Metals",
+      "unit": "index_0_to_8",
+      "concentration": 1.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 1,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 2",
+      "parameter": "Volatile Organic Compounds (industrial)",
+      "unit": "index_0_to_8",
+      "concentration": 6.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 6,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 2",
+      "parameter": "Heavy Metals",
+      "unit": "index_0_to_8",
+      "concentration": 4.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 4,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 3",
+      "parameter": "Volatile Organic Compounds (industrial)",
+      "unit": "index_0_to_8",
+      "concentration": 6.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 6,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 3",
+      "parameter": "Heavy Metals",
+      "unit": "index_0_to_8",
+      "concentration": 4.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 4,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 10",
+      "parameter": "Fuel Components (BTEX)",
+      "unit": "index_0_to_8",
+      "concentration": 1.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 1,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 10",
+      "parameter": "Heavy Metals",
+      "unit": "index_0_to_8",
+      "concentration": 1.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 1,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 11",
+      "parameter": "Volatile Organic Compounds (industrial)",
+      "unit": "index_0_to_8",
+      "concentration": 7.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 7,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 11",
+      "parameter": "Fuel Components (BTEX)",
+      "unit": "index_0_to_8",
+      "concentration": 1.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 1,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 11",
+      "parameter": "Heavy Metals",
+      "unit": "index_0_to_8",
+      "concentration": 1.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 1,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 12",
+      "parameter": "Volatile Organic Compounds (industrial)",
+      "unit": "index_0_to_8",
+      "concentration": 4.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 4,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 12",
+      "parameter": "Fuel Components (BTEX)",
+      "unit": "index_0_to_8",
+      "concentration": 1.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 1,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 12",
+      "parameter": "Heavy Metals",
+      "unit": "index_0_to_8",
+      "concentration": 1.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 1,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 14",
+      "parameter": "Volatile Organic Compounds (industrial)",
+      "unit": "index_0_to_8",
+      "concentration": 4.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 4,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 14",
+      "parameter": "Heavy Metals",
+      "unit": "index_0_to_8",
+      "concentration": 4.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 4,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 16",
+      "parameter": "Volatile Organic Compounds (industrial)",
+      "unit": "index_0_to_8",
+      "concentration": 4.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 4,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 16",
+      "parameter": "Fuel Components (BTEX)",
+      "unit": "index_0_to_8",
+      "concentration": 1.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 1,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נת חולון 16",
+      "parameter": "Heavy Metals",
+      "unit": "index_0_to_8",
+      "concentration": 1.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 1,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נד אגד רוזא",
+      "parameter": "Volatile Organic Compounds (industrial)",
+      "unit": "index_0_to_8",
+      "concentration": 7.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 7,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נד אגד רוזא",
+      "parameter": "Fuel Components (BTEX)",
+      "unit": "index_0_to_8",
+      "concentration": 6.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 6,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נד אגד רוזא",
+      "parameter": "Heavy Metals",
+      "unit": "index_0_to_8",
+      "concentration": 1.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 1,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נד אגד רוזא 2",
+      "parameter": "Volatile Organic Compounds (industrial)",
+      "unit": "index_0_to_8",
+      "concentration": 4.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 4,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נד אגד רוזא 2",
+      "parameter": "Fuel Components (BTEX)",
+      "unit": "index_0_to_8",
+      "concentration": 4.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 4,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נד אגד רוזא 2",
+      "parameter": "Heavy Metals",
+      "unit": "index_0_to_8",
+      "concentration": 2.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 2,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נד אגד רוזא 3",
+      "parameter": "Volatile Organic Compounds (industrial)",
+      "unit": "index_0_to_8",
+      "concentration": 7.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 7,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נד אגד רוזא 3",
+      "parameter": "Fuel Components (BTEX)",
+      "unit": "index_0_to_8",
+      "concentration": 4.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 4,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נד אגד רוזא 3",
+      "parameter": "Heavy Metals",
+      "unit": "index_0_to_8",
+      "concentration": 3.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 3,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נד אגד רוזא 4",
+      "parameter": "Volatile Organic Compounds (industrial)",
+      "unit": "index_0_to_8",
+      "concentration": 5.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 5,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נד אגד רוזא 4",
+      "parameter": "Fuel Components (BTEX)",
+      "unit": "index_0_to_8",
+      "concentration": 5.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 5,
+      "source_page": 32
+    },
+    {
+      "borehole_id": "נד אגד רוזא 4",
+      "parameter": "Heavy Metals",
+      "unit": "index_0_to_8",
+      "concentration": 4.0,
+      "drinking_water_standard": 1.0,
+      "percent_of_standard": null,
+      "severity_level": 4,
+      "source_page": 32
+    }
+  ],
+  "zone_comparison": {
+    "rank_among_18_zones": 5,
+    "description": "Max industrial index=7, median=3.5, monitoring boreholes=25. Classification: very_high.",
+    "source_page": 49
+  },
+  "monitoring_recommendations": {
+    "frequency": "Quarterly",
+    "parameters": [
+      "VOCs",
+      "Heavy Metals",
+      "Fuel Components"
+    ],
+    "recommended_boreholes": [
+      "נת חולון 1",
+      "נת חולון 2",
+      "נת חולון 3",
+      "נת חולון 10",
+      "נת חולון 11",
+      "נת חולון 12",
+      "נת חולון 14",
+      "נת חולון 16",
+      "נד אגד רוזא",
+      "נד אגד רוזא 2",
+      "נד אגד רוזא 3",
+      "נד אגד רוזא 4"
+    ],
+    "source_page": 31
+  }
+}
