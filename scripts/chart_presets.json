@@ -1,0 +1,94 @@
+{
+  "_description": "Color palettes and component ordering for stacked-grouped charts per contaminant family.",
+  "_note": "TPFAS is always excluded. S-group=sulfonate chain, A-group=carboxylate/acid chain.",
+  "presets": {
+    "pfas": {
+      "title_template": "PFAS לפי באר דיגום — S/A (µg/L)",
+      "title_pct_template": "PFAS לפי באר דיגום — הרכב יחסי S/A (%)",
+      "groups": {
+        "S": {
+          "codes": ["PFOS", "PFBS", "PFHxS", "PFHpS", "PFDS", "6:2FT", "82FTS", "FOSA"],
+          "colors": ["#0D47A1", "#1565C0", "#1976D2", "#1E88E5", "#2196F3", "#42A5F5", "#64B5F6", "#90CAF9"]
+        },
+        "A": {
+          "codes": ["PFOA", "PFHxA", "PFHpA", "PFNA", "PFDA", "PFDoA", "PFUnA", "PFBA", "PFPeA", "PFESA", "ADONA"],
+          "colors": ["#BF360C", "#D84315", "#E64A19", "#F4511E", "#FF5722", "#FF7043", "#FF8A65", "#FFAB91", "#FFCCBC", "#FBE9E7", "#FFF3E0"]
+        }
+      },
+      "unit": "µg/L",
+      "dual_chart": true
+    },
+    "cvoc": {
+      "title_template": "CVOC לפי באר דיגום (µg/L)",
+      "title_pct_template": "CVOC לפי באר דיגום — הרכב יחסי (%)",
+      "codes": ["TECE", "TCEY", "CDCE", "TDCE", "DCEY", "VYCL", "CCL4", "DCET", "DCET1", "TCET", "TCEN", "DCLM"],
+      "display_names": {
+        "TECE": "PCE",
+        "TCEY": "TCE",
+        "CDCE": "cis-1,2-DCE",
+        "TDCE": "trans-1,2-DCE",
+        "DCEY": "1,1-DCE",
+        "VYCL": "Vinyl Chloride",
+        "CCL4": "Carbon Tet",
+        "DCET": "1,2-DCA",
+        "DCET1": "1,1-DCA",
+        "TCET": "1,1,1-TCA",
+        "TCEN": "1,1,2-TCA",
+        "DCLM": "DCM"
+      },
+      "colors": ["#E65100", "#F57C00", "#FB8C00", "#FFA000", "#FFB300", "#FFC107", "#FFD54F", "#FFE082", "#FFECB3", "#BF360C", "#D84315", "#E64A19"],
+      "unit": "µg/L",
+      "dual_chart": true
+    },
+    "btex": {
+      "title_template": "BTEX לפי באר דיגום (µg/L)",
+      "title_pct_template": "BTEX לפי באר דיגום — הרכב יחסי (%)",
+      "codes": ["BENZ", "TOLU", "ETBN", "XYLE", "OXYL", "PXYL", "STYR", "NAPT"],
+      "display_names": {
+        "BENZ": "Benzene",
+        "TOLU": "Toluene",
+        "ETBN": "Ethylbenzene",
+        "XYLE": "Xylene",
+        "OXYL": "o-Xylene",
+        "PXYL": "p-Xylene",
+        "STYR": "Styrene",
+        "NAPT": "Naphthalene"
+      },
+      "colors": ["#BF360C", "#D84315", "#E64A19", "#F4511E", "#FF5722", "#FF7043", "#FF8A65", "#FFAB91"],
+      "unit": "µg/L",
+      "dual_chart": false
+    },
+    "thm": {
+      "title_template": "THM לפי באר דיגום (µg/L)",
+      "title_pct_template": "THM לפי באר דיגום — הרכב יחסי (%)",
+      "codes": ["CHLF", "DCBM", "DBRMT", "TRBRM"],
+      "display_names": {
+        "CHLF": "Chloroform",
+        "DCBM": "Bromodichloromethane",
+        "DBRMT": "Dibromochloromethane",
+        "TRBRM": "Bromoform"
+      },
+      "colors": ["#212121", "#424242", "#757575", "#BDBDBD"],
+      "unit": "µg/L",
+      "dual_chart": false
+    },
+    "heavy_metals": {
+      "title_template": "מתכות כבדות לפי באר דיגום (µg/L)",
+      "title_pct_template": "מתכות כבדות לפי באר דיגום — הרכב יחסי (%)",
+      "codes": ["PB", "CD", "CR", "NI", "CU", "ZN", "HG", "AS"],
+      "display_names": {
+        "PB": "Lead (Pb)",
+        "CD": "Cadmium (Cd)",
+        "CR": "Chromium (Cr)",
+        "NI": "Nickel (Ni)",
+        "CU": "Copper (Cu)",
+        "ZN": "Zinc (Zn)",
+        "HG": "Mercury (Hg)",
+        "AS": "Arsenic (As)"
+      },
+      "colors": ["#4A148C", "#6A1B9A", "#7B1FA2", "#8E24AA", "#9C27B0", "#AB47BC", "#BA68C8", "#CE93D8"],
+      "unit": "µg/L",
+      "dual_chart": false
+    }
+  }
+}
