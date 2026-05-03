@@ -1,0 +1,24 @@
+{
+  "zone_id": "bat_yam",
+  "zone_name_he": "אזה\"ת בתים",
+  "severity_index": 4,
+  "severity_classification": "medium",
+  "source_document": "2021 Water Quality Report (בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021)",
+  "boreholes_2021": [],
+  "exceedance_parameters": [],
+  "zone_comparison": {
+    "rank_among_18_zones": 11,
+    "description": "Max industrial index=4, median=1.5, monitoring boreholes=4. Classification: medium.",
+    "source_page": 49
+  },
+  "monitoring_recommendations": {
+    "frequency": "Semi-annual",
+    "parameters": [
+      "VOCs",
+      "Heavy Metals",
+      "Fuel Components"
+    ],
+    "recommended_boreholes": [],
+    "source_page": 29
+  }
+}

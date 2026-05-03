@@ -50,3 +50,24 @@ def setup_logging(script_name: str, logs_dir: Path | str = "logs") -> logging.Lo
 def log_event(logger: logging.Logger, event: str, **fields) -> None:
     """Helper for structured event logging with arbitrary fields."""
     logger.info(event, extra={"fields": {"event": event, **fields}})
+
+
+class _StructuredLogger:
+    """Thin wrapper enabling log.info('event', key=val) structured calls."""
+
+    def __init__(self, name: str) -> None:
+        self._inner = setup_logging(name)
+
+    def info(self, event: str, **fields) -> None:
+        log_event(self._inner, event, **fields)
+
+    def warning(self, event: str, **fields) -> None:
+        self._inner.warning(event, extra={"fields": {"event": event, **fields}})
+
+    def error(self, event: str, **fields) -> None:
+        self._inner.error(event, extra={"fields": {"event": event, **fields}})
+
+
+def get_logger(script_name: str) -> _StructuredLogger:
+    """Return a structured logger for use in scripts."""
+    return _StructuredLogger(script_name)

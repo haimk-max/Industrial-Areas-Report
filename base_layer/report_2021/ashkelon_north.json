@@ -1,0 +1,24 @@
+{
+  "zone_id": "ashkelon_north",
+  "zone_name_he": "אזה\"ת אשקלון צפון",
+  "severity_index": 7,
+  "severity_classification": "very_high",
+  "source_document": "2021 Water Quality Report (בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021)",
+  "boreholes_2021": [],
+  "exceedance_parameters": [],
+  "zone_comparison": {
+    "rank_among_18_zones": 1,
+    "description": "Max industrial index=7, median=6.1, monitoring boreholes=11. Classification: very_high.",
+    "source_page": 49
+  },
+  "monitoring_recommendations": {
+    "frequency": "Quarterly",
+    "parameters": [
+      "VOCs",
+      "Heavy Metals",
+      "Fuel Components"
+    ],
+    "recommended_boreholes": [],
+    "source_page": 11
+  }
+}

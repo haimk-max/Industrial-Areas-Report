@@ -1,0 +1,24 @@
+{
+  "zone_id": "sapir_netanya",
+  "zone_name_he": "אזה\"ת ספיר נתניה",
+  "severity_index": 6,
+  "severity_classification": "high",
+  "source_document": "2021 Water Quality Report (בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021)",
+  "boreholes_2021": [],
+  "exceedance_parameters": [],
+  "zone_comparison": {
+    "rank_among_18_zones": 7,
+    "description": "Max industrial index=6, median=2.4, monitoring boreholes=11. Classification: high.",
+    "source_page": 49
+  },
+  "monitoring_recommendations": {
+    "frequency": "Quarterly",
+    "parameters": [
+      "VOCs",
+      "Heavy Metals",
+      "Fuel Components"
+    ],
+    "recommended_boreholes": [],
+    "source_page": 39
+  }
+}

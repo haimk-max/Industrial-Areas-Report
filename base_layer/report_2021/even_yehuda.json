@@ -1,0 +1,24 @@
+{
+  "zone_id": "even_yehuda",
+  "zone_name_he": "אזה\"ת אבן יהודה",
+  "severity_index": 3,
+  "severity_classification": "low",
+  "source_document": "2021 Water Quality Report (בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021)",
+  "boreholes_2021": [],
+  "exceedance_parameters": [],
+  "zone_comparison": {
+    "rank_among_18_zones": 12,
+    "description": "Max industrial index=3, median=1.5, monitoring boreholes=2. Classification: low.",
+    "source_page": 49
+  },
+  "monitoring_recommendations": {
+    "frequency": "Semi-annual",
+    "parameters": [
+      "VOCs",
+      "Heavy Metals",
+      "Fuel Components"
+    ],
+    "recommended_boreholes": [],
+    "source_page": 37
+  }
+}

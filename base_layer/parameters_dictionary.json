@@ -1,0 +1,3517 @@
+{
+  "parameters": [
+    {
+      "code": "24DNT",
+      "name": "2,4 - DINITROTOLUENE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "26DNT",
+      "name": "2,6- DINITROTOLUENE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "6:2FT",
+      "name": "6:2-Fluortelomersulfonsaure",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "82FTS",
+      "name": "8:2 Fluorotelomer sulfonic acid",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "ACET",
+      "name": "Acetone",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "emerging",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "ADONA",
+      "name": "Ammonium trifluor propionate",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "ADRN",
+      "name": "Aldrin",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 0.05,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "AG",
+      "name": "SILVER",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 100.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "AL",
+      "name": "ALUMINUM",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 200.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "ALAC",
+      "name": "ALACHLOR",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 4.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "ALCB",
+      "name": "ALDICRAB",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "ALDSU",
+      "name": "Aldicarb sulfon",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "ALFA",
+      "name": "ALPHA RADIOACTIVITY",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "BQ/L"
+      ],
+      "family": "radioactivity",
+      "drinking_water_standard": 0.1,
+      "drinking_water_standard_unit": "BQ/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "ALSD",
+      "name": "Aldicarb sulfoxide",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "AS",
+      "name": "ARSENIC AS AS",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 10.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "ATRA",
+      "name": "ATRAZINE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 2.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "B",
+      "name": "BORON AS B",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "major_ions",
+      "drinking_water_standard": 1.0,
+      "drinking_water_standard_unit": "MG/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "BA",
+      "name": "BARIUM AS BA",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 1000.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "BE",
+      "name": "BERYLIUM",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 4.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "BENZ",
+      "name": "BENZENE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "BTEX",
+      "drinking_water_standard": 5.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "BEPT",
+      "name": "BIS (2-ETHYLHEXYL) PHTALATE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "emerging",
+      "drinking_water_standard": 8.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "BETA",
+      "name": "BETA RADIOACTIVITY",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "BQ/L"
+      ],
+      "family": "radioactivity",
+      "drinking_water_standard": 1.0,
+      "drinking_water_standard_unit": "BQ/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "BETK",
+      "name": "BETA RAD. CORRECTED FOR  K",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "B/L"
+      ],
+      "family": "radioactivity",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": true,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "BNZP",
+      "name": "BENZOPYRENE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "emerging",
+      "drinking_water_standard": 0.5,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "BR",
+      "name": "BROMIDE AS BR",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "major_ions",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "BRBNZ",
+      "name": "bromobenzene",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "BTEX",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "BRCM",
+      "name": "bromochloromethane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "other_halogenated",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "BRDCM",
+      "name": "Bromo dichloromethane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "THM",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "BRMC",
+      "name": "BROMACIL",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "BRMET",
+      "name": "Bromomethane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "other_halogenated",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CA",
+      "name": "CALCIUM AS CA",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "major_ions",
+      "drinking_water_standard": 80.0,
+      "drinking_water_standard_unit": "MG/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CARBO",
+      "name": "CARBOMAZEPIN",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "emerging",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CARFN",
+      "name": "CARBOFURAN",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 20.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CCL4",
+      "name": "CARBON TETRACHLORIDE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": 4.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CD",
+      "name": "CADMIUM AS CD",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 5.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CDCE",
+      "name": "CIS 1,2 DICHLOROETHYLENE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": 50.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CHLET",
+      "name": "Chloroethane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CHLF",
+      "name": "CHLOROFORM",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "THM",
+      "drinking_water_standard": 80.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CHLMT",
+      "name": "Chloromethane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CL",
+      "name": "CHLORIDE AS CL",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "major_ions",
+      "drinking_water_standard": 400.0,
+      "drinking_water_standard_unit": "MG/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CLDN",
+      "name": "CHLORDANE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 1.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CLPF",
+      "name": "CHLORPYRIFOS",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CN",
+      "name": "CYANIDE AS CN",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "nitrogenous",
+      "drinking_water_standard": 50.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CO",
+      "name": "COBALT AS CO",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "COLR",
+      "name": "COLOR  PLATINUM COBALT UNITS",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "UNIT"
+      ],
+      "family": "physical",
+      "drinking_water_standard": 15.0,
+      "drinking_water_standard_unit": "UNIT",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CR",
+      "name": "CHROMIUM AS CR",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 50.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CTN2",
+      "name": "2-chlorotoluene",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CTN4",
+      "name": "4-chlorotoluene",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "CU",
+      "name": "COPPER AS CU",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 1400.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DADN",
+      "name": "Dieldrin",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 0.05,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DBCP",
+      "name": "DIBROMO-3-CHLOROPROPA1,2 NE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 0.3,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DBR12",
+      "name": "1,2-Dibromomethane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "other_halogenated",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DBR3C",
+      "name": "1,2-dibromo-3-chloropropane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 0.3,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DBRM",
+      "name": "dibromomethane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "other_halogenated",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DBRMT",
+      "name": "Dibromochloro methane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "THM",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DCB13",
+      "name": "1,3-dichlorobenzene",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DCBM",
+      "name": "DICHLOROBROMOMETHANE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "THM",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DCDFM",
+      "name": "Dichlorodifluoromethane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DCET",
+      "name": "DICHLOROETHANE1,2",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": 4.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DCET1",
+      "name": "1,1-dichloroethane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DCEY",
+      "name": "DICHLOROETHYLENE 1,1",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": 10.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DCHP1",
+      "name": "1,1-dichloropropene",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DCLM",
+      "name": "DICHLOROMETHANE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": 5.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DCP11",
+      "name": "1,1-Dichloropropane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DCP13",
+      "name": "1,3-dichloropropane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DCP22",
+      "name": "2,2-dichloropropane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DCPA",
+      "name": "DICHLOROPHENOXY ACETI2,4 C ACID",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 30.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DCPN",
+      "name": "1,2-dichloropropane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": 5.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DDD",
+      "name": "4,4-DDD",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DDE",
+      "name": "4,4-DDE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DDT",
+      "name": "DDT",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 1.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DIQAT",
+      "name": "DIQUAT",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 20.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DNSB",
+      "name": "DINOSEB",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 7.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DO",
+      "name": "DISSOLVED OXYGEN AS O2",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "physical",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DP13E",
+      "name": "1,3-Dichloropropene (e) CIS",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "DP13T",
+      "name": "1,3-Dichloropropene (z) TRANS",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "EC",
+      "name": "Lab EC comp to 25 C DEGR",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "mS/cm"
+      ],
+      "family": "physical",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "ECFD",
+      "name": "FIELD ELECTRICAL CONDUCTIVITY",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "mS/cm"
+      ],
+      "family": "physical",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "ETBN",
+      "name": "ETHYL BENZENE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "BTEX",
+      "drinking_water_standard": 300.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "ETDB",
+      "name": "ETHYLENE DI BROMIDE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "other_halogenated",
+      "drinking_water_standard": 0.05,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "F",
+      "name": "FLUORIDE AS F",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "major_ions",
+      "drinking_water_standard": 1.7,
+      "drinking_water_standard_unit": "MG/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "FE",
+      "name": "IRON TOTAL AS FE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 1000.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "FE++",
+      "name": "FERROUS IRON DISSOLVED AS FE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "FORM",
+      "name": "FORMALDEHYDE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "emerging",
+      "drinking_water_standard": 900.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "FOSA",
+      "name": "Perfluorooctane sulfonamide",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "HARD",
+      "name": "HARDNESS AS CACO3",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "physical",
+      "drinking_water_standard": 200.0,
+      "drinking_water_standard_unit": "MG/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "HCO3",
+      "name": "BICARBONATE AS HCO3",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "major_ions",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "HEPE",
+      "name": "HEPTACHLOR EPOXIDE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 0.2,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "HEPT",
+      "name": "HEPTACHLOR",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 0.4,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "HG",
+      "name": "MERCURY AS HG",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 1.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "HXCB",
+      "name": "hexachlorobutadiene",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "IPBNZ",
+      "name": "isopropylbenzene",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "BTEX",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "K",
+      "name": "POTASSIUM AS K",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "major_ions",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "LI",
+      "name": "LITHIUM",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "LIND",
+      "name": "LINDANE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 1.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "MBAS",
+      "name": "DETERGENTS AS LAS",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "physical",
+      "drinking_water_standard": 0.5,
+      "drinking_water_standard_unit": "MG/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "MCBZ",
+      "name": "MONOCHLOROBENZENE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": 100.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "MCPA",
+      "name": "2-methy 4-chlorophenoxyacetic acid",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 2.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "MDCB",
+      "name": "DICHLOR BENZEN 1,2",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": 600.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "METCH",
+      "name": "Methylene chloride",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "MN",
+      "name": "MANGANESE TOTAL AS MN",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 200.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "MO",
+      "name": "MOLYBDENUM",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 70.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "MOL",
+      "name": "MINERAL OIL",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "fuel",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "MTAL",
+      "name": "METOLACHLOR",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 10.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "MTBE",
+      "name": "MTBE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "fuel",
+      "drinking_water_standard": 40.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "Mg",
+      "name": "MAGNESIUM AS MG",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "major_ions",
+      "drinking_water_standard": 150.0,
+      "drinking_water_standard_unit": "MG/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "NA",
+      "name": "SODIUM AS NA",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "major_ions",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "NAPT",
+      "name": "NAPTHALENE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "BTEX",
+      "drinking_water_standard": 10.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "NBTBZ",
+      "name": "n-Butyl benzene",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "BTEX",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "NI",
+      "name": "NICKEL AS NI",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 20.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "NO3",
+      "name": "NITRATE AS NO3",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "major_ions",
+      "drinking_water_standard": 70.0,
+      "drinking_water_standard_unit": "MG/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "NPBNZ",
+      "name": "n-propylbenzene",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "BTEX",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "ORP",
+      "name": "REDOX",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "mV"
+      ],
+      "family": "physical",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "OXAMY",
+      "name": "OXAMYL",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 200.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "OXYL",
+      "name": "o-Xylene",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "BTEX",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PB",
+      "name": "LEAD AS PB",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 10.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PCB",
+      "name": "POLYCHLORINATED BIPHENOL",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 0.5,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PCP",
+      "name": "PENTACHLOROPHENOL",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 3.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PDCB",
+      "name": "DICHLOROBENZEN 1,4",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": 75.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PFBA",
+      "name": "Perfluorobytanoic acid",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": 0.1,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PFBS",
+      "name": "Perfluorobutane Sulfonic Acid",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": 0.1,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PFDA",
+      "name": "Perfluorodecanoic acid",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": 0.1,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PFDS",
+      "name": "Perfluorodecanesulfonic acid",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": 0.1,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PFDoA",
+      "name": "Perfluorododecanoic acid",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": 0.1,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PFESA",
+      "name": "PERFLUORO PFEESA",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PFHpA",
+      "name": "Perfluoroheptanoic acid",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": 0.1,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PFHpS",
+      "name": "Perfluoroheptane sulfonic acid",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": 0.1,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PFHxA",
+      "name": "Perfluorohexanoic acid",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": 0.1,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PFHxS",
+      "name": "Perfluorohexanesulfonic acid",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": 0.1,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PFNA",
+      "name": "Perfluorononanoic acid",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": 0.1,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PFOA",
+      "name": "Per-FluoroOctanoic Acid",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": 0.1,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PFOS",
+      "name": "Per-FluoroOctaneSulfonate",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": 0.1,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PFPeA",
+      "name": "Perfluoropentanoic acid",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": 0.1,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PFUnA",
+      "name": "Perfluoroundecanoic acid",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": 0.1,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PHFD",
+      "name": "PH MEASURED  IN FIELD",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "UNIT"
+      ],
+      "family": "physical",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PHLB",
+      "name": "PH MEASURED IN LABORATORY",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "UNIT"
+      ],
+      "family": "physical",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PTOLU",
+      "name": "p-isopropyl toluene",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "BTEX",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "PXYL",
+      "name": "p-xylene",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "BTEX",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "SBBNZ",
+      "name": "sec-butylbenzene",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "BTEX",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "SE",
+      "name": "SELENIUM AS SE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 10.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "SIMZ",
+      "name": "SIMAZINE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 2.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "SIO2",
+      "name": "SILICA AS SIO2",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "major_ions",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "SO4",
+      "name": "SULFATE AS SO4",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "major_ions",
+      "drinking_water_standard": 250.0,
+      "drinking_water_standard_unit": "MG/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "SR",
+      "name": "STRONTIUM AS SR",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "STYR",
+      "name": "STYRENE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "BTEX",
+      "drinking_water_standard": 50.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "Sb",
+      "name": "ANTIMONY",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 6.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "T",
+      "name": "TEMPERATURE CENTIGRADE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "Celsius"
+      ],
+      "family": "physical",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TBBNZ",
+      "name": "tert-butylbenzene",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "BTEX",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TCAA",
+      "name": "T-2,4,5",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 9.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TCEN",
+      "name": "1,1,2-trichloroethane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": 5.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TCET",
+      "name": "TRICHLORO ETHANE 1,1,1",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": 200.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TCEY",
+      "name": "TRICHLORO ETHYLENE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": 7.5,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TCFM",
+      "name": "Trichlorofluoromethane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TCPA",
+      "name": "TRICHLORO PHENOXY 2,4,5 PROPIO",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "pesticides",
+      "drinking_water_standard": 10.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TDCE",
+      "name": "TRANS-1,2 DICHLOROETHYLENE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": 50.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TDS",
+      "name": "DISSOLVED MATTER AT 180C DEGR",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "physical",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TEC12",
+      "name": "1,1,1,2-tetrachloroethane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TEC22",
+      "name": "1,1,2,2-tetrachloroethane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TECE",
+      "name": "TETRACHLORO ETHYLENE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": 10.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TL",
+      "name": "THALLIUM",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 2.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TN-N",
+      "name": "TOTAL NITROGREN  AS N",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "nitrogenous",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TOC",
+      "name": "TOTAL ORGANIC CARBON",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "fuel",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TOLU",
+      "name": "TOLUENE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "BTEX",
+      "drinking_water_standard": 700.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TP-P",
+      "name": "TOTAL PHOSPHOROUS AS P",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "nitrogenous",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TPFAS",
+      "name": "total_pfas",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "PFAS",
+      "drinking_water_standard": 0.1,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": true,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TPH",
+      "name": "TOTAL PETROLEUM HYDROCARBONS",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "MG/L"
+      ],
+      "family": "fuel",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TRBN3",
+      "name": "1,2,3-trichlorobenzene",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TRBN4",
+      "name": "1,2,4-trichlorobenzene",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": 70.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TRBRM",
+      "name": "Tribromomethane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "THM",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TRFL",
+      "name": "TRIFLORILEN",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": 20.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TRMB4",
+      "name": "1,2,4 TRIMETHYLBENZENE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "BTEX",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TRMB5",
+      "name": "1,3,5 TRIMETHYLBENZENE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "BTEX",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TRPR3",
+      "name": "1,2,3-trichloropropane",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TUF",
+      "name": "TURBIDITY IN FIELD",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "NTU"
+      ],
+      "family": "physical",
+      "drinking_water_standard": 1.0,
+      "drinking_water_standard_unit": "NTU",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "TURB",
+      "name": "TURBIDITY NTU",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "NTU"
+      ],
+      "family": "physical",
+      "drinking_water_standard": 1.0,
+      "drinking_water_standard_unit": "NTU",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "U",
+      "name": "URANIUM",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 15.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "UV",
+      "name": "UV ABSORB AT 254 NM",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "1/CM"
+      ],
+      "family": "physical",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "VYCL",
+      "name": "VINYL CHLORIDE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": 0.5,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "WDEP",
+      "name": "עומק עד פני המים",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "M"
+      ],
+      "family": "physical",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "XYLE",
+      "name": "XYLENE",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "BTEX",
+      "drinking_water_standard": 500.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "ZN",
+      "name": "ZINC AS ZN",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "microgr/L"
+      ],
+      "family": "heavy_metals",
+      "drinking_water_standard": 5000.0,
+      "drinking_water_standard_unit": "microgr/L",
+      "drinking_water_standard_source": "Israeli Ministry of Health (IWA standard)",
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "Excel: Water Quality Data 2011-2026"
+      ]
+    },
+    {
+      "code": "12DCA",
+      "name": "1,2-DCA",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "ppb"
+      ],
+      "family": "CVOC",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": null,
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "TAHAL 2008 Part B (historical)"
+      ]
+    },
+    {
+      "code": "CF",
+      "name": "Chloroform",
+      "name_he": null,
+      "cas_number": null,
+      "units": [
+        "ppb"
+      ],
+      "family": "THM",
+      "drinking_water_standard": null,
+      "drinking_water_standard_unit": null,
+      "drinking_water_standard_source": null,
+      "is_calculated": false,
+      "detected_zones": [],
+      "sources": [
+        "TAHAL 2008 Part B (historical)"
+      ]
+    }
+  ],
+  "families": {
+    "pesticides": [
+      "24DNT",
+      "26DNT",
+      "ADRN",
+      "ALAC",
+      "ALCB",
+      "ALDSU",
+      "ALSD",
+      "ATRA",
+      "BRMC",
+      "CARFN",
+      "CLDN",
+      "CLPF",
+      "DADN",
+      "DBCP",
+      "DBR3C",
+      "DCPA",
+      "DDD",
+      "DDE",
+      "DDT",
+      "DIQAT",
+      "DNSB",
+      "HEPE",
+      "HEPT",
+      "LIND",
+      "MCPA",
+      "MTAL",
+      "OXAMY",
+      "PCB",
+      "PCP",
+      "SIMZ",
+      "TCAA",
+      "TCPA"
+    ],
+    "PFAS_S": [
+      "6:2FT",
+      "82FTS",
+      "FOSA",
+      "PFBS",
+      "PFDS",
+      "PFHpS",
+      "PFHxS",
+      "PFOS"
+    ],
+    "emerging": [
+      "ACET",
+      "BEPT",
+      "BNZP",
+      "CARBO",
+      "FORM"
+    ],
+    "PFAS_A": [
+      "ADONA",
+      "PFBA",
+      "PFDA",
+      "PFDoA",
+      "PFESA",
+      "PFHpA",
+      "PFHxA",
+      "PFNA",
+      "PFOA",
+      "PFPeA",
+      "PFUnA"
+    ],
+    "heavy_metals": [
+      "AG",
+      "AL",
+      "AS",
+      "BA",
+      "BE",
+      "CD",
+      "CO",
+      "CR",
+      "CU",
+      "FE",
+      "FE++",
+      "HG",
+      "LI",
+      "MN",
+      "MO",
+      "NI",
+      "PB",
+      "SE",
+      "SR",
+      "Sb",
+      "TL",
+      "U",
+      "ZN"
+    ],
+    "radioactivity": [
+      "ALFA",
+      "BETA",
+      "BETK"
+    ],
+    "major_ions": [
+      "B",
+      "BR",
+      "CA",
+      "CL",
+      "F",
+      "HCO3",
+      "K",
+      "Mg",
+      "NA",
+      "NO3",
+      "SIO2",
+      "SO4"
+    ],
+    "BTEX": [
+      "BENZ",
+      "BRBNZ",
+      "ETBN",
+      "IPBNZ",
+      "NAPT",
+      "NBTBZ",
+      "NPBNZ",
+      "OXYL",
+      "PTOLU",
+      "PXYL",
+      "SBBNZ",
+      "STYR",
+      "TBBNZ",
+      "TOLU",
+      "TRMB4",
+      "TRMB5",
+      "XYLE"
+    ],
+    "other_halogenated": [
+      "BRCM",
+      "BRMET",
+      "DBR12",
+      "DBRM",
+      "ETDB"
+    ],
+    "THM": [
+      "BRDCM",
+      "CHLF",
+      "DBRMT",
+      "DCBM",
+      "TRBRM",
+      "CF"
+    ],
+    "CVOC": [
+      "CCL4",
+      "CDCE",
+      "CHLET",
+      "CHLMT",
+      "CTN2",
+      "CTN4",
+      "DCB13",
+      "DCDFM",
+      "DCET",
+      "DCET1",
+      "DCEY",
+      "DCHP1",
+      "DCLM",
+      "DCP11",
+      "DCP13",
+      "DCP22",
+      "DCPN",
+      "DP13E",
+      "DP13T",
+      "HXCB",
+      "MCBZ",
+      "MDCB",
+      "METCH",
+      "PDCB",
+      "TCEN",
+      "TCET",
+      "TCEY",
+      "TCFM",
+      "TDCE",
+      "TEC12",
+      "TEC22",
+      "TECE",
+      "TRBN3",
+      "TRBN4",
+      "TRFL",
+      "TRPR3",
+      "VYCL",
+      "12DCA"
+    ],
+    "nitrogenous": [
+      "CN",
+      "TN-N",
+      "TP-P"
+    ],
+    "physical": [
+      "COLR",
+      "DO",
+      "EC",
+      "ECFD",
+      "HARD",
+      "MBAS",
+      "ORP",
+      "PHFD",
+      "PHLB",
+      "T",
+      "TDS",
+      "TUF",
+      "TURB",
+      "UV",
+      "WDEP"
+    ],
+    "fuel": [
+      "MOL",
+      "MTBE",
+      "TOC",
+      "TPH"
+    ],
+    "PFAS": [
+      "TPFAS"
+    ]
+  },
+  "excluded_calculated": [
+    "BETK",
+    "TPFAS"
+  ]
+}

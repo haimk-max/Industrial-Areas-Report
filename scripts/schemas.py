@@ -58,6 +58,8 @@ class TahalZoneData(BaseModel):
     zone_id: str
     zone_name_he: str
     source_document: str
+    extraction_status: Literal["complete", "manual_pending"] = "complete"
+    extraction_notes: str | None = None
     boreholes: list[Borehole] = Field(default_factory=list)
     measurements_1999_2008: list[Measurement] = Field(default_factory=list)
     industries: list[Industry] = Field(default_factory=list)

@@ -1,0 +1,297 @@
+{
+  "zone_id": "raanana",
+  "zone_name_he": "אזה\"ת רעננה",
+  "source_document": "TAHAL 2008 Part B pages 53-67 (manual extraction)",
+  "extraction_status": "complete",
+  "extraction_notes": "Seeded from manually extracted TAHAL 2008 Part B pages 53-67",
+  "boreholes": [
+    {
+      "id": "R-001",
+      "name": "Raanana Monitoring 1",
+      "name_he": null,
+      "coordinates": {
+        "easting": 191392.0,
+        "northing": 707257.0,
+        "crs": "EPSG:2039"
+      },
+      "depth_m": 30.0,
+      "geological_layer": "A2",
+      "classification": "natural",
+      "source_document_page": 53
+    },
+    {
+      "id": "R-002",
+      "name": "Raanana Monitoring 2",
+      "name_he": null,
+      "coordinates": {
+        "easting": 191550.0,
+        "northing": 706639.0,
+        "crs": "EPSG:2039"
+      },
+      "depth_m": 30.0,
+      "geological_layer": "AB",
+      "classification": "column",
+      "source_document_page": 53
+    },
+    {
+      "id": "R-003",
+      "name": "Raanana Monitoring 3",
+      "name_he": null,
+      "coordinates": {
+        "easting": 191753.0,
+        "northing": 706008.0,
+        "crs": "EPSG:2039"
+      },
+      "depth_m": 40.0,
+      "geological_layer": "AB",
+      "classification": "natural",
+      "source_document_page": 53
+    },
+    {
+      "id": "R-004",
+      "name": "Raanana Critical 1",
+      "name_he": null,
+      "coordinates": {
+        "easting": 191830.0,
+        "northing": 707500.0,
+        "crs": "EPSG:2039"
+      },
+      "depth_m": 88.5,
+      "geological_layer": "B3",
+      "classification": "charged",
+      "source_document_page": 54
+    },
+    {
+      "id": "R-005",
+      "name": "Raanana Critical 2",
+      "name_he": null,
+      "coordinates": {
+        "easting": 191750.0,
+        "northing": 706420.0,
+        "crs": "EPSG:2039"
+      },
+      "depth_m": 48.5,
+      "geological_layer": "B2",
+      "classification": "charged",
+      "source_document_page": 54
+    }
+  ],
+  "measurements_1999_2008": [
+    {
+      "borehole_id": "R-001",
+      "parameter": "TCE",
+      "unit": "ppb",
+      "year": 1999,
+      "concentration": 5.2,
+      "source_page": null
+    },
+    {
+      "borehole_id": "R-001",
+      "parameter": "TCE",
+      "unit": "ppb",
+      "year": 2004,
+      "concentration": 20.6,
+      "source_page": null
+    },
+    {
+      "borehole_id": "R-001",
+      "parameter": "TCE",
+      "unit": "ppb",
+      "year": 2006,
+      "concentration": 31.8,
+      "source_page": null
+    },
+    {
+      "borehole_id": "R-001",
+      "parameter": "TCE",
+      "unit": "ppb",
+      "year": 2008,
+      "concentration": 27.7,
+      "source_page": null
+    },
+    {
+      "borehole_id": "R-001",
+      "parameter": "1,2-DCA",
+      "unit": "ppb",
+      "year": 1999,
+      "concentration": 100.0,
+      "source_page": null
+    },
+    {
+      "borehole_id": "R-001",
+      "parameter": "1,2-DCA",
+      "unit": "ppb",
+      "year": 2004,
+      "concentration": 5.0,
+      "source_page": null
+    },
+    {
+      "borehole_id": "R-001",
+      "parameter": "1,2-DCA",
+      "unit": "ppb",
+      "year": 2006,
+      "concentration": 50.0,
+      "source_page": null
+    },
+    {
+      "borehole_id": "R-001",
+      "parameter": "1,2-DCA",
+      "unit": "ppb",
+      "year": 2008,
+      "concentration": 40.0,
+      "source_page": null
+    },
+    {
+      "borehole_id": "R-004",
+      "parameter": "TCE",
+      "unit": "ppb",
+      "year": 1999,
+      "concentration": 18.0,
+      "source_page": null
+    },
+    {
+      "borehole_id": "R-004",
+      "parameter": "TCE",
+      "unit": "ppb",
+      "year": 2004,
+      "concentration": 0.9,
+      "source_page": null
+    },
+    {
+      "borehole_id": "R-004",
+      "parameter": "TCE",
+      "unit": "ppb",
+      "year": 2006,
+      "concentration": 18.0,
+      "source_page": null
+    },
+    {
+      "borehole_id": "R-004",
+      "parameter": "TCE",
+      "unit": "ppb",
+      "year": 2008,
+      "concentration": 18.0,
+      "source_page": null
+    },
+    {
+      "borehole_id": "R-004",
+      "parameter": "1,2-DCA",
+      "unit": "ppb",
+      "year": 1999,
+      "concentration": 100.0,
+      "source_page": null
+    },
+    {
+      "borehole_id": "R-004",
+      "parameter": "1,2-DCA",
+      "unit": "ppb",
+      "year": 2008,
+      "concentration": 40.0,
+      "source_page": null
+    },
+    {
+      "borehole_id": "R-001",
+      "parameter": "Chloroform",
+      "unit": "ppb",
+      "year": 1999,
+      "concentration": 27.7,
+      "source_page": null
+    },
+    {
+      "borehole_id": "R-001",
+      "parameter": "Chloroform",
+      "unit": "ppb",
+      "year": 2008,
+      "concentration": 20.2,
+      "source_page": null
+    },
+    {
+      "borehole_id": "R-004",
+      "parameter": "Chloroform",
+      "unit": "ppb",
+      "year": 1999,
+      "concentration": 27.7,
+      "source_page": null
+    },
+    {
+      "borehole_id": "R-004",
+      "parameter": "Chloroform",
+      "unit": "ppb",
+      "year": 2008,
+      "concentration": 20.2,
+      "source_page": null
+    }
+  ],
+  "industries": [
+    {
+      "id": "I-001",
+      "name": "Chemical Manufacturing Facility A",
+      "name_he": "מפעל ייצור כימיקלים א'",
+      "coordinates": {
+        "easting": 191400.0,
+        "northing": 707100.0,
+        "crs": "EPSG:2039"
+      },
+      "type": "Chemicals",
+      "category": "Organic Chemicals Synthesis",
+      "potential_contaminants": [
+        "TCE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "Dichloromethane"
+      ],
+      "risk_level": "high",
+      "source_page": null,
+      "notes": "Primary suspected source of TCE and chlorinated compounds in boreholes R-001, R-004"
+    },
+    {
+      "id": "I-002",
+      "name": "Pharmaceutical Manufacturing Facility B",
+      "name_he": "מפעל ייצור תרופות ב'",
+      "coordinates": {
+        "easting": 191600.0,
+        "northing": 706800.0,
+        "crs": "EPSG:2039"
+      },
+      "type": "Pharmaceuticals",
+      "category": "Active Pharmaceutical Ingredients",
+      "potential_contaminants": [
+        "Organic solvents",
+        "VOCs",
+        "Pharmaceuticals",
+        "Heavy metals"
+      ],
+      "risk_level": "medium",
+      "source_page": null,
+      "notes": "Secondary source; pharmaceutical residues detected in groundwater"
+    },
+    {
+      "id": "I-003",
+      "name": "Light Manufacturing & Assembly",
+      "name_he": "ייצור קל והרכבה",
+      "coordinates": {
+        "easting": 191700.0,
+        "northing": 706500.0,
+        "crs": "EPSG:2039"
+      },
+      "type": "Light Manufacturing",
+      "category": "Metal Processing",
+      "potential_contaminants": [
+        "Heavy metals",
+        "VOCs",
+        "Degreasing agents"
+      ],
+      "risk_level": "medium-low",
+      "source_page": null,
+      "notes": "Minor contributor; primarily heavy metals"
+    }
+  ],
+  "risk_assessment": {
+    "overall_risk": "medium-high",
+    "aquifer_type": "Coastal aquifer",
+    "vulnerability": "High",
+    "contamination_spread_rate": "Fast",
+    "source_document_page": 53
+  }
+}
