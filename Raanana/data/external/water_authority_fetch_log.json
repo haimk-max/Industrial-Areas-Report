@@ -1,0 +1,15 @@
+[
+  {
+    "zone": "raanana",
+    "year": 2013,
+    "urls_tried": [
+      "https://www.gov.il/BlobFolder/reports/industry/he/water-sources-status_tehom_raanana-2013.pdf",
+      "https://www.gov.il/BlobFolder/reports/industry/he/tehom_raanana_2013.pdf",
+      "https://water.gov.il/Hebrew/ProfessionalInfoAndData/Allocation-Consumption-andProductionData/DocLib/raanana_2013.pdf"
+    ],
+    "status": "not_found",
+    "local_pdf": null,
+    "local_md": null,
+    "extraction_summary": ""
+  }
+]

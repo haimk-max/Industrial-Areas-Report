@@ -6,9 +6,9 @@
 |---|---|
 | ALERT | 0 |
 | WATCH | 0 |
-| STABLE | 26 |
-| DECREASING | 0 |
-| NONE | 548 |
+| STABLE | 66 |
+| DECREASING | 4 |
+| NONE | 496 |
 
 - Total (borehole, parameter) pairs: 576
 - Pairs with insufficient data (n<4): 271
