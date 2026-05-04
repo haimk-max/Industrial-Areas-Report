@@ -2,13 +2,13 @@
 
 Charts produced:
   1. cvoc_timeseries.png          — TCE (nt_1, nt_2) + PCE (nt_3) time-series 2012-2025
-  2. pfas_stacked_turbine.png     — PFAS species at nd_turbine, S/A groups, absolute + % of standard
+  2. pfas_all_boreholes.png       — PFAS: stacked bar per borehole (S/A groups) + time-series
   3. btex_timeseries_paz.png      — Benzene at nd_paz 2011-2024
   4. cvoc_cross_borehole.png      — Max annual TCE/PCE across boreholes comparison
   5. tce_timeseries_p25.png       — TCE at p25 production well (exceedance detail)
-  6. cvoc_stacked_grouped.png     — Stacked-grouped CVOC (TCE+PCE+cis-DCE) by year per borehole
+  6. cvoc_all_wells.png           — CVOC curves for all boreholes (TCE + PCE panels)
   7. pfas_pct_stacked.png         — 100%-stacked PFAS for AFFF source-signature (S/A grouping)
-  8. btex_family_stacked.png      — BTEX full family stacked at Paz Hanofer
+  8. btex_family_stacked.png      — BTEX full family time-series at Paz Hanofer
   9. cvoc_pct_standard_panel.png  — 4-borehole panel: % of standard TCE/PCE over time
 
 Usage:
@@ -40,25 +40,30 @@ def _fix_hebrew(text: str) -> str:
 H = _fix_hebrew   # shorthand used throughout
 
 
-# ── Palette (from chart_presets.json) ────────────────────────────────────────
+# ── Palette — S group: blue (dark→light), A group: orange/warm (dark→light) ───
+# S at bottom of stack, A on top (per pfas-sa-chart skill)
+PFAS_S_ORDER  = ["PFHxS", "PFBS", "PFOS", "PFHpS", "PFDS"]
+PFAS_A_ORDER  = ["PFOA", "PFHxA", "PFHpA", "PFNA", "PFDA", "PFDoA", "PFBA", "PFPeA", "PFUnA"]
 PFAS_S_COLORS = {
     "PFHxS": "#0D47A1",
     "PFBS":  "#1565C0",
     "PFOS":  "#1976D2",
-    "PFHpS": "#1E88E5",
-    "PFDS":  "#42A5F5",
+    "PFHpS": "#42A5F5",
+    "PFDS":  "#90CAF9",
 }
 PFAS_A_COLORS = {
     "PFOA":  "#BF360C",
     "PFHxA": "#D84315",
-    "PFPeA": "#E64A19",
-    "PFBA":  "#F4511E",
-    "PFHpA": "#FF5722",
-    "PFNA":  "#FF7043",
-    "PFDA":  "#FF8A65",
-    "PFDoA": "#FFAB91",
-    "PFUnA": "#FFCCBC",
+    "PFHpA": "#E64A19",
+    "PFNA":  "#F4511E",
+    "PFDA":  "#FF7043",
+    "PFDoA": "#FF8A65",
+    "PFBA":  "#FFAB76",
+    "PFPeA": "#FFA726",
+    "PFUnA": "#FFF3E0",
 }
+PFAS_ALL_COLORS = {**PFAS_S_COLORS, **PFAS_A_COLORS}
+PFAS_ALL_ORDER  = PFAS_S_ORDER + PFAS_A_ORDER
 
 DWS = {  # drinking water standards (µg/L)
     "TCE": 7.5, "PCE": 10.0, "BENZENE": 5.0,
@@ -131,97 +136,148 @@ def chart_cvoc_timeseries(df: pd.DataFrame, out: Path) -> None:
     print(f"  Saved: cvoc_timeseries.png")
 
 
-# ── Chart 2: PFAS Stacked Bar + % of Standard ────────────────────────────────
-def chart_pfas_turbine(df: pd.DataFrame, out: Path) -> None:
-    turbine = df[df.canonical_id == "raanana_nd_turbine"].copy()
+# ── Chart 2: PFAS — all boreholes, one stacked bar per borehole ──────────────
+def chart_pfas_all_boreholes(df: pd.DataFrame, out: Path) -> None:
+    """One stacked bar per borehole (S-group at bottom, A-group on top).
+    Absolute + 100%-stacked panels. Time-series for boreholes with >1 date.
+    """
+    BH_LABELS = {
+        "raanana_nd_turbine": H("נד תחנת\nטורבינות גז"),
+        "raanana_p_25":       H("פ רעננה 25"),
+        "raanana_nt_1":       H("נת רעננה 1"),
+        "raanana_nt_2":       H("נת רעננה 2"),
+        "raanana_nt_3":       H("נת רעננה 3"),
+    }
 
-    s_codes = {"PFHxS": "PFHxS", "PFBS": "PFBS", "PFOS": "PFOS",
-               "PFHpS": "PFHpS", "PFDS": "PFDS"}
-    a_codes = {"PFOA": "PFOA", "PFHxA": "PFHxA", "PFPeA": "PFPeA",
-               "PFBA": "PFBA", "PFHpA": "PFHpA", "PFNA": "PFNA",
-               "PFDA": "PFDA", "PFDoA": "PFDoA", "PFUnA": "PFUnA"}
+    pfas_df = df[df.param_code.isin(PFAS_ALL_ORDER)].copy()
+    if pfas_df.empty:
+        return
 
-    latest = turbine[turbine.date == turbine.date.max()]
+    # Latest reading per borehole
+    def latest_vals(bh_id: str) -> dict:
+        sub = pfas_df[pfas_df.canonical_id == bh_id]
+        if sub.empty:
+            return {}
+        ld = sub["date"].max()
+        latest = sub[sub.date == ld]
+        return {code: float(r["concentration"].values[0])
+                for code in PFAS_ALL_ORDER
+                for r in [latest[latest.param_code == code]]
+                if not r.empty}
 
-    def get_conc(code):
-        row = latest[latest.param_code == code]
-        return float(row["concentration"].values[0]) if not row.empty else 0.0
+    tested_bh = list(pfas_df["canonical_id"].unique())
+    bh_data = {bh: latest_vals(bh) for bh in tested_bh}
 
-    s_data = {name: get_conc(code) for code, name in s_codes.items()}
-    a_data = {name: get_conc(code) for code, name in a_codes.items()}
-    s_detected = {k: v for k, v in s_data.items() if v > PFAS_LOD}
-    a_detected = {k: v for k, v in a_data.items() if v > PFAS_LOD}
+    # Order: nd_turbine first, rest alphabetically
+    preferred = ["raanana_nd_turbine", "raanana_p_25"]
+    bh_show = preferred + [b for b in sorted(tested_bh) if b not in preferred]
+    bh_show = [b for b in bh_show if b in tested_bh]
 
-    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+    # Boreholes with >1 PFAS sampling date
+    multi_bh = [b for b in bh_show
+                if pfas_df[pfas_df.canonical_id == b]["date"].nunique() > 1]
+    has_ts = bool(multi_bh)
 
-    xtick_label = H("נד תחנת טורבינות גז\n30.07.2025")
+    n_rows = 2 if has_ts else 1
+    fig = plt.figure(figsize=(14, 6 * n_rows))
+    ax_abs = fig.add_subplot(n_rows, 2, 1)
+    ax_pct = fig.add_subplot(n_rows, 2, 2)
 
-    # Left: Absolute concentrations stacked bar
-    ax = axes[0]
-    species_order = list(s_detected.keys()) + list(a_detected.keys())
-    values = [s_detected.get(s, 0) for s in s_detected] + [a_detected.get(s, 0) for s in a_detected]
-    colors = [PFAS_S_COLORS.get(s, "#90CAF9") for s in s_detected] + \
-             [PFAS_A_COLORS.get(s, "#FFCCBC") for s in a_detected]
+    x = np.arange(len(bh_show))
+    xlabels = [BH_LABELS.get(b, b) for b in bh_show]
 
-    ax.bar([xtick_label], [sum(values)], color="white", edgecolor="none")
+    # ── Absolute stacked bar ─────────────────────────────────────────────────
+    bottom_abs = np.zeros(len(bh_show))
+    legend_patches = []
+    for code in PFAS_ALL_ORDER:
+        vals = np.array([bh_data.get(b, {}).get(code, 0.0) for b in bh_show])
+        color = PFAS_ALL_COLORS[code]
+        ax_abs.bar(x, vals, bottom=bottom_abs, color=color,
+                   edgecolor="white", linewidth=0.5)
+        if vals.max() > PFAS_LOD:
+            legend_patches.append(mpatches.Patch(color=color, label=code))
+        bottom_abs += vals
 
-    bottom = 0
-    bar_patches = []
-    for name, val, color in zip(species_order, values, colors):
-        ax.bar([xtick_label], [val], bottom=bottom,
-               color=color, edgecolor="white", linewidth=0.5)
-        bar_patches.append(mpatches.Patch(color=color, label=f"{name}: {val:.3f} µg/L"))
-        bottom += val
+    ax_abs.axhline(0.1, color="#E53935", linestyle="--", linewidth=1.2)
+    legend_patches.append(
+        plt.Line2D([0], [0], color="#E53935", linestyle="--",
+                   linewidth=1.2, label=H("תקן = 0.1 µg/L")))
+    ax_abs.set_xticks(x)
+    ax_abs.set_xticklabels(xlabels, fontsize=9)
+    ax_abs.set_ylabel(H("ריכוז (µg/L)"), fontsize=10)
+    ax_abs.set_title(H("PFAS — ריכוז מוחלט לפי קידוח\n(S-group=כחול | A-group=כתום)"),
+                     fontsize=10, fontweight="bold")
+    ax_abs.legend(handles=legend_patches, fontsize=7.5,
+                  bbox_to_anchor=(1.02, 1), loc="upper left")
+    ax_abs.grid(axis="y", alpha=0.3)
+    ax_abs.set_ylim(bottom=0)
 
-    ax.axhline(0.1, color="#E53935", linestyle="--", linewidth=1.2,
-               label=H("תקן = 0.1 µg/L לכל מין"))
-    ax.set_ylabel(H("ריכוז (µg/L)"), fontsize=10)
-    ax.set_title(H("PFAS — ריכוז מוחלט\n(S-group = כחול, A-group = כתום)"),
-                 fontsize=10, fontweight="bold")
-    ax.legend(handles=bar_patches + [mpatches.Patch(color="#E53935", label=H("תקן 0.1 µg/L"))],
-              fontsize=7.5, bbox_to_anchor=(1.02, 1), loc="upper left")
-    ax.grid(axis="y", alpha=0.3)
-    ax.set_ylim(0, max(sum(values) * 1.15, 0.3))
+    # ── 100%-stacked bar ─────────────────────────────────────────────────────
+    totals = np.array([sum(bh_data.get(b, {}).values()) for b in bh_show])
+    bottom_pct = np.zeros(len(bh_show))
+    for code in PFAS_ALL_ORDER:
+        vals = np.array([bh_data.get(b, {}).get(code, 0.0) for b in bh_show])
+        pcts = np.where(totals > 0, vals / totals * 100, 0.0)
+        ax_pct.bar(x, pcts, bottom=bottom_pct, color=PFAS_ALL_COLORS[code],
+                   edgecolor="white", linewidth=0.5)
+        bottom_pct += pcts
 
-    # Right: % of standard (individual bars per species)
-    ax = axes[1]
-    all_detected = list(s_detected.items()) + list(a_detected.items())
-    names_r = [n for n, _ in all_detected]
-    pcts = [v / 0.1 * 100 for _, v in all_detected]
-    colors_r = [PFAS_S_COLORS.get(n, "#90CAF9") for n in s_detected] + \
-               [PFAS_A_COLORS.get(n, "#FFCCBC") for n in a_detected]
+    # S/A boundary line
+    s_totals = np.array([sum(bh_data.get(b, {}).get(c, 0.0) for c in PFAS_S_ORDER)
+                         for b in bh_show])
+    s_pcts = np.where(totals > 0, s_totals / totals * 100, 0.0)
+    for xi, sp in enumerate(s_pcts):
+        if totals[xi] > 0:
+            ax_pct.plot([xi - 0.4, xi + 0.4], [sp, sp],
+                        color="#FFD600", linewidth=2, linestyle="--", zorder=5)
 
-    x = range(len(names_r))
-    bars_r = ax.bar(x, pcts, color=colors_r, edgecolor="white", linewidth=0.5)
-    ax.axhline(100, color="#E53935", linestyle="--", linewidth=1.2,
-               label=H("100% מהתקן"))
-    ax.set_xticks(list(x))
-    ax.set_xticklabels(names_r, rotation=30, ha="right", fontsize=9)
-    ax.set_ylabel(H("% מהתקן (0.1 µg/L)"), fontsize=10)
-    ax.set_title(H("PFAS — אחוז מתקן מי שתייה\n(תקן = 0.1 µg/L לכל מין)"),
-                 fontsize=10, fontweight="bold")
-    ax.legend(fontsize=9)
-    ax.grid(axis="y", alpha=0.3)
+    ax_pct.set_xticks(x)
+    ax_pct.set_xticklabels(xlabels, fontsize=9)
+    ax_pct.set_ylabel(H("% מסך PFAS"), fontsize=10)
+    ax_pct.set_title(H("PFAS — הרכב יחסי לפי קידוח\n(קו צהוב = גבול S/A)"),
+                     fontsize=10, fontweight="bold")
+    ax_pct.set_ylim(0, 100)
+    ax_pct.grid(axis="y", alpha=0.3)
 
-    for bar_r, pct in zip(bars_r, pcts):
-        if pct > 50:
-            ax.text(bar_r.get_x() + bar_r.get_width() / 2, bar_r.get_height() + 20,
-                    f"{pct:.0f}%", ha="center", va="bottom", fontsize=8, fontweight="bold")
+    # ── Time-series for multi-measurement boreholes ──────────────────────────
+    if has_ts:
+        ax_ts_s = fig.add_subplot(n_rows, 2, 3)
+        ax_ts_a = fig.add_subplot(n_rows, 2, 4)
+        ts_colors = ["#1976D2", "#D32F2F", "#2E7D32", "#7B1FA2"]
+        for bh, bh_color in zip(multi_bh, ts_colors):
+            label = BH_LABELS.get(bh, bh)
+            for code, ax_ts, ls in [
+                ("PFHxS", ax_ts_s, "-"),  ("PFBS", ax_ts_s, "--"),
+                ("PFOA",  ax_ts_a, "-"),  ("PFHxA", ax_ts_a, "--"),
+                ("PFPeA", ax_ts_a, ":"),
+            ]:
+                sub = pfas_df[(pfas_df.canonical_id == bh) &
+                              (pfas_df.param_code == code)].sort_values("date")
+                if sub.empty:
+                    continue
+                ax_ts.plot(sub["date"], sub["concentration"], marker="o",
+                           color=PFAS_ALL_COLORS[code], linestyle=ls,
+                           linewidth=1.5, markersize=6,
+                           label=f"{label} — {code}")
 
-    if s_detected and a_detected:
-        boundary = len(s_detected) - 0.5
-        ax.axvline(boundary, color="#9E9E9E", linestyle=":", linewidth=1)
-        ax.text(boundary - 0.3, ax.get_ylim()[1] * 0.92, "S-group", ha="right",
-                fontsize=8, color="#0D47A1", fontstyle="italic")
-        ax.text(boundary + 0.3, ax.get_ylim()[1] * 0.92, "A-group", ha="left",
-                fontsize=8, color="#BF360C", fontstyle="italic")
+        for ax_ts, title in [
+            (ax_ts_s, H("S-group (סולפונטים) — ריכוז לאורך זמן")),
+            (ax_ts_a, H("A-group (קרבוקסילטים) — ריכוז לאורך זמן")),
+        ]:
+            ax_ts.axhline(0.1, color="#E53935", linestyle="--", linewidth=1.2,
+                          label=H("תקן = 0.1 µg/L"))
+            ax_ts.set_ylabel(H("ריכוז (µg/L)"), fontsize=9)
+            ax_ts.set_title(title, fontsize=10, fontweight="bold")
+            ax_ts.legend(fontsize=8)
+            ax_ts.grid(axis="y", alpha=0.3)
+            ax_ts.set_ylim(bottom=0)
 
-    fig.suptitle(H("PFAS — תחנת טורבינות גז רעננה (IEC) | דיגום ראשוני 30.07.2025"),
-                 fontsize=12, fontweight="bold", y=1.01)
+    fig.suptitle(H("PFAS — ממצאים לפי קידוח | אזה\"ת רעננה"),
+                 fontsize=12, fontweight="bold")
     plt.tight_layout()
-    fig.savefig(out / "pfas_stacked_turbine.png", dpi=150, bbox_inches="tight")
+    fig.savefig(out / "pfas_all_boreholes.png", dpi=150, bbox_inches="tight")
     plt.close(fig)
-    print(f"  Saved: pfas_stacked_turbine.png")
+    print("  Saved: pfas_all_boreholes.png")
 
 
 # ── Chart 3: Benzene Time-Series at Paz ──────────────────────────────────────
@@ -353,74 +409,49 @@ def chart_tce_p25(df: pd.DataFrame, out: Path) -> None:
     print(f"  Saved: tce_timeseries_p25.png")
 
 
-# ── Chart 6: Stacked-Grouped CVOC by Year ─────────────────────────────────────
-def chart_cvoc_stacked_grouped(df: pd.DataFrame, out: Path) -> None:
-    years = [2012, 2015, 2018, 2022, 2025]
-    boreholes = ["raanana_nt_1", "raanana_nt_2", "raanana_nt_3", "raanana_p_25"]
-    bh_labels = [H(l) for l in ["נת רעננה 1", "נת רעננה 2", "נת רעננה 3", "פ רעננה 25"]]
-    params = [
-        ("TCEY", "TCE",        "#D32F2F"),
-        ("TECE", "PCE",        "#1565C0"),
-        ("CDCE", "cis-1,2-DCE","#2E7D32"),
+# ── Chart 6: CVOC Multi-Well Time-Series — curves only ────────────────────────
+def chart_cvoc_all_wells(df: pd.DataFrame, out: Path) -> None:
+    """TCE and PCE time-series for all monitoring boreholes — curves only."""
+    wells = [
+        ("raanana_nt_1", H("נת רעננה 1"), "#D32F2F", "o"),
+        ("raanana_nt_2", H("נת רעננה 2"), "#FF8F00", "s"),
+        ("raanana_nt_3", H("נת רעננה 3"), "#6A1B9A", "^"),
+        ("raanana_p_25", H("פ רעננה 25"), "#1B5E20", "D"),
     ]
 
-    x = np.arange(len(boreholes))
-    total_width = 0.72
-    group_width = total_width / len(years)
-    offsets = np.linspace(-total_width / 2 + group_width / 2,
-                           total_width / 2 - group_width / 2, len(years))
+    fig, axes = plt.subplots(1, 2, figsize=(14, 5), sharey=False)
 
-    fig, ax = plt.subplots(figsize=(14, 6))
+    for ax, param_code, param_label, std_val, std_color in [
+        (axes[0], "TCEY", "TCE", 7.5,  "#E53935"),
+        (axes[1], "TECE", "PCE", 10.0, "#1565C0"),
+    ]:
+        for bh_id, label, color, marker in wells:
+            sub = df[(df.canonical_id == bh_id) &
+                     (df.param_code == param_code)].sort_values("date")
+            sub = sub[sub["concentration"] > 0]
+            if sub.empty:
+                continue
+            ax.plot(sub["date"], sub["concentration"], marker=marker, color=color,
+                    linewidth=1.8, markersize=7, label=label)
+            ax.fill_between(sub["date"], 0, sub["concentration"],
+                            alpha=0.07, color=color)
 
-    legend_handles = {}
-    for yi, (year, offset) in enumerate(zip(years, offsets)):
-        year_df = df[df["date"].dt.year == year]
-        bottoms = np.zeros(len(boreholes))
-        for param_code, param_label, color in params:
-            heights = []
-            for bh in boreholes:
-                sub = year_df[(year_df.canonical_id == bh) & (year_df.param_code == param_code)]
-                heights.append(sub["concentration"].mean() if not sub.empty else 0.0)
-            heights = np.array(heights)
-            ax.bar(x + offset, heights, width=group_width * 0.85,
-                   bottom=bottoms, color=color, alpha=0.85 - yi * 0.05,
-                   edgecolor="white", linewidth=0.3)
-            bottoms += heights
-            if param_label not in legend_handles:
-                legend_handles[param_label] = mpatches.Patch(color=color, label=param_label)
+        ax.axhline(std_val, color=std_color, linestyle="--", linewidth=1.0,
+                   label=H(f"תקן {param_label} = {std_val} µg/L"))
+        ax.set_title(H(f"{param_label} — ריכוז לפי קידוח (2011–2025)"),
+                     fontsize=11, fontweight="bold")
+        ax.set_ylabel(H("ריכוז (µg/L)"), fontsize=10)
+        ax.set_xlabel(H("שנה"), fontsize=10)
+        ax.legend(fontsize=8, loc="upper left")
+        ax.grid(axis="y", alpha=0.3)
+        ax.set_ylim(bottom=0)
 
-        for xi in x:
-            ax.text(xi + offset, -4, str(year), ha="center", va="top",
-                    fontsize=6.5, color="#555", rotation=90 if len(years) > 4 else 0)
-
-    ax.axhline(7.5, color="#D32F2F", linestyle="--", linewidth=0.9, alpha=0.7,
-               label=H("תקן TCE = 7.5 µg/L"))
-    ax.axhline(10.0, color="#1565C0", linestyle=":", linewidth=0.9, alpha=0.7,
-               label=H("תקן PCE = 10 µg/L"))
-
-    ax.set_xticks(x)
-    ax.set_xticklabels(bh_labels, fontsize=10)
-    ax.set_ylabel(H("ריכוז ממוצע (µg/L)"), fontsize=10)
-    ax.set_title(H("CVOC — ריכוז לפי קידוח ושנה | קריית אתגרים, רעננה 2012–2025"),
-                 fontsize=12, fontweight="bold")
-    ax.set_ylim(bottom=-8)
-
-    year_patches = [mpatches.Patch(color=f"#{hex(int(230 - yi * 40))[2:].zfill(2)}0000",
-                                   alpha=0.85, label=str(y)) for yi, y in enumerate(years)]
-    handles = list(legend_handles.values()) + year_patches + [
-        mpatches.Patch(color="none", label=""),
-        plt.Line2D([0], [0], color="#D32F2F", linestyle="--", linewidth=0.9,
-                   label=H("תקן TCE 7.5")),
-        plt.Line2D([0], [0], color="#1565C0", linestyle=":", linewidth=0.9,
-                   label=H("תקן PCE 10")),
-    ]
-    ax.legend(handles=handles, fontsize=8, ncol=2, loc="upper right")
-    ax.grid(axis="y", alpha=0.25)
-
+    fig.suptitle(H("CVOC — ריכוז כלל קידוחי הניטור | קריית אתגרים, רעננה"),
+                 fontsize=13, fontweight="bold", y=1.01)
     plt.tight_layout()
-    fig.savefig(out / "cvoc_stacked_grouped.png", dpi=150, bbox_inches="tight")
+    fig.savefig(out / "cvoc_all_wells.png", dpi=150, bbox_inches="tight")
     plt.close(fig)
-    print(f"  Saved: cvoc_stacked_grouped.png")
+    print("  Saved: cvoc_all_wells.png")
 
 
 # ── Chart 7: 100%-Stacked PFAS (AFFF source signature) ───────────────────────
@@ -611,11 +642,11 @@ def main():
     print(f"[V2 Charts] Loaded {len(df)} measurements from {zone_dir}")
 
     chart_cvoc_timeseries(df, out)
-    chart_pfas_turbine(df, out)
+    chart_pfas_all_boreholes(df, out)
     chart_btex_timeseries(df, out)
     chart_cvoc_cross_borehole(df, out)
     chart_tce_p25(df, out)
-    chart_cvoc_stacked_grouped(df, out)
+    chart_cvoc_all_wells(df, out)
     chart_pfas_pct_stacked(df, out)
     chart_btex_family_stacked(df, out)
     chart_cvoc_pct_standard_panel(df, out)
