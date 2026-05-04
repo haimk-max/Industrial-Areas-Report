@@ -10,6 +10,8 @@ trend_analysis:
     min_n5_for_classification: 3
     tie_corrected_variance: true
     continuity_corrected_z: true
+    full_record_fallback: true      # use full-record MK when 5y window < min_n5_for_classification
+    min_n_for_full_record: 3        # minimum adj_vals needed for full-record MK fallback
   snr_thresholds:
     strong:
       min_snr: 1.0

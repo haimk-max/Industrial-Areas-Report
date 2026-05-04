@@ -168,6 +168,63 @@ def test_below_lod_half_lod_treatment():
     assert abs(val - 2.0) < 1e-9, f"half-LOD expected 2.0, got {val}"
 
 
+def test_full_record_fallback_classifies_when_n5_lt_3():
+    """When n5 < min_n5_for_classification but full record has ≥3 points, classify via full record."""
+    import copy, yaml
+    from pathlib import Path
+    from scripts.preprocess import analyze_series, Observation
+    from datetime import date
+
+    cfg = _default_cfg()
+
+    # Synthetic series: 6 clearly rising measurements, only 1 in the 5y window
+    observations = [
+        Observation(date=date(2012, 1, 1), concentration=1.0),
+        Observation(date=date(2014, 1, 1), concentration=3.0),
+        Observation(date=date(2016, 1, 1), concentration=6.0),
+        Observation(date=date(2017, 1, 1), concentration=10.0),
+        Observation(date=date(2018, 1, 1), concentration=15.0),
+        Observation(date=date(2021, 6, 1), concentration=22.0),  # only 2020+ point
+    ]
+
+    result = analyze_series("bh_test", "TCE", observations, cfg, 7.5)
+    assert result.n5 == 1, f"Expected n5=1, got {result.n5}"
+    assert result.analysis_mode == "full_record", (
+        f"Expected analysis_mode='full_record', got '{result.analysis_mode}'"
+    )
+    assert result.classification in ("INCREASING", "STABLE"), (
+        f"Full-record fallback must yield a non-NONE classification; got {result.classification}"
+    )
+
+
+def test_no_fallback_when_disabled_in_config():
+    """When full_record_fallback=false in config, sparse 5y window → NONE despite full data."""
+    import copy
+    from scripts.preprocess import analyze_series, Observation
+    from datetime import date
+
+    cfg = _default_cfg()
+    # Disable fallback
+    cfg["trend_analysis"]["mann_kendall"]["full_record_fallback"] = False
+
+    observations = [
+        Observation(date=date(2012, 1, 1), concentration=1.0),
+        Observation(date=date(2014, 1, 1), concentration=3.0),
+        Observation(date=date(2016, 1, 1), concentration=6.0),
+        Observation(date=date(2017, 1, 1), concentration=10.0),
+        Observation(date=date(2018, 1, 1), concentration=15.0),
+        Observation(date=date(2021, 6, 1), concentration=22.0),
+    ]
+
+    result = analyze_series("bh_test", "TCE", observations, cfg, 7.5)
+    assert result.analysis_mode == "none", (
+        f"With fallback disabled, analysis_mode must be 'none'; got '{result.analysis_mode}'"
+    )
+    assert result.classification == "NONE", (
+        f"With fallback disabled, classification must be NONE; got {result.classification}"
+    )
+
+
 def test_classifications_match_golden(golden_dir):
     """All golden trend classifications must match current engine output."""
     meas = _load_golden_measurements(golden_dir)
