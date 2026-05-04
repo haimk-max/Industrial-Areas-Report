@@ -27,8 +27,8 @@ OUTPUT_PATH = REPO_ROOT / "Raanana" / "data" / "trends.csv"
 TREND_FIELDS = [
     "borehole_id", "parameter", "n", "n5", "has_detection",
     "mk_z_5y", "mk_p_5y", "mk_z_full", "mk_p_full",
-    "snr_5y", "soft_trigger", "classification",
-    "last_two_5y", "crossed_standard", "drinking_water_standard",
+    "snr_5y", "classification", "trend_description",
+    "crossed_standard", "drinking_water_standard",
 ]
 
 
@@ -118,9 +118,8 @@ def main() -> None:
                 "mk_z_full": _fmt(r.mk_z_full),
                 "mk_p_full": _fmt(r.mk_p_full),
                 "snr_5y": _fmt(r.snr_5y),
-                "soft_trigger": r.soft_trigger,
                 "classification": r.classification,
-                "last_two_5y": r.last_two_5y or "",
+                "trend_description": r.trend_description,
                 "crossed_standard": r.crossed_standard,
                 "drinking_water_standard": _fmt(r.drinking_water_standard),
             })

@@ -5,9 +5,6 @@ trend_analysis:
   entry_criteria:
     min_n: 4              # Minimum total measurements for analysis
     min_n5: 1             # Minimum 5-year-window measurements
-  soft_trigger:
-    window_size: 2        # Last N measurements must be strictly increasing
-                          # Intentionally 2 (was 3) for more ALERT/WATCH classifications
   mann_kendall:
     window_5y_start: "2020-01-01"
     min_n5_for_classification: 3
@@ -24,10 +21,9 @@ trend_analysis:
   below_lod:
     treatment: "half_lod"   # alternatives: "zero", "lod", "omit"
   classification_labels:
-    alert: "ALERT"
-    watch: "WATCH"
-    stable: "STABLE"
+    increasing: "INCREASING"
     decreasing: "DECREASING"
+    stable: "STABLE"
     none: "NONE"
 
 spatial:

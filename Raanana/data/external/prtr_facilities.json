@@ -1,0 +1,27 @@
+{
+  "source": "PRTR Israel — מרשם פליטות ומעברי מזהמים | prtr_fulldatabase-2024.xlsx",
+  "query_date": "2026-05-04",
+  "zone": "raanana",
+  "search_criteria": {
+    "text_filter": ["רעננה", "Raanana", "raanana", "אתגרים"],
+    "coordinate_bbox": {"itm_e_min": 187500, "itm_e_max": 190500, "itm_n_min": 677000, "itm_n_max": 679500}
+  },
+  "total_raanana_rows_found": 380,
+  "facilities_found": [
+    {
+      "facility_id_prtr": "141336",
+      "name_he": "מכון טיהור רעננה",
+      "name_en": "Raanana Wastewater Treatment Plant",
+      "type": "Wastewater treatment",
+      "isic_sector": "56 — Sewage treatment facility",
+      "coordinates_itm": {"easting": 187791, "northing": 679305},
+      "years_reported": [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
+      "contaminants_air": ["תרכובות אורגניות נדיפות (NMVOC)", "אמוניה (NH3)", "מתאן (CH4)", "ניטרוס אוקסיד (N2O)", "תחמוצות חנקן (NOx)", "פחמן חד-חמצני (CO)"],
+      "contaminants_water": ["כלורידים", "נתרן", "חנקן כללי", "זרחן כללי", "שמן מינרלי", "כרום", "אבץ", "מנגן", "בורון", "פלואורידים"],
+      "relevance_to_groundwater_contamination": "LOW — שפכים מטופלים מוזרמים; אין עדות לפליטת ממסים כלורינטדים (TCE/PCE) לקרקע. מיקום: ITM 187791/679305 — צפון-מערב לקריית אתגרים, ~800מ' מנת רעננה 1"
+    }
+  ],
+  "industrial_facilities_in_kiryat_atgarim_found": false,
+  "industrial_facilities_in_kiryat_atgarim_note": "שום מפעל תעשייתי מקריית אתגרים (תחום ITM E:188000-190000, N:677500-679000) אינו מופיע ב-PRTR. הסיבות האפשריות: (א) סף דיווח — מפעלים עם פליטות TCE/PCE נמוכות מ-1,000 ק\"ג/שנה אינם חייבים בדיווח; (ב) שינוי פעילות — חלק מהמפעלים הפסיקו שימוש בממסים לפני שנת ה-PRTR; (ג) ממסים מסווגים — יתכן שהפליטה מדווחת תחת 'NMVOC' כלל, לא פר-תרכובת",
+  "finding_summary": "PRTR אינו מספק זיהוי ישיר של מקורות TCE/PCE בקריית אתגרים. מקורות עיקריים להמשך חקירה: דו\"ח 2021 עמ' 35, חיפוש web, בסיס נתונים גנ\"א."
+}

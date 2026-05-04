@@ -1,11 +1,11 @@
-borehole_id,parameter,n,n5,has_detection,mk_z_5y,mk_p_5y,mk_z_full,mk_p_full,snr_5y,soft_trigger,classification,last_two_5y,crossed_standard,drinking_water_standard
-raanana_nd_turbine,CHLF,1,1,False,,,,,,False,NONE,,False,80
-raanana_nd_turbine,PFHxS,1,1,True,,,,,,False,NONE,,True,0.1
-raanana_nd_turbine,TCEY,1,1,False,,,,,,False,NONE,,False,7.5
-raanana_nt_1,CHLF,9,2,False,,,,,,False,NONE,,False,80
-raanana_nt_1,NO3,6,3,True,1.04447,0.29627,1.50294,0.132855,0,True,NONE,92.7 → 96.9,True,70
-raanana_nt_1,TCEY,9,2,True,,,0.212798,0.831484,0,False,NONE,147 → 94.8,True,7.5
-raanana_p_25,CHLF,11,8,True,2.38416,0.0171182,3.3955,0.000685037,1.49786,False,WATCH,0.5 → 0.5,False,80
-raanana_p_25,NO3,86,85,True,7.32446,2.39863e-13,6.88052,5.96357e-12,0.569311,True,ALERT,68.5 → 69.1,True,70
-raanana_p_25,PFHxS,2,2,False,,,,,,False,NONE,,False,0.1
-raanana_p_25,TCEY,18,15,True,-0.895164,0.370699,0.987658,0.32332,0.797185,False,STABLE,10.8 → 10.5,True,7.5
+borehole_id,parameter,n,n5,has_detection,mk_z_5y,mk_p_5y,mk_z_full,mk_p_full,snr_5y,classification,crossed_standard,drinking_water_standard
+raanana_nd_turbine,CHLF,1,1,False,,,,,,NONE,False,80
+raanana_nd_turbine,PFHxS,1,1,True,,,,,,NONE,True,0.1
+raanana_nd_turbine,TCEY,1,1,False,,,,,,NONE,False,7.5
+raanana_nt_1,CHLF,9,2,False,,,,,,NONE,False,80
+raanana_nt_1,NO3,6,3,True,1.04447,0.29627,1.50294,0.132855,0,NONE,True,70
+raanana_nt_1,TCEY,9,2,True,,,0.212798,0.831484,0,NONE,True,7.5
+raanana_p_25,CHLF,11,8,True,2.38416,0.0171182,3.3955,0.000685037,1.49786,INCREASING,False,80
+raanana_p_25,NO3,86,85,True,7.32446,2.39863e-13,6.88052,5.96357e-12,0.569311,INCREASING,True,70
+raanana_p_25,PFHxS,2,2,False,,,,,,NONE,False,0.1
+raanana_p_25,TCEY,18,15,True,-0.895164,0.370699,0.987658,0.32332,0.797185,STABLE,True,7.5
