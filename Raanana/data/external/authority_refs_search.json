@@ -1,0 +1,93 @@
+{
+  "zone": "raanana",
+  "search_date": "2026-05-04",
+  "dry_run": false,
+  "total_refs": 5,
+  "found": 0,
+  "forbidden": 5,
+  "not_found": 0,
+  "references": [
+    {
+      "ref_number": 3,
+      "title": "**מפעלים**: 3 מפעלים מוזכרים בדו\"ח 2021 כ-MEDIUM confidence — הוסף ל-facility_attribution.json כ-F-005/F-006/F-007",
+      "years_in_title": [
+        20
+      ],
+      "urls_tried": [
+        "https://www.gov.il/BlobFolder/reports/industry/he/water-sources-status_tehom_raanana-20.pdf",
+        "https://www.gov.il/BlobFolder/reports/industry/he/tehom_raanana_20.pdf",
+        "https://www.gov.il/BlobFolder/reports/industry/he/water-sources-status_raanana_20.pdf",
+        "https://water.gov.il/Hebrew/ProfessionalInfoAndData/Allocation-Consumption-andProductionData/DocLib/raanana_20.pdf",
+        "https://water.gov.il/Hebrew/ProfessionalInfoAndData/Docs/raanana-monitoring-20.pdf"
+      ],
+      "status": "forbidden",
+      "local_pdf": null,
+      "extraction_summary": ""
+    },
+    {
+      "ref_number": 4,
+      "title": "**מסמך 2013**: הפניה 19 — מסמך פנימי קריטי; יש לבקש מרשות המים",
+      "years_in_title": [
+        20
+      ],
+      "urls_tried": [
+        "https://www.gov.il/BlobFolder/reports/industry/he/water-sources-status_tehom_raanana-20.pdf",
+        "https://www.gov.il/BlobFolder/reports/industry/he/tehom_raanana_20.pdf",
+        "https://www.gov.il/BlobFolder/reports/industry/he/water-sources-status_raanana_20.pdf",
+        "https://water.gov.il/Hebrew/ProfessionalInfoAndData/Allocation-Consumption-andProductionData/DocLib/raanana_20.pdf",
+        "https://water.gov.il/Hebrew/ProfessionalInfoAndData/Docs/raanana-monitoring-20.pdf"
+      ],
+      "status": "forbidden",
+      "local_pdf": null,
+      "extraction_summary": ""
+    },
+    {
+      "ref_number": 5,
+      "title": "**PFAS**: לא היה ידוע בדו\"ח 2021 — ממצא חדש 2025 שלנו הוא תוספת משמעותית",
+      "years_in_title": [
+        20,
+        20
+      ],
+      "urls_tried": [
+        "https://www.gov.il/BlobFolder/reports/industry/he/water-sources-status_tehom_raanana-20.pdf",
+        "https://www.gov.il/BlobFolder/reports/industry/he/tehom_raanana_20.pdf",
+        "https://www.gov.il/BlobFolder/reports/industry/he/water-sources-status_raanana_20.pdf",
+        "https://water.gov.il/Hebrew/ProfessionalInfoAndData/Allocation-Consumption-andProductionData/DocLib/raanana_20.pdf",
+        "https://water.gov.il/Hebrew/ProfessionalInfoAndData/Docs/raanana-monitoring-20.pdf"
+      ],
+      "status": "forbidden",
+      "local_pdf": null,
+      "extraction_summary": ""
+    },
+    {
+      "ref_number": 19,
+      "title": "מערך ניטור בארות תעשייה רעננה 2013",
+      "years_in_title": [
+        2013
+      ],
+      "urls_tried": [
+        "https://www.gov.il/BlobFolder/reports/industry/he/water-sources-status_tehom_raanana-2013.pdf",
+        "https://www.gov.il/BlobFolder/reports/industry/he/tehom_raanana_2013.pdf",
+        "https://www.gov.il/BlobFolder/reports/industry/he/water-sources-status_raanana_2013.pdf",
+        "https://water.gov.il/Hebrew/ProfessionalInfoAndData/Allocation-Consumption-andProductionData/DocLib/raanana_2013.pdf",
+        "https://water.gov.il/Hebrew/ProfessionalInfoAndData/Docs/raanana-monitoring-2013.pdf"
+      ],
+      "status": "forbidden",
+      "local_pdf": null,
+      "extraction_summary": ""
+    },
+    {
+      "ref_number": "inline",
+      "title": "https://www.gov.il/BlobFolder/reports/industry/he/water-sources-status_tehom_raanana-2013.pdf",
+      "years_in_title": [
+        2013
+      ],
+      "urls_tried": [
+        "https://www.gov.il/BlobFolder/reports/industry/he/water-sources-status_tehom_raanana-2013.pdf"
+      ],
+      "status": "forbidden",
+      "local_pdf": null,
+      "extraction_summary": ""
+    }
+  ]
+}

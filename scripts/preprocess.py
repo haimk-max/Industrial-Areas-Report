@@ -48,9 +48,12 @@ class TrendResult:
     mk_z_5y: float | None = None
     mk_p_5y: float | None = None
     snr_5y: float | None = None
-    # MK full record (informational only)
+    # MK full record (informational; also drives classification when 5y sparse)
     mk_z_full: float | None = None
     mk_p_full: float | None = None
+    snr_full: float | None = None
+    # Which window drove classification: "5y" | "full_record" | "none"
+    analysis_mode: Literal["5y", "full_record", "none"] = "none"
     # Classification components
     classification: Classification = "NONE"
     trend_description: str = ""
@@ -167,6 +170,8 @@ def analyze_series(
     min_n = entry_cfg.get("min_n", 4)
     min_n5 = entry_cfg.get("min_n5", 1)
     min_n5_for_mk = mk_cfg.get("min_n5_for_classification", 3)
+    cfg_fallback = mk_cfg.get("full_record_fallback", False)
+    min_n_for_full = mk_cfg.get("min_n_for_full_record", 3)
     window_5y_start_str = mk_cfg.get("window_5y_start", "2020-01-01")
     window_5y_start = date.fromisoformat(window_5y_start_str)
     snr_strong_min = snr_cfg.get("strong", {}).get("min_snr", 1.0)
@@ -231,11 +236,31 @@ def analyze_series(
         result.mk_p_5y = None
         result.snr_5y = _snr(vals5) if vals5 else None
 
-    # ── SNR gating + classification ───────────────────────────────────────────
-    snr = result.snr_5y or 0.0
-    z5 = result.mk_z_5y
-    p5 = result.mk_p_5y
+    # ── Select analysis window ────────────────────────────────────────────────
+    use_full_record = (
+        result.n5 < min_n5_for_mk
+        and len(adj_vals) >= min_n_for_full
+        and cfg_fallback
+    )
 
+    if result.n5 >= min_n5_for_mk:
+        result.analysis_mode = "5y"
+        snr = result.snr_5y or 0.0
+        z_cls = result.mk_z_5y
+        p_cls = result.mk_p_5y
+    elif use_full_record:
+        result.analysis_mode = "full_record"
+        result.snr_full = _snr(adj_vals)
+        snr = result.snr_full or 0.0
+        z_cls = result.mk_z_full
+        p_cls = result.mk_p_full
+    else:
+        result.analysis_mode = "none"
+        result.classification = "NONE"
+        result.trend_description = "Insufficient data for trend assessment"
+        return result
+
+    # ── SNR gating + classification ───────────────────────────────────────────
     if snr < snr_moderate_min:
         result.classification = "NONE"
         result.trend_description = "Insufficient signal for trend assessment (SNR below threshold)"
@@ -247,9 +272,9 @@ def analyze_series(
     else:  # moderate
         p_threshold = snr_moderate_p
 
-    mk_significant = (z5 is not None and p5 is not None and p5 <= p_threshold)
-    increasing = (z5 is not None and z5 > 0)
-    decreasing = (z5 is not None and z5 < 0)
+    mk_significant = (z_cls is not None and p_cls is not None and p_cls <= p_threshold)
+    increasing = (z_cls is not None and z_cls > 0)
+    decreasing = (z_cls is not None and z_cls < 0)
 
     if mk_significant and increasing:
         result.classification = "INCREASING"
@@ -258,16 +283,18 @@ def analyze_series(
     else:
         result.classification = "STABLE"
 
+    mode_suffix = " (full record — 5-year window insufficient)" if result.analysis_mode == "full_record" else ""
+
     # Plain-language description with Mann-Kendall statistics
-    if z5 is not None and p5 is not None:
+    if z_cls is not None and p_cls is not None:
         if result.classification == "INCREASING":
-            result.trend_description = f"Rising trend (p={p5:.3f}); Mann-Kendall Z={z5:.2f}"
+            result.trend_description = f"Rising trend (p={p_cls:.3f}); Mann-Kendall Z={z_cls:.2f}{mode_suffix}"
         elif result.classification == "DECREASING":
-            result.trend_description = f"Declining trend (p={p5:.3f}); Mann-Kendall Z={z5:.2f}"
+            result.trend_description = f"Declining trend (p={p_cls:.3f}); Mann-Kendall Z={z_cls:.2f}{mode_suffix}"
         else:
-            result.trend_description = f"No significant trend (p={p5:.3f}); Mann-Kendall Z={z5:.2f}"
+            result.trend_description = f"No significant trend (p={p_cls:.3f}); Mann-Kendall Z={z_cls:.2f}{mode_suffix}"
     else:
-        result.trend_description = "Insufficient 5-year data for Mann-Kendall classification"
+        result.trend_description = f"Insufficient data for Mann-Kendall classification{mode_suffix}"
 
     return result
 
