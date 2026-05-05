@@ -623,178 +623,190 @@ def chart_cvoc_pct_standard_panel(df: pd.DataFrame, out: Path) -> None:
 
 
 def chart_zone_site_map(zone_dir: Path, out: Path) -> None:
-    """Central zone map: boreholes by max contamination index, facilities, flow arrow.
+    """Professional schematic zone map — works fully offline (no tile basemap required).
 
-    Data sources:
-      - boreholes.csv (ITM coordinates)
-      - facility_attribution.json (facilities with coordinates)
-      - zone_polygons.json (zone boundary polygon)
+    Uses ITM coordinates directly (EPSG:2039, metres). Draws:
+      - Zone polygon filled with pale industrial yellow
+      - Grid at 200 m intervals with ITM tick labels
+      - Scale bar (500 m)
+      - North arrow
+      - Groundwater flow arrow (NW–W)
+      - Boreholes coloured by max contamination index
+      - Facility markers (▲ industrial, ■ fuel) with short name labels
+      - Legend
     """
-    import contextily as ctx
     import json
-    from pyproj import Transformer
+    from matplotlib.patches import Polygon as MplPolygon, FancyArrow
+    from matplotlib.collections import PatchCollection
+    import matplotlib.ticker as ticker
 
-    # Load boreholes
-    boreholes_csv = zone_dir / "data" / "boreholes.csv"
-    boreholes = pd.read_csv(boreholes_csv)
+    # ── Load data ────────────────────────────────────────────────────────────
+    boreholes = pd.read_csv(zone_dir / "data" / "boreholes.csv")
 
-    # Load facilities attribution
-    attribution_file = zone_dir / "data" / "facility_attribution.json"
-    with open(attribution_file, encoding='utf-8') as f:
+    with open(zone_dir / "data" / "facility_attribution.json", encoding='utf-8') as f:
         attribution = json.load(f)
 
-    # Max contamination index per borehole (from CHART_SPEC.md)
+    zone_polygons_file = Path("zone_definitions/zone_polygons.json")
+    if not zone_polygons_file.exists():
+        zone_polygons_file = zone_dir.parent / "zone_definitions" / "zone_polygons.json"
+    zone_polygon_coords = None
+    if zone_polygons_file.exists():
+        with open(zone_polygons_file, encoding='utf-8') as f:
+            zd = json.load(f)
+            if 'raanana' in zd:
+                zone_polygon_coords = zd['raanana'].get('polygon')
+
+    # ── Index look-up tables ─────────────────────────────────────────────────
     MAX_INDEX = {
         "raanana_nt_1": 7, "raanana_nt_2": 4, "raanana_nt_3": 7,
         "raanana_nd_paz_hanofer": 4, "raanana_nd_turbine": 8,
         "raanana_p_18": 0, "raanana_p_25": 5
     }
-
     INDEX_COLORS = {
         0: "#BDBDBD", 1: "#81C784", 2: "#81C784", 3: "#81C784",
         4: "#FFB74D", 5: "#FB8C00", 6: "#C62828", 7: "#8E0000", 8: "#4A0000"
     }
+    INDEX_SIZES = {0: 90, 1: 110, 2: 110, 3: 110, 4: 160, 5: 200, 6: 240, 7: 280, 8: 320}
 
-    INDEX_SIZES = {0: 60, 1: 80, 2: 80, 3: 80, 4: 120, 5: 150, 6: 180, 7: 200, 8: 220}
+    # ── Set up axes ───────────────────────────────────────────────────────────
+    fig, ax = plt.subplots(figsize=(14, 10), dpi=200)
 
-    # ITM (EPSG:2039) → Web Mercator (EPSG:3857) for contextily
-    transformer = Transformer.from_crs("EPSG:2039", "EPSG:3857", always_xy=True)
+    # Background — very light blue-gray (simulates open area)
+    ax.set_facecolor('#EEF2F5')
 
-    # Load zone polygon (for boundary visualization)
-    zone_polygon_coords = None
-    zone_polygons_file = Path("zone_definitions/zone_polygons.json")
-    if not zone_polygons_file.exists():
-        zone_polygons_file = zone_dir.parent / "zone_definitions" / "zone_polygons.json"
+    # Map extent (ITM metres) — centred on all boreholes with generous padding
+    E_min, E_max = 187700, 189700
+    N_min, N_max = 677200, 679000
+    ax.set_xlim(E_min, E_max)
+    ax.set_ylim(N_min, N_max)
 
-    if zone_polygons_file.exists():
-        with open(zone_polygons_file, encoding='utf-8') as f:
-            zone_data = json.load(f)
-            if 'raanana' in zone_data and 'polygon' in zone_data['raanana']:
-                zone_polygon_coords = zone_data['raanana']['polygon']
+    # Grid at 250 m intervals
+    ax.set_xticks(range(E_min, E_max + 1, 250))
+    ax.set_yticks(range(N_min, N_max + 1, 250))
+    ax.grid(True, color='white', linewidth=0.7, alpha=0.8, zorder=1)
+    ax.tick_params(labelsize=7, color='#666', labelcolor='#555')
+    ax.set_xlabel(H('כיוון מזרח — ITM (מטרים)'), fontsize=9, color='#444')
+    ax.set_ylabel(H('כיוון צפון — ITM (מטרים)'), fontsize=9, color='#444')
 
-    # Pre-compute borehole extents for explicit axis limits (ensures p_25 stays visible)
-    xs_all, ys_all = [], []
-    for _, row in boreholes.iterrows():
-        if not pd.isna(row.itm_easting) and not pd.isna(row.itm_northing):
-            x, y = transformer.transform(float(row.itm_easting), float(row.itm_northing))
-            xs_all.append(x)
-            ys_all.append(y)
-    pad_x = (max(xs_all) - min(xs_all)) * 0.18
-    pad_y = (max(ys_all) - min(ys_all)) * 0.18
-    x_min, x_max = min(xs_all) - pad_x, max(xs_all) + pad_x
-    y_min, y_max = min(ys_all) - pad_y, max(ys_all) + pad_y
-
-    fig, ax = plt.subplots(1, 1, figsize=(12, 10), dpi=300)
-
-    # Draw zone polygon boundary (ITM → Web Mercator)
+    # ── Zone polygon ─────────────────────────────────────────────────────────
     if zone_polygon_coords:
-        poly_x, poly_y = [], []
-        for easting, northing in zone_polygon_coords:
-            x, y = transformer.transform(float(easting), float(northing))
-            poly_x.append(x)
-            poly_y.append(y)
-        ax.plot(poly_x, poly_y, 'k--', linewidth=1.5, alpha=0.4, zorder=2, label=H('גבול אזה"ת'))
+        poly_pts = [(e, n) for e, n in zone_polygon_coords]
+        zone_patch = MplPolygon(poly_pts, closed=True, zorder=2,
+                                facecolor='#FFF9C4', edgecolor='#F9A825',
+                                linewidth=2.0, linestyle='-', alpha=0.65)
+        ax.add_patch(zone_patch)
+        # Zone label at centre
+        cx = sum(p[0] for p in poly_pts[:-1]) / (len(poly_pts) - 1)
+        cy = sum(p[1] for p in poly_pts[:-1]) / (len(poly_pts) - 1)
+        ax.text(cx, cy, H('קריית אתגרים\n(אזה"ת רעננה)'),
+                ha='center', va='center', fontsize=9, color='#B8860B',
+                weight='bold', alpha=0.6, zorder=3)
 
-    # Plot boreholes (colored by max contamination index)
+    # ── Boreholes ────────────────────────────────────────────────────────────
     for _, row in boreholes.iterrows():
         if pd.isna(row.itm_easting) or pd.isna(row.itm_northing):
             continue
-        x, y = transformer.transform(float(row.itm_easting), float(row.itm_northing))
-        idx = MAX_INDEX.get(row.canonical_id, 0)
+        E, N = float(row.itm_easting), float(row.itm_northing)
+        idx   = MAX_INDEX.get(row.canonical_id, 0)
         color = INDEX_COLORS.get(idx, "#808080")
-        size = INDEX_SIZES.get(idx, 80)
+        size  = INDEX_SIZES.get(idx, 100)
 
-        ax.scatter(x, y, c=color, s=size, edgecolors='black', linewidths=0.5, zorder=5, alpha=0.8)
-        ax.annotate(H(row.name_he), (x, y), textcoords="offset points",
-                    xytext=(6, 4), fontsize=8, ha='left', color='black', weight='bold')
+        ax.scatter(E, N, c=color, s=size, edgecolors='black', linewidths=0.7,
+                   zorder=6, alpha=0.9)
+        ax.annotate(H(row.name_he), (E, N), textcoords="offset points",
+                    xytext=(7, 5), fontsize=8, ha='left', color='#1A1A1A',
+                    weight='bold', zorder=7,
+                    bbox=dict(boxstyle='round,pad=0.15', facecolor='white',
+                              alpha=0.7, edgecolor='none'))
 
-    # Plot facilities (triangles = industrial, squares = fuel) + labels
+    # ── Facilities ───────────────────────────────────────────────────────────
+    # Short names to avoid label clutter
+    SHORT_NAME = {
+        "F-001": H("תחנת טורבינות גז (חשמל)"),
+        "F-002": H("תח' דלק פז הנופר"),
+        "F-003": H("אשכול מפעלים (F-003)"),
+        "F-005": H("אידכים (Aidchem)"),
+        "F-006": H("אדג' מדיקל"),
+        "F-007": H("אביב ריצ'רדסון"),
+        "F-008": H("בית דקל"),
+        "F-009": H("Aerospheres"),
+        "F-004": H("פ רעננה 18 (פרטי)"),
+    }
+
     for facility in attribution['facilities']:
+        fid    = facility.get('facility_id', '')
         coords = facility.get('coordinates_itm', {})
         if not coords or not coords.get('easting'):
             continue
-
-        try:
-            x, y = transformer.transform(float(coords['easting']), float(coords['northing']))
-        except:
-            continue
-
+        E, N = float(coords['easting']), float(coords['northing'])
         ftype = facility.get('type', '')
+
         if 'fuel' in ftype.lower() or 'דלק' in ftype:
-            marker, color = 's', '#1565C0'
+            marker, mcolor = 's', '#1565C0'
+        elif 'Private' in ftype or 'פרטי' in ftype:
+            continue  # skip private well — shown as borehole
         else:
-            marker, color = '^', '#7B1FA2'
+            marker, mcolor = '^', '#6A1B9A'
 
-        ax.scatter(x, y, marker=marker, c=color, s=100, edgecolors='black',
-                  linewidths=0.5, zorder=4, alpha=0.85)
+        ax.scatter(E, N, marker=marker, c=mcolor, s=130, edgecolors='black',
+                   linewidths=0.6, zorder=5, alpha=0.9)
 
-        # Add facility name label
-        fname = facility.get('name_he', facility.get('name_en', ''))
-        if fname:
-            ax.annotate(H(fname), (x, y), textcoords="offset points",
-                       xytext=(-8, -12), fontsize=7, ha='right', color='#4A148C',
-                       weight='normal', style='italic',
-                       bbox=dict(boxstyle='round,pad=0.2', facecolor='yellow', alpha=0.4, edgecolor='none'))
+        label = SHORT_NAME.get(fid, '')
+        if label:
+            ax.annotate(label, (E, N), textcoords="offset points",
+                       xytext=(-7, -15), fontsize=7.5, ha='right',
+                       color='#4A148C', zorder=7,
+                       bbox=dict(boxstyle='round,pad=0.2', facecolor='#FFFDE7',
+                                 alpha=0.85, edgecolor='#F9A825', linewidth=0.5))
 
-    # Add basemap — try multiple providers (OSM may be blocked; fallback to CartoDB)
-    basemap_providers = [
-        ('OpenStreetMap.Mapnik', ctx.providers.OpenStreetMap.Mapnik),
-        ('CartoDB Positron', ctx.providers.CartoDB.Positron),
-        ('CartoDB Voyager', ctx.providers.CartoDB.Voyager),
-    ]
+    # ── Groundwater flow arrow (NW direction) ────────────────────────────────
+    ax.annotate('', xy=(188050, 678700), xytext=(188600, 678250),
+                arrowprops=dict(arrowstyle='->', color='#0D47A1', lw=2.5,
+                                connectionstyle='arc3,rad=0.0'),
+                zorder=8)
+    ax.text(188150, 678760, H("זרימת מי תהום\n(צ.מ–מ)"),
+            ha='center', fontsize=8.5, color='#0D47A1', weight='bold',
+            bbox=dict(boxstyle='round,pad=0.3', facecolor='#E3F2FD',
+                      alpha=0.9, edgecolor='#0D47A1', linewidth=0.8))
 
-    basemap_success = False
-    for provider_name, provider in basemap_providers:
-        try:
-            ctx.add_basemap(ax, crs="EPSG:3857", source=provider, zoom=14, alpha=0.5)
-            print(f"  Basemap loaded: {provider_name}")
-            basemap_success = True
-            break
-        except Exception as e:
-            continue
+    # ── North arrow ──────────────────────────────────────────────────────────
+    ax.annotate('', xy=(189550, 678850), xytext=(189550, 678550),
+                arrowprops=dict(arrowstyle='->', color='black', lw=2.0),
+                zorder=8)
+    ax.text(189550, 678870, H("צ"), ha='center', va='bottom',
+            fontsize=13, weight='bold', color='black')
 
-    if not basemap_success:
-        ax.set_facecolor('#F0F0F0')  # Light gray fallback if all providers fail
-        ax.grid(True, alpha=0.2, linestyle='--', linewidth=0.5)
-        print(f"  Basemap unavailable — using gray background + grid")
+    # ── Scale bar (500 m) ────────────────────────────────────────────────────
+    sb_y = 677280
+    ax.plot([188000, 188500], [sb_y, sb_y], 'k-', linewidth=3, solid_capstyle='butt', zorder=8)
+    ax.plot([188000, 188000], [sb_y - 30, sb_y + 30], 'k-', lw=2, zorder=8)
+    ax.plot([188500, 188500], [sb_y - 30, sb_y + 30], 'k-', lw=2, zorder=8)
+    ax.text(188250, sb_y - 60, H("500 מטר"), ha='center', fontsize=8.5,
+            color='black', weight='bold')
 
-    # Explicitly restore full extent (contextily may narrow the view on error)
-    ax.set_xlim(x_min, x_max)
-    ax.set_ylim(y_min, y_max)
-
-    # Flow direction arrow (NW direction) — anchored as fraction of axis extent
-    arrow_x = x_min + (x_max - x_min) * 0.82  # 82% from left
-    arrow_y = y_min + (y_max - y_min) * 0.80  # 80% from bottom
-    dx = -(x_max - x_min) * 0.10
-    dy =  (y_max - y_min) * 0.10
-    ax.annotate('', xy=(arrow_x + dx, arrow_y + dy),
-                xytext=(arrow_x, arrow_y),
-                arrowprops=dict(arrowstyle='->', color='#0D47A1', lw=2.5, alpha=0.9))
-    ax.text(arrow_x + dx * 0.5, arrow_y + dy + (y_max - y_min) * 0.04,
-            H("כיוון זרימת\nמי התהום"),
-            fontsize=9, color='#0D47A1', ha='center', weight='bold',
-            bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.7))
-
-    # Legend
+    # ── Legend ───────────────────────────────────────────────────────────────
     legend_elements = [
-        mpatches.Patch(color='#8E0000', label=H('קידוח: אינדקס 7 (גבוה מאוד)')),
-        mpatches.Patch(color='#FB8C00', label=H('קידוח: אינדקס 5 (בינוני-גבוה)')),
-        mpatches.Patch(color='#FFB74D', label=H('קידוח: אינדקס 4 (בינוני)')),
-        mpatches.Patch(color='#81C784', label=H('קידוח: אינדקס 1–3 (נמוך)')),
-        mpatches.Patch(color='#BDBDBD', label=H('קידוח: אינדקס 0 (אין זיהום)')),
-        mpatches.Patch(color='#7B1FA2', label=H('▲ מפעל תעשייתי')),
-        mpatches.Patch(color='#1565C0', label=H('■ תחנת דלק')),
+        mpatches.Patch(facecolor='#4A0000', edgecolor='black', label=H('קידוח: אינדקס 8 (קריטי)')),
+        mpatches.Patch(facecolor='#8E0000', edgecolor='black', label=H('קידוח: אינדקס 7 (גבוה מאוד)')),
+        mpatches.Patch(facecolor='#FB8C00', edgecolor='black', label=H('קידוח: אינדקס 5 (בינוני-גבוה)')),
+        mpatches.Patch(facecolor='#FFB74D', edgecolor='black', label=H('קידוח: אינדקס 4 (בינוני)')),
+        mpatches.Patch(facecolor='#BDBDBD', edgecolor='black', label=H('קידוח: אינדקס 0 (אין זיהום)')),
+        mpatches.Patch(facecolor='#6A1B9A', edgecolor='black', label=H('▲ מפעל תעשייתי')),
+        mpatches.Patch(facecolor='#1565C0', edgecolor='black', label=H('■ תחנת דלק')),
+        mpatches.Patch(facecolor='#FFF9C4', edgecolor='#F9A825', label=H('■ גבול אזה"ת')),
     ]
-    ax.legend(handles=legend_elements, loc='lower left', fontsize=8, framealpha=0.9)
+    leg = ax.legend(handles=legend_elements, loc='lower right', fontsize=8,
+                    framealpha=0.95, frameon=True, edgecolor='#999')
+    leg.get_frame().set_linewidth(0.8)
 
-    # Title + labels
-    ax.set_title(H('מפת אזור תעשייה רעננה — קידוחים, מפעלים ועזרות מקור'),
-                fontsize=12, weight='bold', pad=10)
+    # ── Title ─────────────────────────────────────────────────────────────────
+    ax.set_title(H('מפת אתר — קריית אתגרים, רעננה | קידוחי ניטור ומקורות זיהום פוטנציאליים'),
+                 fontsize=11, weight='bold', pad=8)
+    ax.set_aspect('equal', adjustable='box')
 
-    ax.set_axis_off()
     fig.tight_layout()
-
-    fig.savefig(out / "zone_site_map.png", dpi=300, bbox_inches="tight", facecolor='white')
+    fig.savefig(out / "zone_site_map.png", dpi=200, bbox_inches="tight",
+                facecolor='white', edgecolor='none')
     plt.close(fig)
     print(f"  Saved: zone_site_map.png")
 
