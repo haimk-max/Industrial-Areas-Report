@@ -622,6 +622,121 @@ def chart_cvoc_pct_standard_panel(df: pd.DataFrame, out: Path) -> None:
     print(f"  Saved: cvoc_pct_standard_panel.png")
 
 
+def chart_zone_site_map(zone_dir: Path, out: Path) -> None:
+    """Central zone map: boreholes by max contamination index, facilities, flow arrow.
+
+    Data sources:
+      - boreholes.csv (ITM coordinates)
+      - facility_attribution.json (facilities with coordinates)
+      - zone_polygons.json (zone boundary polygon)
+    """
+    import contextily as ctx
+    import json
+    from pyproj import Transformer
+
+    # Load boreholes
+    boreholes_csv = zone_dir / "data" / "boreholes.csv"
+    boreholes = pd.read_csv(boreholes_csv)
+
+    # Load facilities attribution
+    attribution_file = zone_dir / "data" / "facility_attribution.json"
+    with open(attribution_file, encoding='utf-8') as f:
+        attribution = json.load(f)
+
+    # Max contamination index per borehole (from CHART_SPEC.md)
+    MAX_INDEX = {
+        "raanana_nt_1": 7, "raanana_nt_2": 4, "raanana_nt_3": 7,
+        "raanana_nd_paz_hanofer": 4, "raanana_nd_turbine": 8,
+        "raanana_p_18": 0, "raanana_p_25": 5
+    }
+
+    INDEX_COLORS = {
+        0: "#BDBDBD", 1: "#81C784", 2: "#81C784", 3: "#81C784",
+        4: "#FFB74D", 5: "#FB8C00", 6: "#C62828", 7: "#8E0000", 8: "#4A0000"
+    }
+
+    INDEX_SIZES = {0: 60, 1: 80, 2: 80, 3: 80, 4: 120, 5: 150, 6: 180, 7: 200, 8: 220}
+
+    # ITM (EPSG:2039) → Web Mercator (EPSG:3857) for contextily
+    transformer = Transformer.from_crs("EPSG:2039", "EPSG:3857", always_xy=True)
+
+    fig, ax = plt.subplots(1, 1, figsize=(12, 10), dpi=300)
+
+    # Plot boreholes (colored by max contamination index)
+    for _, row in boreholes.iterrows():
+        if pd.isna(row.itm_easting) or pd.isna(row.itm_northing):
+            continue
+        x, y = transformer.transform(float(row.itm_easting), float(row.itm_northing))
+        idx = MAX_INDEX.get(row.canonical_id, 0)
+        color = INDEX_COLORS.get(idx, "#808080")
+        size = INDEX_SIZES.get(idx, 80)
+
+        ax.scatter(x, y, c=color, s=size, edgecolors='black', linewidths=0.5, zorder=5, alpha=0.8)
+        ax.annotate(H(row.name_he), (x, y), textcoords="offset points",
+                    xytext=(6, 4), fontsize=8, ha='left', color='black', weight='bold')
+
+    # Plot facilities (triangles = industrial, squares = fuel)
+    for facility in attribution['facilities']:
+        coords = facility.get('coordinates_itm', {})
+        if not coords or not coords.get('easting'):
+            continue
+
+        try:
+            x, y = transformer.transform(float(coords['easting']), float(coords['northing']))
+        except:
+            continue
+
+        ftype = facility.get('type', '')
+        if 'fuel' in ftype.lower() or 'דלק' in ftype:
+            marker, color, label_color = 's', '#1565C0', '#0D47A1'
+        else:
+            marker, color, label_color = '^', '#7B1FA2', '#6A1B9A'
+
+        ax.scatter(x, y, marker=marker, c=color, s=100, edgecolors='black',
+                  linewidths=0.5, zorder=4, alpha=0.85)
+
+    # Flow direction arrow (NW direction)
+    # Position: top-right area
+    cx, cy = transformer.transform(189400, 678700)
+    arrow_dx, arrow_dy = -500, 400  # NW direction
+    ax.annotate('', xy=(cx + arrow_dx, cy + arrow_dy),
+                xytext=(cx, cy),
+                arrowprops=dict(arrowstyle='->', color='#0D47A1', lw=2.5, alpha=0.8))
+    ax.text(cx + arrow_dx/2, cy + arrow_dy + 200, H("כיוון זרימת\nמי התהום"),
+            fontsize=9, color='#0D47A1', ha='center', weight='bold',
+            bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.7))
+
+    # Add OSM basemap (try; fallback to white background if network unavailable)
+    try:
+        ctx.add_basemap(ax, crs="EPSG:3857", source=ctx.providers.OpenStreetMap.Mapnik,
+                       zoom=15, alpha=0.6)
+    except Exception:
+        ax.set_facecolor('white')  # Fallback: white background + grid
+
+    # Legend
+    legend_elements = [
+        mpatches.Patch(color='#8E0000', label=H('קידוח: אינדקס 7 (גבוה מאוד)')),
+        mpatches.Patch(color='#FB8C00', label=H('קידוח: אינדקס 5 (בינוני-גבוה)')),
+        mpatches.Patch(color='#FFB74D', label=H('קידוח: אינדקס 4 (בינוני)')),
+        mpatches.Patch(color='#81C784', label=H('קידוח: אינדקס 1–3 (נמוך)')),
+        mpatches.Patch(color='#BDBDBD', label=H('קידוח: אינדקס 0 (אין זיהום)')),
+        mpatches.Patch(color='#7B1FA2', label=H('▲ מפעל תעשייתי')),
+        mpatches.Patch(color='#1565C0', label=H('■ תחנת דלק')),
+    ]
+    ax.legend(handles=legend_elements, loc='lower left', fontsize=8, framealpha=0.9)
+
+    # Title + labels
+    ax.set_title(H('מפת אזור תעשייה רעננה — קידוחים, מפעלים ועזרות מקור'),
+                fontsize=12, weight='bold', pad=10)
+
+    ax.set_axis_off()
+    fig.tight_layout()
+
+    fig.savefig(out / "zone_site_map.png", dpi=300, bbox_inches="tight", facecolor='white')
+    plt.close(fig)
+    print(f"  Saved: zone_site_map.png")
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 def main():
     parser = argparse.ArgumentParser(description="Generate V2 charts for a zone")
@@ -641,6 +756,9 @@ def main():
     df = load_measurements(zone_dir)
     print(f"[V2 Charts] Loaded {len(df)} measurements from {zone_dir}")
 
+    # Central map (zone_site_map.png) — first, as it's the primary figure
+    chart_zone_site_map(zone_dir, out)
+
     chart_cvoc_timeseries(df, out)
     chart_pfas_all_boreholes(df, out)
     chart_btex_timeseries(df, out)
@@ -651,7 +769,7 @@ def main():
     chart_btex_family_stacked(df, out)
     chart_cvoc_pct_standard_panel(df, out)
 
-    print(f"[V2 Charts] Done — 9 charts saved to {out}/")
+    print(f"[V2 Charts] Done — 10 charts saved to {out}/")
 
 
 if __name__ == "__main__":

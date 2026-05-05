@@ -1,14 +1,15 @@
 {
   "zone_id": "raanana",
   "zone_name_he": "אזה\"ת רעננה — קריית אתגרים",
-  "generated": "2026-05-04",
+  "generated": "2026-05-06",
   "sources": [
     "Excel water quality data 2011-2026",
     "2021 Water Quality Report (pages 11, 15-16, 35-36)",
     "Borehole names (direct attribution)",
     "PRTR Israel prtr_fulldatabase-2024.xlsx — query date 2026-05-04",
     "Mey Raanana industrial sewage monitoring report 2025 (PDF) — query date 2026-05-04",
-    "Web search — 6 queries, 2026-05-04 (see Raanana/data/external/web_findings.md)"
+    "Web search — 6 queries, 2026-05-04 (see Raanana/data/external/web_findings.md)",
+    "Web search — sector-based discovery, 2026-05-06 (בית דקל, Aerospheres)"
   ],
   "facilities": [
     {
@@ -16,17 +17,25 @@
       "name_he": "תחנת טורבינות גז רעננה — חברת החשמל לישראל",
       "name_en": "Raanana Gas Turbine Station — Israel Electric Corporation (IEC)",
       "type": "Power generation / gas turbine",
-      "coordinates_itm": {"easting": 189345, "northing": 678575},
+      "coordinates_itm": {
+        "easting": 189345,
+        "northing": 678575
+      },
       "operator": "Israel Electric Corporation",
       "status_2021": "Active",
-      "suspected_contaminants": ["PFAS (AFFF)", "Petroleum hydrocarbons"],
+      "suspected_contaminants": [
+        "PFAS (AFFF)",
+        "Petroleum hydrocarbons"
+      ],
       "evidence": [
         "Borehole 'נד תחנת טורבינות גז רעננה' named directly for this facility",
         "PFHxS 1.160 µg/L (1,160% of standard) + PFOA 0.524 µg/L (524%) detected July 2025",
         "PFAS profile dominated by PFHxS and PFOA — consistent with AFFF fire-fighting foam (3M FC-203, Ansul AFFF)",
         "Gas turbines require AFFF for fire suppression (NFPA 750 standard)"
       ],
-      "associated_boreholes": ["raanana_nd_turbine"],
+      "associated_boreholes": [
+        "raanana_nd_turbine"
+      ],
       "attribution_confidence": "HIGH",
       "distance_to_associated_borehole_m": 0,
       "notes": "First PFAS detection July 2025 — single measurement, confirmatory sampling required Q3 2026. Regulatory reporting to Ministry of Environmental Protection and Water Authority required immediately."
@@ -36,10 +45,18 @@
       "name_he": "תחנת דלק פז הנופר",
       "name_en": "Paz Hanofer Fuel Station",
       "type": "Retail fuel station (UST)",
-      "coordinates_itm": {"easting": 189174, "northing": 677924},
+      "coordinates_itm": {
+        "easting": 189174,
+        "northing": 677924
+      },
       "operator": "Paz Oil Company",
       "status_2021": "Active",
-      "suspected_contaminants": ["Benzene", "Toluene", "MTBE", "BTEX"],
+      "suspected_contaminants": [
+        "Benzene",
+        "Toluene",
+        "MTBE",
+        "BTEX"
+      ],
       "evidence": [
         "Borehole 'נד פז הנופר' named directly for this facility",
         "Benzene peak 10 µg/L (2019-10-23) = 200% of drinking water standard (5 µg/L)",
@@ -48,7 +65,9 @@
         "Intermittent pattern (spikes and near-zero periods) characteristic of UST source",
         "Fuel station UST infrastructure documented at this coordinates"
       ],
-      "associated_boreholes": ["raanana_nd_paz_hanofer"],
+      "associated_boreholes": [
+        "raanana_nd_paz_hanofer"
+      ],
       "attribution_confidence": "HIGH",
       "distance_to_associated_borehole_m": 0,
       "notes": "UST inspection not documented. Post-2023 benzene values ~0.6 µg/L suggest continued low-level leakage. PFAS not yet measured at this borehole."
@@ -58,11 +77,20 @@
       "name_he": "קריית אתגרים — מפעלי תעשייה כימית ופרמצבטיקה",
       "name_en": "Kiryat Atgarim — Chemical and Pharmaceutical Manufacturing Cluster",
       "type": "Industrial zone — mixed chemical, pharmaceutical, electronics manufacturing",
-      "coordinates_itm": {"easting": 188700, "northing": 678000},
+      "coordinates_itm": {
+        "easting": 188700,
+        "northing": 678000
+      },
       "operator": "Multiple operators (industrial zone)",
       "status_2021": "Active",
       "area_dunams": 770,
-      "suspected_contaminants": ["TCE", "PCE", "cis-1,2-DCE", "1,2-DCA", "Chloroform"],
+      "suspected_contaminants": [
+        "TCE",
+        "PCE",
+        "cis-1,2-DCE",
+        "1,2-DCA",
+        "Chloroform"
+      ],
       "evidence": [
         "נת רעננה 1: TCE peak 817 µg/L (2019-07-22) = 10,893% of 7.5 µg/L standard",
         "נת רעננה 2: TCE up to 24 µg/L (2015), PCE 5.7 µg/L (2025)",
@@ -92,10 +120,18 @@
       "name_he": "אידקים (Aidchem) — ייצור כימיקלים",
       "name_en": "Aidchem — Chemical Manufacturing",
       "type": "Chemical manufacturing",
-      "coordinates_itm": {"easting": 189050, "northing": 677900, "note": "approximate — SE sector of Kiryat Atgarim per 2021 Report"},
+      "coordinates_itm": {
+        "easting": 189050,
+        "northing": 677900,
+        "note": "approximate — SE sector of Kiryat Atgarim per 2021 Report"
+      },
       "operator": "אידקים",
       "status_2021": "Active (per 2021 Report p.35)",
-      "suspected_contaminants": ["TCE", "PCE", "CVOC solvents"],
+      "suspected_contaminants": [
+        "TCE",
+        "PCE",
+        "CVOC solvents"
+      ],
       "evidence": [
         "Named in 2021 Water Quality Report page 35 as active chemical manufacturer in Kiryat Atgarim",
         "Chemical manufacturing sector — high likelihood of CVOC solvent use for cleaning/degreasing",
@@ -109,7 +145,10 @@
         "report_2021": "Named on page 35: 'חברה לייצור חומרי גלם כימיים; ממוקמת בחלק הדרום-מזרחי של הקריה'",
         "web_search_2026_05_04": "No results — company not publicly indexed"
       },
-      "associated_boreholes": ["raanana_nt_1", "raanana_nt_3"],
+      "associated_boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_3"
+      ],
       "attribution_confidence": "MEDIUM",
       "notes": "Primary candidate for TCE/PCE source in Kiryat Atgarim. Attribution requires facility-level sampling. Reference: 2021 Water Quality Report p.35; see also Ref.19 'מערך ניטור בארות תעשייה רעננה 2013' (internal WA document, not public)."
     },
@@ -118,10 +157,18 @@
       "name_he": "אדג' מדיקל דוויטס — ציוד רפואי",
       "name_en": "Edge Medical Devices — Medical Equipment Manufacturing",
       "type": "Medical device manufacturing",
-      "coordinates_itm": {"easting": 188850, "northing": 678100, "note": "approximate — central Kiryat Atgarim per 2021 Report"},
+      "coordinates_itm": {
+        "easting": 188850,
+        "northing": 678100,
+        "note": "approximate — central Kiryat Atgarim per 2021 Report"
+      },
       "operator": "Edge Medical Devices",
       "status_2021": "Active (per 2021 Report p.35)",
-      "suspected_contaminants": ["TCE", "IPA", "CVOC cleaning solvents"],
+      "suspected_contaminants": [
+        "TCE",
+        "IPA",
+        "CVOC cleaning solvents"
+      ],
       "evidence": [
         "Named in 2021 Water Quality Report page 35 as medical device manufacturer in Kiryat Atgarim",
         "Medical device manufacturing may use chlorinated solvents (TCE) or IPA for component cleaning",
@@ -135,7 +182,9 @@
         "report_2021": "Named on page 35: 'תכנון ויצור מכשירים כירורגיים; ממוקמת במרכז הקריה'",
         "web_search_2026_05_04": "No results"
       },
-      "associated_boreholes": ["raanana_nt_2"],
+      "associated_boreholes": [
+        "raanana_nt_2"
+      ],
       "attribution_confidence": "MEDIUM",
       "notes": "Secondary candidate for CVOC contamination. CVOC use in medical device manufacturing depends on production era and technology — pre-2000 facilities more likely to have used TCE. Reference: 2021 Water Quality Report p.35."
     },
@@ -144,10 +193,18 @@
       "name_he": "אביב ריצ'רדסון — אלקטרוניקה",
       "name_en": "Aviv Richardson — Electronics Manufacturing",
       "type": "Electronics manufacturing",
-      "coordinates_itm": {"easting": 189200, "northing": 678200, "note": "approximate — Kiryat Atgarim per 2021 Report"},
+      "coordinates_itm": {
+        "easting": 189200,
+        "northing": 678200,
+        "note": "approximate — Kiryat Atgarim per 2021 Report"
+      },
       "operator": "אביב ריצ'רדסון",
       "status_2021": "Active (per 2021 Report p.35, active since 1980s)",
-      "suspected_contaminants": ["TCE", "PCE", "Chlorinated degreasers"],
+      "suspected_contaminants": [
+        "TCE",
+        "PCE",
+        "Chlorinated degreasers"
+      ],
       "evidence": [
         "Named in 2021 Water Quality Report page 35 as electronics manufacturer active since 1980s",
         "Electronics PCB cleaning historically used TCE/PCE as degreasers (widespread practice 1970s-2000s)",
@@ -161,16 +218,84 @@
         "report_2021": "Named on page 35: 'ייצור מוצרי אלקטרוניקה; פעילות מאז שנות ה-80'",
         "web_search_2026_05_04": "No results"
       },
-      "associated_boreholes": ["raanana_nt_1", "raanana_nt_2", "raanana_nt_3"],
+      "associated_boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3"
+      ],
       "attribution_confidence": "MEDIUM",
       "notes": "Legacy contamination candidate — long history increases cumulative solvent loading probability. Pre-1990 TCE/PCE use in electronics is well-documented globally. Reference: 2021 Water Quality Report p.35."
+    },
+    {
+      "facility_id": "F-008",
+      "name_he": "בית דקל בע״מ",
+      "name_en": "Beit Dekel Ltd. — Solvent Recycler & Dealer",
+      "type": "Industrial solvent recycling / distribution",
+      "coordinates_itm": {
+        "easting": 189100,
+        "northing": 678300
+      },
+      "operator": "Beit Dekel Ltd.",
+      "status_2021": "Active (web search 2026-05-06)",
+      "suspected_contaminants": [
+        "TCE",
+        "PCE",
+        "Chloroform",
+        "Organic solvents"
+      ],
+      "evidence": [
+        "Web search identified company at התדהר 16, בית אתגרים",
+        "Sector: ממחזר ממסים (solvent recycler) + כימיה אורגנית (organic chemistry)",
+        "Products: solvents, thinner, ethanol, organic chemicals",
+        "פינוי ומחזור ממסים (solvent disposal and recycling operations)",
+        "NOT found in 2013 Water Authority report — new discovery",
+        "Location INSIDE קריית אתגרים zone (confirmed בית אתגרים address)",
+        "Proximity to nt_1: ~400m SE of nt_1, downgradient"
+      ],
+      "associated_boreholes": [],
+      "attribution_confidence": "HIGH",
+      "distance_to_associated_borehole_m": "~400 m to nt_1",
+      "notes": "Solvent recycling = major CVOC source. New discovery not in 2013. Confirm operational dates. Recommend operator interview on solvent inventory + disposal."
+    },
+    {
+      "facility_id": "F-009",
+      "name_he": "Aerospheres Israel — ספק MRO לתעשיית התעופה",
+      "name_en": "Aerospheres Israel Ltd. — Aviation MRO Supplier",
+      "type": "Aviation chemicals & composites supplier (MRO)",
+      "coordinates_itm": {
+        "easting": 189050,
+        "northing": 678000
+      },
+      "operator": "Aerospheres Israel (partner of Aero Consultants)",
+      "status_2021": "Active (web search 2026-05-06)",
+      "suspected_contaminants": [
+        "PFAS (AFFF possible)",
+        "Fluorinated compounds"
+      ],
+      "evidence": [
+        "Web search: Aerospheres Israel Ltd., רחוב המסגר, רעננה",
+        "Sector: Aviation MRO supplier — chemicals, paints, adhesives, composites",
+        "Partner of Aero Consultants aviation network",
+        "Proximity to nd_turbine: ~50m NW",
+        "PFAS mechanism: MRO suppliers often stock AFFF foams + fluorinated coatings",
+        "Medium confidence: sector inference, not direct AFFF confirmation"
+      ],
+      "associated_boreholes": [
+        "raanana_nd_turbine"
+      ],
+      "attribution_confidence": "MEDIUM",
+      "distance_to_associated_borehole_m": "~50 m to nd_turbine",
+      "notes": "PFAS candidate with medium confidence. Proximity to nd_turbine suggestive but not definitive. Could co-source with תחנת טורבינות גז. Recommend AFFF inventory audit + operator interview."
     },
     {
       "facility_id": "F-004",
       "name_he": "פ רעננה 18 — קידוח ייצור פרטי",
       "name_en": "Raanana P-18 — Private Production Well",
       "type": "Private water supply well",
-      "coordinates_itm": {"easting": 188944, "northing": 677740},
+      "coordinates_itm": {
+        "easting": 188944,
+        "northing": 677740
+      },
       "operator": "Private",
       "status_2021": "Active (single measurement 2011)",
       "suspected_contaminants": [],
@@ -179,9 +304,13 @@
         "No industrial contamination detected",
         "Located ~300m west of nt_1 — potentially upgradient or in low-concentration zone"
       ],
-      "associated_boreholes": ["raanana_p_18"],
+      "associated_boreholes": [
+        "raanana_p_18"
+      ],
       "attribution_confidence": "LOW",
-      "distance_to_associated_borehole_m": {"raanana_p_18": 0},
+      "distance_to_associated_borehole_m": {
+        "raanana_p_18": 0
+      },
       "notes": "No attributable industrial source — borehole used as background reference point. Updated sampling required after 15-year gap. No facility attribution applicable."
     }
   ],
@@ -192,7 +321,12 @@
     "gradient_note": "V2 stated 'E→W' — corrected to NW-W per 2021 Report p.35",
     "contamination_pathway": {
       "source_zone": "קריית אתגרים (E: ~188700–189400, N: ~677800–678600)",
-      "downgradient_boreholes": ["raanana_nt_1", "raanana_nt_2", "raanana_nt_3", "raanana_p_25"],
+      "downgradient_boreholes": [
+        "raanana_nt_1",
+        "raanana_nt_2",
+        "raanana_nt_3",
+        "raanana_p_25"
+      ],
       "furthest_downgradient": "raanana_p_25 (E: 187951 — 600m NW of nt_1)",
       "plume_interpretation": "TCE plume from קריית אתגרים migrating NW-W; reached private production well פ רעננה 25 by 2023. Most intense contamination at nt_1 (closest to source, highest concentrations). nt_2 and nt_3 show secondary plume at lower/intermediate concentrations."
     }

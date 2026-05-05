@@ -404,6 +404,69 @@ Before finalizing any section:
 
 ---
 
+## Section H: Industrial Facility Discovery Methodology (REQ-A8)
+
+**Purpose**: Document the systematic process for identifying potential contamination sources through sector-based AI-assisted research.
+
+### H.1 AI Agent Workflow
+
+**Tool**: general-purpose AI subagent with environmental/hydrogeological expert prompt.
+
+**Scope**:
+- **Geographic anchor**: ITM E:188000–190000, N:677500–679000 (Kiryat Atgarim zone)
+- **Street names**: התעשייה, המלאכה, התדהר, המסגר, החרש
+- **Sectors searched**:
+  - **CVOC sources**: Metal degreasing, PCB manufacturing, dry cleaning, solvent recycling, chemical production
+  - **PFAS sources**: Fuel stations with AFFF, aviation MRO suppliers, textile coatings, metal plating
+
+**Search methodology**:
+1. B144 Israeli business registry (sector filters: chemical, pharmaceutical, electronics, metal processing, dry cleaning)
+2. Dun & Bradstreet Israel (D&B) profile verification
+3. Web search (Google News, Ynet, businesses.co.il, LinkedIn, company websites)
+4. Municipal records (Raanana city planning, if available)
+5. **Include historical operations**: Closed facilities (1980–2010) — CVOC contamination often has 20–40 year lag
+
+**Output format**: JSON per facility
+```json
+{
+  "name_he": "...",
+  "address_street": "...",
+  "in_kiryat_atgarim": true/false/unknown,
+  "industry_sector": "...",
+  "suspected_processes": ["..."],
+  "suspected_contaminants": ["TCE"/"PCE"/"PFAS"],
+  "confidence": "HIGH/MEDIUM/LOW",
+  "evidence_type": "confirmed_address | sector_inference | indirect",
+  "source_url": "...",
+  "operating_years": "...",
+  "notes": "..."
+}
+```
+
+### H.2 Confidence Levels
+
+| Level | Criteria | Example |
+|---|---|---|
+| **HIGH** | Address in zone + sector confirmed via D&B/news + operational timeline known | בית דקל (התדהר 16, solvent recycler) |
+| **MEDIUM** | Sector confirmed + address in zone but not directly verified OR historical operation (pre-2010) | Aerospheres (רחוב המסגר, aviation MRO) |
+| **LOW** | Sector inference only or indirect evidence | Facility upgradient of high-TCE borehole, sector unclear |
+
+### H.3 Integration with facility_attribution.json
+
+- **New candidates**: Added as F-008, F-009, etc.
+- **Existing facilities**: Updated with confirmed addresses + refined sector descriptions
+- **Data gaps**: Documented in JSON notes (e.g., "AFFF inventory audit pending")
+- **Linkage**: Each facility includes `associated_boreholes` and `distance_to_associated_borehole_m` for contamination pathway analysis
+
+### H.4 Limitations & Disclaimers
+
+- Public data access limited; AFFF inventory and solvent purchasing records require facility operator cooperation
+- PRTR Israel 2024 threshold (1,000 kg/year) means many small contamination sources unreported
+- Web search limited by Hebrew-language indexing; private company details often unavailable
+- Attribution remains probabilistic (not definitive) until confirmed by facility operator interview or chemical/isotopic fingerprinting
+
+---
+
 ## Reference Documents
 
 - **2021 Report**: `Base-Report/בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf` — primary style reference
@@ -419,9 +482,10 @@ Before finalizing any section:
 |---|---|---|
 | 2026-05-04 | Created spec | Standardize tone after multiple rewrites |
 | 2026-05-05 | Major expansion: extracted patterns from 2021 full report (voice, lexicon, sentence patterns, recommendation types/hierarchy, side-by-side examples), added central map figure cross-reference | Per user request: clearer reference to 2021 style + recommendation character from full report + central map figure spec |
+| 2026-05-06 | Added Section H: Industrial Facility Discovery Methodology (REQ-A8) | Document systematic AI-assisted sector-based facility search process; confidence levels; integration with facility_attribution.json; limitations |
 
 ---
 
-**Status**: LOCKED (guide finalized v2)  
-**Last Review**: 2026-05-05  
-**Next Review**: After any significant report rewrite
+**Status**: REFERENCE (guide finalized v2, extended)  
+**Last Review**: 2026-05-06 (added facility discovery methodology)  
+**Next Review**: After any significant report rewrite or methodology change

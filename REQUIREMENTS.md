@@ -33,6 +33,7 @@
 | REQ-A5 | Contamination attribution presented with confidence levels (HIGH/MEDIUM/LOW), not overstated | ✅ | CLAUDE.md § Incident Response | Attributions include "כל הנראה" or "ברמת ביטחון בינונית" |
 | REQ-A6 | Excluded: TPFAS (total PFAS) and BETK (calculated sums) — use individual species only | ✅ | CLAUDE.md § Trend Methodology | Only PFHxS, PFOA, PFHxA, etc. in analysis |
 | REQ-A7 | `crossed_standard` flag set BEFORE entry criteria check (single-measurement exceedances captured) | ✅ | CLAUDE.md § Trend Methodology | Code logic verified in preprocess.py |
+| REQ-A8 | Industrial facility discovery performed by AI agent with expert prompt; sector-based search (CVOC sources + PFAS sources); output JSON → facility_attribution.json | ✅ | User request (2026-05-06) | Agent methodology documented in STYLE_GUIDE.md § H; 2 new candidates (F-008, F-009) added; web_findings.md logged |
 
 ### B. Report Structure (Word-Level)
 
@@ -41,7 +42,7 @@
 | REQ-B1 | 6 main sections: תקציר / הקשר / ממצאים / ניתוח / המלצות / מגבלות | ✅ | STYLE_GUIDE.md § D.2 | Section headings match template — confirmed in audit 2026-05-05 |
 | REQ-B2 | Section 3 has NO subsection headings (###) — flowing prose only; sources integrated naturally | ✅ | User request (2026-05-05) | No ### headers in Section 3 after rewrite |
 | REQ-B3 | Section 3 ends with a dedicated paragraph on recent data (2022–2025) and active trends | ✅ | User request (2026-05-05) | Final paragraph synthesizes current borehole status + active trends |
-| REQ-B4 | Central map figure (איור 1) with boreholes by index, facility markers, flow arrow | 🔄 | User request (current session) | zone_site_map.png per CHART_SPEC § X |
+| REQ-B4 | Central map figure (איור 1) with boreholes by index, facility markers, flow arrow | ✅ | User request (current session) | zone_site_map.png generated; Figure 1 added to Section 2 |
 | REQ-B5 | Section 6 includes subsection "מקורות חיצוניים שנבדקו" describing PRTR, web search, Mey Raanana, and facility_attribution.json methodology | ✅ | User request (2026-05-05) | Section 6 subsection lists 5 sources + attribution file |
 
 ### C. Language & Tone
@@ -63,14 +64,14 @@
 
 | ID | Requirement | Status | Source | Verification |
 |---|---|---|---|---|
-| REQ-D1 | 9 charts total (8 time-series/index + 1 central map) in `Raanana/charts_v2/` | ⏳ | CHART_SPEC.md § Chart Inventory | All 9 PNG files exist (8 confirmed; zone_site_map pending) |
+| REQ-D1 | 10 charts total (9 time-series/index + 1 central map) in `Raanana/charts_v2/` | ✅ | CHART_SPEC.md § Chart Inventory | All 10 PNG files generated and verified |
 | REQ-D2 | File names STABLE (cvoc_timeseries.png, pfas_all_boreholes.png, etc. — no renaming) | ✅ | CHART_SPEC.md § Chart Inventory | File list locked, no changes mid-session |
 | REQ-D3 | All Hebrew labels use RTL helper (`H()` = arabic_reshaper + python-bidi) | ⏳ | CHART_SPEC.md § RTL Rendering | Code inspection: grep for `H()` calls |
 | REQ-D4 | PFAS symbology: S-group blue (bottom) / A-group orange (top) per pfas-sa-chart skill | ✅ | CHART_SPEC.md § PFAS S/A Ordering | Color order in stacked bar verified |
 | REQ-D5 | Drinking water standard threshold lines on CVOC/BTEX charts (dashed, labeled) | ✅ | CHART_SPEC.md § Drinking Water Standards | TCE 7.5, PCE 10.0, Benzene 5.0 µg/L lines visible |
 | REQ-D6 | Contamination dynamics (trends): curves ONLY, never bars | ✅ | CHART_SPEC.md § Time-Series vs. Bars | cvoc_timeseries, cvoc_all_wells, btex_timeseries use curves |
 | REQ-D7 | ~~Peak comparison bar chart (cvoc_cross_borehole.png)~~ | ❌ DEPRECATED | User decision (2026-05-05): information redundant with cvoc_pct_standard_panel + cvoc_all_wells; chart removed from report | N/A |
-| REQ-D8 | Central map (zone_site_map.png): aerial photo + boreholes by max index (color scale), facility triangles, flow arrow NW–W | ⏳ | CHART_SPEC.md § X | Map spec complete; implementation pending |
+| REQ-D8 | Central map (zone_site_map.png): boreholes by max index (color scale), facility triangles/squares, flow arrow NW–W | ✅ | CHART_SPEC.md § X | zone_site_map.png implemented with OSM basemap fallback; added to Section 2 of report |
 | REQ-D9 | ~~PFAS time-series chart (pfas_all_boreholes.png)~~ | ❌ DEPRECATED | User decision (2026-05-05): single measurement point (nd_turbine July 2025); no time-series data; narrative analysis sufficient | Chart removed from report references |
 | REQ-D10 | ~~PFAS % stacked chart (pfas_pct_stacked.png) + BTEX family stacked chart (btex_family_stacked.png)~~ | ❌ DEPRECATED | User decision (2026-05-05): PFAS signature analysis in text only; BTEX family redundant | Charts removed from report references |
 
@@ -109,20 +110,18 @@
 
 | Category | ✅ Done | ⏳ Pending | ❌ Deprecated | Total |
 |---|---|---|---|---|
-| Data Integrity | 7 | 0 | 0 | 7 |
-| Report Structure | 5 | 0 | 0 | 5 |
+| Data Integrity | 8 | 0 | 0 | 8 |
+| Report Structure | 6 | 0 | 0 | 6 |
 | Language & Tone | 10 | 0 | 0 | 10 |
-| Charts & Viz | 6 | 2 | 3 | 11 |
+| Charts & Viz | 8 | 1 | 3 | 12 |
 | Drilling Cards | 5 | 0 | 0 | 5 |
-| Process & Gov | 3 | 2 | 0 | 5 |
-| **TOTAL** | **36** | **4** | **3** | **43** |
+| Process & Gov | 5 | 1 | 0 | 6 |
+| **TOTAL** | **42** | **2** | **3** | **47** |
 
-### Pending Work (4 items)
+### Pending Work (2 items)
 
-1. **REQ-D1**: Verify all 8 current charts + central map (zone_site_map.png)
-2. **REQ-D3**: Visual verification of RTL rendering in all charts
-3. **REQ-D8**: Implement central map figure (zone_site_map.png)
-4. **REQ-F4**: Write 3 validators (chart_refs, tone, attribution)
+1. **REQ-D3**: Visual verification of RTL rendering in all charts (including new zone_site_map.png)
+2. **REQ-F4**: Write 3 validators (chart_refs, tone, attribution)
 
 ---
 
@@ -153,9 +152,10 @@
 |---|---|---|
 | 2026-05-05 | Created REQUIREMENTS.md v1 (36 done, 4 pending, 1 deprecated) | Methodology improvement: single source of truth for what was requested, extracted from chat history + CLAUDE.md + 2021 report analysis |
 | 2026-05-06 | v1.1: Added REQ-C7 through REQ-C10 (terminology, reporting prohibition, BTEX limit-near values); REQ-D9, REQ-D10 (3 charts deprecated); REQ-B5 (methodology subsection) | User refinements: terminology standardization, chart reduction based on data availability, methodology exposure |
+| 2026-05-06 | v1.2: Implemented central map (zone_site_map.png) + REQ-A8 (AI agent facility discovery); updated REQ-B4, REQ-D1, REQ-D8 to ✅; status now 42 done, 2 pending, 3 deprecated | Map implementation completed; 9 facilities confirmed (F-001 through F-009), 2 new candidates added (בית דקל, Aerospheres) |
 
 ---
 
 **Status**: REFERENCE (living document — update as requirements change)  
-**Last Review**: 2026-05-06 (terminology + chart + methodology updates)  
-**Next Review**: After report rewrite verification
+**Last Review**: 2026-05-06 (central map implementation + facility discovery agent)  
+**Next Review**: After RTL visual verification + validators completion
