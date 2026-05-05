@@ -61,13 +61,15 @@
 | Drinking water standard | תקן מי שתייה | "סף בריאות" |
 | Source | מקור | "אשם" / "אחראי" |
 | Increase/decrease | עלייה / ירידה | "התרחבות" / "התכווצות" |
-| Plume | פלום | "התפשטות" / "כתם" |
+| Plume | **פלומה** | ~~"פלום"~~ / "התפשטות" / "כתם" |
 | Aquifer | אקוויפר | "מאגר מים תת-קרקעי" |
 | Saturated zone | התחום הרווי | "אזור עם מים" |
 | Flow direction | כיוון הזרימה | "כיוון התקדמות המים" |
-| Production well | קידוח הפקה | "באר ייצור" |
+| Production well | **בארות הפקה** | ~~"בארות ייצור"~~ |
 | Monitoring well | קידוח ניטור | "באר ניטור" |
 | Cross-section | חתך גיאולוגי | "פרופיל" |
+| Concentration (units in text) | **מקג"ל** (μg/L in charts OK) | ~~"µg/L" in flowing text~~ |
+| Chlorinated organics | **תרכובות אורגניות מוכלרות** | ~~"ממסים כלוריניים"~~ |
 
 ### A.4 Approved Tone Examples (from 2021 Report)
 
@@ -102,6 +104,14 @@
 ✗ חירום                    → "דיווח לרשות המים" (specific action)
 ✗ אסון / קטסטרופה          → factual severity classification
 ✗ זעקה                     → "ממצא המחייב..." (specific obligation)
+```
+
+### B.4 Regulatory Reporting Language (DO NOT USE)
+```
+✗ "דיווח לרשות המים ולמשרד הגנת הסביבה"  → This report IS BY Water Authority, not TO them
+✗ "דיווח לרגולטור"                        → Replace with specific sampling requirement
+✗ "חובה דיווח"                            → Use only for technical obligations (lab analysis, sample integrity)
+✗ "דיווח תוך 30 יום"                      → Replace with "דיגום אישוש" + timeframe
 ```
 
 ### B.3 Hedging / Soft Language (REPLACE WITH SPECIFIC METRIC)
@@ -238,7 +248,7 @@ The 2021 report doesn't have a separate "recommendations" section per zone, but 
 
 | Type | Phrasing | Trigger | Example |
 |---|---|---|---|
-| **ניטור שוטף** | "ניטור שנתי / חצי-שנתי / רבעוני של [parameter]" | Default for all zones | "מערך הניטור מנוטר באופן שנתי על ידי אגף איכות מים" |
+| **ניטור שוטף** | "ניטור **חצי-שנתי** של [parameter]" (max frequency) | Default for all zones | "ניטור חצי-שנתי של TCE, PCE, cis-1,2-DCE בקידוחים נת רעננה 1, 2 ו-3" |
 | **חקירת מקור** | "חקירה במס' מצומצם של מפעלים..." | Source unknown | "אנו מקדמים חקירה במס' מצומצם של מפעלים שעלולים להיות מקור לזיהום זה" |
 | **שיקום מי תהום** | "תהליך שיקום מי תהום" | Source identified + active plume | "כבר החל תהליך שיקום מי תהום" (אשקלון צפון) |
 | **מעקב פלום** | "מעקב אחר תנועת הפלום" | Plume documented + extending | "אנו עוקבים אחר תנועת הפלום הזיהום ושוקלים את המשך הטיפול במקום" |
@@ -256,17 +266,18 @@ The 2021 report uses this implicit hierarchy:
 
 ### F.3 Recommendation Phrasing Templates
 
-**Immediate Action** (when production well affected):
+**Immediate Action** (when new/confirmed contamination or production well affected):
 ```
-ממצאי [parameter] ב[בור] ב-[value] µg/L ([%] מהתקן) מחייבים [action] לפי [regulator/standard reference].
+ממצאי [parameter] ב[בור] ב-[value] מקג"ל ([%] מהתקן) מחייבים [specific technical action].
 ```
-**Example**: "ממצאי PFAS בנד תחנת טורבינות גז (PFHxS ב-1.16 µg/L, 1,160% מהתקן) מחייבים דיווח לרשות המים ולמשרד הגנת הסביבה."
+**Example (CORRECTED)**: "ממצאי PFAS בנד תחנת טורבינות גז (PFHxS ב-1.16 מקג"ל, 1,160% מהתקן) מחייבים דיגום אישוש (18 מיני PFAS, מעבדה מוסמכת) ברבעון הקרוב."  
+**NB**: Never recommend "דיווח לרשות המים" — this report IS by Water Authority.
 
 **Routine Monitoring**:
 ```
 ניטור [תדירות] של [parameters] בקידוחים [list].
 ```
-**Example**: "ניטור רבעוני של TCE, PCE, cis-1,2-DCE ו-VC בקידוחים נת רעננה 1, 2 ו-3."
+**Example (CORRECTED)**: "ניטור חצי-שנתי של TCE, PCE, cis-1,2-DCE בקידוחים נת רעננה 1, 2 ו-3."
 
 **Investigation**:
 ```
@@ -287,7 +298,9 @@ The 2021 report uses this implicit hierarchy:
 ❌ Cost figures or budget estimates  
 ❌ Stakeholder communication plans  
 ❌ Emotional appeals ("דחוף!" / "בלתי נסבל")  
-❌ Direct accusations of specific facilities without forensic evidence
+❌ Direct accusations of specific facilities without forensic evidence  
+❌ **Regulatory reporting requirements** ("דיווח לרשות המים", "דיווח למשרד הגנת הסביבה") — This report IS by Water Authority, not TO them  
+❌ **Detection-limit-near concentrations** (5–10 µg/L benzene) — Don't analyze as findings; cite only if significantly higher current measurements
 
 ---
 

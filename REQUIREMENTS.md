@@ -42,6 +42,7 @@
 | REQ-B2 | Section 3 has NO subsection headings (###) — flowing prose only; sources integrated naturally | ✅ | User request (2026-05-05) | No ### headers in Section 3 after rewrite |
 | REQ-B3 | Section 3 ends with a dedicated paragraph on recent data (2022–2025) and active trends | ✅ | User request (2026-05-05) | Final paragraph synthesizes current borehole status + active trends |
 | REQ-B4 | Central map figure (איור 1) with boreholes by index, facility markers, flow arrow | 🔄 | User request (current session) | zone_site_map.png per CHART_SPEC § X |
+| REQ-B5 | Section 6 includes subsection "מקורות חיצוניים שנבדקו" describing PRTR, web search, Mey Raanana, and facility_attribution.json methodology | ✅ | User request (2026-05-05) | Section 6 subsection lists 5 sources + attribution file |
 
 ### C. Language & Tone
 
@@ -53,6 +54,10 @@
 | REQ-C4 | Approved tone: "בקידוח X נמדד Y µg/L (% מהתקן; Excel: בור, תאריך)" | ✅ | STYLE_GUIDE.md § E | Sentence templates applied |
 | REQ-C5 | Recommendations follow 2021 character: ניטור / חקירה / שיקום / מעקב / הרחבה (no speculative tech) | ✅ | STYLE_GUIDE.md § F | Confirmed in audit 2026-05-05: Section 5 uses מיידי/ניטור שוטף/חקירה pattern |
 | REQ-C6 | No hedging ("יתכן", "כנראה") without explicit metric (p-value, confidence level, Mann-Kendall) | ✅ | STYLE_GUIDE.md § B.3 | Uncertainty quantified |
+| REQ-C7 | Terminology standardization: פלומה (not פלום), בארות הפקה (not בארות ייצור), מקג"ל in text, תרכובות אורגניות מוכלרות (not ממסים כלוריניים) | ✅ | User request (2026-05-05) | Global find-replace applied; grep verification clean |
+| REQ-C8 | % of drinking water standard cited ONCE per (borehole, contaminant) pair; concentrations only in subsequent mentions | ✅ | User request (2026-05-05) | All findings follow "ריכוז עדכני של X מקג"ל (Y% מהתקן)" format once, then "ריכוז X מקג"ל" |
+| REQ-C9 | No facility-level regulatory reporting requirements (דיווח לרשות/משרד) — report is BY Water Authority, not TO regulators | ✅ | User clarification (2026-05-05) | Removed all "דיווח לרשות המים ולמשרד הגנת הסביבה" language; retained sampling requirements |
+| REQ-C10 | No analysis of fuel leak patterns or detection-limit-near values (5–10 µg/L benzene) — cite only current low concentrations | ✅ | User guidance (2026-05-05) | BTEX paragraph simplified: no "דפוס תדלוק UST", only current 0.6 µg/L |
 
 ### D. Charts & Visualizations
 
@@ -66,6 +71,8 @@
 | REQ-D6 | Contamination dynamics (trends): curves ONLY, never bars | ✅ | CHART_SPEC.md § Time-Series vs. Bars | cvoc_timeseries, cvoc_all_wells, btex_timeseries use curves |
 | REQ-D7 | ~~Peak comparison bar chart (cvoc_cross_borehole.png)~~ | ❌ DEPRECATED | User decision (2026-05-05): information redundant with cvoc_pct_standard_panel + cvoc_all_wells; chart removed from report | N/A |
 | REQ-D8 | Central map (zone_site_map.png): aerial photo + boreholes by max index (color scale), facility triangles, flow arrow NW–W | ⏳ | CHART_SPEC.md § X | Map spec complete; implementation pending |
+| REQ-D9 | ~~PFAS time-series chart (pfas_all_boreholes.png)~~ | ❌ DEPRECATED | User decision (2026-05-05): single measurement point (nd_turbine July 2025); no time-series data; narrative analysis sufficient | Chart removed from report references |
+| REQ-D10 | ~~PFAS % stacked chart (pfas_pct_stacked.png) + BTEX family stacked chart (btex_family_stacked.png)~~ | ❌ DEPRECATED | User decision (2026-05-05): PFAS signature analysis in text only; BTEX family redundant | Charts removed from report references |
 
 ### E. Drilling Cards (7 per Zone)
 
@@ -103,12 +110,12 @@
 | Category | ✅ Done | ⏳ Pending | ❌ Deprecated | Total |
 |---|---|---|---|---|
 | Data Integrity | 7 | 0 | 0 | 7 |
-| Report Structure | 4 | 0 | 0 | 4 |
-| Language & Tone | 6 | 0 | 0 | 6 |
-| Charts & Viz | 6 | 2 | 1 | 9 |
+| Report Structure | 5 | 0 | 0 | 5 |
+| Language & Tone | 10 | 0 | 0 | 10 |
+| Charts & Viz | 6 | 2 | 3 | 11 |
 | Drilling Cards | 5 | 0 | 0 | 5 |
 | Process & Gov | 3 | 2 | 0 | 5 |
-| **TOTAL** | **31** | **4** | **1** | **36** |
+| **TOTAL** | **36** | **4** | **3** | **43** |
 
 ### Pending Work (4 items)
 
@@ -144,10 +151,11 @@
 
 | Date | Change | Reason |
 |---|---|---|
-| 2026-05-05 | Created REQUIREMENTS.md v1 (37 requirements, 30 done, 7 pending) | Methodology improvement: single source of truth for what was requested, extracted from chat history + CLAUDE.md + 2021 report analysis |
+| 2026-05-05 | Created REQUIREMENTS.md v1 (36 done, 4 pending, 1 deprecated) | Methodology improvement: single source of truth for what was requested, extracted from chat history + CLAUDE.md + 2021 report analysis |
+| 2026-05-06 | v1.1: Added REQ-C7 through REQ-C10 (terminology, reporting prohibition, BTEX limit-near values); REQ-D9, REQ-D10 (3 charts deprecated); REQ-B5 (methodology subsection) | User refinements: terminology standardization, chart reduction based on data availability, methodology exposure |
 
 ---
 
 **Status**: REFERENCE (living document — update as requirements change)  
-**Last Review**: 2026-05-05  
-**Next Review**: After validators implemented
+**Last Review**: 2026-05-06 (terminology + chart + methodology updates)  
+**Next Review**: After report rewrite verification
