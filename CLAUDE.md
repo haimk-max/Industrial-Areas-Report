@@ -127,17 +127,21 @@ Before implementing data processing:
   - ✓ Mann-Kendall trend engine (tie-corrected, SNR gating, soft_trigger=2 measurements)
   - ✓ ALERT: NO₃ at p_25; WATCH: CHLF at p_25, ORP at paz_hanofer
   - ✓ 36 parameter/borehole pairs crossed drinking water standard
-  - ✓ 15 charts generated: PFAS, CVOC, BTEX, THM, 7 trend charts
+  - ✓ 9 production charts (V2): zone site map, PFAS stacked, CVOC + trend lines, BTEX, 4 time-series trend charts
+  - ✓ V1 charts deprecated and removed from Raanana/charts/ (15 files deleted)
   - ✓ Forensics: 7 decay chains, 14 source signatures, 758 co-occurrence pairs
   - ✓ PFAS at turbine station: PFHxS 1,160%, PFOA 524% (July 2025 — critical new finding)
 
-**Phase D: Hebrew Reports** ✓ COMPLETE (May 2026)
-- Goal: Professional Hebrew zone summary + 7 drilling cards from real data
+**Phase D: Hebrew Reports & Zone Map** ✓ COMPLETE (May 2026)
+- Goal: Professional Hebrew zone summary + 7 drilling cards + central site map from real data
 - Verify:
   - ✓ Zone summary report with 4 critical contamination findings (TCE, PCE, PFAS, Benzene)
   - ✓ 7 individual drilling cards (nt1, nt2, nt3, nd_paz, nd_turbine, p18, p25)
   - ✓ All findings sourced to Excel (borehole/date) or TAHAL/2021 (page number)
   - ✓ Limitations and data gaps explicitly stated
+  - ✓ Zone site map (zone_site_map.png): offline ITM schematic with boreholes (color by index), facilities (triangles/squares), flow arrow (NW), scale bar, ITM grid; Figure 1 added to Section 2
+  - ✓ Facility discovery: 9 candidates identified (F-001 through F-009) via AI agent sector-based search; facility_attribution.json populated with HIGH/MEDIUM/LOW confidence levels
+  - ✓ Section 6 ("מקורות חיצוניים שנבדקו") documents PRTR, Mey Raanana, web search methodology
 
 **Phase E: Zone Selection** ✓ COMPLETE (May 2026)
 - Goal: 3-tier borehole selection mechanism for scalability
@@ -150,9 +154,35 @@ Before implementing data processing:
 **Phase F: Tests** ✓ COMPLETE (May 2026)
 - Goal: Automated regression tests for trend engine and chart presets
 - Verify:
-  - ✓ 25 tests passing: test_preprocess.py (8), test_chart_presets.py (9), test_borehole_selection.py (8)
+  - ✓ 28 tests passing: test_preprocess.py (8), test_chart_presets.py (11), test_borehole_selection.py (9)
   - ✓ Golden dataset: 144 measurements, 10 expected trend classifications
   - ✓ Key invariants guarded: ALERT/WATCH classifications, soft_trigger=2, SNR gating, crossed_standard before entry criteria
+  - ✓ validate_report.py (3 validators): chart_refs, tone, attribution — all PASS on current report
+
+**Phase G: Facility Discovery & Map Implementation** ✓ COMPLETE (May 5, 2026)
+- Goal: Systematic contamination source identification via AI-assisted facility search; offline zone site map
+- Verify:
+  - ✓ AI agent facility discovery: sector-based search (CVOC sources + PFAS sources) with 2 search iterations
+  - ✓ 9 facility candidates identified (F-001 through F-009): Aidchem (CVOC HIGH), Chemitron (CVOC MEDIUM), בית דקל (CVOC HIGH), CMSR (CVOC MEDIUM), Nemal (CVOC LOW), Epoxy (CVOC MEDIUM), Aerospheres (PFAS MEDIUM-HIGH), + 2 new candidates validated
+  - ✓ facility_attribution.json populated: name_he, coordinates_itm, confidence, suspected_contaminants, operating_years, evidence_type
+  - ✓ web_findings.md created: search log documenting PRTR queries, B144 business registry, Mey Raanana 2025 report
+  - ✓ Zone site map (zone_site_map.png): 1200×960px, offline ITM schematic (no tile dependency)
+    - Boreholes: 7 points colored by max contamination index (0–8 scale)
+    - Facilities: 8 markers (triangles for industrial, squares for fuel)
+    - Geographic: 250m ITM grid lines, scale bar (500m), north arrow, flow direction arrow (NW), ITM axis labels
+  - ✓ Figure 1 caption added to Section 2 of RAANANA_REPORT_V2.md
+  - ✓ REQUIREMENTS.md updated: REQ-A8 (facility discovery), REQ-B4/D8 (map), REQ-D3 (RTL), REQ-F4 (validators)
+  - ✓ STYLE_GUIDE.md updated: Section H (facility discovery methodology)
+  - ✓ Project structure cleanup: README.md recreated, External Data/README.md created, V1 charts removed, documentation consolidated
+
+**Phase G.1: Basemap Integration** ⏳ DEFERRED (Phase 4 / Q3 2026)
+- **Goal**: Overlay OSM or cadastral basemap on zone_site_map.png (REQ-G1)
+- **Blocker**: All tile providers (OSM, CartoDB, Stamen, ESRI, contextily) return 403 Forbidden in current environment
+- **Options documented**:
+  1. **Cached raster tiles**: Locally hosted MBTiles or GeoTIFF of Raanana area (requires manual download)
+  2. **Israeli WMS**: govmap.gov.il / Survey of Israel WMS endpoint (requires authentication, DNS verification)
+  3. **Vector rendering**: Overpass API street network + geopandas render (no tile dependency, slower initial fetch)
+- **Decision**: Current offline ITM schematic is production-ready; basemap deferred pending expert environment access (Phase 4)
 
 **Phase 4: System Validation** (PENDING expert review)
 - Goal: Expert hydrogeologist review; PFAS alert to regulators; boron anomaly investigation
@@ -247,13 +277,15 @@ Before committing code or reports:
 
 ## 8. Scaling from Raanana to Full System
 
-### Current State (Raanana — Phases A–F Complete)
+### Current State (Raanana — Phases A–G Complete)
 - 1 zone, 7 boreholes (real 2011–2026 data), 179 parameters, 2,613 measurements
-- Full pipeline: parse_excel → trend_analysis → forensics_analyzer → generate_charts
-- 7 drilling cards + zone summary report in Hebrew
-- 25 automated tests passing (test_preprocess, test_chart_presets, test_borehole_selection)
+- Full pipeline: parse_excel → trend_analysis → forensics_analyzer → generate_charts_v2
+- 7 drilling cards + zone summary report in Hebrew + zone site map
+- 28 automated tests passing (test_preprocess, test_chart_presets, test_borehole_selection); 3 report validators (chart_refs, tone, attribution)
+- 9 facility candidates identified with confidence levels (facility_attribution.json)
 - Tier 1/2/3 borehole selection in zone_definitions/
 - base_layer/ seeded for all 18 zones (Raanana complete; 17 others manual_pending)
+- Project documentation: REQUIREMENTS.md (48 requirements, 44 done), STYLE_GUIDE.md (sections A–H), CHART_SPEC.md, DATA_DICTIONARY.md
 
 ### Adding a New Zone (Phase 2)
 1. `zone_definitions/tier1_historical_boreholes.json` — add zone's historical borehole IDs
@@ -333,14 +365,17 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 3. ✓ Forensic analysis links contaminants to source facilities with confidence levels
 4. ✓ PFAS at turbine station flagged for urgent regulatory attention
 5. ✓ Real 2011–2026 data integrated (replacing placeholder data)
-6. ✓ 25 automated tests passing (regression guard on trend engine)
+6. ✓ 28 automated tests passing + 3 report validators (chart_refs, tone, attribution)
 7. ✓ System designed to scale from 1 zone to 18 zones (--zone flag, zone_definitions/, select_boreholes.py)
-8. ✓ CLAUDE.md and DATA_DICTIONARY.md updated
-9. ⏳ Expert hydrogeologist review — pending (Q3 2026)
-10. ⏳ PFAS regulatory reporting — pending (Q3 2026)
+8. ✓ CLAUDE.md, DATA_DICTIONARY.md, REQUIREMENTS.md, STYLE_GUIDE.md, CHART_SPEC.md updated
+9. ✓ Zone site map generated (offline ITM schematic); Figure 1 in report; 9 facility candidates identified
+10. ⏳ Expert hydrogeologist review — pending (Q3 2026)
+11. ⏳ PFAS regulatory reporting — pending (Q3 2026)
+12. ⏳ Basemap integration (REQ-G1) — pending Phase 4 (environment resolution)
 
 ---
 
-**Project Status**: Phases A–F Complete (real data pipeline, trend engine, charts, Hebrew reports, tests) | Phase 4 (expert validation) In Progress  
-**Last Updated**: May 3, 2026  
-**Next Review**: Q3 2026 (PFAS confirmatory sampling at turbine station; expert validation)
+**Project Status**: Phases A–G Complete (real data pipeline, trend engine, charts, Hebrew reports, tests, facility discovery, zone map) | Phase 4 (expert validation) Pending Q3 2026  
+**Last Updated**: May 5, 2026  
+**Completion**: 44/44 core requirements done; 1 deferred (REQ-G1 basemap); 3 deprecated charts  
+**Next Review**: Q3 2026 (PFAS confirmatory sampling at turbine station; expert validation; Phase 2 expansion planning)
