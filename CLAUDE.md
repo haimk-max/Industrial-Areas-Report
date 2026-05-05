@@ -184,14 +184,23 @@ Before implementing data processing:
   3. **Vector rendering**: Overpass API street network + geopandas render (no tile dependency, slower initial fetch)
 - **Decision**: Current offline ITM schematic is production-ready; basemap deferred pending expert environment access (Phase 4)
 
-**Phase 4: System Validation** (PENDING expert review)
-- Goal: Expert hydrogeologist review; PFAS alert to regulators; boron anomaly investigation
-- Plan:
-  1. PFAS dip sampling at turbine station (Q3 2026) — top priority
-  2. Expert review of forensic attributions (decay chains, source signatures)
-  3. Boron anomaly investigation (2019-07-22 readings at nt_2, nt_3)
-  4. Regulatory reporting for PFAS exceedances
-  5. Phase 2 expansion to additional zones (post-expert validation)
+**Phase 4: System Validation** ✓ COMPLETE (May 2026)
+- Goal: Expert hydrogeologist review of Raanana zone report
+- Result:
+  - ✓ Hydrogeologist approved report as submitted — no corrections required
+  - ✓ No confirmatory PFAS sampling planned (hydrogeologist decision)
+  - ✓ Boron anomaly (2019-07-22 at nt_2, nt_3) — noted for future investigation; not blocking
+  - ✓ Decision: pilot methodology on Holon zone before scaling to all 18 zones
+
+**Phase 5: Holon Pilot** ⏳ PENDING DATA UPLOAD
+- Goal: Validate Raanana reporting methodology on a second zone (חולון) before generalising to 18 zones
+- Status: Directory structure ready (`Holon/`); awaiting data upload
+- Required inputs:
+  - Excel measurements file → `Holon/data/`
+  - Background PDFs (Water Authority reports, TAHAL) → `Holon/Base-Report/`
+  - ITM polygon confirmation → `zone_definitions/zone_polygons.json` (stub exists)
+  - Historical borehole list → `zone_definitions/tier1_historical_boreholes.json` (stub exists)
+- Pipeline: identical to Raanana (--zone holon flag on all scripts)
 
 ---
 
@@ -369,13 +378,14 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 7. ✓ System designed to scale from 1 zone to 18 zones (--zone flag, zone_definitions/, select_boreholes.py)
 8. ✓ CLAUDE.md, DATA_DICTIONARY.md, REQUIREMENTS.md, STYLE_GUIDE.md, CHART_SPEC.md updated
 9. ✓ Zone site map generated (offline ITM schematic); Figure 1 in report; 9 facility candidates identified
-10. ⏳ Expert hydrogeologist review — pending (Q3 2026)
-11. ⏳ PFAS regulatory reporting — pending (Q3 2026)
-12. ⏳ Basemap integration (REQ-G1) — pending Phase 4 (environment resolution)
+10. ✓ Expert hydrogeologist review — approved (May 2026); no PFAS sampling required
+11. ⏳ Holon pilot — pending data upload (Phase 5)
+12. ⏳ Basemap integration (REQ-G1) — pending Phase 5 environment resolution
+13. ⏳ Phase 2: expansion to remaining 16 zones — after Holon pilot validation
 
 ---
 
-**Project Status**: Phases A–G Complete (real data pipeline, trend engine, charts, Hebrew reports, tests, facility discovery, zone map) | Phase 4 (expert validation) Pending Q3 2026  
+**Project Status**: Phases A–G + Phase 4 Complete (Raanana zone fully validated by hydrogeologist) | Phase 5 (Holon pilot) Pending data upload  
 **Last Updated**: May 5, 2026  
 **Completion**: 44/44 core requirements done; 1 deferred (REQ-G1 basemap); 3 deprecated charts  
-**Next Review**: Q3 2026 (PFAS confirmatory sampling at turbine station; expert validation; Phase 2 expansion planning)
+**Next Review**: After Holon pilot complete → Phase 2 expansion to remaining 16 zones
