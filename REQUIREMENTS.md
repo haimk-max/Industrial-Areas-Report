@@ -95,6 +95,12 @@
 | REQ-F4 | Validators (3 scripts) to check: chart refs, tone, attribution | ✅ | Methodology plan | scripts/validate_report.py — all 3 validators PASS on current report |
 | REQ-F5 | No breaking changes to existing tests (25 test suite passes) | ✅ | CLAUDE.md § Phase F | tests/ directory untouched |
 
+### G. Geographic Visualisation (Deferred)
+
+| ID | Requirement | Status | Source | Verification |
+|---|---|---|---|---|
+| REQ-G1 | Basemap tiles for `zone_site_map.png` (street / aerial imagery) | ⏳ | User request (2026-05-06) | All tile providers (OSM, CartoDB, Stamen, ESRI) return 403 in current environment. Current fallback: schematic ITM grid. **Options to revisit**: (A) locally cached raster tiles; (B) Israeli Survey of Israel WMS (govmap.gov.il); (C) Overpass API vector street network + geopandas render |
+
 ---
 
 ## Potential Contradictions Found
@@ -116,11 +122,12 @@
 | Charts & Viz | 9 | 0 | 3 | 12 |
 | Drilling Cards | 5 | 0 | 0 | 5 |
 | Process & Gov | 6 | 0 | 0 | 6 |
-| **TOTAL** | **44** | **0** | **3** | **47** |
+| Geo Visualisation | 0 | 1 | 0 | 1 |
+| **TOTAL** | **44** | **1** | **3** | **48** |
 
-### Pending Work (0 items)
+### Pending Work (1 item)
 
-All requirements complete. See Change Log for history.
+1. **REQ-G1**: Basemap tiles for `zone_site_map.png` — all tile providers blocked; three options documented; deferred to Phase 4 / expert validation environment
 
 ---
 
