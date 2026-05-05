@@ -62,41 +62,76 @@ def _try_fetch(url: str, dest: Path) -> bool:
         return False
 
 
-def _extract_text(pdf_path: Path, zone: str, year: int) -> str:
-    """Extract relevant text from PDF using pdfplumber."""
-    try:
-        import pdfplumber
-    except ImportError:
-        return "pdfplumber not installed — run: pip install pdfplumber"
+def _extract_with_pdftotext(pdf_path: Path) -> list[str] | None:
+    """Extract per-page text using poppler pdftotext. Returns list of page texts, or None on failure.
 
-    lines_out: list[str] = []
+    pdftotext handles CID-encoded Hebrew fonts correctly where pdfplumber/pdfminer fail.
+    """
+    import subprocess
+    try:
+        result = subprocess.run(
+            ["pdftotext", "-layout", "-enc", "UTF-8", str(pdf_path), "-"],
+            capture_output=True, text=True, timeout=60, check=True,
+        )
+    except (FileNotFoundError, subprocess.CalledProcessError, subprocess.TimeoutExpired):
+        return None
+    # pdftotext separates pages with form-feed (\f)
+    pages = result.stdout.split("\f")
+    # Drop trailing empty page if present
+    if pages and not pages[-1].strip():
+        pages = pages[:-1]
+    return pages
+
+
+def _extract_text(pdf_path: Path, zone: str, year: int) -> str:
+    """Extract relevant text from PDF.
+
+    Prefers pdftotext (poppler) — handles Hebrew CID fonts. Falls back to pdfplumber.
+    """
     facility_pattern = re.compile("|".join(re.escape(f) for f in KNOWN_FACILITIES), re.IGNORECASE)
     conc_pattern = re.compile(r"\d+\.?\d*\s*(µg/L|mg/L|ppb|ppm|μg/L)", re.IGNORECASE)
+    lines_out: list[str] = []
 
-    with pdfplumber.open(pdf_path) as pdf:
-        total = len(pdf.pages)
+    pages = _extract_with_pdftotext(pdf_path)
+    if pages is not None:
+        total = len(pages)
         lines_out.append(f"# Water Authority Monitoring Report — {zone.title()} {year}")
-        lines_out.append(f"Source: {pdf_path.name} ({total} pages)\n")
-
-        for page_num, page in enumerate(pdf.pages, 1):
-            text = page.extract_text() or ""
+        lines_out.append(f"Source: {pdf_path.name} ({total} pages, extracted via pdftotext)\n")
+        for page_num, text in enumerate(pages, 1):
             if not text.strip():
                 continue
-
-            # Always include first 5 pages (executive summary)
             include = page_num <= 5
-            # Include pages with known facility names or concentration patterns
             if not include and facility_pattern.search(text):
                 include = True
             if not include and conc_pattern.search(text):
                 include = True
-
             if include:
                 lines_out.append(f"\n## עמוד {page_num}\n")
                 lines_out.append(text.strip())
+        return "\n".join(lines_out)
 
-            # Try table extraction on included pages
+    # Fallback: pdfplumber (does not handle CID-encoded Hebrew correctly, but try anyway)
+    try:
+        import pdfplumber
+    except ImportError:
+        return "pdftotext unavailable and pdfplumber not installed"
+
+    with pdfplumber.open(pdf_path) as pdf:
+        total = len(pdf.pages)
+        lines_out.append(f"# Water Authority Monitoring Report — {zone.title()} {year}")
+        lines_out.append(f"Source: {pdf_path.name} ({total} pages, extracted via pdfplumber fallback)\n")
+        for page_num, page in enumerate(pdf.pages, 1):
+            text = page.extract_text() or ""
+            if not text.strip():
+                continue
+            include = page_num <= 5
+            if not include and facility_pattern.search(text):
+                include = True
+            if not include and conc_pattern.search(text):
+                include = True
             if include:
+                lines_out.append(f"\n## עמוד {page_num}\n")
+                lines_out.append(text.strip())
                 tables = page.extract_tables()
                 for t in tables:
                     if t and any(any(cell for cell in row) for row in t):
@@ -105,7 +140,6 @@ def _extract_text(pdf_path: Path, zone: str, year: int) -> str:
                             clean = " | ".join(str(c or "").strip() for c in row)
                             if clean.strip("| "):
                                 lines_out.append(f"| {clean} |")
-
     return "\n".join(lines_out)
 
 
