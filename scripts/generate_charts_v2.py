@@ -660,6 +660,18 @@ def chart_zone_site_map(zone_dir: Path, out: Path) -> None:
     # ITM (EPSG:2039) → Web Mercator (EPSG:3857) for contextily
     transformer = Transformer.from_crs("EPSG:2039", "EPSG:3857", always_xy=True)
 
+    # Load zone polygon (for boundary visualization)
+    zone_polygon_coords = None
+    zone_polygons_file = Path("zone_definitions/zone_polygons.json")
+    if not zone_polygons_file.exists():
+        zone_polygons_file = zone_dir.parent / "zone_definitions" / "zone_polygons.json"
+
+    if zone_polygons_file.exists():
+        with open(zone_polygons_file, encoding='utf-8') as f:
+            zone_data = json.load(f)
+            if 'raanana' in zone_data and 'polygon' in zone_data['raanana']:
+                zone_polygon_coords = zone_data['raanana']['polygon']
+
     # Pre-compute borehole extents for explicit axis limits (ensures p_25 stays visible)
     xs_all, ys_all = [], []
     for _, row in boreholes.iterrows():
@@ -674,6 +686,15 @@ def chart_zone_site_map(zone_dir: Path, out: Path) -> None:
 
     fig, ax = plt.subplots(1, 1, figsize=(12, 10), dpi=300)
 
+    # Draw zone polygon boundary (ITM → Web Mercator)
+    if zone_polygon_coords:
+        poly_x, poly_y = [], []
+        for easting, northing in zone_polygon_coords:
+            x, y = transformer.transform(float(easting), float(northing))
+            poly_x.append(x)
+            poly_y.append(y)
+        ax.plot(poly_x, poly_y, 'k--', linewidth=1.5, alpha=0.4, zorder=2, label=H('גבול אזה"ת'))
+
     # Plot boreholes (colored by max contamination index)
     for _, row in boreholes.iterrows():
         if pd.isna(row.itm_easting) or pd.isna(row.itm_northing):
@@ -687,7 +708,7 @@ def chart_zone_site_map(zone_dir: Path, out: Path) -> None:
         ax.annotate(H(row.name_he), (x, y), textcoords="offset points",
                     xytext=(6, 4), fontsize=8, ha='left', color='black', weight='bold')
 
-    # Plot facilities (triangles = industrial, squares = fuel)
+    # Plot facilities (triangles = industrial, squares = fuel) + labels
     for facility in attribution['facilities']:
         coords = facility.get('coordinates_itm', {})
         if not coords or not coords.get('easting'):
@@ -707,12 +728,35 @@ def chart_zone_site_map(zone_dir: Path, out: Path) -> None:
         ax.scatter(x, y, marker=marker, c=color, s=100, edgecolors='black',
                   linewidths=0.5, zorder=4, alpha=0.85)
 
-    # Add OSM basemap (try; fallback to white background if network unavailable)
-    try:
-        ctx.add_basemap(ax, crs="EPSG:3857", source=ctx.providers.OpenStreetMap.Mapnik,
-                       zoom=15, alpha=0.6)
-    except Exception:
-        ax.set_facecolor('white')  # Fallback: white background + grid
+        # Add facility name label
+        fname = facility.get('name_he', facility.get('name_en', ''))
+        if fname:
+            ax.annotate(H(fname), (x, y), textcoords="offset points",
+                       xytext=(-8, -12), fontsize=7, ha='right', color='#4A148C',
+                       weight='normal', style='italic',
+                       bbox=dict(boxstyle='round,pad=0.2', facecolor='yellow', alpha=0.4, edgecolor='none'))
+
+    # Add basemap — try multiple providers (OSM may be blocked; fallback to CartoDB)
+    basemap_providers = [
+        ('OpenStreetMap.Mapnik', ctx.providers.OpenStreetMap.Mapnik),
+        ('CartoDB Positron', ctx.providers.CartoDB.Positron),
+        ('CartoDB Voyager', ctx.providers.CartoDB.Voyager),
+    ]
+
+    basemap_success = False
+    for provider_name, provider in basemap_providers:
+        try:
+            ctx.add_basemap(ax, crs="EPSG:3857", source=provider, zoom=14, alpha=0.5)
+            print(f"  Basemap loaded: {provider_name}")
+            basemap_success = True
+            break
+        except Exception as e:
+            continue
+
+    if not basemap_success:
+        ax.set_facecolor('#F0F0F0')  # Light gray fallback if all providers fail
+        ax.grid(True, alpha=0.2, linestyle='--', linewidth=0.5)
+        print(f"  Basemap unavailable — using gray background + grid")
 
     # Explicitly restore full extent (contextily may narrow the view on error)
     ax.set_xlim(x_min, x_max)
