@@ -61,13 +61,15 @@
 | Drinking water standard | תקן מי שתייה | "סף בריאות" |
 | Source | מקור | "אשם" / "אחראי" |
 | Increase/decrease | עלייה / ירידה | "התרחבות" / "התכווצות" |
-| Plume | פלום | "התפשטות" / "כתם" |
+| Plume | **פלומה** | ~~"פלום"~~ / "התפשטות" / "כתם" |
 | Aquifer | אקוויפר | "מאגר מים תת-קרקעי" |
 | Saturated zone | התחום הרווי | "אזור עם מים" |
 | Flow direction | כיוון הזרימה | "כיוון התקדמות המים" |
-| Production well | קידוח הפקה | "באר ייצור" |
+| Production well | **בארות הפקה** | ~~"בארות ייצור"~~ |
 | Monitoring well | קידוח ניטור | "באר ניטור" |
 | Cross-section | חתך גיאולוגי | "פרופיל" |
+| Concentration (units in text) | **מקג"ל** (μg/L in charts OK) | ~~"µg/L" in flowing text~~ |
+| Chlorinated organics | **תרכובות אורגניות מוכלרות** | ~~"ממסים כלוריניים"~~ |
 
 ### A.4 Approved Tone Examples (from 2021 Report)
 
@@ -104,6 +106,14 @@
 ✗ זעקה                     → "ממצא המחייב..." (specific obligation)
 ```
 
+### B.4 Regulatory Reporting Language (DO NOT USE)
+```
+✗ "דיווח לרשות המים ולמשרד הגנת הסביבה"  → This report IS BY Water Authority, not TO them
+✗ "דיווח לרגולטור"                        → Replace with specific sampling requirement
+✗ "חובה דיווח"                            → Use only for technical obligations (lab analysis, sample integrity)
+✗ "דיווח תוך 30 יום"                      → Replace with "דיגום אישוש" + timeframe
+```
+
 ### B.3 Hedging / Soft Language (REPLACE WITH SPECIFIC METRIC)
 ```
 ✗ "יתכן" (maybe)        → "Mann-Kendall p=0.055" (explicit uncertainty)
@@ -117,12 +127,11 @@
 ## Section C: Required Attribution Format
 
 ### C.1 Excel Measurements
-**Pattern**: "Excel: [בור], [תאריך]"
+**Rule**: Do NOT cite the Excel source inline with concentration values in flowing text. The year and borehole name are sufficient identification; exact source tracing belongs in the data table at Section 6.
 
-✅ "Excel: נת רעננה 1, 2019-07-22"
-
-**Full sentence**:  
-"ב-2019 נמדד TCE בנת רעננה 1 ב-817 µg/L (10,900% מהתקן; Excel: נת רעננה 1, 2019-07-22)."
+✅ "ב-2019 נמדד TCE בנת רעננה 1 ב-817 מקג"ל (10,900% מהתקן)."  
+✅ "TCE בנת רעננה 1 הגיע לשיאו ב-817 מקג"ל ביולי 2019."  
+❌ ~~"ב-817 מקג"ל (10,900% מהתקן; Excel: נת רעננה 1, 2019-07-22)"~~ — too verbose for prose
 
 ### C.2 Historical Reports
 **Pattern**: "דוח [שנה] [/ משרד], עמ' [page]"
@@ -194,9 +203,10 @@ Our Raanana report extends the 2021 template with longer analytical sections:
 
 ### E.1 Measurement Statement
 ```
-ב-[שנה] נמדד [parameter] ב[בור] ב-[value] µg/L ([% of standard]% מהתקן; Excel: [בור], [תאריך]).
+ב-[שנה] נמדד [parameter] ב[בור] ב-[value] מקג"ל ([% of standard]% מהתקן).
 ```
-**Example**: "ב-2019 נמדד TCE בנת רעננה 1 ב-817 µg/L (10,900% מהתקן; Excel: נת רעננה 1, 2019-07-22)."
+**Example**: "ב-2019 נמדד TCE בנת רעננה 1 ב-817 מקג"ל (10,900% מהתקן)."  
+**Note**: No Excel citation inline. Source tracing appears only in the data table (Section 6).
 
 ### E.2 Trend Statement
 ```
@@ -238,7 +248,7 @@ The 2021 report doesn't have a separate "recommendations" section per zone, but 
 
 | Type | Phrasing | Trigger | Example |
 |---|---|---|---|
-| **ניטור שוטף** | "ניטור שנתי / חצי-שנתי / רבעוני של [parameter]" | Default for all zones | "מערך הניטור מנוטר באופן שנתי על ידי אגף איכות מים" |
+| **ניטור שוטף** | "ניטור **חצי-שנתי** של [parameter]" (max frequency) | Default for all zones | "ניטור חצי-שנתי של TCE, PCE, cis-1,2-DCE בקידוחים נת רעננה 1, 2 ו-3" |
 | **חקירת מקור** | "חקירה במס' מצומצם של מפעלים..." | Source unknown | "אנו מקדמים חקירה במס' מצומצם של מפעלים שעלולים להיות מקור לזיהום זה" |
 | **שיקום מי תהום** | "תהליך שיקום מי תהום" | Source identified + active plume | "כבר החל תהליך שיקום מי תהום" (אשקלון צפון) |
 | **מעקב פלום** | "מעקב אחר תנועת הפלום" | Plume documented + extending | "אנו עוקבים אחר תנועת הפלום הזיהום ושוקלים את המשך הטיפול במקום" |
@@ -256,17 +266,18 @@ The 2021 report uses this implicit hierarchy:
 
 ### F.3 Recommendation Phrasing Templates
 
-**Immediate Action** (when production well affected):
+**Immediate Action** (when new/confirmed contamination or production well affected):
 ```
-ממצאי [parameter] ב[בור] ב-[value] µg/L ([%] מהתקן) מחייבים [action] לפי [regulator/standard reference].
+ממצאי [parameter] ב[בור] ב-[value] מקג"ל ([%] מהתקן) מחייבים [specific technical action].
 ```
-**Example**: "ממצאי PFAS בנד תחנת טורבינות גז (PFHxS ב-1.16 µg/L, 1,160% מהתקן) מחייבים דיווח לרשות המים ולמשרד הגנת הסביבה."
+**Example (CORRECTED)**: "ממצאי PFAS בנד תחנת טורבינות גז (PFHxS ב-1.16 מקג"ל, 1,160% מהתקן) מחייבים דיגום אישוש (18 מיני PFAS, מעבדה מוסמכת) ברבעון הקרוב."  
+**NB**: Never recommend "דיווח לרשות המים" — this report IS by Water Authority.
 
 **Routine Monitoring**:
 ```
 ניטור [תדירות] של [parameters] בקידוחים [list].
 ```
-**Example**: "ניטור רבעוני של TCE, PCE, cis-1,2-DCE ו-VC בקידוחים נת רעננה 1, 2 ו-3."
+**Example (CORRECTED)**: "ניטור חצי-שנתי של TCE, PCE, cis-1,2-DCE בקידוחים נת רעננה 1, 2 ו-3."
 
 **Investigation**:
 ```
@@ -287,7 +298,9 @@ The 2021 report uses this implicit hierarchy:
 ❌ Cost figures or budget estimates  
 ❌ Stakeholder communication plans  
 ❌ Emotional appeals ("דחוף!" / "בלתי נסבל")  
-❌ Direct accusations of specific facilities without forensic evidence
+❌ Direct accusations of specific facilities without forensic evidence  
+❌ **Regulatory reporting requirements** ("דיווח לרשות המים", "דיווח למשרד הגנת הסביבה") — This report IS by Water Authority, not TO them  
+❌ **Detection-limit-near concentrations** (5–10 µg/L benzene) — Don't analyze as findings; cite only if significantly higher current measurements
 
 ---
 
@@ -391,6 +404,69 @@ Before finalizing any section:
 
 ---
 
+## Section H: Industrial Facility Discovery Methodology (REQ-A8)
+
+**Purpose**: Document the systematic process for identifying potential contamination sources through sector-based AI-assisted research.
+
+### H.1 AI Agent Workflow
+
+**Tool**: general-purpose AI subagent with environmental/hydrogeological expert prompt.
+
+**Scope**:
+- **Geographic anchor**: ITM E:188000–190000, N:677500–679000 (Kiryat Atgarim zone)
+- **Street names**: התעשייה, המלאכה, התדהר, המסגר, החרש
+- **Sectors searched**:
+  - **CVOC sources**: Metal degreasing, PCB manufacturing, dry cleaning, solvent recycling, chemical production
+  - **PFAS sources**: Fuel stations with AFFF, aviation MRO suppliers, textile coatings, metal plating
+
+**Search methodology**:
+1. B144 Israeli business registry (sector filters: chemical, pharmaceutical, electronics, metal processing, dry cleaning)
+2. Dun & Bradstreet Israel (D&B) profile verification
+3. Web search (Google News, Ynet, businesses.co.il, LinkedIn, company websites)
+4. Municipal records (Raanana city planning, if available)
+5. **Include historical operations**: Closed facilities (1980–2010) — CVOC contamination often has 20–40 year lag
+
+**Output format**: JSON per facility
+```json
+{
+  "name_he": "...",
+  "address_street": "...",
+  "in_kiryat_atgarim": true/false/unknown,
+  "industry_sector": "...",
+  "suspected_processes": ["..."],
+  "suspected_contaminants": ["TCE"/"PCE"/"PFAS"],
+  "confidence": "HIGH/MEDIUM/LOW",
+  "evidence_type": "confirmed_address | sector_inference | indirect",
+  "source_url": "...",
+  "operating_years": "...",
+  "notes": "..."
+}
+```
+
+### H.2 Confidence Levels
+
+| Level | Criteria | Example |
+|---|---|---|
+| **HIGH** | Address in zone + sector confirmed via D&B/news + operational timeline known | בית דקל (התדהר 16, solvent recycler) |
+| **MEDIUM** | Sector confirmed + address in zone but not directly verified OR historical operation (pre-2010) | Aerospheres (רחוב המסגר, aviation MRO) |
+| **LOW** | Sector inference only or indirect evidence | Facility upgradient of high-TCE borehole, sector unclear |
+
+### H.3 Integration with facility_attribution.json
+
+- **New candidates**: Added as F-008, F-009, etc.
+- **Existing facilities**: Updated with confirmed addresses + refined sector descriptions
+- **Data gaps**: Documented in JSON notes (e.g., "AFFF inventory audit pending")
+- **Linkage**: Each facility includes `associated_boreholes` and `distance_to_associated_borehole_m` for contamination pathway analysis
+
+### H.4 Limitations & Disclaimers
+
+- Public data access limited; AFFF inventory and solvent purchasing records require facility operator cooperation
+- PRTR Israel 2024 threshold (1,000 kg/year) means many small contamination sources unreported
+- Web search limited by Hebrew-language indexing; private company details often unavailable
+- Attribution remains probabilistic (not definitive) until confirmed by facility operator interview or chemical/isotopic fingerprinting
+
+---
+
 ## Reference Documents
 
 - **2021 Report**: `Base-Report/בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf` — primary style reference
@@ -406,9 +482,10 @@ Before finalizing any section:
 |---|---|---|
 | 2026-05-04 | Created spec | Standardize tone after multiple rewrites |
 | 2026-05-05 | Major expansion: extracted patterns from 2021 full report (voice, lexicon, sentence patterns, recommendation types/hierarchy, side-by-side examples), added central map figure cross-reference | Per user request: clearer reference to 2021 style + recommendation character from full report + central map figure spec |
+| 2026-05-06 | Added Section H: Industrial Facility Discovery Methodology (REQ-A8) | Document systematic AI-assisted sector-based facility search process; confidence levels; integration with facility_attribution.json; limitations |
 
 ---
 
-**Status**: LOCKED (guide finalized v2)  
-**Last Review**: 2026-05-05  
-**Next Review**: After any significant report rewrite
+**Status**: REFERENCE (guide finalized v2, extended)  
+**Last Review**: 2026-05-06 (added facility discovery methodology)  
+**Next Review**: After any significant report rewrite or methodology change
