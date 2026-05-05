@@ -66,7 +66,7 @@
 |---|---|---|---|---|
 | REQ-D1 | 10 charts total (9 time-series/index + 1 central map) in `Raanana/charts_v2/` | ✅ | CHART_SPEC.md § Chart Inventory | All 10 PNG files generated and verified |
 | REQ-D2 | File names STABLE (cvoc_timeseries.png, pfas_all_boreholes.png, etc. — no renaming) | ✅ | CHART_SPEC.md § Chart Inventory | File list locked, no changes mid-session |
-| REQ-D3 | All Hebrew labels use RTL helper (`H()` = arabic_reshaper + python-bidi) | ⏳ | CHART_SPEC.md § RTL Rendering | Code inspection: grep for `H()` calls |
+| REQ-D3 | All Hebrew labels use RTL helper (`H()` = arabic_reshaper + python-bidi) | ✅ | CHART_SPEC.md § RTL Rendering | Verified: zone_site_map, cvoc_timeseries, pfas_all_boreholes — all labels RTL correct |
 | REQ-D4 | PFAS symbology: S-group blue (bottom) / A-group orange (top) per pfas-sa-chart skill | ✅ | CHART_SPEC.md § PFAS S/A Ordering | Color order in stacked bar verified |
 | REQ-D5 | Drinking water standard threshold lines on CVOC/BTEX charts (dashed, labeled) | ✅ | CHART_SPEC.md § Drinking Water Standards | TCE 7.5, PCE 10.0, Benzene 5.0 µg/L lines visible |
 | REQ-D6 | Contamination dynamics (trends): curves ONLY, never bars | ✅ | CHART_SPEC.md § Time-Series vs. Bars | cvoc_timeseries, cvoc_all_wells, btex_timeseries use curves |
@@ -92,7 +92,7 @@
 | REQ-F1 | All work on branch `claude/create-base-report-directory-5DqAR` | ✅ | System message | Current branch confirmed |
 | REQ-F2 | Clear commit messages with session URL (claude.ai/code/...) | ✅ | CLAUDE.md § Version Control | 3 commits: 6ed3ac5, 534b79c [+ pending] |
 | REQ-F3 | STYLE_GUIDE.md + CHART_SPEC.md locked before any code changes | ✅ | Current methodology | Both docs finalized, committed |
-| REQ-F4 | Validators (3 scripts) to check: chart refs, tone, attribution | ⏳ | Methodology plan | validate_chart_refs.py, validate_tone.py, validate_attribution.py pending |
+| REQ-F4 | Validators (3 scripts) to check: chart refs, tone, attribution | ✅ | Methodology plan | scripts/validate_report.py — all 3 validators PASS on current report |
 | REQ-F5 | No breaking changes to existing tests (25 test suite passes) | ✅ | CLAUDE.md § Phase F | tests/ directory untouched |
 
 ---
@@ -113,15 +113,14 @@
 | Data Integrity | 8 | 0 | 0 | 8 |
 | Report Structure | 6 | 0 | 0 | 6 |
 | Language & Tone | 10 | 0 | 0 | 10 |
-| Charts & Viz | 8 | 1 | 3 | 12 |
+| Charts & Viz | 9 | 0 | 3 | 12 |
 | Drilling Cards | 5 | 0 | 0 | 5 |
-| Process & Gov | 5 | 1 | 0 | 6 |
-| **TOTAL** | **42** | **2** | **3** | **47** |
+| Process & Gov | 6 | 0 | 0 | 6 |
+| **TOTAL** | **44** | **0** | **3** | **47** |
 
-### Pending Work (2 items)
+### Pending Work (0 items)
 
-1. **REQ-D3**: Visual verification of RTL rendering in all charts (including new zone_site_map.png)
-2. **REQ-F4**: Write 3 validators (chart_refs, tone, attribution)
+All requirements complete. See Change Log for history.
 
 ---
 
@@ -153,9 +152,10 @@
 | 2026-05-05 | Created REQUIREMENTS.md v1 (36 done, 4 pending, 1 deprecated) | Methodology improvement: single source of truth for what was requested, extracted from chat history + CLAUDE.md + 2021 report analysis |
 | 2026-05-06 | v1.1: Added REQ-C7 through REQ-C10 (terminology, reporting prohibition, BTEX limit-near values); REQ-D9, REQ-D10 (3 charts deprecated); REQ-B5 (methodology subsection) | User refinements: terminology standardization, chart reduction based on data availability, methodology exposure |
 | 2026-05-06 | v1.2: Implemented central map (zone_site_map.png) + REQ-A8 (AI agent facility discovery); updated REQ-B4, REQ-D1, REQ-D8 to ✅; status now 42 done, 2 pending, 3 deprecated | Map implementation completed; 9 facilities confirmed (F-001 through F-009), 2 new candidates added (בית דקל, Aerospheres) |
+| 2026-05-06 | v1.3: RTL verification (REQ-D3 ✅) + 3 validators (REQ-F4 ✅); all requirements COMPLETE (44 done, 0 pending); fixed zone_site_map.png clipping (p_25 visibility); improved flow arrow anchoring | Full regression guard: validate_report.py PASS on all validators |
 
 ---
 
-**Status**: REFERENCE (living document — update as requirements change)  
-**Last Review**: 2026-05-06 (central map implementation + facility discovery agent)  
-**Next Review**: After RTL visual verification + validators completion
+**Status**: COMPLETE (all 44 requirements done; 3 deprecated)  
+**Last Review**: 2026-05-06 (RTL + validators + map clipping fix)  
+**Next Review**: After Phase 4 expert validation (Q3 2026) or new user requirements

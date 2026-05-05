@@ -660,6 +660,18 @@ def chart_zone_site_map(zone_dir: Path, out: Path) -> None:
     # ITM (EPSG:2039) → Web Mercator (EPSG:3857) for contextily
     transformer = Transformer.from_crs("EPSG:2039", "EPSG:3857", always_xy=True)
 
+    # Pre-compute borehole extents for explicit axis limits (ensures p_25 stays visible)
+    xs_all, ys_all = [], []
+    for _, row in boreholes.iterrows():
+        if not pd.isna(row.itm_easting) and not pd.isna(row.itm_northing):
+            x, y = transformer.transform(float(row.itm_easting), float(row.itm_northing))
+            xs_all.append(x)
+            ys_all.append(y)
+    pad_x = (max(xs_all) - min(xs_all)) * 0.18
+    pad_y = (max(ys_all) - min(ys_all)) * 0.18
+    x_min, x_max = min(xs_all) - pad_x, max(xs_all) + pad_x
+    y_min, y_max = min(ys_all) - pad_y, max(ys_all) + pad_y
+
     fig, ax = plt.subplots(1, 1, figsize=(12, 10), dpi=300)
 
     # Plot boreholes (colored by max contamination index)
@@ -688,23 +700,12 @@ def chart_zone_site_map(zone_dir: Path, out: Path) -> None:
 
         ftype = facility.get('type', '')
         if 'fuel' in ftype.lower() or 'דלק' in ftype:
-            marker, color, label_color = 's', '#1565C0', '#0D47A1'
+            marker, color = 's', '#1565C0'
         else:
-            marker, color, label_color = '^', '#7B1FA2', '#6A1B9A'
+            marker, color = '^', '#7B1FA2'
 
         ax.scatter(x, y, marker=marker, c=color, s=100, edgecolors='black',
                   linewidths=0.5, zorder=4, alpha=0.85)
-
-    # Flow direction arrow (NW direction)
-    # Position: top-right area
-    cx, cy = transformer.transform(189400, 678700)
-    arrow_dx, arrow_dy = -500, 400  # NW direction
-    ax.annotate('', xy=(cx + arrow_dx, cy + arrow_dy),
-                xytext=(cx, cy),
-                arrowprops=dict(arrowstyle='->', color='#0D47A1', lw=2.5, alpha=0.8))
-    ax.text(cx + arrow_dx/2, cy + arrow_dy + 200, H("כיוון זרימת\nמי התהום"),
-            fontsize=9, color='#0D47A1', ha='center', weight='bold',
-            bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.7))
 
     # Add OSM basemap (try; fallback to white background if network unavailable)
     try:
@@ -712,6 +713,23 @@ def chart_zone_site_map(zone_dir: Path, out: Path) -> None:
                        zoom=15, alpha=0.6)
     except Exception:
         ax.set_facecolor('white')  # Fallback: white background + grid
+
+    # Explicitly restore full extent (contextily may narrow the view on error)
+    ax.set_xlim(x_min, x_max)
+    ax.set_ylim(y_min, y_max)
+
+    # Flow direction arrow (NW direction) — anchored as fraction of axis extent
+    arrow_x = x_min + (x_max - x_min) * 0.82  # 82% from left
+    arrow_y = y_min + (y_max - y_min) * 0.80  # 80% from bottom
+    dx = -(x_max - x_min) * 0.10
+    dy =  (y_max - y_min) * 0.10
+    ax.annotate('', xy=(arrow_x + dx, arrow_y + dy),
+                xytext=(arrow_x, arrow_y),
+                arrowprops=dict(arrowstyle='->', color='#0D47A1', lw=2.5, alpha=0.9))
+    ax.text(arrow_x + dx * 0.5, arrow_y + dy + (y_max - y_min) * 0.04,
+            H("כיוון זרימת\nמי התהום"),
+            fontsize=9, color='#0D47A1', ha='center', weight='bold',
+            bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.7))
 
     # Legend
     legend_elements = [
