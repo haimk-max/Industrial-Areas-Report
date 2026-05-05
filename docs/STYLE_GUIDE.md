@@ -127,12 +127,11 @@
 ## Section C: Required Attribution Format
 
 ### C.1 Excel Measurements
-**Pattern**: "Excel: [בור], [תאריך]"
+**Rule**: Do NOT cite the Excel source inline with concentration values in flowing text. The year and borehole name are sufficient identification; exact source tracing belongs in the data table at Section 6.
 
-✅ "Excel: נת רעננה 1, 2019-07-22"
-
-**Full sentence**:  
-"ב-2019 נמדד TCE בנת רעננה 1 ב-817 µg/L (10,900% מהתקן; Excel: נת רעננה 1, 2019-07-22)."
+✅ "ב-2019 נמדד TCE בנת רעננה 1 ב-817 מקג"ל (10,900% מהתקן)."  
+✅ "TCE בנת רעננה 1 הגיע לשיאו ב-817 מקג"ל ביולי 2019."  
+❌ ~~"ב-817 מקג"ל (10,900% מהתקן; Excel: נת רעננה 1, 2019-07-22)"~~ — too verbose for prose
 
 ### C.2 Historical Reports
 **Pattern**: "דוח [שנה] [/ משרד], עמ' [page]"
@@ -204,9 +203,10 @@ Our Raanana report extends the 2021 template with longer analytical sections:
 
 ### E.1 Measurement Statement
 ```
-ב-[שנה] נמדד [parameter] ב[בור] ב-[value] µg/L ([% of standard]% מהתקן; Excel: [בור], [תאריך]).
+ב-[שנה] נמדד [parameter] ב[בור] ב-[value] מקג"ל ([% of standard]% מהתקן).
 ```
-**Example**: "ב-2019 נמדד TCE בנת רעננה 1 ב-817 µg/L (10,900% מהתקן; Excel: נת רעננה 1, 2019-07-22)."
+**Example**: "ב-2019 נמדד TCE בנת רעננה 1 ב-817 מקג"ל (10,900% מהתקן)."  
+**Note**: No Excel citation inline. Source tracing appears only in the data table (Section 6).
 
 ### E.2 Trend Statement
 ```

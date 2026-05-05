@@ -26,7 +26,7 @@
 
 | ID | Requirement | Status | Source | Verification |
 |---|---|---|---|---|
-| REQ-A1 | Every data point must cite source (Excel borehole/date OR דוח 2013/page OR דוח 2021/page) | ✅ | CLAUDE.md § Data Integrity | Citation audit on final report |
+| REQ-A1 | Every data point must cite source — in flowing text, borehole name + year is sufficient; full Excel/report citations belong in Section 6 data table only | ✅ | CLAUDE.md § Data Integrity, STYLE_GUIDE § C.1 | Citation audit on final report |
 | REQ-A2 | No interpolation of missing years/boreholes — flag gaps explicitly | ✅ | CLAUDE.md § Data Integrity | "Missing data" section exists |
 | REQ-A3 | Severity index calculated per 2021 Report formula (exact, no modifications) | ✅ | CLAUDE.md § Data Integrity | Index values match 2021 table (page 7) |
 | REQ-A4 | Trend analysis uses Mann-Kendall (tie-corrected) with SNR ≥ 0.3, soft_trigger = 2 measurements in 5y window | ✅ | CLAUDE.md § Trend Methodology | config/analysis_config.yaml specifies these params |
@@ -51,7 +51,7 @@
 | REQ-C1 | Formal technical Hebrew per 2021 report style (not narrative storytelling) | ✅ | STYLE_GUIDE.md § A.2 | No "עדויות שנחשפו", "שקט מדומה", "לפתע", etc. |
 | REQ-C2 | Sentence patterns from 2021 report (zone opening, hydrology, monitoring, findings) | ✅ | STYLE_GUIDE.md § A.2 | Drilling cards replicate 20+ standard phrases |
 | REQ-C3 | Lexicon: אזה"ת, קידוח, ריכוז, מגמה, דיגום (not "מתחם", "באר", "כמות", "טרנד") | ✅ | STYLE_GUIDE.md § A.3 | Terminology audit |
-| REQ-C4 | Approved tone: "בקידוח X נמדד Y µg/L (% מהתקן; Excel: בור, תאריך)" | ✅ | STYLE_GUIDE.md § E | Sentence templates applied |
+| REQ-C4 | Approved tone: "בקידוח X נמדד Y מקג"ל (% מהתקן)" — No inline Excel citation in prose; source tracing in Section 6 data table | ✅ | STYLE_GUIDE.md § C.1, E.1 | Sentence templates applied |
 | REQ-C5 | Recommendations follow 2021 character: ניטור / חקירה / שיקום / מעקב / הרחבה (no speculative tech) | ✅ | STYLE_GUIDE.md § F | Confirmed in audit 2026-05-05: Section 5 uses מיידי/ניטור שוטף/חקירה pattern |
 | REQ-C6 | No hedging ("יתכן", "כנראה") without explicit metric (p-value, confidence level, Mann-Kendall) | ✅ | STYLE_GUIDE.md § B.3 | Uncertainty quantified |
 | REQ-C7 | Terminology standardization: פלומה (not פלום), בארות הפקה (not בארות ייצור), מקג"ל in text, תרכובות אורגניות מוכלרות (not ממסים כלוריניים) | ✅ | User request (2026-05-05) | Global find-replace applied; grep verification clean |
