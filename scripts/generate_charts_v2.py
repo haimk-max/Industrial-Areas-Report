@@ -13,12 +13,17 @@ import json as _json
 import sys
 from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT))
+
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import pandas as pd
 import numpy as np
+
+from scripts.param_families import classify_family
 
 
 def _load_selected_ids(zone_dir: Path) -> set | None:
@@ -809,43 +814,51 @@ def chart_zone_site_map(zone_dir: Path, out: Path, zone_id: str = "raanana") -> 
 
 
 # ── Generic charts (any zone) ─────────────────────────────────────────────────
-
-_CVOC_CODES = {"TCE", "TCEY", "PCE", "DCE", "CIS12DCE", "11DCE", "VC", "12DCA",
-               "CHCL3", "CHLF", "CCLA", "TCAM"}
-_BTEX_CODES = {"BENZENE", "TOLUENE", "ETHYLB", "XYLENE", "MXYLENE", "PXYLENE",
-               "OXYLENE", "STYRENE"}
-_PFAS_CODES = {"PFHXS", "PFOA", "PFOS", "PFHXA", "PFBA", "PFBS", "PFNA", "PFDA"}
+# Cross-zone parameter-family classification — handles short codes (Raanana: TCEY)
+# and full English names (Holon: TRICHLORO ETHYLENE) via regex patterns.
 
 
-def _top_boreholes_for_codes(df: pd.DataFrame, codes: set, n: int = 6) -> list[str]:
-    """Return up to n borehole IDs with highest max concentration for a code set."""
-    subset = df[df['param_code'].str.upper().isin({c.upper() for c in codes})]
+def _filter_family(df: pd.DataFrame, family: str) -> pd.DataFrame:
+    """Subset df to rows whose param matches the given family (CVOC/BTEX/PFAS)."""
+    if 'family' not in df.columns:
+        df = df.copy()
+        df['family'] = df.apply(
+            lambda r: classify_family(r.get('param_code'), r.get('param_name')), axis=1)
+    return df[df['family'] == family]
+
+
+def _top_boreholes_for_family(df: pd.DataFrame, family: str, n: int = 6) -> list[str]:
+    """Return up to n borehole IDs with highest max concentration for a family."""
+    subset = _filter_family(df, family)
     if subset.empty:
         return []
     return (subset.groupby('canonical_id')['concentration']
             .max().nlargest(n).index.tolist())
 
 
-def chart_generic_trends(df: pd.DataFrame, code_set: set, title_he: str,
+def chart_generic_trends(df: pd.DataFrame, family: str, title_he: str,
                          std_line: float | None, filename: str, out: Path) -> None:
-    """Time-series chart for top boreholes matching code_set. Data-driven, no hardcoded IDs."""
-    top_bhs = _top_boreholes_for_codes(df, code_set, n=6)
+    """Time-series chart for top boreholes in a family. Cross-zone (Raanana, Holon, etc.)."""
+    sub_all = _filter_family(df, family)
+    if sub_all.empty:
+        print(f"  Skipped {filename}: no data for family {family}")
+        return
+
+    top_bhs = _top_boreholes_for_family(sub_all, family, n=6)
     if not top_bhs:
-        print(f"  Skipped {filename}: no data for this contaminant group")
+        print(f"  Skipped {filename}: no boreholes with detections in family {family}")
         return
 
     fig, ax = plt.subplots(figsize=(12, 5), dpi=150)
     colors = plt.cm.tab10.colors
     for i, bh_id in enumerate(top_bhs):
-        sub = df[(df['canonical_id'] == bh_id) &
-                 (df['param_code'].str.upper().isin({c.upper() for c in code_set}))].copy()
+        sub = sub_all[sub_all['canonical_id'] == bh_id].copy()
         sub = sub[sub['concentration'].notna() & (sub['concentration'] > 0)]
         if sub.empty:
             continue
-        # Pick max-concentration parameter for this borehole
         best_param = sub.groupby('param_code')['concentration'].max().idxmax()
         sub2 = sub[sub['param_code'] == best_param].sort_values('date')
-        label = H(f"{str(sub2['name_he'].iloc[0])[:15]} ({best_param})")
+        label = H(f"{str(sub2['name_he'].iloc[0])[:15]} ({str(best_param)[:18]})")
         ax.plot(sub2['date'], sub2['concentration'], marker='o', ms=4,
                 color=colors[i % len(colors)], label=label, linewidth=1.4)
 
@@ -888,22 +901,14 @@ def chart_generic_exceedances(df: pd.DataFrame, out: Path) -> None:
 
 
 def chart_generic_severity_panel(df: pd.DataFrame, out: Path) -> None:
-    """Heatmap: max severity index per borehole × contaminant family."""
+    """Heatmap: max severity index per borehole × contaminant family (CVOC/BTEX/PFAS/OTHER)."""
     df2 = df.copy()
     df2['pct'] = pd.to_numeric(df2.get('percent_of_standard', pd.Series()), errors='coerce')
     df2['idx'] = df2['pct'].apply(_pct_to_index)
-
-    def _family(code: str) -> str:
-        cu = code.upper()
-        if cu in {c.upper() for c in _CVOC_CODES}:
-            return 'CVOC'
-        if cu in {c.upper() for c in _BTEX_CODES}:
-            return 'BTEX'
-        if cu in {c.upper() for c in _PFAS_CODES}:
-            return 'PFAS'
-        return 'אחר'
-
-    df2['family'] = df2['param_code'].apply(_family)
+    df2['family'] = df2.apply(
+        lambda r: classify_family(r.get('param_code'), r.get('param_name')), axis=1)
+    # Display 'OTHER' in Hebrew for the chart
+    df2.loc[df2['family'] == 'OTHER', 'family'] = 'אחר'
     pivot = (df2.groupby(['canonical_id', 'family'])['idx']
              .max().unstack(fill_value=0))
 
@@ -980,13 +985,13 @@ def main():
         print(f"[V2 Charts] Done — 10 charts saved to {out}/")
     else:
         # Generic data-driven charts for any zone
-        chart_generic_trends(df, _CVOC_CODES,
+        chart_generic_trends(df, "CVOC",
                              "מגמות ריכוז CVOC — קידוחים מובילים", 7.5,
                              "cvoc_trends.png", out)
-        chart_generic_trends(df, _BTEX_CODES,
+        chart_generic_trends(df, "BTEX",
                              "מגמות ריכוז BTEX — קידוחים מובילים", 5.0,
                              "btex_trends.png", out)
-        chart_generic_trends(df, _PFAS_CODES,
+        chart_generic_trends(df, "PFAS",
                              "מגמות ריכוז PFAS — קידוחים מובילים", None,
                              "pfas_trends.png", out)
         chart_generic_exceedances(df, out)
