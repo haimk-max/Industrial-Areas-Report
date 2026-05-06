@@ -415,11 +415,31 @@ Before finalizing any section:
 The methodology was originally written for Raanana with hardcoded anchors (ITM bbox, street names, pre-defined CVOC/PFAS sectors). Generalisation testing on Holon revealed two flaws: (1) hardcoded streets don't transfer; (2) pre-filtering by sector blinds the search to unexpected contamination sources. The corrected order:
 
 1. **Auto-detect anchors from zone data** (geometry + entity names already present)
-2. **Broad initial search** — no pre-defined sectors, just "what industrial facilities exist in this polygon, current and historical?"
-3. **Post-hoc sector characterization** — after observing the candidates, group them by contamination family (CVOC sources / PFAS sources / heavy metals / fuel / other)
-4. **Consolidate** with facilities already extracted from PDFs (avoid duplication; merge by name/address)
+2. **Branch on extraction richness** (NEW — see § H.1.1) — skip web discovery if PDF extraction already yielded ≥30 facilities with addresses + evidence
+3. **Broad initial search** (only when branch dictates) — no pre-defined sectors, just "what industrial facilities exist in this polygon, current and historical?"
+4. **Post-hoc sector characterization** — after observing the candidates, group them by contamination family (CVOC sources / PFAS sources / heavy metals / fuel / other)
+5. **Consolidate** with facilities already extracted from PDFs (avoid duplication; merge by name/address)
 
 **Why bottom-up**: Top-down ("search only CVOC + PFAS") guarantees we find what we expected; bottom-up surfaces what the zone actually contains. Three days into Holon revealed 53 PDF-extracted facilities spanning chrome plating, brass casting, textile finishing, military depots, and closed waste pits — none predicted by Raanana's CVOC/PFAS frame.
+
+### H.1.1 Methodology branch — extraction richness (NEW, 2026-05-06)
+
+After a third timeout case (Sonnet, 30-search cap, 12.5min — same as Opus before it), the methodology branches on the count of `facilities_suspected[]` in `<zone>/data/external/extracted_findings.json`:
+
+| Extraction count | Methodology | Rationale |
+|---|---|---|
+| **Sparse (≤10 facilities)**, no evidence/addresses | Run AI discovery agent (web search). | Web is the source of truth. Raanana case: PDFs yielded ~0 facilities → 9 found via web search. |
+| **Rich (≥30 facilities)** with addresses, contaminants, confidence levels, evidence quotes | **Skip web discovery.** Direct consolidation + post-hoc characterization. | Holon case: PDFs yielded 45 facilities with full evidence (addresses with street numbers, quantitative contamination data, operating periods). Web discovery's marginal value does not justify the timeout risk — proven across 2 model variants. |
+| **Middle (11–29)** | Decide by inspection: if confidence levels and addresses are mostly present, skip web; else run capped web. | Default to skip; web only when filling specific gaps. |
+
+**Why count alone is not a perfect signal**: also inspect whether entries have addresses, contaminants, and confidence. A "rich" extraction means structured evidence — not just names. The threshold (30) is a heuristic; revise as more zones come through.
+
+**Implementation**: Step 0d already counts `facilities_suspected[]`. The pipeline orchestrator (or operator) chooses the branch:
+- `<zone>/data/external/extracted_findings.json` — `statistics.unique_facilities` field guides the decision
+- If skipping web: produce `facility_attribution.json` directly via consolidation script (no agent)
+- If running web: launch agent per § H.2 with the standard prompt
+
+**Production note**: ★ Once the system is deployed inside Water Authority IT (LESSONS.md § 2.4), the ArcGIS Portal feature services will provide authoritative facility/permit data — both branches change. Skip web in favor of Portal queries.
 
 ### H.2 AI Agent Workflow
 

@@ -37,12 +37,16 @@
 - **2nd-case test**: Zone #3 may have inconsistent naming across sources, exposing dedup gaps.
 - **Status**: ⏳ Awaiting evidence. May need fuzzy-match or canonical_id lookup.
 
-### 1.5 Facility discovery via AI agent
-- **Observation (Raanana)**: Opus agent + sector-based search produced 9 candidates with confidence levels.
-- **Observation (Holon, 2026-05-06)**: Opus agent timed out before producing output (open-ended web research scope).
-- **Tentative rule**: AI agent for facility discovery should consume already-extracted findings (53 facilities from Holon PDFs) and consolidate, NOT do open-ended web research from scratch.
-- **2nd-case test**: Pending — try the consolidator approach for Holon, see if it suffices.
-- **Status**: ⏳ Approach revision in progress.
+### 1.5 Facility discovery via AI agent — TWO timeout cases, ready for promotion
+- **Observation (Raanana)**: Opus agent + sector-based search produced 9 candidates with confidence levels (worked; Raanana's PDF extraction was sparse — ~0 facilities — so web discovery was the source of truth).
+- **Observation (Holon attempt 1, 2026-05-06 morning)**: Opus agent for facility discovery timed out at ~7+ minutes / 27 tool calls; no output written.
+- **Observation (Holon attempt 2, 2026-05-06 afternoon)**: Sonnet agent with explicit `max 30 web searches` cap **also timed out** at 12.5 minutes / 65 tool uses; no output written. Cap on search count alone does not prevent stream-idle timeout — the bottleneck is the dialogue overhead (read context → iterate searches → construct large JSON output).
+- **Validated rule (2-case rule satisfied)**: Branch facility discovery methodology by PDF-extraction richness:
+  - **Sparse extraction** (≤10 facilities, like Raanana): web-discovery agent is the primary source. Use Opus or Sonnet with capped scope.
+  - **Rich extraction** (≥30 facilities with addresses + evidence + confidence, like Holon): **skip web discovery entirely**. Direct consolidation + post-hoc characterization is sufficient and avoids the timeout. Web discovery's marginal value does not justify the cost.
+- **Heuristic threshold**: ~30 PDF-extracted facilities with structured evidence is the inflection point. Below → do web discovery; above → skip and consolidate.
+- **Status**: 🟢 Ready to promote to REQUIREMENTS.md (2-case rule satisfied: Raanana sparse → web works; Holon rich → web times out twice).
+- **What changes in STYLE_GUIDE.md § H**: methodology should branch on extraction richness check (Step 0d count of `facilities_suspected[]`).
 
 ---
 
