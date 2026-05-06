@@ -104,7 +104,7 @@
 
 | ID | Requirement | Status | Source | Verification |
 |---|---|---|---|---|
-| REQ-G1 | Basemap tiles for `zone_site_map.png` (street / aerial imagery) | ⏳ | User request (2026-05-06) | All tile providers (OSM, CartoDB, Stamen, ESRI) return 403 in current environment. Current fallback: schematic ITM grid. **Options to revisit**: (A) locally cached raster tiles; (B) Israeli Survey of Israel WMS (govmap.gov.il); (C) Overpass API vector street network + geopandas render |
+| REQ-G1 | Basemap tiles for `zone_site_map.png` (street / aerial imagery) | ⏳ | User request (2026-05-06) | All tile providers (OSM, CartoDB, Stamen, ESRI) return 403 in current environment. Current fallback: schematic ITM grid. **Options to revisit**: (A) locally cached raster tiles; (B) Israeli Survey of Israel WMS (govmap.gov.il); (C) Overpass API vector street network + geopandas render. **★ Production resolution**: Water Authority enterprise ArcGIS Portal feature services + basemaps will replace all sandbox fallbacks once deployed inside Authority IT — see `LESSONS.md` § 2.4 |
 
 ---
 

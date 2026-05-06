@@ -432,10 +432,11 @@ The agent receives a `discovery context` package assembled from four independent
 0a. **Geometry** — read `zone_definitions/zone_polygons.json` → extract `<zone>` polygon (ITM) + bounding box + center.
 
 0b. **All streets within polygon** (CRITICAL — primary search frame): enumerate every street that lies fully or partially inside the polygon. Methods (use whichever is available, in priority):
-  1. OSM Overpass API: `way["highway"]["name"]` filtered by polygon (offline-cached if previously fetched)
-  2. Israeli `govmap.gov.il` cadastral street layer (if accessible)
-  3. Agent's general knowledge of well-known industrial zones (Israeli industrial areas are well-documented; e.g., `אזה"ת חולון` has documented streets: היוצר, היובל, הסולל, הנפח, הצורף, בצלאל, המלאכה, הנגר, הסיבים, etc.)
-  4. Manual list from municipal sources, if (1)–(3) unavailable
+  1. ★ **Water Authority enterprise ArcGIS Portal feature service** (production / deployment phase only — see `LESSONS.md` § 2.4). Becomes the **primary** method once the system is deployed inside Water Authority IT; methods (2)–(5) below are **sandbox fallbacks** for the current development environment.
+  2. OSM Overpass API: `way["highway"]["name"]` filtered by polygon (offline-cached if previously fetched) — currently blocked by 403 in sandbox
+  3. Israeli `govmap.gov.il` cadastral street layer (if accessible) — currently blocked by 403 in sandbox
+  4. Agent's general knowledge of well-known industrial zones (Israeli industrial areas are well-documented; e.g., `אזה"ת חולון` has documented streets: היוצר, היובל, הסולל, הנפח, הצורף, בצלאל, המלאכה, הנגר, הסיבים, etc.) — current sandbox default
+  5. Manual list from municipal sources, if (1)–(4) unavailable
   - Output: `street_list[]` — comprehensive enumeration, NOT filtered by what boreholes happen to mention. Boreholes are sparse spatial samples; streets enumerated from polygon are the actual search frame.
 
 0c. **Entities monitored by sampling network** — read `<zone>/data/boreholes.csv` → extract distinct entity names from `name_he` (strip prefixes `נד|נת|מק|יו|פ` and trailing borehole numbers). These reveal monitored facilities (often the suspect itself; e.g., `נת_אלביט_חולון_1` → entity `אלביט`).

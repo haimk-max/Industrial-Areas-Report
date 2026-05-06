@@ -59,11 +59,27 @@
 - **Decision**: Offline ITM schematic is production-ready; basemap deferred.
 - **Trigger to revisit**: When environment permits external tile fetch, OR when expert reviewer specifically requests street/cadastral context.
 - **Options documented**: cached MBTiles, Israeli WMS (govmap), Overpass vector rendering.
+- **★ See § 2.4** — Water Authority ArcGIS Portal integration subsumes this when deployed.
 
 ### 2.3 Methodology file consolidation
 - **Status (post-cleanup, 2026-05-06)**: REQUIREMENTS.md has REQ-A through REQ-H (12 H-items). Some may overlap or be superseded.
 - **Decision**: Don't consolidate now — wait for Holon report to reveal which requirements are actually load-bearing.
 - **Trigger to revisit**: After Holon expert review approves the report. Then re-read REQUIREMENTS.md and mark `[ACTIVE]` / `[SUPERSEDED]` / `[ZONE-SPECIFIC]`.
+
+### 2.4 ★ Water Authority ArcGIS Portal integration (deployment phase)
+- **Status**: System currently runs in a sandbox environment with no access to authoritative geographic data (Overpass / OSM tiles / govmap WMS — all blocked, 403 Forbidden). Zone polygons are loaded from one-off KMZ uploads converted via pyproj; street enumeration falls back to agent general knowledge; basemaps are offline ITM schematics.
+- **Future state**: When the system is deployed inside the Water Authority's enterprise infrastructure, the operator will have credentials to the **Water Authority's enterprise ArcGIS Portal** (פורטל ArcGIS הארגוני של רשות המים). This single integration solves multiple current limitations simultaneously:
+  - **Zone polygons**: authoritative — replace `zone_definitions/zone_polygons.json` (manually-curated KMZ conversions) with feature service queries against the official 18-zone layer
+  - **Cadastral & street networks**: feature services for streets, parcels (גושים/חלקות), municipal boundaries — replaces agent-knowledge street enumeration with authoritative data
+  - **Basemap tiles**: enterprise basemap services replace blocked OSM/Stamen/ESRI tile providers (resolves REQ-G1, see § 2.2)
+  - **Boreholes & monitoring infrastructure**: cross-reference against Water Authority's official borehole layer (canonical IDs, depths, casing, ownership)
+  - **Industrial enforcement layers**: PRTR locations, business permits, environmental enforcement actions — accessible via Authority's ArcGIS feature services rather than ad-hoc web scraping
+- **Trigger to revisit**: Deployment phase — when the system moves from this development sandbox to production within Water Authority IT.
+- **Cross-references**:
+  - § 2.2 (basemap integration) — subsumed by this once deployed
+  - STYLE_GUIDE.md § H.2 Step 0b (street enumeration via polygon) — current methods 1–3 (Overpass / govmap / agent knowledge) become fallbacks; ArcGIS Portal becomes primary
+  - REQ-G1 (basemap) — resolved when deployed
+- **Implications for current methodology**: Methods documented for street enumeration, polygon definition, basemap rendering should be tagged as "sandbox fallback" — the production methodology will be a single ArcGIS Portal integration. Don't over-engineer the fallbacks.
 
 ---
 
