@@ -1,21 +1,15 @@
-"""Generate V2 charts for Industrial Areas Report — Raanana zone.
+"""Generate V2 charts for Industrial Areas Report.
 
-Charts produced:
-  1. cvoc_timeseries.png          — TCE (nt_1, nt_2) + PCE (nt_3) time-series 2012-2025
-  2. pfas_all_boreholes.png       — PFAS: stacked bar per borehole (S/A groups) + time-series
-  3. btex_timeseries_paz.png      — Benzene at nd_paz 2011-2024
-  4. cvoc_cross_borehole.png      — Max annual TCE/PCE across boreholes comparison
-  5. tce_timeseries_p25.png       — TCE at p25 production well (exceedance detail)
-  6. cvoc_all_wells.png           — CVOC curves for all boreholes (TCE + PCE panels)
-  7. pfas_pct_stacked.png         — 100%-stacked PFAS for AFFF source-signature (S/A grouping)
-  8. btex_family_stacked.png      — BTEX full family time-series at Paz Hanofer
-  9. cvoc_pct_standard_panel.png  — 4-borehole panel: % of standard TCE/PCE over time
+Raanana zone: 9 zone-specific charts (cvoc_timeseries, pfas, btex, etc.)
+Other zones: generic data-driven charts (cvoc_trends, severity_bar, contaminant_panel, site_map)
 
 Usage:
   python scripts/generate_charts_v2.py [--zone raanana] [--output Raanana/charts_v2]
+  python scripts/generate_charts_v2.py --zone holon
 """
 
 import argparse
+import json as _json
 import sys
 from pathlib import Path
 
@@ -25,6 +19,16 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import pandas as pd
 import numpy as np
+
+
+def _load_selected_ids(zone_dir: Path) -> set | None:
+    """Load selected_boreholes.json if it exists (returns set of canonical_ids or None)."""
+    sel_file = zone_dir / "data" / "selected_boreholes.json"
+    if not sel_file.exists():
+        return None
+    with open(sel_file, encoding="utf-8") as fh:
+        data = _json.load(fh)
+    return {b["canonical_id"] for b in data.get("boreholes", [])}
 
 
 # ── Hebrew RTL helper ─────────────────────────────────────────────────────────
@@ -622,193 +626,314 @@ def chart_cvoc_pct_standard_panel(df: pd.DataFrame, out: Path) -> None:
     print(f"  Saved: cvoc_pct_standard_panel.png")
 
 
-def chart_zone_site_map(zone_dir: Path, out: Path) -> None:
-    """Professional schematic zone map — works fully offline (no tile basemap required).
+def _pct_to_index(pct) -> int:
+    """Convert % of drinking water standard to severity index (0–8, per 2021 Report)."""
+    if pct is None or (isinstance(pct, float) and np.isnan(pct)):
+        return 0
+    for level, threshold in [(8, 1000), (7, 500), (6, 200), (5, 100),
+                              (4, 75), (3, 50), (2, 25), (1, 10)]:
+        if pct >= threshold:
+            return level
+    return 0
 
-    Uses ITM coordinates directly (EPSG:2039, metres). Draws:
-      - Zone polygon filled with pale industrial yellow
-      - Grid at 200 m intervals with ITM tick labels
-      - Scale bar (500 m)
-      - North arrow
-      - Groundwater flow arrow (NW–W)
-      - Boreholes coloured by max contamination index
-      - Facility markers (▲ industrial, ■ fuel) with short name labels
-      - Legend
+
+def chart_zone_site_map(zone_dir: Path, out: Path, zone_id: str = "raanana") -> None:
+    """Schematic ITM zone map — zone-agnostic, fully offline.
+
+    Computes map extent and contamination index from data. Works for any zone.
     """
     import json
-    from matplotlib.patches import Polygon as MplPolygon, FancyArrow
-    from matplotlib.collections import PatchCollection
-    import matplotlib.ticker as ticker
+    from matplotlib.patches import Polygon as MplPolygon
 
-    # ── Load data ────────────────────────────────────────────────────────────
+    # ── Load data ─────────────────────────────────────────────────────────────
     boreholes = pd.read_csv(zone_dir / "data" / "boreholes.csv")
 
-    with open(zone_dir / "data" / "facility_attribution.json", encoding='utf-8') as f:
-        attribution = json.load(f)
+    # Filter to selected boreholes if selection file exists (Phase 5)
+    selected_ids = _load_selected_ids(zone_dir)
+    if selected_ids is not None:
+        boreholes = boreholes[boreholes['canonical_id'].isin(selected_ids)].reset_index(drop=True)
 
+    # Facility attribution is optional (may not exist for new zones)
+    attribution_path = zone_dir / "data" / "facility_attribution.json"
+    facilities = []
+    if attribution_path.exists():
+        with open(attribution_path, encoding='utf-8') as f:
+            facilities = json.load(f).get('facilities', [])
+
+    # Zone polygon from zone_definitions
     zone_polygons_file = Path("zone_definitions/zone_polygons.json")
     if not zone_polygons_file.exists():
         zone_polygons_file = zone_dir.parent / "zone_definitions" / "zone_polygons.json"
     zone_polygon_coords = None
+    zone_name_he = zone_id
     if zone_polygons_file.exists():
         with open(zone_polygons_file, encoding='utf-8') as f:
             zd = json.load(f)
-            if 'raanana' in zd:
-                zone_polygon_coords = zd['raanana'].get('polygon')
+        zone_def = zd.get(zone_id, {})
+        zone_polygon_coords = zone_def.get('polygon') or None
+        zone_name_he = zone_def.get('zone_name_he', zone_id)
 
-    # ── Index look-up tables ─────────────────────────────────────────────────
-    MAX_INDEX = {
-        "raanana_nt_1": 7, "raanana_nt_2": 4, "raanana_nt_3": 7,
-        "raanana_nd_paz_hanofer": 4, "raanana_nd_turbine": 8,
-        "raanana_p_18": 0, "raanana_p_25": 5
-    }
+    # ── Compute max severity index per borehole from measurements ─────────────
     INDEX_COLORS = {
         0: "#BDBDBD", 1: "#81C784", 2: "#81C784", 3: "#81C784",
         4: "#FFB74D", 5: "#FB8C00", 6: "#C62828", 7: "#8E0000", 8: "#4A0000"
     }
     INDEX_SIZES = {0: 90, 1: 110, 2: 110, 3: 110, 4: 160, 5: 200, 6: 240, 7: 280, 8: 320}
 
-    # ── Set up axes ───────────────────────────────────────────────────────────
+    max_index: dict[str, int] = {}
+    meas_file = zone_dir / "data" / "measurements.csv"
+    if meas_file.exists():
+        mdf = pd.read_csv(meas_file)
+        mdf['pct'] = pd.to_numeric(mdf.get('percent_of_standard', pd.Series()), errors='coerce')
+        mdf['idx'] = mdf['pct'].apply(_pct_to_index)
+        max_index = mdf.groupby('canonical_id')['idx'].max().to_dict()
+
+    # ── Map extent: derive from borehole coords + polygon ────────────────────
+    all_e = boreholes['itm_easting'].dropna().tolist()
+    all_n = boreholes['itm_northing'].dropna().tolist()
+    if zone_polygon_coords:
+        all_e += [c[0] for c in zone_polygon_coords]
+        all_n += [c[1] for c in zone_polygon_coords]
+
+    pad = 600
+    E_min = int(min(all_e)) - pad if all_e else 0
+    E_max = int(max(all_e)) + pad if all_e else 1000
+    N_min = int(min(all_n)) - pad if all_n else 0
+    N_max = int(max(all_n)) + pad if all_n else 1000
+    span = max(E_max - E_min, N_max - N_min)
+    grid_step = 250 if span < 3000 else 500
+
+    # ── Axes ──────────────────────────────────────────────────────────────────
     fig, ax = plt.subplots(figsize=(14, 10), dpi=200)
-
-    # Background — very light blue-gray (simulates open area)
     ax.set_facecolor('#EEF2F5')
-
-    # Map extent (ITM metres) — centred on all boreholes with generous padding
-    E_min, E_max = 187700, 189700
-    N_min, N_max = 677200, 679000
     ax.set_xlim(E_min, E_max)
     ax.set_ylim(N_min, N_max)
-
-    # Grid at 250 m intervals
-    ax.set_xticks(range(E_min, E_max + 1, 250))
-    ax.set_yticks(range(N_min, N_max + 1, 250))
+    ax.set_xticks(range(E_min, E_max + 1, grid_step))
+    ax.set_yticks(range(N_min, N_max + 1, grid_step))
     ax.grid(True, color='white', linewidth=0.7, alpha=0.8, zorder=1)
     ax.tick_params(labelsize=7, color='#666', labelcolor='#555')
     ax.set_xlabel(H('כיוון מזרח — ITM (מטרים)'), fontsize=9, color='#444')
     ax.set_ylabel(H('כיוון צפון — ITM (מטרים)'), fontsize=9, color='#444')
 
-    # ── Zone polygon ─────────────────────────────────────────────────────────
-    if zone_polygon_coords:
+    # ── Zone polygon ──────────────────────────────────────────────────────────
+    if zone_polygon_coords and len(zone_polygon_coords) >= 3:
         poly_pts = [(e, n) for e, n in zone_polygon_coords]
-        zone_patch = MplPolygon(poly_pts, closed=True, zorder=2,
+        ax.add_patch(MplPolygon(poly_pts, closed=True, zorder=2,
                                 facecolor='#FFF9C4', edgecolor='#F9A825',
-                                linewidth=2.0, linestyle='-', alpha=0.65)
-        ax.add_patch(zone_patch)
-        # Zone label at centre
-        cx = sum(p[0] for p in poly_pts[:-1]) / (len(poly_pts) - 1)
-        cy = sum(p[1] for p in poly_pts[:-1]) / (len(poly_pts) - 1)
-        ax.text(cx, cy, H('קריית אתגרים\n(אזה"ת רעננה)'),
-                ha='center', va='center', fontsize=9, color='#B8860B',
-                weight='bold', alpha=0.6, zorder=3)
+                                linewidth=2.0, linestyle='-', alpha=0.65))
+        cx = sum(p[0] for p in poly_pts[:-1]) / max(len(poly_pts) - 1, 1)
+        cy = sum(p[1] for p in poly_pts[:-1]) / max(len(poly_pts) - 1, 1)
+        ax.text(cx, cy, H(zone_name_he), ha='center', va='center',
+                fontsize=9, color='#B8860B', weight='bold', alpha=0.6, zorder=3)
 
-    # ── Boreholes ────────────────────────────────────────────────────────────
+    # ── Boreholes ─────────────────────────────────────────────────────────────
     for _, row in boreholes.iterrows():
         if pd.isna(row.itm_easting) or pd.isna(row.itm_northing):
             continue
         E, N = float(row.itm_easting), float(row.itm_northing)
-        idx   = MAX_INDEX.get(row.canonical_id, 0)
-        color = INDEX_COLORS.get(idx, "#808080")
-        size  = INDEX_SIZES.get(idx, 100)
-
-        ax.scatter(E, N, c=color, s=size, edgecolors='black', linewidths=0.7,
-                   zorder=6, alpha=0.9)
-        ax.annotate(H(row.name_he), (E, N), textcoords="offset points",
-                    xytext=(7, 5), fontsize=8, ha='left', color='#1A1A1A',
+        idx = max_index.get(row.canonical_id, 0)
+        ax.scatter(E, N, c=INDEX_COLORS.get(idx, "#808080"),
+                   s=INDEX_SIZES.get(idx, 100), edgecolors='black',
+                   linewidths=0.7, zorder=6, alpha=0.9)
+        ax.annotate(H(str(row.name_he)), (E, N), textcoords="offset points",
+                    xytext=(7, 5), fontsize=7, ha='left', color='#1A1A1A',
                     weight='bold', zorder=7,
                     bbox=dict(boxstyle='round,pad=0.15', facecolor='white',
                               alpha=0.7, edgecolor='none'))
 
-    # ── Facilities ───────────────────────────────────────────────────────────
-    # Short names to avoid label clutter
-    SHORT_NAME = {
-        "F-001": H("תחנת טורבינות גז (חשמל)"),
-        "F-002": H("תח' דלק פז הנופר"),
-        "F-003": H("אשכול מפעלים (F-003)"),
-        "F-005": H("אידכים (Aidchem)"),
-        "F-006": H("אדג' מדיקל"),
-        "F-007": H("אביב ריצ'רדסון"),
-        "F-008": H("בית דקל"),
-        "F-009": H("Aerospheres"),
-        "F-004": H("פ רעננה 18 (פרטי)"),
-    }
-
-    for facility in attribution['facilities']:
-        fid    = facility.get('facility_id', '')
+    # ── Facilities ────────────────────────────────────────────────────────────
+    for facility in facilities:
         coords = facility.get('coordinates_itm', {})
         if not coords or not coords.get('easting'):
             continue
         E, N = float(coords['easting']), float(coords['northing'])
         ftype = facility.get('type', '')
-
         if 'fuel' in ftype.lower() or 'דלק' in ftype:
             marker, mcolor = 's', '#1565C0'
         elif 'Private' in ftype or 'פרטי' in ftype:
-            continue  # skip private well — shown as borehole
+            continue
         else:
             marker, mcolor = '^', '#6A1B9A'
-
         ax.scatter(E, N, marker=marker, c=mcolor, s=130, edgecolors='black',
                    linewidths=0.6, zorder=5, alpha=0.9)
-
-        label = SHORT_NAME.get(fid, '')
+        label = str(facility.get('name_he', facility.get('facility_id', '')))[:20]
         if label:
-            ax.annotate(label, (E, N), textcoords="offset points",
-                       xytext=(-7, -15), fontsize=7.5, ha='right',
-                       color='#4A148C', zorder=7,
-                       bbox=dict(boxstyle='round,pad=0.2', facecolor='#FFFDE7',
-                                 alpha=0.85, edgecolor='#F9A825', linewidth=0.5))
+            ax.annotate(H(label), (E, N), textcoords="offset points",
+                        xytext=(-7, -15), fontsize=7, ha='right', color='#4A148C',
+                        zorder=7,
+                        bbox=dict(boxstyle='round,pad=0.2', facecolor='#FFFDE7',
+                                  alpha=0.85, edgecolor='#F9A825', linewidth=0.5))
 
-    # ── Groundwater flow arrow (NW direction) ────────────────────────────────
-    ax.annotate('', xy=(188050, 678700), xytext=(188600, 678250),
-                arrowprops=dict(arrowstyle='->', color='#0D47A1', lw=2.5,
-                                connectionstyle='arc3,rad=0.0'),
-                zorder=8)
-    ax.text(188150, 678760, H("זרימת מי תהום\n(צ.מ–מ)"),
-            ha='center', fontsize=8.5, color='#0D47A1', weight='bold',
-            bbox=dict(boxstyle='round,pad=0.3', facecolor='#E3F2FD',
-                      alpha=0.9, edgecolor='#0D47A1', linewidth=0.8))
+    # ── North arrow + scale bar (relative positions) ─────────────────────────
+    na_e = E_max - (E_max - E_min) * 0.06
+    na_n_lo = N_min + (N_max - N_min) * 0.84
+    na_n_hi = N_min + (N_max - N_min) * 0.92
+    ax.annotate('', xy=(na_e, na_n_hi), xytext=(na_e, na_n_lo),
+                arrowprops=dict(arrowstyle='->', color='black', lw=2.0), zorder=8)
+    ax.text(na_e, na_n_hi + (N_max - N_min) * 0.01, H("צ"),
+            ha='center', va='bottom', fontsize=13, weight='bold', color='black')
 
-    # ── North arrow ──────────────────────────────────────────────────────────
-    ax.annotate('', xy=(189550, 678850), xytext=(189550, 678550),
-                arrowprops=dict(arrowstyle='->', color='black', lw=2.0),
-                zorder=8)
-    ax.text(189550, 678870, H("צ"), ha='center', va='bottom',
-            fontsize=13, weight='bold', color='black')
+    sb_e0 = E_min + (E_max - E_min) * 0.10
+    sb_e1 = sb_e0 + 500
+    sb_n = N_min + (N_max - N_min) * 0.04
+    tick = (N_max - N_min) * 0.01
+    ax.plot([sb_e0, sb_e1], [sb_n, sb_n], 'k-', linewidth=3, solid_capstyle='butt', zorder=8)
+    ax.plot([sb_e0, sb_e0], [sb_n - tick, sb_n + tick], 'k-', lw=2, zorder=8)
+    ax.plot([sb_e1, sb_e1], [sb_n - tick, sb_n + tick], 'k-', lw=2, zorder=8)
+    ax.text((sb_e0 + sb_e1) / 2, sb_n - 2 * tick, H("500 מטר"),
+            ha='center', fontsize=8.5, color='black', weight='bold')
 
-    # ── Scale bar (500 m) ────────────────────────────────────────────────────
-    sb_y = 677280
-    ax.plot([188000, 188500], [sb_y, sb_y], 'k-', linewidth=3, solid_capstyle='butt', zorder=8)
-    ax.plot([188000, 188000], [sb_y - 30, sb_y + 30], 'k-', lw=2, zorder=8)
-    ax.plot([188500, 188500], [sb_y - 30, sb_y + 30], 'k-', lw=2, zorder=8)
-    ax.text(188250, sb_y - 60, H("500 מטר"), ha='center', fontsize=8.5,
-            color='black', weight='bold')
-
-    # ── Legend ───────────────────────────────────────────────────────────────
+    # ── Legend ────────────────────────────────────────────────────────────────
     legend_elements = [
         mpatches.Patch(facecolor='#4A0000', edgecolor='black', label=H('קידוח: אינדקס 8 (קריטי)')),
-        mpatches.Patch(facecolor='#8E0000', edgecolor='black', label=H('קידוח: אינדקס 7 (גבוה מאוד)')),
-        mpatches.Patch(facecolor='#FB8C00', edgecolor='black', label=H('קידוח: אינדקס 5 (בינוני-גבוה)')),
-        mpatches.Patch(facecolor='#FFB74D', edgecolor='black', label=H('קידוח: אינדקס 4 (בינוני)')),
+        mpatches.Patch(facecolor='#8E0000', edgecolor='black', label=H('קידוח: אינדקס 7–6 (גבוה)')),
+        mpatches.Patch(facecolor='#FB8C00', edgecolor='black', label=H('קידוח: אינדקס 5–4 (בינוני)')),
+        mpatches.Patch(facecolor='#81C784', edgecolor='black', label=H('קידוח: אינדקס 1–3 (נמוך)')),
         mpatches.Patch(facecolor='#BDBDBD', edgecolor='black', label=H('קידוח: אינדקס 0 (אין זיהום)')),
         mpatches.Patch(facecolor='#6A1B9A', edgecolor='black', label=H('▲ מפעל תעשייתי')),
         mpatches.Patch(facecolor='#1565C0', edgecolor='black', label=H('■ תחנת דלק')),
-        mpatches.Patch(facecolor='#FFF9C4', edgecolor='#F9A825', label=H('■ גבול אזה"ת')),
+        mpatches.Patch(facecolor='#FFF9C4', edgecolor='#F9A825', label=H('גבול אזה"ת')),
     ]
     leg = ax.legend(handles=legend_elements, loc='lower right', fontsize=8,
                     framealpha=0.95, frameon=True, edgecolor='#999')
     leg.get_frame().set_linewidth(0.8)
 
-    # ── Title ─────────────────────────────────────────────────────────────────
-    ax.set_title(H('מפת אתר — קריית אתגרים, רעננה | קידוחי ניטור ומקורות זיהום פוטנציאליים'),
+    ax.set_title(H(f'מפת אתר — {zone_name_he} | קידוחי ניטור ומקורות זיהום פוטנציאליים'),
                  fontsize=11, weight='bold', pad=8)
     ax.set_aspect('equal', adjustable='box')
-
     fig.tight_layout()
     fig.savefig(out / "zone_site_map.png", dpi=200, bbox_inches="tight",
                 facecolor='white', edgecolor='none')
     plt.close(fig)
     print(f"  Saved: zone_site_map.png")
+
+
+# ── Generic charts (any zone) ─────────────────────────────────────────────────
+
+_CVOC_CODES = {"TCE", "TCEY", "PCE", "DCE", "CIS12DCE", "11DCE", "VC", "12DCA",
+               "CHCL3", "CHLF", "CCLA", "TCAM"}
+_BTEX_CODES = {"BENZENE", "TOLUENE", "ETHYLB", "XYLENE", "MXYLENE", "PXYLENE",
+               "OXYLENE", "STYRENE"}
+_PFAS_CODES = {"PFHXS", "PFOA", "PFOS", "PFHXA", "PFBA", "PFBS", "PFNA", "PFDA"}
+
+
+def _top_boreholes_for_codes(df: pd.DataFrame, codes: set, n: int = 6) -> list[str]:
+    """Return up to n borehole IDs with highest max concentration for a code set."""
+    subset = df[df['param_code'].str.upper().isin({c.upper() for c in codes})]
+    if subset.empty:
+        return []
+    return (subset.groupby('canonical_id')['concentration']
+            .max().nlargest(n).index.tolist())
+
+
+def chart_generic_trends(df: pd.DataFrame, code_set: set, title_he: str,
+                         std_line: float | None, filename: str, out: Path) -> None:
+    """Time-series chart for top boreholes matching code_set. Data-driven, no hardcoded IDs."""
+    top_bhs = _top_boreholes_for_codes(df, code_set, n=6)
+    if not top_bhs:
+        print(f"  Skipped {filename}: no data for this contaminant group")
+        return
+
+    fig, ax = plt.subplots(figsize=(12, 5), dpi=150)
+    colors = plt.cm.tab10.colors
+    for i, bh_id in enumerate(top_bhs):
+        sub = df[(df['canonical_id'] == bh_id) &
+                 (df['param_code'].str.upper().isin({c.upper() for c in code_set}))].copy()
+        sub = sub[sub['concentration'].notna() & (sub['concentration'] > 0)]
+        if sub.empty:
+            continue
+        # Pick max-concentration parameter for this borehole
+        best_param = sub.groupby('param_code')['concentration'].max().idxmax()
+        sub2 = sub[sub['param_code'] == best_param].sort_values('date')
+        label = H(f"{str(sub2['name_he'].iloc[0])[:15]} ({best_param})")
+        ax.plot(sub2['date'], sub2['concentration'], marker='o', ms=4,
+                color=colors[i % len(colors)], label=label, linewidth=1.4)
+
+    if std_line:
+        ax.axhline(std_line, color='red', linestyle='--', linewidth=1.2,
+                   label=H(f'תקן שתייה ({std_line} מקג"ל)'))
+
+    ax.set_ylabel(H('ריכוז (מקג"ל)'), fontsize=9)
+    ax.set_title(H(title_he), fontsize=10, weight='bold')
+    ax.legend(fontsize=7, loc='upper left')
+    ax.grid(True, alpha=0.3)
+    fig.tight_layout()
+    fig.savefig(out / filename, dpi=150, bbox_inches='tight')
+    plt.close(fig)
+    print(f"  Saved: {filename}")
+
+
+def chart_generic_exceedances(df: pd.DataFrame, out: Path) -> None:
+    """Bar chart: boreholes ranked by number of measurements exceeding drinking water standard."""
+    exceed = df[(df['percent_of_standard'].notna()) & (df['percent_of_standard'] >= 100)]
+    if exceed.empty:
+        print("  Skipped exceedances_bar.png: no exceedances found")
+        return
+
+    counts = (exceed.groupby('canonical_id')['param_code']
+              .count().sort_values(ascending=True).tail(20))
+    names = df[['canonical_id', 'name_he']].drop_duplicates().set_index('canonical_id')
+
+    fig, ax = plt.subplots(figsize=(10, max(4, len(counts) * 0.35)), dpi=150)
+    labels = [H(str(names.loc[bid, 'name_he'])[:20] if bid in names.index else bid)
+              for bid in counts.index]
+    ax.barh(labels, counts.values, color='#C62828', edgecolor='white', height=0.7)
+    ax.set_xlabel(H('מספר מדידות מעל תקן שתייה'), fontsize=9)
+    ax.set_title(H('קידוחים עם חריגות מתקן מי שתייה — מספר מדידות'), fontsize=10, weight='bold')
+    ax.grid(True, axis='x', alpha=0.3)
+    fig.tight_layout()
+    fig.savefig(out / "exceedances_bar.png", dpi=150, bbox_inches='tight')
+    plt.close(fig)
+    print("  Saved: exceedances_bar.png")
+
+
+def chart_generic_severity_panel(df: pd.DataFrame, out: Path) -> None:
+    """Heatmap: max severity index per borehole × contaminant family."""
+    df2 = df.copy()
+    df2['pct'] = pd.to_numeric(df2.get('percent_of_standard', pd.Series()), errors='coerce')
+    df2['idx'] = df2['pct'].apply(_pct_to_index)
+
+    def _family(code: str) -> str:
+        cu = code.upper()
+        if cu in {c.upper() for c in _CVOC_CODES}:
+            return 'CVOC'
+        if cu in {c.upper() for c in _BTEX_CODES}:
+            return 'BTEX'
+        if cu in {c.upper() for c in _PFAS_CODES}:
+            return 'PFAS'
+        return 'אחר'
+
+    df2['family'] = df2['param_code'].apply(_family)
+    pivot = (df2.groupby(['canonical_id', 'family'])['idx']
+             .max().unstack(fill_value=0))
+
+    if pivot.empty:
+        return
+
+    # Keep top 20 boreholes by total index
+    pivot = pivot.loc[pivot.sum(axis=1).nlargest(20).index]
+    names = df[['canonical_id', 'name_he']].drop_duplicates().set_index('canonical_id')
+    pivot.index = [H(str(names.loc[bid, 'name_he'])[:18] if bid in names.index else bid)
+                   for bid in pivot.index]
+
+    fig, ax = plt.subplots(figsize=(8, max(5, len(pivot) * 0.4)), dpi=150)
+    im = ax.imshow(pivot.values, cmap='RdYlGn_r', vmin=0, vmax=8, aspect='auto')
+    ax.set_xticks(range(len(pivot.columns)))
+    ax.set_xticklabels(pivot.columns, fontsize=9)
+    ax.set_yticks(range(len(pivot.index)))
+    ax.set_yticklabels(pivot.index, fontsize=7)
+    for i in range(len(pivot.index)):
+        for j in range(len(pivot.columns)):
+            v = pivot.values[i, j]
+            if v > 0:
+                ax.text(j, i, str(v), ha='center', va='center', fontsize=8,
+                        color='white' if v >= 5 else 'black')
+    plt.colorbar(im, ax=ax, label='מדד חומרה (0–8)')
+    ax.set_title(H('מדד חומרה מרבי — קידוחים × קבוצת מזהם'), fontsize=10, weight='bold')
+    fig.tight_layout()
+    fig.savefig(out / "severity_panel.png", dpi=150, bbox_inches='tight')
+    plt.close(fig)
+    print("  Saved: severity_panel.png")
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -818,6 +943,7 @@ def main():
     parser.add_argument("--output", default=None)
     args = parser.parse_args()
 
+    zone_id = args.zone.lower()
     zone_dir = Path(args.zone.capitalize())
     if not zone_dir.exists():
         zone_dir = Path(args.zone)
@@ -828,22 +954,44 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
 
     df = load_measurements(zone_dir)
-    print(f"[V2 Charts] Loaded {len(df)} measurements from {zone_dir}")
+    print(f"[V2 Charts] Zone={zone_id} | {len(df)} measurements from {zone_dir}")
 
-    # Central map (zone_site_map.png) — first, as it's the primary figure
-    chart_zone_site_map(zone_dir, out)
+    # Filter to selected boreholes if selection file exists (Phase 5)
+    selected_ids = _load_selected_ids(zone_dir)
+    if selected_ids is not None:
+        n_before = len(df)
+        df = df[df['canonical_id'].isin(selected_ids)].reset_index(drop=True)
+        print(f"  Filtered to {len(selected_ids)} selected boreholes ({n_before} → {len(df)} rows)")
 
-    chart_cvoc_timeseries(df, out)
-    chart_pfas_all_boreholes(df, out)
-    chart_btex_timeseries(df, out)
-    chart_cvoc_cross_borehole(df, out)
-    chart_tce_p25(df, out)
-    chart_cvoc_all_wells(df, out)
-    chart_pfas_pct_stacked(df, out)
-    chart_btex_family_stacked(df, out)
-    chart_cvoc_pct_standard_panel(df, out)
+    # Zone site map — works for any zone
+    chart_zone_site_map(zone_dir, out, zone_id=zone_id)
 
-    print(f"[V2 Charts] Done — 10 charts saved to {out}/")
+    if zone_id == "raanana":
+        # Raanana-specific charts (borehole IDs known)
+        chart_cvoc_timeseries(df, out)
+        chart_pfas_all_boreholes(df, out)
+        chart_btex_timeseries(df, out)
+        chart_cvoc_cross_borehole(df, out)
+        chart_tce_p25(df, out)
+        chart_cvoc_all_wells(df, out)
+        chart_pfas_pct_stacked(df, out)
+        chart_btex_family_stacked(df, out)
+        chart_cvoc_pct_standard_panel(df, out)
+        print(f"[V2 Charts] Done — 10 charts saved to {out}/")
+    else:
+        # Generic data-driven charts for any zone
+        chart_generic_trends(df, _CVOC_CODES,
+                             "מגמות ריכוז CVOC — קידוחים מובילים", 7.5,
+                             "cvoc_trends.png", out)
+        chart_generic_trends(df, _BTEX_CODES,
+                             "מגמות ריכוז BTEX — קידוחים מובילים", 5.0,
+                             "btex_trends.png", out)
+        chart_generic_trends(df, _PFAS_CODES,
+                             "מגמות ריכוז PFAS — קידוחים מובילים", None,
+                             "pfas_trends.png", out)
+        chart_generic_exceedances(df, out)
+        chart_generic_severity_panel(df, out)
+        print(f"[V2 Charts] Done — generic charts saved to {out}/")
 
 
 if __name__ == "__main__":

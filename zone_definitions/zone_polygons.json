@@ -42,7 +42,23 @@
   "rishon_letzion_west": {"zone_name_he": "ראשון לציון מערב", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
   "rishon_letzion_east": {"zone_name_he": "ראשון לציון מזרח", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
   "bat_yam": {"zone_name_he": "בת ים", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
-  "holon": {"zone_name_he": "חולון", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
+  "holon": {
+    "zone_name_he": "אזה\"ת חולון",
+    "polygon": [
+      [181500, 656275],
+      [182761, 657336],
+      [182367, 658338],
+      [180454, 660427],
+      [179751, 659106],
+      [179960, 658524],
+      [181500, 656275]
+    ],
+    "bounding_box_itm": {"e_min": 179751, "e_max": 182761, "n_min": 656275, "n_max": 660427},
+    "center_itm": {"easting": 181256, "northing": 658351},
+    "buffer_m": 500,
+    "crs": "ITM_EPSG2039",
+    "sources": ["KMZ polygon uploaded by user 2026-05-06 — converted WGS84→ITM via pyproj EPSG:4326→2039"]
+  },
   "even_yehuda": {"zone_name_he": "אבן יהודה", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
   "sapir_netanya": {"zone_name_he": "ספיר נתניה", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},
   "kiryat_eliezer_netanya": {"zone_name_he": "קרית אליעזר נתניה", "polygon": [], "buffer_m": 500, "crs": "ITM_EPSG2039", "sources": ["pending"]},

@@ -2,10 +2,12 @@
 
 ## Project Overview
 **Title**: Structured Reporting System for Groundwater Quality Monitoring in Industrial Areas  
-**Scope**: Raanana industrial zone (אזה"ת רעננה) demonstration, expandable to 18-zone coastal system  
-**Data Sources**: TAHAL 2008 (historical), 2021 Water Quality Report (baseline), current monitoring  
-**Deliverables**: Drilling cards, zone reports, trend analysis, forensic attribution  
-**Timeline**: Phase 1-4 implementation with quarterly review cycles
+**Scope**: Generalised reporting framework for the 18-zone coastal aquifer industrial monitoring system, Israel  
+**Reference Implementation**: Raanana zone (אזה"ת רעננה) — first zone fully validated by expert hydrogeologist (May 2026)  
+**Current Application**: Holon zone (אזה"ת חולון) — first end-to-end run of the generalised framework  
+**Data Sources**: TAHAL 2008 (historical), 2021 Water Quality Report (baseline), zone-specific Excel measurements  
+**Deliverables**: Per-zone reports, drilling cards, trend analysis, forensic attribution, zone site maps  
+**Methodology Status**: Framework proven on Raanana, now zone-agnostic — every script accepts `--zone <id>`
 
 ---
 
@@ -120,8 +122,8 @@ Before implementing data processing:
   - ✓ Risk scores calculated per methodology
 
 **Phase A–C: Real Data Pipeline** ✓ COMPLETE (May 2026)
-- Goal: Replace placeholder data with real 2011–2026 Excel measurements; statistical trend engine; charts
-- Verify:
+- Goal: Excel ingestion → trend engine → charts. Generalised: every script accepts `--zone <id>`.
+- Reference results (Raanana):
   - ✓ 7 real boreholes from Excel (raanana_nt_1 through raanana_p_25)
   - ✓ 2,613 measurements (TPFAS excluded); 179 parameters
   - ✓ Mann-Kendall trend engine (tie-corrected, SNR gating, soft_trigger=2 measurements)
@@ -131,6 +133,10 @@ Before implementing data processing:
   - ✓ V1 charts deprecated and removed from Raanana/charts/ (15 files deleted)
   - ✓ Forensics: 7 decay chains, 14 source signatures, 758 co-occurrence pairs
   - ✓ PFAS at turbine station: PFHxS 1,160%, PFOA 524% (July 2025 — critical new finding)
+- Framework readiness (Phase 5):
+  - ✓ `parse_excel.py`: zone-specific Excel paths + column overrides via `config/zone_overrides/{zone}.yaml`
+  - ✓ `trend_analysis.py`, `forensics_analyzer.py`: zone-derived paths (no Raanana hardcode)
+  - ✓ `generate_charts_v2.py`: routes to zone-specific charts (Raanana) or generic data-driven charts (any zone)
 
 **Phase D: Hebrew Reports & Zone Map** ✓ COMPLETE (May 2026)
 - Goal: Professional Hebrew zone summary + 7 drilling cards + central site map from real data
@@ -192,15 +198,24 @@ Before implementing data processing:
   - ✓ Boron anomaly (2019-07-22 at nt_2, nt_3) — noted for future investigation; not blocking
   - ✓ Decision: pilot methodology on Holon zone before scaling to all 18 zones
 
-**Phase 5: Holon Pilot** ⏳ PENDING DATA UPLOAD
-- Goal: Validate Raanana reporting methodology on a second zone (חולון) before generalising to 18 zones
-- Status: Directory structure ready (`Holon/`); awaiting data upload
-- Required inputs:
-  - Excel measurements file → `Holon/data/`
-  - Background PDFs (Water Authority reports, TAHAL) → `Holon/Base-Report/`
-  - ITM polygon confirmation → `zone_definitions/zone_polygons.json` (stub exists)
-  - Historical borehole list → `zone_definitions/tier1_historical_boreholes.json` (stub exists)
-- Pipeline: identical to Raanana (--zone holon flag on all scripts)
+**Phase 5: Zone Application Framework** ✓ FRAMEWORK COMPLETE | ⏳ ZONE-SPECIFIC OUTPUTS PENDING (Holon)
+- Goal: Validate the methodology works for **any** of the 18 industrial zones — not just Raanana
+- Framework changes (zone-agnostic):
+  - ✓ Pipeline scripts (parse_excel, preprocess, trend_analysis, forensics_analyzer, generate_charts_v2,
+    select_boreholes, validate_report) — all accept `--zone <id>` and derive paths from zone name
+  - ✓ Per-zone Excel column mapping via `config/zone_overrides/{zone}.yaml` (handles format variations)
+  - ✓ Generic data-driven charts (`chart_generic_trends`, `chart_generic_exceedances`,
+    `chart_generic_severity_panel`) auto-pick top-contaminated boreholes per contaminant family
+  - ✓ Zone site map (`chart_zone_site_map`) computes extent + severity from data — no hardcoded IDs
+  - ✓ Borehole selection (`select_boreholes.py`) uses zone polygon (Tier 2) + Tier 1/3 lists
+- First framework application — Holon (אזה"ת חולון):
+  - ✓ Data uploaded: 4 PDFs (`Holon/data/external/`), Excel (`Water Quality Data/...חולון.xlsx`), KMZ polygon
+  - ✓ Pipeline executed end-to-end: 112 boreholes parsed, 20,613 measurements, 4,869 (borehole×param) pairs
+  - ✓ Polygon intersection: 111/112 boreholes inside zone (Tier 2 selection)
+  - ✓ Charts produced: site_map + btex_trends + exceedances_bar + severity_panel
+  - ⏳ CVOC trends: returned no data — needs param_code mapping check (Holon Excel uses different codes)
+  - ⏳ Holon zone summary report (HOLON_REPORT_V1.md)
+  - ⏳ Facility discovery for Holon (run Agent against Holon zone)
 
 ---
 
@@ -284,31 +299,66 @@ Before committing code or reports:
 
 ---
 
-## 8. Scaling from Raanana to Full System
+## 8. Adding a New Zone — Standard Workflow
 
-### Current State (Raanana — Phases A–G Complete)
-- 1 zone, 7 boreholes (real 2011–2026 data), 179 parameters, 2,613 measurements
-- Full pipeline: parse_excel → trend_analysis → forensics_analyzer → generate_charts_v2
-- 7 drilling cards + zone summary report in Hebrew + zone site map
-- 28 automated tests passing (test_preprocess, test_chart_presets, test_borehole_selection); 3 report validators (chart_refs, tone, attribution)
-- 9 facility candidates identified with confidence levels (facility_attribution.json)
-- Tier 1/2/3 borehole selection in zone_definitions/
-- base_layer/ seeded for all 18 zones (Raanana complete; 17 others manual_pending)
-- Project documentation: REQUIREMENTS.md (48 requirements, 44 done), STYLE_GUIDE.md (sections A–H), CHART_SPEC.md, DATA_DICTIONARY.md
+The framework supports any of the 18 industrial zones in the coastal aquifer monitoring system.
+This section is the canonical procedure for activating a new zone.
 
-### Adding a New Zone (Phase 2)
-1. `zone_definitions/tier1_historical_boreholes.json` — add zone's historical borehole IDs
-2. `zone_definitions/zone_polygons.json` — define zone polygon in ITM coordinates
-3. `scripts/parse_excel.py --zone <new_zone>` — extract measurements from Excel
-4. `scripts/trend_analysis.py --zone <new_zone>` — run MK trend engine
-5. `scripts/forensics_analyzer.py --zone <new_zone>` — forensics analysis
-6. `scripts/generate_charts.py --zone <new_zone>` — charts
-7. Write zone summary report + drilling cards (Raanana as template)
+### Current State (Framework — Reference Implementation: Raanana)
+- Pipeline: `parse_excel → preprocess → trend_analysis → forensics_analyzer → generate_charts_v2`
+- All scripts: zone-agnostic (`--zone <id>`); paths derived from zone name; column mapping per zone via config
+- Reference outputs (Raanana): 7 boreholes, 2,613 measurements, 9 production charts, zone summary, 7 drilling cards
+- Holon (first framework application): 112 boreholes, 20,613 measurements, generic charts produced
+- 28 automated tests; 3 report validators (chart_refs, tone, attribution)
+- Documentation: REQUIREMENTS.md, STYLE_GUIDE.md (Hebrew), CHART_SPEC.md, DATA_DICTIONARY.md
+- 18-zone seed data: `zone_definitions/` and `base_layer/`
+
+### Step-by-step: activating zone `<X>`
+
+**1. Data inputs** (uploaded by user):
+- `Water Quality Data/<X>_measurements.xlsx` (or any name) — Excel with measurements
+- `<X>/data/external/` — zone-specific Water Authority / TAHAL / municipal PDFs
+- `zone_definitions/<polygon_file>.kmz` (or already in `zone_polygons.json`) — zone boundary
+
+**2. Configuration**:
+- `config/zone_overrides/<X>.yaml` — Excel column mapping if format differs from Raanana defaults
+  (provide column indices for borehole_id, name, easting, northing, date, param_name, concentration, etc.)
+- `zone_definitions/zone_polygons.json` — populate `<X>` entry with ITM polygon (convert KMZ via pyproj if needed)
+- `zone_definitions/tier1_historical_boreholes.json` — historical borehole IDs from 2008/2021 reports
+- `zone_definitions/tier3_cross_zone_boreholes.json` — manual additions (upgradient, downgradient)
+- `crosswalks/borehole_id_mapping.json` — optional canonical ID mapping (auto-derived if absent)
+
+**3. Pipeline run** (each command runs A → B → C):
+```bash
+python scripts/parse_excel.py        --zone <X>
+python scripts/preprocess.py         --zone <X>      # if applicable
+python scripts/trend_analysis.py     --zone <X>
+python scripts/forensics_analyzer.py --zone <X>
+python scripts/select_boreholes.py   --zone <X> --list-tiers
+python scripts/generate_charts_v2.py --zone <X>
+```
+
+**4. Per-zone manual deliverables** (using Raanana as template):
+- `<X>/output/<X>_REPORT_V1.md` — zone summary report (Hebrew, per STYLE_GUIDE)
+- Drilling cards per Tier 1 borehole (narrative-style, per Raanana template)
+- `<X>/data/facility_attribution.json` — populated by AI agent facility discovery
+- `<X>/data/external/web_findings.md` — search log for facility discovery
+
+**5. Validation**:
+```bash
+python scripts/validate_report.py --report <X>/output/<X>_REPORT_V1.md --charts-dir <X>/charts_v2
+pytest tests/ -v
+```
+
+**6. Expert review** (per zone):
+- Submit `<X>_REPORT_V1.md` + drilling cards + charts to expert hydrogeologist
+- Address comments (or proceed unchanged if approved as-is, like Raanana)
 
 ### Implementation Trigger
-- After Phase 4 expert validation on Raanana (Q3 2026)
-- Requires Ministry of Environmental Protection approval for zone expansion
-- Timeline: Q3 2026 validation → Q4 2026 data integration → Q1 2027 18-zone reporting launch
+- Methodology validated on Raanana ✓ (May 2026, hydrogeologist approval)
+- Holon application in progress (validates framework generality)
+- After Holon validation → systematic application to remaining 16 zones
+- Requires Ministry of Environmental Protection coordination per zone
 
 ---
 
@@ -368,24 +418,45 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 4. ✓ Verification: Trend calculations match source interpretations or discrepancies flagged
 5. ✓ Documentation: CLAUDE.md and DATA_DICTIONARY updated
 
-**Project Success Criteria** (Phase 4 completion):
+**Framework Success Criteria** (cross-zone — must hold for any zone):
+1. ✓ Pipeline scripts accept `--zone <id>` and derive all paths from zone name
+2. ✓ Per-zone Excel column mapping configurable (`config/zone_overrides/<zone>.yaml`)
+3. ✓ Zone polygon (ITM) intersection drives Tier 2 borehole selection
+4. ✓ Generic data-driven charts work without hardcoded borehole IDs
+5. ✓ Zone site map computes extent + severity from data
+6. ✓ 28 automated tests pass + 3 report validators (chart_refs, tone, attribution)
+7. ✓ Documentation describes "Adding a new zone" as standard workflow
+
+**Reference Implementation Criteria — Raanana** (all ✓):
 1. ✓ All 7 Raanana boreholes have drilling cards (nt1, nt2, nt3, nd_paz, nd_turbine, p18, p25)
-2. ✓ Zone summary report synthesizes all data layers (4 contamination foci, trend table, forensics)
+2. ✓ Zone summary report synthesises all data layers (4 contamination foci, trend table, forensics)
 3. ✓ Forensic analysis links contaminants to source facilities with confidence levels
 4. ✓ PFAS at turbine station flagged for urgent regulatory attention
 5. ✓ Real 2011–2026 data integrated (replacing placeholder data)
-6. ✓ 28 automated tests passing + 3 report validators (chart_refs, tone, attribution)
-7. ✓ System designed to scale from 1 zone to 18 zones (--zone flag, zone_definitions/, select_boreholes.py)
-8. ✓ CLAUDE.md, DATA_DICTIONARY.md, REQUIREMENTS.md, STYLE_GUIDE.md, CHART_SPEC.md updated
-9. ✓ Zone site map generated (offline ITM schematic); Figure 1 in report; 9 facility candidates identified
-10. ✓ Expert hydrogeologist review — approved (May 2026); no PFAS sampling required
-11. ⏳ Holon pilot — pending data upload (Phase 5)
-12. ⏳ Basemap integration (REQ-G1) — pending Phase 5 environment resolution
-13. ⏳ Phase 2: expansion to remaining 16 zones — after Holon pilot validation
+6. ✓ Zone site map generated (offline ITM schematic); Figure 1 in report; 9 facility candidates identified
+7. ✓ Expert hydrogeologist review — approved (May 2026); no PFAS sampling required
+
+**First Framework Application — Holon** (in progress):
+1. ✓ Pipeline ran end-to-end (parse → trend → forensics → charts)
+2. ✓ 112 boreholes, 20,613 measurements, 4,869 trend pairs
+3. ✓ Polygon intersection: 111 boreholes selected (Tier 2)
+4. ⏳ CVOC trend chart skipped — Holon Excel uses different param codes; needs mapping
+5. ⏳ Holon zone summary report
+6. ⏳ Facility discovery (AI agent) for Holon
+7. ⏳ Expert hydrogeologist review of Holon report
+
+**Open framework items**:
+- ⏳ Basemap integration (REQ-G1) — pending environment resolution
+- ⏳ Param code mapping table (Raanana ↔ Holon ↔ other zones) for cross-zone consistency
+- ⏳ After Holon validation → systematic activation of remaining 16 zones
 
 ---
 
-**Project Status**: Phases A–G + Phase 4 Complete (Raanana zone fully validated by hydrogeologist) | Phase 5 (Holon pilot) Pending data upload  
-**Last Updated**: May 5, 2026  
+**Project Status**:
+- Framework (Phases A–G): ✓ Complete — pipeline zone-agnostic, validated on Raanana, expert-approved
+- Phase 5 (Zone Application Framework): ✓ Complete on framework side; Holon as first application — pipeline running, report pending
+- Phase 2 (full 18-zone activation): ⏳ Pending Holon report sign-off + Ministry coordination
+
+**Last Updated**: May 6, 2026  
 **Completion**: 44/44 core requirements done; 1 deferred (REQ-G1 basemap); 3 deprecated charts  
-**Next Review**: After Holon pilot complete → Phase 2 expansion to remaining 16 zones
+**Next Review**: After Holon zone summary report complete → systematic activation of remaining 16 zones

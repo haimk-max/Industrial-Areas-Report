@@ -16,6 +16,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
+from scripts.borehole_filter import load_selected_ids
 from scripts.cli_common import load_config, make_parser, merged_config
 from scripts.forensics.co_occurrence import compute_co_occurrence
 from scripts.forensics.decay_chains import analyze_decay_chains
@@ -24,9 +25,7 @@ from scripts.logging_setup import get_logger
 
 log = get_logger("forensics_analyzer")
 
-MEAS_PATH = REPO_ROOT / "Raanana" / "data" / "measurements.csv"
-TRENDS_PATH = REPO_ROOT / "Raanana" / "data" / "trends.csv"
-OUTPUT_DIR = REPO_ROOT / "Raanana" / "forensics"
+# Paths derived from zone name in main()
 
 
 def _load_detections(meas_path: Path) -> dict[str, dict[str, float]]:
@@ -80,12 +79,14 @@ def _load_exceedances(meas_path: Path) -> dict[str, list[dict]]:
 
 
 def main() -> None:
-    parser = make_parser("Phase B: Forensics analysis for Raanana zone.")
+    parser = make_parser("Phase B: Forensics analysis for a zone.")
     args = parser.parse_args()
-    cfg = merged_config(args.zone or "raanana", args.config)
+    zone = (args.zone or "raanana").lower()
+    cfg = merged_config(zone, args.config)
+    zone_data_dir = REPO_ROOT / zone.capitalize() / "data"
 
-    meas_path = Path(args.input) if args.input else MEAS_PATH
-    output_dir = Path(args.output) if args.output else OUTPUT_DIR
+    meas_path = Path(args.input) if args.input else zone_data_dir / "measurements.csv"
+    output_dir = Path(args.output) if args.output else REPO_ROOT / zone.capitalize() / "forensics"
     output_dir.mkdir(parents=True, exist_ok=True)
 
     if not meas_path.exists():
@@ -96,11 +97,21 @@ def main() -> None:
     detections = _load_detections(meas_path)
     exceedances = _load_exceedances(meas_path)
 
+    # Filter to selected boreholes if selection file exists (Phase 5)
+    selected_ids = load_selected_ids(REPO_ROOT / zone.capitalize())
+    if selected_ids is not None:
+        n_before = len(detections)
+        detections = {k: v for k, v in detections.items() if k in selected_ids}
+        exceedances = {k: v for k, v in exceedances.items() if k in selected_ids}
+        log.info("filtered_to_selected_boreholes",
+                 n_selected=len(selected_ids), n_before=n_before, n_after=len(detections))
+        print(f"  Filtered to {len(selected_ids)} selected boreholes ({n_before} → {len(detections)})")
+
     log.info("data_loaded", boreholes=len(detections))
 
     result: dict = {
-        "zone_id": args.zone or "raanana",
-        "zone_name_he": "אזה\"ת רעננה",
+        "zone_id": zone,
+        "zone_name_he": f"אזה\"ת {zone}",
         "source": str(meas_path),
         "boreholes_analyzed": list(detections.keys()),
         "contamination_families": {},
