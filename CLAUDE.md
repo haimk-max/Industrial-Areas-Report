@@ -329,15 +329,42 @@ This section is the canonical procedure for activating a new zone.
 - `zone_definitions/tier3_cross_zone_boreholes.json` — manual additions (upgradient, downgradient)
 - `crosswalks/borehole_id_mapping.json` — optional canonical ID mapping (auto-derived if absent)
 
-**3. Pipeline run** (each command runs A → B → C):
+**3. Pipeline run** (zone-agnostic; recommended order):
 ```bash
+# Step 1: Extract measurements from Excel
 python scripts/parse_excel.py        --zone <X>
-python scripts/preprocess.py         --zone <X>      # if applicable
-python scripts/trend_analysis.py     --zone <X>
-python scripts/forensics_analyzer.py --zone <X>
+
+# Step 2: Borehole selection (Tier 1 historical + Tier 2 polygon + Tier 3 manual)
+#         Writes <X>/data/selected_boreholes.json — downstream scripts filter by it
 python scripts/select_boreholes.py   --zone <X> --list-tiers
+
+# Step 3: Extract text from background PDFs (mechanical step)
+#         Writes <X>/data/external/_raw_text/*.txt + _pdf_index.json
+python scripts/extract_zone_pdfs.py  --zone <X>
+
+# Step 4: AI agent extraction of historical findings from PDF text
+#         (run via Agent tool — see prompt template below)
+#         Produces <X>/data/external/extracted_findings.json
+
+# Step 5: Trend analysis (Mann-Kendall + SNR)
+python scripts/trend_analysis.py     --zone <X>
+
+# Step 6: Forensic attribution (decay chains, source signatures, co-occurrence)
+python scripts/forensics_analyzer.py --zone <X>
+
+# Step 7: Charts (Raanana → 9 zone-specific; other zones → 6 generic data-driven)
 python scripts/generate_charts_v2.py --zone <X>
 ```
+
+**3b. AI agent prompt template (PDF extraction)**:
+The script `extract_zone_pdfs.py` only mechanically converts PDF→text. The
+structured extraction is done by an AI agent with a hydrogeologist persona that
+reads the raw text and produces `<X>/data/external/extracted_findings.json`.
+Schema: `sources[]`, `boreholes_mentioned[]`, `contamination_findings[]`,
+`facilities_suspected[]`, `hydrogeology_he`, `trends_described_he[]`,
+`recommendations_he[]`, `key_quotes_he[]`. See `Holon/data/external/extracted_findings.json`
+as a worked example. Schema requires Hebrew text preserved verbatim, page references
+where possible, confidence levels on facility attribution.
 
 **4. Per-zone manual deliverables** (using Raanana as template):
 - `<X>/output/<X>_REPORT_V1.md` — zone summary report (Hebrew, per STYLE_GUIDE)
