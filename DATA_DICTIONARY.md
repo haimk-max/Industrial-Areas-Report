@@ -140,6 +140,98 @@ Output of `scripts/select_boreholes.py`. Lists the boreholes deemed relevant for
 
 ---
 
+## `<Zone>/data/external/_pdf_index.json`
+
+Idempotency manifest written by `scripts/extract_zone_pdfs.py`. Tracks which PDFs have been processed (PDF→text via pdftotext) so re-runs skip already-extracted files. New PDFs added to `<Zone>/data/external/` or root `Base-Report/` (with `--include-shared`) trigger fresh extraction. Use `--force` to re-extract all.
+
+```json
+{
+  "zone_id": "holon",
+  "extraction_date_utc": "2026-05-06T07:35:02+00:00",
+  "last_extraction_utc": "2026-05-06T08:01:49+00:00",
+  "pdf_count": 7,
+  "pdfs": [
+    {
+      "filename": "water-sources-status_tehom_FinalReport-Holon.pdf",
+      "source_dir": "Holon/data/external",
+      "raw_text": "Holon/data/external/_raw_text/water-sources-status_tehom_FinalReport-Holon.txt",
+      "page_count": 95,
+      "char_count": 179436,
+      "extraction_ok": true,
+      "extraction_date_utc": "2026-05-06T08:01:49+00:00"
+    }
+  ]
+}
+```
+
+| Field | Type | Description |
+|---|---|---|
+| `zone_id` | string | Lowercase zone identifier |
+| `extraction_date_utc` | string (ISO 8601) | First-run timestamp |
+| `last_extraction_utc` | string | Most recent run timestamp |
+| `pdf_count` | int | Number of PDFs in manifest |
+| `pdfs[].filename` | string | PDF filename (used as cache key) |
+| `pdfs[].source_dir` | string | Path relative to repo root (e.g. `Holon/data/external`, `Base-Report`) |
+| `pdfs[].raw_text` | string \| null | Path to extracted .txt file (null if extraction failed) |
+| `pdfs[].page_count` | int \| null | Pages per pdfinfo |
+| `pdfs[].char_count` | int | Bytes in extracted text file |
+| `pdfs[].extraction_ok` | bool | True if pdftotext succeeded; False entries are retried on next run |
+| `pdfs[].extraction_date_utc` | string | Per-PDF extraction timestamp (used for staleness checks) |
+
+---
+
+## `<Zone>/data/external/_findings_<tag>.json`
+
+Per-PDF AI agent extraction output (one JSON file per source PDF). Sub-agents run in parallel — one per PDF — to avoid context-window timeouts on large reports. Each file follows the same schema and is consolidated by `scripts/merge_extracted_findings.py`.
+
+| Field | Type | Description |
+|---|---|---|
+| `source_file` | string | Original PDF filename |
+| `title_he` | string | Hebrew title from cover page |
+| `year` | int | Publication year |
+| `author_org_he` | string | Authoring organisation (Hebrew) |
+| `summary_he` | string | One-paragraph Hebrew summary |
+| `boreholes_mentioned[]` | array | Each entry: `name_he`, `type_he`, `context_he`, `page_ref` (and optionally ITM coords) |
+| `contamination_findings[]` | array | Each entry: `borehole_he`, `contaminant_he`, `contaminant_en`, `concentration`, `year`, `page_ref` |
+| `facilities_suspected[]` | array | Each entry: `name_he`, `type_he`, `address_he`, `suspected_contaminants[]`, `evidence_he`, `confidence` (HIGH/MEDIUM/LOW), `page_ref` |
+| `hydrogeology_he` | object \| null | Aquifer name, flow direction, depth to water |
+| `trends_described_he[]` | array | Hebrew descriptions of long-term trends |
+| `recommendations_he[]` | array | Hebrew recommendations from source authors |
+| `key_quotes_he[]` | array | Verbatim Hebrew quotes preserved for tone matching |
+
+---
+
+## `<Zone>/data/external/extracted_findings.json`
+
+Output of `scripts/merge_extracted_findings.py`. Single canonical file per zone consolidating all `_findings_*.json` source files. Boreholes deduplicated by `name_he` (first-occurrence wins, source file recorded in entry); facilities deduplicated by `(name_he, confidence)`; all contamination findings preserved (multi-source increases attribution confidence).
+
+```json
+{
+  "zone_id": "holon",
+  "source_files": ["water-sources-status_tehom_holon-part1.pdf", "..."],
+  "summary_he": "מיזוג מידע מ-4 דוחות PDF לאזור holon",
+  "boreholes_mentioned": [...],
+  "contamination_findings": [...],
+  "facilities_suspected": [...],
+  "trends_described_he": [...],
+  "recommendations_he": [...],
+  "key_quotes_he": [...],
+  "statistics": {
+    "unique_boreholes": 93,
+    "total_contamination_findings": 107,
+    "unique_facilities": 47,
+    "total_trends": 35,
+    "total_recommendations": 37,
+    "total_quotes": 14,
+    "source_count": 4
+  }
+}
+```
+
+Every entry in arrays carries a `source_file` field for provenance back to the originating PDF.
+
+---
+
 ## base_layer/tahal_2008/{zone_id}.json
 
 Historical borehole and industry data from TAHAL 2008 Part B (18 files).

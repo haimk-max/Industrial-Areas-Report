@@ -338,33 +338,56 @@ python scripts/parse_excel.py        --zone <X>
 #         Writes <X>/data/selected_boreholes.json — downstream scripts filter by it
 python scripts/select_boreholes.py   --zone <X> --list-tiers
 
-# Step 3: Extract text from background PDFs (mechanical step)
+# Step 3: Extract text from background PDFs (mechanical step, IDEMPOTENT)
 #         Writes <X>/data/external/_raw_text/*.txt + _pdf_index.json
-python scripts/extract_zone_pdfs.py  --zone <X>
+#         --include-shared: also process root Base-Report/ PDFs (TAHAL 2008, 2021 report)
+#         --force: re-extract even if already cached in manifest
+#         Default: skips PDFs already in _pdf_index.json with extraction_ok=true
+python scripts/extract_zone_pdfs.py  --zone <X> --include-shared
 
-# Step 4: AI agent extraction of historical findings from PDF text
+# Step 4: AI agent extraction (parallel sub-agents, one per PDF)
+#         Each agent produces <X>/data/external/_findings_<sourcetag>.json
+#         Use model="sonnet" (per ~/.claude/CLAUDE.md cost guidance)
 #         (run via Agent tool — see prompt template below)
-#         Produces <X>/data/external/extracted_findings.json
 
-# Step 5: Trend analysis (Mann-Kendall + SNR)
+# Step 5: Merge per-PDF findings → unified extracted_findings.json
+#         Deduplicates boreholes (by name_he), consolidates findings,
+#         preserves source_file attribution for each entry
+python scripts/merge_extracted_findings.py --zone <X>
+
+# Step 6: Trend analysis (Mann-Kendall + SNR)
 python scripts/trend_analysis.py     --zone <X>
 
-# Step 6: Forensic attribution (decay chains, source signatures, co-occurrence)
+# Step 7: Forensic attribution (decay chains, source signatures, co-occurrence)
 python scripts/forensics_analyzer.py --zone <X>
 
-# Step 7: Charts (Raanana → 9 zone-specific; other zones → 6 generic data-driven)
+# Step 8: Charts (Raanana → 9 zone-specific; other zones → 6 generic data-driven)
 python scripts/generate_charts_v2.py --zone <X>
 ```
 
+**3a. Idempotency (one-time PDF extraction)**:
+`extract_zone_pdfs.py` and the AI extraction step are designed for one-time
+processing per PDF file. The manifest `<X>/data/external/_pdf_index.json` tracks
+each PDF by filename with `extraction_ok` + `extraction_date_utc`. On re-runs:
+- Already-extracted PDFs (`extraction_ok=true`) are SKIPPED
+- New PDFs added to `<X>/data/external/` or `Base-Report/` trigger fresh extraction
+- `--force` overrides the cache (useful after pdftotext upgrade or schema change)
+The same applies to AI agent JSON outputs (`_findings_*.json`): once produced,
+they should not be regenerated unless the source PDF changes. The merge step
+(`merge_extracted_findings.py`) is cheap and can be re-run freely.
+
 **3b. AI agent prompt template (PDF extraction)**:
 The script `extract_zone_pdfs.py` only mechanically converts PDF→text. The
-structured extraction is done by an AI agent with a hydrogeologist persona that
-reads the raw text and produces `<X>/data/external/extracted_findings.json`.
-Schema: `sources[]`, `boreholes_mentioned[]`, `contamination_findings[]`,
-`facilities_suspected[]`, `hydrogeology_he`, `trends_described_he[]`,
-`recommendations_he[]`, `key_quotes_he[]`. See `Holon/data/external/extracted_findings.json`
-as a worked example. Schema requires Hebrew text preserved verbatim, page references
-where possible, confidence levels on facility attribution.
+structured extraction is done by AI sub-agents (one per PDF, parallel) with
+a hydrogeologist persona, each producing `<X>/data/external/_findings_<tag>.json`.
+Schema: `source_file`, `title_he`, `year`, `author_org_he`, `summary_he`,
+`boreholes_mentioned[]`, `contamination_findings[]`, `facilities_suspected[]`,
+`hydrogeology_he`, `trends_described_he[]`, `recommendations_he[]`,
+`key_quotes_he[]`. See `Holon/data/external/_findings_*.json` (4 files, one per
+PDF) as worked examples. The merge step combines them into a single
+`extracted_findings.json` with `statistics{}` summary and `source_files[]`
+attribution. Schema requires Hebrew text preserved verbatim, page references
+where possible, confidence levels (HIGH/MEDIUM/LOW) on facility attribution.
 
 **4. Per-zone manual deliverables** (using Raanana as template):
 - `<X>/output/<X>_REPORT_V1.md` — zone summary report (Hebrew, per STYLE_GUIDE)

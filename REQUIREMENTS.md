@@ -172,12 +172,15 @@ These requirements apply when activating any new zone using the framework.
 | REQ-H7 | KMZ → ITM polygon conversion (WGS84 → EPSG:2039 via pyproj) | ✅ | One-off task per zone | Holon polygon converted from uploaded KMZ |
 | REQ-H8 | Documentation describes "Adding a new zone" as standard workflow (not "pilot") | ✅ | CLAUDE.md § 8 rewrite | Section is now zone-agnostic procedure |
 | REQ-H9 | Borehole selection persistence: `select_boreholes.py` writes `<Zone>/data/selected_boreholes.json`; downstream scripts (trend_analysis, forensics, charts) filter by this list | ✅ | Excel may contain more boreholes than relevant for a zone (Holon: 112 in Excel, 111 selected by polygon) | `scripts/borehole_filter.py::load_selected_ids()` returns set or None (None = use all, backwards compatible). Holon trend pairs: 4,869 → 4,762; chart rows: 20,613 → 20,506 |
+| REQ-H10 | Idempotent PDF extraction: each PDF processed once; `<Zone>/data/external/_pdf_index.json` tracks `extraction_ok` + `extraction_date_utc` per file; re-runs SKIP cached entries unless `--force`; new files trigger fresh extraction automatically | ✅ | User request (2026-05-06) — re-running pipeline next year should not re-extract already-processed PDFs | `scripts/extract_zone_pdfs.py` + `_load_existing_manifest()` + `_pdf_needs_extraction()`. Verified: Run 1 → 4 processed; Run 2 → 4 cached (0 processed); `--force` → re-extract all |
+| REQ-H11 | Shared base-layer PDF support: `--include-shared` flag processes root `Base-Report/` (TAHAL 2008, Water Authority 2021) per zone; same idempotency mechanism applies | ✅ | User clarification (2026-05-06) — base-layer reports are sources for every zone, not just Raanana | `extract_zone_pdfs.py --include-shared`. Verified on Holon: 3 base-layer PDFs added to manifest; second run with flag → 0 processed, 7 cached |
+| REQ-H12 | Per-PDF AI agent extraction: each PDF processed by parallel sub-agent (one JSON per source); `merge_extracted_findings.py` consolidates all `_findings_*.json` into unified `extracted_findings.json` with deduplication (boreholes by `name_he`) and source attribution per entry | ✅ | Single agent over all PDFs hit timeout on 692K Holon characters; parallel sub-agents (Sonnet model) avoided timeout | `scripts/merge_extracted_findings.py`. Holon: 4 source files → 93 unique boreholes (from 127 mentions), 107 findings, 47 facilities (from 56) |
 
 ---
 
 ## Status Summary
 
-**Framework requirements**: 9/9 ✅ done (REQ-H1 through REQ-H9)
+**Framework requirements**: 12/12 ✅ done (REQ-H1 through REQ-H12)
 
 **Reference implementation (Raanana)**: 44/44 ✅ done; 1 deferred (REQ-G1 basemap); 3 deprecated charts
 
@@ -195,9 +198,10 @@ These requirements apply when activating any new zone using the framework.
 | 2026-05-06 | v1.3: RTL verification (REQ-D3 ✅) + 3 validators (REQ-F4 ✅); all Raanana requirements COMPLETE (44 done, 0 pending) | Full regression guard: validate_report.py PASS on all validators |
 | 2026-05-06 | v2.0: Reframed as **framework requirements** for any of the 18 zones (not Raanana-specific). Added Phase 5 (REQ-H1 through REQ-H8) for cross-zone framework requirements. Raanana = reference implementation; Holon = first application | Methodology proven on Raanana, generalised to support any zone via `--zone <id>` |
 | 2026-05-06 | v2.1: REQ-H3 ✅ resolved (`scripts/param_families.py` cross-zone CVOC/BTEX/PFAS classifier). Added REQ-H9 (borehole selection persistence: `select_boreholes.py` writes JSON, downstream scripts filter). 9 new tests | Holon CVOC chart returned no data (different naming); pipeline ran on all boreholes instead of selected only |
+| 2026-05-06 | v2.2: Added REQ-H10 (idempotent PDF extraction with `_pdf_index.json` state tracking), REQ-H11 (`--include-shared` flag for root Base-Report/ PDFs), REQ-H12 (parallel per-PDF AI extraction + merge step). Added `scripts/merge_extracted_findings.py` | User requirement: PDF extraction must be one-time per file; re-running pipeline next year should skip already-processed PDFs unless they change. Same applies to TAHAL 2008 and Water Authority 2021 base-layer reports |
 
 ---
 
-**Status**: Framework ✅ complete (REQ-H1–H9 all done); Raanana reference implementation ✅ complete; Holon first application — pipeline ✅, report ⏳  
-**Last Review**: 2026-05-06 (param-family classifier + borehole selection persistence)  
+**Status**: Framework ✅ complete (REQ-H1–H12 all done); Raanana reference implementation ✅ complete; Holon first application — pipeline ✅, extracted_findings ✅, report ⏳  
+**Last Review**: 2026-05-06 (idempotent extraction + merge workflow)  
 **Next Review**: After Holon zone summary report complete + expert review
