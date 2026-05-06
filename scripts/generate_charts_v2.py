@@ -9,6 +9,7 @@ Usage:
 """
 
 import argparse
+import json as _json
 import sys
 from pathlib import Path
 
@@ -18,6 +19,16 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import pandas as pd
 import numpy as np
+
+
+def _load_selected_ids(zone_dir: Path) -> set | None:
+    """Load selected_boreholes.json if it exists (returns set of canonical_ids or None)."""
+    sel_file = zone_dir / "data" / "selected_boreholes.json"
+    if not sel_file.exists():
+        return None
+    with open(sel_file, encoding="utf-8") as fh:
+        data = _json.load(fh)
+    return {b["canonical_id"] for b in data.get("boreholes", [])}
 
 
 # ── Hebrew RTL helper ─────────────────────────────────────────────────────────
@@ -637,6 +648,11 @@ def chart_zone_site_map(zone_dir: Path, out: Path, zone_id: str = "raanana") -> 
     # ── Load data ─────────────────────────────────────────────────────────────
     boreholes = pd.read_csv(zone_dir / "data" / "boreholes.csv")
 
+    # Filter to selected boreholes if selection file exists (Phase 5)
+    selected_ids = _load_selected_ids(zone_dir)
+    if selected_ids is not None:
+        boreholes = boreholes[boreholes['canonical_id'].isin(selected_ids)].reset_index(drop=True)
+
     # Facility attribution is optional (may not exist for new zones)
     attribution_path = zone_dir / "data" / "facility_attribution.json"
     facilities = []
@@ -939,6 +955,13 @@ def main():
 
     df = load_measurements(zone_dir)
     print(f"[V2 Charts] Zone={zone_id} | {len(df)} measurements from {zone_dir}")
+
+    # Filter to selected boreholes if selection file exists (Phase 5)
+    selected_ids = _load_selected_ids(zone_dir)
+    if selected_ids is not None:
+        n_before = len(df)
+        df = df[df['canonical_id'].isin(selected_ids)].reset_index(drop=True)
+        print(f"  Filtered to {len(selected_ids)} selected boreholes ({n_before} → {len(df)} rows)")
 
     # Zone site map — works for any zone
     chart_zone_site_map(zone_dir, out, zone_id=zone_id)

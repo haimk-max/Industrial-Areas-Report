@@ -16,6 +16,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
+from scripts.borehole_filter import load_selected_ids
 from scripts.cli_common import load_config, make_parser, merged_config
 from scripts.forensics.co_occurrence import compute_co_occurrence
 from scripts.forensics.decay_chains import analyze_decay_chains
@@ -95,6 +96,16 @@ def main() -> None:
     log.info("loading_data")
     detections = _load_detections(meas_path)
     exceedances = _load_exceedances(meas_path)
+
+    # Filter to selected boreholes if selection file exists (Phase 5)
+    selected_ids = load_selected_ids(REPO_ROOT / zone.capitalize())
+    if selected_ids is not None:
+        n_before = len(detections)
+        detections = {k: v for k, v in detections.items() if k in selected_ids}
+        exceedances = {k: v for k, v in exceedances.items() if k in selected_ids}
+        log.info("filtered_to_selected_boreholes",
+                 n_selected=len(selected_ids), n_before=n_before, n_after=len(detections))
+        print(f"  Filtered to {len(selected_ids)} selected boreholes ({n_before} → {len(detections)})")
 
     log.info("data_loaded", boreholes=len(detections))
 

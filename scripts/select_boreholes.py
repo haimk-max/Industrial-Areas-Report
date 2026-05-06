@@ -199,7 +199,30 @@ def main() -> None:
         for r in results:
             print(f"  {r.canonical_id}: {r.tier_source}")
 
-    log.info("selection_complete", zone=zone_id, n_selected=len(results))
+    # Persist selection so downstream scripts (trend_analysis, forensics, charts) can filter
+    output_path = (Path(args.output) if args.output
+                   else REPO_ROOT / zone_id.capitalize() / "data" / "selected_boreholes.json")
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "zone_id": zone_id,
+        "n_selected": len(results),
+        "boreholes": [
+            {
+                "canonical_id": r.canonical_id,
+                "name_he": r.name_he,
+                "tier": r.tier,
+                "tier_source": r.tier_source,
+                "itm_easting": r.easting,
+                "itm_northing": r.northing,
+            }
+            for r in results
+        ],
+    }
+    with open(output_path, "w", encoding="utf-8") as fh:
+        json.dump(payload, fh, ensure_ascii=False, indent=2)
+    print(f"\nSaved selection → {output_path}")
+
+    log.info("selection_complete", zone=zone_id, n_selected=len(results), output=str(output_path))
     return results
 
 

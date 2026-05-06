@@ -6,13 +6,13 @@
 |---|---|
 | ALERT | 0 |
 | WATCH | 0 |
-| STABLE | 613 |
-| DECREASING | 80 |
-| NONE | 4021 |
+| STABLE | 66 |
+| DECREASING | 4 |
+| NONE | 496 |
 
-- Total (borehole, parameter) pairs: 4762
-- Pairs with insufficient data (n<4): 3026
-- Pairs that crossed drinking water standard: 567
+- Total (borehole, parameter) pairs: 576
+- Pairs with insufficient data (n<4): 271
+- Pairs that crossed drinking water standard: 36
 
 ## ALERT classifications
 

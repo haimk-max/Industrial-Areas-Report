@@ -15,6 +15,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
+from scripts.borehole_filter import load_selected_ids
 from scripts.cli_common import load_config, make_parser, merged_config
 from scripts.logging_setup import get_logger
 from scripts.preprocess import Observation, TrendResult, analyze_series, parse_observation
@@ -71,6 +72,17 @@ def main() -> None:
     log.info("loading_measurements", path=str(meas_path))
     groups = _load_measurements(meas_path)
     log.info("groups_loaded", n_pairs=len(groups))
+
+    # Filter to selected boreholes if selection file exists (Phase 5)
+    selected_ids = load_selected_ids(REPO_ROOT / zone.capitalize())
+    if selected_ids is not None:
+        n_before = len(groups)
+        groups = {k: v for k, v in groups.items() if k[0] in selected_ids}
+        log.info("filtered_to_selected_boreholes",
+                 n_selected_boreholes=len(selected_ids),
+                 pairs_before=n_before, pairs_after=len(groups))
+        print(f"  Filtered to {len(selected_ids)} selected boreholes "
+              f"({n_before} → {len(groups)} pairs)")
 
     results: list[TrendResult] = []
     classification_counts: dict[str, int] = {}

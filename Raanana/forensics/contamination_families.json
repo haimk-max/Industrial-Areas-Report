@@ -1,6 +1,6 @@
 {
   "zone_id": "raanana",
-  "zone_name_he": "אזה\"ת רעננה",
+  "zone_name_he": "אזה\"ת raanana",
   "source": "/home/user/Industrial-Areas-Report/Raanana/data/measurements.csv",
   "boreholes_analyzed": [
     "raanana_p_25",
@@ -522,9 +522,9 @@
         "signature": "Fuel_station",
         "confidence": "HIGH",
         "detected_indicators": [
+          "XYLE",
           "BENZ",
           "ETBN",
-          "XYLE",
           "TOLU",
           "MTBE"
         ],
@@ -538,23 +538,23 @@
         "signature": "Mixed_PFAS",
         "confidence": "MEDIUM",
         "detected_indicators": [
+          "6:2FT",
+          "PFHxS",
+          "PFHpS",
+          "FOSA",
           "PFDS",
           "82FTS",
           "PFOS",
-          "6:2FT",
           "PFBS",
-          "PFHxS",
-          "FOSA",
-          "PFHpS",
-          "PFNA",
           "PFHxA",
-          "PFBA",
+          "PFPeA",
           "PFHpA",
-          "PFDoA",
+          "PFBA",
           "PFUnA",
-          "PFDA",
           "PFOA",
-          "PFPeA"
+          "PFNA",
+          "PFDoA",
+          "PFDA"
         ],
         "dominant_compound": "PFHxS",
         "max_concentration": 1.16,
@@ -564,9 +564,9 @@
         "signature": "Fuel_station",
         "confidence": "HIGH",
         "detected_indicators": [
+          "XYLE",
           "BENZ",
           "ETBN",
-          "XYLE",
           "TOLU",
           "MTBE"
         ],
@@ -591,12 +591,12 @@
         "signature": "CVOC_industry",
         "confidence": "HIGH",
         "detected_indicators": [
-          "DCEY",
           "DCET1",
-          "CDCE",
+          "DCEY",
           "TECE",
           "TCEY",
-          "TCET"
+          "TCET",
+          "CDCE"
         ],
         "dominant_compound": "TCEY",
         "max_concentration": 817.0,
@@ -629,10 +629,10 @@
         "signature": "CVOC_industry",
         "confidence": "HIGH",
         "detected_indicators": [
-          "CDCE",
+          "CCL4",
           "TECE",
           "TCEY",
-          "CCL4"
+          "CDCE"
         ],
         "dominant_compound": "TCEY",
         "max_concentration": 24.02,
@@ -654,9 +654,9 @@
         "signature": "Fuel_station",
         "confidence": "HIGH",
         "detected_indicators": [
+          "XYLE",
           "BENZ",
           "ETBN",
-          "XYLE",
           "TOLU",
           "MTBE"
         ],
@@ -668,13 +668,13 @@
         "signature": "CVOC_industry",
         "confidence": "HIGH",
         "detected_indicators": [
-          "DCEY",
           "DCET1",
-          "CDCE",
+          "DCEY",
+          "CCL4",
           "TECE",
-          "TCEY",
           "DCET",
-          "CCL4"
+          "TCEY",
+          "CDCE"
         ],
         "dominant_compound": "TECE",
         "max_concentration": 105.474,
