@@ -1,5 +1,7 @@
 # CLAUDE.md - Industrial Areas Report Project Governance
 
+> **Methodology layering**: This file is **prescriptive** (what we do). For per-feature **descriptive** history, see commit messages. For **open patterns awaiting 2nd-case validation, deferred decisions, and tooling roadmap**, see `LESSONS.md`. Promote items from `LESSONS.md` to `REQUIREMENTS.md` only after a 2nd real case validates the pattern.
+
 ## Project Overview
 **Title**: Structured Reporting System for Groundwater Quality Monitoring in Industrial Areas  
 **Scope**: Generalised reporting framework for the 18-zone coastal aquifer industrial monitoring system, Israel  
@@ -16,21 +18,22 @@
 ### State Assumptions Explicitly
 - **Data Quality**: All input data sourced from official reports (TAHAL 2008, 2021 Report). Verification: Compare extractions against source document page numbers.
 - **Methodology**: Severity index calculation and trend analysis follow 2021 Report methodology exactly. No modifications without expert validation.
-- **Scope**: Raanana zone is demonstration case; design all scripts/templates to scale to 18 zones with minimal modification.
+- **Scope**: The framework targets generalised reports (any geographic area, any facility) — the 18-zone batch is the first application, not the ceiling. Build abstractions from concrete patterns observed in ≥2 zones; do not pre-design for hypothetical zone variations. Raanana is the reference implementation; Holon is the first generalisation test. Long-term horizons include: arbitrary geographic input → automated data discovery → report; and zone dashboards alongside (or in place of) full reports.
 - **Regulatory Context**: Assume Ministry of Environmental Protection standards apply; coordinate with authorities before recommendations.
 
 ### Surface Ambiguities & Tradeoffs
 Before implementing data processing:
-1. **Missing data (2008-2021 gap)**: Do not interpolate. Flag gaps explicitly. User decision: extrapolate or wait for 2021 report full data.
-2. **Contamination attribution**: Multiple facilities near boreholes; forensic analysis probabilistic. Present confidence levels; don't overstate certainty.
-3. **Trend extrapolation**: Historical trends (1999-2008) may not continue. Present as "if trend persists" scenarios only.
-4. **Deep aquifer sampling**: R-004 and R-005 confounded by confinement; slow flow may distort trend signals. Flag interpretation limitations.
+1. **Missing data**: Do not interpolate. Flag gaps explicitly. User decision: extrapolate, accept gap, or seek additional data sources.
+2. **Contamination attribution**: Multiple facilities near boreholes; forensic analysis probabilistic. Present confidence levels (HIGH/MEDIUM/LOW); don't overstate certainty.
+3. **Trend extrapolation**: Historical trends may not continue. Present as "if trend persists" scenarios only.
+4. **Deep aquifer / confined boreholes**: Slow flow may distort trend signals; flag interpretation limitations.
+   - `[RAANANA-SPECIFIC]` Boreholes R-004 and R-005 are known confined cases — see `Raanana/README.md` for zone-specific notes.
 
 ### Ask Rather Than Assume
-- If borehole coordinates fall outside zone boundary ±500m, ask for clarification
+- If borehole coordinates fall outside zone polygon ±500m, ask for clarification
 - If contamination pattern matches multiple source facilities, present all hypotheses; don't pick silently
 - If severity index threshold unclear, request expert clarification before recalculation
-- If 2021 Report data differs from TAHAL 2008, flag discrepancy for expert validation
+- If two source documents disagree on the same fact (e.g., a borehole's classification), flag the discrepancy and request expert validation rather than picking silently
 
 ---
 
@@ -41,19 +44,19 @@ Before implementing data processing:
 - **Don't Add**:
   - Prediction models or extrapolation (user decision, not automated)
   - Automated remediation planning (expert decision)
-  - Statistical tests beyond linear regression (methodological baseline only)
-  - Configurability beyond single YAML config file
+  - Statistical methods beyond what's documented (current: Mann-Kendall + SNR gating; do not introduce parametric tests, ML, or new estimators without methodology approval)
+  - Configurability beyond what existing zones need — config lives in `config/analysis_config.yaml` (engine params) and `config/zone_overrides/{zone}.yaml` (per-zone Excel column overrides). No new config files without 2nd-zone justification.
   
 - **Do Keep**:
   - CSV/JSON parsing (foundation for all analysis)
-  - Linear trend calculation (required for reporting)
+  - Mann-Kendall trend calculation (tie-corrected variance, continuity-corrected Z, SNR ≥ 0.3, soft_trigger=2)
   - Severity index calculation (per 2021 Report formula)
   - Forensic pattern matching (source attribution support, not definitive)
 
 ### Data File Scope (CSVs, JSONs)
-- **boreholes.csv**: Only columns needed for reporting (ID, coordinates, depth, layer, classification, source)
-- **concentrations.csv**: Only columns needed for trend analysis (year, concentration, severity, source document)
-- **industries.json**: Only properties needed for source attribution (location, facility type, expected contaminants)
+- **boreholes.csv**: Only columns needed for reporting (canonical_id, name_he, ITM coordinates, depth, layer, source)
+- **measurements.csv**: Only columns needed for trend analysis (borehole, date, parameter, concentration, unit, source)
+- **facility_attribution.json**: Only properties needed for source attribution (name_he, address_he, suspected_contaminants, confidence, ITM coordinates, evidence)
 - No denormalization, no pre-calculated fields beyond severity index
 
 ### Report Scope (Markdown Drilling Cards, Zone Report)
@@ -79,7 +82,7 @@ Before implementing data processing:
 - **Test before committing** - run on sample data to verify output unchanged for old parameters
 
 ### When Creating New Reports
-- **Follow established formatting** (tables, headings, structure from drilling_card_R-001.md)
+- **Follow established formatting** (tables, headings, structure from `Raanana/output/drilling_card_*_v2.md` and `RAANANA_REPORT_V2.md`)
 - **Cross-reference source documents** with page numbers for every claim
 - **Flag limitations explicitly** (data gaps, assumptions, confidence levels)
 - **Don't editorialize** - present findings neutrally; recommendations separate from analysis
