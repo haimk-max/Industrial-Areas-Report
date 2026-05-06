@@ -1,0 +1,2665 @@
+{
+  "zone_id": "holon",
+  "generation_date_utc": "2026-05-06T10:58:24+00:00",
+  "methodology": "STYLE_GUIDE.md § H (zone-agnostic, bottom-up); branch H.1.1 RICH (≥30 PDF facilities → skip web discovery, direct consolidation); LESSONS.md § 1.5 (validated by 2 timeout cases — Opus + Sonnet)",
+  "discovery_summary": {
+    "streets_enumerated_in_polygon": 41,
+    "pdf_facility_records": 53,
+    "pdf_facilities_after_dedup": 33,
+    "borehole_naming_entities_added": 27,
+    "web_discovered": 0,
+    "web_skipped_reason": "Branch H.1.1 RICH: PDF extraction yielded 53 records (≥30) with addresses + evidence + confidence; web discovery agent timed out twice (Opus + Sonnet); marginal value not worth timeout risk.",
+    "total_facilities": 60,
+    "by_contamination_family": {
+      "CVOC": 24,
+      "HEAVY_METALS": 25,
+      "OTHER": 11,
+      "PETROLEUM": 29
+    },
+    "by_source": {
+      "pdf_extraction": 33,
+      "borehole_naming": 27
+    },
+    "by_confidence": {
+      "HIGH": 17,
+      "MEDIUM": 39,
+      "LOW": 4
+    }
+  },
+  "streets_in_polygon": [
+    "בצלאל",
+    "האומנות",
+    "האופן",
+    "האורגים",
+    "האירוס",
+    "הבנאי",
+    "הגביש",
+    "הזורע",
+    "החופר",
+    "היובל",
+    "היוצר",
+    "היתד",
+    "הכישור",
+    "המוסכים",
+    "המלאכה",
+    "המנור",
+    "המסגר",
+    "המרכבה",
+    "הנגר",
+    "הנגרים",
+    "הנחושת",
+    "הנפח",
+    "הסדנה",
+    "הסולל",
+    "הסיבים",
+    "הסתת",
+    "העבודה",
+    "הפטיש",
+    "הפלד",
+    "הצורף",
+    "השופטים",
+    "השלושה",
+    "התדהר",
+    "חלוצי התעשייה",
+    "ניסנבאום",
+    "עקיבא",
+    "פינס",
+    "שדרות אלוף שדה",
+    "שדרות לוי אשכול",
+    "שדרות קוגל",
+    "תמנע"
+  ],
+  "facilities": [
+    {
+      "facility_id": "F-001",
+      "name_he": "אלגונל",
+      "aliases": [],
+      "addresses_he": [
+        "אזור התעשייה חולון",
+        "הפטיש 6, חולון"
+      ],
+      "streets_in_polygon_match": [
+        "הפטיש"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מפעל תעשייתי; ציפוי",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "Cr",
+        "TCE",
+        "VOC",
+        "VOC's"
+      ],
+      "evidence_he": "נכלל ברשימת 16 המפעלים בעלי פוטנציאל זיהום גבוה במודל הממוחשב; ציון גודל גדול, ציון שפכים 3; תקופת פעילות 1962-2006 | מפעל חשוד. מומלץ קידוח רדוד נתח 19 במורד הזרם",
+      "confidence": "HIGH",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_holon-part1.pdf",
+        "water-sources-status_tehom_holon-part2.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 3
+        },
+        {
+          "source_file": "water-sources-status_tehom_holon-part2.pdf",
+          "page": 45
+        }
+      ],
+      "source_record_count": 2,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 2 PDF extraction records"
+    },
+    {
+      "facility_id": "F-002",
+      "name_he": "אמזה",
+      "aliases": [],
+      "addresses_he": [
+        "הסתת 13, חולון"
+      ],
+      "streets_in_polygon_match": [
+        "הסתת"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "ציפוי",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "Cr",
+        "TCE",
+        "VOC"
+      ],
+      "evidence_he": "ציון גודל בינוני, ציון שפכים 2; תקופת פעילות 1970-2000",
+      "confidence": "MEDIUM",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_holon-part1.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 3
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-003",
+      "name_he": "אמינוגרף",
+      "aliases": [],
+      "addresses_he": [
+        "הנפח 12, חולון"
+      ],
+      "streets_in_polygon_match": [
+        "הנפח"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "ציפוי מתכת",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "1,2-DCA",
+        "DCE",
+        "PCE",
+        "TCE"
+      ],
+      "evidence_he": "ציון גודל בינוני, ציון שפכים 3; תקופת פעילות 1970-1982; מקור משוער ל-TCE 376/DCE 1,870/1,2-DCA 16 ppb בנח חולון 8 הסמוך (כ-50 מ')",
+      "confidence": "HIGH",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_holon-part1.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 10
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-004",
+      "name_he": "אמקור פליז",
+      "aliases": [
+        "פליז אמקור (אמקור פליז)",
+        "פליז אמקור / וישי ישראל / פלואור"
+      ],
+      "addresses_he": [
+        "אזור תעשייה חולון, חלק צפוני (סמוך לנת חולון 14)",
+        "הפלד 10, חולון",
+        "הפלד 5 ו-10, אזור תעשיה חולון; פעיל 1960–1998, 38 שנים",
+        "רחוב הסדנה ורחוב הפלד פינת האופן, אזור תעשיה חולון"
+      ],
+      "streets_in_polygon_match": [
+        "האופן",
+        "הסדנה",
+        "הפלד"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מפעל פליז/מתכות היסטורי; ציפוי וצביעה; ציפוי מתכת — מקור כספית יחיד; תעשיית ציפוי מתכות (גדול)",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "DCE",
+        "PCE",
+        "TCE",
+        "כספית",
+        "כרום",
+        "כרומאט",
+        "מתכות כבדות",
+        "קדמיום"
+      ],
+      "evidence_he": "קידוח נת חולון 14 בו נמדד זיהום בכרום וב-TCE ברמות אינדקס 4 שמקורם עשוי להיות במפעלי 'המלבין', 'אמקור פליז' ו'סופר כרום' ההיסטוריים הסמוכים | ציון גודל גדול, ציון שפכים 3; תקופת פעילות 1960-1996; מקור פוטנציאלי לזיהום בנח חולון 9 (TCE 539/DCE 228/PCE 310 ppb) | ספיקת שפכים 90,000 מ\"ק/שנה — מהגדולות בסקר; שפיכה לקרקע, בורות ספיגה או תיעול עד 1972; פוט' זיהום גבוה במיוחד בקדמיום | השימוש בכספית נדיר בתעשיית טיפול פני שטח; שני המוקדים היחידים שאותרו בסקר",
+      "confidence": "HIGH",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+        "water-sources-status_tehom_holon-part1.pdf",
+        "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+          "page": 68
+        },
+        {
+          "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+          "page": 74
+        },
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 10
+        },
+        {
+          "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf",
+          "page": 31
+        }
+      ],
+      "source_record_count": 4,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 4 PDF extraction records"
+    },
+    {
+      "facility_id": "F-005",
+      "name_he": "ארקר",
+      "aliases": [],
+      "addresses_he": [
+        "עקיבא 30, חולון"
+      ],
+      "streets_in_polygon_match": [
+        "עקיבא"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "ציפוי",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "Cr",
+        "TCE",
+        "VOC"
+      ],
+      "evidence_he": "ציון גודל בינוני, ציון שפכים 3; תקופת פעילות 1959-1985; מוקד פלומת משנה דרום-מערבית",
+      "confidence": "HIGH",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_holon-part1.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 13
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-006",
+      "name_he": "אתר הפסולת הסגור מקווה ישראל",
+      "aliases": [],
+      "addresses_he": [
+        "ממזרח לשדרות קוגל, חולון/מקווה ישראל"
+      ],
+      "streets_in_polygon_match": [
+        "שדרות קוגל"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "אתר פסולת + אגני חימצון",
+      "contamination_family": [
+        "CVOC",
+        "OTHER"
+      ],
+      "suspected_contaminants": [
+        "CCl4",
+        "שפכי חוות חקלאית",
+        "תשטיפי פסולת"
+      ],
+      "evidence_he": "אתר חשוד למקור CCl4 בקידוח חל 15; אגני החימצון קלטו שפכי בית הספר החקלאי כולל הרפת הלימודית במשך 50 שנה",
+      "confidence": "MEDIUM",
+      "evidence_type": "sector_inference",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+          "page": 77
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-007",
+      "name_he": "אתר הפסולת הסגור של חולון",
+      "aliases": [],
+      "addresses_he": [
+        "חולון"
+      ],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "אתר פסולת היסטורי (200 דונם)",
+      "contamination_family": [
+        "HEAVY_METALS",
+        "OTHER"
+      ],
+      "suspected_contaminants": [
+        "אורגניים",
+        "מתכות כבדות",
+        "תשטיפי פסולת"
+      ],
+      "evidence_he": "קלט פסולת משנות החמישים עד שנות השמונים; גזם עד שנות התשעים, פסולת בנין עד שנות האלפיים. בסקר 2005 לא נמצאו תשטיפים — ההנחה: חלחלו לאקוויפר",
+      "confidence": "MEDIUM",
+      "evidence_type": "sector_inference",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+          "page": 12
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-008",
+      "name_he": "בהק",
+      "aliases": [],
+      "addresses_he": [
+        "אזור התעשייה חולון",
+        "אזור תעשייה חולון, חלק דרומי (סמוך לנת חולון 16)",
+        "הכישור 12, חולון"
+      ],
+      "streets_in_polygon_match": [
+        "הכישור"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מפעל תעשייתי היסטורי; מפעל תעשייתי פעיל; ציפוי",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "TCE",
+        "VOC's",
+        "ממסים מוכלרים"
+      ],
+      "evidence_he": "מוקד \"פלומת בהק\" נפרדת בשטח כ-300 דונם; חזית הפלומה הגיעה לקידוח מקורות חולון 5 ול\"ספורטק\"; ריכוזים בלב הפלומה כ-200 ppb; תקופת פעילות 1978-2007 | קידוח נת חולון 16 בו נמדדו ריכוזי מזהמים מוכלרים ברמת אינדקס 4; שיתכן ומקורם במפעל 'בהק' ההיסטורי הסמוך | מפעל חשוד פעיל. מומלץ להתקין קידוח רדוד נת חולון 20 ונתח 20 במורד הזרם",
+      "confidence": "HIGH",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_holon-part1.pdf",
+        "water-sources-status_tehom_holon-part2.pdf",
+        "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 13
+        },
+        {
+          "source_file": "water-sources-status_tehom_holon-part2.pdf",
+          "page": 45
+        },
+        {
+          "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf",
+          "page": 31
+        }
+      ],
+      "source_record_count": 3,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 3 PDF extraction records"
+    },
+    {
+      "facility_id": "F-009",
+      "name_he": "בסיס דלק היסטורי ממערב לשדרות קוגל / בית החולים וולפסון / לודג'יה היסטורי (סוקולוב, ככר צמרת)",
+      "aliases": [],
+      "addresses_he": [
+        "אזור צפון מערב חולון, ליד מק חולון 15"
+      ],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "אתרים היסטוריים חשודים",
+      "contamination_family": [
+        "CVOC"
+      ],
+      "suspected_contaminants": [
+        "CCl4",
+        "ממיסים אורגניים"
+      ],
+      "evidence_he": "אתרים היסטוריים בקרבת מק חולון 15 שזוהמה ב-CCl4; מומלצים לסקר נוסף",
+      "confidence": "LOW",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+          "page": 77
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-010",
+      "name_he": "ברכות חימצון היסטוריות (גוש 6032 ו-גוש 7177)",
+      "aliases": [],
+      "addresses_he": [
+        "גוש 6032 מצפון לחולון; גוש 7177 מדרום לשכונת ג'סי כהן וממזרח לבית העלמין חולון"
+      ],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "אגני שפכים גולמיים היסטוריים",
+      "contamination_family": [
+        "OTHER"
+      ],
+      "suspected_contaminants": [
+        "דטרגנטים",
+        "ממיסים",
+        "מתכות",
+        "שפכים תעשייתיים גולמיים"
+      ],
+      "evidence_he": "מופיעים במפות היסטוריות משנות הששים; שני אתרים אליהם הוזרמו שפכי חולון לפני הקמת השפד\"ן (שנות השבעים) לצורך השקיה",
+      "confidence": "MEDIUM",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+          "page": 77
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-011",
+      "name_he": "המגדר",
+      "aliases": [
+        "מגדר"
+      ],
+      "addresses_he": [
+        "אזור התעשייה חולון",
+        "תמנע 11, חולון"
+      ],
+      "streets_in_polygon_match": [
+        "תמנע"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "גילוון אבץ; מפעל תעשייתי",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "VOC",
+        "VOC's",
+        "Zn"
+      ],
+      "evidence_he": "מפעל חשוד - נסגר ב-1985. מומלץ קידוח רדוד נתח 18 במורד הזרם | ציון גודל גדול, ציון שפכים 2; תקופת פעילות 1962-1985",
+      "confidence": "MEDIUM",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_holon-part1.pdf",
+        "water-sources-status_tehom_holon-part2.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 3
+        },
+        {
+          "source_file": "water-sources-status_tehom_holon-part2.pdf",
+          "page": 45
+        }
+      ],
+      "source_record_count": 2,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 2 PDF extraction records"
+    },
+    {
+      "facility_id": "F-012",
+      "name_he": "המוסך \"המשתיק\"",
+      "aliases": [],
+      "addresses_he": [
+        "ליד נת חולון 12, רח' המלאכה 53"
+      ],
+      "streets_in_polygon_match": [
+        "המלאכה"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מוסך",
+      "contamination_family": [
+        "CVOC",
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "VOC"
+      ],
+      "evidence_he": "מוזכר בסמוך לקידוח נת חולון 12; לא נכלל במודל הממוחשב",
+      "confidence": "LOW",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_holon-part1.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 8
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-013",
+      "name_he": "המלבין",
+      "aliases": [],
+      "addresses_he": [
+        "אזור תעשייה חולון, חלק צפוני (סמוך לנת חולון 14)",
+        "כ-60 מ' ממזרח לנת חולון 14"
+      ],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מפעל ציפוי/הלבנה היסטורי; ניקוי יבש",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "DCE",
+        "PCE",
+        "TCE",
+        "כרום"
+      ],
+      "evidence_he": "קידוח נת חולון 14 בו נמדד זיהום בכרום וב-TCE ברמות אינדקס 4 שמקורם עשוי להיות במפעלי 'המלבין', 'אמקור פליז' ו'סופר כרום' ההיסטוריים הסמוכים | מקור משוער ל-TCE 133 ppb בנת חולון 14 הסמוך",
+      "confidence": "HIGH",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_holon-part1.pdf",
+        "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 11
+        },
+        {
+          "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf",
+          "page": 31
+        }
+      ],
+      "source_record_count": 2,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 2 PDF extraction records"
+    },
+    {
+      "facility_id": "F-014",
+      "name_he": "כור מתכת",
+      "aliases": [],
+      "addresses_he": [
+        "אזור תעשייה חולון, חלק צפוני (סמוך לנת חולון 1)",
+        "האופן 1, חולון"
+      ],
+      "streets_in_polygon_match": [
+        "האופן"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מפעל מתכות היסטורי; ציפוי",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "1,4-דיאוקסן",
+        "DCE",
+        "TCE",
+        "כרום",
+        "ממסים מוכלרים"
+      ],
+      "evidence_he": "קידוח נת חולון 1 בו נמדדו ריכוזי ממסים מוכלרים כולל 1,4 דיאוקסן עד רמת אינדקס 6 וכרום ברמת אינדקס 4; מקורם לא ידוע אך עשוי להיות במפעלי 'כור-מתכת' או 'כרומט' | ציון גודל גדול, ציון שפכים 2; תקופת פעילות 1953-1999; מקור משוער לזיהום בנת חולון 1 (TCE 81/DCE 277 ppb) - ממוקם במעלה הגרדיאנט הסמוך",
+      "confidence": "HIGH",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_holon-part1.pdf",
+        "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 8
+        },
+        {
+          "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf",
+          "page": 31
+        }
+      ],
+      "source_record_count": 2,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 2 PDF extraction records"
+    },
+    {
+      "facility_id": "F-015",
+      "name_he": "כמוגרף CTT",
+      "aliases": [],
+      "addresses_he": [
+        "רחוב המרכבה, אזור תעשיה חולון"
+      ],
+      "streets_in_polygon_match": [
+        "המרכבה"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תעשיית מתכת",
+      "contamination_family": [
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "קדמיום"
+      ],
+      "evidence_he": "מוקד זיהום קדמיום מזוהה; קרבה למתחמי תרשיש",
+      "confidence": "MEDIUM",
+      "evidence_type": "sector_inference",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+          "page": 64
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-016",
+      "name_he": "כרומת",
+      "aliases": [
+        "כרומט"
+      ],
+      "addresses_he": [
+        "אזור תעשייה חולון, חלק צפוני (סמוך לנת חולון 1)",
+        "הנגר 3-5, חולון"
+      ],
+      "streets_in_polygon_match": [
+        "הנגר"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מפעל ציפוי כרום היסטורי; מתכת",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "Cr",
+        "DCE",
+        "TCE",
+        "כרום",
+        "ממסים מוכלרים"
+      ],
+      "evidence_he": "קידוח נת חולון 1 בו נמדדו ריכוזי ממסים מוכלרים כולל 1,4 דיאוקסן עד רמת אינדקס 6 וכרום ברמת אינדקס 4; מקורם לא ידוע אך עשוי להיות במפעלי 'כור-מתכת' או 'כרומט' | ציון גודל בינוני, ציון שפכים 2; תקופת פעילות 1969-2004; מועמד פוטנציאלי לזיהום בנת חולון 2",
+      "confidence": "MEDIUM",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_holon-part1.pdf",
+        "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 8
+        },
+        {
+          "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf",
+          "page": 31
+        }
+      ],
+      "source_record_count": 2,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 2 PDF extraction records"
+    },
+    {
+      "facility_id": "F-017",
+      "name_he": "לודג'יה (לודזיה)",
+      "aliases": [],
+      "addresses_he": [
+        "המנור 6, אזור תעשיה חולון; פעיל 1959–1997, 38 שנים; אתר היסטורי נוסף ברחוב סוקולוב (ככר צמרת)"
+      ],
+      "streets_in_polygon_match": [
+        "המנור"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תעשיית טקסטיל (דגל)",
+      "contamination_family": [
+        "HEAVY_METALS",
+        "OTHER"
+      ],
+      "suspected_contaminants": [
+        "דטרגנטים",
+        "מתכות כבדות (כרום)",
+        "צבענים"
+      ],
+      "evidence_he": "ספיקת שפכים 90,000 מ\"ק/שנה; הזרמה למע' ביוב ללא טיפול; אתר היסטורי בככר צמרת מוצע לסקר נוסף בנפרד",
+      "confidence": "HIGH",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+          "page": 74
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-018",
+      "name_he": "מ.ג.ל / איי אי סי / אחים לוי",
+      "aliases": [],
+      "addresses_he": [
+        "רחוב העבודה (39, 45) וניסנבאום 23/25, אזור התעשייה בת ים"
+      ],
+      "streets_in_polygon_match": [
+        "העבודה",
+        "ניסנבאום"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תעשיית ציפוי מתכות (בת ים)",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "PCE",
+        "TCE",
+        "כרומאט",
+        "מתכות כבדות",
+        "קדמיום"
+      ],
+      "evidence_he": "שלושה מוקדים נקודתיים בעלי ניקוד גבוה מ-2.5 — בעלי פוטנציאל זיהום הגבוה ביותר באזור התעשייה בת ים",
+      "confidence": "HIGH",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+          "page": 74
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-019",
+      "name_he": "מחנה דלק שדרות לוי אשכול (צה\"ל)",
+      "aliases": [],
+      "addresses_he": [
+        "שדרות לוי אשכול, חולון; פעיל 40 שנה, משנות החמישים עד ראשית שנות התשעים"
+      ],
+      "streets_in_polygon_match": [
+        "שדרות לוי אשכול"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "בסיס דלק צבאי",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "דלק",
+        "פחמימנים"
+      ],
+      "evidence_he": "אתר חשוד נוסף שלא נסקר; פוט' זיהום גבוה",
+      "confidence": "MEDIUM",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+          "page": 33
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-020",
+      "name_he": "מפעל אר\"ן מטל / רימטל",
+      "aliases": [],
+      "addresses_he": [
+        "אזור התעשייה חולון, סמוך לרחוב המנור (כ-200 מ' דרומית-דרום-מזרחית למק חולון 5)"
+      ],
+      "streets_in_polygon_match": [
+        "המנור"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מפעל מחזור מתכות (כספים, נחושת, מתכות אל-ברזליות)",
+      "contamination_family": [
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "Ag",
+        "Al",
+        "Cu",
+        "Fe",
+        "Ni",
+        "Pb",
+        "Sulfur",
+        "TPH"
+      ],
+      "evidence_he": "מפעל הוקם ב-1992 במקום בית מגורים. עוסק במחזור מתכות ובעיקר כספים, נחושת, ומתכות אל-ברזליות; חומרי גלם כוללים פסולות מתכת, גרוטאות, תמיסות מתעשיית הצילום (מקור עיקרי לניקל), כבלי נחושת, לוחות מתעשיית הדפוס. שפכים הוזרמו בעבר לבור ספיגה בחצר המפעל (בוטל). על פי המשרד להגנת הסביבה נמדדו ריכוזי ניקל גבוהים בשפכי המפעל. סקר אל.די.די נובמבר 2004 מצא ריכוזים חורגים בקרקע של נחושת, כסף, עופרת, TPH ובדוגמת עומק אחת גופרית. ריכוז ניקל בקידוח הניטור בחצר עלה מ-0.6 (12/2005) ל-2 מ\"ג/ל (12/2008) — פי 40 מהתקן.",
+      "confidence": "HIGH",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_FinalReport-Holon.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf",
+          "page": 1
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-021",
+      "name_he": "נצח (גונן כימיקלים)",
+      "aliases": [],
+      "addresses_he": [
+        "הנפח 3, אזור תעשיה חולון; פעיל 1959–1986, 27 שנים",
+        "הנפח, חולון (כ-30 מ' מצפון-מערב לקידוח נת חולון 2)"
+      ],
+      "streets_in_polygon_match": [
+        "הנפח"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "יצור דבק; כימיקלים",
+      "contamination_family": [
+        "CVOC",
+        "OTHER"
+      ],
+      "suspected_contaminants": [
+        "DCE",
+        "TCE",
+        "דבקים",
+        "כימיקלים אורגניים"
+      ],
+      "evidence_he": "מוזכר בתיאור מיקום נת חולון 2 - לא נכלל במודל הממוחשב כמפעל מוגדר | שפיכה לקרקע, בורות ספיגה או תיעול; ספיקת שפכים 7,000 מ\"ק/שנה",
+      "confidence": "HIGH",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+        "water-sources-status_tehom_holon-part1.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+          "page": 74
+        },
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 7
+        }
+      ],
+      "source_record_count": 2,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 2 PDF extraction records"
+    },
+    {
+      "facility_id": "F-022",
+      "name_he": "סדנת שיפוץ נגמשים וטנקים (צה\"ל)",
+      "aliases": [],
+      "addresses_he": [
+        "בין כביש 44 לרחוב המרכבה, חולון; פעיל 40 שנה, נסגרה בסוף שנות התשעים"
+      ],
+      "streets_in_polygon_match": [
+        "המרכבה"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מתקן צבאי",
+      "contamination_family": [
+        "CVOC",
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "דלקים",
+        "ממיסים אורגניים",
+        "שמנים"
+      ],
+      "evidence_he": "סקר היסטורי לא כיסה אתרים אלה; פעילות ארוכת טווח עם פוט' זיהום גבוה",
+      "confidence": "MEDIUM",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+          "page": 33
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-023",
+      "name_he": "סופר כרום",
+      "aliases": [],
+      "addresses_he": [
+        "אזור תעשייה חולון, חלק צפוני (סמוך לנת חולון 14)"
+      ],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מפעל ציפוי כרום היסטורי",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "TCE",
+        "כרום"
+      ],
+      "evidence_he": "קידוח נת חולון 14 בו נמדד זיהום בכרום וב-TCE ברמות אינדקס 4 שמקורם עשוי להיות במפעלי 'המלבין', 'אמקור פליז' ו'סופר כרום' ההיסטוריים הסמוכים",
+      "confidence": "MEDIUM",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf",
+          "page": 31
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-024",
+      "name_he": "פרוון",
+      "aliases": [],
+      "addresses_he": [
+        "הזורע 2, אזור תעשיה חולון"
+      ],
+      "streets_in_polygon_match": [
+        "הזורע"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "בורסקאות",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS",
+        "OTHER"
+      ],
+      "suspected_contaminants": [
+        "PCE",
+        "כרום תלת ערכי",
+        "כרומאט",
+        "סולפידים"
+      ],
+      "evidence_he": "מוקד זיהום קדמיום מקבוצת הבורסקאות; פעיל בעבר",
+      "confidence": "MEDIUM",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+          "page": 64
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-025",
+      "name_he": "שחרות",
+      "aliases": [
+        "גימת השחרות (שחרות)"
+      ],
+      "addresses_he": [
+        "אזור התעשייה חולון",
+        "הבנאי 27, חולון"
+      ],
+      "streets_in_polygon_match": [
+        "הבנאי"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מפעל תעשייתי פעיל; ציפוי",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "TCE",
+        "VOC",
+        "VOC's"
+      ],
+      "evidence_he": "מפעל חשוד פעיל. מומלץ להתקין קידוח רדוד נת חולון 21 ונתח 21 במורד הזרם | ציון גודל גדול, ציון שפכים 1; תקופת פעילות 1973-2008",
+      "confidence": "MEDIUM",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_holon-part1.pdf",
+        "water-sources-status_tehom_holon-part2.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 3
+        },
+        {
+          "source_file": "water-sources-status_tehom_holon-part2.pdf",
+          "page": 45
+        }
+      ],
+      "source_record_count": 2,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 2 PDF extraction records"
+    },
+    {
+      "facility_id": "F-026",
+      "name_he": "שיריון כרום",
+      "aliases": [],
+      "addresses_he": [
+        "הפלד 6, חולון"
+      ],
+      "streets_in_polygon_match": [
+        "הפלד"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "ציפוי",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "Cr",
+        "TCE"
+      ],
+      "evidence_he": "ציון גודל בינוני, ציון שפכים 2; תקופת פעילות 1969-1981",
+      "confidence": "MEDIUM",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_holon-part1.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 3
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-027",
+      "name_he": "תדיראן",
+      "aliases": [
+        "תדיראן (תדיראן קשר, תדיראן מחלקה ב', תדיראן מכני, תדיראן מוצרי צריכה)",
+        "תדיראן קשר",
+        "תדיראן-קשר (אלביט)"
+      ],
+      "addresses_he": [
+        "אזור תעשייה חולון, חלק מרכזי",
+        "השופטים 26, היתד 7, המלאכה 47, הפלד 50-52, אזור תעשיה חולון",
+        "השופטים 26, חולון"
+      ],
+      "streets_in_polygon_match": [
+        "היתד",
+        "המלאכה",
+        "הפלד",
+        "השופטים"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מפעל תעשייתי (אלקטרוניקה/מערכות קשר); ציפוי; ציפוי מתכת ומיקרואלקטרוניקה (גדול)",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS",
+        "OTHER"
+      ],
+      "suspected_contaminants": [
+        "1,2-DCA",
+        "DCE",
+        "PCE",
+        "TCE",
+        "כרומאט",
+        "ממסים מוכלרים שונים",
+        "מתכות",
+        "ציאנידים"
+      ],
+      "evidence_he": "ציון גודל גדול, ציון שפכים 2; תקופת פעילות 1970-2000; מקור עיקרי לריכוז ה-TCE המרבי 12,982 ppb בנת חולון 11 הסמוך (במגרש חניה ברח' הנחושת בצמוד למפעל) | בקידוח נת חולון 11 ובקידוחים הסמוכים אליו נמדדו ריכוזים גבוהים של ממסים מוכלרים שונים עד לרמת אינדקס 7 שמקורם ככל הנראה במפעל 'תדיראן-קשר' (אלביט) | ספיקות שפכים גבוהות (40,000–90,000 מ\"ק/שנה); הימצאות ממיסים אורגניים מתועדת; הזרמה למע' ביוב ללא טיפול במשך עשרות שנים",
+      "confidence": "HIGH",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+        "water-sources-status_tehom_holon-part1.pdf",
+        "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+          "page": 74
+        },
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 11
+        },
+        {
+          "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf",
+          "page": 31
+        }
+      ],
+      "source_record_count": 3,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נת_אלביט_חולון_1",
+        "נת_אלביט_חולון_2",
+        "נת_אלביט_חולון_3",
+        "נת_אלביט_חולון_4",
+        "נת_תדירגן_10",
+        "נת_תדירגן_2",
+        "נת_תדירגן_4",
+        "נת_תדירגן_5",
+        "נת_תדירגן_6",
+        "נת_תדירגן_7",
+        "נת_תדירגן_8",
+        "נת_תדירגן_9",
+        "נת_תדירגן_א.ת.חולון"
+      ],
+      "notes": "Consolidated from 3 PDF extraction records"
+    },
+    {
+      "facility_id": "F-028",
+      "name_he": "תדירגן",
+      "aliases": [
+        "תדירגן (מפעל ציפוי מתכות היסטורי)",
+        "תדירגן (תדיראן מכני)"
+      ],
+      "addresses_he": [
+        "אזור תעשייה חולון, מרכז האזור (אזור תחנת תדלוק סונול המלאכה)",
+        "המלאכה 19, אזור תעשיה חולון; פעיל 1970–2002, 32 שנים",
+        "המלאכה 21, חולון"
+      ],
+      "streets_in_polygon_match": [
+        "המלאכה"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מפעל ציפוי מתכות היסטורי; ציפוי ועיבוד שבבי; ציפוי ועיבוד שבבי (גדול)",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS",
+        "OTHER"
+      ],
+      "suspected_contaminants": [
+        "PCE",
+        "TCE",
+        "כרומאט",
+        "ממסים מוכלרים",
+        "ציאנידים"
+      ],
+      "evidence_he": "מפעל תדירגן ההיסטורי הוא מקור המזהמים המוכלרים עד לרמת אינדקס 7 בקידוחי תדירגן ובקידוחי הניטור בתחנת התדלוק 'סונול המלאכה'. תוצאת פעילות ארוכת שנים של מפעל ציפוי מתכות ו-3 מפעלים היסטוריים סמוכים. שוקם בין 2013–2020 (3 מחזורי הזרקות מחמצן חזק) | ציון גודל גדול, ציון שפכים 2; תקופת פעילות 1970-2003; מוקד זיהום ה-TCE שמסולק על ידי קידוח מק חולון 8 בתרחיש 1; קידוח נת חולון 12 ממוקם צמוד ומדרום-מערב למפעל | ניטור באתר זיהה TCE עד 6,457 מק\"ג/ליטר ו-PCE עד 220 מק\"ג/ליטר; שדרוג מתקן טיפול 1985, אך הזרמה למע' ביוב ללא טיפול בעבר; ספיקת שפכים 6,000 מ\"ק/שנה",
+      "confidence": "HIGH",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+        "water-sources-status_tehom_holon-part1.pdf",
+        "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+          "page": 74
+        },
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 21
+        },
+        {
+          "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf",
+          "page": 31
+        }
+      ],
+      "source_record_count": 3,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נת_תדירגן_10",
+        "נת_תדירגן_2",
+        "נת_תדירגן_4",
+        "נת_תדירגן_5",
+        "נת_תדירגן_6",
+        "נת_תדירגן_7",
+        "נת_תדירגן_8",
+        "נת_תדירגן_9",
+        "נת_תדירגן_א.ת.חולון"
+      ],
+      "notes": "Consolidated from 3 PDF extraction records"
+    },
+    {
+      "facility_id": "F-029",
+      "name_he": "תחנות דלק באזור התעשייה",
+      "aliases": [],
+      "addresses_he": [
+        "סמוכות לקידוחי ניטור 1, 2, 3, 10, 11, 12 ו-14"
+      ],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "UNKNOWN",
+      "industry_sector": "תחנות דלק",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "רכיבי דלק"
+      ],
+      "evidence_he": "מומלץ לבדוק דליפות במסגרת חקירות רשות המים לטיפול בזיהומי דלק",
+      "confidence": "MEDIUM",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_holon-part2.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_holon-part2.pdf",
+          "page": 46
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-030",
+      "name_he": "תחנת דלק \"דלק\"",
+      "aliases": [],
+      "addresses_he": [
+        "כ-170 מ' ממזרח לנת חולון 3"
+      ],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת דלק",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "Benzene",
+        "MTBE",
+        "Toluene",
+        "Xylene"
+      ],
+      "evidence_he": "מקור משוער למרכיבי הדלק (בנזן, כסילן, טולואן) שנמצאו בעקבות בנת חולון 3",
+      "confidence": "MEDIUM",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_holon-part1.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 9
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-031",
+      "name_he": "תחנת דלק (לא צוין שם)",
+      "aliases": [],
+      "addresses_he": [
+        "כ-320 מ' מצפון-מזרח לנת חולון 12"
+      ],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת דלק",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE"
+      ],
+      "evidence_he": "מקור משוער למרכיבי דלק בנת חולון 12",
+      "confidence": "MEDIUM",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_holon-part1.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 11
+        }
+      ],
+      "source_record_count": 1,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 1 PDF extraction records"
+    },
+    {
+      "facility_id": "F-032",
+      "name_he": "תעשיות ברגים",
+      "aliases": [],
+      "addresses_he": [
+        "בצלאל 2, אזור תעשיה חולון; פעיל 1959–1985, 26 שנים",
+        "בצלאל 2, חולון"
+      ],
+      "streets_in_polygon_match": [
+        "בצלאל"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מתכת + קו ציפוי; ציפוי מתכת (גדול)",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "PCE",
+        "TCE",
+        "VOC",
+        "כרומאט",
+        "מתכות כבדות"
+      ],
+      "evidence_he": "ציון גודל גדול, ציון שפכים 2; תקופת פעילות 1959-1984; מוקד פלומת משנה דרום-מערבית; קידוח נת חולון 4 בסמוך (לא נמצא זיהום חורג) | ספיקת שפכים 10,000 מ\"ק/שנה; הזרמה למע' ביוב ללא טיפול עד 1981",
+      "confidence": "HIGH",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+        "water-sources-status_tehom_holon-part1.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+          "page": 74
+        },
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 13
+        }
+      ],
+      "source_record_count": 2,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 2 PDF extraction records"
+    },
+    {
+      "facility_id": "F-033",
+      "name_he": "תרשיש",
+      "aliases": [
+        "תרשיש (1)",
+        "תרשיש (2)",
+        "תרשיש קופרפיש פרופילון (תרשיש היוצר ותרשיש הסולל)"
+      ],
+      "addresses_he": [
+        "אזור היוצר והסולל, אזור תעשיה חולון",
+        "אזור תעשייה חולון, חלק מרכזי (אזור נת חולון 3 ודלק אזור)",
+        "היוצר 6, חולון",
+        "הסולל 2, חולון"
+      ],
+      "streets_in_polygon_match": [
+        "היוצר",
+        "הסולל"
+      ],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מפעל תעשייתי היסטורי; ציפוי; תעשיית ציפוי מתכות (גדול)",
+      "contamination_family": [
+        "CVOC",
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "Cr",
+        "PCE",
+        "TCE",
+        "כרומאט",
+        "ממסים מוכלרים",
+        "קדמיום"
+      ],
+      "evidence_he": "ציון גודל גדול, ציון שפכים 2; תקופת פעילות 1968-2007; קידוח נת חולון 3 בסמוך (TCE 375/Cr 2,424 ppb) - ריכוזי כרום גבוהים ואחידים מצביעים על עומס מזהמים גבוה וקרוב יחסית | אזור קידוח נת חולון 3 בו נמדדו ריכוזי מזהמים מוכלרים עד רמת אינדקס 7 וקידוחי הניטור במתחם 'דלק אזור' (אינדקס עד 5) זוהמו ככל הנראה על ידי מפעל 'תרשיש' | ציון גודל גדול, ציון שפכים 2; תקופת פעילות 1964-2009; קידוח נת חולון 3 בסמוך לאחד משני מפעלי \"התרשיש\" | מתחם בעל פוט' זיהום נקודתי גבוה במיוחד בקדמיום ובכרומאט; פעיל משנות השישים",
+      "confidence": "HIGH",
+      "evidence_type": "confirmed_address",
+      "source": "pdf_extraction",
+      "source_files": [
+        "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+        "water-sources-status_tehom_holon-part1.pdf",
+        "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+      ],
+      "page_refs": [
+        {
+          "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+          "page": 74
+        },
+        {
+          "source_file": "water-sources-status_tehom_holon-part1.pdf",
+          "page": 8
+        },
+        {
+          "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf",
+          "page": 31
+        }
+      ],
+      "source_record_count": 4,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [],
+      "notes": "Consolidated from 4 PDF extraction records"
+    },
+    {
+      "facility_id": "F-034",
+      "name_he": "אגד",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_אגד_אזור_1",
+        "נד_אגד_אזור_10",
+        "נד_אגד_אזור_11",
+        "נד_אגד_אזור_12",
+        "נד_אגד_אזור_13",
+        "נד_אגד_אזור_14",
+        "נד_אגד_אזור_15",
+        "נד_אגד_אזור_16",
+        "נד_אגד_אזור_17",
+        "נד_אגד_אזור_18",
+        "נד_אגד_אזור_2",
+        "נד_אגד_אזור_3",
+        "נד_אגד_אזור_4",
+        "נד_אגד_אזור_5",
+        "נד_אגד_אזור_6",
+        "נד_אגד_אזור_7",
+        "נד_אגד_אזור_8",
+        "נד_אגד_אזור_9",
+        "נד_אגד_איזור_7"
+      ],
+      "notes": "Discovered via 19 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-035",
+      "name_he": "אגד n1",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_אגד_אזור_n1"
+      ],
+      "notes": "Discovered via 1 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-036",
+      "name_he": "אגד n2",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_אגד_אזור_n2"
+      ],
+      "notes": "Discovered via 1 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-037",
+      "name_he": "אגד n3",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_אגד_אזור_n3"
+      ],
+      "notes": "Discovered via 1 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-038",
+      "name_he": "אגד n4",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_אגד_אזור_n4"
+      ],
+      "notes": "Discovered via 1 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-039",
+      "name_he": "ארן  מטל",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מחזור מתכות (ארן מטל / רימטל)",
+      "contamination_family": [
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "Ni",
+        "Fe",
+        "Al",
+        "Pb",
+        "Cu"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נת' (ניטור תעשיה); זוהתה משם הקידוח. סביר שמדובר באר\"ן מטל / רימטל המתואר ב-Final Report (ר' רשומה אר\"ן מטל).",
+      "confidence": "HIGH",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נת_ארן__מטל_חולון"
+      ],
+      "notes": "Discovered via 1 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-040",
+      "name_he": "ארן מטל",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מחזור מתכות (ארן מטל / רימטל)",
+      "contamination_family": [
+        "HEAVY_METALS"
+      ],
+      "suspected_contaminants": [
+        "Ni",
+        "Fe",
+        "Al",
+        "Pb",
+        "Cu"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נת' (ניטור תעשיה); זוהתה משם הקידוח. סביר שמדובר באר\"ן מטל / רימטל המתואר ב-Final Report (ר' רשומה אר\"ן מטל).",
+      "confidence": "HIGH",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נת_ארן_מטל_חולון_1"
+      ],
+      "notes": "Discovered via 1 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-041",
+      "name_he": "דלק הצבי",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_דלק_הצבי_1",
+        "נד_דלק_הצבי_2"
+      ],
+      "notes": "Discovered via 2 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-042",
+      "name_he": "דלק השבעה נ/1",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_דלק_השבעה_נ/1"
+      ],
+      "notes": "Discovered via 1 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-043",
+      "name_he": "דלק מובילי גוש",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_דלק_מובילי_גוש_דן_1",
+        "נד_דלק_מובילי_גוש_דן_2"
+      ],
+      "notes": "Discovered via 2 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-044",
+      "name_he": "דלק מרכבות האש",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_דלק_מרכבות_האש_1",
+        "נד_דלק_מרכבות_האש_2",
+        "נד_דלק_מרכבות_האש_3",
+        "נד_דלק_מרכבות_האש_4",
+        "נד_דלק_מרכבות_האש_5",
+        "נד_דלק_מרכבות_האש_6"
+      ],
+      "notes": "Discovered via 6 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-045",
+      "name_he": "דן",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_דן_חולון_1",
+        "נד_דן_חולון_2"
+      ],
+      "notes": "Discovered via 2 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-046",
+      "name_he": "המרכבה ק2",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_המרכבה_ק2"
+      ],
+      "notes": "Discovered via 1 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-047",
+      "name_he": "המרכבה ק3",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_המרכבה_ק3"
+      ],
+      "notes": "Discovered via 1 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-048",
+      "name_he": "חווה חקלאית",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "חווה חקלאית",
+      "contamination_family": [
+        "OTHER"
+      ],
+      "suspected_contaminants": [
+        "דשנים",
+        "ניטראט"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נת חווה חקלאית'; זוהתה משם הקידוח.",
+      "confidence": "LOW",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נת_חווה_חקלאית_א",
+        "נת_חווה_חקלאית_ב"
+      ],
+      "notes": "Discovered via 2 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-049",
+      "name_he": "טן",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_טן_חולון_1"
+      ],
+      "notes": "Discovered via 1 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-050",
+      "name_he": "יהודה ייבוא",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "יבוא/הפצה (יהודה ייבוא חולון)",
+      "contamination_family": [
+        "OTHER"
+      ],
+      "suspected_contaminants": [],
+      "evidence_he": "ישות מנוטרת ע\"י קידוח 'נת יהודה ייבוא חולון'; זוהתה משם הקידוח. חומרים לא צוינו.",
+      "confidence": "LOW",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נת_יהודה_ייבוא_חולון"
+      ],
+      "notes": "Discovered via 1 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-051",
+      "name_he": "מוסך קטרפילר",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "מוסך/שירות רכב (קטרפילר)",
+      "contamination_family": [
+        "PETROLEUM",
+        "OTHER"
+      ],
+      "suspected_contaminants": [
+        "שמנים",
+        "דלקים",
+        "BTEX"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוח 'נת מוסך קטרפילר' (ניטור תעשיה); זוהתה משם הקידוח.",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נת_מוסך_קטרפילר_חולון"
+      ],
+      "notes": "Discovered via 1 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-052",
+      "name_he": "מרכבות האש",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_מרכבות_האש_7",
+        "נד_מרכבות_האש_8",
+        "נד_מרכבות_האש_9"
+      ],
+      "notes": "Discovered via 3 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-053",
+      "name_he": "נובר מרכבה",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_נובר_מרכבה"
+      ],
+      "notes": "Discovered via 1 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-054",
+      "name_he": "סונול המלאכה מ-1",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_סונול_המלאכה_מ-1"
+      ],
+      "notes": "Discovered via 1 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-055",
+      "name_he": "סונול המלאכה ק-1",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_סונול_המלאכה_ק-1"
+      ],
+      "notes": "Discovered via 1 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-056",
+      "name_he": "סונול מרכבה",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_סונול_מרכבה_1"
+      ],
+      "notes": "Discovered via 1 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-057",
+      "name_he": "סונול משמר השבעה",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_סונול_משמר_השבעה_1",
+        "נד_סונול_משמר_השבעה_2",
+        "נד_סונול_משמר_השבעה_3",
+        "נד_סונול_משמר_השבעה_4",
+        "נד_סונול_משמר_השבעה_5"
+      ],
+      "notes": "Discovered via 5 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-058",
+      "name_he": "פז סיירים",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_פז_סיירים_1",
+        "נד_פז_סיירים_2",
+        "נד_פז_סיירים_3",
+        "נד_פז_סיירים_4",
+        "נד_פז_סיירים_5"
+      ],
+      "notes": "Discovered via 5 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-059",
+      "name_he": "פז צבר",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_פז_צבר_1",
+        "נד_פז_צבר_2",
+        "נד_פז_צבר_3",
+        "נד_פז_צבר_4",
+        "נד_פז_צבר_5",
+        "נד_פז_צבר_6"
+      ],
+      "notes": "Discovered via 6 monitoring borehole(s) named after this entity; not in PDF extraction."
+    },
+    {
+      "facility_id": "F-060",
+      "name_he": "פז קריית שרת",
+      "aliases": [],
+      "addresses_he": [],
+      "streets_in_polygon_match": [],
+      "in_zone_polygon": "YES",
+      "industry_sector": "תחנת/מסוף דלק / חניון אוטובוסים (ניטור דלק)",
+      "contamination_family": [
+        "PETROLEUM"
+      ],
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "פחמימנים"
+      ],
+      "evidence_he": "ישות מנוטרת ע\"י קידוחי 'נד' (ניטור דלק); זוהתה משם הקידוח, ללא רשומה ב-PDF",
+      "confidence": "MEDIUM",
+      "evidence_type": "borehole_naming",
+      "source": "borehole_naming",
+      "source_files": [],
+      "page_refs": [],
+      "source_record_count": 0,
+      "operating_years": null,
+      "coordinates_itm": {
+        "easting": null,
+        "northing": null
+      },
+      "associated_boreholes": [
+        "נד_פז_קריית_שרת_1"
+      ],
+      "notes": "Discovered via 1 monitoring borehole(s) named after this entity; not in PDF extraction."
+    }
+  ]
+}
