@@ -165,22 +165,23 @@ These requirements apply when activating any new zone using the framework.
 |---|---|---|---|---|
 | REQ-H1 | Pipeline scripts (parse_excel, trend_analysis, forensics_analyzer, generate_charts_v2, select_boreholes, validate_report) accept `--zone <id>` and derive paths from zone name | ✅ | Phase 5 generalisation | Holon ran end-to-end via `--zone holon` |
 | REQ-H2 | Per-zone Excel format variations handled via `config/zone_overrides/{zone}.yaml` (column index overrides) | ✅ | Holon Excel has 15 cols vs Raanana 18 | `config/zone_overrides/holon.yaml` overrides 6 column indices |
-| REQ-H3 | Param-code mapping for cross-zone consistency (CVOC, BTEX, PFAS detection regardless of source code naming) | ⏳ | Holon Excel uses different param codes (CVOC trends chart returned no data) | Need crosswalk: param_name → canonical family |
-| REQ-H4 | Zone polygon (ITM) drives Tier 2 borehole selection via point-in-polygon | ✅ | `select_boreholes.py` | Holon: 111/112 boreholes inside polygon |
-| REQ-H5 | Generic data-driven charts (no hardcoded borehole IDs) work for any zone | ✅ | `generate_charts_v2.py` main() routes raanana → specific; other → generic | Holon charts produced |
+| REQ-H3 | Param-code mapping for cross-zone consistency (CVOC, BTEX, PFAS detection regardless of source code naming) | ✅ | Holon Excel uses full English names (TRICHLORO ETHYLENE) vs Raanana short codes (TCEY); needed crosswalk | `scripts/param_families.py` — regex-based `classify_family(code, name)` returns CVOC/BTEX/PFAS/OTHER. Holon CVOC chart now generates (4,915 measurements detected, was 0). 9 new tests. |
+| REQ-H4 | Zone polygon (ITM) drives Tier 2 borehole selection via point-in-polygon | ✅ | `select_boreholes.py` | Holon: 111/112 boreholes inside polygon (with 500m buffer) |
+| REQ-H5 | Generic data-driven charts (no hardcoded borehole IDs) work for any zone | ✅ | `generate_charts_v2.py` main() routes raanana → specific; other → generic | Holon charts: site_map, cvoc_trends, btex_trends, pfas_trends, exceedances_bar, severity_panel |
 | REQ-H6 | Zone site map computes extent + severity from data; supports zone polygon from `zone_polygons.json` | ✅ | `chart_zone_site_map(zone_id=...)` | Holon site map produced |
 | REQ-H7 | KMZ → ITM polygon conversion (WGS84 → EPSG:2039 via pyproj) | ✅ | One-off task per zone | Holon polygon converted from uploaded KMZ |
 | REQ-H8 | Documentation describes "Adding a new zone" as standard workflow (not "pilot") | ✅ | CLAUDE.md § 8 rewrite | Section is now zone-agnostic procedure |
+| REQ-H9 | Borehole selection persistence: `select_boreholes.py` writes `<Zone>/data/selected_boreholes.json`; downstream scripts (trend_analysis, forensics, charts) filter by this list | ✅ | Excel may contain more boreholes than relevant for a zone (Holon: 112 in Excel, 111 selected by polygon) | `scripts/borehole_filter.py::load_selected_ids()` returns set or None (None = use all, backwards compatible). Holon trend pairs: 4,869 → 4,762; chart rows: 20,613 → 20,506 |
 
 ---
 
 ## Status Summary
 
-**Framework requirements**: 8/8 ✅ done (REQ-H1 through REQ-H8, except REQ-H3 ⏳)
+**Framework requirements**: 9/9 ✅ done (REQ-H1 through REQ-H9)
 
 **Reference implementation (Raanana)**: 44/44 ✅ done; 1 deferred (REQ-G1 basemap); 3 deprecated charts
 
-**First framework application (Holon)**: pipeline ✅; zone summary report ⏳; facility discovery ⏳
+**First framework application (Holon)**: pipeline ✅; cross-zone classifier ✅; zone summary report ⏳; facility discovery ⏳
 
 ---
 
@@ -193,9 +194,10 @@ These requirements apply when activating any new zone using the framework.
 | 2026-05-06 | v1.2: Implemented central map (zone_site_map.png) + REQ-A8 (AI agent facility discovery); updated REQ-B4, REQ-D1, REQ-D8 to ✅; status now 42 done, 2 pending, 3 deprecated | Map implementation completed; 9 facilities confirmed (F-001 through F-009), 2 new candidates added (בית דקל, Aerospheres) |
 | 2026-05-06 | v1.3: RTL verification (REQ-D3 ✅) + 3 validators (REQ-F4 ✅); all Raanana requirements COMPLETE (44 done, 0 pending) | Full regression guard: validate_report.py PASS on all validators |
 | 2026-05-06 | v2.0: Reframed as **framework requirements** for any of the 18 zones (not Raanana-specific). Added Phase 5 (REQ-H1 through REQ-H8) for cross-zone framework requirements. Raanana = reference implementation; Holon = first application | Methodology proven on Raanana, generalised to support any zone via `--zone <id>` |
+| 2026-05-06 | v2.1: REQ-H3 ✅ resolved (`scripts/param_families.py` cross-zone CVOC/BTEX/PFAS classifier). Added REQ-H9 (borehole selection persistence: `select_boreholes.py` writes JSON, downstream scripts filter). 9 new tests | Holon CVOC chart returned no data (different naming); pipeline ran on all boreholes instead of selected only |
 
 ---
 
-**Status**: Framework ✅ complete (REQ-H1–8 done, REQ-H3 ⏳); Raanana reference implementation ✅ complete; Holon first application — pipeline ✅, report ⏳  
-**Last Review**: 2026-05-06 (Phase 5 generalisation; framework requirements added)  
+**Status**: Framework ✅ complete (REQ-H1–H9 all done); Raanana reference implementation ✅ complete; Holon first application — pipeline ✅, report ⏳  
+**Last Review**: 2026-05-06 (param-family classifier + borehole selection persistence)  
 **Next Review**: After Holon zone summary report complete + expert review

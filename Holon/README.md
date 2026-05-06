@@ -48,23 +48,27 @@ Holon/
 | מטריקה | ערך |
 |--------|------|
 | קידוחים גולמיים מ-Excel | 112 |
-| מדידות | 20,613 |
+| קידוחים נבחרים (Tier 2 לפי polygon) | 111 |
+| מדידות (לפני סינון) | 20,613 |
+| מדידות (אחרי סינון לקידוחים נבחרים) | 20,506 |
 | פרמטרים | 203 |
 | שנים | 2010–2025 |
-| קידוחים בתוך polygon (Tier 2) | 111/112 |
-| זוגות (קידוח×פרמטר) למגמה | 4,869 |
-| סיווגי מגמה | INCREASING=48, DECREASING=80, STABLE=613, NONE=4,128 |
+| זוגות (קידוח×פרמטר) למגמה | 4,762 |
+| סיווגי מגמה | INCREASING=48, DECREASING=80, STABLE=613, NONE=4,021 |
 | זוגות co-occurrence (מקור משותף) | 2,803 |
-| גרפים שיוצרו | site_map, btex_trends, exceedances_bar, severity_panel |
+| מדידות CVOC (TCE/PCE/DCE/וכו') | 4,915 |
+| מדידות BTEX | 4,316 |
+| מדידות PFAS | 39 |
+| גרפים שיוצרו | site_map, **cvoc_trends**, btex_trends, **pfas_trends**, exceedances_bar, severity_panel |
 
 ---
 
 ## מה חסר (לסיום Phase 5)
 
-1. **Param-code mapping** (`REQ-H3`): גרף CVOC חזר ריק — Excel חולון משתמש בקודי פרמטרים שונים מהטמפלייט. צריך crosswalk כללי `param_name → קבוצה קנונית` (CVOC/BTEX/PFAS).
-2. **דוח סיכום אזור**: `Holon/output/HOLON_REPORT_V1.md` — לכתיבה (Raanana כטמפלייט)
-3. **Facility discovery**: להריץ AI agent על חולון (זיהוי גורמי מקור פוטנציאליים)
-4. **כרטיסי קידוח**: לכתוב לפי Tier 1 (אם נגדיר) — לא חובה לאזור גדול עם 111 קידוחים, אופציונלי
+1. ~~**Param-code mapping** (`REQ-H3`)~~ ✅ נפתר ע"י `scripts/param_families.py` (regex-based CVOC/BTEX/PFAS classifier)
+2. **Facility discovery**: להריץ AI agent על חולון (זיהוי גורמי מקור פוטנציאליים)
+3. **דוח סיכום אזור**: `Holon/output/HOLON_REPORT_V1.md` — לכתיבה (Raanana כטמפלייט)
+4. **כרטיסי קידוח**: אופציונלי — לאזור גדול עם 111 קידוחים, מומלץ להתמקד ב-top contaminated בלבד
 5. **Validate**: `python scripts/validate_report.py --report Holon/output/HOLON_REPORT_V1.md --charts-dir Holon/charts_v2`
 
 ---

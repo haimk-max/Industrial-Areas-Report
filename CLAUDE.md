@@ -210,12 +210,13 @@ Before implementing data processing:
   - ✓ Borehole selection (`select_boreholes.py`) uses zone polygon (Tier 2) + Tier 1/3 lists
 - First framework application — Holon (אזה"ת חולון):
   - ✓ Data uploaded: 4 PDFs (`Holon/data/external/`), Excel (`Water Quality Data/...חולון.xlsx`), KMZ polygon
-  - ✓ Pipeline executed end-to-end: 112 boreholes parsed, 20,613 measurements, 4,869 (borehole×param) pairs
-  - ✓ Polygon intersection: 111/112 boreholes inside zone (Tier 2 selection)
-  - ✓ Charts produced: site_map + btex_trends + exceedances_bar + severity_panel
-  - ⏳ CVOC trends: returned no data — needs param_code mapping check (Holon Excel uses different codes)
-  - ⏳ Holon zone summary report (HOLON_REPORT_V1.md)
+  - ✓ Pipeline executed end-to-end: 112 boreholes parsed → 111 selected (Tier 2 polygon), 4,762 trend pairs
+  - ✓ Cross-zone param-family classifier (`scripts/param_families.py`) handles Holon's full English names
+    (TRICHLORO ETHYLENE) and Raanana's short codes (TCEY) — CVOC chart now produces 4,915 measurements
+  - ✓ Borehole selection persistence (`selected_boreholes.json`): downstream scripts filter automatically
+  - ✓ Charts produced: site_map + cvoc_trends + btex_trends + pfas_trends + exceedances_bar + severity_panel
   - ⏳ Facility discovery for Holon (run Agent against Holon zone)
+  - ⏳ Holon zone summary report (HOLON_REPORT_V1.md)
 
 ---
 
@@ -438,16 +439,15 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 
 **First Framework Application — Holon** (in progress):
 1. ✓ Pipeline ran end-to-end (parse → trend → forensics → charts)
-2. ✓ 112 boreholes, 20,613 measurements, 4,869 trend pairs
-3. ✓ Polygon intersection: 111 boreholes selected (Tier 2)
-4. ⏳ CVOC trend chart skipped — Holon Excel uses different param codes; needs mapping
+2. ✓ 112 boreholes parsed → 111 selected by polygon (Tier 2)
+3. ✓ Cross-zone param-family classifier resolved CVOC chart (4,915 measurements detected)
+4. ✓ All generic charts produced (site_map, cvoc_trends, btex_trends, pfas_trends, exceedances, severity)
 5. ⏳ Holon zone summary report
 6. ⏳ Facility discovery (AI agent) for Holon
 7. ⏳ Expert hydrogeologist review of Holon report
 
 **Open framework items**:
 - ⏳ Basemap integration (REQ-G1) — pending environment resolution
-- ⏳ Param code mapping table (Raanana ↔ Holon ↔ other zones) for cross-zone consistency
 - ⏳ After Holon validation → systematic activation of remaining 16 zones
 
 ---
