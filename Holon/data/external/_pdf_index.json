@@ -1,0 +1,39 @@
+{
+  "zone_id": "holon",
+  "extraction_date_utc": "2026-05-06T07:35:02+00:00",
+  "pdf_count": 4,
+  "pdfs": [
+    {
+      "filename": "water-sources-status_tehom_FinalReport-Holon.pdf",
+      "source_dir": "Holon/data/external",
+      "raw_text": "Holon/data/external/_raw_text/water-sources-status_tehom_FinalReport-Holon.txt",
+      "page_count": 95,
+      "char_count": 179436,
+      "extraction_ok": true
+    },
+    {
+      "filename": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+      "source_dir": "Holon/data/external",
+      "raw_text": "Holon/data/external/_raw_text/water-sources-status_tehom_Holon-BatYan-Dec2007.txt",
+      "page_count": 132,
+      "char_count": 340467,
+      "extraction_ok": true
+    },
+    {
+      "filename": "water-sources-status_tehom_holon-part1.pdf",
+      "source_dir": "Holon/data/external",
+      "raw_text": "Holon/data/external/_raw_text/water-sources-status_tehom_holon-part1.txt",
+      "page_count": 34,
+      "char_count": 130469,
+      "extraction_ok": true
+    },
+    {
+      "filename": "water-sources-status_tehom_holon-part2.pdf",
+      "source_dir": "Holon/data/external",
+      "raw_text": "Holon/data/external/_raw_text/water-sources-status_tehom_holon-part2.txt",
+      "page_count": 23,
+      "char_count": 41657,
+      "extraction_ok": true
+    }
+  ]
+}
