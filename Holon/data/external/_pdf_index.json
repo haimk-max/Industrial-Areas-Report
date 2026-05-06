@@ -1,7 +1,7 @@
 {
   "zone_id": "holon",
   "extraction_date_utc": "2026-05-06T07:35:02+00:00",
-  "pdf_count": 4,
+  "pdf_count": 7,
   "pdfs": [
     {
       "filename": "water-sources-status_tehom_FinalReport-Holon.pdf",
@@ -9,7 +9,8 @@
       "raw_text": "Holon/data/external/_raw_text/water-sources-status_tehom_FinalReport-Holon.txt",
       "page_count": 95,
       "char_count": 179436,
-      "extraction_ok": true
+      "extraction_ok": true,
+      "extraction_date_utc": "2026-05-06T08:01:58+00:00"
     },
     {
       "filename": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
@@ -17,7 +18,8 @@
       "raw_text": "Holon/data/external/_raw_text/water-sources-status_tehom_Holon-BatYan-Dec2007.txt",
       "page_count": 132,
       "char_count": 340467,
-      "extraction_ok": true
+      "extraction_ok": true,
+      "extraction_date_utc": "2026-05-06T08:02:00+00:00"
     },
     {
       "filename": "water-sources-status_tehom_holon-part1.pdf",
@@ -25,7 +27,8 @@
       "raw_text": "Holon/data/external/_raw_text/water-sources-status_tehom_holon-part1.txt",
       "page_count": 34,
       "char_count": 130469,
-      "extraction_ok": true
+      "extraction_ok": true,
+      "extraction_date_utc": "2026-05-06T08:02:00+00:00"
     },
     {
       "filename": "water-sources-status_tehom_holon-part2.pdf",
@@ -33,7 +36,36 @@
       "raw_text": "Holon/data/external/_raw_text/water-sources-status_tehom_holon-part2.txt",
       "page_count": 23,
       "char_count": 41657,
-      "extraction_ok": true
+      "extraction_ok": true,
+      "extraction_date_utc": "2026-05-06T08:02:02+00:00"
+    },
+    {
+      "filename": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf",
+      "source_dir": "Base-Report",
+      "raw_text": "Holon/data/external/_raw_text/בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.txt",
+      "page_count": 50,
+      "char_count": 144521,
+      "extraction_ok": true,
+      "extraction_date_utc": "2026-05-06T08:02:13+00:00"
+    },
+    {
+      "filename": "הערכת פוטנציאל והיקף זיהום מי תהום מתעשייה באקויפר החוף-A.pdf",
+      "source_dir": "Base-Report",
+      "raw_text": "Holon/data/external/_raw_text/הערכת פוטנציאל והיקף זיהום מי תהום מתעשייה באקויפר החוף-A.txt",
+      "page_count": 70,
+      "char_count": 70,
+      "extraction_ok": true,
+      "extraction_date_utc": "2026-05-06T08:02:16+00:00"
+    },
+    {
+      "filename": "הערכת פוטנציאל והיקף זיהום מי תהום מתעשייה באקויפר החוף-B.pdf",
+      "source_dir": "Base-Report",
+      "raw_text": "Holon/data/external/_raw_text/הערכת פוטנציאל והיקף זיהום מי תהום מתעשייה באקויפר החוף-B.txt",
+      "page_count": 68,
+      "char_count": 68,
+      "extraction_ok": true,
+      "extraction_date_utc": "2026-05-06T08:02:19+00:00"
     }
-  ]
+  ],
+  "last_extraction_utc": "2026-05-06T08:02:29+00:00"
 }
