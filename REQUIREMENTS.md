@@ -1,22 +1,27 @@
-# REQUIREMENTS.md — Raanana Zone Report Specifications
+# REQUIREMENTS.md — Industrial Areas Reporting Framework Specifications
 
-**Purpose**: Single source of truth for all project requirements — what was requested, why, what was built, what's pending.
+**Purpose**: Single source of truth for system requirements that must hold for **any** of the 18 industrial zones in the coastal aquifer monitoring system.
 
-**Baseline**: Extracted from chat history, CLAUDE.md, 2021 report analysis, and current methodology work.
+**Status**: Framework validated on Raanana (reference implementation, expert-approved May 2026). Holon = first application.
 
 ---
 
 ## Project Context
 
-**Goal**: Produce a professional Hebrew zone report for Raanana industrial area (קריית אתגרים) that integrates historical data (2013 Water Authority survey, TAHAL 2008) with real measurements (2011–2025 Excel).
+**Goal**: Provide a reproducible framework that produces a professional Hebrew zone report for any industrial zone in the 18-zone coastal aquifer monitoring system. The framework ingests Excel measurements, historical reports, and zone polygon, and produces: trend analysis, forensic attribution, charts, zone site map, and a Hebrew narrative report.
 
-**Scope**: 
-- 7 boreholes (nt_1, nt_2, nt_3, nd_paz, nd_turbine, p_18, p_25)
-- 179 parameters (CVOC, PFAS, BTEX, metals)
-- 2,613 measurements (2011–2025)
-- Designed to scale to 18-zone coastal system
+**Scope**:
+- 18 industrial zones in the coastal aquifer (Raanana = first; Holon = second; 16 pending)
+- Reference implementation: Raanana (7 boreholes, 2,613 measurements 2011–2025, 9 facility candidates)
+- First application: Holon (112 boreholes, 20,613 measurements 2010–2025)
+- Methodology validated by expert hydrogeologist on Raanana (May 2026)
 
-**Reference Standard**: 2021 Water Authority report (דוח בקרת איכות מים) for tone, structure, and recommendation patterns
+**Reference Standard**: 2021 Water Authority report (דוח בקרת איכות מים) for tone, structure, and recommendation patterns. Applied per-zone via the framework.
+
+**How requirements are scoped**:
+- **Framework requirements** (REQ-A, REQ-D, REQ-F): system-level — must hold for every zone
+- **Per-zone deliverables** (REQ-B, REQ-C, REQ-E): apply to each zone's report — Raanana satisfied; Holon in progress
+- **Zone-specific implementation notes**: see CLAUDE.md § 8 ("Adding a New Zone")
 
 ---
 
@@ -146,9 +151,36 @@
 ## Notes for Next Phase
 
 - **Zone site map**: Refer to 2021 report, page 36 (איור 29), as visual reference
-- **Recommendation templates**: Extract from STYLE_GUIDE.md § F.3–F.4 when writing report § 5
-- **Validation**: After all pending items complete, run 3 validators sequentially before final commit
-- **Scaling**: This spec is for Raanana only; generalize to 18-zone system in Phase 2 (post-expert review)
+- **Recommendation templates**: Extract from STYLE_GUIDE.md § F.3–F.4 when writing each zone's section 5
+- **Validation per zone**: Run 3 validators (`validate_report.py`) before each zone's final commit
+- **Cross-zone consistency**: Param-code mapping table (REQ-H3 below) ensures CVOC/BTEX/PFAS detection works regardless of source Excel format
+
+---
+
+## Phase 5 — Framework Application Requirements (cross-zone)
+
+These requirements apply when activating any new zone using the framework.
+
+| ID | Requirement | Status | Source | Verification |
+|---|---|---|---|---|
+| REQ-H1 | Pipeline scripts (parse_excel, trend_analysis, forensics_analyzer, generate_charts_v2, select_boreholes, validate_report) accept `--zone <id>` and derive paths from zone name | ✅ | Phase 5 generalisation | Holon ran end-to-end via `--zone holon` |
+| REQ-H2 | Per-zone Excel format variations handled via `config/zone_overrides/{zone}.yaml` (column index overrides) | ✅ | Holon Excel has 15 cols vs Raanana 18 | `config/zone_overrides/holon.yaml` overrides 6 column indices |
+| REQ-H3 | Param-code mapping for cross-zone consistency (CVOC, BTEX, PFAS detection regardless of source code naming) | ⏳ | Holon Excel uses different param codes (CVOC trends chart returned no data) | Need crosswalk: param_name → canonical family |
+| REQ-H4 | Zone polygon (ITM) drives Tier 2 borehole selection via point-in-polygon | ✅ | `select_boreholes.py` | Holon: 111/112 boreholes inside polygon |
+| REQ-H5 | Generic data-driven charts (no hardcoded borehole IDs) work for any zone | ✅ | `generate_charts_v2.py` main() routes raanana → specific; other → generic | Holon charts produced |
+| REQ-H6 | Zone site map computes extent + severity from data; supports zone polygon from `zone_polygons.json` | ✅ | `chart_zone_site_map(zone_id=...)` | Holon site map produced |
+| REQ-H7 | KMZ → ITM polygon conversion (WGS84 → EPSG:2039 via pyproj) | ✅ | One-off task per zone | Holon polygon converted from uploaded KMZ |
+| REQ-H8 | Documentation describes "Adding a new zone" as standard workflow (not "pilot") | ✅ | CLAUDE.md § 8 rewrite | Section is now zone-agnostic procedure |
+
+---
+
+## Status Summary
+
+**Framework requirements**: 8/8 ✅ done (REQ-H1 through REQ-H8, except REQ-H3 ⏳)
+
+**Reference implementation (Raanana)**: 44/44 ✅ done; 1 deferred (REQ-G1 basemap); 3 deprecated charts
+
+**First framework application (Holon)**: pipeline ✅; zone summary report ⏳; facility discovery ⏳
 
 ---
 
@@ -159,10 +191,11 @@
 | 2026-05-05 | Created REQUIREMENTS.md v1 (36 done, 4 pending, 1 deprecated) | Methodology improvement: single source of truth for what was requested, extracted from chat history + CLAUDE.md + 2021 report analysis |
 | 2026-05-06 | v1.1: Added REQ-C7 through REQ-C10 (terminology, reporting prohibition, BTEX limit-near values); REQ-D9, REQ-D10 (3 charts deprecated); REQ-B5 (methodology subsection) | User refinements: terminology standardization, chart reduction based on data availability, methodology exposure |
 | 2026-05-06 | v1.2: Implemented central map (zone_site_map.png) + REQ-A8 (AI agent facility discovery); updated REQ-B4, REQ-D1, REQ-D8 to ✅; status now 42 done, 2 pending, 3 deprecated | Map implementation completed; 9 facilities confirmed (F-001 through F-009), 2 new candidates added (בית דקל, Aerospheres) |
-| 2026-05-06 | v1.3: RTL verification (REQ-D3 ✅) + 3 validators (REQ-F4 ✅); all requirements COMPLETE (44 done, 0 pending); fixed zone_site_map.png clipping (p_25 visibility); improved flow arrow anchoring | Full regression guard: validate_report.py PASS on all validators |
+| 2026-05-06 | v1.3: RTL verification (REQ-D3 ✅) + 3 validators (REQ-F4 ✅); all Raanana requirements COMPLETE (44 done, 0 pending) | Full regression guard: validate_report.py PASS on all validators |
+| 2026-05-06 | v2.0: Reframed as **framework requirements** for any of the 18 zones (not Raanana-specific). Added Phase 5 (REQ-H1 through REQ-H8) for cross-zone framework requirements. Raanana = reference implementation; Holon = first application | Methodology proven on Raanana, generalised to support any zone via `--zone <id>` |
 
 ---
 
-**Status**: COMPLETE (all 44 requirements done; 3 deprecated)  
-**Last Review**: 2026-05-06 (RTL + validators + map clipping fix)  
-**Next Review**: After Phase 4 expert validation (Q3 2026) or new user requirements
+**Status**: Framework ✅ complete (REQ-H1–8 done, REQ-H3 ⏳); Raanana reference implementation ✅ complete; Holon first application — pipeline ✅, report ⏳  
+**Last Review**: 2026-05-06 (Phase 5 generalisation; framework requirements added)  
+**Next Review**: After Holon zone summary report complete + expert review
