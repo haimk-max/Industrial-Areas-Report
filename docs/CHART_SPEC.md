@@ -1,6 +1,12 @@
-# CHART_SPEC.md — יציבות וחוזה גרפים לדוח רעננה
+# CHART_SPEC.md — יציבות וחוזה גרפים לדוחות אזורי תעשייה
 
-**Purpose**: Stabilize chart file names, define content invariants, and specify color palettes so changes to functions don't break report references.
+**Purpose**: Stabilise chart file names, define content invariants, and specify colour palettes so changes to functions don't break report references.
+
+**Scope**:
+- **Zone-specific charts** (Raanana reference implementation): 9 hand-tuned charts in this inventory — fixed file names, fixed borehole IDs, fixed parameter ordering. Used by `RAANANA_REPORT_V2.md`.
+- **Generic data-driven charts** (any other zone): produced by `chart_generic_*` functions in `generate_charts_v2.py`. File names: `cvoc_trends.png`, `btex_trends.png`, `pfas_trends.png`, `exceedances_bar.png`, `severity_panel.png`, `zone_site_map.png`. Top boreholes are auto-selected from data using `scripts/param_families.py` classifier.
+
+The chart inventory below documents the **Raanana reference set** as the canonical example. Adapt naming conventions and ordering when implementing zone-specific hand-tuned charts for other zones (after expert review confirms the generic charts are insufficient).
 
 ---
 

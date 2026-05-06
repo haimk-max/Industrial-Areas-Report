@@ -1,0 +1,3306 @@
+{
+  "zone_id": "holon",
+  "extraction_date_utc": null,
+  "source_files": [
+    "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf",
+    "water-sources-status_tehom_FinalReport-Holon.pdf",
+    "water-sources-status_tehom_holon-part1.pdf",
+    "water-sources-status_tehom_holon-part2.pdf",
+    "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+  ],
+  "summary_he": "מיזוג מידע מ-5 דוחות PDF לאזור holon",
+  "boreholes_mentioned": [
+    {
+      "name_he": "מק חולון 8",
+      "type_he": "באר הפקה (פסולה)",
+      "context_he": "במרכז אזור התעשייה חולון, מזוהמת בכרום (1986) וחומרים אורגניים נדיפים. ריכוז כרום מקסימלי 71 מק\"ג/ליטר (25/11/2004). חולון.",
+      "page_ref": 12,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "מק חולון 7",
+      "type_he": "באר הפקה",
+      "context_he": "כחצי ק\"מ במורד הזרימה ממק חולון 8, מזוהמת בכרום (1986) וחומרים אורגנים נדיפים (2007). PCE 59 מק\"ג/ליטר (06/05/2007), TCE 77 מק\"ג/ליטר (06/05/2007). חולון.",
+      "page_ref": 12,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "מק חולון 21",
+      "type_he": "באר הפקה (פסולה)",
+      "context_he": "כק\"מ במורד הזרימה, הושבת ב-2002 בגין זיהום בחומרים אורגניים נדיפים. כרום 27 מק\"ג/ליטר (21/01/2001), TCE 77 מק\"ג/ליטר (15/02/2006). חולון.",
+      "page_ref": 12,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "מק חולון 15",
+      "type_he": "באר הכלוא הפסולה",
+      "context_he": "בצפון מערב חולון, נפסל בגין זיהום ב-CCl4 (1996). אין מידע על מקור הזיהום; מתוך מפעלי התעשייה שנסקרו לא נמצא מקור סביר. חולון.",
+      "page_ref": 12,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "מק חולון 13",
+      "type_he": "באר הפקה (פסולה)",
+      "context_he": "ממזרח לא\"ת בת ים, נפסל בשנת 1985 בגין זיהום בדטרגנטים. ריכוז דטרגנט מקסימלי כ-2,000 חל\"ב (חרגה מהתקן 1,000 חל\"ב). חולון.",
+      "page_ref": 12,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "מק חולון 9",
+      "type_he": "באר הפקה (פסולה)",
+      "context_he": "ממזרח לא\"ת בת ים, נפסל בשנת 1988 בגין זיהום בדטרגנטים. נתונים אחרונים משנת 1984. חולון.",
+      "page_ref": 12,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "פ בת ים ח' עיריה",
+      "type_he": "באר הפקה עירונית (פסולה)",
+      "context_he": "ממזרח לא\"ת בת ים, נפסל בשנת 2002 בגין זיהום בדטרגנטים; ריכוז כרום 13.7 מק\"ג/ליטר (2004), TCE 23 מק\"ג/ליטר (1998). בת ים.",
+      "page_ref": 12,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "פ בת ים 12 (פ עירית בת ים 12)",
+      "type_he": "באר הפקה פעילה",
+      "context_he": "עדיין מפיק; ריכוז דטרגנטים גבוה, TCE 35 מק\"ג/ליטר (05/09/2005), כרום 21.3 מק\"ג/ליטר (1993). בת ים.",
+      "page_ref": 12,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "פ בת ים 14",
+      "type_he": "באר הפקה (פסולה)",
+      "context_he": "דרומית מזרחית לא\"ת בת ים, נפסל לשימוש בשנת 2000 בגין ריכוזים גבוהים של טריכלורואתילן. TCE 84 מק\"ג/ליטר (23/08/1999), כרום 10.1 מק\"ג/ליטר. בת ים.",
+      "page_ref": 13,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "מק חולון 5",
+      "type_he": "באר הפקה",
+      "context_he": "כרום 30 מק\"ג/ליטר (13/05/1986), TCE 4.5 מק\"ג/ליטר (09/05/2007), PCE 2.0 מק\"ג/ליטר (21/02/2002). חולון.",
+      "page_ref": 83,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "מק חולון 14",
+      "type_he": "באר הפקה",
+      "context_he": "TCE 12.8 מק\"ג/ליטר (12/11/1992); כרום 8 מק\"ג/ליטר (29/05/2001). חולון.",
+      "page_ref": 90,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "מק חולון 17",
+      "type_he": "באר הפקה",
+      "context_he": "כרום 12 מק\"ג/ליטר (02/06/1986). חולון.",
+      "page_ref": 84,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "מק חולון 12",
+      "type_he": "באר הפקה",
+      "context_he": "כרום 17 מק\"ג/ליטר (20/04/1988). חולון.",
+      "page_ref": 84,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "נת תדירגן א.ת.חולון",
+      "type_he": "באר ניטור",
+      "context_he": "באר ניטור באזור מתחם תדירגן (אזור התעשייה חולון). ריכוזים גבוהים מאוד: TCE 6,457 מק\"ג/ליטר (23/08/2005) — הריכוז הגבוה ביותר בכל הסקר; PCE 35.4 מק\"ג/ליטר; כרום 148 מק\"ג/ליטר. חולון.",
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "נת תדירגן 1 / 2 / 4 / 5",
+      "type_he": "בארות ניטור (4)",
+      "context_he": "סדרת בארות ניטור במתחם תדירגן: TCE 1,000 מק\"ג/ליטר (תדירגן 1, 2, 4); 560 מק\"ג/ליטר (תדירגן 5); PCE עד 220 מק\"ג/ליטר. חולון.",
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "נד המלאכה 1 / מ1 / מ2",
+      "type_he": "בארות ניטור — תחנת דלק המלאכה",
+      "context_he": "בארות ניטור באזור רחוב המלאכה. TCE עד 1,670 מק\"ג/ליטר (16/05/2005, מ2); PCE עד 212.5 מק\"ג/ליטר. חולון.",
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "מתחם גבוביץ (15913006)",
+      "type_he": "באר ניטור",
+      "context_he": "TCE 5.15 מק\"ג/ליטר, PCE 1.20 מק\"ג/ליטר (30/07/2007). חולון.",
+      "page_ref": 88,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "מח בית דגן (15613303)",
+      "type_he": "באר ניטור / מחקר",
+      "context_he": "TCE 204 מק\"ג/ליטר (01/08/2004) — מחוץ לאזור התעשייה אך באזור הסקר.",
+      "page_ref": 89,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "מק חולון 1, 2, 4, 6, 11, 16, 18, 19, 20, 23, א3, א11",
+      "type_he": "בארות הפקה נוספות",
+      "context_he": "בארות הפקה ברחבי חולון; ריכוזי כרום בעיקר 0–17 מק\"ג/ליטר; TCE לרוב 0–5 מק\"ג/ליטר. חולון.",
+      "page_ref": 84,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "פ מקוה ישראל רוטשילד / גולדשמיט / בס הכרם / בס פלחה",
+      "type_he": "בארות פרטיות (מקווה ישראל)",
+      "context_he": "ממזרח לאזור התעשייה חולון; כרום 6–14.9 מק\"ג/ליטר; חשד למקור זיהום מאתר הפסולת הסגור של מקווה ישראל ומאגני החימצון של מקווה ישראל. חולון/מקווה ישראל.",
+      "page_ref": 84,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "פ בת ים ד / ה / ו / ז / ג עיריה",
+      "type_he": "בארות הפקה עירוניות בת ים",
+      "context_he": "כרום 9–20 מק\"ג/ליטר; TCE עד 39.9 מק\"ג/ליטר (פ בת ים ד עיריה, 24/11/2003). בת ים.",
+      "page_ref": 84,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "פ בת ים 9, 10, 15, 16, 17",
+      "type_he": "בארות הפקה נוספות בת ים",
+      "context_he": "כרום 8.5–31 מק\"ג/ליטר. בת ים.",
+      "page_ref": 84,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "פ מאפיית אריאל (אלעד)",
+      "type_he": "באר הפקה פרטית",
+      "context_he": "כרום 200 מק\"ג/ליטר (16/02/2004) — ריכוז גבוה במיוחד. בת ים.",
+      "page_ref": 85,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "פ יפו 4 / יפו 7 תעשיה / פ תא עיר יער המגינים",
+      "type_he": "בארות הפקה תל אביב/יפו",
+      "context_he": "מוקד זיהום צפונית לבת ים — אינו שייך לתחום הסקר אך משפיע על תמונת הזיהום. כרום 48–248 מק\"ג/ליטר. תל אביב/יפו.",
+      "page_ref": 85,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "נת ארן מטל חולון 1",
+      "type_he": "קידוח ניטור חדש (הותקן במסגרת העבודה)",
+      "context_he": "קידוח ניטור באמצע הדרך בין מקור הזיהום לקידוח ההפקה, רחוב המנור 54, גוש 6737 חלקה 31; עומק 39 מ' (כ-10 מ' מתחת למפלס מי התהום); מספר שירות הידרולוגי 15613108; קואורדינטות (ITM): X=181369.688, Y=656529.848",
+      "page_ref": 3,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "name_he": "נת ארן מטל חולון",
+      "type_he": "קידוח ניטור קיים",
+      "context_he": "קידוח ניטור קיים בחצר מפעל רימטל; הותקן ב-5.12.2005; עומק משאבה 32 מ'; מס' זיהוי 15613107; קואורדינטות X=181391.272, Y=656449.417; כ-80 מ' מקידוח הניטור החדש",
+      "page_ref": 3,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "name_he": "פ רשלצ עין הקורא",
+      "type_he": "קידוח פרטי באזור (במרחק עד 4 ק\"מ ממק חולון 5)",
+      "context_he": "ריכוז ניקל אחרון 1.8 מיקרוגר/ל (07/06/2005); קואורדינטות X=180.46, Y=652.89; מס' זיהוי 15213003",
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "name_he": "פ רשלצ תעשיה עיריה",
+      "type_he": "קידוח פרטי במטויב",
+      "context_he": "ריכוז ניקל אחרון 3.6 מיקרוגר/ל (08/06/1999); מס' זיהוי 15313102",
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "name_he": "פ רשלצ דרך לים 1 (ימית)",
+      "type_he": "קידוח פרטי למי שתייה",
+      "context_he": "ריכוז ניקל אחרון 7.6 מיקרוגר/ל (05/07/2005); מס' זיהוי 15412702",
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "name_he": "פ רשלד דרך לים 2 (דקלה)",
+      "type_he": "קידוח פרטי למי שתייה",
+      "context_he": "ריכוז ניקל אחרון 4.6 מיקרוגר/ל (05/07/2005); מס' זיהוי 15412804",
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "name_he": "פ רשלצ עזרא ובצרון",
+      "type_he": "קידוח פרטי למי שתייה",
+      "context_he": "ריכוז ניקל אחרון 7 מיקרוגר/ל (05/07/2005); מס' זיהוי 15413001",
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "name_he": "מק מולדת 5",
+      "type_he": "קידוח חברת מקורות למי שתייה",
+      "context_he": "ריכוז ניקל אחרון 4 מיקרוגר/ל (07/02/2005); כמות הפקה 1,003,620 מ\"ק/שנה; מס' זיהוי 15513101",
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "name_he": "מק ספריה 3א",
+      "type_he": "קידוח חברת מקורות",
+      "context_he": "ריכוז ניקל אחרון 15 מיקרוגר/ל (05/04/2006); מס' זיהוי 15513303",
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "name_he": "מק ספריה 1",
+      "type_he": "קידוח חברת מקורות למי שתייה",
+      "context_he": "ריכוז ניקל אחרון 3 מיקרוגר/ל (25/05/1999); כמות הפקה 728,898 מ\"ק/שנה; מס' זיהוי 15513401",
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "name_he": "נפ אס\"פ חולון",
+      "type_he": "קידוח ניטור פסולת",
+      "context_he": "ריכוז ניקל אחרון 10 מיקרוגר/ל (30/11/2004); מס' זיהוי 15612902",
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "name_he": "מח בית דגן",
+      "type_he": "קידוח ניטור תעשיה",
+      "context_he": "ריכוז ניקל אחרון 79.67 מיקרוגר/ל (חורג מהתקן ב-159%); דיגום 15/06/2008; מס' זיהוי 15613303",
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "name_he": "נת בית דגן 3",
+      "type_he": "קידוח ניטור תעשיה",
+      "context_he": "ריכוז ניקל אחרון 2.96 מיקרוגר/ל (16/06/2008); מס' זיהוי 15613305",
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "name_he": "נת בית דגן 4",
+      "type_he": "קידוח ניטור תעשיה",
+      "context_he": "ריכוז ניקל אחרון 3.93 מיקרוגר/ל (16/06/2008); מס' זיהוי 15613306",
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "name_he": "נפ חיריה תצפית A",
+      "type_he": "קידוח ניטור פסולת (אתר חיריה)",
+      "context_he": "ריכוז ניקל אחרון >10 מיקרוגר/ל (11/09/2005); מס' זיהוי 15913204",
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "name_he": "נפ חיריה תצפית B",
+      "type_he": "קידוח ניטור פסולת (אתר חיריה)",
+      "context_he": "ריכוז ניקל אחרון >10 מיקרוגר/ל (11/09/2005); מס' זיהוי 16013202",
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "name_he": "חולון 13",
+      "type_he": "קידוח הפקה - נפסל",
+      "context_he": "ממזרח לא\"ת בת ים; נפסל בגין זיהום בדטרגנטים (1985)",
+      "page_ref": 1,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "חולון 9",
+      "type_he": "קידוח הפקה - נפסל",
+      "context_he": "ממזרח לא\"ת בת ים; נפסל בגין זיהום בדטרגנטים (1988)",
+      "page_ref": 1,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "נת חולון 1",
+      "type_he": "קידוח ניטור חדש (רדוד)",
+      "context_he": "נקדח בשולי רח' הפלד פינת רח' הנגר, מדרום-מערב למפעל כור מתכת. עומק 37 מ', X=181036, Y=658814",
+      "page_ref": 6,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "נת חולון 2",
+      "type_he": "קידוח ניטור חדש (רדוד)",
+      "context_he": "נקדח ברח' הנפח 7, כ-30 מ' מדרום-מזרח למפעל נצח (גונן כימיקלים). עומק 39 מ', X=180920, Y=658665",
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "נת חולון 3",
+      "type_he": "קידוח ניטור חדש (רדוד)",
+      "context_he": "נקדח בפינת הרחובות היוצר/החופר, בסמוך לאחד משני מפעלי \"התרשיש\". עומק 35 מ', X=181784, Y=658062",
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "נת חולון 4",
+      "type_he": "קידוח ניטור חדש (רדוד)",
+      "context_he": "נקדח ברח' בצלאל, בסמוך למפעל \"תעשיות ברגים\". עומק 54.5 מ', X=180365, Y=657909",
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "נת חולון 5",
+      "type_he": "קידוח ניטור חדש (עמוק)",
+      "context_he": "נקדח במדשאה בין הרחובות אהוד ושמשון, כ-250 מ' מגבול מערבי של אזור התעשייה לניטור חזית הפלומה דרום-מערב. עומק 80.2 מ', X=180887, Y=658232",
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "נת חולון 6",
+      "type_he": "קידוח ניטור חדש (עמוק)",
+      "context_he": "נקדח בסמוך לצומת האורגים/המלאכה, פינה צפון מערבית של מגרש החניה הציבורי, כ-250 מ' מגבול מערבי. עומק 81.5 מ', X=181016, Y=657734",
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "נת חולון 7",
+      "type_he": "קידוח ניטור חדש (עמוק)",
+      "context_he": "נקדח בחורשת נווה ארזים, סמוך לכניסה מרחוב עובדיה, כ-250 מ' מגבול מערבי. עומק 80 מ', X=180760, Y=658487",
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "נח חולון 8",
+      "type_he": "קידוח ניטור חדש (רדוד)",
+      "context_he": "נקדח בחורשת נווה הארזים בסמוך לרחוב השופטים 29, כ-50 מ' מדרום מערב למפעל אמינוגרף. עומק 43 מ', X=181014, Y=358395",
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "נח חולון 9",
+      "type_he": "קידוח ניטור חדש (רדוד)",
+      "context_he": "נקדח ברח' פרופסור שור 28-30, בסמוך להיכל הספורט של מכבי חולון. עומק 43 מ', X=180630, Y=658788",
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "נת חולון 10",
+      "type_he": "קידוח ניטור חדש (רדוד)",
+      "context_he": "נקדח במגרש חניה ברחוב בית-שעריים, כ-40 מ' מדרום לקידוח מק חולון 21 (המושבת), כ-1 ק\"מ ממערב לאזור התעשייה. עומק 46 מ', X=180095, Y=658107",
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "נת חולון 11",
+      "type_he": "קידוח ניטור חדש (רדוד)",
+      "context_he": "נקדח במגרש חניה ברחוב הנחושת, בצמוד למפעל \"תדיראן\" באזור התעשייה חולון. עומק 49 מ', X=181182, Y=658238",
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "נת חולון 12",
+      "type_he": "קידוח ניטור חדש (רדוד)",
+      "context_he": "נקדח בסמטה המחברת בין רחוב המלאכה לרחוב הסתת, סמוך לרח' המלאכה 53, צמוד ומדרום-מערב למפעל \"תדיראן מכני\" והמוסך \"המשתיק\". עומק 49 מ', X=181173, Y=657941",
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "נת חולון 14",
+      "type_he": "קידוח ניטור חדש (רדוד)",
+      "context_he": "נקדח בחורשה המפרידה בין אזור מגורים (רח' שמעון דובנוב) לקצה צפון מערבי של אזור התעשייה, ליד רחוב היובל; ליד מתחם המפעלים \"המלבין\", \"אמקור פליז\" ו-\"סופר כרום\". עומק 43.5 מ', X=180632, Y=659044",
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "נת חולון 13",
+      "type_he": "קידוח ניטור חדש",
+      "context_he": "מוזכר בהקשר של פרופיל עומק - ריכוז המזהמים עלה עם העומק",
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "מק חולון 1",
+      "type_he": "קידוח הפקה פעיל",
+      "context_he": "הפקה שנתית 654 אלפי מ\"ק/שנה (תרחיש 0)",
+      "page_ref": 16,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "מק חולון 2",
+      "type_he": "קידוח הפקה פעיל",
+      "context_he": "הפקה שנתית 557 אלפי מ\"ק/שנה (תרחיש 0)",
+      "page_ref": 16,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "מק חולון 3א",
+      "type_he": "קידוח הפקה פעיל",
+      "context_he": "הפקה שנתית 165 אלפי מ\"ק/שנה (תרחיש 0)",
+      "page_ref": 16,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "מק חולון 4",
+      "type_he": "קידוח הפקה פעיל",
+      "context_he": "הפקה שנתית 265 אלפי מ\"ק/שנה (תרחיש 0)",
+      "page_ref": 16,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "מק חולון 6",
+      "type_he": "קידוח הפקה פעיל",
+      "context_he": "הפקה שנתית 162 אלפי מ\"ק/שנה (תרחיש 0); באזור שכונת קריית שרת",
+      "page_ref": 16,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "מק חולון 18",
+      "type_he": "קידוח הפקה פעיל",
+      "context_he": "הפקה שנתית 410 אלפי מ\"ק/שנה (תרחיש 0)",
+      "page_ref": 16,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "מק חולון 19",
+      "type_he": "קידוח הפקה פעיל",
+      "context_he": "הפקה שנתית 89 אלפי מ\"ק/שנה",
+      "page_ref": 16,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "מק חולון 20",
+      "type_he": "קידוח הפקה פעיל",
+      "context_he": "הפקה שנתית 623 אלפי מ\"ק/שנה (תרחיש 0)",
+      "page_ref": 16,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "מק חולון 23",
+      "type_he": "קידוח הפקה פעיל",
+      "context_he": "הפקה שנתית 232 אלפי מ\"ק/שנה (תרחיש 0)",
+      "page_ref": 16,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "נת גב ים נ/1",
+      "type_he": "קידוח ניטור קיים",
+      "context_he": "נמדדו שינויים חדים בריכוזי TCE שלא ניתן היה להשיג תחת הנחות המודל",
+      "page_ref": 13,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "מק חולון 3",
+      "type_he": "קידוח הפקה (מקורות)",
+      "context_he": "המלצה: הקטנת ההפקה מ-165 לכ-100 אלמ\"ק",
+      "page_ref": 41,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "מק חולון 20א",
+      "type_he": "קידוח הפקה (מקורות)",
+      "context_he": "מצוי ממערב לאזור התעשייה - המלצה למתן ההפקה",
+      "page_ref": 40,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "מק חולון 16",
+      "type_he": "קידוח הפקה (מקורות)",
+      "context_he": "צמוד לאזור התעשייה - המלצה לא להפיק (להפסיק או לא לחדש)",
+      "page_ref": 40,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "נת חולון 8",
+      "type_he": "קידוח ניטור",
+      "context_he": "ניטור פעמיים בשנה. ירידה חדה בריכוזי TCE. מוקד זיהום אמינוגרף",
+      "page_ref": 34,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "נת חולון 9",
+      "type_he": "קידוח ניטור",
+      "context_he": "ניטור פעמיים בשנה",
+      "page_ref": 44,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "נת חולון 20 (מתוכנן)",
+      "type_he": "קידוח ניטור רדוד מתוכנן",
+      "context_he": "מתוכנן להתקנה - במורד הזרם של מפעל בהק",
+      "page_ref": 45,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "נת חולון 21 (מתוכנן)",
+      "type_he": "קידוח ניטור רדוד מתוכנן",
+      "context_he": "מתוכנן להתקנה - במורד הזרם של מפעל גימת השחרות",
+      "page_ref": 45,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "נתח 15 (מתוכנן)",
+      "type_he": "קידוח ניטור עמוק מתוכנן",
+      "context_he": "ממוקם במתחם התרשיש; עומק 50-60 מ'",
+      "page_ref": 45,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "נתח 16 (מתוכנן)",
+      "type_he": "קידוח ניטור עמוק מתוכנן",
+      "context_he": "ממוקם בתדיראן קשר",
+      "page_ref": 45,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "נתח 17 (מתוכנן)",
+      "type_he": "קידוח ניטור עמוק מתוכנן",
+      "context_he": "ממוקם בתדירגן",
+      "page_ref": 45,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "נתח 18 (מתוכנן)",
+      "type_he": "קידוח ניטור רדוד מתוכנן",
+      "context_he": "במורד הזרם של מפעל המגדר; עומק 30-45 מ'",
+      "page_ref": 45,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "נתח 19 (מתוכנן)",
+      "type_he": "קידוח ניטור רדוד מתוכנן",
+      "context_he": "במורד הזרם של מפעל אלגונל",
+      "page_ref": 45,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "נתח 20 (מתוכנן)",
+      "type_he": "קידוח ניטור רדוד מתוכנן",
+      "context_he": "במורד הזרם של מפעל בהק",
+      "page_ref": 45,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "נתח 21 (מתוכנן)",
+      "type_he": "קידוח ניטור רדוד מתוכנן",
+      "context_he": "במורד הזרם של מפעל שחרות",
+      "page_ref": 45,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "תדירגן 1",
+      "type_he": "קידוח ניטור",
+      "context_he": "מוקד זיהום תדירגן",
+      "page_ref": 46,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "תדירגן 2",
+      "type_he": "קידוח ניטור",
+      "context_he": "ניטור אחת לשנה",
+      "page_ref": 39,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "תדירגן 4",
+      "type_he": "קידוח ניטור",
+      "context_he": "ניטור אחת לשנה",
+      "page_ref": 44,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "תדירגן 5",
+      "type_he": "קידוח ניטור",
+      "context_he": "ניטור פעמיים בשנה",
+      "page_ref": 44,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "נד המלאכה מ2",
+      "type_he": "קידוח ניטור",
+      "context_he": "ניטור פעמיים בשנה; הוצג באיור 19 בהשוואת תרחישי TCE",
+      "page_ref": 39,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "גב-ים נ/1",
+      "type_he": "קידוח ניטור",
+      "context_he": "ניטור אחת לשנה",
+      "page_ref": 44,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "גב-ים נ/2",
+      "type_he": "קידוח ניטור",
+      "context_he": "ניטור אחת לשנתיים",
+      "page_ref": 44,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "נת מתחם גבוביץ'",
+      "type_he": "קידוח ניטור",
+      "context_he": "ניטור אחת לשנה",
+      "page_ref": 44,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "מקורות 3א",
+      "type_he": "קידוח הפקה",
+      "context_he": "ניטור אחת לשנתיים; ממוקם ממערב לאזור התעשייה - המלצה למתן ההפקה",
+      "page_ref": 40,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "ליד נת8 (מתוכנן)",
+      "type_he": "קידוח טיוב חדש מתוכנן",
+      "context_he": "מדרום-מערב למפעל אמינוגרף, בשטח חורשת נווה ארזים. ITM: X=181070, Y=658352",
+      "page_ref": 43,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "ליד נת9 (מתוכנן)",
+      "type_he": "קידוח טיוב חדש מתוכנן",
+      "context_he": "במתחם מגרשי הספורט. ITM: X=180633, Y=658739",
+      "page_ref": 43,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "ליד נת11 (מתוכנן)",
+      "type_he": "קידוח טיוב חדש מתוכנן",
+      "context_he": "מדרום-מערב למפעל תדיראן קשר במגרש מדרום לרחוב הנחושת. ITM: X=181166, Y=658193",
+      "page_ref": 43,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "ליד נת12 (מתוכנן)",
+      "type_he": "קידוח טיוב חדש מתוכנן",
+      "context_he": "במגרש ממערב לרחוב המלאכה. ITM: X=181070, Y=657947",
+      "page_ref": 43,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "נת חולון 16",
+      "type_he": "קידוח ניטור",
+      "context_he": "נמדדו ריכוזי מזהמים מוכלרים ברמת אינדקס 4; ייתכן ומקורם במפעל 'בהק' ההיסטורי הסמוך. נמצא בחלקו הדרומי של אזור התעשייה. אינדקס תעשייה 4, אינדקס דלק 1, אינדקס מתכות 1",
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "נד אגד אזור 1",
+      "type_he": "קידוח ניטור (תחנת תדלוק/אגד)",
+      "context_he": "אינדקס תעשייה 6, אינדקס דלק 7",
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "נד אגד אזור 2",
+      "type_he": "קידוח ניטור (תחנת תדלוק/אגד)",
+      "context_he": "אינדקס תעשייה 4, אינדקס דלק 4",
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "נד אגד אזור 3",
+      "type_he": "קידוח ניטור (תחנת תדלוק/אגד)",
+      "context_he": "אינדקס תעשייה 4, אינדקס דלק 7",
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "נד אגד אזור 4",
+      "type_he": "קידוח ניטור (תחנת תדלוק/אגד)",
+      "context_he": "אינדקס תעשייה 5, אינדקס דלק 5",
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "נד אגד אזור 5",
+      "type_he": "קידוח ניטור (תחנת תדלוק/אגד)",
+      "context_he": "אינדקס תעשייה 5, אינדקס דלק 6",
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "נד אגד אזור 6",
+      "type_he": "קידוח ניטור (תחנת תדלוק/אגד)",
+      "context_he": "אינדקס תעשייה 6, אינדקס דלק 5",
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "נד אגד אזור 7",
+      "type_he": "קידוח ניטור (תחנת תדלוק/אגד)",
+      "context_he": "אינדקס תעשייה 4, אינדקס דלק 7",
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "נד אגד אזור 8",
+      "type_he": "קידוח ניטור (תחנת תדלוק/אגד)",
+      "context_he": "אינדקס תעשייה 4, אינדקס דלק 4",
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "נד אגד אזור 9",
+      "type_he": "קידוח ניטור (תחנת תדלוק/אגד)",
+      "context_he": "אינדקס תעשייה 4, אינדקס דלק 7",
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "נד אגד אזור 10",
+      "type_he": "קידוח ניטור (תחנת תדלוק/אגד)",
+      "context_he": "אינדקס תעשייה 4, אינדקס דלק 4",
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "נד אגד אזור 13",
+      "type_he": "קידוח ניטור (תחנת תדלוק/אגד)",
+      "context_he": "אינדקס תעשייה 5, אינדקס דלק 4",
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "נד דן חולון 1",
+      "type_he": "קידוח ניטור (דן)",
+      "context_he": "אינדקס תעשייה 0, אינדקס דלק 4",
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "נד דן חולון 2",
+      "type_he": "קידוח ניטור (דן)",
+      "context_he": "אינדקס תעשייה 0, אינדקס דלק 1",
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "נד המרכבה ק3",
+      "type_he": "קידוח ניטור",
+      "context_he": "אינדקס תעשייה 0, אינדקס דלק 4, אינדקס מתכות 0",
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "נת מוסך קטרפילר חולון",
+      "type_he": "קידוח ניטור",
+      "context_he": "אינדקס תעשייה 2, אינדקס דלק 0, אינדקס מתכות 1",
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "חולון 7",
+      "type_he": "קידוח הפקה (מקורות)",
+      "context_he": "נסגר לאספקת מי שתייה עקב זיהומי מי תהום נרחבים מאזור התעשייה",
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "חולון 8",
+      "type_he": "קידוח הפקה (מקורות)",
+      "context_he": "נסגר לאספקת מי שתייה עקב זיהומי מי תהום נרחבים מאזור התעשייה",
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "חולון 21",
+      "type_he": "קידוח הפקה (מקורות)",
+      "context_he": "נסגר לאספקת מי שתייה עקב זיהומי מי תהום נרחבים מאזור התעשייה",
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    }
+  ],
+  "contamination_findings": [
+    {
+      "borehole_he": "נת תדירגן א.ת.חולון",
+      "contaminant_he": "טריכלורואתילן (TCE)",
+      "contaminant_en": "TCE",
+      "concentration": "6457 µg/L",
+      "year": 2005,
+      "page_ref": 90,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "נד המלאכה מ2",
+      "contaminant_he": "טריכלורואתילן (TCE)",
+      "contaminant_en": "TCE",
+      "concentration": "1670 µg/L",
+      "year": 2005,
+      "page_ref": 90,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "נת תדירגן 2 / 1 / 4",
+      "contaminant_he": "טריכלורואתילן (TCE)",
+      "contaminant_en": "TCE",
+      "concentration": "1000 µg/L",
+      "year": 2006,
+      "page_ref": 90,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "נד המלאכה מ1",
+      "contaminant_he": "טריכלורואתילן (TCE)",
+      "contaminant_en": "TCE",
+      "concentration": "916 µg/L",
+      "year": 2005,
+      "page_ref": 90,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "נת תדירגן 5",
+      "contaminant_he": "טריכלורואתילן (TCE)",
+      "contaminant_en": "TCE",
+      "concentration": "560 µg/L",
+      "year": 2006,
+      "page_ref": 90,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "נד המלאכה 1",
+      "contaminant_he": "טריכלורואתילן (TCE)",
+      "contaminant_en": "TCE",
+      "concentration": "339 µg/L",
+      "year": 2005,
+      "page_ref": 90,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "מח בית דגן",
+      "contaminant_he": "טריכלורואתילן (TCE)",
+      "contaminant_en": "TCE",
+      "concentration": "204 µg/L",
+      "year": 2004,
+      "page_ref": 89,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 8",
+      "contaminant_he": "טריכלורואתילן (TCE)",
+      "contaminant_en": "TCE",
+      "concentration": "82 µg/L",
+      "year": 2004,
+      "page_ref": 90,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 7",
+      "contaminant_he": "טריכלורואתילן (TCE)",
+      "contaminant_en": "TCE",
+      "concentration": "77 µg/L",
+      "year": 2007,
+      "page_ref": 90,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 21",
+      "contaminant_he": "טריכלורואתילן (TCE)",
+      "contaminant_en": "TCE",
+      "concentration": "77 µg/L",
+      "year": 2006,
+      "page_ref": 90,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "פ בת ים 14",
+      "contaminant_he": "טריכלורואתילן (TCE)",
+      "contaminant_en": "TCE",
+      "concentration": "84 µg/L",
+      "year": 1999,
+      "page_ref": 89,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "פ בת ים ד עיריה",
+      "contaminant_he": "טריכלורואתילן (TCE)",
+      "contaminant_en": "TCE",
+      "concentration": "39.9 µg/L",
+      "year": 2003,
+      "page_ref": 89,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "פ עירית בת ים 12",
+      "contaminant_he": "טריכלורואתילן (TCE)",
+      "contaminant_en": "TCE",
+      "concentration": "35 µg/L",
+      "year": 2005,
+      "page_ref": 90,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "פ בת ים ח עיריה",
+      "contaminant_he": "טריכלורואתילן (TCE)",
+      "contaminant_en": "TCE",
+      "concentration": "23 µg/L",
+      "year": 1998,
+      "page_ref": 89,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 14",
+      "contaminant_he": "טריכלורואתילן (TCE)",
+      "contaminant_en": "TCE",
+      "concentration": "12.8 µg/L",
+      "year": 1992,
+      "page_ref": 90,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "נת תדירגן 2",
+      "contaminant_he": "טטראכלורואתילן (PCE/PERC)",
+      "contaminant_en": "PCE",
+      "concentration": "220 µg/L",
+      "year": 2006,
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "נד המלאכה מ2",
+      "contaminant_he": "טטראכלורואתילן (PCE/PERC)",
+      "contaminant_en": "PCE",
+      "concentration": "212.5 µg/L",
+      "year": 2005,
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "נד המלאכה מ1",
+      "contaminant_he": "טטראכלורואתילן (PCE/PERC)",
+      "contaminant_en": "PCE",
+      "concentration": "121.5 µg/L",
+      "year": 2005,
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "נד המלאכה 1",
+      "contaminant_he": "טטראכלורואתילן (PCE/PERC)",
+      "contaminant_en": "PCE",
+      "concentration": "89.5 µg/L",
+      "year": 2005,
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 7",
+      "contaminant_he": "טטראכלורואתילן (PCE/PERC)",
+      "contaminant_en": "PCE",
+      "concentration": "59 µg/L",
+      "year": 2007,
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "נת תדירגן 1",
+      "contaminant_he": "טטראכלורואתילן (PCE/PERC)",
+      "contaminant_en": "PCE",
+      "concentration": "53 µg/L",
+      "year": 2006,
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "נת תדירגן א.ת.חולון",
+      "contaminant_he": "טטראכלורואתילן (PCE/PERC)",
+      "contaminant_en": "PCE",
+      "concentration": "35.4 µg/L",
+      "year": 2004,
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "נת תדירגן 4",
+      "contaminant_he": "טטראכלורואתילן (PCE/PERC)",
+      "contaminant_en": "PCE",
+      "concentration": "23 µg/L",
+      "year": 2006,
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "פ בת ים המועצה א",
+      "contaminant_he": "טטראכלורואתילן (PCE/PERC)",
+      "contaminant_en": "PCE",
+      "concentration": "9.9 µg/L",
+      "year": 2002,
+      "page_ref": 88,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 15",
+      "contaminant_he": "פחמן טטרהכלוריד (CCl4)",
+      "contaminant_en": "CCl4",
+      "concentration": "ערך פסילה — לא מצוין במספר",
+      "year": 1996,
+      "page_ref": 12,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "פ תא עיר יער המגינים (תל אביב, מוקד צפוני לבת ים)",
+      "contaminant_he": "כרומאט",
+      "contaminant_en": "Chromate",
+      "concentration": "248 µg/L",
+      "year": 1996,
+      "page_ref": 85,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "פ מאפיית אריאל (אלעד)",
+      "contaminant_he": "כרומאט",
+      "contaminant_en": "Chromate",
+      "concentration": "200 µg/L",
+      "year": 2004,
+      "page_ref": 85,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "נת תדירגן א.ת.חולון",
+      "contaminant_he": "כרומאט",
+      "contaminant_en": "Chromate",
+      "concentration": "148 µg/L",
+      "year": 2005,
+      "page_ref": 84,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "פ יפו 4 עיר תא",
+      "contaminant_he": "כרומאט",
+      "contaminant_en": "Chromate",
+      "concentration": "112 µg/L",
+      "year": 1997,
+      "page_ref": 85,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 8",
+      "contaminant_he": "כרומאט",
+      "contaminant_en": "Chromate",
+      "concentration": "71 µg/L",
+      "year": 2004,
+      "page_ref": 84,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "פ יפו 7 תעשיה עיר תא",
+      "contaminant_he": "כרומאט",
+      "contaminant_en": "Chromate",
+      "concentration": "48.1 µg/L",
+      "year": 1996,
+      "page_ref": 85,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 5",
+      "contaminant_he": "כרומאט",
+      "contaminant_en": "Chromate",
+      "concentration": "30 µg/L",
+      "year": 1986,
+      "page_ref": 84,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 21",
+      "contaminant_he": "כרומאט",
+      "contaminant_en": "Chromate",
+      "concentration": "27 µg/L",
+      "year": 2001,
+      "page_ref": 84,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "פ בת ים 9",
+      "contaminant_he": "כרומאט",
+      "contaminant_en": "Chromate",
+      "concentration": "31 µg/L",
+      "year": 1993,
+      "page_ref": 84,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 9",
+      "contaminant_he": "דטרגנטים",
+      "contaminant_en": "Detergents",
+      "concentration": "~2000 µg/L (התקן: 1000)",
+      "year": 1984,
+      "page_ref": 91,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 13",
+      "contaminant_he": "דטרגנטים",
+      "contaminant_en": "Detergents",
+      "concentration": "~2000 µg/L (התקן: 1000)",
+      "year": null,
+      "page_ref": 91,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "פ בת ים ח עיריה",
+      "contaminant_he": "דטרגנטים",
+      "contaminant_en": "Detergents",
+      "concentration": "מעל התקן",
+      "year": 1998,
+      "page_ref": 91,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון (חצר מפעל רימטל)",
+      "contaminant_he": "ניקל",
+      "contaminant_en": "Ni",
+      "concentration": "0.6 mg/L",
+      "year": 2005,
+      "page_ref": 6,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון (חצר מפעל רימטל)",
+      "contaminant_he": "ניקל",
+      "contaminant_en": "Ni",
+      "concentration": "0.78 mg/L",
+      "year": 2007,
+      "page_ref": 6,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון (חצר מפעל רימטל)",
+      "contaminant_he": "ניקל",
+      "contaminant_en": "Ni",
+      "concentration": "2 mg/L (חריגה של ~4,000% מהתקן)",
+      "year": 2008,
+      "page_ref": 6,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון 1 (רחוב המנור)",
+      "contaminant_he": "ניקל",
+      "contaminant_en": "Ni",
+      "concentration": "0.01 mg/L",
+      "year": 2008,
+      "page_ref": 6,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 5 (קידוח הפקה)",
+      "contaminant_he": "ניקל",
+      "contaminant_en": "Ni",
+      "concentration": "0.005 mg/L",
+      "year": 2007,
+      "page_ref": 2,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 5 (קידוח הפקה)",
+      "contaminant_he": "ניקל",
+      "contaminant_en": "Ni",
+      "concentration": "0.006 mg/L",
+      "year": 2008,
+      "page_ref": 6,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 5 (קידוח הפקה)",
+      "contaminant_he": "ניקל",
+      "contaminant_en": "Ni",
+      "concentration": "0.003 mg/L",
+      "year": 1986,
+      "page_ref": 88,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 5 (קידוח הפקה)",
+      "contaminant_he": "ניקל",
+      "contaminant_en": "Ni",
+      "concentration": "0.003 mg/L",
+      "year": 1991,
+      "page_ref": 88,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 5 (קידוח הפקה)",
+      "contaminant_he": "ניקל",
+      "contaminant_en": "Ni",
+      "concentration": "0.004 mg/L",
+      "year": 2001,
+      "page_ref": 88,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 5 (קידוח הפקה)",
+      "contaminant_he": "ניקל",
+      "contaminant_en": "Ni",
+      "concentration": "0.004 mg/L",
+      "year": 2003,
+      "page_ref": 88,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון (חצר מפעל רימטל)",
+      "contaminant_he": "ברזל",
+      "contaminant_en": "Fe",
+      "concentration": "1 mg/L (תקן: 1)",
+      "year": 2008,
+      "page_ref": 6,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון 1 (רחוב המנור)",
+      "contaminant_he": "ברזל",
+      "contaminant_en": "Fe",
+      "concentration": "5 mg/L (חריגה של פי 5 מהתקן)",
+      "year": 2008,
+      "page_ref": 6,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון (חצר מפעל רימטל)",
+      "contaminant_he": "אלומיניום",
+      "contaminant_en": "Al",
+      "concentration": "0.5 mg/L (חריגה פי 10 מתקן 0.05)",
+      "year": 2008,
+      "page_ref": 6,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון 1 (רחוב המנור)",
+      "contaminant_he": "אלומיניום",
+      "contaminant_en": "Al",
+      "concentration": "2 mg/L (חריגה פי 40 מתקן 0.05)",
+      "year": 2008,
+      "page_ref": 6,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון (חצר מפעל רימטל)",
+      "contaminant_he": "עופרת",
+      "contaminant_en": "Pb",
+      "concentration": "0.02 mg/L (חריגה פי 2 מתקן 0.01)",
+      "year": 2008,
+      "page_ref": 6,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון 1 (רחוב המנור)",
+      "contaminant_he": "עופרת",
+      "contaminant_en": "Pb",
+      "concentration": "0.02 mg/L (חריגה פי 2 מתקן 0.01)",
+      "year": 2008,
+      "page_ref": 6,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון 1 (רחוב המנור)",
+      "contaminant_he": "מנגן",
+      "contaminant_en": "Mn",
+      "concentration": "0.1 mg/L",
+      "year": 2008,
+      "page_ref": 6,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון 1 (רחוב המנור)",
+      "contaminant_he": "1,2-dichloroethene (cis)",
+      "contaminant_en": "cis-1,2-DCE",
+      "concentration": "1.7 µg/L (תקן 5)",
+      "year": 2008,
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון 1 (רחוב המנור)",
+      "contaminant_he": "1,1-dichloroethene",
+      "contaminant_en": "1,1-DCE",
+      "concentration": "1.5 µg/L (תקן 30)",
+      "year": 2008,
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון 1 (רחוב המנור)",
+      "contaminant_he": "טריכלורואתילן",
+      "contaminant_en": "TCE",
+      "concentration": "4.24 µg/L (תקן 50)",
+      "year": 2008,
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון 1 (רחוב המנור)",
+      "contaminant_he": "בנזן",
+      "contaminant_en": "Benzene",
+      "concentration": "1.3 µg/L (תקן 10)",
+      "year": 2008,
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון (חצר מפעל רימטל)",
+      "contaminant_he": "טולואן",
+      "contaminant_en": "Toluene",
+      "concentration": "3.1 µg/L (תקן 700)",
+      "year": 2008,
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון 1 (רחוב המנור)",
+      "contaminant_he": "טולואן",
+      "contaminant_en": "Toluene",
+      "concentration": "6.2 µg/L (תקן 700)",
+      "year": 2008,
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון 1 (רחוב המנור)",
+      "contaminant_he": "MTBE",
+      "contaminant_en": "MTBE",
+      "concentration": "2.1 µg/L",
+      "year": 2008,
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "מח בית דגן",
+      "contaminant_he": "ניקל",
+      "contaminant_en": "Ni",
+      "concentration": "79.67 µg/L (חריגה 159% מהתקן 50 µg/L)",
+      "year": 2008,
+      "page_ref": 87,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 1",
+      "contaminant_he": "TCE",
+      "contaminant_en": "TCE",
+      "concentration": "81 ppb",
+      "year": 2009,
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 1",
+      "contaminant_he": "DCE",
+      "contaminant_en": "DCE",
+      "concentration": "277 ppb",
+      "year": 2009,
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 2",
+      "contaminant_he": "TCE",
+      "contaminant_en": "TCE",
+      "concentration": "58 ppb",
+      "year": 2009,
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 2",
+      "contaminant_he": "DCE",
+      "contaminant_en": "DCE",
+      "concentration": "136 ppb",
+      "year": 2009,
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 3",
+      "contaminant_he": "TCE",
+      "contaminant_en": "TCE",
+      "concentration": "375 ppb",
+      "year": 2009,
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 3",
+      "contaminant_he": "כרום",
+      "contaminant_en": "Cr",
+      "concentration": "2,424 ppb",
+      "year": 2009,
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 3",
+      "contaminant_he": "מרכיבי דלק (בנזן, כסילן, טולואן)",
+      "contaminant_en": "BTEX",
+      "concentration": "עקבות",
+      "year": 2009,
+      "page_ref": 9,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 4",
+      "contaminant_he": "VOC's",
+      "contaminant_en": "VOC",
+      "concentration": "עקבות, אינם חורגים מהתקן",
+      "year": null,
+      "page_ref": 9,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 5",
+      "contaminant_he": "TCE",
+      "contaminant_en": "TCE",
+      "concentration": "912 ppb",
+      "year": 2011,
+      "page_ref": 9,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 5",
+      "contaminant_he": "DCE",
+      "contaminant_en": "DCE",
+      "concentration": "1,622 ppb",
+      "year": 2011,
+      "page_ref": 9,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 5",
+      "contaminant_he": "1,2-דיכלורואתן",
+      "contaminant_en": "1,2-DCA",
+      "concentration": "9.3 ppb",
+      "year": 2011,
+      "page_ref": 9,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 6",
+      "contaminant_he": "VOC's",
+      "contaminant_en": "VOC",
+      "concentration": "עקבות, אינם חורגים מהתקן",
+      "year": null,
+      "page_ref": 9,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 7",
+      "contaminant_he": "TCE",
+      "contaminant_en": "TCE",
+      "concentration": "379 ppb",
+      "year": 2009,
+      "page_ref": 9,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 7",
+      "contaminant_he": "DCE",
+      "contaminant_en": "DCE",
+      "concentration": "122 ppb",
+      "year": 2011,
+      "page_ref": 9,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 7",
+      "contaminant_he": "כרום",
+      "contaminant_en": "Cr",
+      "concentration": "353 ppb",
+      "year": 2009,
+      "page_ref": 9,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נח חולון 8",
+      "contaminant_he": "TCE",
+      "contaminant_en": "TCE",
+      "concentration": "376 ppb",
+      "year": 2009,
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נח חולון 8",
+      "contaminant_he": "DCE",
+      "contaminant_en": "DCE",
+      "concentration": "1,870 ppb",
+      "year": 2009,
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נח חולון 8",
+      "contaminant_he": "1,2-דיכלורואתן",
+      "contaminant_en": "1,2-DCA",
+      "concentration": "16 ppb",
+      "year": 2009,
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נח חולון 9",
+      "contaminant_he": "TCE",
+      "contaminant_en": "TCE",
+      "concentration": "539 ppb",
+      "year": 2010,
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נח חולון 9",
+      "contaminant_he": "DCE",
+      "contaminant_en": "DCE",
+      "concentration": "228 ppb",
+      "year": 2010,
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נח חולון 9",
+      "contaminant_he": "PCE",
+      "contaminant_en": "PCE",
+      "concentration": "310 ppb",
+      "year": 2010,
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 10",
+      "contaminant_he": "TCE",
+      "contaminant_en": "TCE",
+      "concentration": "ירידה מ-20 ל-6 ppb",
+      "year": 2010,
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 11",
+      "contaminant_he": "TCE",
+      "contaminant_en": "TCE",
+      "concentration": "12,982 ppb",
+      "year": 2010,
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 11",
+      "contaminant_he": "DCE",
+      "contaminant_en": "DCE",
+      "concentration": "436 ppb",
+      "year": 2010,
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 11",
+      "contaminant_he": "PCE",
+      "contaminant_en": "PCE",
+      "concentration": "51 ppb",
+      "year": 2010,
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 11",
+      "contaminant_he": "1,2-דיכלורואתן",
+      "contaminant_en": "1,2-DCA",
+      "concentration": "16 ppb",
+      "year": 2009,
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 11",
+      "contaminant_he": "TCE (עליה דרמטית)",
+      "contaminant_en": "TCE",
+      "concentration": "מ-710 ל-12,981 ppb (שני סדרי גודל)",
+      "year": 2010,
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 12",
+      "contaminant_he": "TCE",
+      "contaminant_en": "TCE",
+      "concentration": "84 ppb",
+      "year": 2010,
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 12",
+      "contaminant_he": "מרכיבי דלק (בנזן, טולואן, קסילן, MTBE)",
+      "contaminant_en": "BTEX+MTBE",
+      "concentration": "עקבות",
+      "year": 2010,
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 14",
+      "contaminant_he": "TCE",
+      "contaminant_en": "TCE",
+      "concentration": "133 ppb",
+      "year": 2010,
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 8",
+      "contaminant_he": "כרום + VOC's",
+      "contaminant_en": "Cr+VOC",
+      "concentration": "פסילה (חריגה מהתקן)",
+      "year": 1986,
+      "page_ref": 1,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 7",
+      "contaminant_he": "כרום",
+      "contaminant_en": "Cr",
+      "concentration": "פסילה (חריגה מהתקן)",
+      "year": 1986,
+      "page_ref": 1,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 7",
+      "contaminant_he": "VOC's",
+      "contaminant_en": "VOC",
+      "concentration": "פסילה",
+      "year": 2007,
+      "page_ref": 1,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 21",
+      "contaminant_he": "VOC's (חומרים אורגנים נדיפים)",
+      "contaminant_en": "VOC",
+      "concentration": "השבתה",
+      "year": 2002,
+      "page_ref": 1,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 15",
+      "contaminant_he": "טטרכלורומתן",
+      "contaminant_en": "CCl4",
+      "concentration": "פסילה",
+      "year": 1996,
+      "page_ref": 1,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "חולון 13",
+      "contaminant_he": "דטרגנטים",
+      "contaminant_en": "Detergents",
+      "concentration": "פסילה",
+      "year": 1985,
+      "page_ref": 1,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "חולון 9",
+      "contaminant_he": "דטרגנטים",
+      "contaminant_en": "Detergents",
+      "concentration": "פסילה",
+      "year": 1988,
+      "page_ref": 1,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 17",
+      "contaminant_he": "טריכלורואתילן",
+      "contaminant_en": "TCE",
+      "concentration": ">7 ppb (בחלופות שיקום)",
+      "year": 2030,
+      "page_ref": 33,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 23",
+      "contaminant_he": "טריכלורואתילן",
+      "contaminant_en": "TCE",
+      "concentration": "≤1 ppb",
+      "year": 2030,
+      "page_ref": 34,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 3",
+      "contaminant_he": "טריכלורואתילן",
+      "contaminant_en": "TCE",
+      "concentration": "עליה הדרגתית עד 2018, ירידה לאחר מכן",
+      "year": 2018,
+      "page_ref": 34,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 8",
+      "contaminant_he": "טריכלורואתילן",
+      "contaminant_en": "TCE",
+      "concentration": "ירידה חדה (ריכוזים גבוהים מאוד היסטוריים)",
+      "year": 2012,
+      "page_ref": 34,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 11",
+      "contaminant_he": "טריכלורואתילן",
+      "contaminant_en": "TCE",
+      "concentration": "ריכוזים גבוהים מאוד עם שינויים משמעותיים",
+      "year": 2012,
+      "page_ref": 44,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 3",
+      "contaminant_he": "טריכלורואתילן",
+      "contaminant_en": "TCE",
+      "concentration": "ריכוזים גבוהים מאוד (מוקד תרשיש)",
+      "year": 2012,
+      "page_ref": 45,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 8",
+      "contaminant_he": "טריכלורואתילן",
+      "contaminant_en": "TCE",
+      "concentration": "ריכוזים גבוהים מאוד (מוקד אמינוגרף)",
+      "year": 2012,
+      "page_ref": 45,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "borehole_he": "פלומת TCE עיקרית (אזורית)",
+      "contaminant_he": "טריכלורואתילן",
+      "contaminant_en": "TCE",
+      "concentration": "קונטורים של 10ppb ו-50ppb (תחזית 2030)",
+      "year": 2030,
+      "page_ref": 31,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 1",
+      "contaminant_he": "ממסים מוכלרים (כולל 1,4 דיאוקסן)",
+      "contaminant_en": "Chlorinated solvents (including 1,4-dioxane)",
+      "concentration": "אינדקס 6",
+      "year": 2021,
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 1",
+      "contaminant_he": "כרום",
+      "contaminant_en": "Chromium",
+      "concentration": "אינדקס 4",
+      "year": 2021,
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 1",
+      "contaminant_he": "מזהמי דלק",
+      "contaminant_en": "Fuel contaminants (BTEX)",
+      "concentration": "אינדקס 4",
+      "year": 2021,
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 2",
+      "contaminant_he": "ממסים מוכלרים",
+      "contaminant_en": "Chlorinated solvents",
+      "concentration": "אינדקס 6",
+      "year": 2021,
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 3",
+      "contaminant_he": "ממסים מוכלרים",
+      "contaminant_en": "Chlorinated solvents",
+      "concentration": "אינדקס 7 (שיא; מדיד מ-2021: אינדקס 6)",
+      "year": 2021,
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 11",
+      "contaminant_he": "ממסים מוכלרים שונים",
+      "contaminant_en": "Various chlorinated solvents",
+      "concentration": "אינדקס 7",
+      "year": 2021,
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 12",
+      "contaminant_he": "ממסים מוכלרים",
+      "contaminant_en": "Chlorinated solvents",
+      "concentration": "אינדקס 4",
+      "year": 2021,
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 14",
+      "contaminant_he": "TCE (טריכלורואתילן)",
+      "contaminant_en": "Trichloroethylene (TCE)",
+      "concentration": "אינדקס 4",
+      "year": 2021,
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 14",
+      "contaminant_he": "כרום",
+      "contaminant_en": "Chromium",
+      "concentration": "אינדקס 4",
+      "year": 2021,
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 16",
+      "contaminant_he": "ממסים מוכלרים",
+      "contaminant_en": "Chlorinated solvents",
+      "concentration": "אינדקס 4",
+      "year": 2021,
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "borehole_he": "נד אגד אזור (קידוחי תדירגן/סונול המלאכה)",
+      "contaminant_he": "ממסים מוכלרים",
+      "contaminant_en": "Chlorinated solvents",
+      "concentration": "אינדקס 7 (מקסימלי בקידוחי אגד אזור 1, 3, 7, 9)",
+      "year": 2021,
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "borehole_he": "נד אגד אזור (קידוחי תדירגן/סונול המלאכה)",
+      "contaminant_he": "מזהמי דלק",
+      "contaminant_en": "Fuel contaminants",
+      "concentration": "אינדקס 5–7",
+      "year": 2021,
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון",
+      "contaminant_he": "מתכות כבדות",
+      "contaminant_en": "Heavy metals",
+      "concentration": "אינדקס 4",
+      "year": 2021,
+      "page_ref": 32,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "borehole_he": "אזה\"ת חולון (כלל האזור)",
+      "contaminant_he": "ממסים מוכלרים",
+      "contaminant_en": "Chlorinated solvents",
+      "concentration": "אינדקס תעשייתי מרבי 7; חציוני 3.5; 25 קידוחי ניטור",
+      "year": 2021,
+      "page_ref": 49,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    }
+  ],
+  "facilities_suspected": [
+    {
+      "name_he": "כור מתכת",
+      "type_he": "ציפוי",
+      "address_he": "האופן 1, חולון",
+      "suspected_contaminants": [
+        "TCE",
+        "DCE"
+      ],
+      "evidence_he": "ציון גודל גדול, ציון שפכים 2; תקופת פעילות 1953-1999; מקור משוער לזיהום בנת חולון 1 (TCE 81/DCE 277 ppb) - ממוקם במעלה הגרדיאנט הסמוך",
+      "confidence": "HIGH",
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "תדירגן",
+      "type_he": "ציפוי ועיבוד שבבי (גדול)",
+      "address_he": "המלאכה 19, אזור תעשיה חולון; פעיל 1970–2002, 32 שנים",
+      "suspected_contaminants": [
+        "TCE",
+        "PCE",
+        "כרומאט",
+        "ציאנידים"
+      ],
+      "evidence_he": "ניטור באתר זיהה TCE עד 6,457 מק\"ג/ליטר ו-PCE עד 220 מק\"ג/ליטר; שדרוג מתקן טיפול 1985, אך הזרמה למע' ביוב ללא טיפול בעבר; ספיקת שפכים 6,000 מ\"ק/שנה",
+      "confidence": "HIGH",
+      "page_ref": 74,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "תרשיש קופרפיש פרופילון (תרשיש היוצר ותרשיש הסולל)",
+      "type_he": "תעשיית ציפוי מתכות (גדול)",
+      "address_he": "אזור היוצר והסולל, אזור תעשיה חולון",
+      "suspected_contaminants": [
+        "TCE",
+        "PCE",
+        "כרומאט",
+        "קדמיום"
+      ],
+      "evidence_he": "מתחם בעל פוט' זיהום נקודתי גבוה במיוחד בקדמיום ובכרומאט; פעיל משנות השישים",
+      "confidence": "HIGH",
+      "page_ref": 74,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "אלגונל",
+      "type_he": "ציפוי",
+      "address_he": "הפטיש 6, חולון",
+      "suspected_contaminants": [
+        "TCE",
+        "VOC",
+        "Cr"
+      ],
+      "evidence_he": "נכלל ברשימת 16 המפעלים בעלי פוטנציאל זיהום גבוה במודל הממוחשב; ציון גודל גדול, ציון שפכים 3; תקופת פעילות 1962-2006",
+      "confidence": "HIGH",
+      "page_ref": 3,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "אמקור פליז",
+      "type_he": "תעשיית ציפוי מתכות (גדול)",
+      "address_he": "הפלד 5 ו-10, אזור תעשיה חולון; פעיל 1960–1998, 38 שנים",
+      "suspected_contaminants": [
+        "TCE",
+        "PCE",
+        "כרומאט",
+        "קדמיום",
+        "מתכות כבדות"
+      ],
+      "evidence_he": "ספיקת שפכים 90,000 מ\"ק/שנה — מהגדולות בסקר; שפיכה לקרקע, בורות ספיגה או תיעול עד 1972; פוט' זיהום גבוה במיוחד בקדמיום",
+      "confidence": "HIGH",
+      "page_ref": 74,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "תדיראן (תדיראן קשר, תדיראן מחלקה ב', תדיראן מכני, תדיראן מוצרי צריכה)",
+      "type_he": "ציפוי מתכת ומיקרואלקטרוניקה (גדול)",
+      "address_he": "השופטים 26, היתד 7, המלאכה 47, הפלד 50-52, אזור תעשיה חולון",
+      "suspected_contaminants": [
+        "TCE",
+        "PCE",
+        "כרומאט",
+        "ציאנידים",
+        "מתכות"
+      ],
+      "evidence_he": "ספיקות שפכים גבוהות (40,000–90,000 מ\"ק/שנה); הימצאות ממיסים אורגניים מתועדת; הזרמה למע' ביוב ללא טיפול במשך עשרות שנים",
+      "confidence": "HIGH",
+      "page_ref": 74,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "בהק",
+      "type_he": "ציפוי",
+      "address_he": "הכישור 12, חולון",
+      "suspected_contaminants": [
+        "TCE"
+      ],
+      "evidence_he": "מוקד \"פלומת בהק\" נפרדת בשטח כ-300 דונם; חזית הפלומה הגיעה לקידוח מקורות חולון 5 ול\"ספורטק\"; ריכוזים בלב הפלומה כ-200 ppb; תקופת פעילות 1978-2007",
+      "confidence": "HIGH",
+      "page_ref": 13,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "לודג'יה (לודזיה)",
+      "type_he": "תעשיית טקסטיל (דגל)",
+      "address_he": "המנור 6, אזור תעשיה חולון; פעיל 1959–1997, 38 שנים; אתר היסטורי נוסף ברחוב סוקולוב (ככר צמרת)",
+      "suspected_contaminants": [
+        "דטרגנטים",
+        "מתכות כבדות (כרום)",
+        "צבענים"
+      ],
+      "evidence_he": "ספיקת שפכים 90,000 מ\"ק/שנה; הזרמה למע' ביוב ללא טיפול; אתר היסטורי בככר צמרת מוצע לסקר נוסף בנפרד",
+      "confidence": "HIGH",
+      "page_ref": 74,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "ארקר",
+      "type_he": "ציפוי",
+      "address_he": "עקיבא 30, חולון",
+      "suspected_contaminants": [
+        "TCE",
+        "VOC",
+        "Cr"
+      ],
+      "evidence_he": "ציון גודל בינוני, ציון שפכים 3; תקופת פעילות 1959-1985; מוקד פלומת משנה דרום-מערבית",
+      "confidence": "HIGH",
+      "page_ref": 13,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "תעשיות ברגים",
+      "type_he": "ציפוי מתכת (גדול)",
+      "address_he": "בצלאל 2, אזור תעשיה חולון; פעיל 1959–1985, 26 שנים",
+      "suspected_contaminants": [
+        "TCE",
+        "PCE",
+        "כרומאט",
+        "מתכות כבדות"
+      ],
+      "evidence_he": "ספיקת שפכים 10,000 מ\"ק/שנה; הזרמה למע' ביוב ללא טיפול עד 1981",
+      "confidence": "HIGH",
+      "page_ref": 74,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "המגדר",
+      "type_he": "גילוון אבץ",
+      "address_he": "תמנע 11, חולון",
+      "suspected_contaminants": [
+        "Zn",
+        "VOC"
+      ],
+      "evidence_he": "ציון גודל גדול, ציון שפכים 2; תקופת פעילות 1962-1985",
+      "confidence": "MEDIUM",
+      "page_ref": 3,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "נצח (גונן כימיקלים)",
+      "type_he": "יצור דבק",
+      "address_he": "הנפח 3, אזור תעשיה חולון; פעיל 1959–1986, 27 שנים",
+      "suspected_contaminants": [
+        "דבקים",
+        "כימיקלים אורגניים"
+      ],
+      "evidence_he": "שפיכה לקרקע, בורות ספיגה או תיעול; ספיקת שפכים 7,000 מ\"ק/שנה",
+      "confidence": "HIGH",
+      "page_ref": 74,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "פליז אמקור / וישי ישראל / פלואור",
+      "type_he": "ציפוי מתכת — מקור כספית יחיד",
+      "address_he": "רחוב הסדנה ורחוב הפלד פינת האופן, אזור תעשיה חולון",
+      "suspected_contaminants": [
+        "כספית",
+        "TCE",
+        "PCE",
+        "כרומאט"
+      ],
+      "evidence_he": "השימוש בכספית נדיר בתעשיית טיפול פני שטח; שני המוקדים היחידים שאותרו בסקר",
+      "confidence": "HIGH",
+      "page_ref": 68,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "פרוון",
+      "type_he": "בורסקאות",
+      "address_he": "הזורע 2, אזור תעשיה חולון",
+      "suspected_contaminants": [
+        "כרומאט",
+        "כרום תלת ערכי",
+        "סולפידים",
+        "PCE"
+      ],
+      "evidence_he": "מוקד זיהום קדמיום מקבוצת הבורסקאות; פעיל בעבר",
+      "confidence": "MEDIUM",
+      "page_ref": 64,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "כמוגרף CTT",
+      "type_he": "תעשיית מתכת",
+      "address_he": "רחוב המרכבה, אזור תעשיה חולון",
+      "suspected_contaminants": [
+        "קדמיום"
+      ],
+      "evidence_he": "מוקד זיהום קדמיום מזוהה; קרבה למתחמי תרשיש",
+      "confidence": "MEDIUM",
+      "page_ref": 64,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "מ.ג.ל / איי אי סי / אחים לוי",
+      "type_he": "תעשיית ציפוי מתכות (בת ים)",
+      "address_he": "רחוב העבודה (39, 45) וניסנבאום 23/25, אזור התעשייה בת ים",
+      "suspected_contaminants": [
+        "TCE",
+        "PCE",
+        "כרומאט",
+        "קדמיום",
+        "מתכות כבדות"
+      ],
+      "evidence_he": "שלושה מוקדים נקודתיים בעלי ניקוד גבוה מ-2.5 — בעלי פוטנציאל זיהום הגבוה ביותר באזור התעשייה בת ים",
+      "confidence": "HIGH",
+      "page_ref": 74,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "אתר הפסולת הסגור של חולון",
+      "type_he": "אתר פסולת היסטורי (200 דונם)",
+      "address_he": "חולון",
+      "suspected_contaminants": [
+        "תשטיפי פסולת",
+        "מתכות כבדות",
+        "אורגניים"
+      ],
+      "evidence_he": "קלט פסולת משנות החמישים עד שנות השמונים; גזם עד שנות התשעים, פסולת בנין עד שנות האלפיים. בסקר 2005 לא נמצאו תשטיפים — ההנחה: חלחלו לאקוויפר",
+      "confidence": "MEDIUM",
+      "page_ref": 12,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "אתר הפסולת הסגור מקווה ישראל",
+      "type_he": "אתר פסולת + אגני חימצון",
+      "address_he": "ממזרח לשדרות קוגל, חולון/מקווה ישראל",
+      "suspected_contaminants": [
+        "CCl4",
+        "תשטיפי פסולת",
+        "שפכי חוות חקלאית"
+      ],
+      "evidence_he": "אתר חשוד למקור CCl4 בקידוח חל 15; אגני החימצון קלטו שפכי בית הספר החקלאי כולל הרפת הלימודית במשך 50 שנה",
+      "confidence": "MEDIUM",
+      "page_ref": 77,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "סדנת שיפוץ נגמשים וטנקים (צה\"ל)",
+      "type_he": "מתקן צבאי",
+      "address_he": "בין כביש 44 לרחוב המרכבה, חולון; פעיל 40 שנה, נסגרה בסוף שנות התשעים",
+      "suspected_contaminants": [
+        "שמנים",
+        "דלקים",
+        "ממיסים אורגניים"
+      ],
+      "evidence_he": "סקר היסטורי לא כיסה אתרים אלה; פעילות ארוכת טווח עם פוט' זיהום גבוה",
+      "confidence": "MEDIUM",
+      "page_ref": 33,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "מחנה דלק שדרות לוי אשכול (צה\"ל)",
+      "type_he": "בסיס דלק צבאי",
+      "address_he": "שדרות לוי אשכול, חולון; פעיל 40 שנה, משנות החמישים עד ראשית שנות התשעים",
+      "suspected_contaminants": [
+        "דלק",
+        "BTEX",
+        "MTBE",
+        "פחמימנים"
+      ],
+      "evidence_he": "אתר חשוד נוסף שלא נסקר; פוט' זיהום גבוה",
+      "confidence": "MEDIUM",
+      "page_ref": 33,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "בסיס דלק היסטורי ממערב לשדרות קוגל / בית החולים וולפסון / לודג'יה היסטורי (סוקולוב, ככר צמרת)",
+      "type_he": "אתרים היסטוריים חשודים",
+      "address_he": "אזור צפון מערב חולון, ליד מק חולון 15",
+      "suspected_contaminants": [
+        "CCl4",
+        "ממיסים אורגניים"
+      ],
+      "evidence_he": "אתרים היסטוריים בקרבת מק חולון 15 שזוהמה ב-CCl4; מומלצים לסקר נוסף",
+      "confidence": "LOW",
+      "page_ref": 77,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "ברכות חימצון היסטוריות (גוש 6032 ו-גוש 7177)",
+      "type_he": "אגני שפכים גולמיים היסטוריים",
+      "address_he": "גוש 6032 מצפון לחולון; גוש 7177 מדרום לשכונת ג'סי כהן וממזרח לבית העלמין חולון",
+      "suspected_contaminants": [
+        "שפכים תעשייתיים גולמיים",
+        "מתכות",
+        "ממיסים",
+        "דטרגנטים"
+      ],
+      "evidence_he": "מופיעים במפות היסטוריות משנות הששים; שני אתרים אליהם הוזרמו שפכי חולון לפני הקמת השפד\"ן (שנות השבעים) לצורך השקיה",
+      "confidence": "MEDIUM",
+      "page_ref": 77,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "name_he": "מפעל אר\"ן מטל / רימטל",
+      "type_he": "מפעל מחזור מתכות (כספים, נחושת, מתכות אל-ברזליות)",
+      "address_he": "אזור התעשייה חולון, סמוך לרחוב המנור (כ-200 מ' דרומית-דרום-מזרחית למק חולון 5)",
+      "suspected_contaminants": [
+        "Ni",
+        "Fe",
+        "Al",
+        "Pb",
+        "Cu",
+        "Ag",
+        "Sulfur",
+        "TPH"
+      ],
+      "evidence_he": "מפעל הוקם ב-1992 במקום בית מגורים. עוסק במחזור מתכות ובעיקר כספים, נחושת, ומתכות אל-ברזליות; חומרי גלם כוללים פסולות מתכת, גרוטאות, תמיסות מתעשיית הצילום (מקור עיקרי לניקל), כבלי נחושת, לוחות מתעשיית הדפוס. שפכים הוזרמו בעבר לבור ספיגה בחצר המפעל (בוטל). על פי המשרד להגנת הסביבה נמדדו ריכוזי ניקל גבוהים בשפכי המפעל. סקר אל.די.די נובמבר 2004 מצא ריכוזים חורגים בקרקע של נחושת, כסף, עופרת, TPH ובדוגמת עומק אחת גופרית. ריכוז ניקל בקידוח הניטור בחצר עלה מ-0.6 (12/2005) ל-2 מ\"ג/ל (12/2008) — פי 40 מהתקן.",
+      "confidence": "HIGH",
+      "page_ref": 1,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "name_he": "אמינוגרף",
+      "type_he": "ציפוי מתכת",
+      "address_he": "הנפח 12, חולון",
+      "suspected_contaminants": [
+        "TCE",
+        "DCE",
+        "PCE",
+        "1,2-DCA"
+      ],
+      "evidence_he": "ציון גודל בינוני, ציון שפכים 3; תקופת פעילות 1970-1982; מקור משוער ל-TCE 376/DCE 1,870/1,2-DCA 16 ppb בנח חולון 8 הסמוך (כ-50 מ')",
+      "confidence": "HIGH",
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "אמזה",
+      "type_he": "ציפוי",
+      "address_he": "הסתת 13, חולון",
+      "suspected_contaminants": [
+        "TCE",
+        "VOC",
+        "Cr"
+      ],
+      "evidence_he": "ציון גודל בינוני, ציון שפכים 2; תקופת פעילות 1970-2000",
+      "confidence": "MEDIUM",
+      "page_ref": 3,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "תעשיות ברגים",
+      "type_he": "מתכת + קו ציפוי",
+      "address_he": "בצלאל 2, חולון",
+      "suspected_contaminants": [
+        "TCE",
+        "VOC"
+      ],
+      "evidence_he": "ציון גודל גדול, ציון שפכים 2; תקופת פעילות 1959-1984; מוקד פלומת משנה דרום-מערבית; קידוח נת חולון 4 בסמוך (לא נמצא זיהום חורג)",
+      "confidence": "MEDIUM",
+      "page_ref": 13,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "כרומת",
+      "type_he": "מתכת",
+      "address_he": "הנגר 3-5, חולון",
+      "suspected_contaminants": [
+        "TCE",
+        "DCE",
+        "Cr"
+      ],
+      "evidence_he": "ציון גודל בינוני, ציון שפכים 2; תקופת פעילות 1969-2004; מועמד פוטנציאלי לזיהום בנת חולון 2",
+      "confidence": "MEDIUM",
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "פליז אמקור (אמקור פליז)",
+      "type_he": "ציפוי וצביעה",
+      "address_he": "הפלד 10, חולון",
+      "suspected_contaminants": [
+        "TCE",
+        "DCE",
+        "PCE"
+      ],
+      "evidence_he": "ציון גודל גדול, ציון שפכים 3; תקופת פעילות 1960-1996; מקור פוטנציאלי לזיהום בנח חולון 9 (TCE 539/DCE 228/PCE 310 ppb)",
+      "confidence": "MEDIUM",
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "שחרות",
+      "type_he": "ציפוי",
+      "address_he": "הבנאי 27, חולון",
+      "suspected_contaminants": [
+        "TCE",
+        "VOC"
+      ],
+      "evidence_he": "ציון גודל גדול, ציון שפכים 1; תקופת פעילות 1973-2008",
+      "confidence": "MEDIUM",
+      "page_ref": 3,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "שיריון כרום",
+      "type_he": "ציפוי",
+      "address_he": "הפלד 6, חולון",
+      "suspected_contaminants": [
+        "Cr",
+        "TCE"
+      ],
+      "evidence_he": "ציון גודל בינוני, ציון שפכים 2; תקופת פעילות 1969-1981",
+      "confidence": "MEDIUM",
+      "page_ref": 3,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "תדיראן קשר",
+      "type_he": "ציפוי",
+      "address_he": "השופטים 26, חולון",
+      "suspected_contaminants": [
+        "TCE",
+        "DCE",
+        "PCE",
+        "1,2-DCA"
+      ],
+      "evidence_he": "ציון גודל גדול, ציון שפכים 2; תקופת פעילות 1970-2000; מקור עיקרי לריכוז ה-TCE המרבי 12,982 ppb בנת חולון 11 הסמוך (במגרש חניה ברח' הנחושת בצמוד למפעל)",
+      "confidence": "HIGH",
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "תדירגן (תדיראן מכני)",
+      "type_he": "ציפוי ועיבוד שבבי",
+      "address_he": "המלאכה 21, חולון",
+      "suspected_contaminants": [
+        "TCE"
+      ],
+      "evidence_he": "ציון גודל גדול, ציון שפכים 2; תקופת פעילות 1970-2003; מוקד זיהום ה-TCE שמסולק על ידי קידוח מק חולון 8 בתרחיש 1; קידוח נת חולון 12 ממוקם צמוד ומדרום-מערב למפעל",
+      "confidence": "HIGH",
+      "page_ref": 21,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "תרשיש (1)",
+      "type_he": "ציפוי",
+      "address_he": "היוצר 6, חולון",
+      "suspected_contaminants": [
+        "TCE",
+        "Cr"
+      ],
+      "evidence_he": "ציון גודל גדול, ציון שפכים 2; תקופת פעילות 1968-2007; קידוח נת חולון 3 בסמוך (TCE 375/Cr 2,424 ppb) - ריכוזי כרום גבוהים ואחידים מצביעים על עומס מזהמים גבוה וקרוב יחסית",
+      "confidence": "HIGH",
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "תרשיש (2)",
+      "type_he": "ציפוי",
+      "address_he": "הסולל 2, חולון",
+      "suspected_contaminants": [
+        "TCE",
+        "Cr"
+      ],
+      "evidence_he": "ציון גודל גדול, ציון שפכים 2; תקופת פעילות 1964-2009; קידוח נת חולון 3 בסמוך לאחד משני מפעלי \"התרשיש\"",
+      "confidence": "HIGH",
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "נצח (גונן כימיקלים)",
+      "type_he": "כימיקלים",
+      "address_he": "הנפח, חולון (כ-30 מ' מצפון-מערב לקידוח נת חולון 2)",
+      "suspected_contaminants": [
+        "TCE",
+        "DCE"
+      ],
+      "evidence_he": "מוזכר בתיאור מיקום נת חולון 2 - לא נכלל במודל הממוחשב כמפעל מוגדר",
+      "confidence": "MEDIUM",
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "המלבין",
+      "type_he": "ניקוי יבש",
+      "address_he": "כ-60 מ' ממזרח לנת חולון 14",
+      "suspected_contaminants": [
+        "TCE",
+        "DCE",
+        "PCE"
+      ],
+      "evidence_he": "מקור משוער ל-TCE 133 ppb בנת חולון 14 הסמוך",
+      "confidence": "HIGH",
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "סופר כרום",
+      "type_he": "מפעל ציפוי כרום היסטורי",
+      "address_he": "אזור תעשייה חולון, חלק צפוני (סמוך לנת חולון 14)",
+      "suspected_contaminants": [
+        "כרום",
+        "TCE"
+      ],
+      "evidence_he": "קידוח נת חולון 14 בו נמדד זיהום בכרום וב-TCE ברמות אינדקס 4 שמקורם עשוי להיות במפעלי 'המלבין', 'אמקור פליז' ו'סופר כרום' ההיסטוריים הסמוכים",
+      "confidence": "MEDIUM",
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "המוסך \"המשתיק\"",
+      "type_he": "מוסך",
+      "address_he": "ליד נת חולון 12, רח' המלאכה 53",
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE",
+        "VOC"
+      ],
+      "evidence_he": "מוזכר בסמוך לקידוח נת חולון 12; לא נכלל במודל הממוחשב",
+      "confidence": "LOW",
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "תחנת דלק \"דלק\"",
+      "type_he": "תחנת דלק",
+      "address_he": "כ-170 מ' ממזרח לנת חולון 3",
+      "suspected_contaminants": [
+        "Benzene",
+        "Toluene",
+        "Xylene",
+        "MTBE"
+      ],
+      "evidence_he": "מקור משוער למרכיבי הדלק (בנזן, כסילן, טולואן) שנמצאו בעקבות בנת חולון 3",
+      "confidence": "MEDIUM",
+      "page_ref": 9,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "תחנת דלק (לא צוין שם)",
+      "type_he": "תחנת דלק",
+      "address_he": "כ-320 מ' מצפון-מזרח לנת חולון 12",
+      "suspected_contaminants": [
+        "BTEX",
+        "MTBE"
+      ],
+      "evidence_he": "מקור משוער למרכיבי דלק בנת חולון 12",
+      "confidence": "MEDIUM",
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "name_he": "תרשיש",
+      "type_he": "מפעל תעשייתי היסטורי",
+      "address_he": "אזור תעשייה חולון, חלק מרכזי (אזור נת חולון 3 ודלק אזור)",
+      "suspected_contaminants": [
+        "ממסים מוכלרים"
+      ],
+      "evidence_he": "אזור קידוח נת חולון 3 בו נמדדו ריכוזי מזהמים מוכלרים עד רמת אינדקס 7 וקידוחי הניטור במתחם 'דלק אזור' (אינדקס עד 5) זוהמו ככל הנראה על ידי מפעל 'תרשיש'",
+      "confidence": "HIGH",
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "מגדר",
+      "type_he": "מפעל תעשייתי",
+      "address_he": "אזור התעשייה חולון",
+      "suspected_contaminants": [
+        "VOC's"
+      ],
+      "evidence_he": "מפעל חשוד - נסגר ב-1985. מומלץ קידוח רדוד נתח 18 במורד הזרם",
+      "confidence": "MEDIUM",
+      "page_ref": 45,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "בהק",
+      "type_he": "מפעל תעשייתי פעיל",
+      "address_he": "אזור התעשייה חולון",
+      "suspected_contaminants": [
+        "VOC's"
+      ],
+      "evidence_he": "מפעל חשוד פעיל. מומלץ להתקין קידוח רדוד נת חולון 20 ונתח 20 במורד הזרם",
+      "confidence": "MEDIUM",
+      "page_ref": 45,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "גימת השחרות (שחרות)",
+      "type_he": "מפעל תעשייתי פעיל",
+      "address_he": "אזור התעשייה חולון",
+      "suspected_contaminants": [
+        "VOC's"
+      ],
+      "evidence_he": "מפעל חשוד פעיל. מומלץ להתקין קידוח רדוד נת חולון 21 ונתח 21 במורד הזרם",
+      "confidence": "MEDIUM",
+      "page_ref": 45,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "כרומט",
+      "type_he": "מפעל ציפוי כרום היסטורי",
+      "address_he": "אזור תעשייה חולון, חלק צפוני (סמוך לנת חולון 1)",
+      "suspected_contaminants": [
+        "ממסים מוכלרים",
+        "כרום"
+      ],
+      "evidence_he": "קידוח נת חולון 1 בו נמדדו ריכוזי ממסים מוכלרים כולל 1,4 דיאוקסן עד רמת אינדקס 6 וכרום ברמת אינדקס 4; מקורם לא ידוע אך עשוי להיות במפעלי 'כור-מתכת' או 'כרומט'",
+      "confidence": "LOW",
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "אלגונל",
+      "type_he": "מפעל תעשייתי",
+      "address_he": "אזור התעשייה חולון",
+      "suspected_contaminants": [
+        "VOC's"
+      ],
+      "evidence_he": "מפעל חשוד. מומלץ קידוח רדוד נתח 19 במורד הזרם",
+      "confidence": "MEDIUM",
+      "page_ref": 45,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "תחנות דלק באזור התעשייה",
+      "type_he": "תחנות דלק",
+      "address_he": "סמוכות לקידוחי ניטור 1, 2, 3, 10, 11, 12 ו-14",
+      "suspected_contaminants": [
+        "BTEX",
+        "רכיבי דלק"
+      ],
+      "evidence_he": "מומלץ לבדוק דליפות במסגרת חקירות רשות המים לטיפול בזיהומי דלק",
+      "confidence": "MEDIUM",
+      "page_ref": 46,
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "name_he": "תדירגן (מפעל ציפוי מתכות היסטורי)",
+      "type_he": "מפעל ציפוי מתכות היסטורי",
+      "address_he": "אזור תעשייה חולון, מרכז האזור (אזור תחנת תדלוק סונול המלאכה)",
+      "suspected_contaminants": [
+        "ממסים מוכלרים",
+        "TCE",
+        "PCE"
+      ],
+      "evidence_he": "מפעל תדירגן ההיסטורי הוא מקור המזהמים המוכלרים עד לרמת אינדקס 7 בקידוחי תדירגן ובקידוחי הניטור בתחנת התדלוק 'סונול המלאכה'. תוצאת פעילות ארוכת שנים של מפעל ציפוי מתכות ו-3 מפעלים היסטוריים סמוכים. שוקם בין 2013–2020 (3 מחזורי הזרקות מחמצן חזק)",
+      "confidence": "HIGH",
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "תדיראן-קשר (אלביט)",
+      "type_he": "מפעל תעשייתי (אלקטרוניקה/מערכות קשר)",
+      "address_he": "אזור תעשייה חולון, חלק מרכזי",
+      "suspected_contaminants": [
+        "ממסים מוכלרים שונים"
+      ],
+      "evidence_he": "בקידוח נת חולון 11 ובקידוחים הסמוכים אליו נמדדו ריכוזים גבוהים של ממסים מוכלרים שונים עד לרמת אינדקס 7 שמקורם ככל הנראה במפעל 'תדיראן-קשר' (אלביט)",
+      "confidence": "HIGH",
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "המלבין",
+      "type_he": "מפעל ציפוי/הלבנה היסטורי",
+      "address_he": "אזור תעשייה חולון, חלק צפוני (סמוך לנת חולון 14)",
+      "suspected_contaminants": [
+        "TCE",
+        "כרום"
+      ],
+      "evidence_he": "קידוח נת חולון 14 בו נמדד זיהום בכרום וב-TCE ברמות אינדקס 4 שמקורם עשוי להיות במפעלי 'המלבין', 'אמקור פליז' ו'סופר כרום' ההיסטוריים הסמוכים",
+      "confidence": "MEDIUM",
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "אמקור פליז",
+      "type_he": "מפעל פליז/מתכות היסטורי",
+      "address_he": "אזור תעשייה חולון, חלק צפוני (סמוך לנת חולון 14)",
+      "suspected_contaminants": [
+        "TCE",
+        "כרום"
+      ],
+      "evidence_he": "קידוח נת חולון 14 בו נמדד זיהום בכרום וב-TCE ברמות אינדקס 4 שמקורם עשוי להיות במפעלי 'המלבין', 'אמקור פליז' ו'סופר כרום' ההיסטוריים הסמוכים",
+      "confidence": "MEDIUM",
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "כור מתכת",
+      "type_he": "מפעל מתכות היסטורי",
+      "address_he": "אזור תעשייה חולון, חלק צפוני (סמוך לנת חולון 1)",
+      "suspected_contaminants": [
+        "ממסים מוכלרים",
+        "1,4-דיאוקסן",
+        "כרום"
+      ],
+      "evidence_he": "קידוח נת חולון 1 בו נמדדו ריכוזי ממסים מוכלרים כולל 1,4 דיאוקסן עד רמת אינדקס 6 וכרום ברמת אינדקס 4; מקורם לא ידוע אך עשוי להיות במפעלי 'כור-מתכת' או 'כרומט'",
+      "confidence": "LOW",
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "name_he": "בהק",
+      "type_he": "מפעל תעשייתי היסטורי",
+      "address_he": "אזור תעשייה חולון, חלק דרומי (סמוך לנת חולון 16)",
+      "suspected_contaminants": [
+        "ממסים מוכלרים"
+      ],
+      "evidence_he": "קידוח נת חולון 16 בו נמדדו ריכוזי מזהמים מוכלרים ברמת אינדקס 4; שיתכן ומקורם במפעל 'בהק' ההיסטורי הסמוך",
+      "confidence": "LOW",
+      "page_ref": 31,
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    }
+  ],
+  "trends_described_he": [
+    {
+      "borehole_he": "מק חולון 7",
+      "contaminant_he": "VOC",
+      "trend_he": "הזיהום בחומרים אורגניים נדיפים אותר ב-2007, כ-21 שנים אחרי זיהום הכרום הראשון (1986); מוצג כתהליך הידרדרות במורד הזרימה ממק חולון 8",
+      "page_ref": 12,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 21",
+      "contaminant_he": "VOC",
+      "trend_he": "הושבת ב-2002 בגין VOC; מצוי כק\"מ במורד הזרימה ממק חולון 8 — תיעוד התקדמות כתם הזיהום במרחב ובזמן",
+      "page_ref": 12,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "כללי — אקוויפר החוף חולון",
+      "contaminant_he": "PCE/TCE",
+      "trend_he": "ההיקף המרחבי של זיהום PCE/TCE דומה: מוקדים משמעותיים באזורי התעשייה, וריכוזים גבוהים מאפס בכל המרחב שביניהם — מצביע על התפשטות רחבה ולא נקודתית בלבד",
+      "page_ref": 81,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "מתחם תדירגן",
+      "contaminant_he": "TCE",
+      "trend_he": "הזיהום הגבוה ביותר באקוויפר התגלה בבארות ניטור באתר תדירגן (6,457 מק\"ג/ליטר 2005) — מצביע על מקור פעיל או על דליפה מסיבית; היקף הזיהום גם בעומק האקוויפר",
+      "page_ref": 90,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "בארות דטרגנטים (מק חולון 9, 13; פ בת ים ח')",
+      "contaminant_he": "דטרגנטים",
+      "trend_he": "מרבית הנתונים אינם מעודכנים (חולון 9 מ-1984, בת ים ח' מ-1998); אין ניטור מוסדר של דטרגנטים בבארות סביבה. תמונת הזיהום אינה עדכנית — נדרש ניטור חוזר",
+      "page_ref": 91,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון (חצר מפעל רימטל)",
+      "contaminant_he": "ניקל",
+      "trend_he": "מגמת עלייה משמעותית מאז דצמבר 2005: 0.6→0.78→2 מ\"ג/ל (2005, 2007, 2008); קצב עליית הריכוז גדל עם הזמן; פי 3.3 מאז דצמבר 2005",
+      "page_ref": 6,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון (חצר מפעל רימטל)",
+      "contaminant_he": "אלומיניום",
+      "trend_he": "ריכוז גדל פי 7 מאז דצמבר 2005 (מ-0.07 ל-0.5 מ\"ג/ל)",
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון (חצר מפעל רימטל)",
+      "contaminant_he": "ברזל",
+      "trend_he": "ריכוז גדל פי 14 מאז דצמבר 2005 (מ-0.07 ל-1 מ\"ג/ל)",
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון (חצר מפעל רימטל)",
+      "contaminant_he": "עופרת",
+      "trend_he": "ריכוז עלה פי 2 מאז דצמבר 2005 (מ-<0.01 ל-0.02 מ\"ג/ל)",
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "מק חולון 5 (קידוח הפקה)",
+      "contaminant_he": "ניקל",
+      "trend_he": "מגמת עלייה איטית לאורך 22 שנה: 0.003 מ\"ג/ל (1986, 1991) → 0.004 (2001, 2003) → 0.005 (2007) → 0.006 (2008); עלייה כפולה ב-10 השנים האחרונות, אך עדיין נמוך פי 8 מהתקן (0.05 מ\"ג/ל); ההבדל בין 2007 ל-2008 ייתכן ונובע מהבדלי מעבדות/שיטות",
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת ארן מטל חולון 1 (רחוב המנור)",
+      "contaminant_he": "ניקל",
+      "trend_he": "מדידה ראשונית בלבד (12/2008): 0.01 מ\"ג/ל — נמוך מהתקן אך גבוה ממק חולון 5; ישמש להמשך ניטור התקדמות הזיהום מהמקור לקידוח ההפקה",
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 1",
+      "contaminant_he": "TCE",
+      "trend_he": "מגמת ירידה של ה-TCE עם הזמן",
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 1",
+      "contaminant_he": "DCE",
+      "trend_he": "מגמת עלייה של DCE עם הזמן",
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 2",
+      "contaminant_he": "TCE/DCE",
+      "trend_he": "לא ניכרת מגמת שינוי ברורה של המזהמים עם העומק ובין הדיגומים השונים",
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 3",
+      "contaminant_he": "TCE+DCE",
+      "trend_he": "ניכרת ירידה בריכוזי TCE ו-DCE בין הדיגומים; ריכוזי כרום גבוהים ואחידים",
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 5",
+      "contaminant_he": "TCE/DCE/PCE",
+      "trend_he": "מגמת עלייה של DCE, TCE, PCE עם הזמן; ריכוזים מרביים באופק הדיגום האמצעי",
+      "page_ref": 9,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 7",
+      "contaminant_he": "TCE/DCE",
+      "trend_he": "מגמות סותרות של שינויי ריכוזים עם הזמן; שונות אנכית ללא מגמה מובהקת של עליה/ירידה עם העומק",
+      "page_ref": 9,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נח חולון 8",
+      "contaminant_he": "TCE/DCE/PCE",
+      "trend_he": "בשמונה החודשים בין המדידות נמצאה מגמת ירידה בריכוזי המזהמים",
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נח חולון 9",
+      "contaminant_he": "TCE/DCE/PCE",
+      "trend_he": "בארבעת החודשים בין המדידות נרשמה ירידה בריכוז המזהמים",
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 10",
+      "contaminant_he": "TCE",
+      "trend_he": "ירידה מ-20 ל-6 ppb בחודשיים בין המדידות (28/4/2010 → 23/6/2010)",
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 11",
+      "contaminant_he": "TCE",
+      "trend_he": "עלייה משמעותית בשני סדרי גודל - מ-710 חל\"ב ל-12,981 חל\"ב; עלייה במרבית המזהמים האורגניים המוכלרים",
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 12",
+      "contaminant_he": "TCE/DCE",
+      "trend_he": "בחודשיים בין הדגימות עלה ריכוז ה-TCE מעבר לתקן וכן עלה ריכוז ה-DCE (לא חרג מהתקן)",
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "נת חולון 14",
+      "contaminant_he": "TCE/DCE/PCE",
+      "trend_he": "בחודשיים בין הדגימות ירדו במקצת ריכוזי TCE ו-DCE ועלה ריכוז ה-PCE; חרגו מהתקן ריכוזי TCE בלבד",
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "אזור התעשייה (כללי)",
+      "contaminant_he": "TCE",
+      "trend_he": "מגמות סותרות של שינוי ריכוזים בקידוחי הניטור החדשים בשנים 2009-2011; אין מגמה אחת אחידה בכל אזור התעשייה",
+      "page_ref": 12,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "borehole_he": "פלומת TCE - מודל",
+      "contaminant_he": "TCE",
+      "trend_he": "תרחיש 0 (עסקים כרגיל): סילוק רק כ-10% מהמסה עד 2030; תרחיש 1: כ-30%; תרחיש 2: כ-40%; תרחיש 3 (אופטימיזציה): כ-45%",
+      "page_ref": 30,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "text_he": "מק חולון 5: הבדלים חדים בין חלופת ה-0 לבין חלופות השיקום; ההבדלים אינם נובעים רק משינויי ההפקה בקידוח אלא גם משינויים כוללים בהפקה בכל האזור",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "מק חולון 7: ריכוז ה-TCE עולה בהדרגה בחלופות 0,1,2 בשנים הראשונות ויורד במתינות לאחר מכן; בחלופה 3 הריכוז יורד במתינות. הפלומה מתפשטת מאזור התעשייה מערבה",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "מק חולון 8: חידוש השאיבה גורם למשיכת מים מזוהמים מהמפעלים בסביבה הקרובה; הבדלים עונתיים בין חלופה 1 (עונתית) לחלופות 2,3 (רציפה)",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "מק חולון 17: בחלופה 0 נשמר ריכוז שאריתי בלבד; בכל חלופות השיקום TCE עולה ל-ppb בודדים (>7ppb); תוספת שאיבה תמשוך פלומות זיהום אל הקידוח",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "מק חולון 21: ללא טיפול ריכוז ה-TCE הולך ועולה בהדרגה; עם טיפול נשארים ריכוזים שאריתיים בלבד",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "מק חולון 23: בכל החלופות הריכוז אינו עולה על 1ppb; הגברת ההפקה עלולה למשוך פלומה ולהעלות ריכוז מעבר ל-1ppb",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "נת חולון 3: דמיון במגמות הרב-שנתיות בכל התרחישים; עליה הדרגתית בריכוז TCE עד 2018 וירידה לאחר מכן; הירידה עקב הקטנת תשומות TCE במקור עצמו; ניכרת מחזוריות שנתית",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "נת חולון 7: הקידוח מושפע באופן מינורי מהשינויים במשטר השאיבה והשיקום",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "נת חולון 8: ירידה חדה בריכוזי TCE; הירידה מושגת עקב הירידה בתשומות TCE מהמפעלים",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "פלומת TCE עיקרית: התפשטות מרחבית אל עבר שכונות המגורים ניכרת בתרחישים 0,1,2; שיעור ההתפשטות הולך וקטן בהתאמה; נסיגה קלה נרשמה בתרחיש 3",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "מוקד תדירגן: בשנים 2013–2020 בוצע שיקום מי תהום מלא באתר באמצעות 3 מחזורי הזרקות של מחמצן חזק לתוך האקויפר על מנת להוריד את הריכוזים. פעילות השיקום תחודש בקרוב באמצעות הפעלה מחודשת של קידוח 'מק חולון 8' וטיפול במים.",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "text_he": "זיהומי מי התהום הנרחבים באזור התעשייה חולון הגיעו למספר קידוחי הפקה של מקורות; קידוחי חולון 7, 8 ו-21 נסגרו לאספקת מי שתייה ואינם שואבים שנים רבות.",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "text_he": "כמעט כל המפעלים שזיהמו את הקרקע והמים נסגרו לפני עשרות שנים ואינם קיימים היום; הזיהום הוא בעיקרו היסטורי.",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "text_he": "בחלקו הדרומי של אזור התעשייה לא נמצא זיהום מי תהום משמעותי, למעט נקודות בודדות; תוצאות אנליזות גז קרקע מעלות חשד למקור זיהום נוסף באזור הדרומי, אך חשדות אלו עדיין לא אומתו.",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "text_he": "אזה\"ת חולון מדורג בין 7 אזורי התעשייה עם זיהום תעשייתי חמור בממסים מוכלרים (אינדקסים 6–7); מוקד הזיהום ההיסטורי המורכב כבר בתהליך שיקום.",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    }
+  ],
+  "recommendations_he": [
+    {
+      "category_he": "מערכת ניטור — עדיפות 1",
+      "text_he": "קדיחת 8 בארות ניטור בעדיפות ראשונה באזורים בעלי מקורות זיהום חשודים שאין בסביבתם בארות דיגום: HM_02, HM_04, HM_05, HM_07, HM_10, HM_12, HM_15, HM_17 (כולן בתחום חולון)",
+      "target_he": "אזור התעשייה חולון",
+      "page_ref": 93,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "category_he": "מערכת ניטור — עדיפות 2",
+      "text_he": "6 בארות נוספות בעדיפות שנייה: HM_01, HM_03, HM_06, HM_08, HM_09, HM_16 (אזור חולון); ההחלטה על מיקום סופי לאחר ניתוח ממצאי השלב הראשון",
+      "target_he": "אזור התעשייה חולון",
+      "page_ref": 93,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "category_he": "מערכת ניטור — עדיפות 3",
+      "text_he": "6 בארות בעדיפות שלישית: BY_01, BY_02 (בת ים), HM_11, HM_13, HM_14 (חולון), AZ_01 (אזור)",
+      "target_he": "חולון, בת ים, אזור",
+      "page_ref": 93,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "category_he": "מבנה קידוחי הניטור",
+      "text_he": "קידוחי הניטור צריכים לחדור לשלושה עומקים בכל נקודה: 5 מ', 20 מ' ו-40 מ' מתחת למפלס מי התהום; אורך פרפורציה מומלץ — 5 מ'. בארות מרובות צינורות או טכנולוגיית multilevel/strombger",
+      "target_he": "כל אתרי הניטור",
+      "page_ref": 94,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "category_he": "דיגום ואנליזות",
+      "text_he": "להמשיך ולדגום ספקטרום רחב של מתכות כבדות, ממיסים אורגניים, דטרגנטים, חומרי הדברה, פרכלורט; תדירות דיגום חצי שנה עד שנה. דיגום בשתי שיטות (ביילר ו-Lowflow) להשוואה ראשונית",
+      "target_he": "כל בארות הניטור והבארות הפעילות/משותקות",
+      "page_ref": 94,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "category_he": "סקר נוסף — אתרים מחוץ לתכולה",
+      "text_he": "מומלץ לבצע סקר נוסף עבור אתרים שלא נכללו: בסיס דלק ממערב לשדרות קוגל; אתר הפסולת הסגור מקווה ישראל; בית החולים וולפסון; לודג'יה ברחוב סוקולוב (ככר צמרת); ברכות חימצון היסטוריות בגוש 6032 וגוש 7177; סדנת שיפוץ נגמשים וטנקים; מחנה דלק שדרות לוי אשכול",
+      "target_he": "חולון — אתרים היסטוריים מחוץ לאזורי התעשייה",
+      "page_ref": 77,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "category_he": "ניטור דטרגנטים",
+      "text_he": "נדרש ניטור מקיף ומעודכן של דטרגנטים בבארות חולון 9, חולון 13, פ בת ים ח' ובבארות בסביבתן — הנתונים הקיימים מיושנים (1984–1998) ואינם מאפשרים תמונה עדכנית",
+      "target_he": "דרום חולון ובת ים",
+      "page_ref": 91,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "category_he": "סקר נוסף — דטרגנטים",
+      "text_he": "מומלץ לבצע בדיקה יסודית יותר של מקורות הזיהום בדטרגנטים בקידוחים בדרום חולון",
+      "target_he": "דרום חולון",
+      "page_ref": 77,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "category_he": "ניטור",
+      "text_he": "המשך ניטור למשך שנה בקידוח החדש (\"נת ארן מטל חולון 1\"); ביצוע בדיקות ניקל פעם ברבעון וסריקת מתכות מלאה פעם בשנה במסגרת חוזה ההתקשרות",
+      "target_he": "נת ארן מטל חולון 1, נת ארן מטל חולון, מק חולון 5",
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "category_he": "ניטור",
+      "text_he": "הרחבת הבדיקות הרבעוניות לכלול גם אנליזות של ברזל, אלומיניום ועופרת (בנוסף לניקל)",
+      "target_he": "כל קידוחי הניטור באזור רימטל",
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "category_he": "חקירה",
+      "text_he": "ביצוע סריקת מתכות במעבדה נוספת (כגון מעבדת רשות המים) לשם השוואה, וכן ביצוע סינון של הדוגמאות לפני החמצתן (לוודא שעלייה בריכוזים אינה נובעת מטיפול במעבדה)",
+      "target_he": "דיגום הבא בסוף מרץ 2009",
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "category_he": "חקירה",
+      "text_he": "מדידת מפלסי מים בשלושת הקידוחים בו-זמנית (כולל מק חולון 5 במצב סטטי) לקבלת גרדיינט הזרימה",
+      "target_he": "נת ארן מטל חולון, נת ארן מטל חולון 1, מק חולון 5",
+      "page_ref": 3,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "category_he": "חקירה",
+      "text_he": "בדיקה אם מערכת השפכים של קו הייצור של מפעל רימטל מחוברת למערכת ביוב עירונית וכן שאינה דולפת",
+      "target_he": "מפעל רימטל / אר\"ן מטל",
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "category_he": "שיקום",
+      "text_he": "תוצאות הניטור של הקידוח החדש ישמשו לבחינה האם נדרש לבצע פעולות שיקום במתחם רימטל; הקידוח יכול להתריע על התקדמות המזהמים מהמקור (בור ספיגה בוטל אך הקרקע המזוהמת נותרה במקום)",
+      "target_he": "מתחם מפעל רימטל",
+      "page_ref": 1,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "category_he": "ניטור",
+      "text_he": "אין סיבה להפסקת הספקת מים מקידוח ההפקה \"מק חולון 5\" — יש להמשיך במעקב הכולל תוכנית ניטור המסוגלת לעקוב אחר ריכוזי הניקל באזור כפונקציה של זמן ועוצמת שאיבה מקידוח ההפקה הקרוב",
+      "target_he": "מק חולון 5",
+      "page_ref": 1,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "category_he": "ניטור",
+      "text_he": "המשך ניטור מרכיבי דלק (בנזן, טולואן, קסילן, MTBE) בכל ניטור עתידי בקידוחים נת חולון 3, 11, 12, 14 - בשל סמיכות לתחנות דלק",
+      "target_he": "נת חולון 3, 11, 12, 14",
+      "page_ref": 9,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "category_he": "חקירה",
+      "text_he": "לבחון שוב את רשימת המפעלים המזהמים באזור הקידוח וממערב לו - מודל הצביע על צורך להוסיף מקור באזור נת חולון 12",
+      "target_he": "אזור נת חולון 12",
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "category_he": "חקירה",
+      "text_he": "לקדוח קידוח ניטור נוסף בין תחנת הדלק (\"דלק\") לקידוח נת חולון 3 - להפרדת מקורות זיהום דלקיים מתעשייתיים",
+      "target_he": "אזור בין תחנת דלק \"דלק\" לנת חולון 3",
+      "page_ref": 9,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "category_he": "שיקום",
+      "text_he": "תרחיש 3 (אופטימיזציה) הוא תרחיש ההפקה האופטימלי לסילוק TCE ולמניעת התפשטות הפלומה - שילוב צמצום הפקה בבהק (מק 5), ביטול הפקה במק 7 ו-21, והכפלת היקף ההפקה בקידוחי טיוב חדשים",
+      "target_he": "מערכת ההפקה באזור התעשייה חולון",
+      "page_ref": 18,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "category_he": "שיקום",
+      "text_he": "הקמת קידוחי טיוב חדשים ליד נת 8, נת 9, נת 11, נת 12 בהפקה של 400 אלפי מ\"ק/שנה כל אחד (תרחיש 3) - יוצרים שקע הידרולוגי רציף המנקז את כל המים המגיעים ממערב",
+      "target_he": "מרכזי הפלומה הראשית",
+      "page_ref": 26,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "category_he": "שיקום",
+      "text_he": "חידוש הפקה במק חולון 8 (900 אלפי מ\"ק/שנה) משכבה רדודה (כ-10 מ' מתחת פני המים) - לסילוק מסה גדולה יותר של TCE",
+      "target_he": "מק חולון 8",
+      "page_ref": 16,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "category_he": "ניטור",
+      "text_he": "ניטור פלומת המזהמים המתפשטת מאזור התעשייה לדרום-מערב באמצעות הקידוחים העמוקים (נת חולון 5, 6, 7) הממוקמים כ-250 מ' מגבולו המערבי של אזור התעשייה",
+      "target_he": "חזית הפלומה דרום-מערבית",
+      "page_ref": 7,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "text_he": "תרחיש הפקה אופטימלי: תרחיש 3 - הוספת ארבעה קידוחי טיוב וירטואליים ישירות ממערב לאזור התעשייה והפחתת השאיבה בקידוחי מקורות שממערב לאזור התעשייה",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "שלב ראשון (יישום מיידי): מיתון ההפקה בקידוחי מקורות ממערב לאזור התעשייה (מקורות 20, 1, 2, 3א, 6) להקטנת הגרדינט; אי-הפקה בקידוחים הצמודים לאזור התעשייה (מקורות 7, 8, 21, 17, 16); הגברת השאיבה במקורות 12 ו-5 בחלק הדרומי",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "שלב שני (לאחר הקמת מערכת טיוב): הגברת השאיבה בקידוחים בתחום אזור התעשייה (מקורות 8) וקידוחים נוספים שיקדחו לטיוב",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "טיוב בארות: יצירת שרשרת קידוחים לשאיבה וטיוב ממערב לאזור התעשייה ליצירת שקע הידרולוגי שינקז את הפלומה; שימוש בקידוח מקורות 8 הקיים והוספת ארבעה קידוחים חדשים (טבלה 9, איור 21)",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "תכנית ניטור: דיגום VOC's כולל רכיבי דלק, מתכות, דטרגנטים, pH, ניטריט וניטראט",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "תדירות ניטור פעמיים בשנה: נת 5, נת 8, נת 11, תדירגן 1, תדירגן 5, נת 6, נת 7, נת 9, נת 3, נד המלאכה מ2, מקורות 8, 7*, 21*",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "תדירות ניטור אחת לשנה: נת 1, נת 2, נת 12, גב-ים נ/1, נת מתחם גבוביץ', תדירגן 2, תדירגן 4, מקורות 17, 14, 23",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "תדירות ניטור אחת לשנתיים: נת 4, נת 10, גב-ים נ/2, מקורות 3, 6, 12, 3א",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "דיגום מיידי בקידוח מק חולון 21 לצורכי עריכת דיון במשמעות התוצאות",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "התקנת שבעה קידוחי ניטור חדשים: שלושה עמוקים (50-60 מ') במוקדי זיהום (נת חולון 3, 8, 11 ובמתחם תדירגן); ארבעה רדודים (30-45 מ') בקרבת מפעלים חשודים",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "פעולות מתקנות In-Situ בארבעה מוקדי זיהום מרכזיים: תדיראן קשר (נת 11), תרשיש (נת 3), אמינוגרף (נת 8), תדירגן (תדירגן 1)",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "בדיקת דליפות בתחנות דלק סמוכות לקידוחי ניטור 1, 2, 3, 10, 11, 12, 14",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "בדיקת מערכת צינורות ביוב המחוברים למפעלים בעלי פוטנציאל זיהום גבוה באמצעות צילום וידאו",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "איתור מקורות זיהום נוספים בסביבת או במעלה הקידוחים: מק חולון 21, נת חולון 7, נת חולון 2, נת חולון 12",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "בדיקת עמידת המפעלים בדרישות הסביבתיות של המשרד להגנת הסביבה (הליך הייצור, פינוי וטיפול בשפכים)",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "חברת מקורות קיבלה הנחיות פרטניות לשאיבה בכל קידוח במרחב אזור התעשייה לצורך צמצום התקדמות פלומת הזיהום.",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "text_he": "פעילות שיקום מוקד תדירגן תתחדש בקרוב באמצעות הפעלה מחודשת של קידוח 'מק חולון 8' וטיפול במים.",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "text_he": "יש להמשיך ולנטר את קידוחי ההפקה הסגורים (חולון 7, 8, 21) ואת מגמות פלומת הזיהום.",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "text_he": "תוצאות גז קרקע בחלק הדרומי מחייבות אימות נוסף לאיתור מקור זיהום פוטנציאלי נוסף.",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    }
+  ],
+  "key_quotes_he": [
+    {
+      "quote_he": "בשנים האחרונות נפסלו לשימוש בתחום השיפוט של חולון ובת ים תשעה קידוחים שהפיקו מי שתייה, בגין זיהום ממקור תעשייתי. הזיהומים שהתגלו היו בכרום, VOC, CCl4, TCE ודטרגנטים.",
+      "context_he": "תקציר מנהלים — סיכום פסילת בארות ההפקה באזור הסקר",
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "quote_he": "אזור התעשייה של חולון היה הפעיל והמשמעותי ביותר מבין האתרים שנסקרו הן מבחינת כמות המפעלים, משך זמן הפעילות שלהם באתר וצפיפות המפעלים המזהמים ליחידת שטח. ענף תעשיית ציפוי המתכות הנו בעל הפוטנציאל העיקרי לזיהום מי תהום.",
+      "context_he": "מסקנות הסקר — קביעה כי חולון הוא המוקד התעשייתי המרכזי בסקר",
+      "page_ref": 8,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "quote_he": "על פי מודל עוצמת הזיהום נמצאו בחולון 12 מתחמים שלהם פוטנציאל הזיהום הגבוה ביותר... מתחם כור (רחוב האופן), מתחם תדירגן, מתחם תרשיש, מתחם אלגונל, מתחמי אמקור פליז, מתחם בהק, מתחם תדיראן קשר, מתחם לודג'יה, מתחם ארקר, מתחם תעשיות ברגים, מתחם המגדר, מתחם נצח גונן.",
+      "context_he": "פירוט המתחמים בעלי הסיכון הגבוה ביותר באזור התעשייה חולון",
+      "page_ref": 74,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "quote_he": "בנוסף למוקדי הזיהום המוקדיים של המפעלים, נמצאו שלושה ערוצי זרימה עיליים אליהם הוזרמו שפכים גולמיים במשך שנים רבות ועל כן מהווים גם הם כמוקדים בעלי פוטנציאל זיהום גבוה. מוקדים אלה הם מערכת התיעול לאורך כביש 44, תוואי נחל איילון ותוואי נחל שפירים.",
+      "context_he": "מקורות זיהום לא נקודתיים — הזרמת שפכים גולמיים לפני הקמת השפד\"ן (1969)",
+      "page_ref": 9,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "quote_he": "לאור הפיזור הרב של המסננות בעומק האקוויפר, ניתן לקבוע כי היקף הזיהום הינו משמעותי גם בעומק... במערב מגיע הזיהום לבארות עמוקות בעלות מסננות הממוקמות מתחת לשכבות החרסית החוצצות את אקוויפר החוף ליחידות משנה. הגעת הזיהום לעומקים כאלה צפויה והיא נובעת ככל הנראה מהתכונות הפיזיקו-כימיות של המזהמים הנדונים שהם בעלי צפיפות גבוהה יותר מזו של המים.",
+      "context_he": "ממצא הידרולוגי קריטי — ה-DNAPL של PCE/TCE חודר לעומק האקוויפר ומאיים על בארות עמוקות",
+      "page_ref": 81,
+      "source_file": "water-sources-status_tehom_Holon-BatYan-Dec2007.pdf"
+    },
+    {
+      "quote_he": "ריכוז הניקל במי הקידוח (\"נת ארן מטל חולון\") שבמתחם רימטל נמצא במגמת עלייה מאז דגימתו הראשונה של הקידוח בדצמבר 2005. בדצמבר 2005, עת הותקן הקידוח, נמדד ריכוז ניקל של 0.6 (מ\"ג/ליטר), ביוני 2007 נמדד ריכוז של 0.78 (מ\"ג/ליטר) ובדצמבר 2008 נמדד ריכוז של 2 (מ\"ג/ליטר).",
+      "context_he": "תקציר מנהלי - תיאור מגמת עליית הניקל בקידוח הניטור בחצר רימטל; חריגה של פי 40 מתקן מי שתייה (0.05 מ\"ג/ל)",
+      "page_ref": 1,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "quote_he": "בהנחה כי הקרקע המזוהמת במתחם אר\"ן מטל לא פונתה (בור הספיגה בוטל אולם למיטב ידיעתנו הקרקע המזוהמת נותרה במקומה), סביר להניח כי ריכוז הניקל ומתכות אחרות ימשיכו לעלות במהלך השנים.",
+      "context_he": "תקציר מנהלי - הערכת המשך הזיהום בעתיד; בור הספיגה בוטל אך מקור הזיהום בקרקע נותר",
+      "page_ref": 1,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "quote_he": "המזהמים העיקריים (מתכות מעל לריכוז המותר במי שתייה) שאותרו במי התהום במסגרת העבודה הנוכחית כוללים ארבע מתכות: ניקל, אלומיניום, ברזל ועופרת. ניתן לשייך את הימצאותן של המתכות הללו לפעילות תעשייתית בעבר במפעל רימטל, העוסק במחזור מתכות, שתוצאותיה עדיין ממשיכות להשפיע על חדירת זיהום למי התהום.",
+      "context_he": "סעיף 9 - סיכום הממצאים; ייחוס ברור של ארבע מתכות חורגות לפעילות מפעל רימטל",
+      "page_ref": 10,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "quote_he": "על פי הממצאים איננו רואים סיבה להפסקת הספקת מים מקידוח ההפקה \"מק חולון 5\". בו בזמן יש להמשיך במעקב שיכלול תוכנית ניטור המסוגלת לעקוב אחר ריכוזי הניקל באזור כפונקציה של זמן ועוצמת שאיבה מקידוח ההפקה הקרוב.",
+      "context_he": "תקציר מנהלי - המלצה תפעולית מרכזית: מק חולון 5 בטוח לאספקת מי שתייה כעת אך נדרש ניטור צמוד",
+      "page_ref": 1,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "quote_he": "לא ניתן לחזות, ללא סקר קרקע ובדיקות נוספות, עד כמה התפשט זיהום הניקל בקרקע ובמי התהום ומה הריכוזים הצפויים לאורך חתך תת-הקרקע ומי התהום במתחם רימטל. לאור העובדה כי מקור הזיהום לא הוסר, סביר להניח כי ריכוז הניקל ומתכות אחרות ימשיכו לעלות במהלך השנים.",
+      "context_he": "סעיף 9 - הצהרת מגבלות והערכת סיכון עתידי; דרישה לסקר קרקע נוסף",
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_FinalReport-Holon.pdf"
+    },
+    {
+      "quote_he": "בשנים האחרונות נפסלו לשימוש בתחום השיפוט של חולון מספר קידוחים שהפיקו מי-שתייה בשל זיהום ממקור תעשייתי. הזיהומים שהתגלו היו כרום, VOC's שונים ובכללם TCE ודטרגנטים",
+      "context_he": "פתיח דו\"ח - רקע פסילת קידוחי מי שתייה בחולון",
+      "page_ref": 1,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "quote_he": "ריכוז מרבי של TCE 12,982 חל\"ב (תקן 50 חל\"ב) נמצא במימיו של קידוח נת חולון 11, הממוקם במגרש חניה ברחוב הנחושת, בצמוד למפעל \"תדיראן קשר\"",
+      "context_he": "ממצא הריכוז המרבי של TCE - פי 260 מהתקן",
+      "page_ref": 6,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "quote_he": "ריכוז מרבי של DCE 1,870 חל\"ב (תקן 30 חל\"ב) נמצא במימיו של קידוח נת חולון 8, הממוקם בחורשת נווה הארזים בסמוך לרחוב השופטים 29, כ-50 מ' מדרום מערב למפעל אמינוגרף",
+      "context_he": "ממצא הריכוז המרבי של DCE - פי 62 מהתקן",
+      "page_ref": 6,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "quote_he": "ריכוז מרבי של כרום 2,424 חל\"ב (תקן 50 חל\"ב) נמצא במימיו של נת חולון 3, הממוקם בפינת הרחובות היוצר\\החופר, בסמוך לאחד משני מפעלי \"התרשיש\"",
+      "context_he": "ממצא הריכוז המרבי של כרום - פי 48 מהתקן",
+      "page_ref": 6,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "quote_he": "המזהם השכיח ביותר באזור הסקר הינו טרי-כלורואתילן (להלן: TCE) על כן הוא נבחר לשמש כסמן לזיהום ממקור תעשייתי במחקרים הידרולוגיים",
+      "context_he": "בחירת TCE כסמן לזיהום תעשייתי",
+      "page_ref": 3,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "quote_he": "אזור התעשייה חולון הוקם בשנות ה-1950'. בתחום אזור התעשייה מפעלים רבים לציפוי מתכות, צביעה, בורסקאות, דטרגנטים, מכבסות ועוד",
+      "context_he": "רקע היסטורי-תעשייתי של אזור התעשייה חולון",
+      "page_ref": 3,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "quote_he": "פלומה עיקרית תחת אזור התעשייה חולון, בשטח 1750 דונם לערך, שמוקדיה הם המפעלים הנבחרים, ובפרט הצפוניים שבהם. חזית הפלומה (ריכוז 1ppb) הגיעה לשכונות נווה ארזים, נאות יהודית והשומרונים של חולון",
+      "context_he": "תיאור הפלומה הראשית מתוך מודל ממוחשב לסיום שנת 2008",
+      "page_ref": 13,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "quote_he": "פלומה נפרדת בשטח של כ-300 דונם לערך שמוקדה הוא מפעל בהק (להלן: פלומת בהק). חזית הפלומה (ריכוז ppb1) הגיעה לקידוח השאיבה חולון 5 ול\"ספורטק\"",
+      "context_he": "פלומת בהק - פלומה נפרדת מהפלומה הראשית",
+      "page_ref": 13,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "quote_he": "השיפור הרב-ביותר, קרי שיעור סילוק של כ-45% ממסת ה-TCE התחילית, נרשם בתרחיש 3",
+      "context_he": "מסקנת המודל לגבי תרחיש האופטימיזציה (תרחיש 3)",
+      "page_ref": 30,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "quote_he": "תופעה זו מחזקת את המסקנה שאין מגמה אחת אחידה בכל אזור התעשייה של חולון, וכי המגמה בכל אזור קשורה לסמיכותו למקור TCE, לשדה הזרימה מהמקור לקידוח התצפית, לאופק הנדגם וכיוב'",
+      "context_he": "מסקנה כללית על מגמות זמן בריכוזי TCE",
+      "page_ref": 12,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "quote_he": "כיוון הזרימה הכללי של מי התהום באקוויפר החוף הוא מערבה, בניצב לחוף. מדרום-מערב לא.ת. חולון, תחת העיר בת-ים, קיים שקע הידרולוגי המסיט את כיווני הזרימה תחת אזור התעשייה חולון לכיוון מערב-דרום-מערב",
+      "context_he": "כיוון זרימת מי התהום באזור",
+      "page_ref": 3,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "quote_he": "חשוב לציין את העלייה המשמעותית (בשני סדרי גודל) של TCE, מ-710 חל\"ב לכ-12,981 חל\"ב",
+      "context_he": "עליית TCE דרמטית בנת חולון 11 בחודשיים בין הדגימות",
+      "page_ref": 11,
+      "source_file": "water-sources-status_tehom_holon-part1.pdf"
+    },
+    {
+      "text_he": "ההתפשטות המרחבית של פלומת ה-TCE העיקרית בשנת 2030 יחסית לשנת 2008, אל עבר שכונות המגורים ניכרת בתרחישים 2, 1, 0",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "על פי הקריטריונים שנקבעו, תרחיש ההפקה המועדף הוא תרחיש מספר 3",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "התרחיש הכי פחות מועדף הוא חלופת ה-0, המביאה להתפשטות הפלומה מערבה תחת שטחים ניכרים של שכונות המגורים בחולון וזיהום קידוחים נוספים",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "טיוב בארות היא אסטרטגיה לסילוק מזהמים מהאקוויפר באמצעות שאיבת מים מזוהמים וטיפול (טיוב) במים לפני אספקתם לצרכנים",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "סילוק מזהמים 'תעשייתיים' כדוגמת TCE אפשרית במספר שיטות למשל באמצעות סינון דרך פחמן-פעיל",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "על פי ממצאי הדו\"ח ניתן להצביע על ארבעה מוקדי זיהום מרכזיים: 1. תדיראן קשר – קידוח נת חולון 11 (יתכן כי גם נת חולון 5 מושפע ממפעל זה); 2. מתחם תרשיש – קידוח נת חולון 3; 3. אמינוגרף – קידוח נת חולון 8; 4. תדירגן - קידוח תדירגן 1",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "מתוך המפעלים החשודים שבקרבתם מומלץ להרחיב חקירה סביבתית, שלושה אינם פעילים עוד: תדיראן קשר (נסגר ב-2000), מגדר (נסגר ב-1985) ותדירגן (נסגר ב-2003)",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "המפעלים הבאים עדיין פעילים: בהק, תרשיש, גימת השחרות וכרומט",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "באזור זה באקוויפר החוף לא קיימת הפרדה 'טבעית' בין תתי האקוויפר",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "תגובת חברת מקורות מצורפת בנספח 1, וגורסת כי אין לחברת מקורות מניעה לעמוד במכסות ההפקה שנקבעו",
+      "source_file": "water-sources-status_tehom_holon-part2.pdf"
+    },
+    {
+      "text_he": "אזור תעשייה חולון הוקם בשנות החמישים וממוקם בצפון מזרח לעיר חולון ומדרום לאזור ומשתרע על 3077 דונם.",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "text_he": "סקר היסטורי לאיתור מקורות זיהום בוצע בשנת 2007, ממצאי הסקר הצביעו על ריכוז גבוה מאוד של מפעלי צפוי מתכות שהיו פעילים בשנות השישים והשבעים באזור התעשייה.",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "text_he": "בשנים אלו לא היתה קיימת מערכת ביוב מוסדרת ושפכי המפעלים המכילים מתכות וממסים אורגנים מוכלרים סולקו דרך תעלות עפר ובורות ספיגה לקרקע, שפכים אלו הגיעו במרוצת השנים למי התהום.",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "text_he": "כמעט כול המפעלים שזיהמו את הקרקע והמים נסגרו לפני עשרות שנים ואינם קיימים היום.",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "text_he": "מפעל 'תדירגן' ההיסטורי הם מקור המזהמים המוכלרים עד לרמת אינדקס 7 בקידוחי תדירגאן ובקידוחי הניטור בתחנת התדלוק 'סונול המלאכה'. מוקד זיהום זה, תוצאת פעילות ארוכת שנים של מפעל תדירגן לציפוי מתכות ושל 3 מפעלים היסטוריים סמוכים.",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "text_he": "בשנים 2013-2020 בוצע שיקום מי תהום מלא באתר באמצעות 3 מחזורי הזרקות של מחמצן חזק לתוך האקויפר על מנת להוריד את הריכוזים במי התהום.",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "text_he": "זיהומי מי התהום הנרחבים באזור התעשייה חולון, הגיעו למספר קידוחי הפקה של מקורות, הקידוחים חולון 7, 8 ו-21 נסגרו לאספקת מי שתייה ואינם שואבים שנים רבות.",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "text_he": "מוקד זיהום היסטורי מורכב באזה\"ת חולון [כבר בתהליך שיקום].",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    },
+    {
+      "text_he": "חולון: אינדקס תעשייתי מרבי 7, חציוני 3.5, ב-25 קידוחי ניטור.",
+      "source_file": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf"
+    }
+  ],
+  "statistics": {
+    "unique_boreholes": 112,
+    "total_contamination_findings": 121,
+    "unique_facilities": 53,
+    "total_trends": 40,
+    "total_recommendations": 41,
+    "total_quotes": 41,
+    "source_count": 5
+  }
+}

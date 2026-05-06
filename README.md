@@ -180,8 +180,7 @@ Zone ranked **2nd of 18** in 2021 Water Authority contamination severity index (
 
 ## Known Limitations & Open Items
 
-- **Param-code mapping** (`REQ-H3`): Holon Excel uses different param codes than Raanana — CVOC trend chart returned no data; needs canonical-family crosswalk
 - **Basemap for site map** (`REQ-G1`): tile providers blocked in current environment — see `REQUIREMENTS.md`
-- **Holon zone summary report**: Pipeline complete; manual report writing pending
+- **Holon zone summary report**: Pipeline complete (incl. cross-zone CVOC/BTEX/PFAS classifier and selected-borehole filtering); manual report writing pending
 - **Facility discovery for Holon**: Pending (run AI agent against Holon zone)
 - **16 remaining zones**: Pending Holon validation + Ministry coordination

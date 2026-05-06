@@ -1,5 +1,7 @@
 # CLAUDE.md - Industrial Areas Report Project Governance
 
+> **Methodology layering**: This file is **prescriptive** (what we do). For per-feature **descriptive** history, see commit messages. For **open patterns awaiting 2nd-case validation, deferred decisions, and tooling roadmap**, see `LESSONS.md`. Promote items from `LESSONS.md` to `REQUIREMENTS.md` only after a 2nd real case validates the pattern.
+
 ## Project Overview
 **Title**: Structured Reporting System for Groundwater Quality Monitoring in Industrial Areas  
 **Scope**: Generalised reporting framework for the 18-zone coastal aquifer industrial monitoring system, Israel  
@@ -16,21 +18,22 @@
 ### State Assumptions Explicitly
 - **Data Quality**: All input data sourced from official reports (TAHAL 2008, 2021 Report). Verification: Compare extractions against source document page numbers.
 - **Methodology**: Severity index calculation and trend analysis follow 2021 Report methodology exactly. No modifications without expert validation.
-- **Scope**: Raanana zone is demonstration case; design all scripts/templates to scale to 18 zones with minimal modification.
+- **Scope**: The framework targets generalised reports (any geographic area, any facility) — the 18-zone batch is the first application, not the ceiling. Build abstractions from concrete patterns observed in ≥2 zones; do not pre-design for hypothetical zone variations. Raanana is the reference implementation; Holon is the first generalisation test. Long-term horizons include: arbitrary geographic input → automated data discovery → report; and zone dashboards alongside (or in place of) full reports.
 - **Regulatory Context**: Assume Ministry of Environmental Protection standards apply; coordinate with authorities before recommendations.
 
 ### Surface Ambiguities & Tradeoffs
 Before implementing data processing:
-1. **Missing data (2008-2021 gap)**: Do not interpolate. Flag gaps explicitly. User decision: extrapolate or wait for 2021 report full data.
-2. **Contamination attribution**: Multiple facilities near boreholes; forensic analysis probabilistic. Present confidence levels; don't overstate certainty.
-3. **Trend extrapolation**: Historical trends (1999-2008) may not continue. Present as "if trend persists" scenarios only.
-4. **Deep aquifer sampling**: R-004 and R-005 confounded by confinement; slow flow may distort trend signals. Flag interpretation limitations.
+1. **Missing data**: Do not interpolate. Flag gaps explicitly. User decision: extrapolate, accept gap, or seek additional data sources.
+2. **Contamination attribution**: Multiple facilities near boreholes; forensic analysis probabilistic. Present confidence levels (HIGH/MEDIUM/LOW); don't overstate certainty.
+3. **Trend extrapolation**: Historical trends may not continue. Present as "if trend persists" scenarios only.
+4. **Deep aquifer / confined boreholes**: Slow flow may distort trend signals; flag interpretation limitations.
+   - `[RAANANA-SPECIFIC]` Boreholes R-004 and R-005 are known confined cases — see `Raanana/README.md` for zone-specific notes.
 
 ### Ask Rather Than Assume
-- If borehole coordinates fall outside zone boundary ±500m, ask for clarification
+- If borehole coordinates fall outside zone polygon ±500m, ask for clarification
 - If contamination pattern matches multiple source facilities, present all hypotheses; don't pick silently
 - If severity index threshold unclear, request expert clarification before recalculation
-- If 2021 Report data differs from TAHAL 2008, flag discrepancy for expert validation
+- If two source documents disagree on the same fact (e.g., a borehole's classification), flag the discrepancy and request expert validation rather than picking silently
 
 ---
 
@@ -41,19 +44,19 @@ Before implementing data processing:
 - **Don't Add**:
   - Prediction models or extrapolation (user decision, not automated)
   - Automated remediation planning (expert decision)
-  - Statistical tests beyond linear regression (methodological baseline only)
-  - Configurability beyond single YAML config file
+  - Statistical methods beyond what's documented (current: Mann-Kendall + SNR gating; do not introduce parametric tests, ML, or new estimators without methodology approval)
+  - Configurability beyond what existing zones need — config lives in `config/analysis_config.yaml` (engine params) and `config/zone_overrides/{zone}.yaml` (per-zone Excel column overrides). No new config files without 2nd-zone justification.
   
 - **Do Keep**:
   - CSV/JSON parsing (foundation for all analysis)
-  - Linear trend calculation (required for reporting)
+  - Mann-Kendall trend calculation (tie-corrected variance, continuity-corrected Z, SNR ≥ 0.3, soft_trigger=2)
   - Severity index calculation (per 2021 Report formula)
   - Forensic pattern matching (source attribution support, not definitive)
 
 ### Data File Scope (CSVs, JSONs)
-- **boreholes.csv**: Only columns needed for reporting (ID, coordinates, depth, layer, classification, source)
-- **concentrations.csv**: Only columns needed for trend analysis (year, concentration, severity, source document)
-- **industries.json**: Only properties needed for source attribution (location, facility type, expected contaminants)
+- **boreholes.csv**: Only columns needed for reporting (canonical_id, name_he, ITM coordinates, depth, layer, source)
+- **measurements.csv**: Only columns needed for trend analysis (borehole, date, parameter, concentration, unit, source)
+- **facility_attribution.json**: Only properties needed for source attribution (name_he, address_he, suspected_contaminants, confidence, ITM coordinates, evidence)
 - No denormalization, no pre-calculated fields beyond severity index
 
 ### Report Scope (Markdown Drilling Cards, Zone Report)
@@ -79,7 +82,7 @@ Before implementing data processing:
 - **Test before committing** - run on sample data to verify output unchanged for old parameters
 
 ### When Creating New Reports
-- **Follow established formatting** (tables, headings, structure from drilling_card_R-001.md)
+- **Follow established formatting** (tables, headings, structure from `Raanana/output/drilling_card_*_v2.md` and `RAANANA_REPORT_V2.md`)
 - **Cross-reference source documents** with page numbers for every claim
 - **Flag limitations explicitly** (data gaps, assumptions, confidence levels)
 - **Don't editorialize** - present findings neutrally; recommendations separate from analysis
@@ -210,12 +213,13 @@ Before implementing data processing:
   - ✓ Borehole selection (`select_boreholes.py`) uses zone polygon (Tier 2) + Tier 1/3 lists
 - First framework application — Holon (אזה"ת חולון):
   - ✓ Data uploaded: 4 PDFs (`Holon/data/external/`), Excel (`Water Quality Data/...חולון.xlsx`), KMZ polygon
-  - ✓ Pipeline executed end-to-end: 112 boreholes parsed, 20,613 measurements, 4,869 (borehole×param) pairs
-  - ✓ Polygon intersection: 111/112 boreholes inside zone (Tier 2 selection)
-  - ✓ Charts produced: site_map + btex_trends + exceedances_bar + severity_panel
-  - ⏳ CVOC trends: returned no data — needs param_code mapping check (Holon Excel uses different codes)
-  - ⏳ Holon zone summary report (HOLON_REPORT_V1.md)
+  - ✓ Pipeline executed end-to-end: 112 boreholes parsed → 111 selected (Tier 2 polygon), 4,762 trend pairs
+  - ✓ Cross-zone param-family classifier (`scripts/param_families.py`) handles Holon's full English names
+    (TRICHLORO ETHYLENE) and Raanana's short codes (TCEY) — CVOC chart now produces 4,915 measurements
+  - ✓ Borehole selection persistence (`selected_boreholes.json`): downstream scripts filter automatically
+  - ✓ Charts produced: site_map + cvoc_trends + btex_trends + pfas_trends + exceedances_bar + severity_panel
   - ⏳ Facility discovery for Holon (run Agent against Holon zone)
+  - ⏳ Holon zone summary report (HOLON_REPORT_V1.md)
 
 ---
 
@@ -328,15 +332,65 @@ This section is the canonical procedure for activating a new zone.
 - `zone_definitions/tier3_cross_zone_boreholes.json` — manual additions (upgradient, downgradient)
 - `crosswalks/borehole_id_mapping.json` — optional canonical ID mapping (auto-derived if absent)
 
-**3. Pipeline run** (each command runs A → B → C):
+**3. Pipeline run** (zone-agnostic; recommended order):
 ```bash
+# Step 1: Extract measurements from Excel
 python scripts/parse_excel.py        --zone <X>
-python scripts/preprocess.py         --zone <X>      # if applicable
-python scripts/trend_analysis.py     --zone <X>
-python scripts/forensics_analyzer.py --zone <X>
+
+# Step 2: Borehole selection (Tier 1 historical + Tier 2 polygon + Tier 3 manual)
+#         Writes <X>/data/selected_boreholes.json — downstream scripts filter by it
 python scripts/select_boreholes.py   --zone <X> --list-tiers
+
+# Step 3: Extract text from background PDFs (mechanical step, IDEMPOTENT)
+#         Writes <X>/data/external/_raw_text/*.txt + _pdf_index.json
+#         --include-shared: also process root Base-Report/ PDFs (TAHAL 2008, 2021 report)
+#         --force: re-extract even if already cached in manifest
+#         Default: skips PDFs already in _pdf_index.json with extraction_ok=true
+python scripts/extract_zone_pdfs.py  --zone <X> --include-shared
+
+# Step 4: AI agent extraction (parallel sub-agents, one per PDF)
+#         Each agent produces <X>/data/external/_findings_<sourcetag>.json
+#         Use model="sonnet" (per ~/.claude/CLAUDE.md cost guidance)
+#         (run via Agent tool — see prompt template below)
+
+# Step 5: Merge per-PDF findings → unified extracted_findings.json
+#         Deduplicates boreholes (by name_he), consolidates findings,
+#         preserves source_file attribution for each entry
+python scripts/merge_extracted_findings.py --zone <X>
+
+# Step 6: Trend analysis (Mann-Kendall + SNR)
+python scripts/trend_analysis.py     --zone <X>
+
+# Step 7: Forensic attribution (decay chains, source signatures, co-occurrence)
+python scripts/forensics_analyzer.py --zone <X>
+
+# Step 8: Charts (Raanana → 9 zone-specific; other zones → 6 generic data-driven)
 python scripts/generate_charts_v2.py --zone <X>
 ```
+
+**3a. Idempotency (one-time PDF extraction)**:
+`extract_zone_pdfs.py` and the AI extraction step are designed for one-time
+processing per PDF file. The manifest `<X>/data/external/_pdf_index.json` tracks
+each PDF by filename with `extraction_ok` + `extraction_date_utc`. On re-runs:
+- Already-extracted PDFs (`extraction_ok=true`) are SKIPPED
+- New PDFs added to `<X>/data/external/` or `Base-Report/` trigger fresh extraction
+- `--force` overrides the cache (useful after pdftotext upgrade or schema change)
+The same applies to AI agent JSON outputs (`_findings_*.json`): once produced,
+they should not be regenerated unless the source PDF changes. The merge step
+(`merge_extracted_findings.py`) is cheap and can be re-run freely.
+
+**3b. AI agent prompt template (PDF extraction)**:
+The script `extract_zone_pdfs.py` only mechanically converts PDF→text. The
+structured extraction is done by AI sub-agents (one per PDF, parallel) with
+a hydrogeologist persona, each producing `<X>/data/external/_findings_<tag>.json`.
+Schema: `source_file`, `title_he`, `year`, `author_org_he`, `summary_he`,
+`boreholes_mentioned[]`, `contamination_findings[]`, `facilities_suspected[]`,
+`hydrogeology_he`, `trends_described_he[]`, `recommendations_he[]`,
+`key_quotes_he[]`. See `Holon/data/external/_findings_*.json` (4 files, one per
+PDF) as worked examples. The merge step combines them into a single
+`extracted_findings.json` with `statistics{}` summary and `source_files[]`
+attribution. Schema requires Hebrew text preserved verbatim, page references
+where possible, confidence levels (HIGH/MEDIUM/LOW) on facility attribution.
 
 **4. Per-zone manual deliverables** (using Raanana as template):
 - `<X>/output/<X>_REPORT_V1.md` — zone summary report (Hebrew, per STYLE_GUIDE)
@@ -438,16 +492,15 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 
 **First Framework Application — Holon** (in progress):
 1. ✓ Pipeline ran end-to-end (parse → trend → forensics → charts)
-2. ✓ 112 boreholes, 20,613 measurements, 4,869 trend pairs
-3. ✓ Polygon intersection: 111 boreholes selected (Tier 2)
-4. ⏳ CVOC trend chart skipped — Holon Excel uses different param codes; needs mapping
+2. ✓ 112 boreholes parsed → 111 selected by polygon (Tier 2)
+3. ✓ Cross-zone param-family classifier resolved CVOC chart (4,915 measurements detected)
+4. ✓ All generic charts produced (site_map, cvoc_trends, btex_trends, pfas_trends, exceedances, severity)
 5. ⏳ Holon zone summary report
 6. ⏳ Facility discovery (AI agent) for Holon
 7. ⏳ Expert hydrogeologist review of Holon report
 
 **Open framework items**:
 - ⏳ Basemap integration (REQ-G1) — pending environment resolution
-- ⏳ Param code mapping table (Raanana ↔ Holon ↔ other zones) for cross-zone consistency
 - ⏳ After Holon validation → systematic activation of remaining 16 zones
 
 ---

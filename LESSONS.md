@@ -1,0 +1,109 @@
+# LESSONS.md — Open Patterns, Deferred Decisions, Tooling Roadmap
+
+**Purpose**: Buffer between observation and codification. This file holds:
+1. **Open patterns**: things observed in 1 case, awaiting a 2nd case before promoting to `REQUIREMENTS.md`/`CLAUDE.md`
+2. **Deferred decisions**: choices we've consciously postponed, with the trigger that should reopen them
+3. **Tooling & Skills roadmap**: future tooling we've agreed makes sense — when, why, and what triggers it
+
+**Rule**: Promote to `REQUIREMENTS.md` only after the 2nd real case validates the pattern. Until then, entries here are tentative.
+
+**Pruning**: Each phase boundary, review entries — promote, drop, or keep with updated context.
+
+---
+
+## 1. Open Patterns (1-Case, Awaiting 2nd-Case Validation)
+
+### 1.1 Cross-zone parameter naming variance
+- **Observation (Raanana → Holon)**: Raanana Excel uses short codes (`TCEY`, `PCE`); Holon uses full English names (`TRICHLORO ETHYLENE`).
+- **Solution applied**: `scripts/param_families.py` regex-based classifier returns `CVOC | BTEX | PFAS | OTHER` for either format.
+- **2nd-case test**: When zone #3 arrives — does its naming convention also fit one of the two patterns, or does it surface a 3rd? If 3rd, the regex approach may need rethinking (config-table?).
+- **Status**: ⏳ Awaiting zone #3.
+
+### 1.2 Borehole-set vs. zone-set mismatch
+- **Observation (Holon)**: Excel contained 112 boreholes; only 111 were inside the zone polygon. Pipeline initially processed all 112 (wasteful + misleading metrics).
+- **Solution applied**: `scripts/select_boreholes.py` writes `selected_boreholes.json`; downstream scripts filter via `borehole_filter.py`.
+- **2nd-case test**: Will another zone have the inverse problem (Excel under-supplies; need cross-zone borehole import)? If yes, the filter may need to extend to *additions* not just *exclusions*.
+- **Status**: ⏳ Awaiting zone #3.
+
+### 1.3 PDF extraction parallelism heuristic
+- **Observation (Holon)**: Single AI agent on 692K Hebrew chars (4 PDFs) hit stream idle timeout. Splitting to 4 parallel sub-agents (Sonnet) succeeded.
+- **Heuristic applied**: > ~150K characters → parallel; < 150K → single agent acceptable.
+- **2nd-case test**: Validate threshold on next zone. If a single 200K PDF runs fine, threshold is too conservative; if 100K times out, too liberal.
+- **Status**: ⏳ Awaiting zone #3 with different PDF sizes. Heuristic codified in `~/.claude/CLAUDE.md` (#6) as tentative.
+
+### 1.4 Merge dedup logic
+- **Observation (Holon)**: 5 source PDFs → 127 borehole mentions → 112 unique (dedup by `name_he`).
+- **Concern**: `name_he` exact-match may miss equivalents (e.g., "מק חולון 8" vs "מקורות חולון 8" vs "MK Holon 8"). Holon happened to have consistent Hebrew naming — luck or pattern?
+- **2nd-case test**: Zone #3 may have inconsistent naming across sources, exposing dedup gaps.
+- **Status**: ⏳ Awaiting evidence. May need fuzzy-match or canonical_id lookup.
+
+### 1.5 Facility discovery via AI agent
+- **Observation (Raanana)**: Opus agent + sector-based search produced 9 candidates with confidence levels.
+- **Observation (Holon, 2026-05-06)**: Opus agent timed out before producing output (open-ended web research scope).
+- **Tentative rule**: AI agent for facility discovery should consume already-extracted findings (53 facilities from Holon PDFs) and consolidate, NOT do open-ended web research from scratch.
+- **2nd-case test**: Pending — try the consolidator approach for Holon, see if it suffices.
+- **Status**: ⏳ Approach revision in progress.
+
+---
+
+## 2. Deferred Decisions (Trigger to Reopen)
+
+### 2.1 OCR for scanned PDFs (TAHAL 2008-A and 2008-B)
+- **Status**: TAHAL 2008 Parts A and B extracted to ~70 bytes each via `pdftotext -layout` — image-based scans.
+- **Decision**: Defer OCR for now. The reports are referenced indirectly through 2021 report and Ecolog 2012 anyway.
+- **Trigger to revisit**: If Holon expert review notes critical content in TAHAL 2008 missing from current findings, OR if zone #3 depends primarily on TAHAL 2008 with no later report covering it.
+- **Tools to consider when revisiting**: `tesseract-ocr` (install required), `ocrmypdf`, or commercial OCR for Hebrew RTL.
+
+### 2.2 Basemap integration (REQ-G1)
+- **Status**: Tile providers (OSM, CartoDB, Stamen, ESRI) blocked in current environment — 403 Forbidden.
+- **Decision**: Offline ITM schematic is production-ready; basemap deferred.
+- **Trigger to revisit**: When environment permits external tile fetch, OR when expert reviewer specifically requests street/cadastral context.
+- **Options documented**: cached MBTiles, Israeli WMS (govmap), Overpass vector rendering.
+
+### 2.3 Methodology file consolidation
+- **Status (post-cleanup, 2026-05-06)**: REQUIREMENTS.md has REQ-A through REQ-H (12 H-items). Some may overlap or be superseded.
+- **Decision**: Don't consolidate now — wait for Holon report to reveal which requirements are actually load-bearing.
+- **Trigger to revisit**: After Holon expert review approves the report. Then re-read REQUIREMENTS.md and mark `[ACTIVE]` / `[SUPERSEDED]` / `[ZONE-SPECIFIC]`.
+
+---
+
+## 3. Tooling & Skills Roadmap
+
+### 3.1 Run now (low cost, immediate value)
+
+| Skill / Tool | Purpose | Trigger |
+|---|---|---|
+| `fewer-permission-prompts` | Reduce friction during agent runs and pipeline execution | Run once after current cleanup phase; updates `.claude/settings.json` |
+
+### 3.2 Create after Holon report is approved
+
+| Skill / Tool | Purpose | Why wait |
+|---|---|---|
+| **`activate-zone` skill** (project-local) | Automates Steps 1–3, 5 of "Adding a New Zone" pipeline (parse → select → extract → merge); pauses before AI-agent steps | Wait for 2 successful manual runs (Raanana + Holon = 2 cases) before extracting the abstraction. After Holon approval, this is legitimate. |
+| **`methodology-prune` skill** (optional) | Scans CLAUDE.md/REQUIREMENTS.md for outdated entries, suggests removals | Only worth building if cleanup recurs ≥ 2 times. Review after zone #3. |
+
+### 3.3 Long-term (next project phase: any geographic area / facility)
+
+| Tool | Purpose | Trigger |
+|---|---|---|
+| **`discover-zone-data` skill** | Given coordinates/place name → discovers available data (Excel, PDFs, polygons) and stages them in zone directory structure | When the project pivots from "18 known zones" to "arbitrary input → report" |
+| **Dashboard generator** (script + skill) | Produces interactive zone dashboard alongside or instead of full markdown report | When dashboard format is specified by user |
+
+### 3.4 Available skills referenced
+
+For convenience — skills available in this environment that are relevant here:
+- `simplify` — code review for reuse/quality. Use after pipeline scripts grow (post-zone #3).
+- `update-config` — for hooks (e.g., pre-commit validating no outdated terms in methodology files). Currently no hooks needed.
+- `review` — pre-merge PR review. Use before merging feature branches to main.
+- `security-review` — not currently relevant (no secrets / external auth in pipeline).
+
+---
+
+## 4. Patterns Promoted Out of This File (History)
+
+*(Empty — no patterns have been promoted yet. This section will track what graduated from `LESSONS.md` to `REQUIREMENTS.md` and when, so we can audit our promotion discipline.)*
+
+---
+
+**Last Update**: 2026-05-06 (initial creation during methodology hygiene phase)  
+**Next Review**: After Holon zone summary report is approved by expert hydrogeologist

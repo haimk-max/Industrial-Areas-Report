@@ -1,8 +1,10 @@
-# STYLE_GUIDE.md — שפה, טון וקווים מנחים לדוח רעננה
+# STYLE_GUIDE.md — שפה, טון וקווים מנחים לדוחות אזורי תעשייה
 
-**Purpose**: Define language register and recommendation patterns so all edits replicate the professional standard of the **2021 Water Authority Coastal Aquifer Industrial Zones Monitoring Report** (`Base-Report/בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf`).
+**Purpose**: Define language register and recommendation patterns for **all zone reports** (any of the 18 industrial zones in the coastal aquifer monitoring system). All zone reports must replicate the professional standard of the **2021 Water Authority Coastal Aquifer Industrial Zones Monitoring Report** (`Base-Report/בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf`).
 
 **Reference document**: The 2021 report is the canonical model — both for **language** (sentence structure, terminology, register) and for **recommendation character** (action types, hierarchy, tone).
+
+**Examples**: All examples in this guide are drawn from the **Raanana** zone report (the reference implementation, expert-validated May 2026). The same rules apply to Holon (first framework application) and any subsequent zone — substitute zone-specific borehole names, contaminants, and findings.
 
 ---
 
