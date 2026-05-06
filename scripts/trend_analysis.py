@@ -21,8 +21,7 @@ from scripts.preprocess import Observation, TrendResult, analyze_series, parse_o
 
 log = get_logger("trend_analysis")
 
-MEAS_PATH = REPO_ROOT / "Raanana" / "data" / "measurements.csv"
-OUTPUT_PATH = REPO_ROOT / "Raanana" / "data" / "trends.csv"
+# Paths derived from zone name in main()
 
 TREND_FIELDS = [
     "borehole_id", "parameter", "n", "n5", "has_detection",
@@ -57,10 +56,12 @@ def _get_standard(rows: list[dict]) -> float | None:
 def main() -> None:
     parser = make_parser("Phase B: Trend analysis over all borehole/parameter pairs.")
     args = parser.parse_args()
-    cfg = merged_config(args.zone or "raanana", args.config)
+    zone = (args.zone or "raanana").lower()
+    cfg = merged_config(zone, args.config)
+    zone_data_dir = REPO_ROOT / zone.capitalize() / "data"
 
-    meas_path = Path(args.input) if args.input else MEAS_PATH
-    output_path = Path(args.output) if args.output else OUTPUT_PATH
+    meas_path = Path(args.input) if args.input else zone_data_dir / "measurements.csv"
+    output_path = Path(args.output) if args.output else zone_data_dir / "trends.csv"
 
     if not meas_path.exists():
         log.error("measurements_not_found", path=str(meas_path))

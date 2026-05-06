@@ -28,7 +28,7 @@ ZONE_DEF_DIR = REPO_ROOT / "zone_definitions"
 TIER1_PATH = ZONE_DEF_DIR / "tier1_historical_boreholes.json"
 POLYGONS_PATH = ZONE_DEF_DIR / "zone_polygons.json"
 TIER3_PATH = ZONE_DEF_DIR / "tier3_cross_zone_boreholes.json"
-DEFAULT_BOREHOLES_CSV = REPO_ROOT / "Raanana" / "data" / "boreholes.csv"
+# Default boreholes CSV derived from zone name in main()
 
 
 class BoreholeRecord(NamedTuple):
@@ -172,7 +172,8 @@ def main() -> None:
     args = parser.parse_args()
     zone_id = args.zone or "raanana"
 
-    boreholes_csv = Path(args.input) if args.input else DEFAULT_BOREHOLES_CSV
+    default_csv = REPO_ROOT / zone_id.capitalize() / "data" / "boreholes.csv"
+    boreholes_csv = Path(args.input) if args.input else default_csv
     if not boreholes_csv.exists():
         log.error("boreholes_csv_not_found", path=str(boreholes_csv))
         sys.exit(1)
