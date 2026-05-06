@@ -102,5 +102,7 @@
     }
   ],
   "_tahal_2008_note": "TAHAL 2008 IDs (R-001 to R-005) are placeholder IDs from Phase 1 manual extraction. Coordinate verification against Excel is pending. Likely: R-001≈נת רעננה 1 area, based on description in TAHAL Part B p.53.",
-  "_last_updated": "2026-05-03"
+  "_last_updated": "2026-05-03",
+  "holon": [],
+  "_note_holon": "Holon borehole crosswalk — populated during Phase 5 pilot. Canonical IDs auto-derived from Hebrew names until expert validation."
 }

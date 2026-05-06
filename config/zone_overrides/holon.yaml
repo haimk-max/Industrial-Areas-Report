@@ -1,0 +1,27 @@
+# Zone-specific overrides for Holon industrial zone.
+# Merged on top of config/analysis_config.yaml by cli_common.merged_config().
+
+# Excel file path (relative to repo root)
+excel_input: "Water Quality Data/היסטורית איכות מים לקידוחים - חולון.xlsx"
+
+# Holon Excel has 15 columns (vs 18 in Raanana).
+# Missing: sample_id, lab, and separate param_code (param_name used as code).
+excel_columns:
+  borehole_id: 0
+  name: 1
+  easting: 2
+  northing: 3
+  basin: 4
+  purpose: 5
+  monitoring_site: 6
+  contamination_type: 7
+  date: 8
+  sample_id: null     # not present in Holon Excel
+  lab: null           # not present in Holon Excel
+  sample_depth: 9
+  param_code: 10      # param_name column used as surrogate code
+  param_name: 10
+  unit: 11
+  concentration: 12
+  marker: 13
+  drinking_standard: 14
