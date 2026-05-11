@@ -35,6 +35,38 @@ def _clarify_terms(text: str) -> str:
     return text
 
 
+def _reorder_foci_fuel_last(four_foci_md: str) -> str:
+    """Move the FUEL focus block to the end and renumber 1..N.
+
+    The four_foci block is markdown with numbered items '1. **...** ... 2. **...**'
+    each item possibly containing sub-bullets. Source V4 has FUEL at position #2;
+    this function reorders so any block whose header mentions 'דלקים' (fuel) is last,
+    matching the convention of presenting fuel after CVOC/metals.
+    """
+    if not four_foci_md:
+        return four_foci_md
+
+    # Split by top-level numbered items (line that starts with 'N. **')
+    blocks = re.split(r"\n(?=\d+\.\s\*\*)", four_foci_md.strip())
+    if len(blocks) < 2:
+        return four_foci_md
+
+    # Drop the leading number from each block
+    cleaned = []
+    for b in blocks:
+        cleaned.append(re.sub(r"^\d+\.\s+", "", b.strip()))
+
+    # Move fuel blocks to the end (preserve relative order of non-fuel)
+    fuel_idx = [i for i, b in enumerate(cleaned)
+                if b.startswith("**") and "דלקים" in b.split("\n", 1)[0]]
+    non_fuel = [b for i, b in enumerate(cleaned) if i not in fuel_idx]
+    fuel = [cleaned[i] for i in fuel_idx]
+    reordered = non_fuel + fuel
+
+    # Renumber
+    return "\n\n".join(f"{i+1}. {b}" for i, b in enumerate(reordered))
+
+
 def extract_narrative_sections(report_path: Path = REPORT_V4) -> dict:
     """Extract key narrative sections from HOLON_REPORT_V4.md.
 
@@ -54,7 +86,8 @@ def extract_narrative_sections(report_path: Path = REPORT_V4) -> dict:
 
     match = re.search(r"\*\*ארבעה מוקדי זיהום.+?\n\n(.+?)\n\n\*\*הסיפור העדכני", text, re.DOTALL)
     if match:
-        sections["four_foci"] = _clarify_terms(match.group(1).strip())
+        foci = _clarify_terms(match.group(1).strip())
+        sections["four_foci"] = _reorder_foci_fuel_last(foci)
 
     match = re.search(r"\*\*הסיפור העדכני\*\*:(.+?)\n\n---", text, re.DOTALL)
     if match:
