@@ -243,8 +243,13 @@ def _bucket_cell(b: int) -> str:
 # ───────────────────────── Figure 3: CVOC small multiples (Top wells time series) ─────────────────────────
 
 def svg_cvoc_panels(measurements: pd.DataFrame, severity: pd.DataFrame) -> str:
-    """6 CVOC time-series panels for the top INDUSTRY wells."""
-    industry = severity[severity.family == "INDUSTRY"].sort_values("max_bucket", ascending=False)
+    """CVOC time-series panels for top INDUSTRY wells (2 cols × 3 rows)."""
+    # Filter severity to ALERT boreholes (those in measurements)
+    alert_boreholes = set(measurements['canonical_id'].unique())
+    industry = severity[
+        (severity.family == "INDUSTRY") &
+        (severity.borehole.isin(alert_boreholes))
+    ].sort_values("max_bucket", ascending=False)
     top_wells = industry.head(6)["borehole"].tolist()
 
     panels = []
@@ -262,7 +267,7 @@ def svg_cvoc_panels(measurements: pd.DataFrame, severity: pd.DataFrame) -> str:
     if not panels:
         return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני CVOC</div>'
 
-    return _small_multiples_grid(panels, cols=3)
+    return _small_multiples_grid(panels, cols=2)
 
 
 # ───────────────────────── Figure 4: Chromium time series ─────────────────────────
@@ -291,20 +296,26 @@ def svg_chromium_panels(measurements: pd.DataFrame) -> str:
 # ───────────────────────── Figure 5: BTEX panels ─────────────────────────
 
 def svg_btex_panels(measurements: pd.DataFrame) -> str:
-    """BTEX (Benzene, MTBE) time-series for top Egged/fuel wells."""
+    """BTEX (Benzene, MTBE) time-series for FUEL-family boreholes with data."""
     fuel_data = measurements[measurements.param_code.isin(["BENZENE", " MTBE", "MTBE"])].copy()
     if fuel_data.empty:
         return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני BTEX</div>'
 
-    # Top 6 wells by max concentration
+    # Select representative FUEL boreholes: top wells with data
+    # Prioritize wells with max concentration in the upper range
     well_max = fuel_data.groupby("canonical_id").concentration.max().sort_values(ascending=False)
     top_wells = well_max.head(6).index.tolist()
 
     panels = []
     for wid in top_wells:
-        nm = fuel_data[fuel_data.canonical_id == wid].iloc[0].name_he
         well_data = fuel_data[fuel_data.canonical_id == wid].copy()
-        panels.append(_time_series_panel(well_data, nm, dws=5.0, width=240, height=140))
+        if well_data.empty:
+            continue
+        nm = well_data.iloc[0].name_he
+        panels.append(_time_series_panel(well_data, nm, dws=5.0, width=280, height=160))
+
+    if not panels:
+        return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני BTEX</div>'
 
     return _small_multiples_grid(panels, cols=3)
 
@@ -400,9 +411,27 @@ def _small_multiples_grid(panels: list, cols: int = 3) -> str:
 # ───────────────────────── Figure 6: Monitoring gaps timeline ─────────────────────────
 
 def svg_monitoring_gaps(data_avail: pd.DataFrame, severity: pd.DataFrame) -> str:
-    """Timeline showing monitoring gaps for ALERT wells with stopped monitoring."""
+    """Timeline showing monitoring gaps: only wells with high contamination index that stopped before 2023.
+
+    Filter: max_index > 3 (non-FUEL families) or > 2 (FUEL boreholes).
+    """
     if data_avail.empty:
         return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני זמינות</div>'
+
+    # Build severity summary per borehole (max index and primary family)
+    sev_summary = severity.pivot_table(
+        index="borehole",
+        columns="family",
+        values="max_bucket",
+        aggfunc="max",
+    ).fillna(0)
+    sev_summary["max_index"] = sev_summary.max(axis=1)
+    sev_summary = sev_summary.reset_index()
+
+    # Determine if borehole has FUEL-only contamination
+    for idx, row in sev_summary.iterrows():
+        families_present = [fam for fam in ["INDUSTRY", "METALS", "PFAS"] if row.get(fam, 0) > 0]
+        sev_summary.loc[idx, "primary_family"] = families_present[0] if families_present else "FUEL"
 
     # Aggregate per borehole: first_year, last_year
     agg = data_avail.groupby(["borehole", "name_he"]).agg(
@@ -410,12 +439,22 @@ def svg_monitoring_gaps(data_avail: pd.DataFrame, severity: pd.DataFrame) -> str
         last_year=("last_sample_date", lambda x: pd.to_datetime(x).dt.year.max()),
     ).reset_index()
 
-    # Filter: only wells in severity that stopped before 2023
-    alert_set = set(severity.borehole.unique())
-    stopped = agg[(agg.borehole.isin(alert_set)) & (agg.last_year < 2023)].sort_values("last_year")
+    # Join with severity summary
+    agg = agg.merge(sev_summary[["borehole", "max_index", "primary_family"]], on="borehole", how="left")
+
+    # Filter: stopped before 2023, with high severity
+    threshold_non_fuel = 3
+    threshold_fuel = 2
+    stopped = agg[
+        (agg.last_year < 2023) &
+        (
+            ((agg.primary_family != "FUEL") & (agg.max_index > threshold_non_fuel)) |
+            ((agg.primary_family == "FUEL") & (agg.max_index > threshold_fuel))
+        )
+    ].sort_values("last_year")
 
     if stopped.empty:
-        return '<div style="padding:20px;color:#6b6b6b;text-align:center">אין הפסקות ניטור בקידוחי ALERT</div>'
+        return '<div style="padding:20px;color:#6b6b6b;text-align:center">אין הפסקות ניטור בקידוחי ALERT בעלי אינדקס גבוה</div>'
 
     yr_min, yr_max = 2010, 2026
     rows = []
@@ -425,8 +464,9 @@ def svg_monitoring_gaps(data_avail: pd.DataFrame, severity: pd.DataFrame) -> str
     rows.append('<div class="hd">דיגום אחרון</div>')
 
     for _, r in stopped.iterrows():
-        bid = r.borehole
         nm = r.name_he
+        family = r.primary_family
+        max_idx = int(r.max_index)
         first_yr = int(r.first_year)
         last_yr = int(r.last_year)
         a_left = (first_yr - yr_min) / (yr_max - yr_min) * 100
@@ -434,7 +474,15 @@ def svg_monitoring_gaps(data_avail: pd.DataFrame, severity: pd.DataFrame) -> str
         m_left = (last_yr - yr_min) / (yr_max - yr_min) * 100
         m_width = 100 - m_left
 
-        rows.append(f'<div class="nm">{esc(nm)}<small>{esc(bid)}</small></div>')
+        # Map family to Hebrew name
+        family_he = {
+            "INDUSTRY": "תרכובות אורגניות",
+            "METALS": "מתכות כבדות",
+            "PFAS": "כימיקלים מעמידים",
+            "FUEL": "דלקים"
+        }.get(family, family)
+
+        rows.append(f'<div class="nm">{esc(nm)}<small>{family_he} · אינדקס {max_idx}</small></div>')
         rows.append(
             f'<div class="gap-bar">'
             f'<div class="a" style="left:{a_left:.1f}%;width:{a_width:.1f}%"></div>'
