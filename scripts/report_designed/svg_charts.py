@@ -106,15 +106,35 @@ def svg_severity_matrix(severity: pd.DataFrame, trends: pd.DataFrame,
                          data_avail: pd.DataFrame) -> str:
     """Build the F2 severity matrix grouped by contamination focus (CVOC, METALS, FUEL).
 
+    Under each borehole name: max exceeding compound + concentration for that section's family.
     Holon-specific: PFAS column omitted (all bucket=0 in Holon, not an active focus).
-
-    Layout:
-    - Section: CVOC (INDUSTRY) — boreholes with INDUSTRY > 0, sorted by INDUSTRY desc
-    - Section: METALS — boreholes with METALS > 0 (excluding those already in CVOC), sorted by METALS desc
-    - Section: FUEL only — boreholes with FUEL only, sorted by FUEL desc
-
-    Consolidation: keep all נת_חולון; select top 2 from נד_אגד; others as-is.
     """
+    # Build lookup: (borehole, family) → (param, concentration, unit)
+    # Pick the row in `severity` with max contributing_pct for each (borehole, family).
+    detail_lookup = {}
+    for (bid, fam), grp in severity.groupby(["borehole", "family"]):
+        top = grp.sort_values("contributing_pct", ascending=False).iloc[0]
+        detail_lookup[(bid, fam)] = {
+            "param": top.get("contributing_param", ""),
+            "pct": top.get("contributing_pct", 0),
+        }
+
+    # Try to enrich with absolute concentrations from param-level severity if available
+    try:
+        from .data_loader import load_param_level_severity
+        param_lvl = load_param_level_severity()
+        if not param_lvl.empty:
+            for (bid, fam), grp in param_lvl.groupby(["borehole", "family"]):
+                top = grp.sort_values("pct_of_standard", ascending=False).iloc[0]
+                detail_lookup[(bid, fam)] = {
+                    "param": top.get("param_code", ""),
+                    "pct": top.get("pct_of_standard", 0),
+                    "concentration": top.get("concentration", None),
+                    "unit": top.get("unit", "µg/L"),
+                }
+    except Exception:
+        pass
+
     # Pivot severity to wide form (excluding PFAS — not a Holon focus)
     pivot = severity.pivot_table(
         index=["borehole", "name_he"],
@@ -180,14 +200,30 @@ def svg_severity_matrix(severity: pd.DataFrame, trends: pd.DataFrame,
                        (pivot["INDUSTRY"] == 0) &
                        (pivot["METALS"] == 0)].sort_values("FUEL", ascending=False)
 
-    def make_row(r):
+    def make_row(r, section_family: str):
         bid = r.borehole
         nm = r.name_he
         mark_inc = ' <span class="up">↑</span>' if bid in inc_set else ""
         mark_stop = ' <span style="color:var(--red);font-weight:700">●</span>' if bid in stopped else ""
+
+        # Build sub-line: max compound + concentration for this section's family
+        detail = detail_lookup.get((bid, section_family))
+        sub = ""
+        if detail:
+            param = _short_param_name(detail.get("param", ""))
+            conc = detail.get("concentration")
+            pct = detail.get("pct", 0)
+            unit = _normalize_unit(detail.get("unit", "µg/L"))
+            ratio_str = _format_ratio(pct)
+            if conc is not None and not pd.isna(conc):
+                conc_str = _format_concentration(conc)
+                sub = f'<small>{esc(param)} · {conc_str} {esc(unit)} ({ratio_str})</small>'
+            elif pct:
+                sub = f'<small>{esc(param)} · {ratio_str}</small>'
+
         return (
             f'<tr>'
-            f'<td class="lbl">{esc(nm)}{mark_inc}{mark_stop}</td>'
+            f'<td class="lbl">{esc(nm)}{mark_inc}{mark_stop}{sub}</td>'
             f'<td class="val">{_bucket_cell(int(r.INDUSTRY))}</td>'
             f'<td class="val">{_bucket_cell(int(r.METALS))}</td>'
             f'<td class="val">{_bucket_cell(int(r.FUEL))}</td>'
@@ -202,13 +238,13 @@ def svg_severity_matrix(severity: pd.DataFrame, trends: pd.DataFrame,
     body_parts = []
     if not cvoc_rows.empty:
         body_parts.append(section_header("מוקד CVOC — תרכובות אורגניות מוכלרות", len(cvoc_rows)))
-        body_parts.extend(make_row(r) for _, r in cvoc_rows.iterrows())
+        body_parts.extend(make_row(r, "INDUSTRY") for _, r in cvoc_rows.iterrows())
     if not metals_rows.empty:
         body_parts.append(section_header("מוקד מתכות — כרום וניקל", len(metals_rows)))
-        body_parts.extend(make_row(r) for _, r in metals_rows.iterrows())
+        body_parts.extend(make_row(r, "METALS") for _, r in metals_rows.iterrows())
     if not fuel_rows.empty:
         body_parts.append(section_header("מוקד דלקים — בנזן ו-MTBE", len(fuel_rows)))
-        body_parts.extend(make_row(r) for _, r in fuel_rows.iterrows())
+        body_parts.extend(make_row(r, "FUEL") for _, r in fuel_rows.iterrows())
 
     return (
         '<table class="matrix">'
@@ -218,6 +254,71 @@ def svg_severity_matrix(severity: pd.DataFrame, trends: pd.DataFrame,
         '<tbody>' + "".join(body_parts) + '</tbody>'
         '</table>'
     )
+
+
+_PARAM_SHORT_NAMES = {
+    "TRICHLORO ETHYLENE": "TCE",
+    "TETRACHLORO ETHYLENE": "PCE",
+    "CIS 1,2 DICHLOROETHYLENE": "cis-1,2-DCE",
+    "DICHLOROETHYLENE 1,1": "1,1-DCE",
+    "1,4 DIOXANE": "1,4-Dioxane",
+    "VINYL CHLORIDE": "VC",
+    "CHLOROFORM": "Chloroform",
+    "CHROMIUM AS CR": "Cr",
+    "NICKEL AS NI": "Ni",
+    "ARSENIC AS AS": "As",
+    "CADMIUM AS CD": "Cd",
+    "LEAD AS PB": "Pb",
+    "BENZENE": "Benzene",
+    "MTBE": "MTBE",
+    " MTBE": "MTBE",
+    "TOLUENE": "Toluene",
+    "XYLENE": "Xylene",
+    "ETHYL BENZENE": "Ethylbenzene",
+}
+
+
+def _short_param_name(p: str) -> str:
+    p = (p or "").strip()
+    return _PARAM_SHORT_NAMES.get(p, p)
+
+
+def _normalize_unit(u: str) -> str:
+    """Convert CSV unit strings to display form."""
+    if not u:
+        return "µg/L"
+    u = u.strip()
+    if u.lower() in ("microgr/l", "ug/l", "ppb"):
+        return "µg/L"
+    if u.lower() in ("mg/l", "ppm"):
+        return "mg/L"
+    return u
+
+
+def _format_concentration(c: float) -> str:
+    """Format concentration: no decimals for ≥10, one decimal for <10."""
+    if c >= 100:
+        return f"{c:,.0f}"
+    if c >= 10:
+        return f"{c:,.0f}"
+    if c >= 1:
+        return f"{c:,.1f}"
+    return f"{c:,.2f}"
+
+
+def _format_ratio(pct: float) -> str:
+    """Format ratio of standard. pct = percent of DWS.
+    - pct ≥ 100 → '×N מהתקן' (multiples of standard)
+    - pct < 100 → 'N% מהתקן' (percent below standard)
+    """
+    if pct is None or pd.isna(pct):
+        return ""
+    if pct >= 100:
+        ratio = pct / 100
+        if ratio >= 10:
+            return f"×{ratio:,.0f} מהתקן"
+        return f"×{ratio:,.1f} מהתקן"
+    return f"{pct:,.0f}% מהתקן"
 
 
 def _bucket_cell(b: int) -> str:

@@ -75,6 +75,14 @@ def load_severity_index(workspace: Path = LEAN_WORKSPACE) -> pd.DataFrame:
     return pd.DataFrame()
 
 
+def load_param_level_severity(workspace: Path = LEAN_WORKSPACE) -> pd.DataFrame:
+    """Load parameter-level severity (per borehole × param, with concentration + DWS)."""
+    path = workspace / "04_deterministic_anchors" / "severity_index_2025_holon_param_level.csv"
+    if path.exists():
+        return pd.read_csv(path)
+    return pd.DataFrame()
+
+
 def load_alert_boreholes(workspace: Path = LEAN_WORKSPACE) -> pd.DataFrame:
     """Load 25 ALERT borehole IDs with alert criteria."""
     path = workspace / "02_data_filtered" / "alert_boreholes.csv"
