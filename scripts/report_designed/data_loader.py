@@ -93,6 +93,15 @@ def extract_narrative_sections(report_path: Path = REPORT_V4) -> dict:
     if match:
         sections["current_story"] = _clarify_terms(match.group(1).strip())
 
+    # Extract classification definitions from section 8
+    match = re.search(r"## 8\. סיווג קידוחים.+?\n\n### הגדרת קטגוריות(.+?)\n\n### סטטיסטיקת", text, re.DOTALL)
+    if match:
+        sections["classification_intro"] = match.group(1).strip()
+
+    match = re.search(r"### סטטיסטיקת התפלגות.+?\n\n(.+?)\n\n### התפלגות לפי משפחות", text, re.DOTALL)
+    if match:
+        sections["classification_stats"] = match.group(1).strip()
+
     return sections
 
 
