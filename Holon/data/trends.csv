@@ -1,0 +1,577 @@
+borehole_id,parameter,n,n5,has_detection,mk_z_5y,mk_p_5y,mk_z_full,mk_p_full,snr_5y,snr_full,analysis_mode,classification,trend_description,crossed_standard,drinking_water_standard
+raanana_nd_paz_hanofer,BENZ,14,4,True,0,1,0.706698,0.479754,0.203888,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,5
+raanana_nd_paz_hanofer,DO,14,4,True,0,1,-2.13826,0.0324959,0.58004,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,False,
+raanana_nd_paz_hanofer,EC,2,0,True,,,,,,,none,NONE,,False,
+raanana_nd_paz_hanofer,ECFD,12,4,True,-0.339683,0.734095,-0.549875,0.582405,1.58359,,5y,STABLE,No significant trend (p=0.734); Mann-Kendall Z=-0.34,False,
+raanana_nd_paz_hanofer,ETBN,14,4,True,0,1,1.41377,0.15743,1,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,False,300
+raanana_nd_paz_hanofer,MTBE,14,4,True,-0.722315,0.470101,0.91716,0.359059,1.06595,,5y,STABLE,No significant trend (p=0.470); Mann-Kendall Z=-0.72,False,40
+raanana_nd_paz_hanofer,ORP,14,4,True,1.01905,0.30818,1.15137,0.24958,1.57548,,5y,STABLE,No significant trend (p=0.308); Mann-Kendall Z=1.02,False,
+raanana_nd_paz_hanofer,PHFD,14,4,True,1.1619,0.245278,1.08498,0.277932,1.73205,,5y,STABLE,No significant trend (p=0.245); Mann-Kendall Z=1.16,False,
+raanana_nd_paz_hanofer,T,14,4,True,0,1,0.109819,0.912553,0.729026,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,False,
+raanana_nd_paz_hanofer,TOLU,14,4,True,0,1,0.473326,0.635981,1,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,False,700
+raanana_nd_paz_hanofer,TUF,3,0,True,,,,,,,none,NONE,,True,1
+raanana_nd_paz_hanofer,TURB,11,4,True,0.722315,0.470101,-3.13304,0.00173005,1.22474,,5y,STABLE,No significant trend (p=0.470); Mann-Kendall Z=0.72,True,1
+raanana_nd_paz_hanofer,XYLE,14,4,True,0,1,0.749723,0.453422,1,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,False,500
+raanana_nd_turbine,24DNT,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,26DNT,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,6:2FT,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,82FTS,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,ACET,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,BENZ,5,1,True,,,0.353553,0.723674,0,0.745356,full_record,STABLE,No significant trend (p=0.724); Mann-Kendall Z=0.35 (full record — 5-year window insufficient),False,5
+raanana_nd_turbine,BRBNZ,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,BRMET,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,CCL4,1,1,False,,,,,,,none,NONE,,False,4
+raanana_nd_turbine,CDCE,1,1,False,,,,,,,none,NONE,,False,50
+raanana_nd_turbine,CHLET,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,CHLF,1,1,False,,,,,,,none,NONE,,False,80
+raanana_nd_turbine,CHLMT,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,DBR3C,1,1,False,,,,,,,none,NONE,,False,0.3
+raanana_nd_turbine,DBRM,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,DBRMT,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,DCB13,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,DCBM,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,DCET,1,1,False,,,,,,,none,NONE,,False,4
+raanana_nd_turbine,DCET1,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,DCEY,1,1,False,,,,,,,none,NONE,,False,10
+raanana_nd_turbine,DCHP1,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,DCPN,1,1,False,,,,,,,none,NONE,,False,5
+raanana_nd_turbine,DO,6,2,True,,,-1.1272,0.259656,0,1.47122,full_record,STABLE,No significant trend (p=0.260); Mann-Kendall Z=-1.13 (full record — 5-year window insufficient),False,
+raanana_nd_turbine,EC,1,0,True,,,,,,,none,NONE,,False,
+raanana_nd_turbine,ECFD,5,2,True,,,0.734847,0.462433,0,1.58626,full_record,STABLE,No significant trend (p=0.462); Mann-Kendall Z=0.73 (full record — 5-year window insufficient),False,
+raanana_nd_turbine,ETBN,5,1,True,,,0.353553,0.723674,0,0.745356,full_record,STABLE,No significant trend (p=0.724); Mann-Kendall Z=0.35 (full record — 5-year window insufficient),False,300
+raanana_nd_turbine,ETDB,1,1,False,,,,,,,none,NONE,,False,0.05
+raanana_nd_turbine,FORM,1,1,False,,,,,,,none,NONE,,False,900
+raanana_nd_turbine,FOSA,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,MCBZ,1,1,False,,,,,,,none,NONE,,False,100
+raanana_nd_turbine,MDCB,1,1,False,,,,,,,none,NONE,,False,600
+raanana_nd_turbine,METCH,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,MOL,1,0,True,,,,,,,none,NONE,,False,
+raanana_nd_turbine,MTBE,5,1,True,,,0.353553,0.723674,0,0.745356,full_record,STABLE,No significant trend (p=0.724); Mann-Kendall Z=0.35 (full record — 5-year window insufficient),False,40
+raanana_nd_turbine,NAPT,1,1,False,,,,,,,none,NONE,,False,10
+raanana_nd_turbine,ORP,4,2,True,,,0.339683,0.734095,0,1.70143,full_record,STABLE,No significant trend (p=0.734); Mann-Kendall Z=0.34 (full record — 5-year window insufficient),False,
+raanana_nd_turbine,PDCB,1,1,False,,,,,,,none,NONE,,False,75
+raanana_nd_turbine,PFBA,1,1,True,,,,,,,none,NONE,,False,0.1
+raanana_nd_turbine,PFBS,1,1,True,,,,,,,none,NONE,,False,0.1
+raanana_nd_turbine,PFDA,1,1,False,,,,,,,none,NONE,,False,0.1
+raanana_nd_turbine,PFDS,1,1,False,,,,,,,none,NONE,,False,0.1
+raanana_nd_turbine,PFDoA,1,1,False,,,,,,,none,NONE,,False,0.1
+raanana_nd_turbine,PFHpA,1,1,True,,,,,,,none,NONE,,False,0.1
+raanana_nd_turbine,PFHpS,1,1,False,,,,,,,none,NONE,,False,0.1
+raanana_nd_turbine,PFHxA,1,1,True,,,,,,,none,NONE,,True,0.1
+raanana_nd_turbine,PFHxS,1,1,True,,,,,,,none,NONE,,True,0.1
+raanana_nd_turbine,PFNA,1,1,False,,,,,,,none,NONE,,False,0.1
+raanana_nd_turbine,PFOA,1,1,True,,,,,,,none,NONE,,True,0.1
+raanana_nd_turbine,PFOS,1,1,False,,,,,,,none,NONE,,False,0.1
+raanana_nd_turbine,PFPeA,1,1,True,,,,,,,none,NONE,,True,0.1
+raanana_nd_turbine,PFUnA,1,1,False,,,,,,,none,NONE,,False,0.1
+raanana_nd_turbine,PHFD,6,2,True,,,1.72146,0.0851679,0,1.74983,full_record,INCREASING,Rising trend (p=0.085); Mann-Kendall Z=1.72 (full record — 5-year window insufficient),False,
+raanana_nd_turbine,STYR,1,1,False,,,,,,,none,NONE,,False,50
+raanana_nd_turbine,T,6,2,True,,,-0.751469,0.45237,0,0.967258,full_record,STABLE,No significant trend (p=0.452); Mann-Kendall Z=-0.75 (full record — 5-year window insufficient),False,
+raanana_nd_turbine,TCEN,1,1,False,,,,,,,none,NONE,,False,5
+raanana_nd_turbine,TCET,1,1,False,,,,,,,none,NONE,,False,200
+raanana_nd_turbine,TCEY,1,1,False,,,,,,,none,NONE,,False,7.5
+raanana_nd_turbine,TDCE,1,1,False,,,,,,,none,NONE,,False,50
+raanana_nd_turbine,TEC12,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,TEC22,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,TOLU,5,1,True,,,0.353553,0.723674,0,0.745356,full_record,STABLE,No significant trend (p=0.724); Mann-Kendall Z=0.35 (full record — 5-year window insufficient),False,700
+raanana_nd_turbine,TPH,3,1,True,,,,,,,none,NONE,,False,
+raanana_nd_turbine,TRBN3,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,TRBN4,1,1,False,,,,,,,none,NONE,,False,70
+raanana_nd_turbine,TRBRM,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,TRMB4,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,TRMB5,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,TRPR3,1,1,False,,,,,,,none,NONE,,False,
+raanana_nd_turbine,TUF,1,0,True,,,,,,,none,NONE,,False,1
+raanana_nd_turbine,TURB,5,2,True,,,-1.51587,0.129551,0,1.5362,full_record,STABLE,No significant trend (p=0.130); Mann-Kendall Z=-1.52 (full record — 5-year window insufficient),True,1
+raanana_nd_turbine,VYCL,1,1,False,,,,,,,none,NONE,,False,0.5
+raanana_nd_turbine,XYLE,5,1,True,,,0.353553,0.723674,0,0.745356,full_record,STABLE,No significant trend (p=0.724); Mann-Kendall Z=0.35 (full record — 5-year window insufficient),False,500
+raanana_nt_1,AL,2,2,False,,,,,,,none,NONE,,False,200
+raanana_nt_1,AS,8,3,False,,,,,,,none,NONE,,False,10
+raanana_nt_1,B,9,3,True,0,1,1.35534,0.175308,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,1
+raanana_nt_1,BA,9,3,True,0,1,0.938315,0.348083,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,1000
+raanana_nt_1,BE,6,3,False,,,,,,,none,NONE,,False,4
+raanana_nt_1,BENZ,8,2,False,,,,,,,none,NONE,,False,5
+raanana_nt_1,BR,6,3,True,0,1,0.751469,0.45237,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,
+raanana_nt_1,BRBNZ,5,2,False,,,,,,,none,NONE,,False,
+raanana_nt_1,BRCM,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,BRDCM,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,BRMET,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,CA,6,3,True,1.04447,0.29627,0.751469,0.45237,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,80
+raanana_nt_1,CCL4,7,2,False,,,,,,,none,NONE,,False,4
+raanana_nt_1,CD,8,3,False,,,,,,,none,NONE,,False,5
+raanana_nt_1,CDCE,9,2,True,,,1.91518,0.0554692,0,1.01816,full_record,INCREASING,Rising trend (p=0.055); Mann-Kendall Z=1.92 (full record — 5-year window insufficient),False,50
+raanana_nt_1,CHLET,7,2,False,,,,,,,none,NONE,,False,
+raanana_nt_1,CHLF,9,2,False,,,,,,,none,NONE,,False,80
+raanana_nt_1,CHLMT,5,2,False,,,,,,,none,NONE,,False,
+raanana_nt_1,CL,6,3,True,1.04447,0.29627,1.1272,0.259656,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,400
+raanana_nt_1,CO,6,3,False,,,,,,,none,NONE,,False,
+raanana_nt_1,CR,10,3,True,,,-1.81243,0.0699192,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,50
+raanana_nt_1,CTN2,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,CTN4,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,CU,9,3,True,-0.612372,0.540291,-0.766812,0.443194,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,1400
+raanana_nt_1,DBR3C,6,2,False,,,,,,,none,NONE,,False,0.3
+raanana_nt_1,DBRM,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_1,DBRMT,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_1,DCB13,7,2,False,,,,,,,none,NONE,,False,
+raanana_nt_1,DCDFM,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_1,DCET,7,2,False,,,,,,,none,NONE,,False,4
+raanana_nt_1,DCET1,9,2,False,,,,,,,none,NONE,,False,
+raanana_nt_1,DCEY,9,2,True,,,0.749045,0.45383,0,0.118667,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),False,10
+raanana_nt_1,DCP13,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,DCP22,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,DCPN,6,2,False,,,,,,,none,NONE,,False,5
+raanana_nt_1,DO,6,1,True,,,0.751469,0.45237,0,0.751443,full_record,STABLE,No significant trend (p=0.452); Mann-Kendall Z=0.75 (full record — 5-year window insufficient),False,
+raanana_nt_1,DP13E,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,DP13T,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,EC,6,1,True,,,-0.751469,0.45237,0,0.462609,full_record,STABLE,No significant trend (p=0.452); Mann-Kendall Z=-0.75 (full record — 5-year window insufficient),False,
+raanana_nt_1,ETBN,7,2,False,,,,,,,none,NONE,,False,300
+raanana_nt_1,ETDB,7,2,False,,,,,,,none,NONE,,False,0.05
+raanana_nt_1,FE,9,3,True,0,1,0,1,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,1000
+raanana_nt_1,FE++,1,0,True,,,,,,,none,NONE,,False,
+raanana_nt_1,HCO3,6,3,True,0,1,-1.1272,0.259656,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,
+raanana_nt_1,HXCB,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,IPBNZ,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,K,6,3,True,1.04447,0.29627,-0.375735,0.707114,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,
+raanana_nt_1,LI,1,1,False,,,,,,,none,NONE,,False,
+raanana_nt_1,MCBZ,6,2,False,,,,,,,none,NONE,,False,100
+raanana_nt_1,MDCB,5,2,False,,,,,,,none,NONE,,False,600
+raanana_nt_1,METCH,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_1,MN,10,3,True,0.612372,0.540291,-0.0898027,0.928444,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,200
+raanana_nt_1,MTBE,8,2,True,,,-0.143346,0.886017,0,0.687497,full_record,STABLE,No significant trend (p=0.886); Mann-Kendall Z=-0.14 (full record — 5-year window insufficient),False,40
+raanana_nt_1,Mg,6,3,True,1.04447,0.29627,0.751469,0.45237,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,150
+raanana_nt_1,NA,6,3,True,1.04447,0.29627,0,1,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,
+raanana_nt_1,NAPT,8,2,False,,,,,,,none,NONE,,False,10
+raanana_nt_1,NBTBZ,4,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,NI,9,3,True,,,-0.968246,0.332922,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,20
+raanana_nt_1,NO3,6,3,True,1.04447,0.29627,1.50294,0.132855,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,70
+raanana_nt_1,NPBNZ,4,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,ORP,6,1,True,,,-0.751469,0.45237,0,0.160165,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),False,
+raanana_nt_1,OXYL,4,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,PB,8,3,False,,,,,,,none,NONE,,False,10
+raanana_nt_1,PDCB,5,2,False,,,,,,,none,NONE,,False,75
+raanana_nt_1,PHFD,6,1,True,,,0,1,0,0.61846,full_record,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00 (full record — 5-year window insufficient),False,
+raanana_nt_1,PTOLU,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,PXYL,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,SBBNZ,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,SE,4,3,False,,,,,,,none,NONE,,False,10
+raanana_nt_1,SO4,6,3,True,1.04447,0.29627,0.751469,0.45237,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,250
+raanana_nt_1,SR,6,2,True,,,0.375735,0.707114,0,0.551298,full_record,STABLE,No significant trend (p=0.707); Mann-Kendall Z=0.38 (full record — 5-year window insufficient),False,
+raanana_nt_1,STYR,6,2,False,,,,,,,none,NONE,,False,50
+raanana_nt_1,T,6,1,True,,,-0.191273,0.848312,0,0,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),False,
+raanana_nt_1,TBBNZ,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,TCEN,5,2,False,,,,,,,none,NONE,,False,5
+raanana_nt_1,TCET,7,2,False,,,,,,,none,NONE,,False,200
+raanana_nt_1,TCEY,9,2,True,,,0.212798,0.831484,0,0.111077,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),True,7.5
+raanana_nt_1,TCFM,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_1,TDCE,9,2,False,,,,,,,none,NONE,,False,50
+raanana_nt_1,TEC12,4,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,TEC22,4,0,False,,,,,,,none,NONE,,False,
+raanana_nt_1,TECE,9,2,True,,,1.42408,0.154424,0,0.9445,full_record,STABLE,No significant trend (p=0.154); Mann-Kendall Z=1.42 (full record — 5-year window insufficient),True,10
+raanana_nt_1,TN-N,1,1,True,,,,,,,none,NONE,,False,
+raanana_nt_1,TOC,1,1,True,,,,,,,none,NONE,,False,
+raanana_nt_1,TOLU,8,2,False,,,,,,,none,NONE,,False,700
+raanana_nt_1,TRBN3,7,2,False,,,,,,,none,NONE,,False,
+raanana_nt_1,TRBN4,6,2,False,,,,,,,none,NONE,,False,70
+raanana_nt_1,TRBRM,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_1,TRMB4,7,2,False,,,,,,,none,NONE,,False,
+raanana_nt_1,TRMB5,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_1,TRPR3,5,2,False,,,,,,,none,NONE,,False,
+raanana_nt_1,VYCL,9,2,False,,,,,,,none,NONE,,False,0.5
+raanana_nt_1,WDEP,6,1,True,,,-0.751469,0.45237,0,0.450329,full_record,STABLE,No significant trend (p=0.452); Mann-Kendall Z=-0.75 (full record — 5-year window insufficient),False,
+raanana_nt_1,XYLE,8,2,False,,,,,,,none,NONE,,False,500
+raanana_nt_1,ZN,8,3,True,0.612372,0.540291,-1.24676,0.212486,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,5000
+raanana_nt_2,AL,2,2,False,,,,,,,none,NONE,,False,200
+raanana_nt_2,AS,8,3,False,,,,,,,none,NONE,,False,10
+raanana_nt_2,B,9,3,True,0,1,1.04828,0.294507,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,1
+raanana_nt_2,BA,9,3,True,1.04447,0.29627,1.35534,0.175308,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,1000
+raanana_nt_2,BE,6,3,False,,,,,,,none,NONE,,False,4
+raanana_nt_2,BENZ,8,2,False,,,,,,,none,NONE,,False,5
+raanana_nt_2,BR,6,3,True,1.04447,0.29627,1.50294,0.132855,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,
+raanana_nt_2,BRBNZ,5,2,False,,,,,,,none,NONE,,False,
+raanana_nt_2,BRCM,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,BRDCM,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,BRMET,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,CA,6,3,True,1.04447,0.29627,1.50294,0.132855,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,80
+raanana_nt_2,CCL4,7,2,False,,,,,,,none,NONE,,False,4
+raanana_nt_2,CD,8,3,False,,,,,,,none,NONE,,False,5
+raanana_nt_2,CDCE,9,2,False,,,,,,,none,NONE,,False,50
+raanana_nt_2,CHLET,7,2,False,,,,,,,none,NONE,,False,
+raanana_nt_2,CHLF,9,2,True,,,2.25588,0.024078,0,0.971914,full_record,INCREASING,Rising trend (p=0.024); Mann-Kendall Z=2.26 (full record — 5-year window insufficient),False,80
+raanana_nt_2,CHLMT,5,2,False,,,,,,,none,NONE,,False,
+raanana_nt_2,CL,6,3,True,1.04447,0.29627,1.1272,0.259656,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,400
+raanana_nt_2,CO,6,3,False,,,,,,,none,NONE,,False,
+raanana_nt_2,CR,10,3,True,,,-1.72906,0.083798,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,50
+raanana_nt_2,CTN2,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,CTN4,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,CU,9,3,True,-0.612372,0.540291,-1.91518,0.0554692,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,1400
+raanana_nt_2,DBR3C,6,2,False,,,,,,,none,NONE,,False,0.3
+raanana_nt_2,DBRM,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_2,DBRMT,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_2,DCB13,7,2,False,,,,,,,none,NONE,,False,
+raanana_nt_2,DCDFM,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_2,DCET,7,2,False,,,,,,,none,NONE,,False,4
+raanana_nt_2,DCET1,9,2,False,,,,,,,none,NONE,,False,
+raanana_nt_2,DCEY,9,2,False,,,,,,,none,NONE,,False,10
+raanana_nt_2,DCP13,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,DCP22,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,DCPN,6,2,False,,,,,,,none,NONE,,False,5
+raanana_nt_2,DO,6,1,True,,,1.87867,0.0602892,0,1.08232,full_record,INCREASING,Rising trend (p=0.060); Mann-Kendall Z=1.88 (full record — 5-year window insufficient),False,
+raanana_nt_2,DP13E,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,DP13T,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,EC,6,1,True,,,-1.87867,0.0602892,0,1.38857,full_record,DECREASING,Declining trend (p=0.060); Mann-Kendall Z=-1.88 (full record — 5-year window insufficient),False,
+raanana_nt_2,ETBN,7,2,False,,,,,,,none,NONE,,False,300
+raanana_nt_2,ETDB,7,2,False,,,,,,,none,NONE,,False,0.05
+raanana_nt_2,FE,9,3,True,-0.612372,0.540291,-0.547723,0.583882,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,1000
+raanana_nt_2,FE++,1,0,True,,,,,,,none,NONE,,False,
+raanana_nt_2,HCO3,6,3,True,1.04447,0.29627,0.375735,0.707114,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,
+raanana_nt_2,HXCB,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,IPBNZ,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,K,6,3,True,0,1,-0.751469,0.45237,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,
+raanana_nt_2,LI,1,1,False,,,,,,,none,NONE,,False,
+raanana_nt_2,MCBZ,6,2,False,,,,,,,none,NONE,,False,100
+raanana_nt_2,MDCB,5,2,False,,,,,,,none,NONE,,False,600
+raanana_nt_2,METCH,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_2,MN,10,3,True,-0.612372,0.540291,-0.628619,0.529599,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,200
+raanana_nt_2,MTBE,8,2,True,,,-0.328798,0.742308,0,0.102613,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),False,40
+raanana_nt_2,Mg,6,3,True,1.04447,0.29627,1.50294,0.132855,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,150
+raanana_nt_2,NA,6,3,True,1.04447,0.29627,0,1,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,
+raanana_nt_2,NAPT,8,2,False,,,,,,,none,NONE,,False,10
+raanana_nt_2,NBTBZ,4,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,NI,9,3,True,,,-1.25327,0.210108,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,20
+raanana_nt_2,NO3,6,3,True,0,1,1.50294,0.132855,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,70
+raanana_nt_2,NPBNZ,4,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,ORP,6,1,True,,,-0.375735,0.707114,0,0.289678,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),False,
+raanana_nt_2,OXYL,4,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,PB,8,3,False,,,,,,,none,NONE,,False,10
+raanana_nt_2,PDCB,5,2,False,,,,,,,none,NONE,,False,75
+raanana_nt_2,PHFD,6,1,True,,,-1.50294,0.132855,0,1.22689,full_record,STABLE,No significant trend (p=0.133); Mann-Kendall Z=-1.50 (full record — 5-year window insufficient),False,
+raanana_nt_2,PTOLU,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,PXYL,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,SBBNZ,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,SE,4,3,False,,,,,,,none,NONE,,False,10
+raanana_nt_2,SO4,6,3,True,1.04447,0.29627,1.1272,0.259656,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,250
+raanana_nt_2,SR,6,2,True,,,0,1,0,0.0778617,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),False,
+raanana_nt_2,STYR,6,2,False,,,,,,,none,NONE,,False,50
+raanana_nt_2,T,6,1,True,,,0,1,0,0.239046,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),False,
+raanana_nt_2,TBBNZ,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,TCEN,5,2,False,,,,,,,none,NONE,,False,5
+raanana_nt_2,TCET,7,2,False,,,,,,,none,NONE,,False,200
+raanana_nt_2,TCEY,9,2,True,,,0.209657,0.833935,0,0.285059,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),True,7.5
+raanana_nt_2,TCFM,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_2,TDCE,9,2,False,,,,,,,none,NONE,,False,50
+raanana_nt_2,TEC12,4,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,TEC22,4,0,False,,,,,,,none,NONE,,False,
+raanana_nt_2,TECE,9,2,True,,,1.26736,0.205028,0,0.400569,full_record,STABLE,No significant trend (p=0.205); Mann-Kendall Z=1.27 (full record — 5-year window insufficient),False,10
+raanana_nt_2,TN-N,1,1,True,,,,,,,none,NONE,,False,
+raanana_nt_2,TOC,1,1,True,,,,,,,none,NONE,,False,
+raanana_nt_2,TOLU,8,2,True,,,-0.657596,0.510798,0,0.573001,full_record,STABLE,No significant trend (p=0.511); Mann-Kendall Z=-0.66 (full record — 5-year window insufficient),False,700
+raanana_nt_2,TRBN3,7,2,False,,,,,,,none,NONE,,False,
+raanana_nt_2,TRBN4,6,2,False,,,,,,,none,NONE,,False,70
+raanana_nt_2,TRBRM,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_2,TRMB4,7,2,False,,,,,,,none,NONE,,False,
+raanana_nt_2,TRMB5,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_2,TRPR3,5,2,False,,,,,,,none,NONE,,False,
+raanana_nt_2,VYCL,9,2,False,,,,,,,none,NONE,,False,0.5
+raanana_nt_2,WDEP,6,1,True,,,-0.375735,0.707114,0,0.0887939,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),False,
+raanana_nt_2,XYLE,8,2,False,,,,,,,none,NONE,,False,500
+raanana_nt_2,ZN,8,3,True,-1.04447,0.29627,-0.748054,0.454427,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,5000
+raanana_nt_3,AL,2,2,False,,,,,,,none,NONE,,False,200
+raanana_nt_3,AS,7,2,False,,,,,,,none,NONE,,False,10
+raanana_nt_3,B,8,2,True,,,2.84551,0.00443401,0,0.709982,full_record,INCREASING,Rising trend (p=0.004); Mann-Kendall Z=2.85 (full record — 5-year window insufficient),True,1
+raanana_nt_3,BA,8,2,True,,,1.85577,0.0634865,0,1.04879,full_record,INCREASING,Rising trend (p=0.063); Mann-Kendall Z=1.86 (full record — 5-year window insufficient),False,1000
+raanana_nt_3,BE,5,2,False,,,,,,,none,NONE,,False,4
+raanana_nt_3,BENZ,8,2,True,,,0.289683,0.772059,0,0.718775,full_record,STABLE,No significant trend (p=0.772); Mann-Kendall Z=0.29 (full record — 5-year window insufficient),True,5
+raanana_nt_3,BR,4,2,True,,,-1.01905,0.30818,0,1.19399,full_record,STABLE,No significant trend (p=0.308); Mann-Kendall Z=-1.02 (full record — 5-year window insufficient),False,
+raanana_nt_3,BRBNZ,5,2,False,,,,,,,none,NONE,,False,
+raanana_nt_3,BRCM,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,BRDCM,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,BRMET,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,CA,4,2,True,,,-1.01905,0.30818,0,1.40649,full_record,STABLE,No significant trend (p=0.308); Mann-Kendall Z=-1.02 (full record — 5-year window insufficient),True,80
+raanana_nt_3,CCL4,7,2,True,,,0.25,0.802587,0,0.661438,full_record,STABLE,No significant trend (p=0.803); Mann-Kendall Z=0.25 (full record — 5-year window insufficient),False,4
+raanana_nt_3,CD,7,2,False,,,,,,,none,NONE,,False,5
+raanana_nt_3,CDCE,9,2,False,,,,,,,none,NONE,,False,50
+raanana_nt_3,CHLET,7,2,False,,,,,,,none,NONE,,False,
+raanana_nt_3,CHLF,9,2,True,,,2.4195,0.0155418,0,1.44543,full_record,INCREASING,Rising trend (p=0.016); Mann-Kendall Z=2.42 (full record — 5-year window insufficient),False,80
+raanana_nt_3,CHLMT,5,2,False,,,,,,,none,NONE,,False,
+raanana_nt_3,CL,4,2,True,,,0,1,0,0.428245,full_record,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00 (full record — 5-year window insufficient),False,400
+raanana_nt_3,CO,5,2,False,,,,,,,none,NONE,,False,
+raanana_nt_3,CR,9,2,True,,,-0.576072,0.564567,0,0.281133,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),False,50
+raanana_nt_3,CTN2,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,CTN4,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,CU,8,2,True,,,-0.657596,0.510798,0,0.158881,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),False,1400
+raanana_nt_3,DBR3C,6,2,False,,,,,,,none,NONE,,False,0.3
+raanana_nt_3,DBRM,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_3,DBRMT,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_3,DCB13,7,2,False,,,,,,,none,NONE,,False,
+raanana_nt_3,DCDFM,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_3,DCET,7,2,True,,,0,1,0,0.661438,full_record,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00 (full record — 5-year window insufficient),True,4
+raanana_nt_3,DCET1,9,2,False,,,,,,,none,NONE,,False,
+raanana_nt_3,DCEY,9,2,True,,,1.15987,0.246103,0,0.957731,full_record,STABLE,No significant trend (p=0.246); Mann-Kendall Z=1.16 (full record — 5-year window insufficient),False,10
+raanana_nt_3,DCP13,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,DCP22,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,DCPN,6,2,False,,,,,,,none,NONE,,False,5
+raanana_nt_3,DO,5,0,True,,,,,,,none,NONE,,False,
+raanana_nt_3,DP13E,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,DP13T,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,EC,5,0,True,,,,,,,none,NONE,,False,
+raanana_nt_3,ETBN,7,2,True,,,0.380235,0.703771,0,0.689648,full_record,STABLE,No significant trend (p=0.704); Mann-Kendall Z=0.38 (full record — 5-year window insufficient),False,300
+raanana_nt_3,ETDB,7,2,False,,,,,,,none,NONE,,False,0.05
+raanana_nt_3,FE,8,2,True,,,-0.986394,0.32394,0,0.706501,full_record,STABLE,No significant trend (p=0.324); Mann-Kendall Z=-0.99 (full record — 5-year window insufficient),True,1000
+raanana_nt_3,FE++,1,0,True,,,,,,,none,NONE,,False,
+raanana_nt_3,HCO3,4,2,True,,,1.01905,0.30818,0,1.62162,full_record,STABLE,No significant trend (p=0.308); Mann-Kendall Z=1.02 (full record — 5-year window insufficient),False,
+raanana_nt_3,HXCB,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,IPBNZ,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,K,4,2,True,,,-1.69842,0.0894294,0,1.63,full_record,DECREASING,Declining trend (p=0.089); Mann-Kendall Z=-1.70 (full record — 5-year window insufficient),False,
+raanana_nt_3,LI,1,1,False,,,,,,,none,NONE,,False,
+raanana_nt_3,MCBZ,6,2,False,,,,,,,none,NONE,,False,100
+raanana_nt_3,MDCB,5,2,False,,,,,,,none,NONE,,False,600
+raanana_nt_3,METCH,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_3,MN,9,2,True,,,-2.12798,0.0333387,0,0.964193,full_record,DECREASING,Declining trend (p=0.033); Mann-Kendall Z=-2.13 (full record — 5-year window insufficient),True,200
+raanana_nt_3,MTBE,8,2,True,,,0.385164,0.700116,0,0.742638,full_record,STABLE,No significant trend (p=0.700); Mann-Kendall Z=0.39 (full record — 5-year window insufficient),False,40
+raanana_nt_3,Mg,4,2,True,,,-1.01905,0.30818,0,1.698,full_record,STABLE,No significant trend (p=0.308); Mann-Kendall Z=-1.02 (full record — 5-year window insufficient),False,150
+raanana_nt_3,NA,4,2,True,,,1.01905,0.30818,0,1.27379,full_record,STABLE,No significant trend (p=0.308); Mann-Kendall Z=1.02 (full record — 5-year window insufficient),False,
+raanana_nt_3,NAPT,8,2,False,,,,,,,none,NONE,,False,10
+raanana_nt_3,NBTBZ,4,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,NI,8,2,True,,,-0.328798,0.742308,0,0.594584,full_record,STABLE,No significant trend (p=0.742); Mann-Kendall Z=-0.33 (full record — 5-year window insufficient),True,20
+raanana_nt_3,NO3,4,2,True,,,-1.01905,0.30818,0,1.51061,full_record,STABLE,No significant trend (p=0.308); Mann-Kendall Z=-1.02 (full record — 5-year window insufficient),True,70
+raanana_nt_3,NPBNZ,4,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,ORP,5,0,True,,,,,,,none,NONE,,False,
+raanana_nt_3,OXYL,4,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,PB,7,2,False,,,,,,,none,NONE,,False,10
+raanana_nt_3,PDCB,5,2,False,,,,,,,none,NONE,,False,75
+raanana_nt_3,PHFD,5,0,True,,,,,,,none,NONE,,False,
+raanana_nt_3,PTOLU,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,PXYL,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,SBBNZ,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,SE,3,2,False,,,,,,,none,NONE,,False,10
+raanana_nt_3,SO4,4,2,True,,,-1.01905,0.30818,0,1.52761,full_record,STABLE,No significant trend (p=0.308); Mann-Kendall Z=-1.02 (full record — 5-year window insufficient),False,250
+raanana_nt_3,SR,6,2,True,,,-2.25441,0.0241705,0,1.3343,full_record,DECREASING,Declining trend (p=0.024); Mann-Kendall Z=-2.25 (full record — 5-year window insufficient),False,
+raanana_nt_3,STYR,6,2,False,,,,,,,none,NONE,,False,50
+raanana_nt_3,T,5,0,True,,,,,,,none,NONE,,False,
+raanana_nt_3,TBBNZ,3,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,TCEN,5,2,False,,,,,,,none,NONE,,False,5
+raanana_nt_3,TCET,7,2,False,,,,,,,none,NONE,,False,200
+raanana_nt_3,TCEY,9,2,True,,,-0.419314,0.674987,0,0.883625,full_record,STABLE,No significant trend (p=0.675); Mann-Kendall Z=-0.42 (full record — 5-year window insufficient),True,7.5
+raanana_nt_3,TCFM,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_3,TDCE,9,2,False,,,,,,,none,NONE,,False,50
+raanana_nt_3,TEC12,4,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,TEC22,4,0,False,,,,,,,none,NONE,,False,
+raanana_nt_3,TECE,9,2,True,,,2.55358,0.0106623,0,1.28199,full_record,INCREASING,Rising trend (p=0.011); Mann-Kendall Z=2.55 (full record — 5-year window insufficient),True,10
+raanana_nt_3,TN-N,1,1,True,,,,,,,none,NONE,,False,
+raanana_nt_3,TOC,1,1,True,,,,,,,none,NONE,,False,
+raanana_nt_3,TOLU,8,2,True,,,0.657596,0.510798,0,0.718028,full_record,STABLE,No significant trend (p=0.511); Mann-Kendall Z=0.66 (full record — 5-year window insufficient),False,700
+raanana_nt_3,TRBN3,7,2,False,,,,,,,none,NONE,,False,
+raanana_nt_3,TRBN4,6,2,False,,,,,,,none,NONE,,False,70
+raanana_nt_3,TRBRM,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_3,TRMB4,7,2,False,,,,,,,none,NONE,,False,
+raanana_nt_3,TRMB5,6,2,False,,,,,,,none,NONE,,False,
+raanana_nt_3,TRPR3,5,2,False,,,,,,,none,NONE,,False,
+raanana_nt_3,VYCL,9,2,False,,,,,,,none,NONE,,False,0.5
+raanana_nt_3,WDEP,5,0,True,,,,,,,none,NONE,,False,
+raanana_nt_3,XYLE,8,2,True,,,0.657596,0.510798,0,0.732996,full_record,STABLE,No significant trend (p=0.511); Mann-Kendall Z=0.66 (full record — 5-year window insufficient),False,500
+raanana_nt_3,ZN,7,2,True,,,-1.09769,0.272341,0,0.466072,full_record,STABLE,No significant trend (p=0.272); Mann-Kendall Z=-1.10 (full record — 5-year window insufficient),False,5000
+raanana_p_18,AL,1,0,False,,,,,,,none,NONE,,False,200
+raanana_p_18,AS,1,0,True,,,,,,,none,NONE,,False,10
+raanana_p_18,B,1,0,False,,,,,,,none,NONE,,False,1
+raanana_p_18,BENZ,1,0,False,,,,,,,none,NONE,,False,5
+raanana_p_18,BR,2,0,True,,,,,,,none,NONE,,False,
+raanana_p_18,BRBNZ,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,BRCM,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,BRDCM,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,BRMET,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,CA,2,0,True,,,,,,,none,NONE,,True,80
+raanana_p_18,CCL4,1,0,False,,,,,,,none,NONE,,False,4
+raanana_p_18,CD,1,0,False,,,,,,,none,NONE,,False,5
+raanana_p_18,CDCE,1,0,False,,,,,,,none,NONE,,False,50
+raanana_p_18,CHLET,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,CHLF,1,0,False,,,,,,,none,NONE,,False,80
+raanana_p_18,CHLMT,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,CL,3,0,True,,,,,,,none,NONE,,False,400
+raanana_p_18,CO,1,0,True,,,,,,,none,NONE,,False,
+raanana_p_18,CR,1,0,True,,,,,,,none,NONE,,False,50
+raanana_p_18,CTN2,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,CTN4,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,CU,1,0,False,,,,,,,none,NONE,,False,1400
+raanana_p_18,DBR12,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,DBR3C,1,0,False,,,,,,,none,NONE,,False,0.3
+raanana_p_18,DBRM,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,DBRMT,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,DCB13,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,DCDFM,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,DCET,1,0,False,,,,,,,none,NONE,,False,4
+raanana_p_18,DCET1,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,DCEY,1,0,False,,,,,,,none,NONE,,False,10
+raanana_p_18,DCHP1,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,DCP11,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,DCP13,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,DCP22,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,DCPN,1,0,False,,,,,,,none,NONE,,False,5
+raanana_p_18,DP13E,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,DP13T,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,ETBN,1,0,False,,,,,,,none,NONE,,False,300
+raanana_p_18,ETDB,1,0,False,,,,,,,none,NONE,,False,0.05
+raanana_p_18,FE++,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,HCO3,1,0,True,,,,,,,none,NONE,,False,
+raanana_p_18,HXCB,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,IPBNZ,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,K,2,0,True,,,,,,,none,NONE,,False,
+raanana_p_18,LI,1,0,True,,,,,,,none,NONE,,False,
+raanana_p_18,MCBZ,1,0,False,,,,,,,none,NONE,,False,100
+raanana_p_18,MDCB,1,0,False,,,,,,,none,NONE,,False,600
+raanana_p_18,METCH,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,MN,1,0,True,,,,,,,none,NONE,,False,200
+raanana_p_18,MTBE,1,0,False,,,,,,,none,NONE,,False,40
+raanana_p_18,Mg,2,0,True,,,,,,,none,NONE,,False,150
+raanana_p_18,NA,2,0,True,,,,,,,none,NONE,,False,
+raanana_p_18,NAPT,1,0,False,,,,,,,none,NONE,,False,10
+raanana_p_18,NBTBZ,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,NI,1,0,True,,,,,,,none,NONE,,False,20
+raanana_p_18,NO3,3,0,True,,,,,,,none,NONE,,True,70
+raanana_p_18,NPBNZ,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,OXYL,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,PB,1,0,False,,,,,,,none,NONE,,False,10
+raanana_p_18,PDCB,1,0,False,,,,,,,none,NONE,,False,75
+raanana_p_18,PTOLU,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,PXYL,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,SBBNZ,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,SE,1,0,True,,,,,,,none,NONE,,False,10
+raanana_p_18,SO4,2,0,True,,,,,,,none,NONE,,False,250
+raanana_p_18,SR,1,0,True,,,,,,,none,NONE,,False,
+raanana_p_18,STYR,1,0,False,,,,,,,none,NONE,,False,50
+raanana_p_18,TBBNZ,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,TCEN,1,0,False,,,,,,,none,NONE,,False,5
+raanana_p_18,TCET,1,0,False,,,,,,,none,NONE,,False,200
+raanana_p_18,TCEY,1,0,False,,,,,,,none,NONE,,False,7.5
+raanana_p_18,TCFM,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,TDCE,1,0,False,,,,,,,none,NONE,,False,50
+raanana_p_18,TDS,1,0,True,,,,,,,none,NONE,,False,
+raanana_p_18,TEC12,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,TEC22,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,TECE,1,0,False,,,,,,,none,NONE,,False,10
+raanana_p_18,TOLU,1,0,False,,,,,,,none,NONE,,False,700
+raanana_p_18,TRBN3,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,TRBN4,1,0,False,,,,,,,none,NONE,,False,70
+raanana_p_18,TRBRM,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,TRMB4,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,TRMB5,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,TRPR3,1,0,False,,,,,,,none,NONE,,False,
+raanana_p_18,VYCL,1,0,False,,,,,,,none,NONE,,False,0.5
+raanana_p_18,XYLE,1,0,False,,,,,,,none,NONE,,False,500
+raanana_p_18,ZN,1,0,False,,,,,,,none,NONE,,False,5000
+raanana_p_25,6:2FT,1,1,False,,,,,,,none,NONE,,False,
+raanana_p_25,ADONA,1,1,False,,,,,,,none,NONE,,False,
+raanana_p_25,ADRN,3,3,False,,,,,,,none,NONE,,False,0.05
+raanana_p_25,AG,3,3,False,,,,,,,none,NONE,,False,100
+raanana_p_25,AL,3,3,False,,,,,,,none,NONE,,False,200
+raanana_p_25,ALAC,6,3,False,,,,,,,none,NONE,,False,4
+raanana_p_25,ALCB,6,3,False,,,,,,,none,NONE,,False,
+raanana_p_25,ALDSU,6,3,False,,,,,,,none,NONE,,False,
+raanana_p_25,ALFA,2,2,True,,,,,,,none,NONE,,False,0.1
+raanana_p_25,ALSD,6,3,False,,,,,,,none,NONE,,False,
+raanana_p_25,AS,3,3,False,,,,,,,none,NONE,,False,10
+raanana_p_25,ATRA,6,3,False,,,,,,,none,NONE,,False,2
+raanana_p_25,B,4,4,True,1.1619,0.245278,1.1619,0.245278,1.73205,,5y,STABLE,No significant trend (p=0.245); Mann-Kendall Z=1.16,False,1
+raanana_p_25,BA,4,4,True,1.44463,0.148562,1.44463,0.148562,1.69611,,5y,STABLE,No significant trend (p=0.149); Mann-Kendall Z=1.44,False,1000
+raanana_p_25,BE,3,3,False,,,,,,,none,NONE,,False,4
+raanana_p_25,BENZ,6,3,False,,,,,,,none,NONE,,False,5
+raanana_p_25,BEPT,6,3,False,,,,,,,none,NONE,,False,8
+raanana_p_25,BETA,2,2,False,,,,,,,none,NONE,,False,1
+raanana_p_25,BNZP,6,3,False,,,,,,,none,NONE,,False,0.5
+raanana_p_25,BR,1,1,True,,,,,,,none,NONE,,False,
+raanana_p_25,BRMC,3,0,False,,,,,,,none,NONE,,False,
+raanana_p_25,CA,7,7,True,1.06338,0.287611,1.06338,0.287611,0.441064,,5y,STABLE,No significant trend (p=0.288); Mann-Kendall Z=1.06,True,80
+raanana_p_25,CARBO,6,3,False,,,,,,,none,NONE,,False,
+raanana_p_25,CARFN,3,3,False,,,,,,,none,NONE,,False,20
+raanana_p_25,CCL4,6,3,False,,,,,,,none,NONE,,False,4
+raanana_p_25,CD,3,3,False,,,,,,,none,NONE,,False,5
+raanana_p_25,CDCE,6,3,False,,,,,,,none,NONE,,False,50
+raanana_p_25,CHLF,11,8,True,2.38416,0.0171182,3.3955,0.000685037,1.49786,,5y,INCREASING,Rising trend (p=0.017); Mann-Kendall Z=2.38,False,80
+raanana_p_25,CL,18,18,True,1.82689,0.0677167,1.82689,0.0677167,0.0592591,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,400
+raanana_p_25,CLDN,6,3,False,,,,,,,none,NONE,,False,1
+raanana_p_25,CLPF,6,3,False,,,,,,,none,NONE,,False,
+raanana_p_25,CN,3,3,False,,,,,,,none,NONE,,False,50
+raanana_p_25,COLR,7,7,False,,,,,,,none,NONE,,False,15
+raanana_p_25,CR,3,3,True,,,,,,,none,NONE,,False,50
+raanana_p_25,CU,3,3,False,,,,,,,none,NONE,,False,1400
+raanana_p_25,DADN,3,3,False,,,,,,,none,NONE,,False,0.05
+raanana_p_25,DBCP,6,3,False,,,,,,,none,NONE,,False,0.3
+raanana_p_25,DCET,6,3,False,,,,,,,none,NONE,,False,4
+raanana_p_25,DCEY,9,6,True,0,1,1.1619,0.245278,0.608581,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,False,10
+raanana_p_25,DCLM,6,3,False,,,,,,,none,NONE,,False,5
+raanana_p_25,DCPA,6,3,False,,,,,,,none,NONE,,False,30
+raanana_p_25,DCPN,6,3,False,,,,,,,none,NONE,,False,5
+raanana_p_25,DDD,3,3,False,,,,,,,none,NONE,,False,
+raanana_p_25,DDE,3,3,False,,,,,,,none,NONE,,False,
+raanana_p_25,DDT,3,3,False,,,,,,,none,NONE,,False,1
+raanana_p_25,DIQAT,3,3,False,,,,,,,none,NONE,,False,20
+raanana_p_25,DNSB,3,3,False,,,,,,,none,NONE,,False,7
+raanana_p_25,EC,6,6,True,-0.375735,0.707114,-0.375735,0.707114,1.22935,,5y,STABLE,No significant trend (p=0.707); Mann-Kendall Z=-0.38,False,
+raanana_p_25,ETBN,6,3,False,,,,,,,none,NONE,,False,300
+raanana_p_25,ETDB,6,3,False,,,,,,,none,NONE,,False,0.05
+raanana_p_25,F,4,4,True,0,1,0,1,1,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,False,1.7
+raanana_p_25,FE,4,4,False,,,,,,,none,NONE,,False,1000
+raanana_p_25,HARD,6,6,True,0,1,0,1,0.354168,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,True,200
+raanana_p_25,HCO3,1,1,True,,,,,,,none,NONE,,False,
+raanana_p_25,HEPE,6,3,False,,,,,,,none,NONE,,False,0.2
+raanana_p_25,HEPT,6,3,False,,,,,,,none,NONE,,False,0.4
+raanana_p_25,HG,3,3,False,,,,,,,none,NONE,,False,1
+raanana_p_25,K,4,4,True,0,1,0,1,0.301511,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,False,
+raanana_p_25,LIND,6,3,False,,,,,,,none,NONE,,False,1
+raanana_p_25,MBAS,3,3,False,,,,,,,none,NONE,,False,0.5
+raanana_p_25,MCBZ,6,3,False,,,,,,,none,NONE,,False,100
+raanana_p_25,MCPA,3,3,False,,,,,,,none,NONE,,False,2
+raanana_p_25,MDCB,6,3,False,,,,,,,none,NONE,,False,600
+raanana_p_25,MN,4,4,False,,,,,,,none,NONE,,False,200
+raanana_p_25,MO,3,3,False,,,,,,,none,NONE,,False,70
+raanana_p_25,MTAL,3,3,False,,,,,,,none,NONE,,False,10
+raanana_p_25,MTBE,3,3,False,,,,,,,none,NONE,,False,40
+raanana_p_25,Mg,9,9,True,0.105409,0.916051,0.105409,0.916051,0.861524,,5y,STABLE,No significant trend (p=0.916); Mann-Kendall Z=0.11,False,150
+raanana_p_25,NA,4,4,True,0,1,0,1,0.953585,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,False,
+raanana_p_25,NI,3,3,False,,,,,,,none,NONE,,False,20
+raanana_p_25,NO3,86,85,True,7.32446,2.39863e-13,6.88052,5.96357e-12,0.569311,,5y,INCREASING,Rising trend (p=0.000); Mann-Kendall Z=7.32,True,70
+raanana_p_25,OXAMY,3,3,False,,,,,,,none,NONE,,False,200
+raanana_p_25,PB,3,3,False,,,,,,,none,NONE,,False,10
+raanana_p_25,PCB,3,3,False,,,,,,,none,NONE,,False,0.5
+raanana_p_25,PCP,3,3,False,,,,,,,none,NONE,,False,3
+raanana_p_25,PDCB,6,3,False,,,,,,,none,NONE,,False,75
+raanana_p_25,PFBA,2,2,False,,,,,,,none,NONE,,False,0.1
+raanana_p_25,PFBS,2,2,False,,,,,,,none,NONE,,False,0.1
+raanana_p_25,PFDA,1,1,False,,,,,,,none,NONE,,False,0.1
+raanana_p_25,PFDoA,1,1,False,,,,,,,none,NONE,,False,0.1
+raanana_p_25,PFESA,1,1,False,,,,,,,none,NONE,,False,
+raanana_p_25,PFHpA,2,2,False,,,,,,,none,NONE,,False,0.1
+raanana_p_25,PFHxA,2,2,False,,,,,,,none,NONE,,False,0.1
+raanana_p_25,PFHxS,2,2,False,,,,,,,none,NONE,,False,0.1
+raanana_p_25,PFNA,2,2,False,,,,,,,none,NONE,,False,0.1
+raanana_p_25,PFOA,2,2,False,,,,,,,none,NONE,,False,0.1
+raanana_p_25,PFOS,2,2,False,,,,,,,none,NONE,,False,0.1
+raanana_p_25,PFPeA,1,1,False,,,,,,,none,NONE,,False,0.1
+raanana_p_25,PHLB,12,12,True,0.631158,0.527937,0.631158,0.527937,0.506271,,5y,STABLE,No significant trend (p=0.528); Mann-Kendall Z=0.63,False,
+raanana_p_25,SE,3,3,False,,,,,,,none,NONE,,False,10
+raanana_p_25,SIMZ,6,3,False,,,,,,,none,NONE,,False,2
+raanana_p_25,SIO2,1,1,True,,,,,,,none,NONE,,False,
+raanana_p_25,SO4,4,4,True,0,1,0,1,0.901523,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,False,250
+raanana_p_25,SR,1,1,True,,,,,,,none,NONE,,False,
+raanana_p_25,STYR,6,3,False,,,,,,,none,NONE,,False,50
+raanana_p_25,Sb,3,3,False,,,,,,,none,NONE,,False,6
+raanana_p_25,T,8,8,True,1.38222,0.166905,1.38222,0.166905,0.486702,,5y,STABLE,No significant trend (p=0.167); Mann-Kendall Z=1.38,False,
+raanana_p_25,TCAA,3,3,False,,,,,,,none,NONE,,False,9
+raanana_p_25,TCEN,6,3,False,,,,,,,none,NONE,,False,5
+raanana_p_25,TCET,6,3,False,,,,,,,none,NONE,,False,200
+raanana_p_25,TCEY,18,15,True,-0.895164,0.370699,0.987658,0.32332,0.797185,,5y,STABLE,No significant trend (p=0.371); Mann-Kendall Z=-0.90,True,7.5
+raanana_p_25,TCPA,3,3,False,,,,,,,none,NONE,,False,10
+raanana_p_25,TDCE,6,3,False,,,,,,,none,NONE,,False,50
+raanana_p_25,TDS,9,9,True,1.04828,0.294507,1.04828,0.294507,0.694603,,5y,STABLE,No significant trend (p=0.295); Mann-Kendall Z=1.05,False,
+raanana_p_25,TECE,6,3,False,,,,,,,none,NONE,,False,10
+raanana_p_25,TL,3,3,False,,,,,,,none,NONE,,False,2
+raanana_p_25,TOC,7,7,False,,,,,,,none,NONE,,False,
+raanana_p_25,TOLU,6,3,False,,,,,,,none,NONE,,False,700
+raanana_p_25,TP-P,1,1,True,,,,,,,none,NONE,,False,
+raanana_p_25,TRBN4,3,0,False,,,,,,,none,NONE,,False,70
+raanana_p_25,TRFL,6,3,False,,,,,,,none,NONE,,False,20
+raanana_p_25,TURB,3,3,True,,,,,,,none,NONE,,False,1
+raanana_p_25,U,3,3,True,,,,,,,none,NONE,,False,15
+raanana_p_25,UV,4,4,True,0.722315,0.470101,0.722315,0.470101,1.12063,,5y,STABLE,No significant trend (p=0.470); Mann-Kendall Z=0.72,False,
+raanana_p_25,VYCL,6,3,False,,,,,,,none,NONE,,False,0.5
+raanana_p_25,XYLE,6,3,False,,,,,,,none,NONE,,False,500
+raanana_p_25,ZN,3,3,False,,,,,,,none,NONE,,False,5000
