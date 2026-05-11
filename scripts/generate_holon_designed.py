@@ -141,7 +141,9 @@ def main() -> None:
     recs_f7 = sc.html_recommendations_table()
 
     # Generate borehole classification visualizations (Phase 2 - statistical analysis)
-    class_table_f8 = sc.svg_borehole_classification_table(classification)
+    # Include classification definitions extracted from V4
+    class_intro = narrative.get("classification_intro", "")
+    class_table_f8 = sc.svg_borehole_classification_table(classification, class_intro)
     class_map_f9 = sc.svg_borehole_map_html(classification)
 
     print("Filling template ...")

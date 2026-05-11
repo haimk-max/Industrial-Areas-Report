@@ -698,10 +698,11 @@ def svg_monitoring_gaps(data_avail: pd.DataFrame, severity: pd.DataFrame) -> str
     return "".join(rows)
 
 
-def svg_borehole_classification_table(classification: pd.DataFrame) -> str:
+def svg_borehole_classification_table(classification: pd.DataFrame, classification_intro: str = "") -> str:
     """Generate HTML table of borehole classification statistics (2021-2026).
 
     Summarizes all 85 boreholes with recent data by classification level.
+    If classification_intro provided, includes definitions from V4 report.
     """
     if classification.empty:
         return '<div style="padding:20px;color:#6b6b6b;text-align:center">אין נתוני סיווג זמינים</div>'
@@ -722,6 +723,12 @@ def svg_borehole_classification_table(classification: pd.DataFrame) -> str:
     rows = []
     rows.append('<div class="classification-table">')
     rows.append('<div class="section-title">סיווג קידוחים (בסיס 2021–2026)</div>')
+
+    # Include definitions from V4 if available
+    if classification_intro:
+        rows.append('<div class="classification-intro" style="font-size:13px;margin-bottom:16px;color:#3a3a3a;line-height:1.6">')
+        rows.append(classification_intro)
+        rows.append('</div>')
 
     rows.append('<div class="summary-grid">')
     rows.append('<div class="stat-item">')
