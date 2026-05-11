@@ -1,0 +1,26 @@
+borehole_id,alert_criteria
+מק_חולון_14,INCREASING+crossed
+נד_אגד_אזור_1,INCREASING+crossed; severity>=7
+נד_אגד_אזור_12,severity>=7
+נד_אגד_אזור_15,severity>=7
+נד_אגד_אזור_16,severity>=7
+נד_אגד_אזור_18,severity>=7
+נד_אגד_אזור_4,INCREASING+crossed
+נד_אגד_אזור_6,INCREASING+crossed
+נד_אגד_אזור_7,INCREASING+crossed
+נד_אגד_אזור_9,INCREASING+crossed
+נד_אגד_אזור_n3,severity>=7
+נד_אגד_איזור_7,severity>=7
+נד_המרכבה_ק2,INCREASING+crossed
+נד_טן_חולון_1,INCREASING+crossed
+נד_סונול_המלאכה_מ-1,severity>=7
+נד_פז_סיירים_3,INCREASING+crossed
+נד_פז_צבר_1,severity>=7
+נת_אלביט_חולון_1,severity>=7
+נת_חולון_1,INCREASING+crossed
+נת_חולון_11,severity>=7
+נת_חולון_14,INCREASING+crossed
+נת_חולון_2,INCREASING+crossed; severity>=7
+נת_חולון_26,severity>=7
+נת_חולון_5,severity>=7
+נת_חולון_7,INCREASING+crossed; severity>=7
