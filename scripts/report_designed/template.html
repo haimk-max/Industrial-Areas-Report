@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>דוח ניטור איכות מי תהום — אזור התעשייה חולון</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#fdfcf9;
+    --ink:#1a1a1a;
+    --ink-2:#3a3a3a;
+    --soft:#6b6b6b;
+    --rule:#1a1a1a;
+    --rule-light:#cfcfcf;
+    --rule-faint:#e6e3dd;
+    --red:#a82a1c;
+    --red-soft:#d99a93;
+    --grey-1:#f0ede6;
+    --grey-2:#d8d3c8;
+    --grey-3:#a8a29a;
+    --grey-4:#5a564f;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink);font-family:"Frank Ruhl Libre","Times New Roman",serif;-webkit-font-smoothing:antialiased;font-feature-settings:"kern","liga","tnum"}
+  body{padding:0 0 80px;font-size:15px;line-height:1.6}
+  .doc{max-width:920px;margin:0 auto;padding:56px 48px 0}
+  .mono{font-family:"IBM Plex Mono",monospace;font-feature-settings:"tnum"}
+
+  /* --- Masthead --- */
+  .masthead{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:36px}
+  .masthead .top{display:flex;justify-content:space-between;align-items:baseline;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);padding-bottom:14px;border-bottom:1px solid var(--rule-light)}
+  .masthead h1{font-weight:900;font-size:36px;line-height:1.15;margin:18px 0 8px;letter-spacing:-0.005em}
+  .masthead .sub{font-size:17px;color:var(--ink-2);font-weight:400;line-height:1.5;max-width:680px;margin-bottom:14px}
+  .masthead .meta{display:flex;gap:32px;font-family:"Source Sans 3",sans-serif;font-size:12.5px;color:var(--soft);padding-top:14px;border-top:1px solid var(--rule-light)}
+  .masthead .meta b{color:var(--ink);font-weight:600}
+
+  /* --- Section --- */
+  section{margin:48px 0}
+  .sec-h{display:flex;align-items:baseline;gap:14px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--ink)}
+  .sec-h .num{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;color:var(--soft);text-transform:uppercase;flex-shrink:0}
+  .sec-h h2{font-weight:700;font-size:22px;letter-spacing:-0.005em;margin:0;flex:1}
+  .lede{font-size:15.5px;color:var(--ink-2);line-height:1.65;margin:0 0 24px;max-width:720px}
+  p{line-height:1.65;color:var(--ink-2);margin:0 0 12px}
+  h3{font-weight:700;font-size:16.5px;margin:24px 0 8px}
+
+  /* --- Figure --- */
+  figure{margin:28px 0 0;padding:0}
+  figure .frame{border:1px solid var(--ink);background:var(--paper);padding:28px 30px 22px}
+  figure figcaption{margin-top:10px;font-size:13px;color:var(--ink-2);line-height:1.55;display:grid;grid-template-columns:80px 1fr;gap:12px;padding-top:8px}
+  figure figcaption .lbl{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--soft);text-transform:uppercase;letter-spacing:.06em;padding-top:1px}
+  figure figcaption b{font-weight:700;color:var(--ink)}
+  .fig-h{display:flex;justify-content:space-between;font-family:"Source Sans 3",sans-serif;font-size:11.5px;color:var(--soft);text-transform:uppercase;letter-spacing:.06em;margin-bottom:18px;padding-bottom:6px;border-bottom:1px solid var(--rule-faint)}
+  .fig-h .ttl{color:var(--ink);font-weight:600}
+
+  /* --- SVG defaults: academic style --- */
+  svg{display:block;max-width:100%}
+  .ax{stroke:var(--ink);stroke-width:1;fill:none}
+  .gridline{stroke:var(--rule-light);stroke-width:0.5}
+  .tick-text{font-family:"IBM Plex Mono",monospace;font-size:9.5px;fill:var(--ink)}
+  .axis-title{font-family:"Source Sans 3",sans-serif;font-size:11px;fill:var(--ink);font-weight:600}
+  .annot{font-family:"Source Sans 3",sans-serif;font-size:10.5px;fill:var(--ink-2)}
+  .annot-bold{font-family:"Source Sans 3",sans-serif;font-size:10.5px;fill:var(--ink);font-weight:600}
+  .dws-line{stroke:var(--red);stroke-width:1;stroke-dasharray:3 2}
+  .data-line{fill:none;stroke-width:1.2}
+  .pt{stroke-width:1}
+
+  /* --- Severity matrix (academic, B/W with red highlight) --- */
+  table.matrix{width:100%;border-collapse:collapse;font-size:12.5px;font-family:"IBM Plex Mono",monospace}
+  table.matrix th, table.matrix td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--rule-faint)}
+  table.matrix thead th{border-bottom:1px solid var(--ink);font-family:"Source Sans 3",sans-serif;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);font-weight:600;padding-bottom:6px}
+  table.matrix td.lbl{font-family:"Source Sans 3",sans-serif;font-weight:500;font-size:12.5px}
+  table.matrix td.val{text-align:center;font-feature-settings:"tnum";color:var(--ink);white-space:nowrap}
+  table.matrix td.val .b{display:inline-block;min-width:22px;height:20px;line-height:18px;padding:0 4px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--ink);vertical-align:middle;font-family:"IBM Plex Mono",monospace}
+  table.matrix td.val.empty{color:var(--rule-light)}
+  table.matrix td.val .b.s0{background:var(--paper);color:var(--rule-light);border-color:var(--rule-light)}
+  table.matrix td.val .b.s2{background:var(--grey-1);color:var(--ink)}
+  table.matrix td.val .b.s4{background:var(--grey-2);color:var(--ink)}
+  table.matrix td.val .b.s6{background:var(--grey-4);color:var(--paper);border-color:var(--grey-4)}
+  table.matrix td.val .b.s8{background:var(--red);color:var(--paper);border-color:var(--red)}
+  table.matrix td.val .up{color:var(--red);font-weight:700;margin-left:2px}
+
+  /* --- Gap timeline --- */
+  .gap-grid{display:grid;grid-template-columns:170px 1fr 80px;gap:10px 14px;font-size:12.5px;align-items:center}
+  .gap-grid .hd{font-family:"Source Sans 3",sans-serif;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);padding-bottom:6px;border-bottom:1px solid var(--ink);margin-bottom:4px;font-weight:600}
+  .gap-grid .nm{font-weight:500;line-height:1.35}
+  .gap-grid .nm small{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--soft);font-weight:400;margin-top:2px}
+  .gap-grid .last{font-family:"IBM Plex Mono",monospace;font-size:11.5px;text-align:left;color:var(--red)}
+  .gap-bar{position:relative;height:14px;background:var(--paper);border-top:1px solid var(--rule-light);border-bottom:1px solid var(--rule-light)}
+  .gap-bar .a{position:absolute;top:0;bottom:0;background:var(--ink-2)}
+  .gap-bar .m{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(90deg,var(--paper) 0 4px,var(--red-soft) 4px 5px)}
+
+  /* --- Recommendation table --- */
+  table.rec{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+  table.rec th, table.rec td{text-align:right;padding:10px 12px 10px 0;border-bottom:1px solid var(--rule-faint);vertical-align:top;line-height:1.55}
+  table.rec th{border-bottom:1px solid var(--ink);font-family:"Source Sans 3",sans-serif;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);font-weight:600;padding-bottom:6px}
+  table.rec td.tier{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink);width:90px;text-transform:uppercase;letter-spacing:.04em}
+  table.rec td.tier.urg{color:var(--red);font-weight:600}
+  table.rec td.action b{font-weight:600}
+  table.rec td.cost{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--soft);text-align:left;width:90px}
+  table.rec tr.cat td{padding-top:18px;padding-bottom:6px;border-bottom:1px solid var(--ink);font-family:"Source Sans 3",sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);font-weight:700}
+  table.rec tr.cat td .n{color:var(--soft);font-weight:500;margin-inline-start:8px}
+  table.rec tr.cat:first-child td{padding-top:4px}
+
+  /* --- Figure 1 · Hebrew-first ledger --- */
+  .ledger{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+  .ledger .row{display:grid;grid-template-columns:200px 1fr 140px;gap:24px;padding:18px 0;border-bottom:1px solid var(--rule-light);align-items:start}
+  .ledger .row:last-child{border-bottom:none}
+  .ledger .row.appendix{background:#f4f1ea;padding:14px 18px;margin:0 -18px -1px;border-bottom:none;color:var(--ink-2)}
+  .ledger .fam{font-weight:700;font-size:15px;line-height:1.3}
+  .ledger .fam small{display:block;font-weight:400;font-size:11.5px;color:var(--soft);margin-top:4px;line-height:1.4}
+  .ledger .row.appendix .fam{font-weight:600;font-size:13px;color:var(--ink-2)}
+  .ledger .row.appendix .fam small{font-size:11px}
+  .ledger .body{font-size:13px;line-height:1.55;color:var(--ink-2)}
+  .ledger .body b{color:var(--ink);font-weight:600}
+  .ledger .row.appendix .body{font-size:12px;color:#6b6b6b}
+  .ledger .metric{text-align:left;font-family:"IBM Plex Mono",monospace}
+  .ledger .metric .big{font-size:28px;font-weight:500;line-height:1;color:var(--red);display:block}
+  .ledger .metric .ratio{font-size:12px;color:var(--soft);margin-top:4px;display:block;letter-spacing:.02em}
+  .ledger .row.appendix .metric .big{font-size:16px;color:var(--ink-2);font-weight:500}
+  .ledger .row.appendix .metric .ratio{font-size:10.5px}
+
+  /* --- footer --- */
+  footer{max-width:920px;margin:0 auto;padding:32px 48px 0;border-top:1px solid var(--rule-light);font-size:11.5px;color:var(--soft);font-family:"Source Sans 3",sans-serif;line-height:1.6}
+  footer span{display:inline-block;margin-left:16px}
+  footer b{color:var(--ink);font-weight:600}
+
+  /* Narrative paragraphs (extracted from V4) */
+  .v4-body{font-size:14.5px;line-height:1.7;color:var(--ink-2);max-width:720px}
+  .v4-body strong{color:var(--ink);font-weight:600}
+  .v4-body ol, .v4-body ul{padding-right:22px;margin:8px 0}
+  .v4-body li{margin-bottom:6px}
+</style>
+</head>
+<body>
+
+<div class="doc">
+
+<!-- ============= MASTHEAD ============= -->
+<header class="masthead">
+  <div class="top">
+    <span>HOLON / ZONE REPORT V4</span>
+    <span>גרסה מעוצבת · {{GENERATED_AT}}</span>
+  </div>
+  <h1>דוח ניטור איכות מי תהום — אזור התעשייה חולון</h1>
+  <p class="sub">{{MASTHEAD_INTRO}}</p>
+  <div class="meta">
+    <span><b>{{N_ALERT}}</b> קידוחי ALERT</span>
+    <span><b>{{N_MEASUREMENTS}}</b> מדידות מסוננות</span>
+    <span><b>{{N_INCREASING}}</b> מגמות INCREASING</span>
+    <span><b>4</b> מוקדי זיהום פעילים</span>
+  </div>
+</header>
+
+<!-- ============= §1 EXECUTIVE SUMMARY ============= -->
+<section>
+  <div class="sec-h"><span class="num">§1</span><h2>תקציר מנהלים — ארבעה מוקדים פעילים</h2></div>
+  <p class="lede">ארבע משפחות זיהום פעילות תועדו באקוויפר אזור התעשייה חולון. הטבלה למטה מציגה את הקידוח המוביל בכל משפחה, ביחס לתקן מי השתייה.</p>
+
+  <figure>
+    <div class="fig-h">
+      <span class="ttl">איור 1 · לוח מוקדים</span>
+      <span>SEVERITY LEDGER · 2025</span>
+    </div>
+    <div class="frame">
+      {{LEDGER_F1}}
+    </div>
+    <figcaption>
+      <span class="lbl">מקור</span>
+      <span>severity_index_2025_holon.csv (159 צירופי קידוח-משפחה) · נוסחת bucket לפי דוח רשות המים 2021. <b>אדום</b> = שיא ריכוז במעבר &gt;500% מהתקן.</span>
+    </figcaption>
+  </figure>
+
+  <div class="v4-body" style="margin-top:32px">
+    {{FOUR_FOCI}}
+  </div>
+</section>
+
+<!-- ============= §2 SEVERITY MATRIX ============= -->
+<section>
+  <div class="sec-h"><span class="num">§2</span><h2>מטריצת חומרה — {{N_ALERT}} קידוחי ALERT × 3 משפחות</h2></div>
+  <p class="lede">לכל קידוח-ALERT מחושב bucket חומרה 0–8 לכל משפחת מזהמים. הסימון <span style="color:var(--red);font-weight:700">↑</span> מציין מגמת עלייה סטטיסטית; <span style="color:var(--red);font-weight:700">●</span> מציין שניטור הופסק.</p>
+  <figure>
+    <div class="fig-h">
+      <span class="ttl">איור 2 · מטריצת חומרה</span>
+      <span>SEVERITY MATRIX</span>
+    </div>
+    <div class="frame">
+      {{MATRIX_F2}}
+    </div>
+    <figcaption>
+      <span class="lbl">קריאה</span>
+      <span>שורות ממוינות לפי bucket מקסימלי יורד. בקטים: <b>0</b> מתחת ל-LOD; <b>2</b> ≤ 2% מהתקן; <b>4</b> 5–10%; <b>6</b> 25–100%; <b>8</b> &gt;500%. <b>אדום</b> = bucket 8 (חריגה קיצונית).</span>
+    </figcaption>
+  </figure>
+</section>
+
+<!-- ============= §3 CVOC ============= -->
+<section>
+  <div class="sec-h"><span class="num">§3</span><h2>תרכובות אורגניות מוכלרות — ליבת הזיהום ההיסטורי</h2></div>
+  <p class="lede">CVOC (TCE, PCE, vinyl chloride) הם הזיהום המורש המרכזי באקוויפר. מקורות עיקריים: תדירגן (המלאכה), תדיראן קשר. סדרת זמן בקידוחים המובילים — סקלה לוגריתמית, קו תקן 7.5 µg/L (אדום מקווקו).</p>
+  <figure>
+    <div class="fig-h">
+      <span class="ttl">איור 3 · CVOC לאורך זמן</span>
+      <span>TIME SERIES · LOG SCALE</span>
+    </div>
+    <div class="frame">
+      {{CVOC_PANELS_F3}}
+    </div>
+    <figcaption>
+      <span class="lbl">פאנלים</span>
+      <span>שישה קידוחי INDUSTRY מובילים. ציר Y לוגריתמי (µg/L), ציר X שנים 2010–2026. <b>הקו האדום המקווקו</b> = תקן מי שתייה (7.5 µg/L ל-TCE).</span>
+    </figcaption>
+  </figure>
+</section>
+
+<!-- ============= §4 METALS ============= -->
+<section>
+  <div class="sec-h"><span class="num">§4</span><h2>מתכות — כרום וניקל</h2></div>
+  <p class="lede">תעשיית הציפוי ההיסטורית (תרשיש, אמקור פליז, סופר כרום) השאירה זיהום כרום וניקל. נת חולון 14 — מגמת עלייה ארוכת-טווח; נת חולון 26 — מוקד חדש (פי 80 מהתקן).</p>
+  <figure>
+    <div class="fig-h">
+      <span class="ttl">איור 4 · כרום לאורך זמן</span>
+      <span>CHROMIUM · LOG SCALE</span>
+    </div>
+    <div class="frame">
+      {{CHROMIUM_PANELS_F4}}
+    </div>
+    <figcaption>
+      <span class="lbl">תקן</span>
+      <span>50 µg/L (הקו האדום המקווקו). נת חולון 26 בעל 2 דיגומים בלבד — דורש דיגום אישוש.</span>
+    </figcaption>
+  </figure>
+</section>
+
+<!-- ============= §5 FUEL ============= -->
+<section>
+  <div class="sec-h"><span class="num">§5</span><h2>דלקים — בנזן ו-MTBE</h2></div>
+  <p class="lede">19 קידוחי ניטור במתחם אגד הצפוני; מערכת EBR® הופעלה ספטמבר 2024. רוב הקידוחים בעלי מגמה יורדת; אגד-12 חריג — מגמת עלייה במ-MTBE.</p>
+  <figure>
+    <div class="fig-h">
+      <span class="ttl">איור 5 · BTEX לאורך זמן</span>
+      <span>BTEX TIME SERIES</span>
+    </div>
+    <div class="frame">
+      {{BTEX_PANELS_F5}}
+    </div>
+    <figcaption>
+      <span class="lbl">תקן</span>
+      <span>בנזן 5 µg/L · MTBE 40 µg/L. ריכוזים בלוגריתם, ציר X 2010–2026.</span>
+    </figcaption>
+  </figure>
+</section>
+
+<!-- ============= §6 MONITORING GAPS ============= -->
+<section>
+  <div class="sec-h"><span class="num">§6</span><h2>הפסקות ניטור בקידוחי ALERT</h2></div>
+  <p class="lede">קידוחי ALERT שבהם דיגום אחרון לפני 2023. הקו האפור = תקופת ניטור פעילה; הצבע <span style="color:var(--red)">המודגש האדום</span> = פערים שיש לחדש.</p>
+  <figure>
+    <div class="fig-h">
+      <span class="ttl">איור 6 · קווי זמן ניטור</span>
+      <span>MONITORING GAPS</span>
+    </div>
+    <div class="frame">
+      {{GAPS_F6}}
+    </div>
+    <figcaption>
+      <span class="lbl">מקור</span>
+      <span>data_availability_index.csv (1,521 צמדים קידוח-פרמטר).</span>
+    </figcaption>
+  </figure>
+</section>
+
+<!-- ============= §7 CURRENT STORY ============= -->
+<section>
+  <div class="sec-h"><span class="num">§7</span><h2>הסיפור העדכני · 2022–2026</h2></div>
+  <div class="v4-body">
+    {{CURRENT_STORY}}
+  </div>
+</section>
+
+<!-- ============= §8 RECOMMENDATIONS ============= -->
+<section>
+  <div class="sec-h"><span class="num">§8</span><h2>המלצות לפעולה — שלוש קטגוריות</h2></div>
+  <p class="lede">המלצות מסודרות לפי דחיפות ותחום פעולה. כל המלצה משויכת לקידוחים ספציפיים ולאופק זמן.</p>
+  <figure>
+    <div class="fig-h">
+      <span class="ttl">איור 7 · מסלול פעולה</span>
+      <span>RECOMMENDATIONS · 8 ACTIONS</span>
+    </div>
+    <div class="frame">
+      {{RECOMMENDATIONS_F7}}
+    </div>
+  </figure>
+</section>
+
+</div>
+
+<footer>
+  <span><b>מקור הנתונים:</b> Holon/lean_workspace (V4 evidence base)</span>
+  <span><b>טקסט נרטיבי:</b> HOLON_REPORT_V4.md (חילוץ אוטומטי)</span>
+  <span><b>יצירה:</b> {{GENERATED_AT}}</span>
+</footer>
+
+</body>
+</html>
