@@ -1,8 +1,0 @@
-canonical_id,name_he,excel_borehole_id,itm_easting,itm_northing,basin,purpose,borehole_type,monitoring_site,contamination_type
-raanana_nd_paz_hanofer,נד פז הנופר,17713905,189174,677924,חוף,ניטור דלק,fuel_monitoring,פז הנופר,דלק
-raanana_nd_turbine,נד תחנת טורבינות גז רעננה,17813906,189345,678575,חוף,ניטור דלק,fuel_monitoring,תחנת גז רעננה,דלק
-raanana_nt_1,נת רעננה 1,17713803,188515,677986,חוף,ניטור תעשיה,industrial_monitoring,אזור תעשייה רעננה,תעשיה
-raanana_nt_2,נת רעננה 2,17713804,188709,677884,חוף,ניטור תעשיה,industrial_monitoring,אזור תעשייה רעננה,תעשיה
-raanana_nt_3,נת רעננה 3,17813805,188888,678207,חוף,ניטור תעשיה,industrial_monitoring,אזור תעשייה רעננה,תעשיה
-raanana_p_18,פ רעננה 18,17713802,188944,677740,חוף,פרטי,private_production,,
-raanana_p_25,פ רעננה 25,17713703,187951,677569,חוף,פרטי,private_production,,
