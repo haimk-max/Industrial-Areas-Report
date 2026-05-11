@@ -45,14 +45,13 @@ def linear_x(year: float, y_min: int, y_max: int, x_left: float, x_right: float)
 # ───────────────────────── Figure 1: Severity Ledger ─────────────────────────
 
 def svg_severity_ledger(severity: pd.DataFrame) -> str:
-    """Build the F1 ledger: all family panels dynamically (INDUSTRY, METALS, PFAS, FUEL).
+    """Build the F1 ledger: only families with significant findings in Holon.
 
-    Returns inner HTML for .ledger container (used in template).
+    Order: CVOC → METALS → FUEL (last, per user request).
+    PFAS omitted entirely (max bucket = 0 in Holon, not a focus).
     """
-    # Family aggregations
     industry = severity[severity.family == "INDUSTRY"].sort_values("contributing_pct", ascending=False)
     metals = severity[severity.family == "METALS"].sort_values("contributing_pct", ascending=False)
-    pfas = severity[severity.family == "PFAS"].sort_values("contributing_pct", ascending=False)
     fuel = severity[severity.family == "FUEL"].sort_values("contributing_pct", ascending=False)
 
     rows = []
@@ -75,17 +74,6 @@ def svg_severity_ledger(severity: pd.DataFrame) -> str:
         rows.append(_ledger_row("מתכות כבדות",
                                 "כרום שש-ערכי · ניקל · קלסטר מזרחי",
                                 body, ratio))
-
-    if not pfas.empty:
-        # In Holon: max bucket = 0 across 4 sampled boreholes. Marginal only.
-        max_bucket = int(pfas["max_bucket"].max())
-        n_sampled = len(pfas)
-        body = (f"נדגמו <b>{n_sampled} קידוחים</b> בלבד; אינדקס מקסימלי <b>{max_bucket}</b> — "
-                f"ערכים שוליים בלבד באקוויפר חולון. אין מוקד PFAS פעיל מתועד; "
-                f"שמירה על ניטור פסיבי בלבד, לפי דוח רשות המים 2021.")
-        rows.append(_ledger_row("כימיקלים מעמידים PFAS",
-                                "מתודולוגיה מעבר ל-2021 · ניטור פסיבי",
-                                body, 0.0, appendix=True))
 
     if not fuel.empty:
         top = fuel.iloc[0]
