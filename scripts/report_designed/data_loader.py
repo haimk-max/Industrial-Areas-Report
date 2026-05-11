@@ -21,10 +21,25 @@ LEAN_WORKSPACE = REPO_ROOT / "Holon" / "lean_workspace"
 REPORT_V4 = REPO_ROOT / "Holon" / "output" / "HOLON_REPORT_V4.md"
 
 
+def _clarify_terms(text: str) -> str:
+    """Replace ambiguous Hebrew terminology with clearer phrasing.
+
+    'מורש' (legacy/inherited) — opaque to non-domain readers; replace with 'היסטורי' (historic).
+    Applied to all extracted narrative so wording stays consistent.
+    """
+    if not text:
+        return text
+    # Match 'מורש' as a whole word (with optional Hebrew prefix letters ה/ב/ל/כ/מ/ש/ו)
+    # so we don't accidentally hit 'מורשת' (heritage — different meaning).
+    text = re.sub(r"(?<![א-ת])([הבלכמשו]?)מורש(?![א-ת])", r"\1היסטורי", text)
+    return text
+
+
 def extract_narrative_sections(report_path: Path = REPORT_V4) -> dict:
     """Extract key narrative sections from HOLON_REPORT_V4.md.
 
     Returns dict with narrative content for template substitution.
+    Terminology cleanup: 'מורש'→'היסטורי' (clearer for non-specialist readers).
     """
     sections = {}
 
@@ -33,20 +48,17 @@ def extract_narrative_sections(report_path: Path = REPORT_V4) -> dict:
 
     text = report_path.read_text(encoding="utf-8")
 
-    # Executive summary intro (first paragraph)
     match = re.search(r"## 1\. תקציר מנהלים\n\n(.+?)\n\n\*\*ארבעה", text, re.DOTALL)
     if match:
-        sections["masthead_intro"] = match.group(1).strip()
+        sections["masthead_intro"] = _clarify_terms(match.group(1).strip())
 
-    # Four contamination foci
     match = re.search(r"\*\*ארבעה מוקדי זיהום.+?\n\n(.+?)\n\n\*\*הסיפור העדכני", text, re.DOTALL)
     if match:
-        sections["four_foci"] = match.group(1).strip()
+        sections["four_foci"] = _clarify_terms(match.group(1).strip())
 
-    # Current situation summary
     match = re.search(r"\*\*הסיפור העדכני\*\*:(.+?)\n\n---", text, re.DOTALL)
     if match:
-        sections["current_story"] = match.group(1).strip()
+        sections["current_story"] = _clarify_terms(match.group(1).strip())
 
     return sections
 

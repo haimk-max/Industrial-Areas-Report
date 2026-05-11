@@ -334,9 +334,13 @@ def _bucket_cell(b: int) -> str:
 
 # ───────────────────────── Figure 3: CVOC small multiples (Top wells time series) ─────────────────────────
 
+_CVOC_PARAMS = ["TRICHLORO ETHYLENE", "1,4 DIOXANE", "TETRACHLORO ETHYLENE"]
+_METALS_PARAMS = ["CHROMIUM AS CR", "NICKEL AS NI"]
+_FUEL_PARAMS = ["BENZENE", "MTBE", " MTBE", "TOLUENE"]
+
+
 def svg_cvoc_panels(measurements: pd.DataFrame, severity: pd.DataFrame) -> str:
-    """CVOC time-series panels for top INDUSTRY wells (2 cols × 3 rows)."""
-    # Filter severity to ALERT boreholes (those in measurements)
+    """CVOC time-series panels (top 3 compounds by exceedance: TCE, 1,4-Dioxane, PCE)."""
     alert_boreholes = set(measurements['canonical_id'].unique())
     industry = severity[
         (severity.family == "INDUSTRY") &
@@ -349,12 +353,13 @@ def svg_cvoc_panels(measurements: pd.DataFrame, severity: pd.DataFrame) -> str:
         nm = severity[severity.borehole == wid].iloc[0].name_he
         well_data = measurements[
             (measurements.canonical_id == wid) &
-            (measurements.param_code.isin(["TRICHLORO ETHYLENE", "TETRACHLORO ETHYLENE",
-                                            "CIS 1,2 DICHLOROETHYLENE"]))
+            (measurements.param_code.isin(_CVOC_PARAMS))
         ].copy()
         if well_data.empty:
             continue
-        panels.append(_time_series_panel(well_data, nm, dws=7.5, width=240, height=140))
+        panels.append(_time_series_panel(well_data, nm, dws=7.5,
+                                          width=400, height=260,
+                                          param_order=_CVOC_PARAMS))
 
     if not panels:
         return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני CVOC</div>'
@@ -362,41 +367,59 @@ def svg_cvoc_panels(measurements: pd.DataFrame, severity: pd.DataFrame) -> str:
     return _small_multiples_grid(panels, cols=2)
 
 
-# ───────────────────────── Figure 4: Chromium time series ─────────────────────────
+# ───────────────────────── Figure 4: Metals time series (Cr + Ni) ─────────────────────────
 
 def svg_chromium_panels(measurements: pd.DataFrame) -> str:
-    """Chromium time-series panels."""
-    cr_data = measurements[measurements.param_code == "CHROMIUM AS CR"].copy()
-    if cr_data.empty:
-        return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני כרום</div>'
+    """Metals time-series panels: Chromium + Nickel (top 2 metals by exceedance).
 
-    wells = cr_data.canonical_id.unique()
+    DWS used: Chromium 50 µg/L (Cr is the dominant exceedance). Nickel DWS = 70 µg/L
+    is not shown as a second red line to keep visual clarity; Ni exceedance is
+    contextualized via the legend and matrix sub-line.
+    """
+    metals_data = measurements[
+        measurements.param_code.isin(_METALS_PARAMS)
+    ].copy()
+    if metals_data.empty:
+        return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני מתכות</div>'
+
+    # Order wells by max Cr concentration (the headline contaminant)
+    well_max = (
+        metals_data[metals_data.param_code == "CHROMIUM AS CR"]
+        .groupby("canonical_id").concentration.max().sort_values(ascending=False)
+    )
+    wells = well_max.index.tolist()[:4]
+
     panels = []
-    for wid in wells[:4]:
-        nm = cr_data[cr_data.canonical_id == wid].iloc[0].name_he
-        well_data = cr_data[cr_data.canonical_id == wid].copy()
-        if len(well_data) < 1:
+    for wid in wells:
+        well_data = metals_data[metals_data.canonical_id == wid].copy()
+        if well_data.empty:
             continue
-        panels.append(_time_series_panel(well_data, nm, dws=50.0, width=340, height=180))
+        nm = well_data.iloc[0].name_he
+        panels.append(_time_series_panel(well_data, nm, dws=50.0,
+                                          width=440, height=270,
+                                          param_order=_METALS_PARAMS))
 
     if not panels:
-        return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני כרום</div>'
+        return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני מתכות</div>'
 
     return _small_multiples_grid(panels, cols=2)
 
 
-# ───────────────────────── Figure 5: BTEX panels ─────────────────────────
+# ───────────────────────── Figure 5: BTEX panels (Benzene, MTBE, Toluene) ─────────────────────────
 
 def svg_btex_panels(measurements: pd.DataFrame) -> str:
-    """BTEX (Benzene, MTBE) time-series for FUEL-family boreholes with data."""
-    fuel_data = measurements[measurements.param_code.isin(["BENZENE", " MTBE", "MTBE"])].copy()
+    """Fuel time-series: Benzene, MTBE, Toluene (top 3 by exceedance)."""
+    fuel_data = measurements[measurements.param_code.isin(_FUEL_PARAMS)].copy()
     if fuel_data.empty:
-        return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני BTEX</div>'
+        return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני דלקים</div>'
 
-    # Select representative FUEL boreholes: top wells with data
-    # Prioritize wells with max concentration in the upper range
+    # Select representative FUEL boreholes by max concentration
     well_max = fuel_data.groupby("canonical_id").concentration.max().sort_values(ascending=False)
     top_wells = well_max.head(6).index.tolist()
+
+    # Normalize the leading-space MTBE variant so legend/grouping is clean
+    fuel_data["param_code"] = fuel_data["param_code"].str.strip()
+    param_order = ["BENZENE", "MTBE", "TOLUENE"]
 
     panels = []
     for wid in top_wells:
@@ -404,24 +427,54 @@ def svg_btex_panels(measurements: pd.DataFrame) -> str:
         if well_data.empty:
             continue
         nm = well_data.iloc[0].name_he
-        panels.append(_time_series_panel(well_data, nm, dws=5.0, width=280, height=160))
+        panels.append(_time_series_panel(well_data, nm, dws=5.0,
+                                          width=400, height=260,
+                                          param_order=param_order))
 
     if not panels:
-        return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני BTEX</div>'
+        return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני דלקים</div>'
 
-    return _small_multiples_grid(panels, cols=3)
+    return _small_multiples_grid(panels, cols=2)
 
 
 # ───────────────────────── Internal: time-series panel ─────────────────────────
 
+_PARAM_STYLES = [
+    {"color": "#1a1a1a", "dash": "none",      "marker": "circle"},   # solid black
+    {"color": "#5a564f", "dash": "5 2",       "marker": "square"},   # dashed dark-grey
+    {"color": "#8a8278", "dash": "1.5 2",     "marker": "triangle"}, # dotted medium-grey
+]
+
+
 def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
-                        width: int = 240, height: int = 140) -> str:
-    """One SVG time-series panel: log Y, linear X (year), DWS dashed red line."""
+                        width: int = 380, height: int = 240,
+                        param_order: list = None) -> str:
+    """One SVG time-series panel: log Y, linear X (year), DWS dashed red line.
+
+    Supports multiple parameters with distinct line styles + legend at bottom.
+
+    Args:
+        well_data: DataFrame with date, concentration, param_code
+        name_he: Hebrew title shown above panel
+        dws: Drinking-water-standard line value (red dashed)
+        width/height: SVG dimensions
+        param_order: List of param_code strings to draw in this order (top to bottom in legend).
+                     If None, uses order found in well_data.
+    """
     well_data = well_data.copy()
     well_data["year"] = pd.to_datetime(well_data["date"]).dt.year
 
-    # Plot area
-    pad_l, pad_r, pad_t, pad_b = 32, 8, 18, 22
+    # Determine params present in this well, respecting the requested order
+    available = list(well_data.param_code.unique())
+    if param_order:
+        params = [p for p in param_order if p in available]
+    else:
+        params = available
+    if not params:
+        params = available
+
+    # Plot area — generous title (top), axis labels (bottom), legend (very bottom)
+    pad_l, pad_r, pad_t, pad_b = 44, 14, 38, 50
     x_left = pad_l
     x_right = width - pad_r
     y_top = pad_t
@@ -432,33 +485,38 @@ def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
     c_min = 0.1
     c_max = max(well_data.concentration.max() * 1.2, dws * 5)
 
-    # Draw grid + axes + DWS line
     parts = [f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}">']
 
-    # Year gridlines
-    for yr in [2012, 2016, 2020, 2024]:
+    # Year gridlines + tick labels
+    for yr in [2012, 2014, 2016, 2018, 2020, 2022, 2024]:
         x = linear_x(yr, y_min_year, y_max_year, x_left, x_right)
         parts.append(f'<line x1="{x:.1f}" y1="{y_top}" x2="{x:.1f}" y2="{y_bot}" '
                      f'stroke="{RULE_LIGHT}" stroke-width="0.4"/>')
-        parts.append(f'<text x="{x:.1f}" y="{height - 4}" '
-                     f'font-family="IBM Plex Mono,monospace" font-size="8.5" '
+        parts.append(f'<text x="{x:.1f}" y="{y_bot + 12}" '
+                     f'font-family="IBM Plex Mono,monospace" font-size="9" '
                      f'text-anchor="middle" fill="{SOFT}">{yr}</text>')
 
-    # Log-scale gridlines (1, 10, 100, 1000)
-    for c in [1, 10, 100, 1000, 10000]:
+    # Log-scale gridlines
+    for c in [0.1, 1, 10, 100, 1000, 10000, 100000]:
         if c > c_max: break
+        if c < c_min: continue
         y = log_y(c, c_min, c_max, y_top, y_bot)
         parts.append(f'<line x1="{x_left}" y1="{y:.1f}" x2="{x_right}" y2="{y:.1f}" '
                      f'stroke="{RULE_LIGHT}" stroke-width="0.4"/>')
-        parts.append(f'<text x="{x_left - 4}" y="{y + 3:.1f}" '
-                     f'font-family="IBM Plex Mono,monospace" font-size="8" '
-                     f'text-anchor="end" fill="{SOFT}">{c}</text>')
+        lbl = f"{c:g}" if c >= 1 else f"{c:.1f}"
+        parts.append(f'<text x="{x_left - 5}" y="{y + 3:.1f}" '
+                     f'font-family="IBM Plex Mono,monospace" font-size="9" '
+                     f'text-anchor="end" fill="{SOFT}">{lbl}</text>')
 
     # DWS line (red dashed)
     if dws <= c_max:
         y_dws = log_y(dws, c_min, c_max, y_top, y_bot)
         parts.append(f'<line x1="{x_left}" y1="{y_dws:.1f}" x2="{x_right}" y2="{y_dws:.1f}" '
                      f'stroke="{RED}" stroke-width="1" stroke-dasharray="3 2"/>')
+        # DWS label at right
+        parts.append(f'<text x="{x_right - 4}" y="{y_dws - 3:.1f}" '
+                     f'font-family="IBM Plex Mono,monospace" font-size="8.5" '
+                     f'text-anchor="end" fill="{RED}">DWS {dws:g}</text>')
 
     # Axes
     parts.append(f'<line x1="{x_left}" y1="{y_top}" x2="{x_left}" y2="{y_bot}" '
@@ -466,9 +524,16 @@ def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
     parts.append(f'<line x1="{x_left}" y1="{y_bot}" x2="{x_right}" y2="{y_bot}" '
                  f'stroke="{INK}" stroke-width="1"/>')
 
-    # Data: connect by parameter
-    for param, grp in well_data.groupby("param_code"):
-        grp = grp.sort_values("year")
+    # Y-axis title (µg/L)
+    parts.append(f'<text x="{x_left - 32}" y="{(y_top + y_bot) / 2:.1f}" '
+                 f'font-family="Source Sans 3,sans-serif" font-size="9.5" '
+                 f'text-anchor="middle" fill="{SOFT}" '
+                 f'transform="rotate(-90 {x_left - 32} {(y_top + y_bot) / 2:.1f})">µg/L (log)</text>')
+
+    # Data: one series per param, ordered per param_order
+    for i, param in enumerate(params):
+        style = _PARAM_STYLES[i % len(_PARAM_STYLES)]
+        grp = well_data[well_data.param_code == param].sort_values("year")
         pts = []
         for _, r in grp.iterrows():
             if r.concentration <= 0:
@@ -476,17 +541,48 @@ def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
             x = linear_x(r.year, y_min_year, y_max_year, x_left, x_right)
             y = log_y(r.concentration, c_min, c_max, y_top, y_bot)
             pts.append(f"{x:.1f},{y:.1f}")
-            parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="1.8" fill="{INK}"/>')
+            parts.append(_marker(x, y, style["marker"], style["color"]))
         if len(pts) >= 2:
+            dash_attr = "" if style["dash"] == "none" else f' stroke-dasharray="{style["dash"]}"'
             parts.append(f'<polyline points="{" ".join(pts)}" '
-                         f'fill="none" stroke="{INK}" stroke-width="1.2"/>')
+                         f'fill="none" stroke="{style["color"]}" stroke-width="1.3"{dash_attr}/>')
 
-    # Title (well name)
-    parts.append(f'<text x="{x_left}" y="14" font-family="Source Sans 3,sans-serif" '
-                 f'font-size="10.5" font-weight="600" fill="{INK}">{esc(name_he)}</text>')
+    # Title (well name) — at top, single line, larger
+    parts.append(f'<text x="{width / 2:.1f}" y="20" font-family="Source Sans 3,sans-serif" '
+                 f'font-size="12" font-weight="700" fill="{INK}" '
+                 f'text-anchor="middle">{esc(name_he)}</text>')
+
+    # Legend at bottom
+    legend_y = height - 16
+    item_w = (x_right - x_left) / max(len(params), 1)
+    for i, param in enumerate(params):
+        style = _PARAM_STYLES[i % len(_PARAM_STYLES)]
+        cx = x_left + i * item_w + 8
+        cy = legend_y
+        # Line sample
+        dash_attr = "" if style["dash"] == "none" else f' stroke-dasharray="{style["dash"]}"'
+        parts.append(f'<line x1="{cx}" y1="{cy}" x2="{cx + 18}" y2="{cy}" '
+                     f'stroke="{style["color"]}" stroke-width="1.4"{dash_attr}/>')
+        parts.append(_marker(cx + 9, cy, style["marker"], style["color"]))
+        # Label
+        parts.append(f'<text x="{cx + 22}" y="{cy + 3.5}" '
+                     f'font-family="Source Sans 3,sans-serif" font-size="10" '
+                     f'fill="{INK}">{esc(_short_param_name(param))}</text>')
 
     parts.append('</svg>')
     return "".join(parts)
+
+
+def _marker(x: float, y: float, shape: str, color: str) -> str:
+    """SVG marker (circle, square, or triangle)."""
+    if shape == "square":
+        return (f'<rect x="{x - 2:.1f}" y="{y - 2:.1f}" width="4" height="4" '
+                f'fill="{color}"/>')
+    if shape == "triangle":
+        return (f'<polygon points="{x:.1f},{y - 2.4:.1f} '
+                f'{x - 2.2:.1f},{y + 1.8:.1f} {x + 2.2:.1f},{y + 1.8:.1f}" '
+                f'fill="{color}"/>')
+    return f'<circle cx="{x:.1f}" cy="{y:.1f}" r="2" fill="{color}"/>'
 
 
 def _small_multiples_grid(panels: list, cols: int = 3) -> str:
