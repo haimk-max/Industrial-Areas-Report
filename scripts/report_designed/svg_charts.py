@@ -77,13 +77,15 @@ def svg_severity_ledger(severity: pd.DataFrame) -> str:
                                 body, ratio))
 
     if not pfas.empty:
-        top = pfas.iloc[0]
-        ratio = top.contributing_pct / 100
-        body = (f"קידוח מוביל: <b>{esc(top.name_he)}</b> — {esc(top.contributing_param)} "
-                f"×{ratio:,.0f} מהתקן. זיהום חדש בתחנת הטורבינה; דורש ניטור מופעל וחקירה מקורות.")
+        # In Holon: max bucket = 0 across 4 sampled boreholes. Marginal only.
+        max_bucket = int(pfas["max_bucket"].max())
+        n_sampled = len(pfas)
+        body = (f"נדגמו <b>{n_sampled} קידוחים</b> בלבד; אינדקס מקסימלי <b>{max_bucket}</b> — "
+                f"ערכים שוליים בלבד באקוויפר חולון. אין מוקד PFAS פעיל מתועד; "
+                f"שמירה על ניטור פסיבי בלבד, לפי דוח רשות המים 2021.")
         rows.append(_ledger_row("כימיקלים מעמידים PFAS",
-                                "PFHxS · PFOA · חומרי ייצור מסנן",
-                                body, ratio, appendix=False))
+                                "מתודולוגיה מעבר ל-2021 · ניטור פסיבי",
+                                body, 0.0, appendix=True))
 
     if not fuel.empty:
         top = fuel.iloc[0]
@@ -114,14 +116,18 @@ def _ledger_row(fam: str, fam_sub: str, body: str, ratio: float, appendix: bool 
 
 def svg_severity_matrix(severity: pd.DataFrame, trends: pd.DataFrame,
                          data_avail: pd.DataFrame) -> str:
-    """Build the F2 severity matrix: rows=boreholes (consolidated by site), cols=families.
+    """Build the F2 severity matrix grouped by contamination focus (CVOC, METALS, FUEL).
 
-    Consolidation logic:
-    - נת_חולון (region-wide) — keep all boreholes
-    - נד_אגד_אזור — select top 2 by max severity (consolidate others)
-    - All other sites — keep 1 representative per site
+    Holon-specific: PFAS column omitted (all bucket=0 in Holon, not an active focus).
+
+    Layout:
+    - Section: CVOC (INDUSTRY) — boreholes with INDUSTRY > 0, sorted by INDUSTRY desc
+    - Section: METALS — boreholes with METALS > 0 (excluding those already in CVOC), sorted by METALS desc
+    - Section: FUEL only — boreholes with FUEL only, sorted by FUEL desc
+
+    Consolidation: keep all נת_חולון; select top 2 from נד_אגד; others as-is.
     """
-    # Pivot severity to wide form
+    # Pivot severity to wide form (excluding PFAS — not a Holon focus)
     pivot = severity.pivot_table(
         index=["borehole", "name_he"],
         columns="family",
@@ -130,101 +136,98 @@ def svg_severity_matrix(severity: pd.DataFrame, trends: pd.DataFrame,
     ).reset_index()
 
     pivot.columns.name = None
-    for col in ["INDUSTRY", "METALS", "FUEL", "PFAS"]:
+    for col in ["INDUSTRY", "METALS", "FUEL"]:
         if col not in pivot.columns:
             pivot[col] = 0
-    pivot[["INDUSTRY", "METALS", "FUEL", "PFAS"]] = pivot[["INDUSTRY", "METALS", "FUEL", "PFAS"]].fillna(0)
+    pivot[["INDUSTRY", "METALS", "FUEL"]] = pivot[["INDUSTRY", "METALS", "FUEL"]].fillna(0)
 
-    pivot["max_bucket"] = pivot[["INDUSTRY", "METALS", "FUEL", "PFAS"]].max(axis=1)
+    pivot["max_bucket"] = pivot[["INDUSTRY", "METALS", "FUEL"]].max(axis=1)
+    # Skip boreholes with no contamination at all
+    pivot = pivot[pivot["max_bucket"] > 0].copy()
 
     # Site consolidation: identify representative boreholes per site
     def get_site(borehole_id: str) -> str:
-        """Extract site identifier from borehole ID."""
         if "נת_חולון" in borehole_id:
-            return "נת_חולון"  # Keep all region-wide boreholes
+            return "נת_חולון"
         elif "נד_אגד" in borehole_id:
-            return "נד_אגד"  # Consolidate Egged
+            return "נד_אגד"
         elif "נת_אלביט" in borehole_id:
-            return "נת_חולון"  # Regional monitoring (with Raanana)
+            return "נת_חולון"
         else:
-            return borehole_id  # Each other site is unique
+            return borehole_id
 
     pivot["site"] = pivot["borehole"].apply(get_site)
 
-    # Select representatives: keep all נת_חולון, top 2 from נד_אגד, others as-is
+    # Select representatives
     keep_boreholes = set()
-
-    # Keep all נת_חולון (region-wide monitoring)
-    raanana_group = pivot[pivot["site"] == "נת_חולון"].sort_values("max_bucket", ascending=False)
-    keep_boreholes.update(raanana_group["borehole"].tolist())
-
-    # Keep top 2 from נד_אגד (consolidate Egged compound)
+    holon_group = pivot[pivot["site"] == "נת_חולון"]
+    keep_boreholes.update(holon_group["borehole"].tolist())
     egged_group = pivot[pivot["site"] == "נד_אגד"].sort_values("max_bucket", ascending=False)
     keep_boreholes.update(egged_group.head(2)["borehole"].tolist())
-
-    # Keep all other sites (each is unique or single)
     other_group = pivot[~pivot["site"].isin(["נת_חולון", "נד_אגד"])]
     keep_boreholes.update(other_group["borehole"].tolist())
-
     pivot = pivot[pivot["borehole"].isin(keep_boreholes)].copy()
 
-    # Sort: INDUSTRY+METALS first (by max severity), then FUEL, then PFAS-only
-    def sort_key_func(row):
-        has_industry = row['INDUSTRY'] > 0
-        has_metals = row['METALS'] > 0
-        has_fuel = row['FUEL'] > 0
-
-        # Priority: INDUSTRY or METALS > FUEL > PFAS-only
-        if has_industry or has_metals:
-            priority = 0
-        elif has_fuel:
-            priority = 1
-        else:
-            priority = 2
-
-        # Within priority, sort by descending max_bucket
-        return (priority, -row['max_bucket'])
-
-    pivot['_sort_key'] = pivot.apply(sort_key_func, axis=1)
-    pivot = pivot.sort_values('_sort_key').drop(columns='_sort_key')
-
-    # Compute INCREASING markers from trends
+    # Compute INCREASING/stopped markers
     inc_set = set()
     if not trends.empty:
-        inc = trends[trends.classification == "INCREASING"]
-        for _, r in inc.iterrows():
+        for _, r in trends[trends.classification == "INCREASING"].iterrows():
             inc_set.add(r.borehole_id)
-
-    # Compute stopped monitoring set from data_avail
     stopped = set()
     if not data_avail.empty:
-        agg = (data_avail.groupby("borehole")["last_year"].max().reset_index())
+        agg = data_avail.groupby("borehole")["last_year"].max().reset_index()
         for _, r in agg.iterrows():
             if r.last_year < 2023:
                 stopped.add(r.borehole)
 
-    rows = []
-    for _, r in pivot.iterrows():
+    # Group boreholes by contamination focus.
+    # CVOC and METALS sections show all boreholes with that contamination
+    # (a borehole with both appears in both sections — matching V4 narrative
+    # which discusses the same borehole under multiple foci, e.g., נת חולון 14
+    # appears in both CVOC §4.1 and METALS §4.2).
+    # FUEL section: boreholes with ONLY FUEL contamination (no CVOC, no METALS).
+    cvoc_rows = pivot[pivot["INDUSTRY"] > 0].sort_values("INDUSTRY", ascending=False)
+    metals_rows = pivot[pivot["METALS"] > 0].sort_values("METALS", ascending=False)
+    fuel_rows = pivot[(pivot["FUEL"] > 0) &
+                       (pivot["INDUSTRY"] == 0) &
+                       (pivot["METALS"] == 0)].sort_values("FUEL", ascending=False)
+
+    def make_row(r):
         bid = r.borehole
         nm = r.name_he
         mark_inc = ' <span class="up">↑</span>' if bid in inc_set else ""
         mark_stop = ' <span style="color:var(--red);font-weight:700">●</span>' if bid in stopped else ""
-        rows.append(
+        return (
             f'<tr>'
             f'<td class="lbl">{esc(nm)}{mark_inc}{mark_stop}</td>'
             f'<td class="val">{_bucket_cell(int(r.INDUSTRY))}</td>'
             f'<td class="val">{_bucket_cell(int(r.METALS))}</td>'
             f'<td class="val">{_bucket_cell(int(r.FUEL))}</td>'
-            f'<td class="val">{_bucket_cell(int(r.PFAS))}</td>'
             f'</tr>'
         )
+
+    def section_header(title: str, n: int) -> str:
+        return (f'<tr class="sec"><td colspan="4">'
+                f'{esc(title)} <span class="cnt">({n})</span>'
+                f'</td></tr>')
+
+    body_parts = []
+    if not cvoc_rows.empty:
+        body_parts.append(section_header("מוקד CVOC — תרכובות אורגניות מוכלרות", len(cvoc_rows)))
+        body_parts.extend(make_row(r) for _, r in cvoc_rows.iterrows())
+    if not metals_rows.empty:
+        body_parts.append(section_header("מוקד מתכות — כרום וניקל", len(metals_rows)))
+        body_parts.extend(make_row(r) for _, r in metals_rows.iterrows())
+    if not fuel_rows.empty:
+        body_parts.append(section_header("מוקד דלקים — בנזן ו-MTBE", len(fuel_rows)))
+        body_parts.extend(make_row(r) for _, r in fuel_rows.iterrows())
 
     return (
         '<table class="matrix">'
         '<thead><tr>'
-        '<th>קידוח</th><th>CVOC</th><th>מתכות</th><th>דלקים</th><th>PFAS</th>'
+        '<th>קידוח</th><th>CVOC</th><th>מתכות</th><th>דלקים</th>'
         '</tr></thead>'
-        '<tbody>' + "".join(rows) + '</tbody>'
+        '<tbody>' + "".join(body_parts) + '</tbody>'
         '</table>'
     )
 

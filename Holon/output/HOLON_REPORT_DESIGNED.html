@@ -73,6 +73,9 @@
   table.matrix td.val{text-align:center;font-feature-settings:"tnum";color:var(--ink);white-space:nowrap}
   table.matrix td.val .b{display:inline-block;min-width:22px;height:20px;line-height:18px;padding:0 4px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--ink);vertical-align:middle;font-family:"IBM Plex Mono",monospace}
   table.matrix td.val.empty{color:var(--rule-light)}
+  table.matrix tr.sec td{padding:14px 10px 6px;border-bottom:1px solid var(--ink);font-family:"Source Sans 3",sans-serif;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);font-weight:700;text-align:right;background:var(--paper)}
+  table.matrix tr.sec td .cnt{color:var(--soft);font-weight:500;margin-inline-start:8px;font-size:10.5px}
+  table.matrix tr.sec:first-child td{padding-top:4px}
   table.matrix td.val .b.s0{background:var(--paper);color:var(--rule-light);border-color:var(--rule-light)}
   table.matrix td.val .b.s2{background:var(--grey-1);color:var(--ink)}
   table.matrix td.val .b.s4{background:var(--grey-2);color:var(--ink)}
@@ -140,7 +143,7 @@
 <header class="masthead">
   <div class="top">
     <span>HOLON / ZONE REPORT V4</span>
-    <span>גרסה מעוצבת · 2026-05-11 07:51</span>
+    <span>גרסה מעוצבת · 2026-05-11 08:04</span>
   </div>
   <h1>דוח ניטור איכות מי תהום — אזור התעשייה חולון</h1>
   <p class="sub">אזור התעשייה חולון, שהוקם בשנות החמישים על שטח של 3,077 דונם בצפון-מזרח העיר, נושא עומס מורש כבד של זיהום מי תהום מתעשיות ציפוי המתכות והדלק שפעלו בו במשך עשורים. הסקירה הנוכחית בוחנת 25 קידוחי ALERT מתוך 111 קידוחים שנדגמו באזור, המכילים ריכוזים חורגים מתקן מי שתייה ו/או מגמות עלייה מובהקות.</p>
@@ -163,7 +166,7 @@
       <span>SEVERITY LEDGER · 2025</span>
     </div>
     <div class="frame">
-      <div class="ledger"><div class="row"><div class="fam">תרכובות אורגניות מוכלרות<small>TCE · PCE · cis-DCE · ליבת הזיהום ההיסטורי</small></div><div class="body">קידוח מוביל: <b>נת חולון 11</b> — ריכוז שיא ×687 מהתקן (TCE). הזיהום מקורו במפעלי תדירגן וציפוי היסטוריים; DNAPL בעומק האקוויפר.</div><div class="metric"><span class="big">687</span><span class="ratio">×687 מהתקן</span></div></div><div class="row"><div class="fam">מתכות כבדות<small>כרום שש-ערכי · ניקל · קלסטר מזרחי</small></div><div class="body">קידוח מוביל: <b>נת חולון 26</b> — Chromium ×75 מהתקן. תוצר היסטורי של תעשיות ציפוי וגלוון.</div><div class="metric"><span class="big">75</span><span class="ratio">×75 מהתקן</span></div></div><div class="row"><div class="fam">כימיקלים מעמידים PFAS<small>PFHxS · PFOA · חומרי ייצור מסנן</small></div><div class="body">קידוח מוביל: <b>מק חולון 14</b> — PFAS-other ×0 מהתקן. זיהום חדש בתחנת הטורבינה; דורש ניטור מופעל וחקירה מקורות.</div><div class="metric"><span class="big">0</span><span class="ratio">×0 מהתקן</span></div></div><div class="row appendix"><div class="fam">דלקים<small>בנזן · MTBE · BTEX</small></div><div class="body">קידוח מוביל: <b>נד אגד אזור 1</b> — Benzene ×850 מהתקן. מקור: UST במתחמי דלק (אגד, מרכבות אש).</div><div class="metric"><span class="big">850</span><span class="ratio">×850 מהתקן</span></div></div></div>
+      <div class="ledger"><div class="row"><div class="fam">תרכובות אורגניות מוכלרות<small>TCE · PCE · cis-DCE · ליבת הזיהום ההיסטורי</small></div><div class="body">קידוח מוביל: <b>נת חולון 11</b> — ריכוז שיא ×687 מהתקן (TCE). הזיהום מקורו במפעלי תדירגן וציפוי היסטוריים; DNAPL בעומק האקוויפר.</div><div class="metric"><span class="big">687</span><span class="ratio">×687 מהתקן</span></div></div><div class="row"><div class="fam">מתכות כבדות<small>כרום שש-ערכי · ניקל · קלסטר מזרחי</small></div><div class="body">קידוח מוביל: <b>נת חולון 26</b> — Chromium ×75 מהתקן. תוצר היסטורי של תעשיות ציפוי וגלוון.</div><div class="metric"><span class="big">75</span><span class="ratio">×75 מהתקן</span></div></div><div class="row appendix"><div class="fam">כימיקלים מעמידים PFAS<small>מתודולוגיה מעבר ל-2021 · ניטור פסיבי</small></div><div class="body">נדגמו <b>1 קידוחים</b> בלבד; אינדקס מקסימלי <b>0</b> — ערכים שוליים בלבד באקוויפר חולון. אין מוקד PFAS פעיל מתועד; שמירה על ניטור פסיבי בלבד, לפי דוח רשות המים 2021.</div><div class="metric"><span class="big">0</span><span class="ratio">×0 מהתקן</span></div></div><div class="row appendix"><div class="fam">דלקים<small>בנזן · MTBE · BTEX</small></div><div class="body">קידוח מוביל: <b>נד אגד אזור 1</b> — Benzene ×850 מהתקן. מקור: UST במתחמי דלק (אגד, מרכבות אש).</div><div class="metric"><span class="big">850</span><span class="ratio">×850 מהתקן</span></div></div></div>
     </div>
     <figcaption>
       <span class="lbl">מקור</span>
@@ -173,7 +176,7 @@
 
   <div class="v4-body" style="margin-top:32px">
     <ol>
-<li><strong>CVOC (ממסים אורגניים מוכלרים) — מרכז ודרום-מזרח האזור</strong></li>
+<li value="1"><strong>CVOC (ממסים אורגניים מוכלרים) — מרכז ודרום-מזרח האזור</strong></li>
 </ol>
 <ul>
 <li><strong>חומרה</strong>: אינדקס 8 (מקסימום)</li>
@@ -182,7 +185,7 @@
 </ul>
 
 <ol>
-<li><strong>דלקים (בנזן, MTBE) — אזור הצפון, מתחם אגד</strong></li>
+<li value="2"><strong>דלקים (בנזן, MTBE) — אזור הצפון, מתחם אגד</strong></li>
 </ol>
 <ul>
 <li><strong>חומרה</strong>: אינדקס 8 (מקסימום)</li>
@@ -191,7 +194,7 @@
 </ul>
 
 <ol>
-<li><strong>כרום (Cr) — אזור המזרח ודרום-מזרח</strong></li>
+<li value="3"><strong>כרום (Cr) — אזור המזרח ודרום-מזרח</strong></li>
 </ol>
 <ul>
 <li><strong>חומרה</strong>: אינדקס 7–8 בקידוחים נבחרים</li>
@@ -200,7 +203,7 @@
 </ul>
 
 <ol>
-<li><strong>TCE במורד הזרם — גישה לקידוח הפקה</strong></li>
+<li value="4"><strong>TCE במורד הזרם — גישה לקידוח הפקה</strong></li>
 </ol>
 <ul>
 <li><strong>חומרה</strong>: אינדקס 4 (בינוני), אך משמעות רגולטורית גבוהה</li>
@@ -220,7 +223,7 @@
       <span>SEVERITY MATRIX</span>
     </div>
     <div class="frame">
-      <table class="matrix"><thead><tr><th>קידוח</th><th>CVOC</th><th>מתכות</th><th>דלקים</th><th>PFAS</th></tr></thead><tbody><tr><td class="lbl">נד אגד אזור 1 <span class="up">↑</span></td><td class="val"><span class="b s6">6</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s8">8</span></td><td class="val"><span class="b s0">0</span></td></tr><tr><td class="lbl">נד סונול המלאכה מ-1</td><td class="val"><span class="b s8">8</span></td><td class="val"><span class="b s4">4</span></td><td class="val"><span class="b s2">1</span></td><td class="val"><span class="b s0">0</span></td></tr><tr><td class="lbl">נת אלביט חולון 1 <span style="color:var(--red);font-weight:700">●</span></td><td class="val"><span class="b s8">8</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s0">0</span></td></tr><tr><td class="lbl">נת חולון 11</td><td class="val"><span class="b s8">8</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s2">1</span></td><td class="val"><span class="b s0">0</span></td></tr><tr><td class="lbl">נת חולון 2 <span class="up">↑</span> <span style="color:var(--red);font-weight:700">●</span></td><td class="val"><span class="b s8">8</span></td><td class="val"><span class="b s4">4</span></td><td class="val"><span class="b s2">1</span></td><td class="val"><span class="b s0">0</span></td></tr><tr><td class="lbl">נת חולון 26</td><td class="val"><span class="b s6">5</span></td><td class="val"><span class="b s8">7</span></td><td class="val"><span class="b s2">1</span></td><td class="val"><span class="b s0">0</span></td></tr><tr><td class="lbl">נת חולון 5</td><td class="val"><span class="b s8">7</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s4">4</span></td><td class="val"><span class="b s0">0</span></td></tr><tr><td class="lbl">נת חולון 7 <span class="up">↑</span></td><td class="val"><span class="b s8">7</span></td><td class="val"><span class="b s4">3</span></td><td class="val"><span class="b s2">1</span></td><td class="val"><span class="b s0">0</span></td></tr><tr><td class="lbl">נת חולון 1 <span class="up">↑</span></td><td class="val"><span class="b s6">6</span></td><td class="val"><span class="b s2">2</span></td><td class="val"><span class="b s4">3</span></td><td class="val"><span class="b s0">0</span></td></tr><tr><td class="lbl">נת חולון 14 <span class="up">↑</span></td><td class="val"><span class="b s6">5</span></td><td class="val"><span class="b s4">4</span></td><td class="val"><span class="b s2">1</span></td><td class="val"><span class="b s0">0</span></td></tr><tr><td class="lbl">מק חולון 14 <span class="up">↑</span></td><td class="val"><span class="b s4">3</span></td><td class="val"><span class="b s2">1</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s0">0</span></td></tr><tr><td class="lbl">נד אגד אזור 12</td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s8">8</span></td><td class="val"><span class="b s0">0</span></td></tr><tr><td class="lbl">נד פז צבר 1</td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s8">8</span></td><td class="val"><span class="b s0">0</span></td></tr><tr><td class="lbl">נד המרכבה ק2 <span class="up">↑</span> <span style="color:var(--red);font-weight:700">●</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s4">4</span></td><td class="val"><span class="b s0">0</span></td></tr><tr><td class="lbl">נד פז סיירים 3 <span class="up">↑</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s4">4</span></td><td class="val"><span class="b s0">0</span></td></tr><tr><td class="lbl">נד טן חולון 1</td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s2">1</span></td><td class="val"><span class="b s0">0</span></td></tr></tbody></table>
+      <table class="matrix"><thead><tr><th>קידוח</th><th>CVOC</th><th>מתכות</th><th>דלקים</th></tr></thead><tbody><tr class="sec"><td colspan="4">מוקד CVOC — תרכובות אורגניות מוכלרות <span class="cnt">(11)</span></td></tr><tr><td class="lbl">נד סונול המלאכה מ-1</td><td class="val"><span class="b s8">8</span></td><td class="val"><span class="b s4">4</span></td><td class="val"><span class="b s2">1</span></td></tr><tr><td class="lbl">נת חולון 11</td><td class="val"><span class="b s8">8</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s2">1</span></td></tr><tr><td class="lbl">נת אלביט חולון 1 <span style="color:var(--red);font-weight:700">●</span></td><td class="val"><span class="b s8">8</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s0">0</span></td></tr><tr><td class="lbl">נת חולון 2 <span class="up">↑</span> <span style="color:var(--red);font-weight:700">●</span></td><td class="val"><span class="b s8">8</span></td><td class="val"><span class="b s4">4</span></td><td class="val"><span class="b s2">1</span></td></tr><tr><td class="lbl">נת חולון 5</td><td class="val"><span class="b s8">7</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s4">4</span></td></tr><tr><td class="lbl">נת חולון 7 <span class="up">↑</span></td><td class="val"><span class="b s8">7</span></td><td class="val"><span class="b s4">3</span></td><td class="val"><span class="b s2">1</span></td></tr><tr><td class="lbl">נד אגד אזור 1 <span class="up">↑</span></td><td class="val"><span class="b s6">6</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s8">8</span></td></tr><tr><td class="lbl">נת חולון 1 <span class="up">↑</span></td><td class="val"><span class="b s6">6</span></td><td class="val"><span class="b s2">2</span></td><td class="val"><span class="b s4">3</span></td></tr><tr><td class="lbl">נת חולון 14 <span class="up">↑</span></td><td class="val"><span class="b s6">5</span></td><td class="val"><span class="b s4">4</span></td><td class="val"><span class="b s2">1</span></td></tr><tr><td class="lbl">נת חולון 26</td><td class="val"><span class="b s6">5</span></td><td class="val"><span class="b s8">7</span></td><td class="val"><span class="b s2">1</span></td></tr><tr><td class="lbl">מק חולון 14 <span class="up">↑</span></td><td class="val"><span class="b s4">3</span></td><td class="val"><span class="b s2">1</span></td><td class="val"><span class="b s0">0</span></td></tr><tr class="sec"><td colspan="4">מוקד מתכות — כרום וניקל <span class="cnt">(7)</span></td></tr><tr><td class="lbl">נת חולון 26</td><td class="val"><span class="b s6">5</span></td><td class="val"><span class="b s8">7</span></td><td class="val"><span class="b s2">1</span></td></tr><tr><td class="lbl">נת חולון 14 <span class="up">↑</span></td><td class="val"><span class="b s6">5</span></td><td class="val"><span class="b s4">4</span></td><td class="val"><span class="b s2">1</span></td></tr><tr><td class="lbl">נד סונול המלאכה מ-1</td><td class="val"><span class="b s8">8</span></td><td class="val"><span class="b s4">4</span></td><td class="val"><span class="b s2">1</span></td></tr><tr><td class="lbl">נת חולון 2 <span class="up">↑</span> <span style="color:var(--red);font-weight:700">●</span></td><td class="val"><span class="b s8">8</span></td><td class="val"><span class="b s4">4</span></td><td class="val"><span class="b s2">1</span></td></tr><tr><td class="lbl">נת חולון 7 <span class="up">↑</span></td><td class="val"><span class="b s8">7</span></td><td class="val"><span class="b s4">3</span></td><td class="val"><span class="b s2">1</span></td></tr><tr><td class="lbl">נת חולון 1 <span class="up">↑</span></td><td class="val"><span class="b s6">6</span></td><td class="val"><span class="b s2">2</span></td><td class="val"><span class="b s4">3</span></td></tr><tr><td class="lbl">מק חולון 14 <span class="up">↑</span></td><td class="val"><span class="b s4">3</span></td><td class="val"><span class="b s2">1</span></td><td class="val"><span class="b s0">0</span></td></tr><tr class="sec"><td colspan="4">מוקד דלקים — בנזן ו-MTBE <span class="cnt">(5)</span></td></tr><tr><td class="lbl">נד אגד אזור 12</td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s8">8</span></td></tr><tr><td class="lbl">נד פז צבר 1</td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s8">8</span></td></tr><tr><td class="lbl">נד המרכבה ק2 <span class="up">↑</span> <span style="color:var(--red);font-weight:700">●</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s4">4</span></td></tr><tr><td class="lbl">נד פז סיירים 3 <span class="up">↑</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s4">4</span></td></tr><tr><td class="lbl">נד טן חולון 1</td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s0">0</span></td><td class="val"><span class="b s2">1</span></td></tr></tbody></table>
     </div>
     <figcaption>
       <span class="lbl">קריאה</span>
@@ -333,7 +336,7 @@
 <footer>
   <span><b>מקור הנתונים:</b> Holon/lean_workspace (V4 evidence base)</span>
   <span><b>טקסט נרטיבי:</b> HOLON_REPORT_V4.md (חילוץ אוטומטי)</span>
-  <span><b>יצירה:</b> 2026-05-11 07:51</span>
+  <span><b>יצירה:</b> 2026-05-11 08:04</span>
 </footer>
 
 </body>

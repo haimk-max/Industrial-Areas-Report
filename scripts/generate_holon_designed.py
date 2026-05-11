@@ -32,7 +32,11 @@ from scripts.report_designed import svg_charts as sc
 
 
 def md_to_html(md: str) -> str:
-    """Convert minimal markdown (bold, lists, paragraphs) to HTML."""
+    """Convert minimal markdown (bold, lists, paragraphs) to HTML.
+
+    Preserves explicit numbering for ordered lists (uses <li value="N">) so that
+    items separated by <ul> blocks continue counting correctly.
+    """
     if not md:
         return ""
 
@@ -50,13 +54,15 @@ def md_to_html(md: str) -> str:
         m_ul = re.match(r"^[-*]\s+(.+)", stripped)
 
         if m_ol:
+            num = int(m_ol.group(1))
             if not in_list or list_type != "ol":
                 if in_list:
                     html_parts.append(f"</{list_type}>")
                 html_parts.append("<ol>")
                 in_list = True
                 list_type = "ol"
-            html_parts.append(f"<li>{_inline(m_ol.group(2))}</li>")
+            # Always include explicit `value` so numbering survives <ul> breaks
+            html_parts.append(f'<li value="{num}">{_inline(m_ol.group(2))}</li>')
         elif m_ul:
             if not in_list or list_type != "ul":
                 if in_list:
