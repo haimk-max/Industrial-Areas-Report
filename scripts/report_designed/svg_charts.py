@@ -474,7 +474,7 @@ def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
         params = available
 
     # Plot area — generous title (top), axis labels (bottom), legend (very bottom)
-    pad_l, pad_r, pad_t, pad_b = 44, 14, 38, 50
+    pad_l, pad_r, pad_t, pad_b = 44, 14, 38, 56
     x_left = pad_l
     x_right = width - pad_r
     y_top = pad_t
@@ -552,22 +552,32 @@ def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
                  f'font-size="12" font-weight="700" fill="{INK}" '
                  f'text-anchor="middle">{esc(name_he)}</text>')
 
-    # Legend at bottom
-    legend_y = height - 16
-    item_w = (x_right - x_left) / max(len(params), 1)
+    # Legend at bottom — two-row layout: line sample on TOP, label BELOW (no overlap).
+    # LTR direction forced (parameter names use Latin chars; RTL page would flip them).
+    n = max(len(params), 1)
+    avail = x_right - x_left
+    item_w = avail / n
+    line_y = height - 28       # top row: line/marker
+    text_y = height - 10       # bottom row: text baseline
+    parts.append(f'<g direction="ltr">')
     for i, param in enumerate(params):
         style = _PARAM_STYLES[i % len(_PARAM_STYLES)]
-        cx = x_left + i * item_w + 8
-        cy = legend_y
-        # Line sample
+        # Center the item within its slot
+        center_x = x_left + (i + 0.5) * item_w
         dash_attr = "" if style["dash"] == "none" else f' stroke-dasharray="{style["dash"]}"'
-        parts.append(f'<line x1="{cx}" y1="{cy}" x2="{cx + 18}" y2="{cy}" '
+        # Line sample (24px wide) centered horizontally on TOP row
+        line_x1 = center_x - 14
+        line_x2 = center_x + 10
+        parts.append(f'<line x1="{line_x1:.1f}" y1="{line_y:.1f}" '
+                     f'x2="{line_x2:.1f}" y2="{line_y:.1f}" '
                      f'stroke="{style["color"]}" stroke-width="1.4"{dash_attr}/>')
-        parts.append(_marker(cx + 9, cy, style["marker"], style["color"]))
-        # Label
-        parts.append(f'<text x="{cx + 22}" y="{cy + 3.5}" '
-                     f'font-family="Source Sans 3,sans-serif" font-size="10" '
-                     f'fill="{INK}">{esc(_short_param_name(param))}</text>')
+        parts.append(_marker(center_x - 2, line_y, style["marker"], style["color"]))
+        # Label CENTERED in slot, on BOTTOM row, LTR forced
+        parts.append(f'<text x="{center_x:.1f}" y="{text_y:.1f}" '
+                     f'font-family="Source Sans 3,sans-serif" font-size="10.5" '
+                     f'direction="ltr" unicode-bidi="bidi-override" '
+                     f'text-anchor="middle" fill="{INK}">{esc(_short_param_name(param))}</text>')
+    parts.append('</g>')
 
     parts.append('</svg>')
     return "".join(parts)
