@@ -115,11 +115,13 @@ def main() -> None:
     severity = dl.load_severity_index()
     data_avail = dl.load_data_availability()
     alert = dl.load_alert_boreholes()
+    classification = dl.load_borehole_classification()
 
     print(f"  measurements_alert: {len(measurements):,} rows")
     print(f"  trends_alert: {len(trends)} rows")
     print(f"  severity_index: {len(severity)} pairs")
     print(f"  alert_boreholes: {len(alert)} wells")
+    print(f"  borehole_classification: {len(classification)} boreholes")
 
     print(f"Extracting narrative from {args.report_v4.name} ...")
     narrative = dl.extract_narrative_sections(args.report_v4)
@@ -137,6 +139,10 @@ def main() -> None:
     btex_f5 = sc.svg_btex_panels(measurements)
     gaps_f6 = sc.svg_monitoring_gaps(data_avail, severity)
     recs_f7 = sc.html_recommendations_table()
+
+    # Generate borehole classification visualizations (Phase 2 - statistical analysis)
+    class_table_f8 = sc.svg_borehole_classification_table(classification)
+    class_map_f9 = sc.svg_borehole_map_html(classification)
 
     print("Filling template ...")
     template = args.template.read_text(encoding="utf-8")
@@ -163,6 +169,8 @@ def main() -> None:
         "{{BTEX_PANELS_F5}}": btex_f5,
         "{{GAPS_F6}}": gaps_f6,
         "{{RECOMMENDATIONS_F7}}": recs_f7,
+        "{{CLASSIFICATION_TABLE_F8}}": class_table_f8,
+        "{{BOREHOLE_MAP_F9}}": class_map_f9,
     }
 
     html = template

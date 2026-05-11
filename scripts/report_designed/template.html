@@ -135,6 +135,20 @@
   .v4-body strong{color:var(--ink);font-weight:600}
   .v4-body ol, .v4-body ul{padding-right:22px;margin:8px 0}
   .v4-body li{margin-bottom:6px;text-align:justify;text-justify:inter-word}
+
+  /* --- Classification table (Phase 2) --- */
+  .classification-table{padding:12px 0}
+  .classification-table .section-title{font-size:13px;font-weight:600;font-family:"Source Sans 3",sans-serif;color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin-bottom:18px;display:block;text-align:right}
+  .summary-grid{display:grid;grid-template-columns:repeat(6, 1fr);gap:12px;margin-bottom:24px}
+  .stat-item{padding:12px;background:var(--grey-1);border:1px solid var(--rule-light);text-align:center}
+  .stat-item.alert{background:#fff5f3;border-color:var(--red)}
+  .stat-item.watch{background:#f0e6e1;border-color:#b8a89e}
+  .stat-label{font-size:10.5px;color:var(--soft);font-family:"IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:6px}
+  .stat-value{font-size:24px;font-weight:700;color:var(--ink);font-family:"IBM Plex Mono",monospace;display:block}
+  .stat-item.alert .stat-value{color:var(--red)}
+  .family-stats{display:grid;gap:6px;font-size:12.5px}
+  .family-item{padding:8px 12px;background:var(--paper);border-bottom:1px solid var(--rule-faint);color:var(--ink-2)}
+  .family-item:last-child{border-bottom:none}
 </style>
 </head>
 <body>
@@ -296,6 +310,40 @@
     <div class="frame">
       {{RECOMMENDATIONS_F7}}
     </div>
+  </figure>
+</section>
+
+<!-- ============= §9 BOREHOLE CLASSIFICATION (PHASE 2) ============= -->
+<section>
+  <div class="sec-h"><span class="num">§9</span><h2>סיווג קידוחים — כל הנתונים (2021–2026)</h2></div>
+  <p class="lede">חלוקה סטטיסטית של 85 קידוחי ניטור בעלי נתונים עדכניים (5 שנים אחרונות) לפי קטגוריות זיהום וחומרה. הקידוחים מסווגים לפי אינדקס החומרה: ALERT (שדיג עוקב), WATCH (חומרה גבוהה), ELEVATED (חומרה בינונית), STABLE ו-NONE.</p>
+  <figure>
+    <div class="frame">
+      {{CLASSIFICATION_TABLE_F8}}
+    </div>
+    <figcaption>
+      <span class="lbl">סטטיסטיקה</span>
+      <span>בסיס 7,103 דיגומים מ-85 קידוחים בשנים 2021–2026. ההתפלגות לפי משפחות זיהום מראה דומיננטיות של דלקים (FUEL) ב-80 קידוחים.</span>
+    </figcaption>
+  </figure>
+</section>
+
+<!-- ============= §10 BOREHOLE LOCATION MAP (PHASE 2) ============= -->
+<section>
+  <div class="sec-h"><span class="num">§10</span><h2>מפת קידוחים לפי חומרה</h2></div>
+  <p class="lede">התפלגות מרחבית של קידוחי הניטור בקואורדינטות ITM (Israeli Transverse Mercator), צבוע לפי אינדקס החומרה. צבע אדום = אינדקס 8 (חומרה קריטית); אדום-רך = אינדקס 7; שחור = אינדקס 6; בינוני = אינדקס 5 ומטה.</p>
+  <figure>
+    <div class="fig-h">
+      <span class="ttl">איור 9 · מפה מרחבית</span>
+      <span>BOREHOLE LOCATIONS · ITM COORDINATES</span>
+    </div>
+    <div class="frame">
+      {{BOREHOLE_MAP_F9}}
+    </div>
+    <figcaption>
+      <span class="lbl">הערה</span>
+      <span>קואורדינטות ITM מחוברים מתאריכי הדיגום בטבלת היסטוריית איכות מים. ריכוז צפוף בדרום-מזרח (אזור אגד) ודרום-מערב (מתחמי ציפוי).</span>
+    </figcaption>
   </figure>
 </section>
 

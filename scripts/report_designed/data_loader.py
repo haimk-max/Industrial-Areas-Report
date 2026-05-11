@@ -160,6 +160,14 @@ def load_max_since_2018(workspace: Path = LEAN_WORKSPACE) -> pd.DataFrame:
     return pd.DataFrame()
 
 
+def load_borehole_classification(workspace: Path = LEAN_WORKSPACE) -> pd.DataFrame:
+    """Load borehole classification for all boreholes (2021-2026 recent data)."""
+    path = workspace / "04_deterministic_anchors" / "borehole_classification_all.csv"
+    if path.exists():
+        return pd.read_csv(path)
+    return pd.DataFrame()
+
+
 def get_alert_count(trends: pd.DataFrame = None) -> int:
     """Get count of ALERT wells from trends_alert."""
     if trends is None:

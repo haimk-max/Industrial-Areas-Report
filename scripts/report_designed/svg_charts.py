@@ -698,6 +698,161 @@ def svg_monitoring_gaps(data_avail: pd.DataFrame, severity: pd.DataFrame) -> str
     return "".join(rows)
 
 
+def svg_borehole_classification_table(classification: pd.DataFrame) -> str:
+    """Generate HTML table of borehole classification statistics (2021-2026).
+
+    Summarizes all 85 boreholes with recent data by classification level.
+    """
+    if classification.empty:
+        return '<div style="padding:20px;color:#6b6b6b;text-align:center">אין נתוני סיווג זמינים</div>'
+
+    # Summary statistics
+    total = len(classification)
+    alert_count = len(classification[classification['classification'] == 'ALERT'])
+    watch_count = len(classification[classification['classification'] == 'WATCH'])
+    elevated_count = len(classification[classification['classification'] == 'ELEVATED'])
+    stable_count = len(classification[classification['classification'] == 'STABLE'])
+    none_count = len(classification[classification['classification'] == 'NONE'])
+
+    # Family statistics
+    cvoc_boreholes = len(classification[classification['families'].str.contains('CVOC', na=False)])
+    metals_boreholes = len(classification[classification['families'].str.contains('METALS', na=False)])
+    fuel_boreholes = len(classification[classification['families'].str.contains('FUEL', na=False)])
+
+    rows = []
+    rows.append('<div class="classification-table">')
+    rows.append('<div class="section-title">סיווג קידוחים (בסיס 2021–2026)</div>')
+
+    rows.append('<div class="summary-grid">')
+    rows.append('<div class="stat-item">')
+    rows.append(f'<div class="stat-label">סה"כ קידוחים</div>')
+    rows.append(f'<div class="stat-value">{total}</div>')
+    rows.append('</div>')
+
+    rows.append('<div class="stat-item alert">')
+    rows.append(f'<div class="stat-label">ALERT</div>')
+    rows.append(f'<div class="stat-value">{alert_count}</div>')
+    rows.append('</div>')
+
+    rows.append('<div class="stat-item watch">')
+    rows.append(f'<div class="stat-label">WATCH</div>')
+    rows.append(f'<div class="stat-value">{watch_count}</div>')
+    rows.append('</div>')
+
+    rows.append('<div class="stat-item">')
+    rows.append(f'<div class="stat-label">ELEVATED</div>')
+    rows.append(f'<div class="stat-value">{elevated_count}</div>')
+    rows.append('</div>')
+
+    rows.append('<div class="stat-item">')
+    rows.append(f'<div class="stat-label">STABLE</div>')
+    rows.append(f'<div class="stat-value">{stable_count}</div>')
+    rows.append('</div>')
+
+    rows.append('<div class="stat-item">')
+    rows.append(f'<div class="stat-label">NONE</div>')
+    rows.append(f'<div class="stat-value">{none_count}</div>')
+    rows.append('</div>')
+    rows.append('</div>')
+
+    rows.append('<div class="family-stats">')
+    rows.append(f'<div class="family-item">תרכובות אורגניות (CVOC): {cvoc_boreholes} קידוחים</div>')
+    rows.append(f'<div class="family-item">מתכות כבדות (METALS): {metals_boreholes} קידוחים</div>')
+    rows.append(f'<div class="family-item">דלקים (FUEL): {fuel_boreholes} קידוחים</div>')
+    rows.append('</div>')
+
+    rows.append('</div>')
+    return "".join(rows)
+
+
+def svg_borehole_map_html(classification: pd.DataFrame) -> str:
+    """Generate SVG map showing borehole locations colored by severity bucket.
+
+    Uses ITM coordinates (בקואורדינטות ITM).
+    """
+    if classification.empty:
+        return '<div style="padding:20px;color:#6b6b6b;text-align:center">אין נתוני קידוחים זמינים</div>'
+
+    # ITM bounds for Holon area (approximate)
+    east_min, east_max = 180, 183
+    north_min, north_max = 655, 659
+
+    # SVG dimensions
+    svg_width, svg_height = 600, 500
+    padding = 40
+    plot_width = svg_width - 2 * padding
+    plot_height = svg_height - 2 * padding
+
+    # Color mapping for severity buckets
+    color_map = {
+        0: GREY_1,  # No contamination
+        1: GREY_2,  # Low
+        2: GREY_2,  # Low-medium
+        3: GREY_3,  # Medium
+        4: GREY_3,  # Medium-high
+        5: INK_2,   # High
+        6: INK,     # Very high
+        7: RED_SOFT,  # Critical
+        8: RED,     # Extreme
+    }
+
+    lines = []
+    lines.append(f'<svg viewBox="0 0 {svg_width} {svg_height}" xmlns="http://www.w3.org/2000/svg">')
+    lines.append(f'<rect width="{svg_width}" height="{svg_height}" fill="{PAPER}"/>')
+
+    # Axes
+    lines.append(f'<line x1="{padding}" y1="{svg_height-padding}" x2="{svg_width-padding}" y2="{svg_height-padding}" stroke="{INK}" stroke-width="2"/>')
+    lines.append(f'<line x1="{padding}" y1="{padding}" x2="{padding}" y2="{svg_height-padding}" stroke="{INK}" stroke-width="2"/>')
+
+    # Grid lines (light)
+    for east in range(int(east_min), int(east_max)+1):
+        x = padding + (east - east_min) / (east_max - east_min) * plot_width
+        lines.append(f'<line x1="{x}" y1="{padding}" x2="{x}" y2="{svg_height-padding}" stroke="{RULE_FAINT}" stroke-width="0.5"/>')
+
+    for north in range(int(north_min), int(north_max)+1):
+        y = svg_height - padding - (north - north_min) / (north_max - north_min) * plot_height
+        lines.append(f'<line x1="{padding}" y1="{y}" x2="{svg_width-padding}" y2="{y}" stroke="{RULE_FAINT}" stroke-width="0.5"/>')
+
+    # Plot boreholes
+    for _, row in classification.iterrows():
+        if pd.notna(row['east_itm']) and pd.notna(row['north_itm']):
+            x = padding + (row['east_itm'] - east_min) / (east_max - east_min) * plot_width
+            y = svg_height - padding - (row['north_itm'] - north_min) / (north_max - north_min) * plot_height
+
+            bucket = int(row['severity_bucket'])
+            color = color_map.get(bucket, GREY_3)
+
+            lines.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4" fill="{color}" stroke="{INK}" stroke-width="0.5"/>')
+
+    # Axis labels
+    lines.append(f'<text x="{svg_width/2}" y="{svg_height-10}" text-anchor="middle" font-size="12" fill="{INK}">מזרח (ITM)</text>')
+    lines.append(f'<text x="15" y="{svg_height/2}" text-anchor="middle" font-size="12" fill="{INK}" transform="rotate(-90 15 {svg_height/2})">צפון (ITM)</text>')
+
+    # Title
+    lines.append(f'<text x="{svg_width/2}" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="{INK}">מיקומי קידוחים לפי אינדקס חומרה</text>')
+
+    # Legend
+    legend_x = svg_width - 150
+    legend_y = 50
+    lines.append(f'<rect x="{legend_x}" y="{legend_y}" width="140" height="120" fill="{PAPER}" stroke="{RULE_LIGHT}"/>')
+
+    legend_items = [
+        (RED, "אינדקס 8"),
+        (RED_SOFT, "אינדקס 7"),
+        (INK, "אינדקס 6"),
+        (INK_2, "אינדקס 5"),
+    ]
+
+    for i, (color, label) in enumerate(legend_items):
+        ly = legend_y + 10 + i * 25
+        lines.append(f'<circle cx="{legend_x+10}" cy="{ly+6}" r="3" fill="{color}"/>')
+        lines.append(f'<text x="{legend_x+20}" y="{ly+8}" font-size="11" fill="{INK}">{label}</text>')
+
+    lines.append('</svg>')
+
+    return "".join(lines)
+
+
 # ───────────────────────── Figure 7: Recommendations table ─────────────────────────
 
 def html_recommendations_table() -> str:
