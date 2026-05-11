@@ -120,8 +120,12 @@ def main() -> None:
     print(f"  extracted sections: {list(narrative.keys())}")
 
     print("Building SVG figures ...")
-    ledger_f1 = sc.svg_severity_ledger(severity)
-    matrix_f2 = sc.svg_severity_matrix(severity, trends, data_avail)
+    # Filter severity to only ALERT boreholes
+    alert_borehole_ids = set(measurements['canonical_id'].unique())
+    severity_alert = severity[severity['borehole'].isin(alert_borehole_ids)].copy()
+
+    ledger_f1 = sc.svg_severity_ledger(severity_alert)
+    matrix_f2 = sc.svg_severity_matrix(severity_alert, trends, data_avail)
     cvoc_f3 = sc.svg_cvoc_panels(measurements, severity)
     chromium_f4 = sc.svg_chromium_panels(measurements)
     btex_f5 = sc.svg_btex_panels(measurements)

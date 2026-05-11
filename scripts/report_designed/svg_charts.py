@@ -45,13 +45,14 @@ def linear_x(year: float, y_min: int, y_max: int, x_left: float, x_right: float)
 # ───────────────────────── Figure 1: Severity Ledger ─────────────────────────
 
 def svg_severity_ledger(severity: pd.DataFrame) -> str:
-    """Build the F1 ledger: 3 family panels (CVOC/INDUSTRY, METALS, FUEL as appendix).
+    """Build the F1 ledger: all family panels dynamically (INDUSTRY, METALS, PFAS, FUEL).
 
     Returns inner HTML for .ledger container (used in template).
     """
     # Family aggregations
     industry = severity[severity.family == "INDUSTRY"].sort_values("contributing_pct", ascending=False)
     metals = severity[severity.family == "METALS"].sort_values("contributing_pct", ascending=False)
+    pfas = severity[severity.family == "PFAS"].sort_values("contributing_pct", ascending=False)
     fuel = severity[severity.family == "FUEL"].sort_values("contributing_pct", ascending=False)
 
     rows = []
@@ -74,6 +75,15 @@ def svg_severity_ledger(severity: pd.DataFrame) -> str:
         rows.append(_ledger_row("מתכות כבדות",
                                 "כרום שש-ערכי · ניקל · קלסטר מזרחי",
                                 body, ratio))
+
+    if not pfas.empty:
+        top = pfas.iloc[0]
+        ratio = top.contributing_pct / 100
+        body = (f"קידוח מוביל: <b>{esc(top.name_he)}</b> — {esc(top.contributing_param)} "
+                f"×{ratio:,.0f} מהתקן. זיהום חדש בתחנת הטורבינה; דורש ניטור מופעל וחקירה מקורות.")
+        rows.append(_ledger_row("כימיקלים מעמידים PFAS",
+                                "PFHxS · PFOA · חומרי ייצור מסנן",
+                                body, ratio, appendix=False))
 
     if not fuel.empty:
         top = fuel.iloc[0]
@@ -104,7 +114,13 @@ def _ledger_row(fam: str, fam_sub: str, body: str, ratio: float, appendix: bool 
 
 def svg_severity_matrix(severity: pd.DataFrame, trends: pd.DataFrame,
                          data_avail: pd.DataFrame) -> str:
-    """Build the F2 severity matrix: rows=boreholes, cols=families."""
+    """Build the F2 severity matrix: rows=boreholes (consolidated by site), cols=families.
+
+    Consolidation logic:
+    - נת_חולון (region-wide) — keep all boreholes
+    - נד_אגד_אזור — select top 2 by max severity (consolidate others)
+    - All other sites — keep 1 representative per site
+    """
     # Pivot severity to wide form
     pivot = severity.pivot_table(
         index=["borehole", "name_he"],
@@ -114,13 +130,63 @@ def svg_severity_matrix(severity: pd.DataFrame, trends: pd.DataFrame,
     ).reset_index()
 
     pivot.columns.name = None
-    for col in ["INDUSTRY", "METALS", "FUEL"]:
+    for col in ["INDUSTRY", "METALS", "FUEL", "PFAS"]:
         if col not in pivot.columns:
             pivot[col] = 0
-    pivot[["INDUSTRY", "METALS", "FUEL"]] = pivot[["INDUSTRY", "METALS", "FUEL"]].fillna(0)
+    pivot[["INDUSTRY", "METALS", "FUEL", "PFAS"]] = pivot[["INDUSTRY", "METALS", "FUEL", "PFAS"]].fillna(0)
 
-    pivot["max_bucket"] = pivot[["INDUSTRY", "METALS", "FUEL"]].max(axis=1)
-    pivot = pivot.sort_values("max_bucket", ascending=False)
+    pivot["max_bucket"] = pivot[["INDUSTRY", "METALS", "FUEL", "PFAS"]].max(axis=1)
+
+    # Site consolidation: identify representative boreholes per site
+    def get_site(borehole_id: str) -> str:
+        """Extract site identifier from borehole ID."""
+        if "נת_חולון" in borehole_id:
+            return "נת_חולון"  # Keep all region-wide boreholes
+        elif "נד_אגד" in borehole_id:
+            return "נד_אגד"  # Consolidate Egged
+        elif "נת_אלביט" in borehole_id:
+            return "נת_חולון"  # Regional monitoring (with Raanana)
+        else:
+            return borehole_id  # Each other site is unique
+
+    pivot["site"] = pivot["borehole"].apply(get_site)
+
+    # Select representatives: keep all נת_חולון, top 2 from נד_אגד, others as-is
+    keep_boreholes = set()
+
+    # Keep all נת_חולון (region-wide monitoring)
+    raanana_group = pivot[pivot["site"] == "נת_חולון"].sort_values("max_bucket", ascending=False)
+    keep_boreholes.update(raanana_group["borehole"].tolist())
+
+    # Keep top 2 from נד_אגד (consolidate Egged compound)
+    egged_group = pivot[pivot["site"] == "נד_אגד"].sort_values("max_bucket", ascending=False)
+    keep_boreholes.update(egged_group.head(2)["borehole"].tolist())
+
+    # Keep all other sites (each is unique or single)
+    other_group = pivot[~pivot["site"].isin(["נת_חולון", "נד_אגד"])]
+    keep_boreholes.update(other_group["borehole"].tolist())
+
+    pivot = pivot[pivot["borehole"].isin(keep_boreholes)].copy()
+
+    # Sort: INDUSTRY+METALS first (by max severity), then FUEL, then PFAS-only
+    def sort_key_func(row):
+        has_industry = row['INDUSTRY'] > 0
+        has_metals = row['METALS'] > 0
+        has_fuel = row['FUEL'] > 0
+
+        # Priority: INDUSTRY or METALS > FUEL > PFAS-only
+        if has_industry or has_metals:
+            priority = 0
+        elif has_fuel:
+            priority = 1
+        else:
+            priority = 2
+
+        # Within priority, sort by descending max_bucket
+        return (priority, -row['max_bucket'])
+
+    pivot['_sort_key'] = pivot.apply(sort_key_func, axis=1)
+    pivot = pivot.sort_values('_sort_key').drop(columns='_sort_key')
 
     # Compute INCREASING markers from trends
     inc_set = set()
@@ -149,13 +215,14 @@ def svg_severity_matrix(severity: pd.DataFrame, trends: pd.DataFrame,
             f'<td class="val">{_bucket_cell(int(r.INDUSTRY))}</td>'
             f'<td class="val">{_bucket_cell(int(r.METALS))}</td>'
             f'<td class="val">{_bucket_cell(int(r.FUEL))}</td>'
+            f'<td class="val">{_bucket_cell(int(r.PFAS))}</td>'
             f'</tr>'
         )
 
     return (
         '<table class="matrix">'
         '<thead><tr>'
-        '<th>קידוח</th><th>CVOC</th><th>מתכות</th><th>דלקים</th>'
+        '<th>קידוח</th><th>CVOC</th><th>מתכות</th><th>דלקים</th><th>PFAS</th>'
         '</tr></thead>'
         '<tbody>' + "".join(rows) + '</tbody>'
         '</table>'

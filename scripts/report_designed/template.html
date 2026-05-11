@@ -67,7 +67,8 @@
   /* --- Severity matrix (academic, B/W with red highlight) --- */
   table.matrix{width:100%;border-collapse:collapse;font-size:12.5px;font-family:"IBM Plex Mono",monospace}
   table.matrix th, table.matrix td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--rule-faint)}
-  table.matrix thead th{border-bottom:1px solid var(--ink);font-family:"Source Sans 3",sans-serif;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);font-weight:600;padding-bottom:6px}
+  table.matrix thead th{border-bottom:1px solid var(--ink);font-family:"Source Sans 3",sans-serif;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);font-weight:600;padding-bottom:6px;text-align:center}
+  table.matrix thead th:first-child{text-align:right}
   table.matrix td.lbl{font-family:"Source Sans 3",sans-serif;font-weight:500;font-size:12.5px}
   table.matrix td.val{text-align:center;font-feature-settings:"tnum";color:var(--ink);white-space:nowrap}
   table.matrix td.val .b{display:inline-block;min-width:22px;height:20px;line-height:18px;padding:0 4px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--ink);vertical-align:middle;font-family:"IBM Plex Mono",monospace}
@@ -166,7 +167,7 @@
     </div>
     <figcaption>
       <span class="lbl">מקור</span>
-      <span>severity_index_2025_holon.csv (159 צירופי קידוח-משפחה) · נוסחת bucket לפי דוח רשות המים 2021. <b>אדום</b> = שיא ריכוז במעבר &gt;500% מהתקן.</span>
+      <span>severity_index_2025_holon.csv (159 צירופי קידוח-משפחה) · נוסחת אינדקס לפי דוח רשות המים 2021. <b>אדום</b> = שיא ריכוז במעבר &gt;500% מהתקן.</span>
     </figcaption>
   </figure>
 
@@ -177,8 +178,8 @@
 
 <!-- ============= §2 SEVERITY MATRIX ============= -->
 <section>
-  <div class="sec-h"><span class="num">§2</span><h2>מטריצת חומרה — {{N_ALERT}} קידוחי ALERT × 3 משפחות</h2></div>
-  <p class="lede">לכל קידוח-ALERT מחושב bucket חומרה 0–8 לכל משפחת מזהמים. הסימון <span style="color:var(--red);font-weight:700">↑</span> מציין מגמת עלייה סטטיסטית; <span style="color:var(--red);font-weight:700">●</span> מציין שניטור הופסק.</p>
+  <div class="sec-h"><span class="num">§2</span><h2>מטריצת חומרה — קידוחי ALERT × משפחות מזהמים</h2></div>
+  <p class="lede">לכל קידוח-ALERT מחושב אינדקס חומרה 0–8 לכל משפחת מזהמים. הסימון <span style="color:var(--red);font-weight:700">↑</span> מציין מגמת עלייה סטטיסטית; <span style="color:var(--red);font-weight:700">●</span> מציין שניטור הופסק.</p>
   <figure>
     <div class="fig-h">
       <span class="ttl">איור 2 · מטריצת חומרה</span>
@@ -189,7 +190,7 @@
     </div>
     <figcaption>
       <span class="lbl">קריאה</span>
-      <span>שורות ממוינות לפי bucket מקסימלי יורד. בקטים: <b>0</b> מתחת ל-LOD; <b>2</b> ≤ 2% מהתקן; <b>4</b> 5–10%; <b>6</b> 25–100%; <b>8</b> &gt;500%. <b>אדום</b> = bucket 8 (חריגה קיצונית).</span>
+      <span>שורות ממוינות לפי אינדקס מקסימלי יורד. אינדקסים: <b>0</b> מתחת ל-LOD; <b>2</b> ≤ 2% מהתקן; <b>4</b> 5–10%; <b>6</b> 25–100%; <b>8</b> &gt;500%. <b>אדום</b> = אינדקס 8 (חריגה קיצונית).</span>
     </figcaption>
   </figure>
 </section>
