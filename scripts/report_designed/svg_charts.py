@@ -413,7 +413,9 @@ def _small_multiples_grid(panels: list, cols: int = 3) -> str:
 def svg_monitoring_gaps(data_avail: pd.DataFrame, severity: pd.DataFrame) -> str:
     """Timeline showing monitoring gaps: only wells with high contamination index that stopped before 2023.
 
-    Filter: max_index > 3 (non-FUEL families) or > 2 (FUEL boreholes).
+    Filter:
+      - Non-FUEL families (INDUSTRY/METALS/PFAS): max_index > 3
+      - Production wells (prefix מק_): max_index > 2
     """
     if data_avail.empty:
         return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני זמינות</div>'
@@ -428,7 +430,7 @@ def svg_monitoring_gaps(data_avail: pd.DataFrame, severity: pd.DataFrame) -> str
     sev_summary["max_index"] = sev_summary.max(axis=1)
     sev_summary = sev_summary.reset_index()
 
-    # Determine if borehole has FUEL-only contamination
+    # Determine primary contamination family per borehole
     for idx, row in sev_summary.iterrows():
         families_present = [fam for fam in ["INDUSTRY", "METALS", "PFAS"] if row.get(fam, 0) > 0]
         sev_summary.loc[idx, "primary_family"] = families_present[0] if families_present else "FUEL"
@@ -442,14 +444,17 @@ def svg_monitoring_gaps(data_avail: pd.DataFrame, severity: pd.DataFrame) -> str
     # Join with severity summary
     agg = agg.merge(sev_summary[["borehole", "max_index", "primary_family"]], on="borehole", how="left")
 
-    # Filter: stopped before 2023, with high severity
-    threshold_non_fuel = 3
-    threshold_fuel = 2
+    # Mark production wells (מק_ prefix)
+    agg["is_production"] = agg["borehole"].str.startswith("מק_")
+
+    # Filter: stopped before 2023, with high severity per type
+    threshold_non_fuel = 3      # אינדקס > 3 בקידוחים בעלי משפחות לא-דלק
+    threshold_production = 2    # אינדקס > 2 בקידוחי הפקה
     stopped = agg[
         (agg.last_year < 2023) &
         (
             ((agg.primary_family != "FUEL") & (agg.max_index > threshold_non_fuel)) |
-            ((agg.primary_family == "FUEL") & (agg.max_index > threshold_fuel))
+            (agg.is_production & (agg.max_index > threshold_production))
         )
     ].sort_values("last_year")
 
