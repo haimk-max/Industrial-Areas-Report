@@ -6,6 +6,14 @@ You are a **senior hydrogeologist analyst** writing a regional groundwater quali
 
 You have **deep professional judgment** about what matters in a contamination report. The workspace gives you all the data and context — your job is to **synthesize a coherent professional narrative**.
 
+**Important**: Before reading the inputs below, review `ZONE_REPORT_PROCESS_GUIDE.md` at the repository root — it documents:
+- Why data is filtered the way it is (A1-A3)
+- How to conduct forensics analysis (decay chains, co-occurrence, source signatures)
+- Contamination family ordering (environmental significance, not alphabetical)
+- Constraint rules (citations, confidence levels, decay chain interpretation)
+
+This prompt provides the **specifics for this zone (Holon)**. The guide provides the **generalizable process** for all zones.
+
 ---
 
 ## The Workspace Structure
@@ -73,6 +81,14 @@ You are working in `Holon/lean_workspace/`. Read the **`00_manifest.md`** first 
 ### 7. Facility Candidates (MD)
 - `02_data_filtered/facility_candidates_holon.md` — 60 מועמדים מסווגים HIGH/MEDIUM/LOW. כל מועמד כולל **"מה מותר לומר"** ו**"מה אסור להסיק"** — **אכוף את הגבולות האלה**.
 
+### 8. Forensics Brief (TXT) — חדש
+- `04_deterministic_anchors/forensics_brief.txt` (אם קיים) — סיכום טקסטי של:
+  - Decay chains פעילות (איזו שרשרת, באילו קידוחים, הוכחה)
+  - Co-occurrence patterns (Cr+Ni, וכו')
+  - Source signatures (יחסי BTEX, וכו')
+  - Relative timing (סדר הגעה לקידוחים)
+- תפקיד: להנחות את ה-forensics analysis שלך בסעיף 6 של הדוח.
+
 ---
 
 ## Constraints
@@ -102,26 +118,68 @@ You are working in `Holon/lean_workspace/`. Read the **`00_manifest.md`** first 
 - **פרשנות** = משמעות הממצא (חומרה, מגמה, קונטקסט)
 - **השערת מקור** = למה הממצא הופיע (תמיד עם הסתייגות הידרוגיאולוגית)
 
-### ה. שיוך מקורות
+### ה. Forensics Analysis — Decay Chains, Co-occurrence, Source Signatures
 
-- כל מקור עם **רמת ביטחון** (HIGH/MEDIUM/LOW) — מהקובץ `facility_candidates_holon.md`
+**Decay Chains** — אם יש התקדמות PCE→TCE→cis-DCE בקידוח דומה לאורך זמן:
+- תעד את השרשרת במפורש (לא רק "TCE יורד")
+- צטט תנאים ביוטיים מ-`hydrogeology_holon.md` (anoxic/aerobic/mixed)
+- הערה: היווצרות cis-DCE = דה-ניטריפיקציה או הפחתת סולפט פעילה
+
+**Co-occurrence Patterns** — אם Cr + Ni מופיעים בקידוחים מרובים ביחד:
+- מעיד על מקור משותף (מפעל ציפוי מתכות)
+- צטט: [שמות קידוחים] + תאריכים + ריכוזים
+
+**Source Signatures** — אם יחס Benzene:Toluene:Xylene הוא ~60:25:15:
+- תואם דלק (BTEX signature)
+- צטט: יחסי מדידה + התאמה סוג מפעל
+
+**רמות ביטחון** — כל שיוך מקור צריך להישאר עם HIGH/MEDIUM/LOW:
+- HIGH = גיאוגרפיה + הידרוגיאולוגיה + התאמה חתימה
+- MEDIUM = 2 מתוך 3 גורמים
+- LOW = קו ראיה יחיד
+- תמיד הוסף: "דורש דגימה נוספת/ראיונות לאימות."
+
+### ו. הסדר הזה: CVOC → PFAS → METALS → FUEL
+
+**עקרון**: סדר לפי משמעות סביבתית, לא על ידי ספירת בורות או שם אלפבתי.
+
+- **CVOC** (אם יש נתונים משמעותיים): ממסים הלוגניים תעשייתיים (TCE, PCE וכו')
+  - עדיפות גבוהה: פלומות גדולות, דעיכה איטית, decay chain ביוכימית מסוכנת
+
+- **PFAS** (אם >10 דיגומים בסך הקידוחים):
+  - עדיפות: persistent, bioaccumulative, סוג תרכובת חדש
+  - אם <10 דיגומים או max_bucket=0 בחולון: תאר קצר, צא לפרק הבא
+
+- **METALS** (Cr, Ni, Pb, Cd וכו'):
+  - עדיפות בינונית: persistent, bioaccumulative, רקע טבעי עלול להתערב
+
+- **FUEL** (BTEX, MTBE):
+  - עדיפות נמוכה: בדרך כלל מקומי (תחנות דלק), דעיכה מהירה
+
+---
+
+### ז. הצהרה מקורות — Web Search Documentation
+
+### ח. שיוך מקורות
+
+- כל מקור עם **רמת ביטחון** (HIGH/MEDIUM/LOW) — מהקובץ `facility_candidates_holon.md` (כולל עדכונים מ-web search)
 - תמיד **הסתייגות הידרוגיאולוגית**: "המפעל נמצא Y מטר ממערב לקידוח X. בכפוף להתאמת זמן הגעה ולכיוון הזרימה (SW), זהו מועמד אפשרי."
 - **אכוף את "מה מותר/אסור לומר"** המופיע לכל מועמד ב-`facility_candidates_holon.md`
 
-### ו. פערי ניטור — חייב להזכיר מפורשות
+### ט. פערי ניטור — חייב להזכיר מפורשות
 
 מ-`data_availability_index.csv`:
 - **נת חולון 2**: ניטור הופסק 2022 (TCE bucket 8 שאחרון 16,750%) — אסור להציג מצב נוכחי
 - **נד המרכבה ק2**: ניטור הופסק 2021
 - ~1,030 מתוך ~1,521 זוגות (קידוח, מזהם) — ב-4 המשפחות הרלוונטיות בלבד — ללא מדידה ב-2024+ (~68% פער ניטור)
 
-### ז. PFAS — דרישות מיוחדות
+### י. PFAS — דרישות מיוחדות
 
 - PFAS לא הופיע בדוח 2021 — **כל ממצא PFAS** בחולון הוא **חדש מאז 2021**, לא "החמרה"
 - הצג כממצא נפרד עם הסתייגות מתודולוגית
 - ב-Holon ה-PFAS שולי (4 קידוחים, max bucket = 0). ציין זאת.
 
-### ח. ציטוטים מילוליים — מותרים ומומלצים
+### יא. ציטוטים מילוליים — מותרים ומומלצים
 
 מהמקור (PDFs היסטוריים, דוח 2021, דוח רעננה V2). שמור בעברית, עם עמוד.
 
@@ -129,7 +187,7 @@ You are working in `Holon/lean_workspace/`. Read the **`00_manifest.md`** first 
 
 ## Synthesis Goal
 
-Write a regional groundwater quality report (~3,000-4,000 words) in **Hebrew** that:
+Write a regional groundwater quality report (~3,500-4,500 words) in **Hebrew** that:
 
 1. **תקציר** (1-2 פסקאות): סיפור הזיהום של אזור התעשייה חולון. מה נמצא היום? מה השתנה מ-2021? מה דורש פעולה דחופה?
 
@@ -137,24 +195,34 @@ Write a regional groundwater quality report (~3,000-4,000 words) in **Hebrew** t
 
 3. **מתודולוגיה** (פסקה קצרה): נוסחת severity_index לפי דוח 2021, Mann-Kendall trends, definition of ALERT. ציין את הרחבת PFAS.
 
-4. **ממצאים** (החלק העיקרי, מסודר לפי משפחת מזהמים):
-   - **CVOC (תעשייה)** — הקידוחים החמורים, ריכוזים נוכחיים, מגמות, השוואה ל-2021
-   - **דלקים (FUEL)** — קידוחי תחנות הדלק (אגד, פז, סונול, מרכבות האש), ריכוזי בנזן/MTBE
-   - **מתכות (METALS)** — בעיקר כרום, ניקל
-   - **PFAS** — מצב נוכחי בחולון (שולי) + הקשר הרחב
+4. **ממצאים** (החלק העיקרי, מסודר לפי משפחת מזהמים **בסדר זה: CVOC → PFAS → METALS → FUEL**):
+   - **CVOC (תעשייה)** — הקידוחים החמורים, ריכוזים נוכחיים, מגמות, השוואה ל-2021, decay chains פעילות
+   - **PFAS** (אם משמעותי) — מצב נוכחי בחולון (שולי) + הקשר הרחב [לחולון: קצר ביותר או דלג]
+   - **מתכות (METALS)** — בעיקר כרום, ניקל, co-occurrence patterns
+   - **דלקים (FUEL)** — קידוחי תחנות הדלק (אגד, פז, סונול, מרכבות האש), ריכוזי בנזן/MTBE, BTEX signatures
 
-5. **מגמות** — טבלה של כל ה-INCREASING + ניתוח מילולי של החמורות
+5. **מגמות וניתוח עקומות** — טבלה של כל ה-INCREASING + ניתוח מילולי של החמורות (Z, p, SNR בנספח / ניתוח בגוף)
 
-6. **השערות מקור** — מה אומרים המסמכים ההיסטוריים על המקורות הפוטנציאליים, מה החפיפה עם המועמדים מ-`facility_candidates_holon.md`. תמיד עם הסתייגות הידרוגיאולוגית.
+6. **השערות מקור ו-Forensics Analysis** — מה אומרים המסמכים ההיסטוריים על המקורות הפוטנציאליים, מה החפיפה עם המועמדים מ-`facility_candidates_holon.md`. 
+   - **Decay chains**: אם PCE→TCE→cis-DCE — תעד ותייחס לתנאים אנוקסיים
+   - **Co-occurrence**: אם Cr+Ni ביחד → ציפוי מתכות
+   - **Source signatures**: אם BTEX ratio ~60:25:15 → דלק
+   - תמיד עם הסתייגות הידרוגיאולוגית ורמות ביטחון (HIGH/MEDIUM/LOW)
 
 7. **פערי מידע ואי-ודאות** — קידוחים עם ניטור הופסק, מזהמים שלא נמדדו, חוסר התאמה בין מקור-לקידוח.
 
-8. **המלצות**:
+8. **מקורות חיצוניים שנבדקו** (כמו Section 6 ב-Raanana V2):
+   - בדיקת PRTR Israel [YEAR]: מה דיווחו / לא דיווחו (וממה זה מעיד)
+   - בדיקת תאגיד מי חולון דיווח שפכים [YEAR]: מה דיווחו
+   - חיפוש Web [YEAR]: אילו שאילתות, אילו תוצאות, אילו מפעלים אוימתו/דחויו
+   - תיעוד של דחיות: "אם לא מצאנו X ב-PRTR — מדוע זה עלול להעיד על [small facilities, below threshold, etc.]"
+
+9. **המלצות**:
    - **מיידי (2026)**: ניטור דחוף לקידוחים עם פערי ניטור, חזרה לקידוחים שהופסקו
    - **קצר טווח (2026-2027)**: הרחבת ניטור PFAS, חקירת מקורות בודדים
    - **ארוך טווח (2027+)**: אסטרטגיית סילוק לקידוחים מזוהמים מאוד
 
-9. **מקורות** — רשימת המסמכים שעמדו בבסיס הדוח (PDFs + CSVs).
+10. **מקורות נתונים וערכי ביטחון** — טבלה: [ממצא] | [ערך] | [מקור] | [עמ'/תאריך] | [ביטחון (HIGH/MEDIUM/LOW)]
 
 ---
 
