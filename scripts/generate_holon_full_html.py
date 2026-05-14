@@ -5,7 +5,7 @@ Converts HOLON_REPORT_V4.md → HOLON_REPORT_V4.html with:
   - Inline SVG charts for figures 2-6 (replacing PNG references)
   - PNG kept only for figure 1 (zone site map, static)
   - Sticky sidebar TOC generated from H2 headers
-  - RTL handling with wrap_bidi() for mixed Hebrew/English content
+  - RTL handling with md_utils.wrap_bidi() for mixed Hebrew/English content
   - Same visual style as DESIGNED.html (academic monochrome)
 
 Writes:
@@ -29,7 +29,7 @@ sys.path.insert(0, str(REPO_ROOT))
 
 from scripts.report_designed import data_loader as dl
 from scripts.report_designed import svg_charts as sc
-from scripts.generate_holon_designed import wrap_bidi, _inline
+from scripts.report_designed import md_utils
 
 
 def _slugify(text: str) -> str:
@@ -44,14 +44,14 @@ def _render_table(lines: list, start: int) -> tuple[str, int]:
     header_cells = [c.strip() for c in lines[start].strip().strip("|").split("|")]
     parts = ['<table class="data-table">', "<thead><tr>"]
     for c in header_cells:
-        parts.append(f"<th>{_inline(c)}</th>")
+        parts.append(f"<th>{md_utils.inline(c)}</th>")
     parts.append("</tr></thead><tbody>")
     i = start + 2
     while i < len(lines) and lines[i].strip().startswith("|"):
         row_cells = [c.strip() for c in lines[i].strip().strip("|").split("|")]
         parts.append("<tr>")
         for c in row_cells:
-            parts.append(f"<td>{_inline(c)}</td>")
+            parts.append(f"<td>{md_utils.inline(c)}</td>")
         parts.append("</tr>")
         i += 1
     parts.append("</tbody></table>")
@@ -103,29 +103,27 @@ def _inject_missing_figure_images(md: str, figure_svgs: dict) -> str:
     return "\n".join(new_lines)
 
 
-def _render_image(alt: str, src: str, figure_svgs: dict, fig_counter: list) -> str:
+def _render_image(alt: str, src: str, figure_svgs: dict) -> str:
     """Render image: replace SVG figures inline, keep PNG (static) figures as <img>.
 
     figure_svgs: dict mapping path-fragment → SVG string.
-    fig_counter: 1-element list used as mutable counter (kept for backwards compat).
 
     Note: Figure numbering relies on the '**איור N**:' caption that follows the
     image in V4.md (rendered as a regular paragraph). We do NOT emit a separate
     'איור N' header to avoid mismatched numbering when V4.md has gaps/offsets.
     """
-    fig_counter[0] += 1
 
     # Check if this image should be replaced with inline SVG
     for key, svg_html in figure_svgs.items():
         if key in src:
             return (f'<figure class="full-figure">'
                     f'<div class="frame">{svg_html}</div>'
-                    f'<figcaption>{wrap_bidi(_inline(alt))}</figcaption></figure>')
+                    f'<figcaption>{md_utils.wrap_bidi(md_utils.inline(alt))}</figcaption></figure>')
 
     # Default: render as PNG image (zone site map etc.)
     return (f'<figure class="full-figure">'
             f'<div class="frame"><img src="{src}" alt="{alt}" style="width:100%;display:block"/></div>'
-            f'<figcaption>{wrap_bidi(_inline(alt))}</figcaption></figure>')
+            f'<figcaption>{md_utils.wrap_bidi(md_utils.inline(alt))}</figcaption></figure>')
 
 
 def render_markdown(md: str, figure_svgs: dict) -> tuple[str, list]:
@@ -138,8 +136,6 @@ def render_markdown(md: str, figure_svgs: dict) -> tuple[str, list]:
     toc = []
     in_list = False
     list_type = None
-    list_indent = 0
-    fig_counter = [0]
     i = 0
 
     def close_list():
@@ -165,7 +161,7 @@ def render_markdown(md: str, figure_svgs: dict) -> tuple[str, list]:
         if img_match:
             close_list()
             alt, src = img_match.group(1), img_match.group(2)
-            html_parts.append(_render_image(alt, src, figure_svgs, fig_counter))
+            html_parts.append(_render_image(alt, src, figure_svgs))
             i += 1
             continue
 
@@ -184,7 +180,7 @@ def render_markdown(md: str, figure_svgs: dict) -> tuple[str, list]:
                 # Version line — metadata, not a section; skip entirely
                 i += 1
                 continue
-            html_parts.append(f'<h{level} id="{anchor}">{wrap_bidi(_inline(text))}</h{level}>')
+            html_parts.append(f'<h{level} id="{anchor}">{md_utils.wrap_bidi(md_utils.inline(text))}</h{level}>')
             if level == 2:
                 toc.append({"level": level, "text": text, "id": anchor})
             i += 1
@@ -194,7 +190,7 @@ def render_markdown(md: str, figure_svgs: dict) -> tuple[str, list]:
         if stripped.startswith("|") and i + 1 < len(lines) and re.match(r"^\|[\s\-:|]+\|\s*$", lines[i + 1].strip()):
             close_list()
             table_html, consumed = _render_table(lines, i)
-            html_parts.append(wrap_bidi(table_html))
+            html_parts.append(md_utils.wrap_bidi(table_html))
             i += consumed
             continue
 
@@ -210,7 +206,7 @@ def render_markdown(md: str, figure_svgs: dict) -> tuple[str, list]:
                 html_parts.append("<ol>")
                 in_list = True
                 list_type = "ol"
-            html_parts.append(f'<li value="{num}">{wrap_bidi(_inline(m_ol.group(2)))}</li>')
+            html_parts.append(f'<li value="{num}">{md_utils.wrap_bidi(md_utils.inline(m_ol.group(2)))}</li>')
             i += 1
             continue
         if m_ul:
@@ -219,7 +215,7 @@ def render_markdown(md: str, figure_svgs: dict) -> tuple[str, list]:
                 html_parts.append("<ul>")
                 in_list = True
                 list_type = "ul"
-            html_parts.append(f"<li>{wrap_bidi(_inline(m_ul.group(1)))}</li>")
+            html_parts.append(f"<li>{md_utils.wrap_bidi(md_utils.inline(m_ul.group(1)))}</li>")
             i += 1
             continue
 
@@ -232,9 +228,9 @@ def render_markdown(md: str, figure_svgs: dict) -> tuple[str, list]:
         # Default: paragraph
         if in_list:
             # Continuation inside list item — append as <br>
-            html_parts.append(f"<br>{wrap_bidi(_inline(stripped))}")
+            html_parts.append(f"<br>{md_utils.wrap_bidi(md_utils.inline(stripped))}")
         else:
-            html_parts.append(f"<p>{wrap_bidi(_inline(stripped))}</p>")
+            html_parts.append(f"<p>{md_utils.wrap_bidi(md_utils.inline(stripped))}</p>")
         i += 1
 
     close_list()

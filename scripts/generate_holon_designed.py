@@ -29,6 +29,7 @@ sys.path.insert(0, str(REPO_ROOT))
 
 from scripts.report_designed import data_loader as dl
 from scripts.report_designed import svg_charts as sc
+from scripts.report_designed import md_utils
 
 
 def md_to_html(md: str) -> str:
@@ -61,7 +62,7 @@ def md_to_html(md: str) -> str:
             html_parts.append('<table class="data-table">')
             html_parts.append("<thead><tr>")
             for c in header_cells:
-                html_parts.append(f"<th>{_inline(c)}</th>")
+                html_parts.append(f"<th>{md_utils.inline(c)}</th>")
             html_parts.append("</tr></thead>")
             html_parts.append("<tbody>")
             i += 2  # Skip header and separator
@@ -69,7 +70,7 @@ def md_to_html(md: str) -> str:
                 row_cells = [c.strip() for c in lines[i].strip().strip("|").split("|")]
                 html_parts.append("<tr>")
                 for c in row_cells:
-                    html_parts.append(f"<td>{_inline(c)}</td>")
+                    html_parts.append(f"<td>{md_utils.inline(c)}</td>")
                 html_parts.append("</tr>")
                 i += 1
             html_parts.append("</tbody></table>")
@@ -88,7 +89,7 @@ def md_to_html(md: str) -> str:
                 html_parts.append("<ol>")
                 in_list = True
                 list_type = "ol"
-            html_parts.append(f'<li value="{num}">{_inline(m_ol.group(2))}</li>')
+            html_parts.append(f'<li value="{num}">{md_utils.inline(m_ol.group(2))}</li>')
         elif m_ul:
             if not in_list or list_type != "ul":
                 if in_list:
@@ -96,7 +97,7 @@ def md_to_html(md: str) -> str:
                 html_parts.append("<ul>")
                 in_list = True
                 list_type = "ul"
-            html_parts.append(f"<li>{_inline(m_ul.group(1))}</li>")
+            html_parts.append(f"<li>{md_utils.inline(m_ul.group(1))}</li>")
         elif stripped == "":
             if in_list:
                 html_parts.append(f"</{list_type}>")
@@ -105,9 +106,9 @@ def md_to_html(md: str) -> str:
             html_parts.append("")
         else:
             if in_list:
-                html_parts.append(f"<br>{_inline(stripped)}")
+                html_parts.append(f"<br>{md_utils.inline(stripped)}")
             else:
-                html_parts.append(f"<p>{_inline(stripped)}</p>")
+                html_parts.append(f"<p>{md_utils.inline(stripped)}</p>")
         i += 1
 
     if in_list:
@@ -116,65 +117,6 @@ def md_to_html(md: str) -> str:
     return "\n".join(html_parts)
 
 
-def _inline(text: str) -> str:
-    """Inline markdown: **bold**, `code`."""
-    # Bold
-    text = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", text)
-    # Inline code
-    text = re.sub(r"`([^`]+)`", r"<code>\1</code>", text)
-    return text
-
-
-# Pollutant names + units that must be isolated for proper RTL flow in mixed Hebrew text.
-_BIDI_POLLUTANTS = (
-    "TCE|PCE|MTBE|BTEX|CVOC|PFAS|PFHxS|PFOA|PFOS|PFNA|DCE|VC|DNAPL|AFFF|PVDC|"
-    "DWS|NMVOC|ITM|PRTR|WMS|OSM|AFFF|SNR"
-)
-_BIDI_PATTERNS = [
-    # Numbers + units: "27,860 µg/L", "85,000%", "8.5 mg/L"
-    (re.compile(r'(\d[\d,\.]*\s*(?:µg/L|mg/L|ng/L|µS/cm|%|דונם|מ"ק|ק"ג/שנה))'), r'<bdi>\1</bdi>'),
-    # Statistics: Z=2.60, p=0.009, SNR=1.32, n=5
-    (re.compile(r'\b(Z=\d+\.?\d*|p=\d+\.?\d*|SNR=\d+\.?\d*|n=\d+)'), r'<bdi>\1</bdi>'),
-    # Compound CVOC names with digits/commas/hyphens: 1,1-DCE, cis-1,2-DCE, 1,4-dioxane
-    (re.compile(r'\b(cis-1,2-DCE|trans-1,2-DCE|1,1-DCE|1,2-DCA|1,4-[Dd]ioxane|1,1,1-TCA|CCl[₄4])'), r'<bdi>\1</bdi>'),
-    # Standalone pollutant names
-    (re.compile(rf'\b({_BIDI_POLLUTANTS})\b'), r'<bdi>\1</bdi>'),
-    # Metal symbols: Cr, Ni, Pb, As, Fe, Al, Cd
-    (re.compile(r'\b(Cr|Ni|Pb|As|Fe|Al|Cd)\b(?![<>])'), r'<bdi>\1</bdi>'),
-    # Standalone years inside Hebrew text: 2012, 2026
-    (re.compile(r'(?<![\d/-])\b(20\d{2})\b(?![\d/-])'), r'<bdi>\1</bdi>'),
-]
-
-
-def wrap_bidi(html: str) -> str:
-    """Wrap LTR tokens (numbers, units, pollutants) in <bdi> for RTL flow.
-
-    Avoids double-wrapping and skips content inside existing tags.
-    """
-    if not html:
-        return html
-    # Split into segments alternating between tag content and text content.
-    # Apply bidi wrapping only to text content.
-    parts = []
-    last_end = 0
-    for m in re.finditer(r'<[^>]+>', html):
-        # Text before this tag — apply wrapping
-        text_segment = html[last_end:m.start()]
-        for pattern, repl in _BIDI_PATTERNS:
-            text_segment = pattern.sub(repl, text_segment)
-        parts.append(text_segment)
-        # Tag itself — preserve as-is
-        parts.append(m.group(0))
-        last_end = m.end()
-    # Final text segment after last tag
-    text_segment = html[last_end:]
-    for pattern, repl in _BIDI_PATTERNS:
-        text_segment = pattern.sub(repl, text_segment)
-    parts.append(text_segment)
-    result = "".join(parts)
-    # Prevent double wrapping if a pattern already inside <bdi>
-    result = re.sub(r'<bdi><bdi>([^<]+)</bdi></bdi>', r'<bdi>\1</bdi>', result)
-    return result
 
 
 def main() -> None:
@@ -243,17 +185,17 @@ def main() -> None:
         "{{N_MEASUREMENTS}}": f"{len(measurements):,}",
         "{{N_ALERT}}": str(n_alert),
         "{{N_INCREASING}}": str(int(n_increasing)),
-        "{{MASTHEAD_INTRO}}": wrap_bidi(_strip_md(narrative.get("masthead_intro", ""))),
-        "{{FOUR_FOCI}}": wrap_bidi(md_to_html(narrative.get("four_foci", ""))),
-        "{{CURRENT_STORY}}": wrap_bidi(md_to_html(narrative.get("current_story", ""))),
-        "{{LEDGER_F1}}": wrap_bidi(ledger_f1),
+        "{{MASTHEAD_INTRO}}": md_utils.wrap_bidi(_strip_md(narrative.get("masthead_intro", ""))),
+        "{{FOUR_FOCI}}": md_utils.wrap_bidi(md_to_html(narrative.get("four_foci", ""))),
+        "{{CURRENT_STORY}}": md_utils.wrap_bidi(md_to_html(narrative.get("current_story", ""))),
+        "{{LEDGER_F1}}": md_utils.wrap_bidi(ledger_f1),
         "{{MATRIX_F2}}": matrix_f2,
         "{{CVOC_PANELS_F3}}": cvoc_f3,
         "{{CHROMIUM_PANELS_F4}}": chromium_f4,
         "{{BTEX_PANELS_F5}}": btex_f5,
         "{{GAPS_F6}}": gaps_f6,
-        "{{RECOMMENDATIONS_F7}}": wrap_bidi(recs_f7),
-        "{{CLASSIFICATION_TABLE_F8}}": wrap_bidi(class_table_f8),
+        "{{RECOMMENDATIONS_F7}}": md_utils.wrap_bidi(recs_f7),
+        "{{CLASSIFICATION_TABLE_F8}}": md_utils.wrap_bidi(class_table_f8),
         "{{BOREHOLE_MAP_F9}}": class_map_f9,
     }
 
