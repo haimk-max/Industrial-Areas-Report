@@ -11,10 +11,6 @@
 
 | # | בעיה | תיאור | סטטוס | תאריך פתיחה | קבצים |
 |---|------|--------|--------|----------------|--------|
-| 2 | סדר פייפליין הפוך | הוסף `boreholes_override` ל-svg_charts.py + `extract_report_boreholes()` ל-data_loader.py | ❌ Open | 2026-05-14 | `scripts/report_designed/svg_charts.py`, `data_loader.py` |
-| 3 | HTML generators ללא תיעוד | צור README בעברית ב-`scripts/report_designed/` המסביר את 2 ה-generators | ❌ Open | 2026-05-14 | `scripts/report_designed/README.md` (חדש) |
-| 4 | תבנית פרומפט נעולה | צור `scripts/templates/zone_report_prompt_template.md` עם XML structure + 30 placeholders | ❌ Open | 2026-05-14 | `scripts/templates/` (חדש) |
-| 5b | CLAUDE.md Phase H docs חלקיים | הרחב Phase H: scripts, outputs, lean_workspace structure, §8, §11 | ⚠️ Partial | 2026-05-14 | `CLAUDE.md` |
 | 7 | Skills/אוטומציה לתהליכים חוזרים | אימוץ simplify (קוד כפול), init (regen CLAUDE.md), review (PR) | ⏳ Deferred | 2026-05-14 | אחרי בעיות 2–4 |
 
 ---
@@ -31,6 +27,10 @@
 | H1 | Session-start-hook | 2026-05-14 | 7aa031d, d8e3d15 | `.claude/hooks/session-start.sh` + settings.json; CLAUDE_CODE_REMOTE guard |
 | H2 | HOLON_REPORT_V4.html regenerated | 2026-05-14 | fea643c | `generate_holon_full_html.py` rerun; 180KB; figure injection safety net |
 | H3 | Requirements tracking infrastructure | 2026-05-14 | 5744f8f | `PROCESS.md` SSOT + CLAUDE.md §12 rule + session-start.sh auto-display |
+| 2 | סדר פייפליין הפוך (boreholes_override) | 2026-05-14 | pre-existing | `svg_charts.py:343,388,441` — 3 panel functions accept `boreholes_override`; `data_loader.py:126` — `extract_report_boreholes()` defined |
+| 3 | HTML generators README | 2026-05-14 | pre-existing | `scripts/report_designed/README.md` — תיעוד מלא בעברית של 2 generators, pipeline order, API, RTL |
+| 4 | תבנית פרומפט generic | 2026-05-14 | pre-existing | `scripts/templates/zone_report_prompt_template.md` — 31 placeholders, 49 XML tags, Anthropic structure |
+| 5b | CLAUDE.md Phase H docs מלאים | 2026-05-14 | pre-existing | CLAUDE.md §4 שורות 109-121 — scripts, outputs, lean_workspace, severity, generators, safety net, SSOT, family ordering, web search |
 
 ---
 
