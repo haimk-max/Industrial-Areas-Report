@@ -227,9 +227,9 @@ TEMPLATE = """<!DOCTYPE html>
   bdi{{unicode-bidi:isolate}}
   p,li,td,th,h1,h2,h3,h4,figcaption{{unicode-bidi:isolate}}
 
-  /* Layout: 2-column with sticky TOC */
-  .layout{{display:grid;grid-template-columns:1fr 240px;gap:40px;max-width:1200px;margin:0 auto;padding:0 32px}}
-  @media (max-width:980px){{.layout{{grid-template-columns:1fr;padding:0 20px}} .toc{{position:static;max-height:none;border-right:none;border-top:1px solid var(--rule-light);padding:24px 0}}}}
+  /* Layout: single centered column */
+  .layout{{max-width:880px;margin:0 auto;padding:0 32px}}
+  @media (max-width:980px){{.layout{{padding:0 20px}}}}
 
   /* Main column */
   .doc{{padding:48px 0 0;min-width:0}}
@@ -278,19 +278,20 @@ TEMPLATE = """<!DOCTYPE html>
   /* Horizontal section divider */
   hr.sec-divider{{border:none;border-top:1px solid var(--rule-light);margin:36px 0 0}}
 
-  /* TOC sidebar */
-  .toc{{position:sticky;top:24px;padding:48px 0 24px 24px;border-right:1px solid var(--rule-light);height:fit-content;max-height:calc(100vh - 48px);overflow-y:auto;font-family:"Source Sans 3",sans-serif;font-size:13px}}
-  .toc-title{{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--ink);font-weight:600}}
-  .toc ol{{list-style:none;padding:0;margin:0}}
-  .toc li{{margin:0 0 8px;line-height:1.4}}
-  .toc a{{color:var(--ink-2);text-decoration:none;display:block;padding:3px 0;border-right:2px solid transparent;padding-right:8px;transition:all .15s}}
-  .toc a:hover{{color:var(--red);border-right-color:var(--red)}}
+  /* TOC at top of document */
+  .toc-box{{margin:0 0 48px;padding:24px 28px;background:var(--grey-1);border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);font-family:"Source Sans 3",sans-serif}}
+  .toc-title{{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--rule-light);font-weight:600}}
+  .toc-box ol{{list-style:none;padding:0;margin:0;column-count:2;column-gap:32px;column-rule:1px solid var(--rule-light)}}
+  @media (max-width:680px){{.toc-box ol{{column-count:1}}}}
+  .toc-box li{{margin:0 0 8px;line-height:1.45;font-size:13.5px;break-inside:avoid}}
+  .toc-box a{{color:var(--ink-2);text-decoration:none;display:block;padding:2px 0;border-bottom:1px dotted transparent;transition:all .15s}}
+  .toc-box a:hover{{color:var(--red);border-bottom-color:var(--red)}}
 
   /* Print */
   @media print{{
     body{{font-size:11pt;padding:0}}
-    .toc{{display:none}}
-    .layout{{grid-template-columns:1fr;max-width:none;padding:0}}
+    .toc-box{{break-after:page}}
+    .layout{{max-width:none;padding:0}}
     figure.full-figure{{break-inside:avoid}}
     h2{{break-after:avoid}}
   }}
@@ -301,10 +302,6 @@ TEMPLATE = """<!DOCTYPE html>
 </head>
 <body>
 <div class="layout">
-  <nav class="toc">
-    <div class="toc-title">תוכן עניינים</div>
-    <ol>{TOC_ITEMS}</ol>
-  </nav>
   <main class="doc">
     <header class="masthead">
       <div class="top">
@@ -321,6 +318,10 @@ TEMPLATE = """<!DOCTYPE html>
         <span><b>מגמות עולות מובהקות:</b> {N_INCREASING}</span>
       </div>
     </header>
+    <nav class="toc-box">
+      <div class="toc-title">תוכן עניינים</div>
+      <ol>{TOC_ITEMS}</ol>
+    </nav>
     {BODY}
   </main>
 </div>
