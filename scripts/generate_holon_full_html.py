@@ -107,22 +107,23 @@ def _render_image(alt: str, src: str, figure_svgs: dict, fig_counter: list) -> s
     """Render image: replace SVG figures inline, keep PNG (static) figures as <img>.
 
     figure_svgs: dict mapping path-fragment → SVG string.
-    fig_counter: 1-element list used as mutable counter for figure numbering.
+    fig_counter: 1-element list used as mutable counter (kept for backwards compat).
+
+    Note: Figure numbering relies on the '**איור N**:' caption that follows the
+    image in V4.md (rendered as a regular paragraph). We do NOT emit a separate
+    'איור N' header to avoid mismatched numbering when V4.md has gaps/offsets.
     """
     fig_counter[0] += 1
-    fig_num = fig_counter[0]
 
     # Check if this image should be replaced with inline SVG
     for key, svg_html in figure_svgs.items():
         if key in src:
-            return (f'<figure class="full-figure"><div class="fig-h"><span class="ttl">איור {fig_num}</span>'
-                    f'<span class="fig-meta">{wrap_bidi(_inline(alt))}</span></div>'
+            return (f'<figure class="full-figure">'
                     f'<div class="frame">{svg_html}</div>'
                     f'<figcaption>{wrap_bidi(_inline(alt))}</figcaption></figure>')
 
     # Default: render as PNG image (zone site map etc.)
-    return (f'<figure class="full-figure"><div class="fig-h"><span class="ttl">איור {fig_num}</span>'
-            f'<span class="fig-meta">{wrap_bidi(_inline(alt))}</span></div>'
+    return (f'<figure class="full-figure">'
             f'<div class="frame"><img src="{src}" alt="{alt}" style="width:100%;display:block"/></div>'
             f'<figcaption>{wrap_bidi(_inline(alt))}</figcaption></figure>')
 
@@ -421,9 +422,11 @@ def main() -> None:
     # PROCESS_GUIDE §VIII.1: Opus picks boreholes via V4.md; chart engine renders them per style guide.
     report_boreholes = dl.extract_report_boreholes(args.report_v4, severity)
     print(f"  V4.md boreholes_override: {len(report_boreholes)} mentioned")
+    # Only figures actually referenced in V4.md. Adding extras here (e.g.
+    # fig_02_severity_matrix) caused phantom figures when the safety net
+    # injected images for missing-but-renderable keys.
     figure_svgs = {
         "fig_01_severity_ledger": sc.svg_severity_ledger(severity_alert),
-        "fig_02_severity_matrix": sc.svg_severity_matrix(severity_alert, trends, data_avail),
         "fig_03_cvoc_panels": sc.svg_cvoc_panels(measurements, severity, boreholes_override=report_boreholes),
         "fig_04_chromium_panels": sc.svg_chromium_panels(measurements, boreholes_override=report_boreholes),
         "fig_05_btex_panels": sc.svg_btex_panels(measurements, boreholes_override=report_boreholes),
@@ -432,7 +435,6 @@ def main() -> None:
 
     print(f"Reading {args.report_v4.name} ...")
     md = args.report_v4.read_text(encoding="utf-8")
-    md = _inject_missing_figure_images(md, figure_svgs)
 
     print("Rendering markdown → HTML ...")
     body_html, toc = render_markdown(md, figure_svgs)
