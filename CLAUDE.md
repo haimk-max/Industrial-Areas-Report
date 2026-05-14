@@ -2,10 +2,24 @@
 
 ## Project Overview
 **Title**: Structured Reporting System for Groundwater Quality Monitoring in Industrial Areas  
-**Scope**: Raanana industrial zone (אזה"ת רעננה) demonstration, expandable to 18-zone coastal system  
-**Data Sources**: TAHAL 2008 (historical), 2021 Water Quality Report (baseline), current monitoring  
+**Scope**: 18-zone coastal system. Active development on Holon; Raanana frozen as approved precedent.  
+**Data Sources**: TAHAL 2007/2008, אקולוג 2009–2017, 2021 Water Quality Report, current monitoring  
 **Deliverables**: Drilling cards, zone reports, trend analysis, forensic attribution  
 **Timeline**: Phase 1-4 implementation with quarterly review cycles
+
+---
+
+## אינדקס מצב אזורים (Zone Status Index)
+
+| אזור | מצב | מיקום סקריפטים | מיקום פלטים | קישור |
+|------|-----|----------------|--------------|-------|
+| **רעננה** | V2 מאושר, **קפוא** (legacy precedent) | `Raanana/scripts/` | `Raanana/output/` | — |
+| **חולון** | V4.2 ממתין לאישור הידרולוג; פייפליין פעיל | `scripts/` + `scripts/report_designed/` | `Holon/output/` | `Holon/lean_workspace/05_prompt/zone_report_prompt.md` |
+| 16 אזורים נוספים | ⏳ Phase 2 (Q3 2026+) | (לבנייה אחר אישור Holon) | (לבנייה) | תבנית: `scripts/templates/zone_report_prompt_template.md` |
+
+**SSOT לטרמינולוגיה וסדר פייפליין**: `ZONE_REPORT_PROCESS_GUIDE.md` (V4.2)
+**Methodology סטטיסטית**: `docs/STATISTICAL_OVERVIEW_METHODOLOGY.md`
+**Scripts README**: `scripts/report_designed/README.md`
 
 ---
 
@@ -183,6 +197,21 @@ Before implementing data processing:
   2. **Israeli WMS**: govmap.gov.il / Survey of Israel WMS endpoint (requires authentication, DNS verification)
   3. **Vector rendering**: Overpass API street network + geopandas render (no tile dependency, slower initial fetch)
 - **Decision**: Current offline ITM schematic is production-ready; basemap deferred pending expert environment access (Phase 4)
+
+**Phase H: Holon V4 + Pipeline Refactor** ✓ COMPLETE (May 2026)
+- Goal: Production pipeline for Holon zone (80 active boreholes, 2,672 measurements) + reusable architecture for 16 remaining zones
+- Verify:
+  - ✓ Holon V4.2 report: 10 sections in Hebrew, 5 contamination foci (CVOC, METALS, PFAS, FUEL), 25 significantly-exceeding boreholes flagged
+  - ✓ Lean workspace structure: `Holon/lean_workspace/{01_inputs,02_data_filtered,03_evidence_index,04_deterministic_anchors,05_prompt}/`
+  - ✓ Severity index per 2021 formula extended to PFAS (`bucket(C_max_5y / DWS × 100)`, 9-level 0–8)
+  - ✓ Forensics: PCE→TCE→1,1-DCE→cis-DCE→VC decay chains; Cr/Ni co-occurrence; 60 facility candidates (17 HIGH)
+  - ✓ Two HTML generators: `_V4.html` (canonical archive, ~167KB) + `_DESIGNED.html` (visual summary, ~139KB) — neither merged; documented in `scripts/report_designed/README.md`
+  - ✓ Pipeline ordering correction: `boreholes_override` in svg_charts (CVOC=6, METALS=4, FUEL=6 caps) + `extract_report_boreholes()` parses V4.md
+  - ✓ SSOT consolidation: `ZONE_REPORT_PROCESS_GUIDE.md` = SSOT for terminology + pipeline; `STATISTICAL_OVERVIEW_METHODOLOGY.md` redirects to PROCESS_GUIDE §III
+  - ✓ Generic Zone Prompt Template: `scripts/templates/zone_report_prompt_template.md` (30 placeholders, Anthropic XML-tag structure) — ready for 16 remaining zones
+  - ✓ Family ordering rule: FUEL always last; CVOC/METALS/PFAS by zone max_bucket descending (§IV in PROCESS_GUIDE)
+  - ✓ Web search documentation: 6 channels (PRTR, B144, web, maps, forums, historical reports) + standard queries documented in PROCESS_GUIDE §I.5
+  - ✓ PDF ingestion structure: `External Data/{zone}/{raw_pdfs,extracted}/` documented in PROCESS_GUIDE §I.2
 
 **Phase 4: System Validation** (PENDING expert review)
 - Goal: Expert hydrogeologist review; PFAS alert to regulators; boron anomaly investigation
@@ -375,7 +404,7 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 
 ---
 
-**Project Status**: Phases A–G Complete (real data pipeline, trend engine, charts, Hebrew reports, tests, facility discovery, zone map) | Phase 4 (expert validation) Pending Q3 2026  
-**Last Updated**: May 5, 2026  
-**Completion**: 44/44 core requirements done; 1 deferred (REQ-G1 basemap); 3 deprecated charts  
-**Next Review**: Q3 2026 (PFAS confirmatory sampling at turbine station; expert validation; Phase 2 expansion planning)
+**Project Status**: Phases A–H Complete (real data pipeline, trend engine, charts, Hebrew reports, tests, facility discovery, zone map, **Holon V4.2 + reusable architecture**) | Phase 4 (expert validation) Pending Q3 2026  
+**Last Updated**: May 14, 2026 (Phase H refactor: SSOT consolidation, pipeline ordering, generic prompt template)  
+**Completion**: Raanana 44/44; Holon V4.2 pipeline complete. 16 remaining zones ready to begin via `scripts/templates/zone_report_prompt_template.md`  
+**Next Review**: Q3 2026 (PFAS confirmatory sampling at Raanana turbine station; expert validation of Holon V4.2; planning Phase 2 expansion)
