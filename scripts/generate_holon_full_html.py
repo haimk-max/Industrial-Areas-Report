@@ -440,11 +440,10 @@ def main() -> None:
     # PROCESS_GUIDE §VIII.1: Opus picks boreholes via V4.md; chart engine renders them per style guide.
     report_boreholes = dl.extract_report_boreholes(args.report_v4, severity)
     print(f"  V4.md boreholes_override: {len(report_boreholes)} mentioned")
-    # Only figures actually referenced in V4.md. Adding extras here (e.g.
-    # fig_02_severity_matrix) caused phantom figures when the safety net
-    # injected images for missing-but-renderable keys.
+    # Figures referenced in V4.md, in order.
     figure_svgs = {
         "fig_01_severity_ledger": sc.svg_severity_ledger(severity_alert),
+        "fig_02_severity_matrix": sc.svg_severity_matrix(severity_alert, trends, data_avail),
         "fig_03_cvoc_panels": sc.svg_cvoc_panels(measurements, severity, boreholes_override=report_boreholes),
         "fig_04_chromium_panels": sc.svg_chromium_panels(measurements, boreholes_override=report_boreholes),
         "fig_05_btex_panels": sc.svg_btex_panels(measurements, boreholes_override=report_boreholes),
