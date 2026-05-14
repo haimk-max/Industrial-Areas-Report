@@ -18,6 +18,29 @@
 - **למה**: Historical context, contamination types, facility names
 - **דוגמה**: דוח רשות 2021 עמ' 35-49 (גיאוגרפיה, severity)
 
+#### מבנה PDFs לאזור חדש (סקיילינג ל-16 אזורים נוספים)
+
+**מיקום סטנדרטי**: `External Data/{zone}/`
+```
+External Data/{zone}/
+├── raw_pdfs/                         # PDFs מקור (לא שינויים)
+│   ├── tahal_2007_{zone}.pdf         # סקר אתרי קרקע מזוהמת (אם רלוונטי)
+│   ├── ecolog_2009-2017_{zone}.pdf   # מודל הסעה / מפעלי ציפוי (אם רלוונטי)
+│   ├── water_authority_2021_{zone}.pdf  # חובה אם האזור נמנה ב-18
+│   └── facility_reports/             # מסמכי מפעלים (אופציונלי)
+│       └── {facility_id}.pdf
+└── extracted/                        # תוצרי חילוץ ידני / אוטומטי
+    ├── boreholes_table.csv           # מטבלת קידוחים שב-PDF
+    ├── concentrations_table.csv      # ריכוזים היסטוריים
+    └── extraction_notes.md           # עמודי מקור, הערות, חוסרים
+```
+
+**חילוץ ידני (כיום)**: קריאת PDF + העתקה ידנית של טבלאות לקבצי CSV. תיעוד בעמוד מקור (לדוג' "TAHAL 2008 Part B עמ' 53-67").
+
+**חילוץ אוטומטי (Phase 2)**: Skill `pdf-ingest` יעשה את החילוץ עם Claude PDF Beta / pdfplumber. עד אז — ידני.
+
+**חשוב — אישור היסטורי**: כל extraction חייב להישמר עם source citation (`source_document: TAHAL_2008_Part_B`, `source_page: 53-67`) לטובת validation.
+
 ### קלט 3: Statistical Brief (Structured Text)
 - **מה**: סיכום קריא של trends + severity distribution — **לא raw CSV**
 - **למה**: Opus יכול להתמקד בממצאים, לא ב-parsing
@@ -33,6 +56,42 @@
 - **מה**: `facility_candidates_[ZONE].md` — גם HIGH מ-PDFs אומתו עדכנים; + תוצאות web search (PRTR, דיווח שפכים)
 - **למה**: Sourcing guidance עם confidence levels (HIGH/MEDIUM/LOW)
 - **דוגמה**: "אלגונל (HIGH, confirmed address, ציפוי מתכת) | PFHxS מגורם דיגום Holon Q3 2025 עתידי"
+
+#### מקורות Web סטנדרטיים לחיפוש (Facility Discovery)
+
+**6 ערוצי חיפוש לפעולה לכל אזור חדש**:
+
+| # | מקור | URL / שאילתה | מה לחפש |
+|---|------|--------------|----------|
+| 1 | **PRTR Israel** | ecology.sviva.gov.il | מפעלים מחויבי דיווח (>1,000 ק"ג/שנה) באזור הנסקר |
+| 2 | **B144** | b144.co.il | רישום עסקים לפי רחוב/קואורדינטות |
+| 3 | **WebSearch כללי** | "מפעל ציפוי {אזור}", "תקרית זיהום {רחוב}" | חדשות, תקריות, מפעלים היסטוריים |
+| 4 | **גוגל מפות** | maps.google.com (manual) | מפעלים תעשייתיים בקואורדינטות + סוג עסק |
+| 5 | **פורומים מקומיים** | פייסבוק קבוצות, אתרי שכונה | תלונות תושבים על ריחות / פליטות |
+| 6 | **דוחות גורמים** | רשות המים, אקולוג, תה"ל | מפעלים שזוהו במחקרים קודמים |
+
+**שאילתות סטנדרטיות לכל אזור**:
+```
+"מפעל ציפוי {שם_אזור}"
+"תקרית זיהום {שם_רחוב}"
+"{שם_אזור} זיהום מי תהום"
+"{שם_אזור} industrial waste"
+"PRTR {שם_אזור}"
+"chrome plating {city_name} Israel"
+```
+
+**Output structure** (`facility_candidates_{zone}.md`):
+```markdown
+| מפעל | קואורדינטות ITM | מזהמים חשודים | רמת ביטחון | מקור (URL/PDF) | פעיל? |
+|------|------------------|----------------|------------|----------------|--------|
+```
+
+**רמות ביטחון**:
+- **HIGH**: address confirmed + מזהם מתאים מקידוח קרוב (<500m) + שנות פעילות חופפות לעדות בקידוח
+- **MEDIUM**: 2 מתוך 3 הקריטריונים
+- **LOW**: 1 קריטריון, או רק רישום ללא ראיות שטח
+
+**אוטומציה — Phase 2**: skill `facility-discovery` יבצע את 6 הערוצים אוטומטית עם confidence scoring מבוסס Emipy pattern (distance × pollutant_match × operating_year_overlap).
 
 ---
 
@@ -99,31 +158,63 @@
 
 ## III. Severity Scale (Unified, No Variants)
 
-**Only one scale: 5-level severity index per contamination level (C% / DWS)**
+**נוסחת חישוב קנונית**: `bucket = severity_index(C_max_5y / DWS × 100)`
+- `C_max_5y` = ריכוז מקסימלי בחלון 5 שנים אחרונות (מ-2021 ואילך לדו"חות 2026)
+- `DWS` = drinking water standard (תקן מי שתייה ישראלי)
 
-| Index | Label | Definition |
-|---|---|---|
-| 0 | נקי (Clean) | <10% of drinking water standard |
-| 1-3 | נמוך (Low) | 10–100% |
-| 4-5 | בינוני (Medium) | 100–1,000% |
-| 6-7 | גבוה (High) | 1,000–10,000% |
-| 8 | גבוה מאוד (Very High) | >10,000% |
+**טבלת אינדקס קנונית (9-רמות, 0–8)** — לפי הקוד ב-`severity_index_2025_*.csv`:
+
+| אינדקס | % מהתקן | תווית (5-רמות) |
+|--------|---------|------------------|
+| 0 | ND (לא זוהה) | נקי |
+| 1 | <10% | נקי |
+| 2 | 10–25% | נמוך |
+| 3 | 25–50% | נמוך |
+| 4 | 50–100% | בינוני |
+| 5 | 100–250% | בינוני |
+| 6 | 250–1,000% | גבוה |
+| 7 | 1,000–2,500% | גבוה |
+| 8 | >2,500% | גבוה מאוד |
+
+**הצגה בדו"ח**: השתמש ב-5 תוויות בלבד (נקי / נמוך / בינוני / גבוה / גבוה מאוד).
+**שמירה ב-CSV**: 9-רמות מספריות (0–8).
 
 **Terminology enforcement (אכיפה)**: יש להשתמש ב-labels עבריים בלבד. אסור: 'bucket', 'ALERT/WATCH/ELEVATED/STABLE/NONE', 'עקבה'. במקום ALERT — "קידוח חורג מובהק" או "אינדקס גבוה (≥7)" או "קידוח במגמת עלייה מובהקת" (לפי הקשר). אם דרושה הגדרה אופרטיבית, יש לתעד את המקור (CSV/מסמך) שמייצר אותה.
 
 ---
 
-## IV. Family Ordering (Fixed Order)
+## IV. Family Ordering (Zone-Adaptive)
 
-**סדר קבוע, ללא תלות בנפח נתונים:**
+**עיקרון** (החלטה 2026-05-14):
+- **FUEL תמיד אחרון** (point-source, selection bias; לא להוביל את הדו"ח)
+- **שאר המשפחות** (CVOC, METALS, PFAS) — בסדר **חומרה יורד לפי ממצאי האזור הנסקר** (max_bucket באזור)
+
+**אלגוריתם**:
+```python
+def family_order(zone_max_buckets: Dict[str, int]) -> List[str]:
+    non_fuel = sorted(
+        ['CVOC', 'METALS', 'PFAS'],
+        key=lambda f: zone_max_buckets.get(f, 0),
+        reverse=True  # descending
+    )
+    return non_fuel + ['FUEL']
+```
+
+**דוגמא — חולון 2026**:
+- max_bucket: CVOC=8, METALS=7, PFAS=4, FUEL=8 (קידוחי דלק נפרדים)
+- סדר תצוגה: **CVOC → METALS → PFAS → FUEL**
+
+**דוגמא — אזור היפותטי עם METALS דומיננטי**:
+- max_bucket: METALS=8, CVOC=5, PFAS=2, FUEL=6
+- סדר תצוגה: **METALS → CVOC → PFAS → FUEL**
+
+### תיאור משפחות
 
 1. **CVOC** — ממסים מוכלרים תעשייתיים (TCE, PCE, 1,4-Dioxane, Chloroform, etc.)
    - מתמידים שנים–עשורים, דעיכה איטית, סיכון ביו-מצטבר גבוה
-   - **ליבת הסיפור** תמיד (אם יש נתון)
 
 2. **METALS** — מתכות כבדות (Cr, Ni, Pb, Cd, As, etc.)
    - מתמידות, ביו-מצטברות, רגישות-רדוקס
-   - **עדיפות שנייה** (אם יש נתון משמעותי, אינדקס ≥3 בקידוח אחד לפחות)
 
 3. **PFAS** — חומרים פר/פולי-פלואורואלקיליים
    - מחלקת תרכובות חדשה (פוסט-2021), חשש עולה גלובלית
@@ -188,7 +279,7 @@
 
 - [ ] No narrative arc ("crisis in 20XX")
 - [ ] All numbers tied to source (CSV row, page number, Z/p/SNR)
-- [ ] **Family order fixed: CVOC → METALS → PFAS → FUEL** (FUEL אחרון תמיד)
+- [ ] **Family order: FUEL last; CVOC/METALS/PFAS לפי max_bucket יורד באזור** (ראה §IV)
 - [ ] PFAS section present (full if max_bucket≥1; coverage-gap analysis if not)
 - [ ] Severity scale = 5-level only (נקי/נמוך/בינוני/גבוה/גבוה מאוד)
 - [ ] **אין טרמינולוגיה אנגלית** (ALERT/WATCH/ELEVATED/STABLE/NONE) — רק labels עבריים או ניסוחים תיאוריים מתועדים
@@ -218,31 +309,32 @@
 
 **Precedent for Zone N+1**: Once Zone N passes expert validation, store as `[N+1]/lean_workspace/01_inputs/[N]_approved_precedent.md`.
 
-### VIII.1 Pipeline Ordering Notes — ⚠️ TODO לתיקון בעתיד
+### VIII.1 Pipeline Ordering — תקין (V4.2+)
 
-#### בעיה א': הדו"ח שכתב Opus לא טרי
+**עיקרון מרכזי**: **Opus בוחר אילו קידוחים** לאייר; **הסקריפט מחליט איך** לאייר (גודל, צבעים, סדר, סוג גרף) על בסיס סגנון מוסכם.
 
-**מצב נוכחי (חולון V4.1 → V4.2)**: הדו"ח המעוצב (`HOLON_REPORT_DESIGNED.html`) ודו"ח HTML המלא (`HOLON_REPORT_V4.html`) **מבוססים על דו"ח Markdown שנכתב במהדורה קודמת** ולא מ-Opus call טרי. כתוצאה, שינויים סטרוקטורליים (כמו הרחבת §1 מ-7 ממצאים ל-8 תת-סעיפים) דורשים עריכת ידנית של V4.md ואחר כך re-render — במקום שיגרור חדש מ-Opus.
+**סדר תקין**:
+1. **Opus call** → כותב את V4.md הטרי (10 סעיפים, narrative פרשני, **בחירת קידוחים** למוקדים).
+2. **חילוץ קידוחים** → `extract_report_boreholes(v4_md_path)` מחלץ את רשימת הקידוחים שהוזכרו ב-V4.md.
+3. **יצירת גרפים** → `svg_charts.py` מקבל `boreholes_override=List[str]` ומאייר רק את הקידוחים שנבחרו. הסגנון (RTL, צבעים, גודל, סוג גרף) מוגדר ב-svg_charts.py לפי הסגנון של הדו"ח המעוצב + תיקונים עד כה.
+4. **Render HTML** → `generate_holon_full_html.py` (full report) + `generate_holon_designed.py` (mini-report).
 
-**תהליך תקין** (Zone N+1):
-1. **תחילה**: Opus call על נתוני הזמן (עם 5 הקלטים מסעיף I)
-2. **רק לאחר מכן**: Render ל-HTML (designed + full)
-3. **לעולם לא**: עריכה ידנית של V4.md עם re-render על אותו תוכן
+**עריכת ידנית מתי בסדר**: רק תיקוני post-Opus של ולידציה (סעיף VII) — תיקוני טרמינולוגיה, סדר משפחות, פערים. **לא** הרחבות מבניות (אלה מחייבות Opus call טרי).
 
-**מתי עריכה ידנית בסדר**: רק תיקוני "post-Opus" של ולידציה (בסעיף VII) — תיקוני טרמינולוגיה, סדר משפחות, פערים שזוהו. **לא** הרחבות מבניות.
+**API**:
+```python
+# scripts/report_designed/data_loader.py
+def extract_report_boreholes(v4_md_path: str) -> List[str]:
+    """Parse V4.md, extract all borehole IDs mentioned in §4–6."""
+    ...
 
-#### בעיה ב': הגרפים נוצרים מה-DESIGNED ולא מהדו"ח המלא
-
-**מצב נוכחי**: הגרפים (fig_01-06) שמופיעים בדו"ח HTML המלא נלקחים מ-`svg_charts.py` שעובד על אותה data שנעשתה לדו"ח המעוצב — לא על ניתוח שנעשה דווקא בדו"ח המלא. כלומר, הגרפים אומנם תואמים לנתונים, אך אינם משקפים בחירות פרשניות שהדו"ח המלא עשוי לעשות (למשל, בחירת מוקדים, סינון קידוחים).
-
-**תהליך תקין** (Pipeline ordering):
-1. **דו"ח מלא** → Opus כותב את הסיפור הפרשני המלא (10 סעיפים) ובחירות הקידוחים/מוקדים
-2. **גרפים** → נוצרים על בסיס בחירות הסיפור הפרשני (לדוגמה: הגרף `cvoc_panels` יציג רק את הקידוחים שהדו"ח מצביע עליהם, לא את top-6 אוטומטי)
-3. **דו"ח מעוצב** → מהווה תקציר ויזואלי של הדו"ח המלא, לא ההפך
-
-**Impact**: כיום `svg_cvoc_panels()` בוחר אוטומטית את top-6 קידוחים לפי severity. אם הדו"ח המלא מדבר על מוקד ספציפי (למשל "תדירגן-סונול"), הגרף לא בהכרח יציג בדיוק את הקידוחים שהוזכרו בטקסט.
-
-**תיקון מוצע**: להוסיף ל-`svg_charts.py` פרמטר `boreholes_override=List[str]` שמאפשר לדו"ח המלא להעביר את הקידוחים שהוא רוצה להציג. ה-Opus call יחזיר את רשימת הקידוחים בסעיף Methodology או באיזה שדה meta.
+# scripts/report_designed/svg_charts.py
+def svg_cvoc_panels(data, boreholes_override: Optional[List[str]] = None) -> str:
+    if boreholes_override:
+        # use Opus's selection
+    else:
+        # fallback: top-6 by severity (legacy)
+```
 
 ---
 
@@ -281,6 +373,6 @@ body, p, li, td, th, h1, h2, h3, h4 { unicode-bidi: isolate; }
 
 ---
 
-**Status**: Holon V4.1 framework (7-point refinement) | Scalable to all 18 zones  
-**Last Updated**: 2026-05-14  
-**Governance**: Holon CLAUDE.md + project REQUIREMENTS.md
+**Status**: V4.2 framework | SSOT לטרמינולוגיה ולסדר פייפליין | Scalable to all 18 zones  
+**Last Updated**: 2026-05-14 (Refactor: §III סולם 9-רמות קנוני, §IV סדר משפחות אדפטיבי, §VIII.1 pipeline ordering נפתר, §I.2 PDF ingestion, §I.5 Web sources)  
+**Governance**: CLAUDE.md (אינדקס אזורים + Phase H) + project REQUIREMENTS.md
