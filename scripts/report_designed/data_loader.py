@@ -80,16 +80,27 @@ def extract_narrative_sections(report_path: Path = REPORT_V4) -> dict:
 
     text = report_path.read_text(encoding="utf-8")
 
-    match = re.search(r"## 1\. תקציר מנהלים\n\n(.+?)\n\n\*\*ארבעה", text, re.DOTALL)
+    # V4.1: masthead intro = first paragraph after "## 1. תקציר מנהלים" before "**ממצאים"
+    # Fallback to V4 marker "**ארבעה" if needed
+    match = re.search(r"## 1\. תקציר מנהלים\n\n(.+?)\n\n\*\*(ממצאים עיקריים|ארבעה)", text, re.DOTALL)
     if match:
         sections["masthead_intro"] = _clarify_terms(match.group(1).strip())
 
-    match = re.search(r"\*\*ארבעה מוקדי זיהום.+?\n\n(.+?)\n\n\*\*הסיפור העדכני", text, re.DOTALL)
+    # V4.1: findings list = numbered items after "**ממצאים עיקריים:**" until next "---" or "##"
+    # Fallback to V4 marker "**ארבעה מוקדי זיהום"
+    match = re.search(r"\*\*ממצאים עיקריים:\*\*\n\n(.+?)\n\n(?:מבין|\*\*הסיפור|על פי דוח)", text, re.DOTALL)
+    if not match:
+        match = re.search(r"\*\*ארבעה מוקדי זיהום.+?\n\n(.+?)\n\n\*\*הסיפור העדכני", text, re.DOTALL)
     if match:
         foci = _clarify_terms(match.group(1).strip())
         sections["four_foci"] = _reorder_foci_fuel_last(foci)
 
+    # V4.1: closing summary paragraph of section 1 (between findings and ---)
+    # Fallback to V4 marker "**הסיפור העדכני**:"
     match = re.search(r"\*\*הסיפור העדכני\*\*:(.+?)\n\n---", text, re.DOTALL)
+    if not match:
+        # V4.1 closing: paragraph(s) after findings list, before ## 2
+        match = re.search(r"\n\n(מבין .+?|על פי דוח .+?)\n\n---\n\n## 2\.", text, re.DOTALL)
     if match:
         sections["current_story"] = _clarify_terms(match.group(1).strip())
 
