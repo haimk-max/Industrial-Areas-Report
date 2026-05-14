@@ -1,10 +1,15 @@
 #!/bin/bash
+# SessionStart hook for Claude Code on the web.
+# Installs Python dependencies so pytest can run on session start.
+# Local sessions (non-remote) skip this — assume the user manages their own venv.
+
 set -euo pipefail
 
-# Claude Code Session Start Hook
-# Installs Python dependencies from requirements.txt
+if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
+  exit 0
+fi
 
-echo "🔧 Installing Python dependencies..."
-pip install -q -r requirements.txt 2>/dev/null || true
+cd "$CLAUDE_PROJECT_DIR"
 
-echo "✅ Session initialization complete"
+python3 -m pip install --quiet --upgrade pip
+python3 -m pip install --quiet -r requirements.txt
