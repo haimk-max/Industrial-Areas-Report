@@ -486,6 +486,7 @@ def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
     c_max = max(well_data.concentration.max() * 1.2, dws * 5)
 
     parts = [f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}">']
+    parts.append('<style>text.rtl-title { direction:rtl; unicode-bidi:isolate; }</style>')
 
     # Year gridlines + tick labels
     for yr in [2012, 2014, 2016, 2018, 2020, 2022, 2024]:
@@ -550,7 +551,7 @@ def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
     # Title (well name) — at top, single line, larger; RTL for Hebrew with mixed content
     parts.append(f'<text x="{width / 2:.1f}" y="20" font-family="Source Sans 3,sans-serif" '
                  f'font-size="12" font-weight="700" fill="{INK}" '
-                 f'direction="rtl" unicode-bidi="isolate" '
+                 f'class="rtl-title" '
                  f'text-anchor="middle">{esc(name_he)}</text>')
 
     # Legend at bottom — two-row layout: line sample on TOP, label BELOW (no overlap).
