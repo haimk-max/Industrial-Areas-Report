@@ -99,6 +99,58 @@ def _inline(text: str) -> str:
     return text
 
 
+# Pollutant names + units that must be isolated for proper RTL flow in mixed Hebrew text.
+_BIDI_POLLUTANTS = (
+    "TCE|PCE|MTBE|BTEX|CVOC|PFAS|PFHxS|PFOA|PFOS|PFNA|DCE|VC|DNAPL|AFFF|PVDC|"
+    "DWS|NMVOC|ITM|PRTR|WMS|OSM|AFFF|SNR"
+)
+_BIDI_PATTERNS = [
+    # Numbers + units: "27,860 µg/L", "85,000%", "8.5 mg/L"
+    (re.compile(r'(\d[\d,\.]*\s*(?:µg/L|mg/L|ng/L|µS/cm|%|דונם|מ"ק|ק"ג/שנה))'), r'<bdi>\1</bdi>'),
+    # Statistics: Z=2.60, p=0.009, SNR=1.32, n=5
+    (re.compile(r'\b(Z=\d+\.?\d*|p=\d+\.?\d*|SNR=\d+\.?\d*|n=\d+)'), r'<bdi>\1</bdi>'),
+    # Compound CVOC names with digits/commas/hyphens: 1,1-DCE, cis-1,2-DCE, 1,4-dioxane
+    (re.compile(r'\b(cis-1,2-DCE|trans-1,2-DCE|1,1-DCE|1,2-DCA|1,4-[Dd]ioxane|1,1,1-TCA|CCl[₄4])'), r'<bdi>\1</bdi>'),
+    # Standalone pollutant names
+    (re.compile(rf'\b({_BIDI_POLLUTANTS})\b'), r'<bdi>\1</bdi>'),
+    # Metal symbols: Cr, Ni, Pb, As, Fe, Al, Cd
+    (re.compile(r'\b(Cr|Ni|Pb|As|Fe|Al|Cd)\b(?![<>])'), r'<bdi>\1</bdi>'),
+    # Standalone years inside Hebrew text: 2012, 2026
+    (re.compile(r'(?<![\d/-])\b(20\d{2})\b(?![\d/-])'), r'<bdi>\1</bdi>'),
+]
+
+
+def wrap_bidi(html: str) -> str:
+    """Wrap LTR tokens (numbers, units, pollutants) in <bdi> for RTL flow.
+
+    Avoids double-wrapping and skips content inside existing tags.
+    """
+    if not html:
+        return html
+    # Split into segments alternating between tag content and text content.
+    # Apply bidi wrapping only to text content.
+    parts = []
+    last_end = 0
+    for m in re.finditer(r'<[^>]+>', html):
+        # Text before this tag — apply wrapping
+        text_segment = html[last_end:m.start()]
+        for pattern, repl in _BIDI_PATTERNS:
+            text_segment = pattern.sub(repl, text_segment)
+        parts.append(text_segment)
+        # Tag itself — preserve as-is
+        parts.append(m.group(0))
+        last_end = m.end()
+    # Final text segment after last tag
+    text_segment = html[last_end:]
+    for pattern, repl in _BIDI_PATTERNS:
+        text_segment = pattern.sub(repl, text_segment)
+    parts.append(text_segment)
+    result = "".join(parts)
+    # Prevent double wrapping if a pattern already inside <bdi>
+    result = re.sub(r'<bdi><bdi>([^<]+)</bdi></bdi>', r'<bdi>\1</bdi>', result)
+    return result
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate Holon designed report variant")
     parser.add_argument("--output", type=Path,
@@ -161,17 +213,17 @@ def main() -> None:
         "{{N_MEASUREMENTS}}": f"{len(measurements):,}",
         "{{N_ALERT}}": str(n_alert),
         "{{N_INCREASING}}": str(int(n_increasing)),
-        "{{MASTHEAD_INTRO}}": _strip_md(narrative.get("masthead_intro", "")),
-        "{{FOUR_FOCI}}": md_to_html(narrative.get("four_foci", "")),
-        "{{CURRENT_STORY}}": md_to_html(narrative.get("current_story", "")),
-        "{{LEDGER_F1}}": ledger_f1,
+        "{{MASTHEAD_INTRO}}": wrap_bidi(_strip_md(narrative.get("masthead_intro", ""))),
+        "{{FOUR_FOCI}}": wrap_bidi(md_to_html(narrative.get("four_foci", ""))),
+        "{{CURRENT_STORY}}": wrap_bidi(md_to_html(narrative.get("current_story", ""))),
+        "{{LEDGER_F1}}": wrap_bidi(ledger_f1),
         "{{MATRIX_F2}}": matrix_f2,
         "{{CVOC_PANELS_F3}}": cvoc_f3,
         "{{CHROMIUM_PANELS_F4}}": chromium_f4,
         "{{BTEX_PANELS_F5}}": btex_f5,
         "{{GAPS_F6}}": gaps_f6,
-        "{{RECOMMENDATIONS_F7}}": recs_f7,
-        "{{CLASSIFICATION_TABLE_F8}}": class_table_f8,
+        "{{RECOMMENDATIONS_F7}}": wrap_bidi(recs_f7),
+        "{{CLASSIFICATION_TABLE_F8}}": wrap_bidi(class_table_f8),
         "{{BOREHOLE_MAP_F9}}": class_map_f9,
     }
 

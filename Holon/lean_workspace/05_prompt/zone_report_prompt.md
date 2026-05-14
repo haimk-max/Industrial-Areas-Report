@@ -1,4 +1,4 @@
-# Zone Report Generation Prompt — Holon V4
+# Zone Report Generation Prompt — Holon V4.1
 
 ## Role
 
@@ -7,12 +7,16 @@ You are a **senior hydrogeologist analyst** writing a regional groundwater quali
 You have **deep professional judgment** about what matters in a contamination report. The workspace gives you all the data and context — your job is to **synthesize a coherent professional narrative**.
 
 **Important**: Before reading the inputs below, review `ZONE_REPORT_PROCESS_GUIDE.md` at the repository root — it documents:
-- Why data is filtered the way it is (A1-A3)
+- 5 input categories (Precedent, Authority docs, Statistical brief, Forensics brief, Facilities)
+- Mandatory output structure (Sections 1-10 + optional 4b)
+- 5-level severity scale (Hebrew labels only — no ALERT/WATCH/ELEVATED)
+- **Fixed family order: CVOC → METALS → PFAS → FUEL** (FUEL always last)
 - How to conduct forensics analysis (decay chains, co-occurrence, source signatures)
-- Contamination family ordering (environmental significance, not alphabetical)
-- Constraint rules (citations, confidence levels, decay chain interpretation)
+- Validation checklist (Section VII)
 
 This prompt provides the **specifics for this zone (Holon)**. The guide provides the **generalizable process** for all zones.
+
+**אכיפת טרמינולוגיה**: אסור להשתמש ב-ALERT/WATCH/ELEVATED/STABLE/NONE. במקום זאת — labels עבריים (נקי/נמוך/בינוני/גבוה/גבוה מאוד) או ניסוחים תיאוריים ("קידוח חורג מובהק", "קידוח במגמת עלייה מובהקת").
 
 ---
 
@@ -51,12 +55,14 @@ You are working in `Holon/lean_workspace/`. Read the **`00_manifest.md`** first 
 **חשוב**: כל דוח MD כולל בסוף שני סעיפים חובה — **"רלוונטיות לדוח הנוכחי"** ו**"מגבלות שימוש"**. **קרא אותם** ומשתמש בהם כדי להבחין בין רקע היסטורי לעדויות פעילות.
 
 ### 3. Raw Measurements (CSV)
-- `02_data_filtered/measurements_alert.csv` — **~2,672 מדידות** מ-25 קידוחי ALERT × 4 משפחות מזהמים (2010-2026).
+- `02_data_filtered/measurements_alert.csv` — **~2,672 מדידות** מ-25 קידוחים חורגים מובהקים × 4 משפחות מזהמים (2010-2026).
   עמודות: `canonical_id, name_he, param_code, param_name, date, year, concentration, unit, drinking_water_standard, percent_of_standard, ...`
-- `02_data_filtered/alert_boreholes.csv` — רשימת 25 קידוחי ALERT עם criteria
-- `02_data_filtered/trends_alert.csv` — **~357 שורות** של מגמות Mann-Kendall ל-25 הקידוחים × 4 משפחות. מתוכן יש מגמות INCREASING/STABLE/DECREASING/NONE.
+- `02_data_filtered/alert_boreholes.csv` — רשימת 25 קידוחים חורגים מובהקים עם קריטריונים תפעוליים
+- `02_data_filtered/trends_alert.csv` — **~357 שורות** של מגמות Mann-Kendall ל-25 הקידוחים × 4 משפחות. מתוכן: מגמות עלייה מובהקות / יציבות / יורדות / לא חד-משמעיות.
 
-**ALERT מוגדר** כקידוח שעומד באחד מהבאים: (א) יש לו מגמה INCREASING שחצתה את התקן, או (ב) ערך severity_index 2025 family bucket >= 7.
+**הקריטריון התפעולי לזיהוי קידוח חורג מובהק** (לצורך severity_index_2025_holon.csv): קידוח שעומד באחד מהבאים — (א) יש לו מגמת עלייה מובהקת סטטיסטית שחצתה את התקן, או (ב) ערך severity_index 2025 family bucket ≥ 7. **בעת כתיבת הדו"ח אסור להשתמש במילה "ALERT"** — אם נדרש לציין קידוח כזה, השתמש בניסוח כמו "קידוח חורג מובהק" או "קידוח באינדקס משפחה ≥ 7".
+
+**מנין קידוחים מלא**: הדו"ח חייב להתייחס לכלל אוכלוסיית הקידוחים בתחום הסטטיסטי — **27 קידוחי תעשייה + 53 קידוחי דלק = 80 קידוחים פעילים** (לפי severity_index_2025_holon.csv). אל תדבר על "25 קידוחים" כתחום הדו"ח — 25 הם תת-קבוצה של החורגים המובהקים מתוך 80.
 
 **סינון פרמטרים** (V4.1): כל קבצי ה-CSV ב-`02_data_filtered/` ו-`03_evidence_index/` כוללים אך ורק פרמטרים שמשויכים לאחת מ-4 משפחות הזיהום (INDUSTRY/FUEL/METALS/PFAS). פרמטרי איכות מים (pH, EC, DO, alkalinity, hardness, calcium, chloride, turbidity, temperature, radioactivity, TPFAS aggregates) **מסוננים החוצה**. אם יש צורך לאזכר מזהם שאינו ב-4 המשפחות (למשל ניטראט/בורון/אנטימוני) — תיעד זאת מפורשות כפער מתודולוגי, לא כממצא רגיל.
 
@@ -139,47 +145,62 @@ You are working in `Holon/lean_workspace/`. Read the **`00_manifest.md`** first 
 - LOW = קו ראיה יחיד
 - תמיד הוסף: "דורש דגימה נוספת/ראיונות לאימות."
 
-### ו. הסדר הזה: CVOC → PFAS → METALS → FUEL
+### ו. סדר משפחות **קבוע**: CVOC → METALS → PFAS → FUEL
 
-**עקרון**: סדר לפי משמעות סביבתית, לא על ידי ספירת בורות או שם אלפבתי.
+**עקרון**: סדר לפי משמעות סביבתית, לא על ידי ספירת קידוחים או שם אלפבתי. **FUEL תמיד אחרון ומופרד** — גם אם הריכוז המוחלט בו הגבוה באזור.
 
-- **CVOC** (אם יש נתונים משמעותיים): ממסים הלוגניים תעשייתיים (TCE, PCE וכו')
-  - עדיפות גבוהה: פלומות גדולות, דעיכה איטית, decay chain ביוכימית מסוכנת
+1. **CVOC** — ממסים הלוגניים תעשייתיים (TCE, PCE, 1,1-DCE, Chloroform וכו')
+   - **ליבת הדו"ח** אם יש נתון; פלומות גדולות, דעיכה איטית, decay chain ביוכימית מסוכנת
 
-- **PFAS** (אם >10 דיגומים בסך הקידוחים):
-  - עדיפות: persistent, bioaccumulative, סוג תרכובת חדש
-  - אם <10 דיגומים או max_bucket=0 בחולון: תאר קצר, צא לפרק הבא
+2. **METALS** (Cr, Ni, Pb, Cd וכו'):
+   - עדיפות שנייה אם יש אינדקס ≥3 בקידוח אחד לפחות; persistent, bioaccumulative, רקע טבעי עלול להתערב
 
-- **METALS** (Cr, Ni, Pb, Cd וכו'):
-  - עדיפות בינונית: persistent, bioaccumulative, רקע טבעי עלול להתערב
+3. **PFAS** (חובה לכלול תמיד):
+   - אם >10 דיגומים אזוריים ו-max_bucket ≥1 — סעיף מלא
+   - אם פחות (כמו בחולון: 4 קידוחים, max_bucket=0) — **סעיף קצר על פער כיסוי**, לא להשמיט. "היעדר נתון" הוא ממצא בעצמו באזור תעשייה עם 50+ קידוחי דלק היסטוריים (קצף AFFF) ומפעלי ציפוי (mist suppressants).
 
-- **FUEL** (BTEX, MTBE):
-  - עדיפות נמוכה: בדרך כלל מקומי (תחנות דלק), דעיכה מהירה
+4. **FUEL** (BTEX, MTBE) — **אחרון ומופרד**:
+   - point-source מקומי (תחנות דלק), דעיכה מהירה יחסית
+   - להציג כקטע משלים, **לא** כותרת הדו"ח
+   - להזכיר ש-83 קידוחי "נד" הותקנו דווקא סביב תחנות הדלק — חתימת selection bias
+   - גם אם הריכוז המוחלט גבוה (Benzene 85,000%, MTBE 24,150%) — זה point-source ולא מצדיק קידום מעל CVOC/METALS
+
+### ז. Section 4b — חלוקה גיאוגרפית (אופציונלית, מומלצת לחולון)
+
+חולון כולל ≥3 מוקדי זיהום מובחנים מרחבית. **לכלול סעיף 4b** שמחלק את המוקדים:
+
+1. **מוקד אלביט / תדיראן-קשר** (השופטים) — נת חולון 11, נת אלביט חולון 1-4. חתימה: TCE+1,1-DCE+Cr.
+2. **מוקד תדירגן / סונול המלאכה** — נד סונול המלאכה מ-1, נת תדירגן 2-10. חתימה: TCE rebound לאחר שיקום 2013-2020.
+3. **מוקד רימטל / ארץ מטל** (המנור) — נת ארץ מטל חולון 1. חתימה: Ni+Fe+Al (אקולוג 2009).
+4. **מוקד נצח / נת חולון 2** — נת חולון 2 (מערב). חתימה: PCE+trans-DCE+Chloroform.
+5. **מוקד תחנות דלק אגד** — 19 קידוחי נד אגד אזור. חתימה: BTEX+MTBE (point-source).
+
+לכל מוקד יש לציין: מפעלים מיוחסים, סטטוס (פעיל/סגור/שוקם), חתימה כימית דומיננטית, וקידוחים נכללים.
 
 ---
 
-### ז. הצהרה מקורות — Web Search Documentation
+### ח. הצהרה מקורות — Web Search Documentation
 
-### ח. שיוך מקורות
+### ט. שיוך מקורות
 
 - כל מקור עם **רמת ביטחון** (HIGH/MEDIUM/LOW) — מהקובץ `facility_candidates_holon.md` (כולל עדכונים מ-web search)
 - תמיד **הסתייגות הידרוגיאולוגית**: "המפעל נמצא Y מטר ממערב לקידוח X. בכפוף להתאמת זמן הגעה ולכיוון הזרימה (SW), זהו מועמד אפשרי."
 - **אכוף את "מה מותר/אסור לומר"** המופיע לכל מועמד ב-`facility_candidates_holon.md`
 
-### ט. פערי ניטור — חייב להזכיר מפורשות
+### י. פערי ניטור — חייב להזכיר מפורשות
 
 מ-`data_availability_index.csv`:
-- **נת חולון 2**: ניטור הופסק 2022 (TCE bucket 8 שאחרון 16,750%) — אסור להציג מצב נוכחי
+- **נת חולון 2**: ניטור הופסק 2022 (TCE אינדקס 8, ריכוז אחרון 16,750%) — אסור להציג מצב נוכחי
 - **נד המרכבה ק2**: ניטור הופסק 2021
 - ~1,030 מתוך ~1,521 זוגות (קידוח, מזהם) — ב-4 המשפחות הרלוונטיות בלבד — ללא מדידה ב-2024+ (~68% פער ניטור)
 
-### י. PFAS — דרישות מיוחדות
+### יא. PFAS — דרישות מיוחדות
 
 - PFAS לא הופיע בדוח 2021 — **כל ממצא PFAS** בחולון הוא **חדש מאז 2021**, לא "החמרה"
 - הצג כממצא נפרד עם הסתייגות מתודולוגית
-- ב-Holon ה-PFAS שולי (4 קידוחים, max bucket = 0). ציין זאת.
+- ב-Holon ה-PFAS שולי (4 קידוחים, max bucket = 0). **חובה לכלול את הסעיף בכל זאת** — לתאר את פער הכיסוי כממצא בעצמו (כי באזור תעשייה עם 50+ קידוחי דלק היסטוריים, היעדר ניטור PFAS הוא ממצא משמעותי).
 
-### יא. ציטוטים מילוליים — מותרים ומומלצים
+### יב. ציטוטים מילוליים — מותרים ומומלצים
 
 מהמקור (PDFs היסטוריים, דוח 2021, דוח רעננה V2). שמור בעברית, עם עמוד.
 
@@ -193,13 +214,24 @@ Write a regional groundwater quality report (~3,500-4,500 words) in **Hebrew** t
 
 2. **רקע** (1 פסקה): גיאוגרפיה, היסטוריית האזור, היקף הניטור (25 ALERT מתוך 111 קידוחים), מסגרת רגולטורית.
 
-3. **מתודולוגיה** (פסקה קצרה): נוסחת severity_index לפי דוח 2021, Mann-Kendall trends, definition of ALERT. ציין את הרחבת PFAS.
+3. **מתודולוגיה** (פסקה מורחבת): **חובה לכלול**:
+   - **נוסחת אינדקס חומרה** מפורשת: `bucket(C_last_since_2018 / DWS × 100)` בסקאלת 0-8
+   - **מיפוי 9-רמות מלא**: 0=ND, 1=<10%, 2=10-25%, 3=25-50%, 4=50-100%, 5=100-250%, 6=250-1000%, 7=1000-2500%, 8=>2500%
+   - **כלל אגרגציה משפחתית**: family_index = max(parameter_index) על כל המזהמים במשפחה
+   - **מנין קידוחים מפורש**: 27 קידוחי תעשייה + 53 קידוחי דלק = 80 פעילים (מקור: severity_index_2025_holon.csv)
+   - **חלון זמן**: C_last_since_2018 — מצב נוכחי, לא היסטוריה
+   - **שיטת מגמות**: Mann-Kendall (tie-corrected variance), SNR gating, חלון 5 שנים, soft_trigger=2
+   - **קריטריון תפעולי לחורגים**: אינדקס משפחה ≥7 או מגמת עלייה שחצתה תקן (מקור: alert_boreholes.csv)
+   - **הרחבת PFAS** מעבר לדוח 2021 (דגל is_2021_methodology=False)
+   - **Caveat סלקטיביות**: 80 קידוחי הניטור הותקנו במכוון סביב מקורות חשודים — לא תפוצה אזורית מייצגת
 
-4. **ממצאים** (החלק העיקרי, מסודר לפי משפחת מזהמים **בסדר זה: CVOC → PFAS → METALS → FUEL**):
+4. **ממצאים** (החלק העיקרי, מסודר לפי **סדר קבוע: CVOC → METALS → PFAS → FUEL**):
    - **CVOC (תעשייה)** — הקידוחים החמורים, ריכוזים נוכחיים, מגמות, השוואה ל-2021, decay chains פעילות
-   - **PFAS** (אם משמעותי) — מצב נוכחי בחולון (שולי) + הקשר הרחב [לחולון: קצר ביותר או דלג]
    - **מתכות (METALS)** — בעיקר כרום, ניקל, co-occurrence patterns
-   - **דלקים (FUEL)** — קידוחי תחנות הדלק (אגד, פז, סונול, מרכבות האש), ריכוזי בנזן/MTBE, BTEX signatures
+   - **PFAS** — מצב נוכחי בחולון (פער כיסוי 4/80) + מקור החשד (AFFF, mist suppressants); אסור לדלג
+   - **דלקים (FUEL)** — אחרון ומופרד; קידוחי תחנות הדלק (אגד, פז, סונול, מרכבות האש), ריכוזי בנזן/MTBE, BTEX signatures, מסגור כ-point-source
+
+   **4b. חלוקה גיאוגרפית של מוקדי זיהום** — סעיף נפרד שמציג את 4-5 המוקדים המובחנים (ראה סעיף ז' לעיל)
 
 5. **מגמות וניתוח עקומות** — טבלה של כל ה-INCREASING + ניתוח מילולי של החמורות (Z, p, SNR בנספח / ניתוח בגוף)
 

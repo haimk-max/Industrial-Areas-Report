@@ -547,9 +547,10 @@ def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
             parts.append(f'<polyline points="{" ".join(pts)}" '
                          f'fill="none" stroke="{style["color"]}" stroke-width="1.3"{dash_attr}/>')
 
-    # Title (well name) — at top, single line, larger
+    # Title (well name) — at top, single line, larger; RTL for Hebrew with mixed content
     parts.append(f'<text x="{width / 2:.1f}" y="20" font-family="Source Sans 3,sans-serif" '
                  f'font-size="12" font-weight="700" fill="{INK}" '
+                 f'direction="rtl" unicode-bidi="isolate" '
                  f'text-anchor="middle">{esc(name_he)}</text>')
 
     # Legend at bottom — two-row layout: line sample on TOP, label BELOW (no overlap).
@@ -657,7 +658,7 @@ def svg_monitoring_gaps(data_avail: pd.DataFrame, severity: pd.DataFrame) -> str
     ].sort_values("last_year")
 
     if stopped.empty:
-        return '<div style="padding:20px;color:#6b6b6b;text-align:center">אין הפסקות ניטור בקידוחי ALERT בעלי אינדקס גבוה</div>'
+        return '<div style="padding:20px;color:#6b6b6b;text-align:center">אין הפסקות ניטור בקידוחים חורגים מובהקים בעלי אינדקס גבוה</div>'
 
     yr_min, yr_max = 2010, 2026
     rows = []
@@ -831,12 +832,12 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
 
             lines.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4" fill="{color}" stroke="{INK}" stroke-width="0.5"/>')
 
-    # Axis labels
-    lines.append(f'<text x="{svg_width/2}" y="{svg_height-10}" text-anchor="middle" font-size="12" fill="{INK}">מזרח (ITM)</text>')
-    lines.append(f'<text x="15" y="{svg_height/2}" text-anchor="middle" font-size="12" fill="{INK}" transform="rotate(-90 15 {svg_height/2})">צפון (ITM)</text>')
+    # Axis labels — RTL for mixed Hebrew/English content
+    lines.append(f'<text x="{svg_width/2}" y="{svg_height-10}" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="12" fill="{INK}">מזרח (ITM)</text>')
+    lines.append(f'<text x="15" y="{svg_height/2}" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="12" fill="{INK}" transform="rotate(-90 15 {svg_height/2})">צפון (ITM)</text>')
 
-    # Title
-    lines.append(f'<text x="{svg_width/2}" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="{INK}">מיקומי קידוחים לפי אינדקס חומרה</text>')
+    # Title — Hebrew, RTL
+    lines.append(f'<text x="{svg_width/2}" y="25" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="14" font-weight="bold" fill="{INK}">מיקומי קידוחים לפי אינדקס חומרה</text>')
 
     # Legend
     legend_x = svg_width - 150
@@ -853,7 +854,7 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
     for i, (color, label) in enumerate(legend_items):
         ly = legend_y + 10 + i * 25
         lines.append(f'<circle cx="{legend_x+10}" cy="{ly+6}" r="3" fill="{color}"/>')
-        lines.append(f'<text x="{legend_x+20}" y="{ly+8}" font-size="11" fill="{INK}">{label}</text>')
+        lines.append(f'<text x="{legend_x+20}" y="{ly+8}" direction="rtl" unicode-bidi="isolate" font-size="11" fill="{INK}">{label}</text>')
 
     lines.append('</svg>')
 

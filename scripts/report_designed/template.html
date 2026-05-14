@@ -23,6 +23,11 @@
   *{box-sizing:border-box}
   html,body{margin:0;background:var(--paper);color:var(--ink);font-family:"Frank Ruhl Libre","Times New Roman",serif;-webkit-font-smoothing:antialiased;font-feature-settings:"kern","liga","tnum"}
   body{padding:0 0 80px;font-size:15px;line-height:1.6}
+
+  /* --- Bidirectional text handling (PROCESS_GUIDE Section IX) --- */
+  bdi{unicode-bidi:isolate}
+  p,li,td,th,h1,h2,h3,h4,figcaption{unicode-bidi:isolate}
+  [dir="auto"]{unicode-bidi:isolate}
   .doc{max-width:920px;margin:0 auto;padding:56px 48px 0}
   .mono{font-family:"IBM Plex Mono",monospace;font-feature-settings:"tnum"}
 
