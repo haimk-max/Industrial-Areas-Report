@@ -210,11 +210,15 @@ def main() -> None:
     alert_borehole_ids = set(measurements['canonical_id'].unique())
     severity_alert = severity[severity['borehole'].isin(alert_borehole_ids)].copy()
 
+    # PROCESS_GUIDE §VIII.1: Opus picks boreholes via V4.md; chart engine renders them per style guide.
+    report_boreholes = dl.extract_report_boreholes(args.report_v4, severity)
+    print(f"  V4.md boreholes_override: {len(report_boreholes)} mentioned")
+
     ledger_f1 = sc.svg_severity_ledger(severity_alert)
     matrix_f2 = sc.svg_severity_matrix(severity_alert, trends, data_avail)
-    cvoc_f3 = sc.svg_cvoc_panels(measurements, severity)
-    chromium_f4 = sc.svg_chromium_panels(measurements)
-    btex_f5 = sc.svg_btex_panels(measurements)
+    cvoc_f3 = sc.svg_cvoc_panels(measurements, severity, boreholes_override=report_boreholes)
+    chromium_f4 = sc.svg_chromium_panels(measurements, boreholes_override=report_boreholes)
+    btex_f5 = sc.svg_btex_panels(measurements, boreholes_override=report_boreholes)
     gaps_f6 = sc.svg_monitoring_gaps(data_avail, severity)
     recs_f7 = sc.html_recommendations_table()
 

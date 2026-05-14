@@ -339,14 +339,24 @@ _METALS_PARAMS = ["CHROMIUM AS CR", "NICKEL AS NI"]
 _FUEL_PARAMS = ["BENZENE", "MTBE", " MTBE", "TOLUENE"]
 
 
-def svg_cvoc_panels(measurements: pd.DataFrame, severity: pd.DataFrame) -> str:
-    """CVOC time-series panels (top 3 compounds by exceedance: TCE, 1,4-Dioxane, PCE)."""
+def svg_cvoc_panels(measurements: pd.DataFrame, severity: pd.DataFrame,
+                    boreholes_override: list = None) -> str:
+    """CVOC time-series panels (top 3 compounds by exceedance: TCE, 1,4-Dioxane, PCE).
+
+    boreholes_override: explicit list of canonical_ids from V4.md (Opus's selection).
+        If None, falls back to top-6 INDUSTRY by max_bucket. See PROCESS_GUIDE §VIII.1.
+    """
     alert_boreholes = set(measurements['canonical_id'].unique())
-    industry = severity[
-        (severity.family == "INDUSTRY") &
-        (severity.borehole.isin(alert_boreholes))
-    ].sort_values("max_bucket", ascending=False)
-    top_wells = industry.head(6)["borehole"].tolist()
+    if boreholes_override:
+        # Keep V4.md order; only include wells with CVOC data; cap at 6 panels for layout.
+        cvoc_wells = set(measurements[measurements.param_code.isin(_CVOC_PARAMS)]['canonical_id'])
+        top_wells = [w for w in boreholes_override if w in alert_boreholes and w in cvoc_wells][:6]
+    else:
+        industry = severity[
+            (severity.family == "INDUSTRY") &
+            (severity.borehole.isin(alert_boreholes))
+        ].sort_values("max_bucket", ascending=False)
+        top_wells = industry.head(6)["borehole"].tolist()
 
     panels = []
     for wid in top_wells:
@@ -369,8 +379,12 @@ def svg_cvoc_panels(measurements: pd.DataFrame, severity: pd.DataFrame) -> str:
 
 # ───────────────────────── Figure 4: Metals time series (Cr + Ni) ─────────────────────────
 
-def svg_chromium_panels(measurements: pd.DataFrame) -> str:
+def svg_chromium_panels(measurements: pd.DataFrame,
+                         boreholes_override: list = None) -> str:
     """Metals time-series panels: Chromium + Nickel (top 2 metals by exceedance).
+
+    boreholes_override: explicit list of canonical_ids from V4.md (Opus's selection).
+        If None, falls back to top-4 by max Cr concentration. See PROCESS_GUIDE §VIII.1.
 
     DWS used: Chromium 50 µg/L (Cr is the dominant exceedance). Nickel DWS = 70 µg/L
     is not shown as a second red line to keep visual clarity; Ni exceedance is
@@ -382,12 +396,16 @@ def svg_chromium_panels(measurements: pd.DataFrame) -> str:
     if metals_data.empty:
         return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני מתכות</div>'
 
-    # Order wells by max Cr concentration (the headline contaminant)
-    well_max = (
-        metals_data[metals_data.param_code == "CHROMIUM AS CR"]
-        .groupby("canonical_id").concentration.max().sort_values(ascending=False)
-    )
-    wells = well_max.index.tolist()[:4]
+    if boreholes_override:
+        available = set(metals_data['canonical_id'].unique())
+        wells = [w for w in boreholes_override if w in available][:4]
+    else:
+        # Order wells by max Cr concentration (the headline contaminant)
+        well_max = (
+            metals_data[metals_data.param_code == "CHROMIUM AS CR"]
+            .groupby("canonical_id").concentration.max().sort_values(ascending=False)
+        )
+        wells = well_max.index.tolist()[:4]
 
     panels = []
     for wid in wells:
@@ -407,15 +425,24 @@ def svg_chromium_panels(measurements: pd.DataFrame) -> str:
 
 # ───────────────────────── Figure 5: BTEX panels (Benzene, MTBE, Toluene) ─────────────────────────
 
-def svg_btex_panels(measurements: pd.DataFrame) -> str:
-    """Fuel time-series: Benzene, MTBE, Toluene (top 3 by exceedance)."""
+def svg_btex_panels(measurements: pd.DataFrame,
+                     boreholes_override: list = None) -> str:
+    """Fuel time-series: Benzene, MTBE, Toluene (top 3 by exceedance).
+
+    boreholes_override: explicit list of canonical_ids from V4.md (Opus's selection).
+        If None, falls back to top-6 by max concentration. See PROCESS_GUIDE §VIII.1.
+    """
     fuel_data = measurements[measurements.param_code.isin(_FUEL_PARAMS)].copy()
     if fuel_data.empty:
         return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני דלקים</div>'
 
-    # Select representative FUEL boreholes by max concentration
-    well_max = fuel_data.groupby("canonical_id").concentration.max().sort_values(ascending=False)
-    top_wells = well_max.head(6).index.tolist()
+    if boreholes_override:
+        available = set(fuel_data['canonical_id'].unique())
+        top_wells = [w for w in boreholes_override if w in available][:6]
+    else:
+        # Select representative FUEL boreholes by max concentration
+        well_max = fuel_data.groupby("canonical_id").concentration.max().sort_values(ascending=False)
+        top_wells = well_max.head(6).index.tolist()
 
     # Normalize the leading-space MTBE variant so legend/grouping is clean
     fuel_data["param_code"] = fuel_data["param_code"].str.strip()

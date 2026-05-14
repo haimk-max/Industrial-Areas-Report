@@ -123,6 +123,43 @@ def extract_narrative_sections(report_path: Path = REPORT_V4) -> dict:
     return sections
 
 
+def extract_report_boreholes(report_path: Path = REPORT_V4,
+                              severity_df: pd.DataFrame = None) -> list:
+    """Extract canonical_ids of boreholes explicitly mentioned in V4.md.
+
+    Used to drive `boreholes_override` in svg_charts.py — Opus picks which
+    boreholes to illustrate (via mentions in the narrative); the chart engine
+    just renders them per style guide. See PROCESS_GUIDE §VIII.1.
+
+    Match strategy: scan V4.md for each name_he from severity_df.
+    Returns canonical_ids in the order they first appear in V4.md (de-duplicated).
+
+    Args:
+        report_path: path to V4.md
+        severity_df: DataFrame with columns 'borehole' (canonical_id), 'name_he'
+
+    Returns:
+        Ordered list of canonical_ids mentioned in V4.md, or [] if file/df missing.
+    """
+    if not report_path.exists() or severity_df is None or severity_df.empty:
+        return []
+
+    text = report_path.read_text(encoding="utf-8")
+
+    # Build (first_position, canonical_id) pairs for ordered, de-duplicated output
+    seen = {}
+    for _, row in severity_df.iterrows():
+        name_he = str(row.get("name_he", "")).strip()
+        canonical_id = str(row.get("borehole", "")).strip()
+        if not name_he or not canonical_id or canonical_id in seen:
+            continue
+        pos = text.find(name_he)
+        if pos >= 0:
+            seen[canonical_id] = pos
+
+    return [cid for cid, _ in sorted(seen.items(), key=lambda kv: kv[1])]
+
+
 def load_measurements_alert(workspace: Path = LEAN_WORKSPACE) -> pd.DataFrame:
     """Load ALERT measurements (25 boreholes, 4 families, 2,672 rows)."""
     path = workspace / "02_data_filtered" / "measurements_alert.csv"

@@ -351,11 +351,14 @@ def main() -> None:
     print("Building inline SVG figures ...")
     alert_borehole_ids = set(measurements['canonical_id'].unique())
     severity_alert = severity[severity['borehole'].isin(alert_borehole_ids)].copy()
+    # PROCESS_GUIDE §VIII.1: Opus picks boreholes via V4.md; chart engine renders them per style guide.
+    report_boreholes = dl.extract_report_boreholes(args.report_v4, severity)
+    print(f"  V4.md boreholes_override: {len(report_boreholes)} mentioned")
     figure_svgs = {
         "fig_01_severity_ledger": sc.svg_severity_ledger(severity_alert),
-        "fig_03_cvoc_panels": sc.svg_cvoc_panels(measurements, severity),
-        "fig_04_chromium_panels": sc.svg_chromium_panels(measurements),
-        "fig_05_btex_panels": sc.svg_btex_panels(measurements),
+        "fig_03_cvoc_panels": sc.svg_cvoc_panels(measurements, severity, boreholes_override=report_boreholes),
+        "fig_04_chromium_panels": sc.svg_chromium_panels(measurements, boreholes_override=report_boreholes),
+        "fig_05_btex_panels": sc.svg_btex_panels(measurements, boreholes_override=report_boreholes),
         "fig_06_monitoring_gaps": sc.svg_monitoring_gaps(data_avail, severity),
     }
 
