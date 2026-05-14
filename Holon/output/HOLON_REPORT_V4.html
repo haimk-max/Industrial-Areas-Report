@@ -88,6 +88,24 @@
   table.matrix td.val.empty{color:var(--rule-light)}
   table.matrix tbody tr:hover td{background:rgba(240,237,230,.4)}
 
+  /* --- Ledger (fig_01 severity ledger) --- */
+  .ledger{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+  .ledger .row{display:grid;grid-template-columns:200px 1fr 140px;gap:24px;padding:18px 0;border-bottom:1px solid var(--rule-light);align-items:start}
+  .ledger .row:last-child{border-bottom:none}
+  .ledger .row.appendix{background:#f4f1ea;padding:14px 18px;margin:0 -18px -1px;border-bottom:none;color:var(--ink-2)}
+  .ledger .fam{font-weight:700;font-size:15px;line-height:1.3}
+  .ledger .fam small{display:block;font-weight:400;font-size:11.5px;color:var(--soft);margin-top:4px;line-height:1.4}
+  .ledger .row.appendix .fam{font-weight:600;font-size:13px;color:var(--ink-2)}
+  .ledger .row.appendix .fam small{font-size:11px}
+  .ledger .body{font-size:13px;line-height:1.55;color:var(--ink-2)}
+  .ledger .body b{color:var(--ink);font-weight:600}
+  .ledger .row.appendix .body{font-size:12px;color:#6b6b6b}
+  .ledger .metric{text-align:left;font-family:"IBM Plex Mono",monospace}
+  .ledger .metric .big{font-size:28px;font-weight:500;line-height:1;color:var(--red);display:block}
+  .ledger .metric .ratio{font-size:12px;color:var(--soft);margin-top:4px;display:block;letter-spacing:.02em}
+  .ledger .row.appendix .metric .big{font-size:16px;color:var(--ink-2);font-weight:500}
+  .ledger .row.appendix .metric .ratio{font-size:10.5px}
+
   /* --- Gap timeline (fig_06) --- */
   .gap-grid{display:grid;grid-template-columns:170px 1fr 80px;gap:10px 14px;font-size:12.5px;align-items:center}
   .gap-grid .hd{font-family:"Source Sans 3",sans-serif;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);padding-bottom:6px;border-bottom:1px solid var(--ink);margin-bottom:4px;font-weight:600}
@@ -134,7 +152,7 @@
       <h1>דוח ניטור איכות מי תהום — אזור התעשייה חולון</h1>
       <p class="sub">ניתוח מצב מי התהום באקוויפר החוף על בסיס 2,672 מדידות מ-80 קידוחי ניטור פעילים (2010–2026), משולב עם רקע היסטורי משלוש סדרות סקרים (תה"ל 2007, אקולוג 2009–2017, רשות המים 2021).</p>
       <div class="meta">
-        <span><b>נוצר:</b> 2026-05-14 15:44</span>
+        <span><b>נוצר:</b> 2026-05-14 15:54</span>
         <span><b>מדידות:</b> 2,672</span>
         <span><b>קידוחים פעילים:</b> 80</span>
         <span><b>חורגים מובהקים:</b> 25</span>

@@ -25,6 +25,13 @@
 
 ## 1. Think Before Coding
 
+### Language Rules (CRITICAL — User Preference)
+- **Markdown files (CLAUDE.md, PROCESS.md, PROCESS_GUIDE.md, V4.md, etc.)**: **תמיד בעברית**. כותרות, טקסט, טבלאות — בעברית. מונחים טכניים באנגלית מותרים בתוך טקסט עברי (e.g., "Mann-Kendall trend").
+- **Code (Python, JS, shell)**: **תמיד באנגלית**. שמות משתנים, פונקציות, comments, docstrings.
+- **תכניות עבודה** (plan mode, todos): **תמיד בעברית**.
+- **Commit messages**: אנגלית (convention של Git).
+- **כותרות סעיפים בדוחות** (V4.md, V4.html): **עברית בלבד**.
+
 ### State Assumptions Explicitly
 - **Data Quality**: All input data sourced from official reports (TAHAL 2008, 2021 Report). Verification: Compare extractions against source document page numbers.
 - **Methodology**: Severity index calculation and trend analysis follow 2021 Report methodology exactly. No modifications without expert validation.

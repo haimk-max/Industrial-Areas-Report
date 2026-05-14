@@ -12,6 +12,10 @@
 | # | בעיה | תיאור | סטטוס | תאריך פתיחה | קבצים |
 |---|------|--------|--------|----------------|--------|
 | 7 | Skills/אוטומציה לתהליכים חוזרים | אימוץ simplify (קוד כפול), init (regen CLAUDE.md), review (PR) | ⏳ Deferred | 2026-05-14 | אחרי בעיות 2–4 |
+| R1 | V4.md פירוט per-borehole בסעיפי המשפחות (4.1-4.4) | לסכם במקום bullet-list ארוך; להזכיר רק קידוחים בולטים. סעיף 4.1 כיום: 9 bullets. דורש Opus regen או edit ידני | ❌ Open | 2026-05-14 (originally 2026-05-13) | `Holon/output/HOLON_REPORT_V4.md` §4 |
+| R2 | V4.md מתודולוגיה ארוכה (§3) | סעיף 3 כיום: 59 שורות עם §3.1-§3.7. לקצץ ל-5-10 שורות, להפנות ל-PROCESS_GUIDE §III | ❌ Open | 2026-05-14 (originally 2026-05-13) | `Holon/output/HOLON_REPORT_V4.md` §3 |
+| R3 | כלל "MD בעברית, קוד באנגלית" לא תועד מפורשות | הוסף ל-CLAUDE.md §1 או §2 | ❌ Open | 2026-05-14 (originally 2026-05-13) | `CLAUDE.md` |
+| R4 | איור 2 (severity_matrix) — האם להחזיר? | הוסר לגמרי בתיקון הקודם. צריך להחליט: להחזיר עם image markdown ב-V4.md, או להשאיר 6 איורים בלבד | ❓ Decision needed | 2026-05-14 | `scripts/generate_holon_full_html.py`, `V4.md` |
 
 ---
 
