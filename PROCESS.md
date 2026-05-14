@@ -12,10 +12,8 @@
 | # | בעיה | תיאור | סטטוס | תאריך פתיחה | קבצים |
 |---|------|--------|--------|----------------|--------|
 | 7 | Skills/אוטומציה לתהליכים חוזרים | אימוץ simplify (קוד כפול), init (regen CLAUDE.md), review (PR) | ⏳ Deferred | 2026-05-14 | אחרי בעיות 2–4 |
-| R1 | V4.md פירוט per-borehole בסעיפי המשפחות (4.1-4.4) | לסכם במקום bullet-list ארוך; להזכיר רק קידוחים בולטים. סעיף 4.1 כיום: 9 bullets. דורש Opus regen או edit ידני | ❌ Open | 2026-05-14 (originally 2026-05-13) | `Holon/output/HOLON_REPORT_V4.md` §4 |
-| R2 | V4.md מתודולוגיה ארוכה (§3) | סעיף 3 כיום: 59 שורות עם §3.1-§3.7. לקצץ ל-5-10 שורות, להפנות ל-PROCESS_GUIDE §III | ❌ Open | 2026-05-14 (originally 2026-05-13) | `Holon/output/HOLON_REPORT_V4.md` §3 |
-| R3 | כלל "MD בעברית, קוד באנגלית" לא תועד מפורשות | הוסף ל-CLAUDE.md §1 או §2 | ❌ Open | 2026-05-14 (originally 2026-05-13) | `CLAUDE.md` |
 | R4 | איור 2 (severity_matrix) — האם להחזיר? | הוסר לגמרי בתיקון הקודם. צריך להחליט: להחזיר עם image markdown ב-V4.md, או להשאיר 6 איורים בלבד | ❓ Decision needed | 2026-05-14 | `scripts/generate_holon_full_html.py`, `V4.md` |
+| Z1 | /scout לא הופעל | המשתמש כתב `/scout` בסשן הקודם, לא בוצע | ❓ Decision needed | 2026-05-14 | — |
 
 ---
 
@@ -35,6 +33,10 @@
 | 3 | HTML generators README | 2026-05-14 | pre-existing | `scripts/report_designed/README.md` — תיעוד מלא בעברית של 2 generators, pipeline order, API, RTL |
 | 4 | תבנית פרומפט generic | 2026-05-14 | pre-existing | `scripts/templates/zone_report_prompt_template.md` — 31 placeholders, 49 XML tags, Anthropic structure |
 | 5b | CLAUDE.md Phase H docs מלאים | 2026-05-14 | pre-existing | CLAUDE.md §4 שורות 109-121 — scripts, outputs, lean_workspace, severity, generators, safety net, SSOT, family ordering, web search |
+| Fig | Figure numbering bug + empty figures 2, 6 | 2026-05-14 | b9f28b6, a822495 | הסרת `<span class='ttl'>איור N</span>` duplicate; הוספת `.ledger` CSS ל-full HTML; הסרת fig_02_severity_matrix phantom |
+| R3 | "MD בעברית, קוד באנגלית" | 2026-05-14 | a822495 | CLAUDE.md §1 Language Rules — 5 כללים מפורשים |
+| R2 | V4.md §3 מתודולוגיה ארוכה | 2026-05-14 | pending | Opus agent קיצץ מ-59 שורות (§3.1-§3.7) ל-7 שורות (פסקה אחת); הפניה ל-PROCESS_GUIDE §III |
+| R1 | V4.md §4.1-§4.4 פירוט per-borehole | 2026-05-14 | pending | Opus agent: §4.1 9→0 bullets, §4.2 9→0, §4.3 4→0, §4.4 13→3 (רק חתימות פורנזיות); כל forensics + facility attributions נשמרו כפסקאות זרימה |
 
 ---
 
