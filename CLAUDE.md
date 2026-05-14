@@ -296,6 +296,38 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 
 ---
 
+## 12. Requirements Tracking (Sustainable)
+
+**Rule**: `PROCESS.md` (top-level) is the **SSOT for active requirements**. It tracks Open requirements (to do) and Closed requirements (audit trail).
+
+### Workflow
+
+1. **בתחילת כל סשן**: קרא `PROCESS.md` (אוטומטי דרך session-start hook). אם יש Open items — התחל מהן.
+2. **דרישה חדשה** (מהמשתמש או מבדיקה): הוסף שורה ל-טבלת Open ב-`PROCESS.md` **לפני שמתחילים לעבוד**.
+3. **בסיום משימה**:
+   - העבר שורה מ-Open ל-Closed
+   - הוסף commit hash + שיטת אימות
+   - commit message: `[PROCESS.md] closed #N` או `[PROCESS.md] added #N`
+4. **לפני commit כללי**: ודא ש-`PROCESS.md` משקף את המצב.
+
+### למה זה קריטי
+
+תכניות בצ'אט נעלמות אחרי context compression. **PROCESS.md הוא הזיכרון הקבוע** — כל שינוי בדרישות חייב לעבור דרכו.
+
+### מבנה הקובץ
+
+```markdown
+## דרישות פתוחות (Open)
+| # | בעיה | תיאור | סטטוס | תאריך | קבצים |
+
+## דרישות סגורות (Closed) — Audit Trail
+| # | בעיה | תאריך סגירה | commit | אימות |
+```
+
+ראה `PROCESS.md` להמשך.
+
+---
+
 **Project Status**: Phase H Complete (Holon V4.2 pipeline + reusable architecture) | Phase 4 Pending Q3 2026  
 **Last Updated**: May 14, 2026 (Phase H+: pipeline ordering, SSOT consolidation, figure safety net, CLAUDE.md slim-down)  
 **Historical phases**: see `docs/HISTORY.md`
