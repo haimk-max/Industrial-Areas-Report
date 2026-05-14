@@ -12,7 +12,7 @@
 | # | בעיה | תיאור | סטטוס | תאריך פתיחה | קבצים |
 |---|------|--------|--------|----------------|--------|
 | 7 | Skills/אוטומציה לתהליכים חוזרים | אימוץ simplify (קוד כפול), init (regen CLAUDE.md), review (PR) | ⏳ Deferred | 2026-05-14 | אחרי בעיות 2–4 |
-| R5 | קידוחי הפקה (מק/פ) — דגש בדוח | סקור V4.md סעיפים 4–6 וזהה את הקידוחים בקידומת "מק" או "פ". הוסף סינתזה ייעודית של ממצאים וסיכונים בקידוחי הפקה בקובץ הדוח, דגש על תרומתם לסיכון כללי האזור | ⏳ Deferred | 2026-05-14 | `Holon/output/HOLON_REPORT_V4.md` |
+| 11 | HIGH-priority simplify fixes (regexes + data loader) | pre-compile 8 module-level regexes (hot-path optimization), extract load_all_core_data() לdata_loader.py | ⏳ Deferred | 2026-05-14 | scripts/generate_holon_*.py, data_loader.py |
 
 ---
 
