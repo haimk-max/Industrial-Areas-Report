@@ -108,11 +108,11 @@ Precedent zone (style reference): {PRECEDENT_ZONE}
 2. **רקע גיאוגרפי וגיאוהידרולוגי** (Geographic Context)
    - מיקום, אקוויפר, כיוון זרימה, היסטוריה תעשייתית
 
-3. **מתודולוגיה** (Methodology — ראה PROCESS_GUIDE §III)
-   - נוסחת אינדקס מפורשת (`C_max_5y / DWS × 100`)
-   - טבלת מיפוי 9-רמות (0–8)
-   - Mann-Kendall (tie-corrected, SNR gating, soft_trigger=2)
-   - מנין קידוחים מפורש: {GENERAL_COUNT}+{FUEL_COUNT}={TOTAL_ACTIVE}
+3. **מתודולוגיה** (Methodology — **תמציתי, 5–10 שורות, לא יותר**)
+   - אל תכלול את **הטבלה** של 9 הרמות — היא ב-PROCESS_GUIDE §III; הפנה אליה במשפט.
+   - כלול רק: נוסחה (`bucket(C_max_5y / DWS × 100)`), חלון 5 שנים, מנין קידוחים מפורש ({GENERAL_COUNT}+{FUEL_COUNT}={TOTAL_ACTIVE}), Mann-Kendall (tie-corrected, SNR gating, soft_trigger=2).
+   - **דוגמה תמציתית**:
+     > הניתוח נשען על נוסחת אינדקס חומרה של רשות המים 2021: `bucket(C_max_5y / DWS × 100)` בסקאלת 0–8 (פירוט מלא ב-PROCESS_GUIDE §III). חלון: 5 שנים אחרונות (2021–{YEAR_END}). מנין קידוחים פעילים: {GENERAL_COUNT} תעשייה + {FUEL_COUNT} דלק = {TOTAL_ACTIVE}. מגמות בוצעו ב-Mann-Kendall (tie-corrected, SNR gating, soft_trigger=2).
 
 4. **סטטיסטיקה כללית** (Statistical Overview)
    - התפלגות חומרה (5 דרגות)
@@ -120,7 +120,12 @@ Precedent zone (style reference): {PRECEDENT_ZONE}
    - **4b אופציונלי**: Geographic Foci (≥3 distinct clusters)
 
 5. **ניתוח לפי משפחות** (Contamination Analysis by Family — לפי {FAMILY_ORDER_LIST})
-   - לכל משפחה: ממצאים, קידוחים חורגים, מגמות, חומרים מובילים
+   - לכל משפחה: ממצאים תמציתיים, **רק קידוחים בולטים** (top-3 עד 5 לפי שיקול דעת), מגמות, חומרים מובילים.
+   - **אל תמנה כל קידוח חורג בנפרד** — סכם את ההתפלגות ותציין קידוחים בולטים בלבד.
+   - **דוגמה לסיכום נכון**:
+     > "ב-CVOC זוהו 8 קידוחים חורגים מובהקים (אינדקס ≥6), 4 מתוכם באינדקס 8. הקידוחים הבולטים: נת חולון 5 (1,1-DCE 29,030% מהתקן), נת חולון 11 (TCE), נת אלביט (TCE+1,1-DCE). דפוס: פלומה אזורית, לא point-source."
+   - **דוגמה ל-anti-pattern** (אסור):
+     > "נת חולון 2 חורג, נת חולון 5 חורג, נת חולון 7 חורג, נת חולון 11 חורג..." (רשימה ארוכה ללא סינתזה)
    - **PFAS חובה**: גם כאשר max_bucket=0, יש לכלול סעיף על coverage gap
 
 6. **פורנזיקה ויחוסי מקורות** (Forensics & Source Attribution)
@@ -151,8 +156,34 @@ Precedent zone (style reference): {PRECEDENT_ZONE}
 - **טון**: ניטרלי, מקצועי. הימנע מ-narrative arcs ("crisis", "drama"). תאר ממצאים, אל תפרש דרמטית.
 - **selection bias**: כל סעיף סטטיסטי חייב לציין שהקידוחים אינם מייצגים את האזור כולו.
 - **PFAS**: אם max_bucket=0 → סעיף קצר על coverage gap (AFFF, mist suppressants). "היעדר נתון" הוא ממצא.
+- **תמציתיות**: דוח מצוין מסכם, לא ממנה. השתמש בטבלאות לרשימות; השתמש בפסקאות לסיכום וניתוח. **אל תמנה את כל הקידוחים בטקסט** — רק את הבולטים.
 
 </style_guide>
+
+---
+
+<figure_rules>
+
+**חובה**: לכל איור שאתה מציין בטקסט (`**איור N**:`), חייב לבוא **לפניו** image markdown בשורה נפרדת:
+
+```markdown
+![alt text](../charts_v2/designed/fig_0N_<name>.png)
+
+**איור N**: תיאור הקפשן כאן...
+```
+
+**רשימת איורי חובה** (6 סטנדרטיים, לפי PROCESS_GUIDE §VI):
+1. `fig_01_severity_ledger.png` — Top contaminants per family
+2. `fig_02_severity_matrix.png` — Distribution across 5-level scale
+3. `fig_03_cvoc_panels.png` — CVOC time series
+4. `fig_04_chromium_panels.png` או `fig_04_metals_panels.png` — METALS
+5. `fig_05_btex_panels.png` או `fig_05_fuel_panels.png` — FUEL
+6. `fig_06_monitoring_gaps.png` — Sampling timeline
+
+**Anti-pattern (אסור)**: כתוב `**איור 2**: ...` בלי שורת `![](.../fig_02_*.png)` לפניו.
+**אם משפחה חסרה** (PFAS=0, אין METALS): דלג על האיור שלה — אבל אז גם **אל תכתוב את הקפשן**.
+
+</figure_rules>
 
 ---
 

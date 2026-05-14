@@ -348,9 +348,14 @@ def svg_cvoc_panels(measurements: pd.DataFrame, severity: pd.DataFrame,
     """
     alert_boreholes = set(measurements['canonical_id'].unique())
     if boreholes_override:
-        # Keep V4.md order; only include wells with CVOC data; cap at 6 panels for layout.
+        # Keep V4.md selection but re-sort by CVOC severity desc, then cap at 6.
+        # This ensures the most severe CVOC wells are illustrated even when Opus
+        # mentions metals/fuel wells first in narrative order.
         cvoc_wells = set(measurements[measurements.param_code.isin(_CVOC_PARAMS)]['canonical_id'])
-        top_wells = [w for w in boreholes_override if w in alert_boreholes and w in cvoc_wells][:6]
+        cvoc_sev = severity[severity.family == "INDUSTRY"].set_index("borehole")["max_bucket"]
+        candidates = [w for w in boreholes_override if w in alert_boreholes and w in cvoc_wells]
+        candidates.sort(key=lambda w: cvoc_sev.get(w, 0), reverse=True)
+        top_wells = candidates[:6]
     else:
         industry = severity[
             (severity.family == "INDUSTRY") &
@@ -397,8 +402,15 @@ def svg_chromium_panels(measurements: pd.DataFrame,
         return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני מתכות</div>'
 
     if boreholes_override:
+        # Re-sort by max Cr concentration desc (chromium-dominant wells first).
         available = set(metals_data['canonical_id'].unique())
-        wells = [w for w in boreholes_override if w in available][:4]
+        well_max = (
+            metals_data[metals_data.param_code == "CHROMIUM AS CR"]
+            .groupby("canonical_id").concentration.max()
+        )
+        candidates = [w for w in boreholes_override if w in available]
+        candidates.sort(key=lambda w: well_max.get(w, 0), reverse=True)
+        wells = candidates[:4]
     else:
         # Order wells by max Cr concentration (the headline contaminant)
         well_max = (
@@ -437,8 +449,13 @@ def svg_btex_panels(measurements: pd.DataFrame,
         return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני דלקים</div>'
 
     if boreholes_override:
+        # Re-sort by FUEL severity (max concentration) desc to surface fuel wells
+        # before industry wells that happen to have stray BTEX samples.
         available = set(fuel_data['canonical_id'].unique())
-        top_wells = [w for w in boreholes_override if w in available][:6]
+        well_max = fuel_data.groupby("canonical_id").concentration.max()
+        candidates = [w for w in boreholes_override if w in available]
+        candidates.sort(key=lambda w: well_max.get(w, 0), reverse=True)
+        top_wells = candidates[:6]
     else:
         # Select representative FUEL boreholes by max concentration
         well_max = fuel_data.groupby("canonical_id").concentration.max().sort_values(ascending=False)

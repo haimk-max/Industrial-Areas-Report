@@ -58,6 +58,51 @@ def _render_table(lines: list, start: int) -> tuple[str, int]:
     return "".join(parts), i - start
 
 
+_FIGURE_CAPTION_RE = re.compile(r"^\*\*איור (\d+)\*\*:", re.MULTILINE)
+
+
+def _inject_missing_figure_images(md: str, figure_svgs: dict) -> str:
+    """Safety net: insert `![alt](path)` before any '**איור N**:' caption that lacks one.
+
+    Failure mode this addresses: Opus writes the caption but omits the image markdown
+    (observed for fig_02 in Holon V4.2). PROCESS_GUIDE §VII validation would catch
+    this, but rather than fail the render we auto-recover from figure_svgs.
+
+    Mapping: 'איור N' → figure_svgs key with substring 'fig_0N_'. Caption text is
+    used as alt. Inserted line points to the canonical PNG path so legacy/static
+    fallbacks also work; the inline-SVG resolver in _render_image matches the key.
+    """
+    keys_by_num = {}
+    for key in figure_svgs:
+        m = re.match(r"fig_(\d+)_", key)
+        if m:
+            keys_by_num[int(m.group(1))] = key
+
+    new_lines = []
+    lines = md.split("\n")
+    for i, line in enumerate(lines):
+        cap_match = _FIGURE_CAPTION_RE.match(line)
+        if cap_match:
+            fig_num = int(cap_match.group(1))
+            # Scan back ≤6 non-blank lines for an existing ![ for this fig
+            has_image = False
+            for j in range(i - 1, max(-1, i - 7), -1):
+                if not lines[j].strip():
+                    continue
+                if "![" in lines[j] and f"fig_{fig_num:02d}_" in lines[j]:
+                    has_image = True
+                    break
+                if lines[j].startswith("**איור ") or lines[j].startswith("## ") or lines[j].startswith("### "):
+                    break
+            if not has_image and fig_num in keys_by_num:
+                key = keys_by_num[fig_num]
+                alt = cap_match.group(0).rstrip(":")
+                new_lines.append(f"![{alt}](../charts_v2/designed/{key}.png)")
+                new_lines.append("")
+        new_lines.append(line)
+    return "\n".join(new_lines)
+
+
 def _render_image(alt: str, src: str, figure_svgs: dict, fig_counter: list) -> str:
     """Render image: replace SVG figures inline, keep PNG (static) figures as <img>.
 
@@ -275,6 +320,28 @@ TEMPLATE = """<!DOCTYPE html>
   figure.full-figure .frame{{border:1px solid var(--ink);background:var(--paper);padding:24px 22px 18px;overflow-x:auto}}
   figure.full-figure figcaption{{margin-top:10px;font-size:12.5px;color:var(--soft);line-height:1.5;padding-top:6px;border-top:1px solid var(--rule-faint);font-style:italic}}
 
+  /* --- Severity matrix (fig_02) --- */
+  table.matrix{{width:100%;border-collapse:collapse;font-size:12.5px;font-family:"IBM Plex Mono",monospace}}
+  table.matrix th, table.matrix td{{padding:7px 10px;text-align:right;border-bottom:1px solid var(--rule-faint)}}
+  table.matrix thead th{{border-bottom:1px solid var(--ink);font-family:"Source Sans 3",sans-serif;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);font-weight:600;padding-bottom:6px;text-align:center}}
+  table.matrix thead th:first-child{{text-align:right}}
+  table.matrix td.lbl{{font-family:"Source Sans 3",sans-serif;font-weight:500;font-size:12.5px;line-height:1.35}}
+  table.matrix td.lbl small{{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--soft);font-weight:400;margin-top:2px;letter-spacing:.01em}}
+  table.matrix td.val{{text-align:center;font-feature-settings:"tnum";color:var(--ink);white-space:nowrap}}
+  table.matrix td.val .b{{display:inline-block;min-width:22px;height:20px;line-height:18px;padding:0 4px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--ink);vertical-align:middle;font-family:"IBM Plex Mono",monospace}}
+  table.matrix td.val.empty{{color:var(--rule-light)}}
+  table.matrix tbody tr:hover td{{background:rgba(240,237,230,.4)}}
+
+  /* --- Gap timeline (fig_06) --- */
+  .gap-grid{{display:grid;grid-template-columns:170px 1fr 80px;gap:10px 14px;font-size:12.5px;align-items:center}}
+  .gap-grid .hd{{font-family:"Source Sans 3",sans-serif;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);padding-bottom:6px;border-bottom:1px solid var(--ink);margin-bottom:4px;font-weight:600}}
+  .gap-grid .nm{{font-weight:500;line-height:1.35}}
+  .gap-grid .nm small{{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--soft);font-weight:400;margin-top:2px}}
+  .gap-grid .last{{font-family:"IBM Plex Mono",monospace;font-size:11.5px;text-align:left;color:var(--red)}}
+  .gap-bar{{position:relative;height:14px;background:var(--paper);border-top:1px solid var(--rule-light);border-bottom:1px solid var(--rule-light)}}
+  .gap-bar .a{{position:absolute;top:0;bottom:0;background:var(--ink-2)}}
+  .gap-bar .m{{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(90deg,var(--paper) 0 4px,var(--red-soft) 4px 5px)}}
+
   /* Horizontal section divider */
   hr.sec-divider{{border:none;border-top:1px solid var(--rule-light);margin:36px 0 0}}
 
@@ -356,6 +423,7 @@ def main() -> None:
     print(f"  V4.md boreholes_override: {len(report_boreholes)} mentioned")
     figure_svgs = {
         "fig_01_severity_ledger": sc.svg_severity_ledger(severity_alert),
+        "fig_02_severity_matrix": sc.svg_severity_matrix(severity_alert, trends, data_avail),
         "fig_03_cvoc_panels": sc.svg_cvoc_panels(measurements, severity, boreholes_override=report_boreholes),
         "fig_04_chromium_panels": sc.svg_chromium_panels(measurements, boreholes_override=report_boreholes),
         "fig_05_btex_panels": sc.svg_btex_panels(measurements, boreholes_override=report_boreholes),
@@ -364,6 +432,7 @@ def main() -> None:
 
     print(f"Reading {args.report_v4.name} ...")
     md = args.report_v4.read_text(encoding="utf-8")
+    md = _inject_missing_figure_images(md, figure_svgs)
 
     print("Rendering markdown → HTML ...")
     body_html, toc = render_markdown(md, figure_svgs)

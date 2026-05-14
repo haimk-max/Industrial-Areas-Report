@@ -103,122 +103,29 @@ Before implementing data processing:
 
 ---
 
-## 4. Goal-Driven Execution
+## 4. Phases — Active & Pending
 
-### Verify Success at Each Phase
-
-**Phase 1: Data Organization** ✓ COMPLETE
-- Goal: Define schemas and populate Raanana borehole/concentration data
-- Verify:
-  - ✓ 5 boreholes from TAHAL 2008 Part B pages 53-67 extracted
-  - ✓ 1999-2008 concentrations for 3+ parameters (TCE, 1,2-DCA, chloroform)
-  - ✓ Data schemas validated (CSV parses correctly, JSON well-formed)
-  - ✓ Source attribution documented for every data point
-
-**Phase 2: Data Consolidation** ✓ COMPLETE
-- Goal: Merge TAHAL 2008 historical with 2021 report baseline
-- Verify:
-  - ✓ 2021 severity index integrated (zone score 3 / "medium")
-  - ✓ Forensics schema populated with contamination families
-  - ✓ Flow direction assessment complete
-  - ✓ Industries mapped with spatial relationships
-  - ✓ Consolidation script executes without errors
-
-**Phase 3: Drilling Card & Report Generation** ✓ COMPLETE (R-001, R-004)
-- Goal: Generate R-001 and R-004 drilling cards; zone summary report
-- Verify:
-  - ✓ Drilling cards include: trends, severity assessment, forensics, recommendations
-  - ✓ Trend analysis matches source document interpretations (TCE up, 1,2-DCA down)
-  - ✓ Zone summary synthesizes all data layers
-  - ✓ All findings traced to source documents (page numbers cited)
-  - ✓ Risk scores calculated per methodology
-
-**Phase A–C: Real Data Pipeline** ✓ COMPLETE (May 2026)
-- Goal: Replace placeholder data with real 2011–2026 Excel measurements; statistical trend engine; charts
-- Verify:
-  - ✓ 7 real boreholes from Excel (raanana_nt_1 through raanana_p_25)
-  - ✓ 2,613 measurements (TPFAS excluded); 179 parameters
-  - ✓ Mann-Kendall trend engine (tie-corrected, SNR gating, soft_trigger=2 measurements)
-  - ✓ ALERT: NO₃ at p_25; WATCH: CHLF at p_25, ORP at paz_hanofer
-  - ✓ 36 parameter/borehole pairs crossed drinking water standard
-  - ✓ 9 production charts (V2): zone site map, PFAS stacked, CVOC + trend lines, BTEX, 4 time-series trend charts
-  - ✓ V1 charts deprecated and removed from Raanana/charts/ (15 files deleted)
-  - ✓ Forensics: 7 decay chains, 14 source signatures, 758 co-occurrence pairs
-  - ✓ PFAS at turbine station: PFHxS 1,160%, PFOA 524% (July 2025 — critical new finding)
-
-**Phase D: Hebrew Reports & Zone Map** ✓ COMPLETE (May 2026)
-- Goal: Professional Hebrew zone summary + 7 drilling cards + central site map from real data
-- Verify:
-  - ✓ Zone summary report with 4 critical contamination findings (TCE, PCE, PFAS, Benzene)
-  - ✓ 7 individual drilling cards (nt1, nt2, nt3, nd_paz, nd_turbine, p18, p25)
-  - ✓ All findings sourced to Excel (borehole/date) or TAHAL/2021 (page number)
-  - ✓ Limitations and data gaps explicitly stated
-  - ✓ Zone site map (zone_site_map.png): offline ITM schematic with boreholes (color by index), facilities (triangles/squares), flow arrow (NW), scale bar, ITM grid; Figure 1 added to Section 2
-  - ✓ Facility discovery: 9 candidates identified (F-001 through F-009) via AI agent sector-based search; facility_attribution.json populated with HIGH/MEDIUM/LOW confidence levels
-  - ✓ Section 6 ("מקורות חיצוניים שנבדקו") documents PRTR, Mey Raanana, web search methodology
-
-**Phase E: Zone Selection** ✓ COMPLETE (May 2026)
-- Goal: 3-tier borehole selection mechanism for scalability
-- Verify:
-  - ✓ zone_definitions/tier1_historical_boreholes.json (18 zones)
-  - ✓ zone_definitions/zone_polygons.json (18 zones, Raanana polygon defined)
-  - ✓ zone_definitions/tier3_cross_zone_boreholes.json (18 zones)
-  - ✓ scripts/select_boreholes.py — Raanana selects all 7 boreholes (5 Tier1 + 2 Tier2)
-
-**Phase F: Tests** ✓ COMPLETE (May 2026)
-- Goal: Automated regression tests for trend engine and chart presets
-- Verify:
-  - ✓ 28 tests passing: test_preprocess.py (8), test_chart_presets.py (11), test_borehole_selection.py (9)
-  - ✓ Golden dataset: 144 measurements, 10 expected trend classifications
-  - ✓ Key invariants guarded: ALERT/WATCH classifications, soft_trigger=2, SNR gating, crossed_standard before entry criteria
-  - ✓ validate_report.py (3 validators): chart_refs, tone, attribution — all PASS on current report
-
-**Phase G: Facility Discovery & Map Implementation** ✓ COMPLETE (May 5, 2026)
-- Goal: Systematic contamination source identification via AI-assisted facility search; offline zone site map
-- Verify:
-  - ✓ AI agent facility discovery: sector-based search (CVOC sources + PFAS sources) with 2 search iterations
-  - ✓ 9 facility candidates identified (F-001 through F-009): Aidchem (CVOC HIGH), Chemitron (CVOC MEDIUM), בית דקל (CVOC HIGH), CMSR (CVOC MEDIUM), Nemal (CVOC LOW), Epoxy (CVOC MEDIUM), Aerospheres (PFAS MEDIUM-HIGH), + 2 new candidates validated
-  - ✓ facility_attribution.json populated: name_he, coordinates_itm, confidence, suspected_contaminants, operating_years, evidence_type
-  - ✓ web_findings.md created: search log documenting PRTR queries, B144 business registry, Mey Raanana 2025 report
-  - ✓ Zone site map (zone_site_map.png): 1200×960px, offline ITM schematic (no tile dependency)
-    - Boreholes: 7 points colored by max contamination index (0–8 scale)
-    - Facilities: 8 markers (triangles for industrial, squares for fuel)
-    - Geographic: 250m ITM grid lines, scale bar (500m), north arrow, flow direction arrow (NW), ITM axis labels
-  - ✓ Figure 1 caption added to Section 2 of RAANANA_REPORT_V2.md
-  - ✓ REQUIREMENTS.md updated: REQ-A8 (facility discovery), REQ-B4/D8 (map), REQ-D3 (RTL), REQ-F4 (validators)
-  - ✓ STYLE_GUIDE.md updated: Section H (facility discovery methodology)
-  - ✓ Project structure cleanup: README.md recreated, External Data/README.md created, V1 charts removed, documentation consolidated
-
-**Phase G.1: Basemap Integration** ⏳ DEFERRED (Phase 4 / Q3 2026)
-- **Goal**: Overlay OSM or cadastral basemap on zone_site_map.png (REQ-G1)
-- **Blocker**: All tile providers (OSM, CartoDB, Stamen, ESRI, contextily) return 403 Forbidden in current environment
-- **Options documented**:
-  1. **Cached raster tiles**: Locally hosted MBTiles or GeoTIFF of Raanana area (requires manual download)
-  2. **Israeli WMS**: govmap.gov.il / Survey of Israel WMS endpoint (requires authentication, DNS verification)
-  3. **Vector rendering**: Overpass API street network + geopandas render (no tile dependency, slower initial fetch)
-- **Decision**: Current offline ITM schematic is production-ready; basemap deferred pending expert environment access (Phase 4)
+> תיעוד phases היסטוריים: ראה `docs/HISTORY.md` (Phases 1–4, A–G, G.1).
 
 **Phase H: Holon V4 + Pipeline Refactor** ✓ COMPLETE (May 2026)
 - Goal: Production pipeline for Holon zone (80 active boreholes, 2,672 measurements) + reusable architecture for 16 remaining zones
-- Verify:
-  - ✓ Holon V4.2 report: 10 sections in Hebrew, 5 contamination foci (CVOC, METALS, PFAS, FUEL), 25 significantly-exceeding boreholes flagged
-  - ✓ Lean workspace structure: `Holon/lean_workspace/{01_inputs,02_data_filtered,03_evidence_index,04_deterministic_anchors,05_prompt}/`
-  - ✓ Severity index per 2021 formula extended to PFAS (`bucket(C_max_5y / DWS × 100)`, 9-level 0–8)
-  - ✓ Forensics: PCE→TCE→1,1-DCE→cis-DCE→VC decay chains; Cr/Ni co-occurrence; 60 facility candidates (17 HIGH)
-  - ✓ Two HTML generators: `_V4.html` (canonical archive, ~167KB) + `_DESIGNED.html` (visual summary, ~139KB) — neither merged; documented in `scripts/report_designed/README.md`
-  - ✓ Pipeline ordering correction: `boreholes_override` in svg_charts (CVOC=6, METALS=4, FUEL=6 caps) + `extract_report_boreholes()` parses V4.md
-  - ✓ SSOT consolidation: `ZONE_REPORT_PROCESS_GUIDE.md` = SSOT for terminology + pipeline; `STATISTICAL_OVERVIEW_METHODOLOGY.md` redirects to PROCESS_GUIDE §III
-  - ✓ Generic Zone Prompt Template: `scripts/templates/zone_report_prompt_template.md` (30 placeholders, Anthropic XML-tag structure) — ready for 16 remaining zones
-  - ✓ Family ordering rule: FUEL always last; CVOC/METALS/PFAS by zone max_bucket descending (§IV in PROCESS_GUIDE)
-  - ✓ Web search documentation: 6 channels (PRTR, B144, web, maps, forums, historical reports) + standard queries documented in PROCESS_GUIDE §I.5
-  - ✓ PDF ingestion structure: `External Data/{zone}/{raw_pdfs,extracted}/` documented in PROCESS_GUIDE §I.2
+- Status:
+  - ✓ Holon V4.2 report: 10 sections in Hebrew, 5 contamination foci (CVOC, METALS, PFAS, FUEL), 25 significantly-exceeding boreholes
+  - ✓ Lean workspace: `Holon/lean_workspace/{01_inputs,02_data_filtered,03_evidence_index,04_deterministic_anchors,05_prompt}/`
+  - ✓ Severity index: `bucket(C_max_5y / DWS × 100)`, 9-level scale 0–8 (PFAS included as extension beyond 2021)
+  - ✓ Two HTML generators: `_V4.html` (canonical, ~180KB) + `_DESIGNED.html` (visual summary, ~139KB); both rely on `boreholes_override` from V4.md (CVOC=6, METALS=4, FUEL=6 panel caps; sorted by family severity desc)
+  - ✓ Safety net: HTML generator auto-injects `![]()` image markdown when Opus omits it (figure caption present but image markdown missing)
+  - ✓ SSOT: `ZONE_REPORT_PROCESS_GUIDE.md` for terminology + pipeline; `STATISTICAL_OVERVIEW_METHODOLOGY.md` redirects to §III
+  - ✓ Generic Zone Prompt Template: `scripts/templates/zone_report_prompt_template.md` (Anthropic XML-tag structure, 30 placeholders, `<figure_rules>` enforcing image-before-caption)
+  - ✓ Family ordering: FUEL always last; CVOC/METALS/PFAS by zone max_bucket descending (§IV)
+  - ✓ Web search & PDF ingestion documented in PROCESS_GUIDE §I.2 + §I.5 (External Data/{zone}/ structure, 6 channels)
 
-**Phase 4: System Validation** (PENDING expert review)
+**Phase 4: System Validation** ⏳ PENDING (Q3 2026)
 - Goal: Expert hydrogeologist review; PFAS alert to regulators; boron anomaly investigation
 - Plan:
-  1. PFAS dip sampling at turbine station (Q3 2026) — top priority
+  1. PFAS dip sampling at turbine station — top priority
   2. Expert review of forensic attributions (decay chains, source signatures)
-  3. Boron anomaly investigation (2019-07-22 readings at nt_2, nt_3)
+  3. Boron anomaly investigation (2019-07-22 readings at Raanana nt_2, nt_3)
   4. Regulatory reporting for PFAS exceedances
   5. Phase 2 expansion to additional zones (post-expert validation)
 
@@ -304,31 +211,23 @@ Before committing code or reports:
 
 ---
 
-## 8. Scaling from Raanana to Full System
+## 8. Scaling to Additional Zones
 
-### Current State (Raanana — Phases A–G Complete)
-- 1 zone, 7 boreholes (real 2011–2026 data), 179 parameters, 2,613 measurements
-- Full pipeline: parse_excel → trend_analysis → forensics_analyzer → generate_charts_v2
-- 7 drilling cards + zone summary report in Hebrew + zone site map
-- 28 automated tests passing (test_preprocess, test_chart_presets, test_borehole_selection); 3 report validators (chart_refs, tone, attribution)
-- 9 facility candidates identified with confidence levels (facility_attribution.json)
-- Tier 1/2/3 borehole selection in zone_definitions/
-- base_layer/ seeded for all 18 zones (Raanana complete; 17 others manual_pending)
-- Project documentation: REQUIREMENTS.md (48 requirements, 44 done), STYLE_GUIDE.md (sections A–H), CHART_SPEC.md, DATA_DICTIONARY.md
+**עוגנים** (SSOT לתהליך):
+- `ZONE_REPORT_PROCESS_GUIDE.md` — terminology + pipeline ordering
+- `scripts/templates/zone_report_prompt_template.md` — generic prompt (30 placeholders)
+- `scripts/report_designed/README.md` — chart engine docs
 
-### Adding a New Zone (Phase 2)
-1. `zone_definitions/tier1_historical_boreholes.json` — add zone's historical borehole IDs
-2. `zone_definitions/zone_polygons.json` — define zone polygon in ITM coordinates
-3. `scripts/parse_excel.py --zone <new_zone>` — extract measurements from Excel
-4. `scripts/trend_analysis.py --zone <new_zone>` — run MK trend engine
-5. `scripts/forensics_analyzer.py --zone <new_zone>` — forensics analysis
-6. `scripts/generate_charts.py --zone <new_zone>` — charts
-7. Write zone summary report + drilling cards (Raanana as template)
+**Workflow לאזור חדש** (ראה PROCESS_GUIDE §VIII):
+1. PDF ingestion → `External Data/{zone}/raw_pdfs/` (PROCESS_GUIDE §I.2)
+2. Facility discovery → `facility_candidates_{zone}.md` (PROCESS_GUIDE §I.5, §V — 6 web channels)
+3. Data prep → `{zone}/lean_workspace/{02_data_filtered,03_evidence_index,04_deterministic_anchors}/`
+4. Fill prompt template → `{zone}/lean_workspace/05_prompt/zone_report_prompt.md`
+5. Opus call → `{zone}/output/{ZONE}_REPORT_V4.md`
+6. Render → `scripts/generate_{zone}_full_html.py` + `generate_{zone}_designed.py`
+7. Validate per PROCESS_GUIDE §VII
 
-### Implementation Trigger
-- After Phase 4 expert validation on Raanana (Q3 2026)
-- Requires Ministry of Environmental Protection approval for zone expansion
-- Timeline: Q3 2026 validation → Q4 2026 data integration → Q1 2027 18-zone reporting launch
+**Implementation Trigger**: Phase 4 expert validation on Holon (Q3 2026) + Ministry approval.
 
 ---
 
@@ -381,30 +280,22 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 
 ## 11. Success Metrics
 
-**Phase Completion Criteria**:
-1. ✓ Code: Runs without errors on Raanana test data
-2. ✓ Data: Verified against source documents (spot-check 10% of rows)
-3. ✓ Reports: All claims sourced (page numbers cited)
-4. ✓ Verification: Trend calculations match source interpretations or discrepancies flagged
-5. ✓ Documentation: CLAUDE.md and DATA_DICTIONARY updated
+**Per-phase completion** (generic):
+1. Code runs without errors on zone test data
+2. Data verified against source documents (spot-check ≥10% of rows)
+3. Reports: all claims sourced (page numbers cited)
+4. Trend calculations match source interpretations or discrepancies flagged
+5. Documentation updated (CLAUDE.md, PROCESS_GUIDE, prompt template)
 
-**Project Success Criteria** (Phase 4 completion):
-1. ✓ All 7 Raanana boreholes have drilling cards (nt1, nt2, nt3, nd_paz, nd_turbine, p18, p25)
-2. ✓ Zone summary report synthesizes all data layers (4 contamination foci, trend table, forensics)
-3. ✓ Forensic analysis links contaminants to source facilities with confidence levels
-4. ✓ PFAS at turbine station flagged for urgent regulatory attention
-5. ✓ Real 2011–2026 data integrated (replacing placeholder data)
-6. ✓ 28 automated tests passing + 3 report validators (chart_refs, tone, attribution)
-7. ✓ System designed to scale from 1 zone to 18 zones (--zone flag, zone_definitions/, select_boreholes.py)
-8. ✓ CLAUDE.md, DATA_DICTIONARY.md, REQUIREMENTS.md, STYLE_GUIDE.md, CHART_SPEC.md updated
-9. ✓ Zone site map generated (offline ITM schematic); Figure 1 in report; 9 facility candidates identified
-10. ⏳ Expert hydrogeologist review — pending (Q3 2026)
-11. ⏳ PFAS regulatory reporting — pending (Q3 2026)
-12. ⏳ Basemap integration (REQ-G1) — pending Phase 4 (environment resolution)
+**Phase 4 (System Validation) — pending criteria**:
+- ⏳ Expert hydrogeologist review (Raanana + Holon V4.2)
+- ⏳ PFAS regulatory reporting (Raanana turbine station)
+- ⏳ Boron anomaly investigation (Raanana nt_2, nt_3)
+- ⏳ Basemap integration (REQ-G1)
+- ⏳ Phase 2 (16 remaining zones) — gated on Ministry approval
 
 ---
 
-**Project Status**: Phases A–H Complete (real data pipeline, trend engine, charts, Hebrew reports, tests, facility discovery, zone map, **Holon V4.2 + reusable architecture**) | Phase 4 (expert validation) Pending Q3 2026  
-**Last Updated**: May 14, 2026 (Phase H refactor: SSOT consolidation, pipeline ordering, generic prompt template)  
-**Completion**: Raanana 44/44; Holon V4.2 pipeline complete. 16 remaining zones ready to begin via `scripts/templates/zone_report_prompt_template.md`  
-**Next Review**: Q3 2026 (PFAS confirmatory sampling at Raanana turbine station; expert validation of Holon V4.2; planning Phase 2 expansion)
+**Project Status**: Phase H Complete (Holon V4.2 pipeline + reusable architecture) | Phase 4 Pending Q3 2026  
+**Last Updated**: May 14, 2026 (Phase H+: pipeline ordering, SSOT consolidation, figure safety net, CLAUDE.md slim-down)  
+**Historical phases**: see `docs/HISTORY.md`

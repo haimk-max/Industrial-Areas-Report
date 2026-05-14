@@ -288,6 +288,9 @@ def family_order(zone_max_buckets: Dict[str, int]) -> List[str]:
 - [ ] Source confidence: HIGH/MEDIUM/LOW on all facility attributions
 - [ ] Selection bias caveat present (monitoring wells ≠ zone-wide)
 - [ ] Monitoring gaps + closed wells mentioned
+- [ ] **כל איור עם image markdown לפניו**: לכל `**איור N**:` בטקסט, יש שורת `![](.../fig_0N_*.png)` לפניו (HTML generator יכלול safety net, אבל לתעד מקור הוא תפקיד המודל)
+- [ ] **תמציתיות נרטיב**: סעיף 5 (משפחות) **לא מונה כל קידוח חורג** — מסכם התפלגות + מציין בולטים בלבד (top 3–5 לכל משפחה)
+- [ ] **מתודולוגיה (§3 בדו"ח) תמציתית**: 5–10 שורות בלבד; לא משכפלת את טבלת 9-הרמות — מפנה ל-PROCESS_GUIDE §III
 - [ ] Figures 1-6 referenced (or subsets if family omitted)
 - [ ] **Geographic Foci (Section 4b)**: present if ≥3 distinct clusters; else justified omission
 - [ ] Recommendations: timeframe structure (Immediate/Ongoing/Investigation)
