@@ -80,26 +80,33 @@ def extract_narrative_sections(report_path: Path = REPORT_V4) -> dict:
 
     text = report_path.read_text(encoding="utf-8")
 
-    # V4.1: masthead intro = first paragraph after "## 1. תקציר מנהלים" before "**ממצאים"
-    # Fallback to V4 marker "**ארבעה" if needed
-    match = re.search(r"## 1\. תקציר מנהלים\n\n(.+?)\n\n\*\*(ממצאים עיקריים|ארבעה)", text, re.DOTALL)
+    # V4.2: masthead intro = §1.1 רקע והיקף content (between "### 1.1 רקע והיקף" and next "### 1.2")
+    # Fallback to V4.1 patterns
+    match = re.search(r"### 1\.1 רקע והיקף\n\n(.+?)\n\n### 1\.2", text, re.DOTALL)
+    if not match:
+        match = re.search(r"## 1\. תקציר מנהלים\n\n(.+?)\n\n\*\*(ממצאים עיקריים|ארבעה)", text, re.DOTALL)
     if match:
         sections["masthead_intro"] = _clarify_terms(match.group(1).strip())
 
-    # V4.1: findings list = numbered items after "**ממצאים עיקריים:**" until next "---" or "##"
-    # Fallback to V4 marker "**ארבעה מוקדי זיהום"
-    match = re.search(r"\*\*ממצאים עיקריים:\*\*\n\n(.+?)\n\n(?:מבין|\*\*הסיפור|על פי דוח)", text, re.DOTALL)
+    # V4.2: contamination foci = §1.2 table (between "### 1.2 חמשת מוקדי" and next "### 1.3")
+    match = re.search(r"### 1\.2 חמשת מוקדי הזיהום המרכזיים\n\n(.+?)\n\n### 1\.3", text, re.DOTALL)
     if not match:
-        match = re.search(r"\*\*ארבעה מוקדי זיהום.+?\n\n(.+?)\n\n\*\*הסיפור העדכני", text, re.DOTALL)
+        # Fallback to V4.1 numbered list patterns
+        match = re.search(r"\*\*ממצאים עיקריים:\*\*\n\n(.+?)\n\n(?:מבין|\*\*הסיפור|על פי דוח)", text, re.DOTALL)
+        if not match:
+            match = re.search(r"\*\*ארבעה מוקדי זיהום.+?\n\n(.+?)\n\n\*\*הסיפור העדכני", text, re.DOTALL)
     if match:
         foci = _clarify_terms(match.group(1).strip())
-        sections["four_foci"] = _reorder_foci_fuel_last(foci)
+        # Only apply reorder for old numbered-list format, not for new table format
+        if not foci.startswith("|"):
+            foci = _reorder_foci_fuel_last(foci)
+        sections["four_foci"] = foci
 
-    # V4.1: closing summary paragraph of section 1 (between findings and ---)
-    # Fallback to V4 marker "**הסיפור העדכני**:"
-    match = re.search(r"\*\*הסיפור העדכני\*\*:(.+?)\n\n---", text, re.DOTALL)
+    # V4.2: operative conclusion = §1.8 (between "### 1.8" and next "---")
+    match = re.search(r"### 1\.8 מסקנה אופרטיבית\n\n(.+?)\n\n---", text, re.DOTALL)
     if not match:
-        # V4.1 closing: paragraph(s) after findings list, before ## 2
+        match = re.search(r"\*\*הסיפור העדכני\*\*:(.+?)\n\n---", text, re.DOTALL)
+    if not match:
         match = re.search(r"\n\n(מבין .+?|על פי דוח .+?)\n\n---\n\n## 2\.", text, re.DOTALL)
     if match:
         sections["current_story"] = _clarify_terms(match.group(1).strip())

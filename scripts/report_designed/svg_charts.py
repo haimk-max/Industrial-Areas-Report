@@ -485,8 +485,14 @@ def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
     c_min = 0.1
     c_max = max(well_data.concentration.max() * 1.2, dws * 5)
 
-    parts = [f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}">']
-    parts.append('<style>text.rtl-title { direction:rtl; unicode-bidi:isolate; }</style>')
+    parts = [f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">']
+    parts.append(
+        '<style>'
+        'text.rtl-title { direction:rtl; unicode-bidi:isolate; font-family:"Frank Ruhl Libre","Times New Roman",serif; }'
+        'text.tick { font-family:"IBM Plex Mono",monospace; }'
+        'text.legend-label { font-family:"Source Sans 3",sans-serif; direction:ltr; unicode-bidi:bidi-override; }'
+        '</style>'
+    )
 
     # Year gridlines + tick labels
     for yr in [2012, 2014, 2016, 2018, 2020, 2022, 2024]:
@@ -598,12 +604,16 @@ def _marker(x: float, y: float, shape: str, color: str) -> str:
 
 
 def _small_multiples_grid(panels: list, cols: int = 3) -> str:
-    """Wrap SVG panels in a CSS grid."""
+    """Wrap SVG panels in a CSS grid with subtle dividers — matches academic report style."""
     cells = [f'<div>{p}</div>' for p in panels]
     return (
         f'<div style="display:grid;grid-template-columns:repeat({cols},1fr);'
-        f'gap:1px;background:{RULE_LIGHT};border:1px solid {INK}">'
-        + "".join(f'<div style="background:{PAPER};padding:6px">{c}</div>' for c in cells)
+        f'gap:0;background:{PAPER}">'
+        + "".join(
+            f'<div style="background:{PAPER};padding:14px 10px 10px;'
+            f'border-right:1px solid {RULE_FAINT};border-bottom:1px solid {RULE_FAINT}">{c}</div>'
+            for c in cells
+        )
         + '</div>'
     )
 

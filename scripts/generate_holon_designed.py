@@ -32,7 +32,7 @@ from scripts.report_designed import svg_charts as sc
 
 
 def md_to_html(md: str) -> str:
-    """Convert minimal markdown (bold, lists, paragraphs) to HTML.
+    """Convert minimal markdown (bold, lists, paragraphs, tables) to HTML.
 
     Preserves explicit numbering for ordered lists (uses <li value="N">) so that
     items separated by <ul> blocks continue counting correctly.
@@ -44,9 +44,36 @@ def md_to_html(md: str) -> str:
     html_parts = []
     in_list = False
     list_type = None
+    i = 0
 
-    for line in lines:
+    while i < len(lines):
+        line = lines[i]
         stripped = line.strip()
+
+        # Markdown table detection: header line followed by separator line (|---|---|)
+        if stripped.startswith("|") and i + 1 < len(lines) and re.match(r"^\|[\s\-:|]+\|\s*$", lines[i + 1].strip()):
+            if in_list:
+                html_parts.append(f"</{list_type}>")
+                in_list = False
+                list_type = None
+            # Parse table
+            header_cells = [c.strip() for c in stripped.strip("|").split("|")]
+            html_parts.append('<table class="data-table">')
+            html_parts.append("<thead><tr>")
+            for c in header_cells:
+                html_parts.append(f"<th>{_inline(c)}</th>")
+            html_parts.append("</tr></thead>")
+            html_parts.append("<tbody>")
+            i += 2  # Skip header and separator
+            while i < len(lines) and lines[i].strip().startswith("|"):
+                row_cells = [c.strip() for c in lines[i].strip().strip("|").split("|")]
+                html_parts.append("<tr>")
+                for c in row_cells:
+                    html_parts.append(f"<td>{_inline(c)}</td>")
+                html_parts.append("</tr>")
+                i += 1
+            html_parts.append("</tbody></table>")
+            continue
 
         # Ordered list item (1. ... )
         m_ol = re.match(r"^(\d+)\.\s+(.+)", stripped)
@@ -61,7 +88,6 @@ def md_to_html(md: str) -> str:
                 html_parts.append("<ol>")
                 in_list = True
                 list_type = "ol"
-            # Always include explicit `value` so numbering survives <ul> breaks
             html_parts.append(f'<li value="{num}">{_inline(m_ol.group(2))}</li>')
         elif m_ul:
             if not in_list or list_type != "ul":
@@ -79,10 +105,10 @@ def md_to_html(md: str) -> str:
             html_parts.append("")
         else:
             if in_list:
-                # Continuation of last list item — append inside
                 html_parts.append(f"<br>{_inline(stripped)}")
             else:
                 html_parts.append(f"<p>{_inline(stripped)}</p>")
+        i += 1
 
     if in_list:
         html_parts.append(f"</{list_type}>")

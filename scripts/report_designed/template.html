@@ -89,6 +89,16 @@
   table.matrix td.val .b.s8{background:var(--red);color:var(--paper);border-color:var(--red)}
   table.matrix td.val .up{color:var(--red);font-weight:700;margin-left:2px}
 
+  /* --- Data table (inline narrative tables: foci, findings, etc.) --- */
+  table.data-table{width:100%;border-collapse:collapse;font-size:13px;font-family:"Frank Ruhl Libre","Times New Roman",serif;margin:18px 0 22px;background:var(--paper)}
+  table.data-table thead th{border-top:1.5px solid var(--ink);border-bottom:1px solid var(--ink);font-family:"Source Sans 3",sans-serif;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);font-weight:600;padding:9px 10px 8px;text-align:right;background:var(--grey-1)}
+  table.data-table tbody td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--rule-faint);vertical-align:top;line-height:1.45;color:var(--ink-2)}
+  table.data-table tbody tr:nth-child(even) td{background:rgba(240,237,230,.4)}
+  table.data-table tbody tr:hover td{background:var(--grey-1)}
+  table.data-table tbody tr:last-child td{border-bottom:1.5px solid var(--ink)}
+  table.data-table strong{color:var(--ink);font-weight:700}
+  table.data-table td:first-child{font-weight:600;color:var(--ink);font-family:"Source Sans 3",sans-serif;font-size:12.5px}
+
   /* --- Gap timeline --- */
   .gap-grid{display:grid;grid-template-columns:170px 1fr 80px;gap:10px 14px;font-size:12.5px;align-items:center}
   .gap-grid .hd{font-family:"Source Sans 3",sans-serif;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);padding-bottom:6px;border-bottom:1px solid var(--ink);margin-bottom:4px;font-weight:600}
