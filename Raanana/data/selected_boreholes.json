@@ -1,0 +1,62 @@
+{
+  "zone_id": "raanana",
+  "n_selected": 7,
+  "boreholes": [
+    {
+      "canonical_id": "raanana_nd_paz_hanofer",
+      "name_he": "נד פז הנופר",
+      "tier": 1,
+      "tier_source": "Tier 1: historical documents",
+      "itm_easting": 189174.0,
+      "itm_northing": 677924.0
+    },
+    {
+      "canonical_id": "raanana_nd_turbine",
+      "name_he": "נד תחנת טורבינות גז רעננה",
+      "tier": 1,
+      "tier_source": "Tier 1: historical documents",
+      "itm_easting": 189345.0,
+      "itm_northing": 678575.0
+    },
+    {
+      "canonical_id": "raanana_nt_1",
+      "name_he": "נת רעננה 1",
+      "tier": 1,
+      "tier_source": "Tier 1: historical documents",
+      "itm_easting": 188515.0,
+      "itm_northing": 677986.0
+    },
+    {
+      "canonical_id": "raanana_nt_2",
+      "name_he": "נת רעננה 2",
+      "tier": 1,
+      "tier_source": "Tier 1: historical documents",
+      "itm_easting": 188709.0,
+      "itm_northing": 677884.0
+    },
+    {
+      "canonical_id": "raanana_nt_3",
+      "name_he": "נת רעננה 3",
+      "tier": 1,
+      "tier_source": "Tier 1: historical documents",
+      "itm_easting": 188888.0,
+      "itm_northing": 678207.0
+    },
+    {
+      "canonical_id": "raanana_p_18",
+      "name_he": "פ רעננה 18",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 188944.0,
+      "itm_northing": 677740.0
+    },
+    {
+      "canonical_id": "raanana_p_25",
+      "name_he": "פ רעננה 25",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 187951.0,
+      "itm_northing": 677569.0
+    }
+  ]
+}

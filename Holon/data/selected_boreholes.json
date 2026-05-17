@@ -1,0 +1,894 @@
+{
+  "zone_id": "holon",
+  "n_selected": 111,
+  "boreholes": [
+    {
+      "canonical_id": "יו_מקוה_ישראל_29/2",
+      "name_he": "יו מקוה ישראל 29/2",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180500.0,
+      "itm_northing": 660280.0
+    },
+    {
+      "canonical_id": "מק_חולון_12",
+      "name_he": "מק חולון 12",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 182088.0,
+      "itm_northing": 657195.0
+    },
+    {
+      "canonical_id": "מק_חולון_14",
+      "name_he": "מק חולון 14",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180289.0,
+      "itm_northing": 657578.0
+    },
+    {
+      "canonical_id": "מק_חולון_23",
+      "name_he": "מק חולון 23",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 182124.0,
+      "itm_northing": 658134.0
+    },
+    {
+      "canonical_id": "מק_חולון_5",
+      "name_he": "מק חולון 5",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181339.0,
+      "itm_northing": 656645.0
+    },
+    {
+      "canonical_id": "מק_מולדת_8",
+      "name_he": "מק מולדת 8",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 182615.0,
+      "itm_northing": 656613.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_1",
+      "name_he": "נד אגד אזור 1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181824.0,
+      "itm_northing": 658242.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_10",
+      "name_he": "נד אגד אזור 10",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181787.0,
+      "itm_northing": 658217.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_11",
+      "name_he": "נד אגד אזור 11",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181789.0,
+      "itm_northing": 658234.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_12",
+      "name_he": "נד אגד אזור 12",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181800.0,
+      "itm_northing": 658252.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_13",
+      "name_he": "נד אגד אזור 13",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181854.0,
+      "itm_northing": 658260.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_14",
+      "name_he": "נד אגד אזור 14",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181832.0,
+      "itm_northing": 658286.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_15",
+      "name_he": "נד אגד אזור 15",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181955.0,
+      "itm_northing": 658330.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_16",
+      "name_he": "נד אגד אזור 16",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181974.0,
+      "itm_northing": 658337.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_17",
+      "name_he": "נד אגד אזור 17",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181967.0,
+      "itm_northing": 658312.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_18",
+      "name_he": "נד אגד אזור 18",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181947.0,
+      "itm_northing": 658323.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_2",
+      "name_he": "נד אגד אזור 2",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181847.0,
+      "itm_northing": 658209.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_3",
+      "name_he": "נד אגד אזור 3",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181829.0,
+      "itm_northing": 658242.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_4",
+      "name_he": "נד אגד אזור 4",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181821.0,
+      "itm_northing": 658233.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_5",
+      "name_he": "נד אגד אזור 5",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181819.0,
+      "itm_northing": 658254.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_6",
+      "name_he": "נד אגד אזור 6",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181834.0,
+      "itm_northing": 658256.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_7",
+      "name_he": "נד אגד אזור 7",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181800.0,
+      "itm_northing": 658234.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_8",
+      "name_he": "נד אגד אזור 8",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181874.0,
+      "itm_northing": 658221.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_9",
+      "name_he": "נד אגד אזור 9",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181865.0,
+      "itm_northing": 658232.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_n1",
+      "name_he": "נד אגד אזור N1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 182110.0,
+      "itm_northing": 658258.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_n2",
+      "name_he": "נד אגד אזור N2",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181811.0,
+      "itm_northing": 658249.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_n3",
+      "name_he": "נד אגד אזור N3",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181835.0,
+      "itm_northing": 658250.0
+    },
+    {
+      "canonical_id": "נד_אגד_אזור_n4",
+      "name_he": "נד אגד אזור N4",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181814.0,
+      "itm_northing": 658234.0
+    },
+    {
+      "canonical_id": "נד_אגד_איזור_7",
+      "name_he": "נד אגד איזור 7",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181800.0,
+      "itm_northing": 658234.0
+    },
+    {
+      "canonical_id": "נד_דלק_הצבי_1",
+      "name_he": "נד דלק הצבי 1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181034.0,
+      "itm_northing": 658808.0
+    },
+    {
+      "canonical_id": "נד_דלק_הצבי_2",
+      "name_he": "נד דלק הצבי 2",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181024.0,
+      "itm_northing": 658800.0
+    },
+    {
+      "canonical_id": "נד_דלק_השבעה_נ/1",
+      "name_he": "נד דלק השבעה נ/1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180996.0,
+      "itm_northing": 659434.0
+    },
+    {
+      "canonical_id": "נד_דלק_מובילי_גוש_דן_1",
+      "name_he": "נד דלק מובילי גוש דן 1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180841.0,
+      "itm_northing": 659747.0
+    },
+    {
+      "canonical_id": "נד_דלק_מובילי_גוש_דן_2",
+      "name_he": "נד דלק מובילי גוש דן 2",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180825.0,
+      "itm_northing": 659740.0
+    },
+    {
+      "canonical_id": "נד_דלק_מרכבות_האש_1",
+      "name_he": "נד דלק מרכבות האש 1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181954.0,
+      "itm_northing": 658093.0
+    },
+    {
+      "canonical_id": "נד_דלק_מרכבות_האש_2",
+      "name_he": "נד דלק מרכבות האש 2",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181956.0,
+      "itm_northing": 658085.0
+    },
+    {
+      "canonical_id": "נד_דלק_מרכבות_האש_3",
+      "name_he": "נד דלק מרכבות האש 3",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181964.0,
+      "itm_northing": 658093.0
+    },
+    {
+      "canonical_id": "נד_דלק_מרכבות_האש_4",
+      "name_he": "נד דלק מרכבות האש 4",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181959.0,
+      "itm_northing": 658092.0
+    },
+    {
+      "canonical_id": "נד_דלק_מרכבות_האש_5",
+      "name_he": "נד דלק מרכבות האש 5",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181957.0,
+      "itm_northing": 658088.0
+    },
+    {
+      "canonical_id": "נד_דלק_מרכבות_האש_6",
+      "name_he": "נד דלק מרכבות האש 6",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181968.0,
+      "itm_northing": 658092.0
+    },
+    {
+      "canonical_id": "נד_דן_חולון_1",
+      "name_he": "נד דן חולון 1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180939.0,
+      "itm_northing": 659240.0
+    },
+    {
+      "canonical_id": "נד_דן_חולון_2",
+      "name_he": "נד דן חולון 2",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180882.0,
+      "itm_northing": 659230.0
+    },
+    {
+      "canonical_id": "נד_המלאכה_מ_2",
+      "name_he": "נד המלאכה מ 2",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181362.0,
+      "itm_northing": 658247.0
+    },
+    {
+      "canonical_id": "נד_המרכבה_ק2",
+      "name_he": "נד המרכבה ק2",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 182017.0,
+      "itm_northing": 657960.0
+    },
+    {
+      "canonical_id": "נד_המרכבה_ק3",
+      "name_he": "נד המרכבה ק3",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 182008.0,
+      "itm_northing": 657966.0
+    },
+    {
+      "canonical_id": "נד_טן_חולון_1",
+      "name_he": "נד טן חולון 1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181031.0,
+      "itm_northing": 658855.0
+    },
+    {
+      "canonical_id": "נד_מרכבות_האש_7",
+      "name_he": "נד מרכבות האש 7",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181954.0,
+      "itm_northing": 658089.0
+    },
+    {
+      "canonical_id": "נד_מרכבות_האש_8",
+      "name_he": "נד מרכבות האש 8",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181956.0,
+      "itm_northing": 658102.0
+    },
+    {
+      "canonical_id": "נד_מרכבות_האש_9",
+      "name_he": "נד מרכבות האש 9",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181961.0,
+      "itm_northing": 658111.0
+    },
+    {
+      "canonical_id": "נד_נובר_מרכבה",
+      "name_he": "נד נובר מרכבה",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 182028.0,
+      "itm_northing": 657968.0
+    },
+    {
+      "canonical_id": "נד_סונול_המלאכה_מ-1",
+      "name_he": "נד סונול המלאכה מ-1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181351.0,
+      "itm_northing": 658241.0
+    },
+    {
+      "canonical_id": "נד_סונול_המלאכה_ק-1",
+      "name_he": "נד סונול המלאכה ק-1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181360.0,
+      "itm_northing": 658252.0
+    },
+    {
+      "canonical_id": "נד_סונול_מרכבה_1",
+      "name_he": "נד סונול מרכבה 1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181963.0,
+      "itm_northing": 656999.0
+    },
+    {
+      "canonical_id": "נד_סונול_משמר_השבעה_1",
+      "name_he": "נד סונול משמר השבעה 1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 182357.0,
+      "itm_northing": 658011.0
+    },
+    {
+      "canonical_id": "נד_סונול_משמר_השבעה_2",
+      "name_he": "נד סונול משמר השבעה 2",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 182370.0,
+      "itm_northing": 658000.0
+    },
+    {
+      "canonical_id": "נד_סונול_משמר_השבעה_3",
+      "name_he": "נד סונול משמר השבעה 3",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 182372.0,
+      "itm_northing": 657976.0
+    },
+    {
+      "canonical_id": "נד_סונול_משמר_השבעה_4",
+      "name_he": "נד סונול משמר השבעה 4",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 182366.0,
+      "itm_northing": 657996.0
+    },
+    {
+      "canonical_id": "נד_סונול_משמר_השבעה_5",
+      "name_he": "נד סונול משמר השבעה 5",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 182366.0,
+      "itm_northing": 657996.0
+    },
+    {
+      "canonical_id": "נד_פז_סיירים_1",
+      "name_he": "נד פז סיירים 1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181961.0,
+      "itm_northing": 656689.0
+    },
+    {
+      "canonical_id": "נד_פז_סיירים_2",
+      "name_he": "נד פז סיירים 2",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181949.0,
+      "itm_northing": 656664.0
+    },
+    {
+      "canonical_id": "נד_פז_סיירים_3",
+      "name_he": "נד פז סיירים 3",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181923.0,
+      "itm_northing": 656643.0
+    },
+    {
+      "canonical_id": "נד_פז_סיירים_4",
+      "name_he": "נד פז סיירים 4",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181973.0,
+      "itm_northing": 656649.0
+    },
+    {
+      "canonical_id": "נד_פז_סיירים_5",
+      "name_he": "נד פז סיירים 5",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181913.0,
+      "itm_northing": 656666.0
+    },
+    {
+      "canonical_id": "נד_פז_צבר_1",
+      "name_he": "נד פז צבר 1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180682.0,
+      "itm_northing": 659739.0
+    },
+    {
+      "canonical_id": "נד_פז_צבר_2",
+      "name_he": "נד פז צבר 2",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180708.0,
+      "itm_northing": 659696.0
+    },
+    {
+      "canonical_id": "נד_פז_צבר_3",
+      "name_he": "נד פז צבר 3",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180748.0,
+      "itm_northing": 659729.0
+    },
+    {
+      "canonical_id": "נד_פז_צבר_4",
+      "name_he": "נד פז צבר 4",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180704.0,
+      "itm_northing": 659709.0
+    },
+    {
+      "canonical_id": "נד_פז_צבר_5",
+      "name_he": "נד פז צבר 5",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180679.0,
+      "itm_northing": 659707.0
+    },
+    {
+      "canonical_id": "נד_פז_צבר_6",
+      "name_he": "נד פז צבר 6",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180693.0,
+      "itm_northing": 659696.0
+    },
+    {
+      "canonical_id": "נד_פז_קריית_שרת_1",
+      "name_he": "נד פז קריית שרת 1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181141.0,
+      "itm_northing": 657640.0
+    },
+    {
+      "canonical_id": "נת_אלביט_חולון_1",
+      "name_he": "נת אלביט חולון 1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181193.0,
+      "itm_northing": 658395.0
+    },
+    {
+      "canonical_id": "נת_אלביט_חולון_2",
+      "name_he": "נת אלביט חולון 2",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181261.0,
+      "itm_northing": 658395.0
+    },
+    {
+      "canonical_id": "נת_אלביט_חולון_3",
+      "name_he": "נת אלביט חולון 3",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181163.0,
+      "itm_northing": 658253.0
+    },
+    {
+      "canonical_id": "נת_אלביט_חולון_4",
+      "name_he": "נת אלביט חולון 4",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181116.0,
+      "itm_northing": 658300.0
+    },
+    {
+      "canonical_id": "נת_ארן__מטל_חולון",
+      "name_he": "נת ארן  מטל חולון",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181380.0,
+      "itm_northing": 656455.0
+    },
+    {
+      "canonical_id": "נת_ארן_מטל_חולון_1",
+      "name_he": "נת ארן מטל חולון 1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181370.0,
+      "itm_northing": 656530.0
+    },
+    {
+      "canonical_id": "נת_חווה_חקלאית_א",
+      "name_he": "נת חווה חקלאית א",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181144.0,
+      "itm_northing": 658203.0
+    },
+    {
+      "canonical_id": "נת_חווה_חקלאית_ב",
+      "name_he": "נת חווה חקלאית ב",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181143.0,
+      "itm_northing": 658204.0
+    },
+    {
+      "canonical_id": "נת_חולון_1",
+      "name_he": "נת חולון 1",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181036.0,
+      "itm_northing": 658814.0
+    },
+    {
+      "canonical_id": "נת_חולון_11",
+      "name_he": "נת חולון 11",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181181.0,
+      "itm_northing": 658237.0
+    },
+    {
+      "canonical_id": "נת_חולון_12",
+      "name_he": "נת חולון 12",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181173.0,
+      "itm_northing": 657941.0
+    },
+    {
+      "canonical_id": "נת_חולון_13",
+      "name_he": "נת חולון 13",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181390.0,
+      "itm_northing": 656825.0
+    },
+    {
+      "canonical_id": "נת_חולון_14",
+      "name_he": "נת חולון 14",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180631.0,
+      "itm_northing": 659044.0
+    },
+    {
+      "canonical_id": "נת_חולון_16",
+      "name_he": "נת חולון 16",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181713.0,
+      "itm_northing": 657027.0
+    },
+    {
+      "canonical_id": "נת_חולון_18",
+      "name_he": "נת חולון 18",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180312.0,
+      "itm_northing": 657980.0
+    },
+    {
+      "canonical_id": "נת_חולון_2",
+      "name_he": "נת חולון 2",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180920.0,
+      "itm_northing": 658664.0
+    },
+    {
+      "canonical_id": "נת_חולון_21",
+      "name_he": "נת חולון 21",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181215.0,
+      "itm_northing": 658330.0
+    },
+    {
+      "canonical_id": "נת_חולון_22",
+      "name_he": "נת חולון 22",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181410.0,
+      "itm_northing": 658390.0
+    },
+    {
+      "canonical_id": "נת_חולון_23",
+      "name_he": "נת חולון 23",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181730.0,
+      "itm_northing": 658580.0
+    },
+    {
+      "canonical_id": "נת_חולון_24",
+      "name_he": "נת חולון 24",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181570.0,
+      "itm_northing": 658570.0
+    },
+    {
+      "canonical_id": "נת_חולון_25",
+      "name_he": "נת חולון 25",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181370.0,
+      "itm_northing": 658540.0
+    },
+    {
+      "canonical_id": "נת_חולון_26",
+      "name_he": "נת חולון 26",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181590.0,
+      "itm_northing": 658670.0
+    },
+    {
+      "canonical_id": "נת_חולון_3",
+      "name_he": "נת חולון 3",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181784.0,
+      "itm_northing": 658062.0
+    },
+    {
+      "canonical_id": "נת_חולון_4",
+      "name_he": "נת חולון 4",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180365.0,
+      "itm_northing": 657909.0
+    },
+    {
+      "canonical_id": "נת_חולון_5",
+      "name_he": "נת חולון 5",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180887.0,
+      "itm_northing": 658232.0
+    },
+    {
+      "canonical_id": "נת_חולון_6",
+      "name_he": "נת חולון 6",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181016.0,
+      "itm_northing": 657734.0
+    },
+    {
+      "canonical_id": "נת_חולון_7",
+      "name_he": "נת חולון 7",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180759.0,
+      "itm_northing": 658487.0
+    },
+    {
+      "canonical_id": "נת_חולון_8",
+      "name_he": "נת חולון 8",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181013.0,
+      "itm_northing": 658395.0
+    },
+    {
+      "canonical_id": "נת_חולון_9",
+      "name_he": "נת חולון 9",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180630.0,
+      "itm_northing": 658788.0
+    },
+    {
+      "canonical_id": "נת_יהודה_ייבוא_חולון",
+      "name_he": "נת יהודה ייבוא חולון",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180769.0,
+      "itm_northing": 658928.0
+    },
+    {
+      "canonical_id": "נת_מוסך_קטרפילר_חולון",
+      "name_he": "נת מוסך קטרפילר חולון",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181434.0,
+      "itm_northing": 657064.0
+    },
+    {
+      "canonical_id": "נת_תדירגן_10",
+      "name_he": "נת תדירגן 10",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181471.0,
+      "itm_northing": 658264.0
+    },
+    {
+      "canonical_id": "נת_תדירגן_2",
+      "name_he": "נת תדירגן 2",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181444.0,
+      "itm_northing": 658312.0
+    },
+    {
+      "canonical_id": "נת_תדירגן_4",
+      "name_he": "נת תדירגן 4",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181505.0,
+      "itm_northing": 658298.0
+    },
+    {
+      "canonical_id": "נת_תדירגן_5",
+      "name_he": "נת תדירגן 5",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181548.0,
+      "itm_northing": 658380.0
+    },
+    {
+      "canonical_id": "נת_תדירגן_6",
+      "name_he": "נת תדירגן 6",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181476.0,
+      "itm_northing": 658263.0
+    },
+    {
+      "canonical_id": "נת_תדירגן_7",
+      "name_he": "נת תדירגן 7",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181477.0,
+      "itm_northing": 658259.0
+    },
+    {
+      "canonical_id": "נת_תדירגן_8",
+      "name_he": "נת תדירגן 8",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181478.0,
+      "itm_northing": 658262.0
+    },
+    {
+      "canonical_id": "נת_תדירגן_9",
+      "name_he": "נת תדירגן 9",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181475.0,
+      "itm_northing": 658265.0
+    },
+    {
+      "canonical_id": "נת_תדירגן_א.ת.חולון",
+      "name_he": "נת תדירגן א.ת.חולון",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 181569.0,
+      "itm_northing": 658294.0
+    },
+    {
+      "canonical_id": "פ_מקוה_ישראל_רוטשילד",
+      "name_he": "פ מקוה ישראל רוטשילד",
+      "tier": 2,
+      "tier_source": "Tier 2: spatial (polygon ±500.0m)",
+      "itm_easting": 180192.0,
+      "itm_northing": 659682.0
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+code,name,unit,drinking_water_standard
+ MTBE,MTBE,microgr/L,40
+1 METHYLNAPHTHALENE,1 METHYLNAPHTHALENE,microgr/L,
+"1,1,1,2-tetrachloroethane","1,1,1,2-tetrachloroethane",microgr/L,
+"1,1,2,2-tetrachloroethane","1,1,2,2-tetrachloroethane",microgr/L,
+"1,1,2-trichloroethane","1,1,2-trichloroethane",microgr/L,5
+"1,1-Dichloropropane","1,1-Dichloropropane",microgr/L,
+"1,1-dichloroethane","1,1-dichloroethane",microgr/L,
+"1,1-dichloropropene","1,1-dichloropropene",microgr/L,
+"1,2,3-trichlorobenzene","1,2,3-trichlorobenzene",microgr/L,
+"1,2,3-trichloropropane","1,2,3-trichloropropane",microgr/L,
+"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",microgr/L,
+"1,2,4-trichlorobenzene","1,2,4-trichlorobenzene",microgr/L,70
+"1,2-Dibromomethane","1,2-Dibromomethane",microgr/L,
+"1,2-dibromo-3-chloropropane","1,2-dibromo-3-chloropropane",microgr/L,0.3
+"1,2-dichloropropane","1,2-dichloropropane",microgr/L,5
+"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",microgr/L,
+"1,3-Dichloropropene (e) CIS","1,3-Dichloropropene (e) CIS",microgr/L,
+"1,3-Dichloropropene (z) TRANS","1,3-Dichloropropene (z) TRANS",microgr/L,
+"1,3-dichlorobenzene","1,3-dichlorobenzene",microgr/L,
+"1,3-dichloropropane","1,3-dichloropropane",microgr/L,
+"1,4 DIOXANE","1,4 DIOXANE",microgr/L,3
+"2,2-dichloropropane","2,2-dichloropropane",microgr/L,
+2-chlorotoluene,2-chlorotoluene,microgr/L,
+"4,4-DDD","4,4-DDD",microgr/L,
+"4,4-DDE","4,4-DDE",microgr/L,
+4-chlorotoluene,4-chlorotoluene,microgr/L,
+ALACHLOR,ALACHLOR,microgr/L,4
+ALDICRAB,ALDICRAB,microgr/L,
+ALKALINITY M AS CACO3 (B),ALKALINITY M AS CACO3 (B),MG/L,
+ALPHA RADIOACTIVITY,ALPHA RADIOACTIVITY,BQ/L,0.1
+ALUMINIUM FILTERED AS AL,ALUMINIUM FILTERED AS AL,microgr/L,
+ALUMINUM,ALUMINUM,microgr/L,200
+AMMONIA AS NH4,AMMONIA AS NH4,MG/L,
+ANTIMONY,ANTIMONY,microgr/L,6
+ARSENIC AS AS,ARSENIC AS AS,microgr/L,10
+ATRAZINE,ATRAZINE,microgr/L,2
+Acetone ,Acetone,microgr/L,
+Aldicarb sulfon,Aldicarb sulfon,microgr/L,
+Aldicarb sulfoxide,Aldicarb sulfoxide,microgr/L,
+Aldrin,Aldrin,microgr/L,0.05
+Ammonium trifluor propionate,Ammonium trifluor propionate,microgr/L,
+BARIUM AS BA,BARIUM AS BA,microgr/L,1000
+BENZENE,BENZENE,microgr/L,5
+BENZOPYRENE,BENZOPYRENE,microgr/L,0.5
+BERYLIUM,BERYLIUM,microgr/L,4
+BETA RAD. CORRECTED FOR  K,BETA RAD. CORRECTED FOR  K,B/L,
+BETA RADIOACTIVITY,BETA RADIOACTIVITY,BQ/L,1
+BICARBONATE AS HCO3,BICARBONATE AS HCO3,MG/L,
+BIS (2-ETHYLHEXYL) PHTALATE,BIS (2-ETHYLHEXYL) PHTALATE,microgr/L,8
+BORON AS B,BORON AS B,MG/L,1
+BROMACIL,BROMACIL,microgr/L,
+BROMIDE AS BR,BROMIDE AS BR,MG/L,
+Bromo dichloromethane,Bromo dichloromethane,microgr/L,
+Bromomethane,Bromomethane,microgr/L,
+CADMIUM AS CD,CADMIUM AS CD,microgr/L,5
+CALCIUM AS CA,CALCIUM AS CA,MG/L,80
+CARBOFURAN,CARBOFURAN,microgr/L,20
+CARBOMAZEPIN,CARBOMAZEPIN,microgr/L,
+CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,microgr/L,4
+CHLORDANE,CHLORDANE,microgr/L,1
+CHLORIDE AS CL,CHLORIDE AS CL,MG/L,400
+CHLOROFORM,CHLOROFORM,microgr/L,80
+CHLORPYRIFOS,CHLORPYRIFOS,microgr/L,
+CHROMIUM AS CR,CHROMIUM AS CR,microgr/L,50
+"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",microgr/L,50
+"CIS+ TRANS 1,2 DICHLOROETHELYENE","CIS+ TRANS 1,2 DICHLOROETHELYENE",microgr/L,
+COBALT AS CO,COBALT AS CO,microgr/L,
+COLOR  PLATINUM COBALT UNITS,COLOR  PLATINUM COBALT UNITS,UNIT,15
+COPPER AS CU,COPPER AS CU,microgr/L,1400
+CYANIDE AS CN,CYANIDE AS CN,microgr/L,50
+Chloroethane,Chloroethane,microgr/L,
+Chloromethane,Chloromethane,microgr/L,
+Chlorpyrifos,Chlorpyrifos,microgr/L,30
+DDT,DDT,microgr/L,1
+DETERGENTS AS LAS,DETERGENTS AS LAS,MG/L,0.5
+DIAZINON,DIAZINON,microgr/L,
+"DIBROMO-3-CHLOROPROPA1,2 NE","DIBROMO-3-CHLOROPROPA1,2 NE",microgr/L,0.3
+"DICHLOR BENZEN 1,2","DICHLOR BENZEN 1,2",microgr/L,600
+"DICHLOROBENZEN 1,4","DICHLOROBENZEN 1,4",microgr/L,75
+"DICHLOROETHANE1,2","DICHLOROETHANE1,2",microgr/L,4
+"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",microgr/L,10
+DICHLOROMETHANE,DICHLOROMETHANE,microgr/L,5
+"DICHLOROPHENOXY ACETI2,4 C ACID","DICHLOROPHENOXY ACETI2,4 C ACID",microgr/L,30
+DINOSEB,DINOSEB,microgr/L,7
+DISSOLVED MATTER AT 180C DEGR,DISSOLVED MATTER AT 180C DEGR,MG/L,
+DISSOLVED OXYGEN AS O2,DISSOLVED OXYGEN AS O2,MG/L,
+Dibromochloro methane  ,Dibromochloro methane,microgr/L,
+Dichlorodifluoromethane,Dichlorodifluoromethane,microgr/L,
+Dieldrin,Dieldrin,microgr/L,0.05
+Dimethoate,Dimethoate,microgr/L,6
+ENDRIN,ENDRIN,microgr/L,2
+ETHYL BENZENE,ETHYL BENZENE,microgr/L,300
+ETHYLENE DI BROMIDE,ETHYLENE DI BROMIDE,microgr/L,0.05
+Endosulfan-I,Endosulfan-I,microgr/L,
+Endosulfan-II,Endosulfan-II,microgr/L,
+FECAL COLIFORM MF PRO,FECAL COLIFORM MF PRO,N/100ML,10
+FERROUS IRON DISSOLVED AS FE,FERROUS IRON DISSOLVED AS FE,microgr/L,
+FIELD ELECTRICAL CONDUCTIVITY,FIELD ELECTRICAL CONDUCTIVITY,mS/cm,
+FIELD TURBIDITY,FIELD TURBIDITY,NTU,
+FLUORENE,FLUORENE,microgr/L,
+FLUORIDE AS F,FLUORIDE AS F,MG/L,1.7
+FORMALDEHYDE,FORMALDEHYDE,microgr/L,900
+HARDNESS AS CACO3,HARDNESS AS CACO3,MG/L,200
+HEPTACHLOR,HEPTACHLOR,microgr/L,0.4
+HEPTACHLOR EPOXIDE,HEPTACHLOR EPOXIDE,microgr/L,0.2
+HETEROTROPHIC PLATE COUNT,HETEROTROPHIC PLATE COUNT,CFU/ML,
+IRON TOTAL AS FE,IRON TOTAL AS FE,microgr/L,1000
+LEAD AS PB,LEAD AS PB,microgr/L,10
+LINDANE,LINDANE,microgr/L,1
+LITHIUM,LITHIUM,microgr/L,
+Lab EC comp to 25 C DEGR,Lab EC comp to 25 C DEGR,mS/cm,
+MAGNESIUM AS MG,MAGNESIUM AS MG,MG/L,150
+MANGANESE FILTERED AS MN,MANGANESE FILTERED AS MN,MG/L,
+MANGANESE TOTAL AS MN,MANGANESE TOTAL AS MN,microgr/L,200
+MERCURY AS HG,MERCURY AS HG,microgr/L,1
+METHOXYCHLOR,METHOXYCHLOR,microgr/L,20
+METOLACHLOR,METOLACHLOR,microgr/L,10
+MOLYBDENUM,MOLYBDENUM,microgr/L,70
+MONOCHLOROBENZENE,MONOCHLOROBENZENE,microgr/L,100
+Methylene chloride ,Methylene chloride,microgr/L,
+NAPTHALENE,NAPTHALENE,microgr/L,10
+NICKEL AS NI,NICKEL AS NI,microgr/L,20
+NITRATE AS NO3,NITRATE AS NO3,MG/L,70
+NITRITE AS NO2,NITRITE AS NO2,MG/L,3
+OIL AND GREASE,OIL AND GREASE,microgr/L,300
+OIL LAYER THIKNESS,OIL LAYER THIKNESS,CM,
+OXAMYL,OXAMYL,microgr/L,200
+PENTACHLOROPHENOL,PENTACHLOROPHENOL,microgr/L,3
+PERCHLORATE,PERCHLORATE,microgr/L,15
+PERFLUORO PFEESA,PERFLUORO PFEESA,microgr/L,
+PERMETRINE,PERMETRINE,microgr/L,
+PH MEASURED  IN FIELD,PH MEASURED  IN FIELD,UNIT,
+PHENANTHRENE,PHENANTHRENE,microgr/L,0.01
+PHENOLS AS C6H5OH,PHENOLS AS C6H5OH,microgr/L,2
+PHOSPHATES AS PO4,PHOSPHATES AS PO4,MG/L,
+POLYAROMATIC HYDROCARBONS,POLYAROMATIC HYDROCARBONS,microgr/L,
+POTASSIUM AS K,POTASSIUM AS K,MG/L,
+POTASSIUM AS K FOR BETA CORREC,POTASSIUM AS K FOR BETA CORREC,MG/L,
+Per-FluoroOctaneSulfonate,Per-FluoroOctaneSulfonate,microgr/L,0.1
+Per-FluoroOctanoic Acid,Per-FluoroOctanoic Acid,microgr/L,0.1
+Perfluorobutane Sulfonic Acid,Perfluorobutane Sulfonic Acid,microgr/L,0.1
+Perfluorobytanoic acid,Perfluorobytanoic acid,microgr/L,0.1
+Perfluorodecanoic acid,Perfluorodecanoic acid,microgr/L,0.1
+Perfluorododecanoic acid,Perfluorododecanoic acid,microgr/L,0.1
+Perfluoroheptanoic acid,Perfluoroheptanoic acid,microgr/L,0.1
+Perfluorohexanesulfonic acid,Perfluorohexanesulfonic acid,microgr/L,0.1
+Perfluorohexanoic acid,Perfluorohexanoic acid,microgr/L,0.1
+Perfluorononanoic acid,Perfluorononanoic acid,microgr/L,0.1
+Perfluoropentanoic acid,Perfluoropentanoic acid,microgr/L,0.1
+REDOX,REDOX,mV,
+SELENIUM AS SE,SELENIUM AS SE,microgr/L,10
+SEMI VOLATILE ORGANIC COMPOUNDS,SEMI VOLATILE ORGANIC COMPOUNDS,microgr/L,
+SILICA AS SIO2,SILICA AS SIO2,MG/L,
+SILVER,SILVER,microgr/L,100
+SIMAZINE,SIMAZINE,microgr/L,2
+SODIUM AS NA,SODIUM AS NA,MG/L,
+STRONTIUM AS SR,STRONTIUM AS SR,microgr/L,
+STYRENE,STYRENE,microgr/L,50
+SULFATE AS SO4,SULFATE AS SO4,MG/L,250
+"T-2,4,5","T-2,4,5",microgr/L,9
+TEMPERATURE CENTIGRADE,TEMPERATURE CENTIGRADE,Celsius,
+TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,microgr/L,10
+THALLIUM,THALLIUM,microgr/L,2
+TIN AS SN,TIN AS SN,microgr/L,
+TOLUENE,TOLUENE,microgr/L,700
+TOT.COLIF.MF PROCED,TOT.COLIF.MF PROCED,N/100ML,50
+TOTAL NITROGEN AS N,TOTAL NITROGEN AS N,MG/L,
+TOTAL NITROGREN  AS N,TOTAL NITROGREN  AS N,MG/L,
+TOTAL ORGANIC CARBON,TOTAL ORGANIC CARBON,MG/L,
+TRANCE NONACHLOR,TRANCE NONACHLOR,microgr/L,
+"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",microgr/L,50
+"TRICHLORO ETHANE 1,1,1","TRICHLORO ETHANE 1,1,1",microgr/L,200
+TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,microgr/L,7.5
+"TRICHLORO PHENOXY 2,4,5 PROPIO","TRICHLORO PHENOXY 2,4,5 PROPIO",microgr/L,10
+TRIFLORILEN,TRIFLORILEN,microgr/L,20
+TURBIDITY IN FIELD,TURBIDITY IN FIELD,NTU,1
+TURBIDITY NTU,TURBIDITY NTU,NTU,1
+Tertiary Butyl Alcohol,Tertiary Butyl Alcohol,microgr/L,120
+Tribromomethane,Tribromomethane,microgr/L,
+Trichloroethane,Trichloroethane,microgr/L,
+Trichlorofluoromethane,Trichlorofluoromethane,microgr/L,
+URANIUM,URANIUM,microgr/L,15
+UV ABSORB AT 254 NM,UV ABSORB AT 254 NM,1/CM,
+VANADIUM,VANADIUM,microgr/L,
+VINYL CHLORIDE,VINYL CHLORIDE,microgr/L,0.5
+VOLATILE ORGANIC COMPOUNDS,VOLATILE ORGANIC COMPOUNDS,microgr/L,
+XYLENE,XYLENE,microgr/L,500
+ZINC AS ZN,ZINC AS ZN,microgr/L,5000
+bromobenzene,bromobenzene,microgr/L,
+bromochloromethane,bromochloromethane,microgr/L,
+dibromochloromethane,dibromochloromethane,microgr/L,
+dibromomethane,dibromomethane,microgr/L,
+hexachlorobutadiene,hexachlorobutadiene,microgr/L,
+isopropylbenzene,isopropylbenzene,microgr/L,
+n-Butyl benzene,n-Butyl benzene,microgr/L,
+n-propylbenzene,n-propylbenzene,microgr/L,
+o-Xylene ,o-Xylene,microgr/L,
+p-isopropyl toluene,p-isopropyl toluene,microgr/L,
+p-xylene,p-xylene,microgr/L,
+sec-butylbenzene,sec-butylbenzene,microgr/L,
+tert-butylbenzene,tert-butylbenzene,microgr/L,
+total_pfas,total_pfas,microgr/L,0.1
+עומק עד פני המים,עומק עד פני המים,M,

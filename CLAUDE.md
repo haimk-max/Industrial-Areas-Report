@@ -1,11 +1,16 @@
 # CLAUDE.md - Industrial Areas Report Project Governance
 
+> **Methodology layering**: This file is **prescriptive** (what we do). For per-feature **descriptive** history, see commit messages. For **open patterns awaiting 2nd-case validation, deferred decisions, and tooling roadmap**, see `LESSONS.md`. Promote items from `LESSONS.md` to `REQUIREMENTS.md` only after a 2nd real case validates the pattern.
+
 ## Project Overview
 **Title**: Structured Reporting System for Groundwater Quality Monitoring in Industrial Areas  
-**Scope**: 18-zone coastal system. Active development on Holon; Raanana frozen as approved precedent.  
-**Data Sources**: TAHAL 2007/2008, אקולוג 2009–2017, 2021 Water Quality Report, current monitoring  
-**Deliverables**: Drilling cards, zone reports, trend analysis, forensic attribution  
-**Timeline**: Phase 1-4 implementation with quarterly review cycles
+**Scope**: Generalised reporting framework for the 18-zone coastal aquifer industrial monitoring system, Israel  
+**Reference Implementation (style precedent)**: Raanana zone (אזה"ת רעננה) — V2 validated by expert hydrogeologist (May 2026)  
+**Methodological stress-test**: Holon zone (אזה"ת חולון) — V4.2 first end-to-end run; **not a binding template** for the remaining 16 zones  
+**Binding methodology for new zones**: V5 hybrid pipeline (Structured Data Pack + NotebookLM-like context + Zone Diagnosis + V5 schema) — see `ZONE_REPORT_PROCESS_GUIDE.md`  
+**Data Sources**: TAHAL 2008 (historical), 2021 Water Quality Report (baseline), zone-specific Excel measurements  
+**Deliverables**: Per-zone reports (V5 schema), drilling cards, trend analysis, forensic attribution, zone site maps  
+**Methodology Status**: Framework proven on Raanana (style) + Holon (stress-test). V5 hybrid pipeline = the binding methodology going forward.
 
 ---
 
@@ -35,21 +40,22 @@
 ### State Assumptions Explicitly
 - **Data Quality**: All input data sourced from official reports (TAHAL 2008, 2021 Report). Verification: Compare extractions against source document page numbers.
 - **Methodology**: Severity index calculation and trend analysis follow 2021 Report methodology exactly. No modifications without expert validation.
-- **Scope**: Raanana zone is demonstration case; design all scripts/templates to scale to 18 zones with minimal modification.
+- **Scope**: The framework targets generalised reports (any geographic area, any facility) — the 18-zone batch is the first application, not the ceiling. Build abstractions from concrete patterns observed in ≥2 zones; do not pre-design for hypothetical zone variations. Raanana is the reference implementation; Holon is the first generalisation test. Long-term horizons include: arbitrary geographic input → automated data discovery → report; and zone dashboards alongside (or in place of) full reports.
 - **Regulatory Context**: Assume Ministry of Environmental Protection standards apply; coordinate with authorities before recommendations.
 
 ### Surface Ambiguities & Tradeoffs
 Before implementing data processing:
-1. **Missing data (2008-2021 gap)**: Do not interpolate. Flag gaps explicitly. User decision: extrapolate or wait for 2021 report full data.
-2. **Contamination attribution**: Multiple facilities near boreholes; forensic analysis probabilistic. Present confidence levels; don't overstate certainty.
-3. **Trend extrapolation**: Historical trends (1999-2008) may not continue. Present as "if trend persists" scenarios only.
-4. **Deep aquifer sampling**: R-004 and R-005 confounded by confinement; slow flow may distort trend signals. Flag interpretation limitations.
+1. **Missing data**: Do not interpolate. Flag gaps explicitly. User decision: extrapolate, accept gap, or seek additional data sources.
+2. **Contamination attribution**: Multiple facilities near boreholes; forensic analysis probabilistic. Present confidence levels (HIGH/MEDIUM/LOW); don't overstate certainty.
+3. **Trend extrapolation**: Historical trends may not continue. Present as "if trend persists" scenarios only.
+4. **Deep aquifer / confined boreholes**: Slow flow may distort trend signals; flag interpretation limitations.
+   - `[RAANANA-SPECIFIC]` Boreholes R-004 and R-005 are known confined cases — see `Raanana/README.md` for zone-specific notes.
 
 ### Ask Rather Than Assume
-- If borehole coordinates fall outside zone boundary ±500m, ask for clarification
+- If borehole coordinates fall outside zone polygon ±500m, ask for clarification
 - If contamination pattern matches multiple source facilities, present all hypotheses; don't pick silently
 - If severity index threshold unclear, request expert clarification before recalculation
-- If 2021 Report data differs from TAHAL 2008, flag discrepancy for expert validation
+- If two source documents disagree on the same fact (e.g., a borehole's classification), flag the discrepancy and request expert validation rather than picking silently
 
 ---
 
@@ -60,19 +66,19 @@ Before implementing data processing:
 - **Don't Add**:
   - Prediction models or extrapolation (user decision, not automated)
   - Automated remediation planning (expert decision)
-  - Statistical tests beyond linear regression (methodological baseline only)
-  - Configurability beyond single YAML config file
+  - Statistical methods beyond what's documented (current: Mann-Kendall + SNR gating; do not introduce parametric tests, ML, or new estimators without methodology approval)
+  - Configurability beyond what existing zones need — config lives in `config/analysis_config.yaml` (engine params) and `config/zone_overrides/{zone}.yaml` (per-zone Excel column overrides). No new config files without 2nd-zone justification.
   
 - **Do Keep**:
   - CSV/JSON parsing (foundation for all analysis)
-  - Linear trend calculation (required for reporting)
+  - Mann-Kendall trend calculation (tie-corrected variance, continuity-corrected Z, SNR ≥ 0.3, soft_trigger=2)
   - Severity index calculation (per 2021 Report formula)
   - Forensic pattern matching (source attribution support, not definitive)
 
 ### Data File Scope (CSVs, JSONs)
-- **boreholes.csv**: Only columns needed for reporting (ID, coordinates, depth, layer, classification, source)
-- **concentrations.csv**: Only columns needed for trend analysis (year, concentration, severity, source document)
-- **industries.json**: Only properties needed for source attribution (location, facility type, expected contaminants)
+- **boreholes.csv**: Only columns needed for reporting (canonical_id, name_he, ITM coordinates, depth, layer, source)
+- **measurements.csv**: Only columns needed for trend analysis (borehole, date, parameter, concentration, unit, source)
+- **facility_attribution.json**: Only properties needed for source attribution (name_he, address_he, suspected_contaminants, confidence, ITM coordinates, evidence)
 - No denormalization, no pre-calculated fields beyond severity index
 
 ### Report Scope (Markdown Drilling Cards, Zone Report)
@@ -98,7 +104,7 @@ Before implementing data processing:
 - **Test before committing** - run on sample data to verify output unchanged for old parameters
 
 ### When Creating New Reports
-- **Follow established formatting** (tables, headings, structure from drilling_card_R-001.md)
+- **Follow established formatting** (tables, headings, structure from `Raanana/output/drilling_card_*_v2.md` and `RAANANA_REPORT_V2.md`)
 - **Cross-reference source documents** with page numbers for every claim
 - **Flag limitations explicitly** (data gaps, assumptions, confidence levels)
 - **Don't editorialize** - present findings neutrally; recommendations separate from analysis
@@ -139,14 +145,61 @@ Before implementing data processing:
   - ✅ REPORT_V5_SCHEMA.md created (V5 skeleton + templates)
   - ⏳ CLAUDE.md §8 Scaling updated (hybrid pipeline workflow)
 
-**Phase 4: System Validation** ⏳ PENDING (Q3 2026)
-- Goal: Expert hydrogeologist review; PFAS alert to regulators; boron anomaly investigation
-- Plan:
-  1. PFAS dip sampling at turbine station — top priority
-  2. Expert review of forensic attributions (decay chains, source signatures)
-  3. Boron anomaly investigation (2019-07-22 readings at Raanana nt_2, nt_3)
-  4. Regulatory reporting for PFAS exceedances
-  5. Phase 2 expansion to additional zones (post-expert validation)
+**Phase 3: Drilling Card & Report Generation** ✓ COMPLETE (R-001, R-004)
+- Goal: Generate R-001 and R-004 drilling cards; zone summary report
+- Verify:
+  - ✓ Drilling cards include: trends, severity assessment, forensics, recommendations
+  - ✓ Trend analysis matches source document interpretations (TCE up, 1,2-DCA down)
+  - ✓ Zone summary synthesizes all data layers
+  - ✓ All findings traced to source documents (page numbers cited)
+  - ✓ Risk scores calculated per methodology
+
+**Phase A–C: Real Data Pipeline** ✓ COMPLETE (May 2026)
+- Goal: Excel ingestion → trend engine → charts. Generalised: every script accepts `--zone <id>`.
+- Reference results (Raanana):
+  - ✓ 7 real boreholes from Excel (raanana_nt_1 through raanana_p_25)
+  - ✓ 2,613 measurements (TPFAS excluded); 179 parameters
+  - ✓ Mann-Kendall trend engine (tie-corrected, SNR gating, soft_trigger=2 measurements)
+  - ✓ 36 parameter/borehole pairs crossed drinking water standard
+  - ✓ 9 production charts (V2)
+  - ✓ Forensics: 7 decay chains, 14 source signatures, 758 co-occurrence pairs
+  - ✓ PFAS at turbine station: PFHxS 1,160%, PFOA 524% (July 2025 — critical new finding)
+
+**Phase D: Hebrew Reports & Zone Map** ✓ COMPLETE (May 2026)
+- ✓ Zone summary report with 4 critical contamination findings
+- ✓ 7 individual drilling cards
+- ✓ Zone site map (offline ITM schematic; Figure 1 in Section 2)
+- ✓ Facility discovery: 9 candidates (F-001..F-009) with HIGH/MEDIUM/LOW confidence
+
+**Phase E–F: Zone Selection + Tests** ✓ COMPLETE (May 2026)
+- ✓ 3-tier borehole selection (Tier 1 historical + Tier 2 polygon + Tier 3 cross-zone)
+- ✓ 28 automated tests + 3 report validators (chart_refs, tone, attribution)
+
+**Phase G: Facility Discovery & Map Implementation** ✓ COMPLETE (May 5, 2026)
+- ✓ AI agent facility discovery (sector-based search)
+- ✓ facility_attribution.json populated; web_findings.md created
+- ✓ Zone site map: offline ITM schematic (1200×960px, no tile dependency)
+- ✓ REQUIREMENTS.md updated (REQ-A8, REQ-B4/D8, REQ-D3, REQ-F4)
+
+**Phase G.1: Basemap Integration** ⏳ DEFERRED (REQ-G1 — tile providers blocked in current env)
+
+**Phase 4: System Validation (Raanana)** ✓ COMPLETE (May 2026)
+- ✓ Hydrogeologist approved Raanana report as submitted — no corrections required
+- ✓ Decision: pilot methodology on Holon zone before scaling to all 18 zones
+
+**Phase 5: Zone Application Framework** ✓ FRAMEWORK COMPLETE
+- Goal: Validate the methodology works for **any** of the 18 industrial zones
+- Framework changes (zone-agnostic):
+  - ✓ Pipeline scripts (parse_excel, preprocess, trend_analysis, forensics_analyzer, generate_charts_v2,
+    select_boreholes, validate_report) — all accept `--zone <id>`
+  - ✓ Per-zone Excel column mapping via `config/zone_overrides/{zone}.yaml`
+  - ✓ Generic data-driven charts (auto-pick top-contaminated boreholes per family)
+  - ✓ Borehole selection persistence via `selected_boreholes.json`
+- First framework application — Holon V4.2 (stress-test):
+  - ✓ 112 boreholes parsed → 111 selected (Tier 2 polygon), 4,762 trend pairs
+  - ✓ Cross-zone param-family classifier (`scripts/param_families.py`)
+  - ✓ Charts produced; HOLON_REPORT_V4.md drafted (awaiting hydrogeologist approval)
+  - **Note**: Holon V4.2 served as a stress-test of the prompt-driven pipeline. Future zones will use V5 hybrid pipeline (see Phase H+ below) — Holon is **not** the binding template.
 
 ---
 
@@ -230,23 +283,59 @@ Before committing code or reports:
 
 ---
 
-## 8. Scaling to Additional Zones
+## 8. Adding a New Zone — V5 Hybrid Pipeline (Binding Methodology)
 
-**עוגנים** (SSOT לתהליך):
-- `ZONE_REPORT_PROCESS_GUIDE.md` — terminology + pipeline ordering
-- `scripts/templates/zone_report_prompt_template.md` — generic prompt (30 placeholders)
+The framework supports any of the 18 industrial zones in the coastal aquifer monitoring system.
+**Going forward, every new zone uses the V5 hybrid pipeline** (defined in `ZONE_REPORT_PROCESS_GUIDE.md` and the spec files `DATA_PIPELINE_SPEC.md` + `REPORT_V5_SCHEMA.md`).
+
+### SSOT for the process
+- `ZONE_REPORT_PROCESS_GUIDE.md` — terminology + 7-step pipeline ordering
+- `DATA_PIPELINE_SPEC.md` — schema for the 6 deterministic CSVs (Structured Data Pack)
+- `REPORT_V5_SCHEMA.md` — V5 report skeleton (6 sections + focus template)
+- `scripts/templates/zone_report_prompt_template.md` — generic prompt (will be replaced by V5 variant in Phase H+ Implementation, REQ #13)
 - `scripts/report_designed/README.md` — chart engine docs
 
-**Workflow לאזור חדש** (V5 Hybrid Pipeline — METHODOLOGY המחייבת):
+### Workflow for a new zone (V5 hybrid — 7 steps)
 1. **Define scope** → `{zone}/01_scope/` (zone_wells.csv, selection_notes.md)
-2. **Data pipeline** (deterministic) → `{zone}/02_data/` (6 CSVs: measurements_scoped, latest_results, severity_by_well_family, trends_by_well_parameter, monitoring_gaps, figure_ready_series)
-3. **Context assembly** (NotebookLM-like) → `{zone}/03_context/` (previous_reports_excerpts, hydrogeology_context, source_candidates_context, web_findings_context, approved_precedent_excerpt)
-4. **Zone diagnosis** (Opus call #1) → `{zone}/04_diagnosis/zone_diagnosis.md` (8 questions)
-5. **V5 report** (Opus call #2) → `{zone}/output/{ZONE}_REPORT_V5.md` (6 sections + appendices)
-6. **Render figures + HTML** → `scripts/generate_{zone}_full_html.py` + `generate_{zone}_designed.py` (boreholes_override path)
-7. **Validate** per PROCESS_GUIDE §VII checklist
+2. **Run deterministic data pipeline** → `{zone}/02_data/` (6 CSVs: measurements_scoped, latest_results, severity_by_well_family, trends_by_well_parameter, monitoring_gaps, figure_ready_series — see `DATA_PIPELINE_SPEC.md`)
+3. **Assemble scoped NotebookLM-like context** → `{zone}/03_context/` (previous_reports_excerpts, hydrogeology_context, source_candidates_context, web_findings_context, approved_precedent_excerpt)
+4. **Generate zone diagnosis** (Opus call #1) → `{zone}/04_diagnosis/zone_diagnosis.md` (8 professional questions)
+5. **Generate V5 expert report** (Opus call #2) → `{zone}/output/{ZONE}_REPORT_V5.md` (6 sections + appendices, per `REPORT_V5_SCHEMA.md`)
+6. **Render final figures + HTML** → `scripts/generate_{zone}_full_html.py` + `generate_{zone}_designed.py` (boreholes_override path)
+7. **Validate** per PROCESS_GUIDE §VII checklist (including Context Pack, Structured Data Pack, Zone Diagnosis, PFAS logic, monitoring gaps, C_max_5y separation)
 
-**Implementation Trigger**: Phase 4 expert validation on Holon (Q3 2026) + Ministry approval. Phase H+ Implementation (דרישה #13) starts post-documentation-refactor approval.
+### Existing zone-agnostic scripts (used inside Step 2 of V5 pipeline)
+The Phase 5 framework provides the deterministic data layer. These scripts feed into Step 2 of the V5 pipeline:
+
+```bash
+python scripts/parse_excel.py        --zone <X>   # Step 2a: extract Excel measurements
+python scripts/select_boreholes.py   --zone <X> --list-tiers   # Tier 1/2/3 selection → selected_boreholes.json
+python scripts/extract_zone_pdfs.py  --zone <X> --include-shared   # idempotent PDF→text
+# (AI sub-agents per PDF → <X>/data/external/_findings_<tag>.json)
+python scripts/merge_extracted_findings.py --zone <X>   # consolidate per-PDF findings
+python scripts/trend_analysis.py     --zone <X>   # Mann-Kendall + SNR
+python scripts/forensics_analyzer.py --zone <X>   # decay chains, source signatures
+python scripts/generate_charts_v2.py --zone <X>   # generic data-driven charts
+```
+
+**Idempotency**: PDF extraction tracks each file in `_pdf_index.json` with `extraction_ok` + `extraction_date_utc`. Re-runs SKIP already-extracted files unless `--force` is passed.
+
+**Per-zone configuration**:
+- `config/zone_overrides/<X>.yaml` — Excel column mapping if format differs
+- `zone_definitions/zone_polygons.json` — ITM polygon for Tier 2 selection
+- `zone_definitions/tier1_historical_boreholes.json` — historical IDs from 2008/2021 reports
+- `crosswalks/borehole_id_mapping.json` — optional canonical ID mapping
+
+### AI sub-agent prompt schema (PDF extraction, Step 2 helper)
+Each PDF sub-agent (hydrogeologist persona, model="sonnet") produces `_findings_<tag>.json` with: `source_file`, `title_he`, `year`, `author_org_he`, `summary_he`, `boreholes_mentioned[]`, `contamination_findings[]`, `facilities_suspected[]`, `hydrogeology_he`, `trends_described_he[]`, `recommendations_he[]`, `key_quotes_he[]`. See `Holon/data/external/_findings_*.json` for worked examples. Confidence levels (HIGH/MEDIUM/LOW) required on facility attribution.
+
+### Implementation Trigger
+- ✓ Methodology validated on Raanana (May 2026, hydrogeologist approval) — **style precedent**
+- ✓ V4.2 stress-tested on Holon — **methodological precedent, not a binding template**
+- 🔄 V5 hybrid pipeline documented (Phase H+, REQ #12 closed)
+- ⏳ V5 hybrid pipeline implementation (Phase H+ Implementation, REQ #13 — scripts + Holon V5 generation)
+- ⏳ After Holon V5 validation → systematic application to remaining 16 zones
+- Requires Ministry of Environmental Protection coordination per zone
 
 ---
 
@@ -306,12 +395,37 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 4. Trend calculations match source interpretations or discrepancies flagged
 5. Documentation updated (CLAUDE.md, PROCESS_GUIDE, prompt template)
 
-**Phase 4 (System Validation) — pending criteria**:
-- ⏳ Expert hydrogeologist review (Raanana + Holon V4.2)
-- ⏳ PFAS regulatory reporting (Raanana turbine station)
-- ⏳ Boron anomaly investigation (Raanana nt_2, nt_3)
-- ⏳ Basemap integration (REQ-G1)
-- ⏳ Phase 2 (16 remaining zones) — gated on Ministry approval
+**Framework Success Criteria** (cross-zone — must hold for any zone):
+1. ✓ Pipeline scripts accept `--zone <id>` and derive all paths from zone name
+2. ✓ Per-zone Excel column mapping configurable (`config/zone_overrides/<zone>.yaml`)
+3. ✓ Zone polygon (ITM) intersection drives Tier 2 borehole selection
+4. ✓ Generic data-driven charts work without hardcoded borehole IDs
+5. ✓ Zone site map computes extent + severity from data
+6. ✓ 28 automated tests pass + 3 report validators (chart_refs, tone, attribution)
+7. ✓ Documentation describes V5 hybrid pipeline as standard workflow (`ZONE_REPORT_PROCESS_GUIDE.md`)
+
+**Reference Implementation — Raanana V2 (style precedent, all ✓)**:
+1. ✓ 7 drilling cards; zone summary report synthesises all data layers
+2. ✓ Forensic analysis with HIGH/MEDIUM/LOW confidence levels
+3. ✓ PFAS at turbine station flagged for regulatory attention
+4. ✓ Zone site map (offline ITM schematic); 9 facility candidates
+5. ✓ Expert hydrogeologist review — approved (May 2026)
+
+**Methodological Stress-Test — Holon V4.2** (awaiting hydrogeologist approval):
+1. ✓ Pipeline ran end-to-end (parse → trend → forensics → charts)
+2. ✓ 112 boreholes parsed → 111 selected; 4,915 CVOC measurements
+3. ✓ HOLON_REPORT_V4.md drafted; charts produced
+4. ⏳ Hydrogeologist approval
+5. **Note**: V4.2 used prompt-driven workflow. New zones use V5 hybrid pipeline (Phase H+).
+
+**Phase H+ — V5 Hybrid Pipeline** 🔄 Documentation complete; Implementation planned:
+- ✓ Documentation refactor (REQ #12, closed 2026-05-17)
+- ⏳ Implementation (REQ #13): data pipeline scripts (6 CSVs), context assembly, zone diagnosis prompt, V5 report prompt, A/B mini test, Holon V5 generation
+
+**Open framework items**:
+- ⏳ Basemap integration (REQ-G1) — pending environment resolution
+- ⏳ Holon V5 generation (after REQ #13)
+- ⏳ After Holon V5 validation → systematic activation of remaining 16 zones
 
 ---
 
@@ -347,6 +461,11 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 
 ---
 
-**Project Status**: Phase H Complete (Holon V4.2 pipeline + reusable architecture) | Phase 4 Pending Q3 2026  
-**Last Updated**: May 14, 2026 (Phase H+: pipeline ordering, SSOT consolidation, figure safety net, CLAUDE.md slim-down)  
+**Project Status**:
+- Framework (Phases A–G): ✓ Complete — pipeline zone-agnostic, validated on Raanana, expert-approved
+- Phase 5 (Zone Application Framework): ✓ Complete on framework side; Holon V4.2 as stress-test (awaiting hydrogeologist)
+- Phase H+ (V5 Hybrid Pipeline Refactor): ✓ Documentation complete (REQ #12); ⏳ Implementation planned (REQ #13)
+- Phase 2 (full 18-zone activation): ⏳ Pending V5 implementation + Holon V5 + Ministry coordination
+
+**Last Updated**: 2026-05-17 (Phase H+ documentation merged: V5 hybrid pipeline = binding methodology)  
 **Historical phases**: see `docs/HISTORY.md`

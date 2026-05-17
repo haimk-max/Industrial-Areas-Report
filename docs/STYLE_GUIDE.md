@@ -1,8 +1,10 @@
-# STYLE_GUIDE.md — שפה, טון וקווים מנחים לדוח רעננה
+# STYLE_GUIDE.md — שפה, טון וקווים מנחים לדוחות אזורי תעשייה
 
-**Purpose**: Define language register and recommendation patterns so all edits replicate the professional standard of the **2021 Water Authority Coastal Aquifer Industrial Zones Monitoring Report** (`Base-Report/בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf`).
+**Purpose**: Define language register and recommendation patterns for **all zone reports** (any of the 18 industrial zones in the coastal aquifer monitoring system). All zone reports must replicate the professional standard of the **2021 Water Authority Coastal Aquifer Industrial Zones Monitoring Report** (`Base-Report/בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf`).
 
 **Reference document**: The 2021 report is the canonical model — both for **language** (sentence structure, terminology, register) and for **recommendation character** (action types, hierarchy, tone).
+
+**Examples**: All examples in this guide are drawn from the **Raanana** zone report (the reference implementation, expert-validated May 2026). The same rules apply to Holon (first framework application) and any subsequent zone — substitute zone-specific borehole names, contaminants, and findings.
 
 ---
 
@@ -406,64 +408,132 @@ Before finalizing any section:
 
 ## Section H: Industrial Facility Discovery Methodology (REQ-A8)
 
-**Purpose**: Document the systematic process for identifying potential contamination sources through sector-based AI-assisted research.
+**Purpose**: Document the systematic, **zone-agnostic** process for identifying potential contamination sources through bottom-up AI-assisted research. Methodology is dynamic — anchors are derived from each zone's data; sectors are characterized after observation, not pre-defined.
 
-### H.1 AI Agent Workflow
+### H.1 Bottom-Up Search Order (CORE PRINCIPLE)
 
-**Tool**: general-purpose AI subagent with environmental/hydrogeological expert prompt.
+The methodology was originally written for Raanana with hardcoded anchors (ITM bbox, street names, pre-defined CVOC/PFAS sectors). Generalisation testing on Holon revealed two flaws: (1) hardcoded streets don't transfer; (2) pre-filtering by sector blinds the search to unexpected contamination sources. The corrected order:
 
-**Scope**:
-- **Geographic anchor**: ITM E:188000–190000, N:677500–679000 (Kiryat Atgarim zone)
-- **Street names**: התעשייה, המלאכה, התדהר, המסגר, החרש
-- **Sectors searched**:
-  - **CVOC sources**: Metal degreasing, PCB manufacturing, dry cleaning, solvent recycling, chemical production
-  - **PFAS sources**: Fuel stations with AFFF, aviation MRO suppliers, textile coatings, metal plating
+1. **Auto-detect anchors from zone data** (geometry + entity names already present)
+2. **Branch on extraction richness** (NEW — see § H.1.1) — skip web discovery if PDF extraction already yielded ≥30 facilities with addresses + evidence
+3. **Broad initial search** (only when branch dictates) — no pre-defined sectors, just "what industrial facilities exist in this polygon, current and historical?"
+4. **Post-hoc sector characterization** — after observing the candidates, group them by contamination family (CVOC sources / PFAS sources / heavy metals / fuel / other)
+5. **Consolidate** with facilities already extracted from PDFs (avoid duplication; merge by name/address)
 
-**Search methodology**:
-1. B144 Israeli business registry (sector filters: chemical, pharmaceutical, electronics, metal processing, dry cleaning)
-2. Dun & Bradstreet Israel (D&B) profile verification
-3. Web search (Google News, Ynet, businesses.co.il, LinkedIn, company websites)
-4. Municipal records (Raanana city planning, if available)
-5. **Include historical operations**: Closed facilities (1980–2010) — CVOC contamination often has 20–40 year lag
+**Why bottom-up**: Top-down ("search only CVOC + PFAS") guarantees we find what we expected; bottom-up surfaces what the zone actually contains. Three days into Holon revealed 53 PDF-extracted facilities spanning chrome plating, brass casting, textile finishing, military depots, and closed waste pits — none predicted by Raanana's CVOC/PFAS frame.
 
-**Output format**: JSON per facility
+### H.1.1 Methodology branch — extraction richness (NEW, 2026-05-06)
+
+After a third timeout case (Sonnet, 30-search cap, 12.5min — same as Opus before it), the methodology branches on the count of `facilities_suspected[]` in `<zone>/data/external/extracted_findings.json`:
+
+| Extraction count | Methodology | Rationale |
+|---|---|---|
+| **Sparse (≤10 facilities)**, no evidence/addresses | Run AI discovery agent (web search). | Web is the source of truth. Raanana case: PDFs yielded ~0 facilities → 9 found via web search. |
+| **Rich (≥30 facilities)** with addresses, contaminants, confidence levels, evidence quotes | **Skip web discovery.** Direct consolidation + post-hoc characterization. | Holon case: PDFs yielded 45 facilities with full evidence (addresses with street numbers, quantitative contamination data, operating periods). Web discovery's marginal value does not justify the timeout risk — proven across 2 model variants. |
+| **Middle (11–29)** | Decide by inspection: if confidence levels and addresses are mostly present, skip web; else run capped web. | Default to skip; web only when filling specific gaps. |
+
+**Why count alone is not a perfect signal**: also inspect whether entries have addresses, contaminants, and confidence. A "rich" extraction means structured evidence — not just names. The threshold (30) is a heuristic; revise as more zones come through.
+
+**Implementation**: Step 0d already counts `facilities_suspected[]`. The pipeline orchestrator (or operator) chooses the branch:
+- `<zone>/data/external/extracted_findings.json` — `statistics.unique_facilities` field guides the decision
+- If skipping web: produce `facility_attribution.json` directly via consolidation script (no agent)
+- If running web: launch agent per § H.2 with the standard prompt
+
+**Production note**: ★ Once the system is deployed inside Water Authority IT (LESSONS.md § 2.4), the ArcGIS Portal feature services will provide authoritative facility/permit data — both branches change. Skip web in favor of Portal queries.
+
+### H.2 AI Agent Workflow
+
+**Tool**: general-purpose AI subagent with environmental/hydrogeological expert prompt. **Model**: Sonnet (per `~/.claude/CLAUDE.md` cost guidance — structured extraction, not architectural reasoning). **Scope cap**: explicit max 30 web searches in prompt to prevent open-ended timeouts.
+
+**Step 0 — Auto-detect anchors (mechanical, before agent runs)**:
+
+The agent receives a `discovery context` package assembled from four independent sources, each capturing different aspects of the zone:
+
+0a. **Geometry** — read `zone_definitions/zone_polygons.json` → extract `<zone>` polygon (ITM) + bounding box + center.
+
+0b. **All streets within polygon** (CRITICAL — primary search frame): enumerate every street that lies fully or partially inside the polygon. Methods (use whichever is available, in priority):
+  1. ★ **Water Authority enterprise ArcGIS Portal feature service** (production / deployment phase only — see `LESSONS.md` § 2.4). Becomes the **primary** method once the system is deployed inside Water Authority IT; methods (2)–(5) below are **sandbox fallbacks** for the current development environment.
+  2. OSM Overpass API: `way["highway"]["name"]` filtered by polygon (offline-cached if previously fetched) — currently blocked by 403 in sandbox
+  3. Israeli `govmap.gov.il` cadastral street layer (if accessible) — currently blocked by 403 in sandbox
+  4. Agent's general knowledge of well-known industrial zones (Israeli industrial areas are well-documented; e.g., `אזה"ת חולון` has documented streets: היוצר, היובל, הסולל, הנפח, הצורף, בצלאל, המלאכה, הנגר, הסיבים, etc.) — current sandbox default
+  5. Manual list from municipal sources, if (1)–(4) unavailable
+  - Output: `street_list[]` — comprehensive enumeration, NOT filtered by what boreholes happen to mention. Boreholes are sparse spatial samples; streets enumerated from polygon are the actual search frame.
+
+0c. **Entities monitored by sampling network** — read `<zone>/data/boreholes.csv` → extract distinct entity names from `name_he` (strip prefixes `נד|נת|מק|יו|פ` and trailing borehole numbers). These reveal monitored facilities (often the suspect itself; e.g., `נת_אלביט_חולון_1` → entity `אלביט`).
+
+0d. **Facilities already extracted from PDFs** — read `<zone>/data/external/extracted_findings.json` → list of `facilities_suspected[].name_he` (avoid re-discovering; agent's task is to validate + augment).
+
+The four anchors (geometry, streets, monitored entities, PDF facilities) are all passed to the agent prompt. The street list is the primary search frame; the entities and PDF facilities are validation/dedup targets.
+
+**Step 1 — Broad initial search (no sector pre-filter)**:
+- Query: "What industrial facilities, current and historical (back to 1960s), have operated within polygon `[<coords>]`?"
+- Sources: B144 business registry, D&B Israel, Globes/Ynet/Calcalist news archives, company websites, municipal planning records, environmental enforcement archives, PRTR Israel
+- Include: closed facilities, defense sites, historical waste pits, fuel depots, agricultural processing, transport depots, garages
+- Output: raw candidate list (name + address + operating period + brief description)
+
+**Step 2 — Post-hoc sector characterization**:
+- Group candidates by likely contamination family based on observed processes:
+  - **CVOC family**: degreasing, dry cleaning, PCB/electronics manufacturing, solvent recycling, paint/coating
+  - **PFAS family**: AFFF (firefighting foam), MRO aviation, fluoropolymer plating, water-repellent textiles
+  - **Heavy metals family**: chrome/zinc/nickel plating, brass casting, metal scrap processing
+  - **Petroleum family**: fuel depots, gas stations, vehicle service
+  - **Other / unknown**: flag for manual review
+- The set of "active families" emerges from the data. Don't force candidates into pre-defined sectors.
+
+**Step 3 — Consolidate with extracted_findings.json**:
+- Merge new web-discovered candidates with existing PDF-extracted facilities
+- Deduplicate by approximate name match (e.g., `תדיראן` ≈ `תדירגן` ≈ `תדיראן קשר` may be related)
+- Preserve `source` attribution: `pdf_extraction` / `web_discovery` / `borehole_naming`
+- For each facility, attempt to attach ITM coordinates (street address → ITM via Israeli geocoder if available, else estimate from street centroid)
+
+**Step 4 — Output**:
+- `<zone>/data/facility_attribution.json` — final consolidated list (F-001+)
+- `<zone>/data/external/web_findings.md` — search log: queries, candidates, methodology notes, dedup decisions
+
+**Output format** (per facility):
 ```json
 {
+  "facility_id": "F-001",
   "name_he": "...",
   "address_street": "...",
-  "in_kiryat_atgarim": true/false/unknown,
+  "in_zone_polygon": true/false/unknown,
   "industry_sector": "...",
+  "contamination_family": "CVOC|PFAS|HEAVY_METALS|PETROLEUM|OTHER",
   "suspected_processes": ["..."],
-  "suspected_contaminants": ["TCE"/"PCE"/"PFAS"],
-  "confidence": "HIGH/MEDIUM/LOW",
-  "evidence_type": "confirmed_address | sector_inference | indirect",
+  "suspected_contaminants": ["TCE","PCE","PFAS","Cr6+",...],
+  "confidence": "HIGH|MEDIUM|LOW",
+  "evidence_type": "confirmed_address|sector_inference|borehole_naming|indirect",
+  "source": "pdf_extraction|web_discovery|borehole_naming",
   "source_url": "...",
   "operating_years": "...",
+  "coordinates_itm": {"easting": ..., "northing": ...},
+  "associated_boreholes": ["..."],
   "notes": "..."
 }
 ```
 
-### H.2 Confidence Levels
+### H.3 Confidence Levels
 
 | Level | Criteria | Example |
 |---|---|---|
-| **HIGH** | Address in zone + sector confirmed via D&B/news + operational timeline known | בית דקל (התדהר 16, solvent recycler) |
-| **MEDIUM** | Sector confirmed + address in zone but not directly verified OR historical operation (pre-2010) | Aerospheres (רחוב המסגר, aviation MRO) |
-| **LOW** | Sector inference only or indirect evidence | Facility upgradient of high-TCE borehole, sector unclear |
+| **HIGH** | Address verified + sector confirmed (D&B/news/PDF report) + operational timeline known | תדיראן (אזור התעשייה, electronics, multiple PDF mentions) |
+| **MEDIUM** | Sector confirmed + address approximate OR historical operation cited in older reports | Aerospheres (רחוב המסגר, aviation MRO, sector inferred) |
+| **LOW** | Sector inference only OR borehole-name attribution without independent verification | Closed facility upgradient of high-TCE borehole, sector unclear |
 
-### H.3 Integration with facility_attribution.json
+### H.4 Integration with facility_attribution.json
 
-- **New candidates**: Added as F-008, F-009, etc.
-- **Existing facilities**: Updated with confirmed addresses + refined sector descriptions
-- **Data gaps**: Documented in JSON notes (e.g., "AFFF inventory audit pending")
-- **Linkage**: Each facility includes `associated_boreholes` and `distance_to_associated_borehole_m` for contamination pathway analysis
+- **New candidates** from web discovery: appended after PDF-extracted entries
+- **PDF-extracted facilities**: keep `source: "pdf_extraction"`; web search may augment with addresses, ITM coords, refined sectors
+- **Borehole-naming facilities**: when boreholes carry suspect names (e.g., Holon `נת_אלביט_חולון_*`), the entity is automatically a candidate with `source: "borehole_naming"`
+- **Data gaps**: documented in JSON `notes` field (e.g., "address pending B144 verification")
 
-### H.4 Limitations & Disclaimers
+### H.5 Limitations & Disclaimers
 
 - Public data access limited; AFFF inventory and solvent purchasing records require facility operator cooperation
 - PRTR Israel 2024 threshold (1,000 kg/year) means many small contamination sources unreported
 - Web search limited by Hebrew-language indexing; private company details often unavailable
 - Attribution remains probabilistic (not definitive) until confirmed by facility operator interview or chemical/isotopic fingerprinting
+- For zones whose boreholes carry suspect names directly (Holon-style), the "discovery" task is largely about validation + sector characterization, not de-novo source identification (Raanana-style)
 
 ---
 

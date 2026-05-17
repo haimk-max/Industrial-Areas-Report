@@ -27,13 +27,12 @@ from scripts.logging_setup import get_logger
 
 log = get_logger("parse_excel")
 
-EXCEL_PATH = REPO_ROOT / "Water Quality Data" / "היסטורית איכות מים לקידוחים - מעודכן לבדיקה.xlsx"
-OUTPUT_DIR = REPO_ROOT / "Raanana" / "data"
+DEFAULT_EXCEL_PATH = REPO_ROOT / "Water Quality Data" / "היסטורית איכות מים לקידוחים - מעודכן לבדיקה.xlsx"
 CROSSWALK_PATH = REPO_ROOT / "crosswalks" / "borehole_id_mapping.json"
 PARAMS_DICT_PATH = REPO_ROOT / "base_layer" / "parameters_dictionary.json"
 
-# Excel column indices (0-based, row 3 = header row)
-COL = {
+# Default column indices (Raanana format, 18 columns). Zone overrides via config/zone_overrides/{zone}.yaml.
+_DEFAULT_COL = {
     "borehole_id": 0,
     "name": 1,
     "easting": 2,
@@ -53,6 +52,17 @@ COL = {
     "marker": 16,      # '<' = below LOD
     "drinking_standard": 17,
 }
+
+
+def _build_col(cfg: dict) -> dict:
+    """Merge zone-specific excel_columns overrides onto defaults."""
+    overrides = cfg.get("excel_columns", {})
+    return {k: overrides[k] if k in overrides else v for k, v in _DEFAULT_COL.items()}
+
+
+def _col_val(row: tuple, idx) -> object:
+    """Return row[idx], or None if idx is None (column absent in this zone's Excel)."""
+    return row[idx] if idx is not None else None
 
 
 def _load_calculated_excluded(cfg: dict) -> set[str]:
@@ -95,13 +105,22 @@ def _percent_of_standard(concentration: float, std: float | None) -> float | Non
 
 
 def main() -> None:
-    parser = make_parser("Phase A: Parse Excel → Raanana CSVs.")
+    parser = make_parser("Phase A: Parse Excel → zone CSVs.")
     args = parser.parse_args()
-    cfg = merged_config(args.zone or "raanana", args.config)
+    zone = (args.zone or "raanana").lower()
+    cfg = merged_config(zone, args.config)
     excluded = _load_calculated_excluded(cfg)
+    col = _build_col(cfg)
 
-    excel_path = Path(args.input) if args.input else EXCEL_PATH
-    output_dir = Path(args.output) if args.output else OUTPUT_DIR
+    # Zone-specific paths (override via --input / --output or config excel_input key)
+    if args.input:
+        excel_path = Path(args.input)
+    elif cfg.get("excel_input"):
+        excel_path = REPO_ROOT / cfg["excel_input"]
+    else:
+        excel_path = DEFAULT_EXCEL_PATH
+
+    output_dir = Path(args.output) if args.output else REPO_ROOT / zone.capitalize() / "data"
     output_dir.mkdir(parents=True, exist_ok=True)
 
     if not excel_path.exists():
@@ -109,12 +128,12 @@ def main() -> None:
         print(f"ERROR: Excel not found: {excel_path}", file=sys.stderr)
         sys.exit(1)
 
-    # Load crosswalk
+    # Load crosswalk for this zone
     crosswalk: list[dict] = []
     if CROSSWALK_PATH.exists():
         with open(CROSSWALK_PATH, encoding="utf-8") as fh:
             cw_data = json.load(fh)
-        crosswalk = cw_data.get("raanana", [])
+        crosswalk = cw_data.get(zone, [])
     log.info("crosswalk_loaded", entries=len(crosswalk))
 
     log.info("loading_excel", path=str(excel_path))
@@ -131,11 +150,11 @@ def main() -> None:
         parse_errors = 0
 
         for row in ws.iter_rows(min_row=4, values_only=True):
-            if row[COL["borehole_id"]] is None:
+            if _col_val(row, col["borehole_id"]) is None:
                 break
 
-            bh_name = row[COL["name"]]
-            param_code = row[COL["param_code"]]
+            bh_name = _col_val(row, col["name"])
+            param_code = _col_val(row, col["param_code"])
             if not bh_name or not param_code:
                 continue
 
@@ -147,7 +166,7 @@ def main() -> None:
             # Normalize coordinates (Excel uses km×1000 truncated format)
             try:
                 itm_e, itm_n = normalize_to_itm(
-                    row[COL["easting"]], row[COL["northing"]], source="excel"
+                    _col_val(row, col["easting"]), _col_val(row, col["northing"]), source="excel"
                 )
             except (TypeError, ValueError) as exc:
                 log.error("coord_normalize_failed", borehole=bh_name, error=str(exc))
@@ -161,27 +180,27 @@ def main() -> None:
                 boreholes[canonical_id] = {
                     "canonical_id": canonical_id,
                     "name_he": bh_name,
-                    "excel_borehole_id": int(row[COL["borehole_id"]]),
+                    "excel_borehole_id": int(_col_val(row, col["borehole_id"])),
                     "itm_easting": int(round(itm_e)),
                     "itm_northing": int(round(itm_n)),
-                    "basin": row[COL["basin"]] or "",
-                    "purpose": row[COL["purpose"]] or "",
-                    "borehole_type": _borehole_type(row[COL["purpose"]]),
-                    "monitoring_site": row[COL["monitoring_site"]] or "",
-                    "contamination_type": row[COL["contamination_type"]] or "",
+                    "basin": _col_val(row, col["basin"]) or "",
+                    "purpose": _col_val(row, col["purpose"]) or "",
+                    "borehole_type": _borehole_type(_col_val(row, col["purpose"])),
+                    "monitoring_site": _col_val(row, col["monitoring_site"]) or "",
+                    "contamination_type": _col_val(row, col["contamination_type"]) or "",
                 }
 
             # Parameter metadata
             if param_code not in param_info:
                 param_info[param_code] = {
                     "code": param_code,
-                    "name": str(row[COL["param_name"]] or "").strip(),
-                    "unit": str(row[COL["unit"]] or "").strip(),
-                    "drinking_water_standard": row[COL["drinking_standard"]],
+                    "name": str(_col_val(row, col["param_name"]) or "").strip(),
+                    "unit": str(_col_val(row, col["unit"]) or "").strip(),
+                    "drinking_water_standard": _col_val(row, col["drinking_standard"]),
                 }
 
             # Parse date
-            date_val = row[COL["date"]]
+            date_val = _col_val(row, col["date"])
             if isinstance(date_val, datetime):
                 date_str = date_val.strftime("%Y-%m-%d")
                 year = date_val.year
@@ -197,8 +216,8 @@ def main() -> None:
                 year = None
 
             # Parse concentration
-            raw_conc = row[COL["concentration"]]
-            marker = str(row[COL["marker"]] or "").strip()
+            raw_conc = _col_val(row, col["concentration"])
+            marker = str(_col_val(row, col["marker"]) or "").strip()
             is_below_lod = marker == "<"
 
             try:
@@ -206,7 +225,7 @@ def main() -> None:
             except (TypeError, ValueError):
                 concentration = None
 
-            std = row[COL["drinking_standard"]]
+            std = _col_val(row, col["drinking_standard"])
             try:
                 std_float = float(std) if std is not None else None
             except (TypeError, ValueError):
@@ -218,15 +237,15 @@ def main() -> None:
                 "canonical_id": canonical_id,
                 "name_he": bh_name,
                 "param_code": param_code,
-                "param_name": str(row[COL["param_name"]] or "").strip(),
+                "param_name": str(_col_val(row, col["param_name"]) or "").strip(),
                 "date": date_str,
                 "year": year,
                 "concentration": concentration,
-                "unit": str(row[COL["unit"]] or "").strip(),
+                "unit": str(_col_val(row, col["unit"]) or "").strip(),
                 "is_below_lod": is_below_lod,
-                "sample_id": row[COL["sample_id"]],
-                "lab": str(row[COL["lab"]] or "").strip(),
-                "sample_depth_m": row[COL["sample_depth"]],
+                "sample_id": _col_val(row, col["sample_id"]),
+                "lab": str(_col_val(row, col["lab"]) or "").strip(),
+                "sample_depth_m": _col_val(row, col["sample_depth"]),
                 "drinking_water_standard": std_float,
                 "percent_of_standard": pct_std,
             })
@@ -272,7 +291,7 @@ def main() -> None:
             writer.writerow(param_info[code])
     log.info("parameters_written", path=str(param_path), count=len(param_info))
 
-    _write_qa_report(boreholes, measurements, param_info, skipped_calculated, output_dir)
+    _write_qa_report(boreholes, measurements, param_info, skipped_calculated, output_dir, zone)
 
     print(f"[Phase A] Done — {len(boreholes)} boreholes, {len(measurements)} measurements, "
           f"{len(param_info)} parameters → {output_dir}")
@@ -280,7 +299,7 @@ def main() -> None:
 
 
 def _write_qa_report(boreholes: dict, measurements: list, params: dict,
-                     skipped: int, output_dir: Path) -> None:
+                     skipped: int, output_dir: Path, zone: str = "raanana") -> None:
     qa_path = output_dir / "_parse_excel_qa.md"
 
     year_counts: dict[int, int] = {}
@@ -293,7 +312,7 @@ def _write_qa_report(boreholes: dict, measurements: list, params: dict,
         bh_counts[bh] = bh_counts.get(bh, 0) + 1
 
     lines = [
-        "# Phase A QA Report — Excel Parsing",
+        f"# Phase A QA Report — Excel Parsing ({zone})",
         "",
         "## Boreholes extracted",
         "",
@@ -328,7 +347,7 @@ def _write_qa_report(boreholes: dict, measurements: list, params: dict,
     lines += [
         "",
         "## Validation",
-        f"- Total boreholes: {len(boreholes)} (expected: 7) {'✅' if len(boreholes) == 7 else '❌ MISMATCH'}",
+        f"- Total boreholes: {len(boreholes)}",
         f"- Total measurements: {len(measurements)}",
         f"- Total parameters: {len(params)} (expected: ~180)",
         f"- Skipped calculated (TPFAS etc.): {skipped} rows",
