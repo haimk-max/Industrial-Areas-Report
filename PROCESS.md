@@ -11,7 +11,7 @@
 
 | # | בעיה | תיאור | סטטוס | תאריך פתיחה | קבצים |
 |---|------|--------|--------|----------------|--------|
-| 13 | Hybrid V5 Pipeline Implementation | תת-שלבים: 13.1 ✓ Structured Data Pack; 13.2 ✓ Reports Context Pack; 13.3 ⏳ Web/Source Candidates Pack; 13.4 ⏳ Zone Diagnosis; 13.5 ⏳ V5 A/B Mini Test; 13.6 ⏳ V5 Report Generation | ⚠️ Partial | 2026-05-17 | scripts/generate_holon_data_pack.py, Holon/02_data/, Holon/context_pack/03_context/ |
+| 13 | Hybrid V5 Pipeline Implementation | תת-שלבים: 13.1 ✓ Structured Data Pack; 13.2 ✓ Reports Context Pack (TODO: enrich excerpts pre-13.4); 13.3 ✓ Web/Source Candidates Pack (A/B/C/D/E classification); 13.4 ⏳ Zone Diagnosis; 13.5 ⏳ V5 A/B Mini Test; 13.6 ⏳ V5 Report Generation | ⚠️ Partial | 2026-05-17 | scripts/generate_holon_data_pack.py, Holon/02_data/, Holon/context_pack/03_context/ |
 | 7 | Skills/אוטומציה לתהליכים חוזרים | אימוץ simplify (קוד כפול), init (regen CLAUDE.md), review (PR) | ⏳ Deferred | 2026-05-14 | אחרי בעיות 2–4 |
 | 11 | HIGH-priority simplify fixes (regexes + data loader) | pre-compile 8 module-level regexes (hot-path optimization), extract load_all_core_data() לdata_loader.py | ⏳ Deferred | 2026-05-14 | scripts/generate_holon_*.py, data_loader.py |
 
