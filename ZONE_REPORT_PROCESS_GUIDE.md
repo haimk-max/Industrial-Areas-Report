@@ -6,17 +6,78 @@
 
 ---
 
-## I. קלטים ל-Opus (לפני הריצה)
+## I. Zone Context Pack (קלטים לOpus)
 
-### קלט 1: Precedent Report (Approved)
+### 01_scope — הגדרת היקף אזור
+- `zone_wells.csv` — רשימת קידוחים פעילים וסכום (canonical ID, coordinates, depth, type, status)
+- `zone_boundary_or_selection_notes.md` — הערות על גבול אזור או קריטריון בחירה קידוחים
+
+### 02_data — Structured Data Pack (חישובים דטרמיניסטיים)
+**6 CSVs המוכנות לOpus (לא לחישוב על-ידיו)**:
+
+#### measurements_scoped.csv
+- כל מדידה בקידוחים המתאימים לאזור
+- עמודות: canonical_well_id, parameter_canonical, result_value, result_date, unit_standardized, dws_value, source_file, source_row_or_page
+- מקור: TAHAL 2008, 2021 Report, אקולוג, ניטור עדכני
+
+#### latest_results.csv
+- תוצאה אחרונה לכל קידוח × parameter
+- עמודות: canonical_well_id, parameter_canonical, latest_value, latest_date, severity_index
+
+#### severity_by_well_family.csv
+- אינדקס חומרה לכל קידוח × משפחה (CVOC, METALS, PFAS, FUEL)
+- **חשוב**: based on C_max_5y (לא latest result)
+- עמודות: canonical_well_id, family, max_value_window, max_value_date, window_start, window_end, severity_index
+
+#### trends_by_well_parameter.csv
+- תוצאות Mann-Kendall (Z, p, SNR, soft_trigger) לכל קידוח × parameter
+- עמודות: canonical_well_id, parameter_canonical, mann_kendall_z, mann_kendall_p, snr, soft_trigger_met, trend_classification
+
+#### monitoring_gaps.csv
+- פערים בניטור: קידוחים שנסגרו, n<5 מדידות, gaps בזמן
+- עמודות: canonical_well_id, parameter_canonical, last_measurement_date, is_active, reason_if_inactive, n_measurements_last_5y
+
+#### figure_ready_series.csv
+- time series מוכן לגרפים
+- עמודות: canonical_well_id, parameter_canonical, date, value, severity_index, include_in_trend_figure
+
+### 03_context — NotebookLM-like Context (קטעים מלאים, לא תקצירים)
+
+#### previous_reports_excerpts.md
+- קטעים משמעותיים מדוח 2021, דוח TAHAL 2008, דוחות אקולוג, רלוונטיים לאזור
+- **לא תקציר** — טקסט מלא מהמקור (עם ציטוט עמוד)
+- מטרה: Opus קורא ומסיק, לא מקבל תקציר יבש
+
+#### hydrogeology_context.md
+- כיוון זרימה, שכבות אקוויפר, רקע הידרוגיאולוגי של האזור
+- מקור: דוחות TAHAL, מודלים אזוריים
+
+#### source_candidates_context.md
+- מעמד `facility_candidates_{zone}.md` + רקע על פעילות מפעלים, שנות פעילות, סוג מלוכלך צפוי
+- מקור: PRTR, B144, חיפוש רשת, דוחות מקומיים
+
+#### web_findings_context.md
+- תוצאות חיפוש ברשת (PRTR queries, B144 searches, Google local searches) — סיכום scoped לאזור
+- מקור: 6 ערוצי חיפוש (§V)
+
+#### approved_precedent_excerpt.md
+- קטע מדוח רעננה V2 או חולון V4.2 מאושר (סגנון, טון, מבנה)
+- **לא תוכני** — רק דוגמה לאיך לכתוב
+
+#### 01_scope / 02_data / 03_context
+ראה המבנה הכולל בתחילת §I.
+
+### (Legacy) קלט 1: Precedent Report (Approved)
 - **מה**: דוח אזור אחר שהאושר על ידי hydrogeologist
 - **למה**: Style reference (tone, section structure, citation format)
 - **דוגמה**: Raanana V2 עבור Holon
+- **שימוש חדש**: `03_context/approved_precedent_excerpt.md`
 
-### קלט 2: Authority Documents (Direct Excerpts)
+### (Legacy) קלט 2: Authority Documents (Direct Excerpts)
 - **מה**: עמודים ממשפחה מפורסמת (תה"ל 2007, הנדסה 2009-2017, רשות המים 2021) — לא paraphrases
 - **למה**: Historical context, contamination types, facility names
 - **דוגמה**: דוח רשות 2021 עמ' 35-49 (גיאוגרפיה, severity)
+- **שימוש חדש**: `03_context/previous_reports_excerpts.md`
 
 #### מבנה PDFs לאזור חדש (סקיילינג ל-16 אזורים נוספים)
 
@@ -41,21 +102,47 @@ External Data/{zone}/
 
 **חשוב — אישור היסטורי**: כל extraction חייב להישמר עם source citation (`source_document: TAHAL_2008_Part_B`, `source_page: 53-67`) לטובת validation.
 
-### קלט 3: Statistical Brief (Structured Text)
+### 04_diagnosis — Zone Diagnosis (קלט לפני כתיבת V5 Report)
+**קובץ אחד בלבד**: `zone_diagnosis.md`
+
+Opus קורא את כל Context Pack (01–03) ומייצר אבחנה מקצועית קצרה (1-2 עמודים):
+
+```
+1. מהם מוקדי הזיהום המרכזיים בנתונים?
+2. אילו קידוחים מובילים כל מוקד?
+3. אילו מזהמים מגדירים כל מוקד?
+4. מה השתנה ביחס לדוח 2021?
+5. אילו מגמות חשובות באמת? (MK p<0.05, SNR>5, soft_trigger=true?)
+6. אילו פערי ניטור קריטיים?
+7. אילו מקורות אפשריים ראויים לדיון?
+8. מה צריך להיכנס לגוף הדוח (§3) ומה לנספח?
+```
+
+### 05_prompt — Prompt ל-Opus
+**קובץ אחד בלבד**: `zone_report_prompt.md`
+
+Prompt filled instance שמנחה את Opus לכתוב V5 Report (ראה §II.5 לפרטים על Zone Diagnosis, ראה REPORT_V5_SCHEMA.md לסכמה הגנרית).
+
+---
+
+### (Legacy) קלט 3: Statistical Brief (Structured Text)
 - **מה**: סיכום קריא של trends + severity distribution — **לא raw CSV**
 - **למה**: Opus יכול להתמקד בממצאים, לא ב-parsing
 - **דוגמה**: "קידוחים חורגים מובהקים (25/80): CVOC max 8,750% (בורה X, 2024); מגמות עלייה מובהקות (19): TCE +5%, Cr +12%, Benzene יציב"
 - **דרישה — מנין קידוחים**: ה-brief חייב לציין מפורש את **סך כל הקידוחים בתחום** (לפי תוצאת severity_index — למשל "27 קידוחי תעשייה + 53 קידוחי דלק = 80 פעילים"). הדו"ח חייב להתייחס לכלל הקידוחים הללו ולא לתת-קבוצה.
+- **שימוש חדש**: Opus יחשב זאת בעצמו מתוך Structured Data Pack + Zone Diagnosis (לא קלט מראש)
 
-### קלט 4: Forensics Brief (Optional, As-Needed)
+### (Legacy) קלט 4: Forensics Brief (Optional, As-Needed)
 - **מה**: Decay chains, co-occurrence patterns, source signatures — ברמת overview בלבד
 - **למה**: Only if meaningful patterns exist (not per-finding, not mandatory)
 - **דוגמה**: "PCE→TCE→cis-DCE chain active (3 wells, p<0.01); Cr+Ni co-occurrence suggests plating facility (5 wells)"
+- **שימוש חדש**: Opus יחשב זאת מתוך Context Pack + Diagnosis
 
-### קלט 5: Facility Candidates (Updated from Web Search)
+### (Legacy) קלט 5: Facility Candidates (Updated from Web Search)
 - **מה**: `facility_candidates_[ZONE].md` — גם HIGH מ-PDFs אומתו עדכנים; + תוצאות web search (PRTR, דיווח שפכים)
 - **למה**: Sourcing guidance עם confidence levels (HIGH/MEDIUM/LOW)
 - **דוגמה**: "אלגונל (HIGH, confirmed address, ציפוי מתכת) | PFHxS מגורם דיגום Holon Q3 2025 עתידי"
+- **שימוש חדש**: `03_context/source_candidates_context.md`
 
 #### מקורות Web סטנדרטיים לחיפוש (Facility Discovery)
 
