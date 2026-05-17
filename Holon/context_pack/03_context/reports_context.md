@@ -1,6 +1,13 @@
 # קונטקסט דוחות עבר — אזור תעשייה חולון
 ## Context Pack Section 03: Reports Context (NotebookLM-style, scoped)
 
+<!-- TODO (pre-13.4): Reports Context Pack is structurally complete, but before Zone Diagnosis
+it should be enriched with 5–8 substantial source-report excerpts, each 3–6 lines long,
+especially from the 2021 baseline report and the key historical/site-specific reports
+(ECO2009 רימטל, HST2007 §90 תדירגן, ECO2012A §8 קידוח 3/5 מגמות).
+Priority: add real paragraph-level text from _raw_text/*.txt, not paraphrased bullets.
+Do NOT do this now — proceed to REQ #13.3. Enrich before launching REQ #13.4 Zone Diagnosis. -->
+
 **מטרת הקובץ**: לספק לאופוס הקשר פרשני מספיק מלא מדוחות עבר — לא facts.md יבש ולא dump גולמי. הקטעים נבחרו ל-scope של חולון בלבד ומלווים בהערות פרשניות קצרות.
 
 **כלל מרכזי**: דוח 2021 הוא baseline context. נתוני הניטור העדכניים (measurements_scoped.csv, trends_by_well_parameter.csv, severity_by_well_family.csv) הם המקור המרכזי לקביעת מצב ומגמות נוכחיים. דוחות עבר מספקים רקע, השוואה ופרשנות — לא מחליפים את הנתונים.
