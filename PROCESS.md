@@ -3,7 +3,7 @@
 > **מטרה**: SSOT לדרישות פתוחות וסגורות. עודכן בכל שינוי.
 > **כלל**: ראה CLAUDE.md §12.
 
-**עודכן אחרון**: 2026-05-17 (Hybrid V5 Pipeline Refactor documentation complete; implementation planned)
+**עודכן אחרון**: 2026-05-17 (REQ #13 Phase 1 complete: Holon Structured Data Pack generated; 7 CSVs + validation)
 
 ---
 
@@ -11,7 +11,7 @@
 
 | # | בעיה | תיאור | סטטוס | תאריך פתיחה | קבצים |
 |---|------|--------|--------|----------------|--------|
-| 13 | Hybrid V5 Pipeline Implementation | בנייה של: data pipeline scripts (6 CSVs), context assembly (NotebookLM), zone diagnosis prompt, V5 prompt variant, A/B mini test, Holon V5 generation + validation | 🔄 Planned | 2026-05-17 | scripts/generate_data_pack.py, scripts/assemble_context.py, Holon/lean_workspace/v5_trial/, zone_diagnosis_prompt.md, zone_report_prompt_v5.md |
+| 13 | Hybrid V5 Pipeline Implementation | בנייה של: data pipeline scripts (7 CSVs = Structured Data Pack), context assembly (NotebookLM), zone diagnosis prompt, V5 prompt variant, A/B mini test, Holon V5 generation + validation. שלב 1: Holon Structured Data Pack בלבד. | 🔄 In Progress | 2026-05-17 | scripts/generate_holon_data_pack.py, Holon/02_data/ |
 | 7 | Skills/אוטומציה לתהליכים חוזרים | אימוץ simplify (קוד כפול), init (regen CLAUDE.md), review (PR) | ⏳ Deferred | 2026-05-14 | אחרי בעיות 2–4 |
 | 11 | HIGH-priority simplify fixes (regexes + data loader) | pre-compile 8 module-level regexes (hot-path optimization), extract load_all_core_data() לdata_loader.py | ⏳ Deferred | 2026-05-14 | scripts/generate_holon_*.py, data_loader.py |
 
