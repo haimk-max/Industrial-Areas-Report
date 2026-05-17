@@ -3,7 +3,7 @@
 > **מטרה**: SSOT לדרישות פתוחות וסגורות. עודכן בכל שינוי.
 > **כלל**: ראה CLAUDE.md §12.
 
-**עודכן אחרון**: 2026-05-17 (Hybrid V5 Pipeline Refactor documentation phase)
+**עודכן אחרון**: 2026-05-17 (Hybrid V5 Pipeline Refactor documentation complete; implementation planned)
 
 ---
 
@@ -11,7 +11,7 @@
 
 | # | בעיה | תיאור | סטטוס | תאריך פתיחה | קבצים |
 |---|------|--------|--------|----------------|--------|
-| 12 | Hybrid V5 Pipeline Refactor — Documentation | refactor מ-prompt-driven ל-hybrid: structured data + NotebookLM-like context + diagnosis + V5 schema. שלב תיעוד בלבד (C1–C7) | 🔄 In Progress | 2026-05-17 | PROCESS_GUIDE.md, CLAUDE.md, DATA_PIPELINE_SPEC.md, REPORT_V5_SCHEMA.md |
+| 13 | Hybrid V5 Pipeline Implementation | בנייה של: data pipeline scripts (6 CSVs), context assembly (NotebookLM), zone diagnosis prompt, V5 prompt variant, A/B mini test, Holon V5 generation + validation | 🔄 Planned | 2026-05-17 | scripts/generate_data_pack.py, scripts/assemble_context.py, Holon/lean_workspace/v5_trial/, zone_diagnosis_prompt.md, zone_report_prompt_v5.md |
 | 7 | Skills/אוטומציה לתהליכים חוזרים | אימוץ simplify (קוד כפול), init (regen CLAUDE.md), review (PR) | ⏳ Deferred | 2026-05-14 | אחרי בעיות 2–4 |
 | 11 | HIGH-priority simplify fixes (regexes + data loader) | pre-compile 8 module-level regexes (hot-path optimization), extract load_all_core_data() לdata_loader.py | ⏳ Deferred | 2026-05-14 | scripts/generate_holon_*.py, data_loader.py |
 
@@ -21,6 +21,7 @@
 
 | # | בעיה | תאריך סגירה | commit | אימות |
 |---|------|---------------|--------|----------|
+| 12 | Hybrid V5 Pipeline Refactor — Documentation | 2026-05-17 | 6b8b023, dec12ad, 15d6d0e, 158110d, 8ef25c9, 80c6f7f | PROCESS_GUIDE §I refactor (Zone Context Pack), §II.5 (Zone Diagnosis), §VIII (7-step); DATA_PIPELINE_SPEC.md, REPORT_V5_SCHEMA.md; CLAUDE.md Phase H+ + governance update |
 | 1 | SSOT terminology מפוזר | 2026-05-14 | 2b6e775 | PROCESS_GUIDE §III טבלה קנונית; METHODOLOGY.md redirect header |
 | 5a | CLAUDE.md אינדקס אזורים | 2026-05-14 | 2b6e775 | CLAUDE.md שורה 12-22 — Zone Status Index |
 | 6 | ערבוב Raanana/Holon | 2026-05-14 | 2b6e775 | CLAUDE.md Zone Status Index מפריד בין השניים |
