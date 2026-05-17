@@ -11,11 +11,11 @@
 
 ## אינדקס מצב אזורים (Zone Status Index)
 
-| אזור | מצב | מיקום סקריפטים | מיקום פלטים | קישור |
-|------|-----|----------------|--------------|-------|
-| **רעננה** | V2 מאושר, **קפוא** (legacy precedent) | `Raanana/scripts/` | `Raanana/output/` | — |
-| **חולון** | V4.2 ממתין לאישור הידרולוג; פייפליין פעיל | `scripts/` + `scripts/report_designed/` | `Holon/output/` | `Holon/lean_workspace/05_prompt/zone_report_prompt.md` |
-| 16 אזורים נוספים | ⏳ Phase 2 (Q3 2026+) | (לבנייה אחר אישור Holon) | (לבנייה) | תבנית: `scripts/templates/zone_report_prompt_template.md` |
+| אזור | מצב | תפקיד | מיקום |
+|------|-----|--------|--------|
+| **רעננה** | V2 מאושר | **תקדים סגנוני מאושר** (סגנון כתיבה, סדר משפחות, RTL, צבע גרפים) | `Raanana/` |
+| **חולון** | V4.2 ממתין לאישור הידרולוג | **stress-test מתודולוגי** (pipeline לאזור מורכב, PFAS gaps, monitoring gaps) — לא תבנית ל-16 אזורים | `Holon/` |
+| 16 אזורים נוספים | ⏳ Phase 2 (Q3 2026+) | יבנו ב-**V5 hybrid pipeline** (METHODOLOGY המחייבת לאזורים חדשים) | (לבנייה אחר אישור) |
 
 **SSOT לטרמינולוגיה וסדר פייפליין**: `ZONE_REPORT_PROCESS_GUIDE.md` (V4.2)
 **Methodology סטטיסטית**: `docs/STATISTICAL_OVERVIEW_METHODOLOGY.md`
@@ -114,7 +114,8 @@ Before implementing data processing:
 
 > תיעוד phases היסטוריים: ראה `docs/HISTORY.md` (Phases 1–4, A–G, G.1).
 
-**Phase H: Holon V4 + Pipeline Refactor** ✓ COMPLETE (May 2026)
+**Phase H: Holon V4 + Pipeline Refactor** ✓ COMPLETE (May 2026)  
+**Phase H+: Methodological Refactor — Hybrid Pipeline** 🔄 IN PROGRESS (May 2026)
 - Goal: Production pipeline for Holon zone (80 active boreholes, 2,672 measurements) + reusable architecture for 16 remaining zones
 - Status:
   - ✓ Holon V4.2 report: 10 sections in Hebrew, 5 contamination foci (CVOC, METALS, PFAS, FUEL), 25 significantly-exceeding boreholes
@@ -126,6 +127,17 @@ Before implementing data processing:
   - ✓ Generic Zone Prompt Template: `scripts/templates/zone_report_prompt_template.md` (Anthropic XML-tag structure, 30 placeholders, `<figure_rules>` enforcing image-before-caption)
   - ✓ Family ordering: FUEL always last; CVOC/METALS/PFAS by zone max_bucket descending (§IV)
   - ✓ Web search & PDF ingestion documented in PROCESS_GUIDE §I.2 + §I.5 (External Data/{zone}/ structure, 6 channels)
+
+- **Phase H+ Status** (Documentation Phase — C1–C7):
+  - 🔄 PROCESS_GUIDE refactored: §I → Zone Context Pack (5 folders: scope/data/context/diagnosis/prompt)
+  - 🔄 §II → V5 Schema (6 sections, generic for all zones)
+  - 🔄 §II.5 → Zone Diagnosis (8 questions, pre-report step)
+  - 🔄 §VI → diagnostic + final figures (pre-Opus + post-Opus)
+  - 🔄 §VII → validation checklist (6 new checks: Context Pack, Data Pack, Diagnosis, PFAS, gaps, C_max_5y separation)
+  - 🔄 §VIII → 7-step hybrid pipeline
+  - ✅ DATA_PIPELINE_SPEC.md created (6 CSVs schema)
+  - ✅ REPORT_V5_SCHEMA.md created (V5 skeleton + templates)
+  - ⏳ CLAUDE.md §8 Scaling updated (hybrid pipeline workflow)
 
 **Phase 4: System Validation** ⏳ PENDING (Q3 2026)
 - Goal: Expert hydrogeologist review; PFAS alert to regulators; boron anomaly investigation
@@ -225,16 +237,16 @@ Before committing code or reports:
 - `scripts/templates/zone_report_prompt_template.md` — generic prompt (30 placeholders)
 - `scripts/report_designed/README.md` — chart engine docs
 
-**Workflow לאזור חדש** (ראה PROCESS_GUIDE §VIII):
-1. PDF ingestion → `External Data/{zone}/raw_pdfs/` (PROCESS_GUIDE §I.2)
-2. Facility discovery → `facility_candidates_{zone}.md` (PROCESS_GUIDE §I.5, §V — 6 web channels)
-3. Data prep → `{zone}/lean_workspace/{02_data_filtered,03_evidence_index,04_deterministic_anchors}/`
-4. Fill prompt template → `{zone}/lean_workspace/05_prompt/zone_report_prompt.md`
-5. Opus call → `{zone}/output/{ZONE}_REPORT_V4.md`
-6. Render → `scripts/generate_{zone}_full_html.py` + `generate_{zone}_designed.py`
-7. Validate per PROCESS_GUIDE §VII
+**Workflow לאזור חדש** (V5 Hybrid Pipeline — METHODOLOGY המחייבת):
+1. **Define scope** → `{zone}/01_scope/` (zone_wells.csv, selection_notes.md)
+2. **Data pipeline** (deterministic) → `{zone}/02_data/` (6 CSVs: measurements_scoped, latest_results, severity_by_well_family, trends_by_well_parameter, monitoring_gaps, figure_ready_series)
+3. **Context assembly** (NotebookLM-like) → `{zone}/03_context/` (previous_reports_excerpts, hydrogeology_context, source_candidates_context, web_findings_context, approved_precedent_excerpt)
+4. **Zone diagnosis** (Opus call #1) → `{zone}/04_diagnosis/zone_diagnosis.md` (8 questions)
+5. **V5 report** (Opus call #2) → `{zone}/output/{ZONE}_REPORT_V5.md` (6 sections + appendices)
+6. **Render figures + HTML** → `scripts/generate_{zone}_full_html.py` + `generate_{zone}_designed.py` (boreholes_override path)
+7. **Validate** per PROCESS_GUIDE §VII checklist
 
-**Implementation Trigger**: Phase 4 expert validation on Holon (Q3 2026) + Ministry approval.
+**Implementation Trigger**: Phase 4 expert validation on Holon (Q3 2026) + Ministry approval. Phase H+ Implementation (דרישה #13) starts post-documentation-refactor approval.
 
 ---
 
