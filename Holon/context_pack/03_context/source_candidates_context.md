@@ -3,11 +3,23 @@
 
 **תאריך עריכה**: 2026-05-17
 **מחבר**: Agent REQ #13.3 — source candidates extraction + evidence classification update
-**גרסה**: 2.0 (evidence classification added)
+**גרסה**: 3.0 (20-column index schema; chemical/spatial fit; candidate_role)
+
+**אינדקס מובנה**: `source_candidates_index.csv` — 20 עמודות לכל מועמד:
+- `candidate_id`, `candidate_name`, `candidate_type`, `current_status`, `address_or_location`
+- `historical_activity`, `pollutant_relevance`, `linked_pollutant_families`, `linked_wells_or_focus_area`
+- `evidence_grade` (A/B/C/D/E), `evidence_source_type`, `source_id`, `page_ref_or_excerpt_ref`
+- `raw_text_verified`, `web_verified`, `chemical_fit`, `spatial_hydrogeological_fit`
+- `confidence` (≠ evidence_grade), `uncertainty_note`, `candidate_role`
+
+**הבחנה קריטית**:
+- `evidence_grade` = איכות **מקור הראיה** (A=raw text excerpt; B=findings_json+page_ref; C=web; D=inferred; E=mention-only)
+- `confidence` = חוזק **הפרשנות המקצועית** לגבי קשר אפשרי לזיהום (HIGH/MEDIUM/LOW)
+- C מאמת **פעילות או מיקום נוכחיים בלבד** — אינו מוכיח קשר לזיהום
 
 ---
 
-> **כלל מרכזי**: כל המועמדים המוצגים כאן הם **מועמדים פרשניים בלבד** — חשד מבוסס על ראיות דוקומנטריות ואנליטיות, לא ייחוס סופי. ייחוס סופי דורש: (א) אימות כיוון זרימה הידרולוגית, (ב) התאמת חתימה כימית, (ג) ניתוח מגמות ריכוז לאורך זמן, (ד) אישור הידרולוג מוסמך.
+> **כלל מרכזי**: כל המועמדים המוצגים כאן הם **מועמדים פרשניים בלבד** — חשד מבוסס על ראיות דוקומנטריות ואנליטיות, לא ייחוס סופי. ייחוס סופי דורש: (א) אימות כיוון זרימה הידרולוגית, (ב) התאמת חתימה כימית, (ג) ניתוח מגמות ריכוז לאורך זמן, (ד) אישור הידרולוג מוסמך. הקביעה לגבי קשר אפשרי לזיהום תיעשה רק בשלב **Zone Diagnosis** מול נתוני הניטור, החתימה הכימית, מיקום, כיוון זרימה ופערי מידע.
 
 ---
 
