@@ -380,19 +380,34 @@ def family_order(zone_max_buckets: Dict[str, int]) -> List[str]:
 
 ---
 
-## VI. Designed Figures (6 Standard Figures Per Zone)
+## VI. Figures (Diagnostic + Final)
 
-**Process**: `emit_figures.py` (SVG → PNG via cairosvg) before Opus call.
+### §VI.0: Pre-Opus Diagnostic Figures (Optional, for Zone Diagnosis guidance)
+
+**Process**: `emit_diagnostic_figures.py` (לפני Opus call).
+
+**Figures**:
+1. `severity_overview_[ZONE].png` — הפצה של severity indices אזור-רחב (box plot per family)
+2. `trend_candidates_[ZONE].png` — קידוחים עם MK Z significant (p<0.05, SNR>5)
+3. `monitoring_gaps_timeline_[ZONE].png` — ציר זמן של ניטור: פעיל/סגור/gaps
+4. `top_exceedances_[ZONE].png` — 10-15 ממצאים עליונים (ריכוז % of DWS)
+
+**מטרה**: עזרה לOpus בעת כתיבת Zone Diagnosis (ראה §II.5). אינו חובה בDiagnosis עצמו.
+
+### §VI.1: Final Figures (Post-Opus, per Boreholes Selection)
+
+**Process**: `emit_figures.py` (SVG → PNG via cairosvg) after Opus call + boreholes_override.
 
 **Figures** (from `scripts/report_designed/svg_charts.py`):
 1. `fig_01_severity_ledger.png` — Top contaminants per family
 2. `fig_02_severity_matrix.png` — Distribution across 5-level scale
-3. `fig_03_cvoc_panels.png` — CVOC time series (if data exists)
+3. `fig_03_cvoc_panels.png` — CVOC time series (if data exists; only boreholes_override)
 4. `fig_04_metals_panels.png` — METALS time series (if data exists; rename per zone)
 5. `fig_05_fuel_panels.png` — FUEL/BTEX time series (if data exists; rename per zone)
 6. `fig_06_monitoring_gaps.png` — Sampling timeline + interruptions
 
 **Role**: Input to Opus (for citation in report) + HTML embedding.
+**חשוב**: Opus בוחר אילו קידוחים להציג; סקריפט בוחר איך.
 
 **RTL Requirements** (for zones in Hebrew-speaking regions):
 - כל `<text>` ב-SVG עם תוכן עברי חייב לכלול `direction="rtl"` ו-`text-anchor="end"`
@@ -405,38 +420,50 @@ def family_order(zone_max_buckets: Dict[str, int]) -> List[str]:
 
 ## VII. Validation Checklist (Post-Opus, Pre-HTML)
 
+### Structural Checks
 - [ ] No narrative arc ("crisis in 20XX")
-- [ ] All numbers tied to source (CSV row, page number, Z/p/SNR)
+- [ ] All numbers tied to source (CSV row, page number, Z/p/SNR, source file)
 - [ ] **Family order: FUEL last; CVOC/METALS/PFAS לפי max_bucket יורד באזור** (ראה §IV)
 - [ ] PFAS section present (full if max_bucket≥1; coverage-gap analysis if not)
 - [ ] Severity scale = 5-level only (נקי/נמוך/בינוני/גבוה/גבוה מאוד)
 - [ ] **אין טרמינולוגיה אנגלית** (ALERT/WATCH/ELEVATED/STABLE/NONE) — רק labels עבריים או ניסוחים תיאוריים מתועדים
+
+### Data Integrity Checks
+- [ ] **Zone Context Pack assembled**: 01_scope/, 02_data/ (6 CSVs), 03_context/ (4-5 files), 04_diagnosis/, 05_prompt/ קיימים
+- [ ] **Structured Data Pack valid**: 6 CSVs (measurements_scoped, latest_results, severity_by_well_family, trends_by_well_parameter, monitoring_gaps, figure_ready_series) parseable + columns match DATA_PIPELINE_SPEC.md
+- [ ] **Zone Diagnosis present**: 04_diagnosis/zone_diagnosis.md exists + answers 8 questions
+- [ ] **C_max_5y ≠ latest result** — window_start/window_end/max_value_date differentiated in severity_by_well_family.csv
+
+### Methodology Checks
 - [ ] **Methodology כוללת**: נוסחת אינדקס מפורשת, מיפוי 9-רמות, כלל אגרגציה, מנין קידוחים מפורש, חלון זמן
 - [ ] **מנין קידוחים עקבי** בין כל הסעיפים (לדוג' 27+53=80 ולא 87 בסעיף 1 ו-80 בסעיף 3)
+- [ ] **PFAS logic block**: גם כש-max_bucket=0, יש סעיף על coverage gap + סיבה לחשד (AFFF, mist suppressants, etc.)
+- [ ] **Monitoring gaps explicit** (פרק 4): closed wells מרויים, n<5 מדידות מרויות, time gaps מזוהים
 - [ ] Source confidence: HIGH/MEDIUM/LOW on all facility attributions
-- [ ] Selection bias caveat present (monitoring wells ≠ zone-wide)
-- [ ] Monitoring gaps + closed wells mentioned
+- [ ] Selection bias caveat present (monitoring wells ≠ zone-wide distribution)
+
+### Content & Presentation Checks
+- [ ] **תמציתיות נרטיב**: סעיף 3 (משפחות) **לא מונה כל קידוח חורג** — מסכם התפלגות + מציין בולטים בלבד (top 3–5 לכל משפחה)
+- [ ] **מתודולוגיה סעיף תמציתית**: 5–10 שורות בלבד; הפניה ל-PROCESS_GUIDE §III לפרטים מלאים
 - [ ] **כל איור עם image markdown לפניו**: לכל `**איור N**:` בטקסט, יש שורת `![](.../fig_0N_*.png)` לפניו (HTML generator יכלול safety net, אבל לתעד מקור הוא תפקיד המודל)
-- [ ] **תמציתיות נרטיב**: סעיף 5 (משפחות) **לא מונה כל קידוח חורג** — מסכם התפלגות + מציין בולטים בלבד (top 3–5 לכל משפחה)
-- [ ] **מתודולוגיה (§3 בדו"ח) תמציתית**: 5–10 שורות בלבד; לא משכפלת את טבלת 9-הרמות — מפנה ל-PROCESS_GUIDE §III
 - [ ] Figures 1-6 referenced (or subsets if family omitted)
-- [ ] **Geographic Foci (Section 4b)**: present if ≥3 distinct clusters; else justified omission
 - [ ] Recommendations: timeframe structure (Immediate/Ongoing/Investigation)
+
+### Technical Checks
 - [ ] **HTML post-processing**: numbers+units+pollutant names wrapped in `<bdi>`; CSS `unicode-bidi: isolate` applied to text containers
 - [ ] **SVG figures**: titles/labels RTL when zone is Hebrew-speaking
 
 ---
 
-## VIII. Scaling Pattern (For Zone N+1, N+2, …)
+## VIII. Scaling Pattern — 7-Step Hybrid Pipeline (For Zone N+1, N+2, …)
 
-1. Extract PDFs + run web search (V: Web Search & Source Attribution)
-2. Generate figures from zone-specific data (VI: Designed Figures, RTL enforced)
-3. Write statistical brief (I: קלט 3, with explicit borehole inventory)
-4. Build forensics brief if patterns exist (I: קלט 4, as-needed)
-5. Update facility_candidates (I: קלט 5)
-6. Call Opus with 5 קלטים + zone_report_prompt.md variant
-7. Validate (VII: Checklist)
-8. Render HTML (generate_holon_designed.py) with bidi post-processing
+1. **Define zone scope** → 01_scope/ (zone_wells.csv, zone_boundary_or_selection_notes.md)
+2. **Run deterministic data pipeline** → 02_data/ (6 CSVs: measurements_scoped, latest_results, severity_by_well_family, trends_by_well_parameter, monitoring_gaps, figure_ready_series)
+3. **Assemble scoped NotebookLM-like context** → 03_context/ (previous_reports_excerpts, hydrogeology_context, source_candidates_context, web_findings_context, approved_precedent_excerpt)
+4. **Generate zone diagnosis** → Opus call #1 (קלט: 01–03) → 04_diagnosis/zone_diagnosis.md (עונה על 8 שאלות)
+5. **Generate V5 expert report** → Opus call #2 (קלט: 01–04 + zone_report_prompt.md) → output/{ZONE}_REPORT_V5.md (לפי §II V5 schema)
+6. **Generate final figures + HTML** → `emit_figures.py` (boreholes_override path) → `generate_{zone}_full_html.py` + `generate_{zone}_designed.py`
+7. **Validate** → §VII: Checklist
 
 **Precedent for Zone N+1**: Once Zone N passes expert validation, store as `[N+1]/lean_workspace/01_inputs/[N]_approved_precedent.md`.
 
