@@ -3,7 +3,7 @@
 > **מטרה**: SSOT לדרישות פתוחות וסגורות. עודכן בכל שינוי.
 > **כלל**: ראה CLAUDE.md §12.
 
-**עודכן אחרון**: 2026-05-14 (שלב 4 + 10: simplify + md_utils refactor)
+**עודכן אחרון**: 2026-05-17 (Hybrid V5 Pipeline Refactor documentation phase)
 
 ---
 
@@ -11,6 +11,7 @@
 
 | # | בעיה | תיאור | סטטוס | תאריך פתיחה | קבצים |
 |---|------|--------|--------|----------------|--------|
+| 12 | Hybrid V5 Pipeline Refactor — Documentation | refactor מ-prompt-driven ל-hybrid: structured data + NotebookLM-like context + diagnosis + V5 schema. שלב תיעוד בלבד (C1–C7) | 🔄 In Progress | 2026-05-17 | PROCESS_GUIDE.md, CLAUDE.md, DATA_PIPELINE_SPEC.md, REPORT_V5_SCHEMA.md |
 | 7 | Skills/אוטומציה לתהליכים חוזרים | אימוץ simplify (קוד כפול), init (regen CLAUDE.md), review (PR) | ⏳ Deferred | 2026-05-14 | אחרי בעיות 2–4 |
 | 11 | HIGH-priority simplify fixes (regexes + data loader) | pre-compile 8 module-level regexes (hot-path optimization), extract load_all_core_data() לdata_loader.py | ⏳ Deferred | 2026-05-14 | scripts/generate_holon_*.py, data_loader.py |
 
