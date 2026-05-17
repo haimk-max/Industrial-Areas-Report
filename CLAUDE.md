@@ -300,7 +300,11 @@ The framework supports any of the 18 industrial zones in the coastal aquifer mon
 2. **Run deterministic data pipeline** → `{zone}/02_data/` (6 CSVs: measurements_scoped, latest_results, severity_by_well_family, trends_by_well_parameter, monitoring_gaps, figure_ready_series — see `DATA_PIPELINE_SPEC.md`)
 3. **Assemble scoped NotebookLM-like context** → `{zone}/context_pack/03_context/`:
    - **Reports Context Pack** (required before Zone Diagnosis — do not skip directly from Data Pack to report): `reports_context.md`, `report_sources_index.csv`, `context_questions_for_diagnosis.md`
-   - Additional: previous_reports_excerpts, hydrogeology_context, source_candidates_context, web_findings_context, approved_precedent_excerpt
+   - **Source Candidates Pack**: `source_candidates_context.md`, `web_findings_context.md`, `source_candidates_index.csv` — built **from scratch** for new zones. Do NOT assume any pre-existing facility JSON exists. For Holon/Raanana (legacy zones), pre-existing artifacts (`_findings_*.json`, `web_findings.md`) may be used as AI-derived index; `facility_attribution.json` is a derived artifact (multi-step transformation) and is NOT a primary evidence source.
+   - **Evidence Classification (A–E)** is a generic rule for all zones — see PROCESS_GUIDE §I "Evidence Classification System":
+     - A = raw_report_verified | B = ai_extracted_with_page_ref | C = web_verified_current_activity | D = inferred_candidate | E = weak/mention_only
+     - In Zone Diagnosis & V5: A+B → strong candidates; C → status only (no contamination proof); D/E → background/appendix unless monitoring data corroborates
+   - Additional: previous_reports_excerpts, hydrogeology_context, approved_precedent_excerpt
 4. **Generate zone diagnosis** (Opus call #1) → `{zone}/04_diagnosis/zone_diagnosis.md` (8 professional questions)
 5. **Generate V5 expert report** (Opus call #2) → `{zone}/output/{ZONE}_REPORT_V5.md` (6 sections + appendices, per `REPORT_V5_SCHEMA.md`)
 6. **Render final figures + HTML** → `scripts/generate_{zone}_full_html.py` + `generate_{zone}_designed.py` (boreholes_override path)

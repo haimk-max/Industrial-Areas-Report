@@ -70,13 +70,41 @@
 - כיוון זרימה, שכבות אקוויפר, רקע הידרוגיאולוגי של האזור
 - מקור: דוחות TAHAL, מודלים אזוריים
 
-#### source_candidates_context.md
-- מעמד `facility_candidates_{zone}.md` + רקע על פעילות מפעלים, שנות פעילות, סוג מלוכלך צפוי
-- מקור: PRTR, B144, חיפוש רשת, דוחות מקומיים
+#### Source Candidates Pack
 
-#### web_findings_context.md
-- תוצאות חיפוש ברשת (PRTR queries, B144 searches, Google local searches) — סיכום scoped לאזור
-- מקור: 6 ערוצי חיפוש (§V)
+מועמדי מקורות זיהום ייבנו כתוצר של התהליך — **לא** input מובטח. לכל אזור חדש, ה-Pack ייבנה מאפס.
+
+**תוצרים**:
+- `03_context/source_candidates_context.md` — מועמדים פרשניים עם סיווג ראיה
+- `03_context/web_findings_context.md` — סטטוס פעילות נוכחי בלבד
+- `03_context/source_candidates_index.csv` — אינדקס מתועד
+
+**מקורות לבנייה**:
+- דוחות עבר (extracted PDF text + raw text במידת הצורך לאימות נקודתי)
+- חיפוש Web מתועד (PRTR, B144, Google local — ראה §V)
+- נתוני ניטור (severity_by_well_family, trends_by_well_parameter, monitoring_gaps)
+- חתימות כימיות (forensics — decay chains, co-occurrence, BTEX ratios)
+
+**הערה לחולון/רעננה**: באזורים אלה קיימים artifacts קודמים (`_findings_*.json`, `extracted_findings.json`, `facility_attribution.json`, `web_findings.md`). שימוש בהם מותר בכפוף לכללים בסעיף §X (Evidence Classification) — אבל **אין להכליל הנחה זו לאזורים חדשים**.
+
+**אזורים חדשים**: אין להניח שקיים `facility_attribution.json` או JSON אחר של מועמדים. ה-Pack ייבנה מאפס מהמקורות לעיל.
+
+#### Evidence Classification System (A–E)
+
+**כלל גנרי לכל האזורים** — מוטמע ב-`source_candidates_index.csv` תחת עמודה `evidence_class`:
+
+| Class | משמעות | בסיס ראיה |
+|-------|---------|-----------|
+| **A** | `raw_report_verified` | ציטוט ישיר מטקסט גולמי של דוח (raw text excerpt) |
+| **B** | `ai_extracted_with_page_ref` | AI-derived מ-`_findings_*.json` או extracted PDF text, עם page_ref מפורש; לא אומת ב-raw text |
+| **C** | `web_verified_current_activity` | סטטוס פעילות עדכני מ-web. **אינו מוכיח קישור לזיהום** |
+| **D** | `inferred_candidate` | קרבה גיאוגרפית / שם קידוח / הקשר; ללא ראיית מסמך ישירה |
+| **E** | `weak / mention_only` | אזכור בודד במסמך אחד; ללא קישור לקידוח/מזהם |
+
+**מדיניות שימוש ב-Zone Diagnosis ובדוח V5**:
+- **A + B** → מועמדים חזקים; ייכנסו לגוף ה-Zone Diagnosis ולסעיף 5 בדוח V5
+- **C** → משלים מצב נוכחי; אסור להציג כראיית זיהום בעצמו
+- **D / E** → רקע או נספח. ייכנסו לסעיף 5 רק אם נתוני הניטור (severity, trends, חתימות כימיות) מחזקים אותם עצמאית
 
 #### approved_precedent_excerpt.md
 - קטע מדוח רעננה V2 או חולון V4.2 מאושר (סגנון, טון, מבנה)
