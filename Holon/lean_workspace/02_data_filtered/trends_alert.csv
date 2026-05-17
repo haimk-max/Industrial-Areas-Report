@@ -1,0 +1,358 @@
+borehole_id,parameter,n,n5,has_detection,mk_z_5y,mk_p_5y,mk_z_full,mk_p_full,snr_5y,snr_full,analysis_mode,classification,trend_description,crossed_standard,drinking_water_standard
+מק_חולון_14, MTBE,9,2,False,,,,,,,none,NONE,,False,40
+מק_חולון_14,ARSENIC AS AS,5,1,True,,,1.6641,0.0960923,0,1.21367,full_record,INCREASING,Rising trend (p=0.096); Mann-Kendall Z=1.66 (full record — 5-year window insufficient),False,10
+מק_חולון_14,BENZENE,10,2,False,,,,,,,none,NONE,,False,5
+מק_חולון_14,CADMIUM AS CD,5,1,False,,,,,,,none,NONE,,False,5
+מק_חולון_14,CARBON TETRACHLORIDE,32,16,True,-3.19652,0.00139095,-3.13729,0.00170515,1.0974,,5y,DECREASING,Declining trend (p=0.001); Mann-Kendall Z=-3.20,False,4
+מק_חולון_14,CHLOROFORM,10,2,False,,,,,,,none,NONE,,False,80
+מק_חולון_14,CHROMIUM AS CR,6,1,True,,,0.779484,0.435695,0,1.0948,full_record,STABLE,No significant trend (p=0.436); Mann-Kendall Z=0.78 (full record — 5-year window insufficient),False,50
+מק_חולון_14,"CIS 1,2 DICHLOROETHYLENE",10,2,False,,,,,,,none,NONE,,False,50
+מק_חולון_14,"CIS+ TRANS 1,2 DICHLOROETHELYENE",8,2,False,,,,,,,none,NONE,,False,
+מק_חולון_14,"DICHLOROETHANE1,2",10,2,False,,,,,,,none,NONE,,False,4
+מק_חולון_14,"DICHLOROETHYLENE 1,1",25,15,True,-0.844389,0.398452,1.8837,0.0596055,0.558236,,5y,STABLE,No significant trend (p=0.398); Mann-Kendall Z=-0.84,False,10
+מק_חולון_14,ETHYL BENZENE,10,2,False,,,,,,,none,NONE,,False,300
+מק_חולון_14,LEAD AS PB,5,1,False,,,,,,,none,NONE,,False,10
+מק_חולון_14,MERCURY AS HG,3,1,False,,,,,,,none,NONE,,False,1
+מק_חולון_14,NICKEL AS NI,5,1,True,,,0.353553,0.723674,0,0.745356,full_record,STABLE,No significant trend (p=0.724); Mann-Kendall Z=0.35 (full record — 5-year window insufficient),False,20
+מק_חולון_14,Per-FluoroOctaneSulfonate,2,2,False,,,,,,,none,NONE,,False,0.1
+מק_חולון_14,Per-FluoroOctanoic Acid,2,2,False,,,,,,,none,NONE,,False,0.1
+מק_חולון_14,Perfluorobutane Sulfonic Acid,1,1,False,,,,,,,none,NONE,,False,0.1
+מק_חולון_14,Perfluoroheptanoic acid,1,1,False,,,,,,,none,NONE,,False,0.1
+מק_חולון_14,Perfluorohexanesulfonic acid,1,1,False,,,,,,,none,NONE,,False,0.1
+מק_חולון_14,Perfluorohexanoic acid,1,1,False,,,,,,,none,NONE,,False,0.1
+מק_חולון_14,TETRACHLORO ETHYLENE,15,2,True,,,-1.18463,0.236165,0,0.579142,full_record,STABLE,No significant trend (p=0.236); Mann-Kendall Z=-1.18 (full record — 5-year window insufficient),False,10
+מק_חולון_14,TOLUENE,11,2,True,,,0.474342,0.635256,0,0.552771,full_record,STABLE,No significant trend (p=0.635); Mann-Kendall Z=0.47 (full record — 5-year window insufficient),False,700
+מק_חולון_14,"TRANS-1,2 DICHLOROETHYLENE",10,2,False,,,,,,,none,NONE,,False,50
+מק_חולון_14,TRICHLORO ETHYLENE,44,19,True,-0.769683,0.441488,-2.67213,0.00753726,0.690279,,5y,STABLE,No significant trend (p=0.441); Mann-Kendall Z=-0.77,True,7.5
+מק_חולון_14,VINYL CHLORIDE,10,2,False,,,,,,,none,NONE,,False,0.5
+מק_חולון_14,XYLENE,11,2,True,,,0.474342,0.635256,0,0.552771,full_record,STABLE,No significant trend (p=0.635); Mann-Kendall Z=0.47 (full record — 5-year window insufficient),False,500
+נד_אגד_אזור_1, MTBE,15,9,True,0.838628,0.401678,-1.33779,0.180964,0.238009,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,40
+נד_אגד_אזור_1,"1,2,4 TRIMETHYLBENZENE",3,0,True,,,,,,,none,NONE,,False,
+נד_אגד_אזור_1,"1,3,5 TRIMETHYLBENZENE",3,0,True,,,,,,,none,NONE,,False,
+נד_אגד_אזור_1,BENZENE,15,9,True,0.838628,0.401678,0.743218,0.45735,0.65774,,5y,STABLE,No significant trend (p=0.402); Mann-Kendall Z=0.84,True,5
+נד_אגד_אזור_1,"CIS 1,2 DICHLOROETHYLENE",2,0,True,,,,,,,none,NONE,,False,50
+נד_אגד_אזור_1,"DICHLOROETHYLENE 1,1",2,0,True,,,,,,,none,NONE,,False,10
+נד_אגד_אזור_1,ETHYL BENZENE,15,9,True,-0.628971,0.529368,-0.148644,0.881835,0.172708,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,300
+נד_אגד_אזור_1,TETRACHLORO ETHYLENE,2,0,True,,,,,,,none,NONE,,False,10
+נד_אגד_אזור_1,TOLUENE,15,9,True,2.09657,0.0360317,-0.346835,0.728715,1.04336,,5y,INCREASING,Rising trend (p=0.036); Mann-Kendall Z=2.10,True,700
+נד_אגד_אזור_1,TRICHLORO ETHYLENE,2,0,True,,,,,,,none,NONE,,False,7.5
+נד_אגד_אזור_1,VINYL CHLORIDE,2,0,True,,,,,,,none,NONE,,True,0.5
+נד_אגד_אזור_1,XYLENE,15,9,True,1.25794,0.208413,-0.346835,0.728715,0.887554,,5y,STABLE,No significant trend (p=0.208); Mann-Kendall Z=1.26,True,500
+נד_אגד_אזור_12, MTBE,7,7,True,0.600751,0.548006,0.600751,0.548006,0.454375,,5y,STABLE,No significant trend (p=0.548); Mann-Kendall Z=0.60,True,40
+נד_אגד_אזור_12,BENZENE,7,7,True,0,1,0,1,0.0481334,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,5
+נד_אגד_אזור_12,ETHYL BENZENE,7,7,True,0.901127,0.367521,0.901127,0.367521,1.27886,,5y,STABLE,No significant trend (p=0.368); Mann-Kendall Z=0.90,False,300
+נד_אגד_אזור_12,TOLUENE,7,7,True,0,1,0,1,0.465566,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,False,700
+נד_אגד_אזור_12,XYLENE,7,7,True,0,1,0,1,0.104773,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,500
+נד_אגד_אזור_15, MTBE,1,1,True,,,,,,,none,NONE,,True,40
+נד_אגד_אזור_15,BENZENE,1,1,True,,,,,,,none,NONE,,True,5
+נד_אגד_אזור_15,ETHYL BENZENE,1,1,True,,,,,,,none,NONE,,True,300
+נד_אגד_אזור_15,TOLUENE,1,1,True,,,,,,,none,NONE,,True,700
+נד_אגד_אזור_15,XYLENE,1,1,True,,,,,,,none,NONE,,True,500
+נד_אגד_אזור_16, MTBE,1,1,True,,,,,,,none,NONE,,True,40
+נד_אגד_אזור_16,BENZENE,1,1,False,,,,,,,none,NONE,,False,5
+נד_אגד_אזור_16,ETHYL BENZENE,1,1,True,,,,,,,none,NONE,,False,300
+נד_אגד_אזור_16,TOLUENE,1,1,False,,,,,,,none,NONE,,False,700
+נד_אגד_אזור_16,XYLENE,1,1,True,,,,,,,none,NONE,,False,500
+נד_אגד_אזור_18, MTBE,1,1,True,,,,,,,none,NONE,,True,40
+נד_אגד_אזור_18,BENZENE,1,1,True,,,,,,,none,NONE,,True,5
+נד_אגד_אזור_18,ETHYL BENZENE,1,1,True,,,,,,,none,NONE,,True,300
+נד_אגד_אזור_18,TOLUENE,1,1,True,,,,,,,none,NONE,,True,700
+נד_אגד_אזור_18,XYLENE,1,1,True,,,,,,,none,NONE,,True,500
+נד_אגד_אזור_4, MTBE,14,9,True,-1.04828,0.294507,-2.8553,0.00429956,0.717232,,5y,STABLE,No significant trend (p=0.295); Mann-Kendall Z=-1.05,True,40
+נד_אגד_אזור_4,"1,2,4 TRIMETHYLBENZENE",2,0,True,,,,,,,none,NONE,,False,
+נד_אגד_אזור_4,"1,3,5 TRIMETHYLBENZENE",2,0,True,,,,,,,none,NONE,,False,
+נד_אגד_אזור_4,BENZENE,14,9,True,0,1,-1.15137,0.24958,0.875014,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,True,5
+נד_אגד_אזור_4,"CIS 1,2 DICHLOROETHYLENE",2,0,True,,,,,,,none,NONE,,False,50
+נד_אגד_אזור_4,"DICHLOROETHYLENE 1,1",2,0,True,,,,,,,none,NONE,,False,10
+נד_אגד_אזור_4,ETHYL BENZENE,14,9,True,0.209657,0.833935,-0.712752,0.475999,0.7924,,5y,STABLE,No significant trend (p=0.834); Mann-Kendall Z=0.21,True,300
+נד_אגד_אזור_4,TETRACHLORO ETHYLENE,2,0,True,,,,,,,none,NONE,,False,10
+נד_אגד_אזור_4,TOLUENE,14,9,True,0.628971,0.529368,-1.37068,0.170475,0.935236,,5y,STABLE,No significant trend (p=0.529); Mann-Kendall Z=0.63,True,700
+נד_אגד_אזור_4,TRICHLORO ETHYLENE,2,0,True,,,,,,,none,NONE,,True,7.5
+נד_אגד_אזור_4,VINYL CHLORIDE,2,0,True,,,,,,,none,NONE,,True,0.5
+נד_אגד_אזור_4,XYLENE,14,9,True,0,1,-1.26102,0.2073,0.686878,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,True,500
+נד_אגד_אזור_6, MTBE,14,9,True,2.30623,0.021098,-0.164481,0.869352,1.05849,,5y,INCREASING,Rising trend (p=0.021); Mann-Kendall Z=2.31,True,40
+נד_אגד_אזור_6,"1,2,4 TRIMETHYLBENZENE",2,0,True,,,,,,,none,NONE,,False,
+נד_אגד_אזור_6,"1,3,5 TRIMETHYLBENZENE",2,0,True,,,,,,,none,NONE,,False,
+נד_אגד_אזור_6,BENZENE,15,10,True,0.546963,0.584404,-1.87197,0.061211,0.370977,,5y,STABLE,No significant trend (p=0.584); Mann-Kendall Z=0.55,True,5
+נד_אגד_אזור_6,"CIS 1,2 DICHLOROETHYLENE",2,0,True,,,,,,,none,NONE,,True,50
+נד_אגד_אזור_6,"DICHLOROETHYLENE 1,1",2,0,True,,,,,,,none,NONE,,True,10
+נד_אגד_אזור_6,ETHYL BENZENE,15,10,True,-0.364642,0.715378,-1.70213,0.0887312,0.831573,,5y,STABLE,No significant trend (p=0.715); Mann-Kendall Z=-0.36,False,300
+נד_אגד_אזור_6,TETRACHLORO ETHYLENE,2,0,True,,,,,,,none,NONE,,False,10
+נד_אגד_אזור_6,TOLUENE,14,9,True,-0.105409,0.916051,-1.4437,0.148823,0.607487,,5y,STABLE,No significant trend (p=0.916); Mann-Kendall Z=-0.11,False,700
+נד_אגד_אזור_6,TRICHLORO ETHYLENE,2,0,True,,,,,,,none,NONE,,True,7.5
+נד_אגד_אזור_6,VINYL CHLORIDE,2,0,True,,,,,,,none,NONE,,True,0.5
+נד_אגד_אזור_6,XYLENE,15,10,True,-0.449013,0.653422,-2.58816,0.00964889,0.405803,,5y,STABLE,No significant trend (p=0.653); Mann-Kendall Z=-0.45,True,500
+נד_אגד_אזור_7, MTBE,13,9,True,-2.72554,0.00641963,-2.20042,0.0277772,1.82093,,5y,DECREASING,Declining trend (p=0.006); Mann-Kendall Z=-2.73,True,40
+נד_אגד_אזור_7,"1,2,4 TRIMETHYLBENZENE",1,0,True,,,,,,,none,NONE,,False,
+נד_אגד_אזור_7,"1,3,5 TRIMETHYLBENZENE",1,0,True,,,,,,,none,NONE,,False,
+נד_אגד_אזור_7,BENZENE,13,9,True,-1.67726,0.0934925,-1.95593,0.0504737,1.43721,,5y,DECREASING,Declining trend (p=0.093); Mann-Kendall Z=-1.68,True,5
+נד_אגד_אזור_7,"CIS 1,2 DICHLOROETHYLENE",2,0,True,,,,,,,none,NONE,,False,50
+נד_אגד_אזור_7,"DICHLOROETHYLENE 1,1",2,0,True,,,,,,,none,NONE,,False,10
+נד_אגד_אזור_7,ETHYL BENZENE,12,8,True,-2.24416,0.0248219,-1.37469,0.169229,1.20634,,5y,DECREASING,Declining trend (p=0.025); Mann-Kendall Z=-2.24,True,300
+נד_אגד_אזור_7,TETRACHLORO ETHYLENE,2,0,True,,,,,,,none,NONE,,False,10
+נד_אגד_אזור_7,TOLUENE,13,9,True,-1.04828,0.294507,-0.122245,0.902705,0.822349,,5y,STABLE,No significant trend (p=0.295); Mann-Kendall Z=-1.05,False,700
+נד_אגד_אזור_7,TRICHLORO ETHYLENE,2,0,True,,,,,,,none,NONE,,True,7.5
+נד_אגד_אזור_7,VINYL CHLORIDE,2,0,True,,,,,,,none,NONE,,True,0.5
+נד_אגד_אזור_7,XYLENE,13,9,True,-1.06399,0.287333,-1.90792,0.0564018,0.768556,,5y,STABLE,No significant trend (p=0.287); Mann-Kendall Z=-1.06,False,500
+נד_אגד_אזור_9, MTBE,12,8,True,-2.35064,0.0187411,-2.67433,0.00748789,1.28587,,5y,DECREASING,Declining trend (p=0.019); Mann-Kendall Z=-2.35,True,40
+נד_אגד_אזור_9,"1,2,4 TRIMETHYLBENZENE",1,0,True,,,,,,,none,NONE,,False,
+נד_אגד_אזור_9,"1,3,5 TRIMETHYLBENZENE",1,0,True,,,,,,,none,NONE,,False,
+נד_אגד_אזור_9,BENZENE,12,8,True,-1.74546,0.0809048,-2.74937,0.00597093,0.871648,,5y,STABLE,No significant trend (p=0.081); Mann-Kendall Z=-1.75,True,5
+נד_אגד_אזור_9,"CIS 1,2 DICHLOROETHYLENE",2,0,True,,,,,,,none,NONE,,True,50
+נד_אגד_אזור_9,"DICHLOROETHYLENE 1,1",2,0,True,,,,,,,none,NONE,,True,10
+נד_אגד_אזור_9,ETHYL BENZENE,13,9,True,-2.21359,0.0268567,-2.95981,0.00307832,1.18791,,5y,DECREASING,Declining trend (p=0.027); Mann-Kendall Z=-2.21,False,300
+נד_אגד_אזור_9,TETRACHLORO ETHYLENE,2,0,True,,,,,,,none,NONE,,False,10
+נד_אגד_אזור_9,TOLUENE,13,9,True,-1.70238,0.0886833,-2.4919,0.0127061,0.00644621,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,700
+נד_אגד_אזור_9,TRICHLORO ETHYLENE,2,0,True,,,,,,,none,NONE,,True,7.5
+נד_אגד_אזור_9,VINYL CHLORIDE,2,0,True,,,,,,,none,NONE,,True,0.5
+נד_אגד_אזור_9,XYLENE,13,9,True,-1.14683,0.251452,-1.59717,0.110228,0.297747,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,500
+נד_אגד_אזור_n3, MTBE,2,2,True,,,,,,,none,NONE,,True,40
+נד_אגד_אזור_n3,BENZENE,2,2,True,,,,,,,none,NONE,,True,5
+נד_אגד_אזור_n3,ETHYL BENZENE,2,2,True,,,,,,,none,NONE,,True,300
+נד_אגד_אזור_n3,TOLUENE,2,2,True,,,,,,,none,NONE,,False,700
+נד_אגד_אזור_n3,XYLENE,2,2,True,,,,,,,none,NONE,,False,500
+נד_אגד_איזור_7, MTBE,1,1,True,,,,,,,none,NONE,,True,40
+נד_אגד_איזור_7,BENZENE,1,1,True,,,,,,,none,NONE,,True,5
+נד_אגד_איזור_7,TOLUENE,1,1,True,,,,,,,none,NONE,,False,700
+נד_אגד_איזור_7,XYLENE,1,1,True,,,,,,,none,NONE,,False,500
+נד_המרכבה_ק2, MTBE,10,2,True,,,2.60428,0.00920683,0,1.06765,full_record,INCREASING,Rising trend (p=0.009); Mann-Kendall Z=2.60 (full record — 5-year window insufficient),True,40
+נד_המרכבה_ק2,BENZENE,10,2,True,,,1.02427,0.305707,0,0.683465,full_record,STABLE,No significant trend (p=0.306); Mann-Kendall Z=1.02 (full record — 5-year window insufficient),True,5
+נד_המרכבה_ק2,ETHYL BENZENE,10,2,True,,,1.6409,0.100819,0,0.645534,full_record,STABLE,No significant trend (p=0.101); Mann-Kendall Z=1.64 (full record — 5-year window insufficient),True,300
+נד_המרכבה_ק2,TOLUENE,10,2,True,,,1.298,0.194286,0,0.638998,full_record,STABLE,No significant trend (p=0.194); Mann-Kendall Z=1.30 (full record — 5-year window insufficient),True,700
+נד_המרכבה_ק2,XYLENE,10,2,True,,,1.6409,0.100819,0,0.63603,full_record,STABLE,No significant trend (p=0.101); Mann-Kendall Z=1.64 (full record — 5-year window insufficient),True,500
+נד_טן_חולון_1, MTBE,14,6,True,-1.1272,0.259656,-0.613642,0.539452,0.812799,,5y,STABLE,No significant trend (p=0.260); Mann-Kendall Z=-1.13,True,40
+נד_טן_חולון_1,BENZENE,14,6,True,-2.104,0.0353782,0,1,0.953491,,5y,DECREASING,Declining trend (p=0.035); Mann-Kendall Z=-2.10,True,5
+נד_טן_חולון_1,ETHYL BENZENE,14,6,True,-1.72146,0.0851679,1.32643,0.184696,1.01565,,5y,DECREASING,Declining trend (p=0.085); Mann-Kendall Z=-1.72,False,300
+נד_טן_חולון_1,TOLUENE,14,6,True,-0.956365,0.338888,0.450749,0.652171,0.97565,,5y,STABLE,No significant trend (p=0.339); Mann-Kendall Z=-0.96,False,700
+נד_טן_חולון_1,XYLENE,14,6,True,-1.87867,0.0602892,1.37574,0.168902,0.96405,,5y,STABLE,No significant trend (p=0.060); Mann-Kendall Z=-1.88,False,500
+נד_סונול_המלאכה_מ-1, MTBE,20,8,True,0.289683,0.772059,-0.264761,0.791193,0.227965,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,40
+נד_סונול_המלאכה_מ-1,"1,2,4 TRIMETHYLBENZENE",2,2,True,,,,,,,none,NONE,,False,
+נד_סונול_המלאכה_מ-1,"1,3,5 TRIMETHYLBENZENE",2,2,True,,,,,,,none,NONE,,False,
+נד_סונול_המלאכה_מ-1,"1,4 DIOXANE",1,1,True,,,,,,,none,NONE,,False,3
+נד_סונול_המלאכה_מ-1,ARSENIC AS AS,1,1,False,,,,,,,none,NONE,,False,10
+נד_סונול_המלאכה_מ-1,BENZENE,19,7,True,0,1,-0.79334,0.42758,0.661438,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,True,5
+נד_סונול_המלאכה_מ-1,CADMIUM AS CD,1,1,False,,,,,,,none,NONE,,False,5
+נד_סונול_המלאכה_מ-1,CARBON TETRACHLORIDE,2,2,False,,,,,,,none,NONE,,False,4
+נד_סונול_המלאכה_מ-1,CHLOROFORM,2,2,True,,,,,,,none,NONE,,False,80
+נד_סונול_המלאכה_מ-1,CHROMIUM AS CR,1,1,False,,,,,,,none,NONE,,False,50
+נד_סונול_המלאכה_מ-1,"CIS 1,2 DICHLOROETHYLENE",2,2,True,,,,,,,none,NONE,,False,50
+נד_סונול_המלאכה_מ-1,"DICHLOROETHANE1,2",2,2,True,,,,,,,none,NONE,,False,4
+נד_סונול_המלאכה_מ-1,"DICHLOROETHYLENE 1,1",2,2,True,,,,,,,none,NONE,,True,10
+נד_סונול_המלאכה_מ-1,ETHYL BENZENE,20,8,True,0,1,3.00264,0.00267649,0.617679,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,False,300
+נד_סונול_המלאכה_מ-1,LEAD AS PB,7,1,True,,,0.25,0.802587,0,0.661438,full_record,STABLE,No significant trend (p=0.803); Mann-Kendall Z=0.25 (full record — 5-year window insufficient),False,10
+נד_סונול_המלאכה_מ-1,NICKEL AS NI,1,1,False,,,,,,,none,NONE,,False,20
+נד_סונול_המלאכה_מ-1,TETRACHLORO ETHYLENE,2,2,True,,,,,,,none,NONE,,False,10
+נד_סונול_המלאכה_מ-1,TOLUENE,20,8,True,1.27343,0.202866,2.32646,0.0199941,0.378012,,5y,STABLE,No significant trend (p=0.203); Mann-Kendall Z=1.27,False,700
+נד_סונול_המלאכה_מ-1,"TRANS-1,2 DICHLOROETHYLENE",2,2,False,,,,,,,none,NONE,,False,50
+נד_סונול_המלאכה_מ-1,TRICHLORO ETHYLENE,2,2,True,,,,,,,none,NONE,,True,7.5
+נד_סונול_המלאכה_מ-1,VINYL CHLORIDE,2,2,False,,,,,,,none,NONE,,False,0.5
+נד_סונול_המלאכה_מ-1,XYLENE,20,8,True,0.376969,0.706197,2.59915,0.00934562,0.72305,,5y,STABLE,No significant trend (p=0.706); Mann-Kendall Z=0.38,False,500
+נד_פז_סיירים_3, MTBE,12,9,True,1.72821,0.0839498,-0.572892,0.566718,1.01947,,5y,INCREASING,Rising trend (p=0.084); Mann-Kendall Z=1.73,True,40
+נד_פז_סיירים_3,BENZENE,12,9,True,2.02778,0.0425828,1.38735,0.165334,1.10581,,5y,INCREASING,Rising trend (p=0.043); Mann-Kendall Z=2.03,True,5
+נד_פז_סיירים_3,ETHYL BENZENE,12,9,True,-2.02778,0.0425828,-1.84981,0.0643415,0.904534,,5y,DECREASING,Declining trend (p=0.043); Mann-Kendall Z=-2.03,False,300
+נד_פז_סיירים_3,TOLUENE,12,9,True,-0.968246,0.332922,-0.741467,0.45841,0.75,,5y,STABLE,No significant trend (p=0.333); Mann-Kendall Z=-0.97,False,700
+נד_פז_סיירים_3,XYLENE,12,9,True,0,1,0.541136,0.588414,0.574696,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,False,500
+נד_פז_צבר_1, MTBE,25,9,True,-1.98089,0.047604,-3.8801,0.000104413,0.780466,,5y,DECREASING,Declining trend (p=0.048); Mann-Kendall Z=-1.98,True,40
+נד_פז_צבר_1,BENZENE,25,9,True,0.209657,0.833935,1.05637,0.290801,0.304711,,5y,STABLE,No significant trend (p=0.834); Mann-Kendall Z=0.21,True,5
+נד_פז_צבר_1,ETHYL BENZENE,25,9,True,-0.638394,0.523217,-0.61311,0.539804,0.974694,,5y,STABLE,No significant trend (p=0.523); Mann-Kendall Z=-0.64,True,300
+נד_פז_צבר_1,TOLUENE,24,8,True,1.41227,0.157871,-1.15494,0.248114,0.797872,,5y,STABLE,No significant trend (p=0.158); Mann-Kendall Z=1.41,True,700
+נד_פז_צבר_1,XYLENE,25,9,True,0.419314,0.674987,-0.609171,0.542411,0.491045,,5y,STABLE,No significant trend (p=0.675); Mann-Kendall Z=0.42,True,500
+נת_אלביט_חולון_1, MTBE,2,0,True,,,,,,,none,NONE,,True,40
+נת_אלביט_חולון_1,"1,3,5 TRIMETHYLBENZENE",1,0,False,,,,,,,none,NONE,,False,
+נת_אלביט_חולון_1,ARSENIC AS AS,1,0,False,,,,,,,none,NONE,,False,10
+נת_אלביט_חולון_1,BENZENE,1,0,False,,,,,,,none,NONE,,False,5
+נת_אלביט_חולון_1,CADMIUM AS CD,1,0,False,,,,,,,none,NONE,,False,5
+נת_אלביט_חולון_1,CARBON TETRACHLORIDE,1,0,False,,,,,,,none,NONE,,False,4
+נת_אלביט_חולון_1,CHLOROFORM,2,0,True,,,,,,,none,NONE,,False,80
+נת_אלביט_חולון_1,CHROMIUM AS CR,2,0,True,,,,,,,none,NONE,,False,50
+נת_אלביט_חולון_1,"CIS 1,2 DICHLOROETHYLENE",2,0,True,,,,,,,none,NONE,,False,50
+נת_אלביט_חולון_1,"DICHLOROETHANE1,2",4,0,True,,,,,,,none,NONE,,True,4
+נת_אלביט_חולון_1,"DICHLOROETHYLENE 1,1",8,0,True,,,,,,,none,NONE,,True,10
+נת_אלביט_חולון_1,ETHYL BENZENE,1,0,False,,,,,,,none,NONE,,False,300
+נת_אלביט_חולון_1,LEAD AS PB,1,0,False,,,,,,,none,NONE,,False,10
+נת_אלביט_חולון_1,NICKEL AS NI,2,0,True,,,,,,,none,NONE,,False,20
+נת_אלביט_חולון_1,TETRACHLORO ETHYLENE,7,0,True,,,,,,,none,NONE,,True,10
+נת_אלביט_חולון_1,TOLUENE,1,0,False,,,,,,,none,NONE,,False,700
+נת_אלביט_חולון_1,"TRANS-1,2 DICHLOROETHYLENE",1,0,False,,,,,,,none,NONE,,False,50
+נת_אלביט_חולון_1,TRICHLORO ETHYLENE,8,0,True,,,,,,,none,NONE,,True,7.5
+נת_אלביט_חולון_1,VINYL CHLORIDE,2,0,False,,,,,,,none,NONE,,False,0.5
+נת_אלביט_חולון_1,XYLENE,1,0,False,,,,,,,none,NONE,,False,500
+נת_חולון_1, MTBE,12,4,True,0,1,-0.0685725,0.94533,0.585642,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,True,40
+נת_חולון_1,"1,2,4 TRIMETHYLBENZENE",10,4,False,,,,,,,none,NONE,,False,
+נת_חולון_1,"1,3,5 TRIMETHYLBENZENE",8,4,False,,,,,,,none,NONE,,False,
+נת_חולון_1,"1,4 DIOXANE",2,1,True,,,,,,,none,NONE,,True,3
+נת_חולון_1,ARSENIC AS AS,7,3,True,,,-1.25,0.2113,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,10
+נת_חולון_1,BENZENE,13,5,True,0,1,-0.733473,0.46327,0.742357,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,True,5
+נת_חולון_1,CADMIUM AS CD,6,3,False,,,,,,,none,NONE,,False,5
+נת_חולון_1,CARBON TETRACHLORIDE,11,4,True,0.894427,0.371093,1.1094,0.267257,1,,5y,STABLE,No significant trend (p=0.371); Mann-Kendall Z=0.89,False,4
+נת_חולון_1,CHLOROFORM,13,4,True,0.339683,0.734095,3.72154,0.00019801,0.864871,,5y,STABLE,No significant trend (p=0.734); Mann-Kendall Z=0.34,False,80
+נת_חולון_1,CHROMIUM AS CR,11,3,True,0,1,-0.393648,0.693841,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,50
+נת_חולון_1,"CIS 1,2 DICHLOROETHYLENE",12,4,True,0,1,0.205718,0.837011,0.267081,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,50
+נת_חולון_1,"DICHLOROETHANE1,2",11,4,True,0,1,1.90764,0.0564375,1,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,False,4
+נת_חולון_1,"DICHLOROETHYLENE 1,1",13,4,True,0,1,1.52522,0.127204,0.0335274,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,10
+נת_חולון_1,ETHYL BENZENE,11,5,False,,,,,,,none,NONE,,False,300
+נת_חולון_1,LEAD AS PB,8,3,False,,,,,,,none,NONE,,False,10
+נת_חולון_1,NICKEL AS NI,8,3,True,-0.612372,0.540291,-0.716728,0.473542,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,20
+נת_חולון_1,TETRACHLORO ETHYLENE,13,4,True,-0.339683,0.734095,-0.915133,0.360122,0.695173,,5y,STABLE,No significant trend (p=0.734); Mann-Kendall Z=-0.34,True,10
+נת_חולון_1,TOLUENE,13,5,True,0.783349,0.433422,0.938914,0.347775,0.745356,,5y,STABLE,No significant trend (p=0.433); Mann-Kendall Z=0.78,False,700
+נת_חולון_1,"TRANS-1,2 DICHLOROETHYLENE",12,4,False,,,,,,,none,NONE,,False,50
+נת_חולון_1,TRICHLORO ETHYLENE,13,4,True,1.69842,0.0894294,1.15917,0.246387,1.32418,,5y,INCREASING,Rising trend (p=0.089); Mann-Kendall Z=1.70,True,7.5
+נת_חולון_1,VINYL CHLORIDE,12,4,False,,,,,,,none,NONE,,False,0.5
+נת_חולון_1,XYLENE,13,5,True,0,1,0.82759,0.407903,0.742556,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,False,500
+נת_חולון_1,n-Butyl benzene,4,0,False,,,,,,,none,NONE,,False,
+נת_חולון_1,o-Xylene ,4,0,False,,,,,,,none,NONE,,False,
+נת_חולון_1,p-isopropyl toluene,3,0,False,,,,,,,none,NONE,,False,
+נת_חולון_1,p-xylene,3,0,False,,,,,,,none,NONE,,False,
+נת_חולון_11, MTBE,15,4,True,0,1,-0.545027,0.585735,0.146852,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,40
+נת_חולון_11,"1,2,4 TRIMETHYLBENZENE",13,4,False,,,,,,,none,NONE,,False,
+נת_חולון_11,"1,3,5 TRIMETHYLBENZENE",9,4,False,,,,,,,none,NONE,,False,
+נת_חולון_11,"1,4 DIOXANE",3,2,True,,,,,,,none,NONE,,True,3
+נת_חולון_11,ARSENIC AS AS,10,3,True,,,-1.22474,0.220671,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,10
+נת_חולון_11,BENZENE,15,4,True,0.894427,0.371093,-0.0998752,0.920443,1,,5y,STABLE,No significant trend (p=0.371); Mann-Kendall Z=0.89,True,5
+נת_חולון_11,CADMIUM AS CD,7,3,False,,,,,,,none,NONE,,False,5
+נת_חולון_11,CARBON TETRACHLORIDE,14,4,True,0.894427,0.371093,1.9556,0.0505117,1,,5y,STABLE,No significant trend (p=0.371); Mann-Kendall Z=0.89,False,4
+נת_חולון_11,CHLOROFORM,16,4,True,0,1,-3.10655,0.00189282,0.297997,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,80
+נת_חולון_11,CHROMIUM AS CR,13,3,True,-0.612372,0.540291,-0.186052,0.852404,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,50
+נת_חולון_11,"CIS 1,2 DICHLOROETHYLENE",15,4,True,0,1,0.494872,0.620691,0.336778,,5y,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00,False,50
+נת_חולון_11,"DICHLOROETHANE1,2",14,4,True,-0.339683,0.734095,-2.08031,0.0374975,0.583403,,5y,STABLE,No significant trend (p=0.734); Mann-Kendall Z=-0.34,True,4
+נת_חולון_11,"DICHLOROETHYLENE 1,1",16,4,True,0.339683,0.734095,-1.03552,0.300427,1.57244,,5y,STABLE,No significant trend (p=0.734); Mann-Kendall Z=0.34,True,10
+נת_חולון_11,ETHYL BENZENE,11,4,False,,,,,,,none,NONE,,False,300
+נת_חולון_11,LEAD AS PB,11,3,True,,,-2.00334,0.0451406,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,10
+נת_חולון_11,NICKEL AS NI,11,3,True,,,-1.62526,0.104108,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,20
+נת_חולון_11,TETRACHLORO ETHYLENE,16,4,True,0.339683,0.734095,-1.75588,0.0791092,0.679543,,5y,STABLE,No significant trend (p=0.734); Mann-Kendall Z=0.34,True,10
+נת_חולון_11,TOLUENE,15,4,True,0.387298,0.698535,-1.00232,0.316191,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,700
+נת_חולון_11,"TRANS-1,2 DICHLOROETHYLENE",15,4,True,,,1.82436,0.0680982,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,50
+נת_חולון_11,TRICHLORO ETHYLENE,15,4,True,0.339683,0.734095,0.395897,0.692181,1.06169,,5y,STABLE,No significant trend (p=0.734); Mann-Kendall Z=0.34,True,7.5
+נת_חולון_11,VINYL CHLORIDE,15,4,True,0.894427,0.371093,1.50446,0.132464,1,,5y,STABLE,No significant trend (p=0.371); Mann-Kendall Z=0.89,True,0.5
+נת_חולון_11,XYLENE,15,4,True,0,1,1.78542,0.0741934,0.250326,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,500
+נת_חולון_11,n-Butyl benzene,5,0,False,,,,,,,none,NONE,,False,
+נת_חולון_11,o-Xylene ,5,0,False,,,,,,,none,NONE,,False,
+נת_חולון_11,p-isopropyl toluene,4,0,False,,,,,,,none,NONE,,False,
+נת_חולון_11,p-xylene,4,0,False,,,,,,,none,NONE,,False,
+נת_חולון_14, MTBE,11,3,False,,,,,,,none,NONE,,False,40
+נת_חולון_14,"1,2,4 TRIMETHYLBENZENE",9,3,False,,,,,,,none,NONE,,False,
+נת_חולון_14,"1,3,5 TRIMETHYLBENZENE",7,3,False,,,,,,,none,NONE,,False,
+נת_חולון_14,"1,4 DIOXANE",2,1,True,,,,,,,none,NONE,,True,3
+נת_חולון_14,ARSENIC AS AS,8,2,True,,,-1.7381,0.0821938,0,1.39954,full_record,DECREASING,Declining trend (p=0.082); Mann-Kendall Z=-1.74 (full record — 5-year window insufficient),False,10
+נת_חולון_14,BENZENE,11,3,True,0.612372,0.540291,0,1,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,5
+נת_חולון_14,CADMIUM AS CD,5,2,False,,,,,,,none,NONE,,False,5
+נת_חולון_14,CARBON TETRACHLORIDE,10,3,True,0.612372,0.540291,0.130558,0.896125,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,4
+נת_חולון_14,CHLOROFORM,12,3,True,1.04447,0.29627,2.67433,0.00748789,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,80
+נת_חולון_14,CHROMIUM AS CR,11,2,True,,,1.8684,0.0617067,0,1.22257,full_record,INCREASING,Rising trend (p=0.062); Mann-Kendall Z=1.87 (full record — 5-year window insufficient),True,50
+נת_חולון_14,"CIS 1,2 DICHLOROETHYLENE",11,3,True,0,1,1.18094,0.237625,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,50
+נת_חולון_14,"DICHLOROETHANE1,2",10,3,True,,,1.65912,0.0970911,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,4
+נת_חולון_14,"DICHLOROETHYLENE 1,1",12,3,True,1.04447,0.29627,0.205718,0.837011,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,10
+נת_חולון_14,ETHYL BENZENE,8,3,True,,,-0.872872,0.382733,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,300
+נת_חולון_14,LEAD AS PB,9,2,True,,,-1.35554,0.175244,0,0.75,full_record,STABLE,No significant trend (p=0.175); Mann-Kendall Z=-1.36 (full record — 5-year window insufficient),False,10
+נת_חולון_14,NICKEL AS NI,9,2,True,,,-1.95864,0.0501546,0,0.100927,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),False,20
+נת_חולון_14,TETRACHLORO ETHYLENE,12,3,True,1.04447,0.29627,1.85146,0.0641036,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,10
+נת_חולון_14,TOLUENE,11,3,True,0.612372,0.540291,0,1,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,700
+נת_חולון_14,"TRANS-1,2 DICHLOROETHYLENE",11,3,False,,,,,,,none,NONE,,False,50
+נת_חולון_14,TRICHLORO ETHYLENE,12,3,True,0,1,0.480008,0.631222,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),True,7.5
+נת_חולון_14,VINYL CHLORIDE,11,3,False,,,,,,,none,NONE,,False,0.5
+נת_חולון_14,XYLENE,11,3,True,0,1,0.819311,0.412609,0,,5y,NONE,Insufficient signal for trend assessment (SNR below threshold),False,500
+נת_חולון_14,n-Butyl benzene,4,0,False,,,,,,,none,NONE,,False,
+נת_חולון_14,o-Xylene ,4,0,False,,,,,,,none,NONE,,False,
+נת_חולון_14,p-isopropyl toluene,3,0,False,,,,,,,none,NONE,,False,
+נת_חולון_14,p-xylene,3,0,False,,,,,,,none,NONE,,False,
+נת_חולון_2, MTBE,11,2,True,,,1.46263,0.14357,0,0.532608,full_record,STABLE,No significant trend (p=0.144); Mann-Kendall Z=1.46 (full record — 5-year window insufficient),False,40
+נת_חולון_2,"1,2,4 TRIMETHYLBENZENE",9,2,True,,,-1.35554,0.175244,0,0.75,full_record,STABLE,No significant trend (p=0.175); Mann-Kendall Z=-1.36 (full record — 5-year window insufficient),False,
+נת_חולון_2,"1,3,5 TRIMETHYLBENZENE",6,2,False,,,,,,,none,NONE,,False,
+נת_חולון_2,"1,4 DIOXANE",1,0,True,,,,,,,none,NONE,,True,3
+נת_חולון_2,ARSENIC AS AS,6,2,True,,,-1.17108,0.241567,0,0.816497,full_record,STABLE,No significant trend (p=0.242); Mann-Kendall Z=-1.17 (full record — 5-year window insufficient),False,10
+נת_חולון_2,BENZENE,11,2,True,,,0.686837,0.492186,0,0.59223,full_record,STABLE,No significant trend (p=0.492); Mann-Kendall Z=0.69 (full record — 5-year window insufficient),True,5
+נת_חולון_2,CADMIUM AS CD,5,2,False,,,,,,,none,NONE,,False,5
+נת_חולון_2,CARBON TETRACHLORIDE,10,2,False,,,,,,,none,NONE,,False,4
+נת_חולון_2,CHLOROFORM,12,2,True,,,2.06203,0.0392049,0,0.618537,full_record,INCREASING,Rising trend (p=0.039); Mann-Kendall Z=2.06 (full record — 5-year window insufficient),True,80
+נת_חולון_2,CHROMIUM AS CR,10,2,True,,,0.178885,0.858028,0,0.360002,full_record,STABLE,No significant trend (p=0.858); Mann-Kendall Z=0.18 (full record — 5-year window insufficient),True,50
+נת_חולון_2,"CIS 1,2 DICHLOROETHYLENE",11,2,True,,,1.4013,0.161125,0,0.810914,full_record,STABLE,No significant trend (p=0.161); Mann-Kendall Z=1.40 (full record — 5-year window insufficient),True,50
+נת_חולון_2,"DICHLOROETHANE1,2",10,2,True,,,1.34444,0.178805,0,0.528498,full_record,STABLE,No significant trend (p=0.179); Mann-Kendall Z=1.34 (full record — 5-year window insufficient),False,4
+נת_חולון_2,"DICHLOROETHYLENE 1,1",12,2,True,,,-2.53718,0.0111748,0,1.12998,full_record,DECREASING,Declining trend (p=0.011); Mann-Kendall Z=-2.54 (full record — 5-year window insufficient),True,10
+נת_חולון_2,ETHYL BENZENE,8,2,False,,,,,,,none,NONE,,False,300
+נת_חולון_2,LEAD AS PB,7,2,True,,,-1.25,0.2113,0,0.881917,full_record,STABLE,No significant trend (p=0.211); Mann-Kendall Z=-1.25 (full record — 5-year window insufficient),False,10
+נת_חולון_2,NICKEL AS NI,7,2,True,,,-1.25,0.2113,0,0.881917,full_record,STABLE,No significant trend (p=0.211); Mann-Kendall Z=-1.25 (full record — 5-year window insufficient),False,20
+נת_חולון_2,TETRACHLORO ETHYLENE,12,2,True,,,2.12575,0.0335242,0,1.0314,full_record,INCREASING,Rising trend (p=0.034); Mann-Kendall Z=2.13 (full record — 5-year window insufficient),True,10
+נת_חולון_2,TOLUENE,11,2,True,,,0.247156,0.804788,0,0.696409,full_record,STABLE,No significant trend (p=0.805); Mann-Kendall Z=0.25 (full record — 5-year window insufficient),False,700
+נת_חולון_2,"TRANS-1,2 DICHLOROETHYLENE",11,2,True,,,2.11414,0.0345032,0,0.973721,full_record,INCREASING,Rising trend (p=0.035); Mann-Kendall Z=2.11 (full record — 5-year window insufficient),False,50
+נת_חולון_2,TRICHLORO ETHYLENE,12,2,True,,,1.30288,0.192616,0,0.410021,full_record,STABLE,No significant trend (p=0.193); Mann-Kendall Z=1.30 (full record — 5-year window insufficient),True,7.5
+נת_חולון_2,VINYL CHLORIDE,11,2,False,,,,,,,none,NONE,,False,0.5
+נת_חולון_2,XYLENE,11,2,True,,,0,1,0,0.556417,full_record,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00 (full record — 5-year window insufficient),False,500
+נת_חולון_2,n-Butyl benzene,4,0,False,,,,,,,none,NONE,,False,
+נת_חולון_2,o-Xylene ,4,0,False,,,,,,,none,NONE,,False,
+נת_חולון_2,p-isopropyl toluene,3,0,False,,,,,,,none,NONE,,False,
+נת_חולון_2,p-xylene,3,0,False,,,,,,,none,NONE,,False,
+נת_חולון_26, MTBE,3,3,True,,,,,,,none,NONE,,False,40
+נת_חולון_26,"1,2,4 TRIMETHYLBENZENE",2,2,False,,,,,,,none,NONE,,False,
+נת_חולון_26,"1,3,5 TRIMETHYLBENZENE",2,2,False,,,,,,,none,NONE,,False,
+נת_חולון_26,"1,4 DIOXANE",2,2,False,,,,,,,none,NONE,,False,3
+נת_חולון_26,ARSENIC AS AS,2,2,False,,,,,,,none,NONE,,False,10
+נת_חולון_26,BENZENE,2,2,False,,,,,,,none,NONE,,False,5
+נת_חולון_26,CADMIUM AS CD,2,2,False,,,,,,,none,NONE,,False,5
+נת_חולון_26,CARBON TETRACHLORIDE,1,1,False,,,,,,,none,NONE,,False,4
+נת_חולון_26,CHLOROFORM,3,3,True,,,,,,,none,NONE,,False,80
+נת_חולון_26,CHROMIUM AS CR,3,3,True,,,,,,,none,NONE,,True,50
+נת_חולון_26,"CIS 1,2 DICHLOROETHYLENE",3,3,True,,,,,,,none,NONE,,False,50
+נת_חולון_26,"DICHLOROETHANE1,2",2,2,False,,,,,,,none,NONE,,False,4
+נת_חולון_26,"DICHLOROETHYLENE 1,1",3,3,True,,,,,,,none,NONE,,False,10
+נת_חולון_26,ETHYL BENZENE,2,2,False,,,,,,,none,NONE,,False,300
+נת_חולון_26,LEAD AS PB,2,2,False,,,,,,,none,NONE,,False,10
+נת_חולון_26,MERCURY AS HG,2,2,False,,,,,,,none,NONE,,False,1
+נת_חולון_26,NICKEL AS NI,2,2,True,,,,,,,none,NONE,,False,20
+נת_חולון_26,TETRACHLORO ETHYLENE,3,3,True,,,,,,,none,NONE,,False,10
+נת_חולון_26,TOLUENE,3,3,True,,,,,,,none,NONE,,False,700
+נת_חולון_26,"TRANS-1,2 DICHLOROETHYLENE",2,2,False,,,,,,,none,NONE,,False,50
+נת_חולון_26,TRICHLORO ETHYLENE,3,3,True,,,,,,,none,NONE,,True,7.5
+נת_חולון_26,VINYL CHLORIDE,2,2,False,,,,,,,none,NONE,,False,0.5
+נת_חולון_26,XYLENE,3,3,True,,,,,,,none,NONE,,False,500
+נת_חולון_5, MTBE,8,1,True,,,1.30931,0.19043,0,0.707107,full_record,STABLE,No significant trend (p=0.190); Mann-Kendall Z=1.31 (full record — 5-year window insufficient),True,40
+נת_חולון_5,"1,2,4 TRIMETHYLBENZENE",5,1,False,,,,,,,none,NONE,,False,
+נת_חולון_5,"1,3,5 TRIMETHYLBENZENE",3,1,False,,,,,,,none,NONE,,False,
+נת_חולון_5,"1,4 DIOXANE",1,1,True,,,,,,,none,NONE,,True,3
+נת_חולון_5,ARSENIC AS AS,10,1,True,,,-2.5044,0.0122661,0,1.06854,full_record,DECREASING,Declining trend (p=0.012); Mann-Kendall Z=-2.50 (full record — 5-year window insufficient),True,10
+נת_חולון_5,BENZENE,9,1,True,,,0.289683,0.772059,0,0.562003,full_record,STABLE,No significant trend (p=0.772); Mann-Kendall Z=0.29 (full record — 5-year window insufficient),True,5
+נת_חולון_5,CADMIUM AS CD,1,1,False,,,,,,,none,NONE,,False,5
+נת_חולון_5,CARBON TETRACHLORIDE,9,1,True,,,-0.501307,0.616155,0,1.09402,full_record,STABLE,No significant trend (p=0.616); Mann-Kendall Z=-0.50 (full record — 5-year window insufficient),False,4
+נת_חולון_5,CHLOROFORM,19,1,True,,,0.210516,0.833265,0,0.0322712,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),False,80
+נת_חולון_5,CHROMIUM AS CR,10,1,True,,,0.894427,0.371093,0,0.377285,full_record,STABLE,No significant trend (p=0.371); Mann-Kendall Z=0.89 (full record — 5-year window insufficient),False,50
+נת_חולון_5,"CIS 1,2 DICHLOROETHYLENE",15,1,True,,,0.992176,0.321112,0,0.0481384,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),True,50
+נת_חולון_5,"DICHLOROETHANE1,2",15,1,True,,,1.51587,0.129551,0,0.336112,full_record,STABLE,No significant trend (p=0.130); Mann-Kendall Z=1.52 (full record — 5-year window insufficient),True,4
+נת_חולון_5,"DICHLOROETHYLENE 1,1",21,1,True,,,0.332166,0.739764,0,0.346395,full_record,STABLE,No significant trend (p=0.740); Mann-Kendall Z=0.33 (full record — 5-year window insufficient),True,10
+נת_חולון_5,ETHYL BENZENE,3,1,False,,,,,,,none,NONE,,False,300
+נת_חולון_5,LEAD AS PB,8,1,True,,,-0.249351,0.803089,0,0.524947,full_record,STABLE,No significant trend (p=0.803); Mann-Kendall Z=-0.25 (full record — 5-year window insufficient),False,10
+נת_חולון_5,NICKEL AS NI,10,1,True,,,0.987829,0.323236,0,0.695945,full_record,STABLE,No significant trend (p=0.323); Mann-Kendall Z=0.99 (full record — 5-year window insufficient),False,20
+נת_חולון_5,TETRACHLORO ETHYLENE,16,1,True,,,-0.406027,0.684723,0,0.508441,full_record,STABLE,No significant trend (p=0.685); Mann-Kendall Z=-0.41 (full record — 5-year window insufficient),True,10
+נת_חולון_5,TOLUENE,14,1,True,,,-1.5,0.133614,0,0.779004,full_record,STABLE,No significant trend (p=0.134); Mann-Kendall Z=-1.50 (full record — 5-year window insufficient),False,700
+נת_חולון_5,"TRANS-1,2 DICHLOROETHYLENE",5,1,False,,,,,,,none,NONE,,False,50
+נת_חולון_5,TRICHLORO ETHYLENE,21,1,True,,,1.05689,0.290561,0,0.300855,full_record,STABLE,No significant trend (p=0.291); Mann-Kendall Z=1.06 (full record — 5-year window insufficient),True,7.5
+נת_חולון_5,VINYL CHLORIDE,6,1,False,,,,,,,none,NONE,,False,0.5
+נת_חולון_5,XYLENE,8,1,False,,,,,,,none,NONE,,False,500
+נת_חולון_5,n-Butyl benzene,1,0,False,,,,,,,none,NONE,,False,
+נת_חולון_5,o-Xylene ,2,0,False,,,,,,,none,NONE,,False,
+נת_חולון_5,p-isopropyl toluene,1,0,False,,,,,,,none,NONE,,False,
+נת_חולון_5,p-xylene,1,0,False,,,,,,,none,NONE,,False,
+נת_חולון_7, MTBE,6,1,False,,,,,,,none,NONE,,False,40
+נת_חולון_7,"1,2,4 TRIMETHYLBENZENE",5,1,False,,,,,,,none,NONE,,False,
+נת_חולון_7,"1,3,5 TRIMETHYLBENZENE",3,1,False,,,,,,,none,NONE,,False,
+נת_חולון_7,"1,4 DIOXANE",1,1,True,,,,,,,none,NONE,,True,3
+נת_חולון_7,ARSENIC AS AS,10,1,True,,,-1.60997,0.107405,0,0.785514,full_record,STABLE,No significant trend (p=0.107); Mann-Kendall Z=-1.61 (full record — 5-year window insufficient),True,10
+נת_חולון_7,BENZENE,6,1,False,,,,,,,none,NONE,,False,5
+נת_חולון_7,CADMIUM AS CD,1,1,False,,,,,,,none,NONE,,False,5
+נת_חולון_7,CARBON TETRACHLORIDE,8,1,True,,,0,1,0,0.336011,full_record,STABLE,No significant trend (p=1.000); Mann-Kendall Z=0.00 (full record — 5-year window insufficient),False,4
+נת_חולון_7,CHLOROFORM,14,1,True,,,1.97082,0.0487449,0,0.788831,full_record,INCREASING,Rising trend (p=0.049); Mann-Kendall Z=1.97 (full record — 5-year window insufficient),True,80
+נת_חולון_7,CHROMIUM AS CR,10,1,True,,,0.178885,0.858028,0,0.418978,full_record,STABLE,No significant trend (p=0.858); Mann-Kendall Z=0.18 (full record — 5-year window insufficient),True,50
+נת_חולון_7,"CIS 1,2 DICHLOROETHYLENE",10,1,True,,,0,1,0,0.270951,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),True,50
+נת_חולון_7,"DICHLOROETHANE1,2",9,1,True,,,1.42408,0.154424,0,0.867922,full_record,STABLE,No significant trend (p=0.154); Mann-Kendall Z=1.42 (full record — 5-year window insufficient),False,4
+נת_חולון_7,"DICHLOROETHYLENE 1,1",15,1,True,,,-0.69282,0.488422,0,0.36219,full_record,STABLE,No significant trend (p=0.488); Mann-Kendall Z=-0.69 (full record — 5-year window insufficient),True,10
+נת_חולון_7,ETHYL BENZENE,3,1,False,,,,,,,none,NONE,,False,300
+נת_חולון_7,LEAD AS PB,8,1,True,,,0.509372,0.610492,0,0.593597,full_record,STABLE,No significant trend (p=0.610); Mann-Kendall Z=0.51 (full record — 5-year window insufficient),False,10
+נת_חולון_7,NICKEL AS NI,10,1,True,,,0.0898027,0.928444,0,0.199706,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),False,20
+נת_חולון_7,TETRACHLORO ETHYLENE,12,1,True,,,0.482281,0.629606,0,0.024352,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),True,10
+נת_חולון_7,TOLUENE,11,1,True,,,-1.40987,0.158578,0,0.18267,full_record,NONE,Insufficient signal for trend assessment (SNR below threshold),False,700
+נת_חולון_7,"TRANS-1,2 DICHLOROETHYLENE",5,1,False,,,,,,,none,NONE,,False,50
+נת_חולון_7,TRICHLORO ETHYLENE,15,1,True,,,0.890769,0.373053,0,0.664877,full_record,STABLE,No significant trend (p=0.373); Mann-Kendall Z=0.89 (full record — 5-year window insufficient),True,7.5
+נת_חולון_7,VINYL CHLORIDE,5,1,False,,,,,,,none,NONE,,False,0.5
+נת_חולון_7,XYLENE,6,1,False,,,,,,,none,NONE,,False,500
+נת_חולון_7,n-Butyl benzene,1,0,False,,,,,,,none,NONE,,False,
+נת_חולון_7,o-Xylene ,2,0,False,,,,,,,none,NONE,,False,
+נת_חולון_7,p-isopropyl toluene,1,0,False,,,,,,,none,NONE,,False,
+נת_חולון_7,p-xylene,1,0,False,,,,,,,none,NONE,,False,

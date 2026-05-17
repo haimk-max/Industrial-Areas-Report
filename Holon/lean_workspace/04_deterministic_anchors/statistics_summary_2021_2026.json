@@ -1,0 +1,1537 @@
+{
+  "metadata": {
+    "date_computed": "2026-05-11",
+    "cohort_definition": "All Holon boreholes with measurements 2021-2026; severity from latest reading per parameter",
+    "total_boreholes_in_classification": 85,
+    "total_boreholes_in_severity": 87,
+    "alert_boreholes": 0,
+    "classification_breakdown": {
+      "WATCH": 82,
+      "ELEVATED": 2,
+      "NONE": 1
+    },
+    "severity_bucket_distribution": {
+      "0": 1,
+      "4": 1,
+      "5": 1,
+      "6": 5,
+      "7": 5,
+      "8": 72
+    },
+    "data_sources": {
+      "classification": "Holon/lean_workspace/04_deterministic_anchors/borehole_classification_all.csv",
+      "severity_param_level": "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon_param_level.csv",
+      "measurements_alert_history": "Holon/lean_workspace/02_data_filtered/measurements_alert.csv"
+    }
+  },
+  "family_membership_counts": {
+    "FUEL": 80,
+    "CVOC": 27,
+    "METALS": 26
+  },
+  "by_family": {
+    "FUEL": {
+      "n_measurements": 414,
+      "n_boreholes_with_family": 83,
+      "n_distinct_parameters": 4,
+      "parameters_list": [
+        "Benzene",
+        "MTBE",
+        "Toluene",
+        "Xylene"
+      ],
+      "concentration_stats": {
+        "n": 414,
+        "mean": 292.59935990338164,
+        "std": 1284.6212164976046,
+        "median": 2.0,
+        "q25": 0.5,
+        "q75": 10.0,
+        "min": 0.0,
+        "max": 14600.0,
+        "skew": 6.902067192718687,
+        "kurtosis": 55.847483198543,
+        "shapiro_p": 6.639451368797794e-38,
+        "shapiro_log_p": 2.5206128866975013e-12
+      },
+      "pct_of_standard_stats": {
+        "n": 414,
+        "mean": 1125.1210628019323,
+        "std": 6948.908319266089,
+        "median": 1.4449999999999998,
+        "q25": 0.14,
+        "q75": 26.25,
+        "min": 0.0,
+        "max": 85000.0,
+        "skew": 9.067981487471698,
+        "kurtosis": 89.93301206880503,
+        "shapiro_p": 2.2524295644495167e-39,
+        "shapiro_log_p": 7.924466615336659e-08
+      },
+      "crossed_standard_count": 84,
+      "crossed_standard_pct": 20.29,
+      "bucket_distribution": {
+        "0": 66,
+        "1": 249,
+        "2": 9,
+        "3": 5,
+        "4": 59,
+        "5": 9,
+        "6": 5,
+        "7": 2,
+        "8": 10
+      },
+      "top_parameters_by_pct_std": [
+        {
+          "canonical_param": "Benzene",
+          "n": 165,
+          "median_pct": 6.67,
+          "max_pct": 85000.0,
+          "n_crossed": 41
+        },
+        {
+          "canonical_param": "MTBE",
+          "n": 83,
+          "median_pct": 25.0,
+          "max_pct": 36500.0,
+          "n_crossed": 30
+        },
+        {
+          "canonical_param": "Toluene",
+          "n": 83,
+          "median_pct": 0.43,
+          "max_pct": 1271.43,
+          "n_crossed": 6
+        },
+        {
+          "canonical_param": "Xylene",
+          "n": 83,
+          "median_pct": 0.6,
+          "max_pct": 968.0,
+          "n_crossed": 7
+        }
+      ]
+    },
+    "INDUSTRY": {
+      "n_measurements": 335,
+      "n_boreholes_with_family": 45,
+      "n_distinct_parameters": 10,
+      "parameters_list": [
+        "1,1-DCE",
+        "1,2-DCA",
+        "1,4-Dioxane",
+        "Carbon Tetrachloride",
+        "Chloroform",
+        "PCE",
+        "TCE",
+        "Vinyl Chloride",
+        "cis-1,2-DCE",
+        "trans-1,2-DCE"
+      ],
+      "concentration_stats": {
+        "n": 335,
+        "mean": 65.56748955223881,
+        "std": 365.5550668590554,
+        "median": 1.116,
+        "q25": 0.0,
+        "q75": 10.91,
+        "min": 0.0,
+        "max": 5149.508,
+        "skew": 10.489559886011172,
+        "kurtosis": 125.96406471102608,
+        "shapiro_p": 5.52219550621731e-36,
+        "shapiro_log_p": 1.4480805815361846e-08
+      },
+      "pct_of_standard_stats": {
+        "n": 335,
+        "mean": 928.9089850746269,
+        "std": 5161.371724831722,
+        "median": 14.8,
+        "q25": 0.0,
+        "q75": 109.1,
+        "min": 0.0,
+        "max": 68660.11,
+        "skew": 9.584776035939859,
+        "kurtosis": 104.46777393357272,
+        "shapiro_p": 6.26278040445774e-36,
+        "shapiro_log_p": 0.00013501611851985366
+      },
+      "crossed_standard_count": 87,
+      "crossed_standard_pct": 25.97,
+      "bucket_distribution": {
+        "0": 108,
+        "1": 109,
+        "2": 24,
+        "3": 4,
+        "4": 62,
+        "5": 14,
+        "6": 7,
+        "7": 2,
+        "8": 5
+      },
+      "top_parameters_by_pct_std": [
+        {
+          "canonical_param": "TCE",
+          "n": 42,
+          "median_pct": 1102.76,
+          "max_pct": 68660.11,
+          "n_crossed": 30
+        },
+        {
+          "canonical_param": "1,4-Dioxane",
+          "n": 22,
+          "median_pct": 38.335,
+          "max_pct": 34543.33,
+          "n_crossed": 9
+        },
+        {
+          "canonical_param": "PCE",
+          "n": 40,
+          "median_pct": 32.39,
+          "max_pct": 4975.1,
+          "n_crossed": 11
+        },
+        {
+          "canonical_param": "Vinyl Chloride",
+          "n": 39,
+          "median_pct": 0.0,
+          "max_pct": 4200.0,
+          "n_crossed": 12
+        },
+        {
+          "canonical_param": "1,1-DCE",
+          "n": 40,
+          "median_pct": 46.705,
+          "max_pct": 2719.5,
+          "n_crossed": 18
+        },
+        {
+          "canonical_param": "cis-1,2-DCE",
+          "n": 39,
+          "median_pct": 6.86,
+          "max_pct": 406.0,
+          "n_crossed": 5
+        },
+        {
+          "canonical_param": "Chloroform",
+          "n": 30,
+          "median_pct": 1.655,
+          "max_pct": 359.12,
+          "n_crossed": 2
+        },
+        {
+          "canonical_param": "1,2-DCA",
+          "n": 28,
+          "median_pct": 12.5,
+          "max_pct": 91.55,
+          "n_crossed": 0
+        },
+        {
+          "canonical_param": "Carbon Tetrachloride",
+          "n": 27,
+          "median_pct": 0.0,
+          "max_pct": 25.0,
+          "n_crossed": 0
+        },
+        {
+          "canonical_param": "trans-1,2-DCE",
+          "n": 28,
+          "median_pct": 1.13,
+          "max_pct": 2.71,
+          "n_crossed": 0
+        }
+      ]
+    },
+    "METALS": {
+      "n_measurements": 143,
+      "n_boreholes_with_family": 27,
+      "n_distinct_parameters": 6,
+      "parameters_list": [
+        "Arsenic",
+        "Cadmium",
+        "Chromium",
+        "Lead",
+        "Mercury",
+        "Nickel"
+      ],
+      "concentration_stats": {
+        "n": 143,
+        "mean": 32.88586713286713,
+        "std": 315.8443982777149,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "min": 0.0,
+        "max": 3770.0,
+        "skew": 11.708032303989151,
+        "kurtosis": 136.0007777864392,
+        "shapiro_p": 5.162538996283976e-26,
+        "shapiro_log_p": 0.05174217997841938
+      },
+      "pct_of_standard_stats": {
+        "n": 143,
+        "mean": 73.65734265734265,
+        "std": 637.8424425213655,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "min": 0.0,
+        "max": 7540.0,
+        "skew": 11.373285333357007,
+        "kurtosis": 130.2186086859343,
+        "shapiro_p": 7.179641490636877e-26,
+        "shapiro_log_p": 0.05104324269343154
+      },
+      "crossed_standard_count": 8,
+      "crossed_standard_pct": 5.59,
+      "bucket_distribution": {
+        "0": 112,
+        "1": 11,
+        "2": 7,
+        "3": 5,
+        "4": 7,
+        "7": 1
+      },
+      "top_parameters_by_pct_std": [
+        {
+          "canonical_param": "Chromium",
+          "n": 27,
+          "median_pct": 14.13,
+          "max_pct": 7540.0,
+          "n_crossed": 6
+        },
+        {
+          "canonical_param": "Nickel",
+          "n": 27,
+          "median_pct": 0.0,
+          "max_pct": 1201.9,
+          "n_crossed": 2
+        },
+        {
+          "canonical_param": "Cadmium",
+          "n": 27,
+          "median_pct": 0.0,
+          "max_pct": 50.0,
+          "n_crossed": 0
+        },
+        {
+          "canonical_param": "Arsenic",
+          "n": 27,
+          "median_pct": 0.0,
+          "max_pct": 9.0,
+          "n_crossed": 0
+        },
+        {
+          "canonical_param": "Lead",
+          "n": 27,
+          "median_pct": 0.0,
+          "max_pct": 0.0,
+          "n_crossed": 0
+        },
+        {
+          "canonical_param": "Mercury",
+          "n": 8,
+          "median_pct": 0.0,
+          "max_pct": 0.0,
+          "n_crossed": 0
+        }
+      ]
+    },
+    "PFAS": {
+      "n_measurements": 23,
+      "n_boreholes_with_family": 4,
+      "n_distinct_parameters": 1,
+      "parameters_list": [
+        "PFAS-other"
+      ],
+      "concentration_stats": {
+        "n": 23,
+        "mean": 0.0,
+        "std": 0.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "skew": NaN,
+        "kurtosis": NaN,
+        "shapiro_p": 1.0
+      },
+      "pct_of_standard_stats": {
+        "n": 23,
+        "mean": 0.0,
+        "std": 0.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "skew": NaN,
+        "kurtosis": NaN,
+        "shapiro_p": 1.0
+      },
+      "crossed_standard_count": 0,
+      "crossed_standard_pct": 0.0,
+      "bucket_distribution": {
+        "0": 23
+      },
+      "top_parameters_by_pct_std": [
+        {
+          "canonical_param": "PFAS-other",
+          "n": 23,
+          "median_pct": 0.0,
+          "max_pct": 0.0,
+          "n_crossed": 0
+        }
+      ]
+    }
+  },
+  "cohort_comparison_alert_vs_nonalert": {
+    "_note": "is_alert column from classification is all False; using \"has_history_pre2021\" as a proxy (boreholes appearing in measurements_alert.csv with 2018+ data). Also comparing severity ≥7 vs <7.",
+    "historical_25_with_pre2021_data": {
+      "n": 24,
+      "max_pct_standard_stats": {
+        "n": 24,
+        "mean": 38858.854166666664,
+        "std": 53394.23725153329,
+        "median": 15805.25,
+        "q25": 7085.85,
+        "q75": 46075.0,
+        "min": 149.0,
+        "max": 228000.0,
+        "skew": 2.1963039337640806,
+        "kurtosis": 4.795397796314772,
+        "shapiro_p": 1.5283289304591276e-05,
+        "shapiro_log_p": 0.14742592840787516
+      },
+      "crossed_count_stats": {
+        "n": 24,
+        "mean": 12.416666666666666,
+        "std": 10.197683738143109,
+        "median": 8.0,
+        "q25": 5.5,
+        "q75": 16.25,
+        "min": 2.0,
+        "max": 39.0,
+        "skew": 1.1119403740357352,
+        "kurtosis": 0.2970207005493508,
+        "shapiro_p": 0.0036524726714048657,
+        "shapiro_log_p": 0.538902367042178
+      }
+    },
+    "new_60_recent_only": {
+      "n": 61,
+      "max_pct_standard_stats": {
+        "n": 61,
+        "mean": 9197.59344262295,
+        "std": 12923.223710912443,
+        "median": 4528.6,
+        "q25": 1590.0,
+        "q75": 10750.0,
+        "min": 0.0,
+        "max": 56100.0,
+        "skew": 2.293168662230385,
+        "kurtosis": 4.782266959270932,
+        "shapiro_p": 2.331416343626199e-10,
+        "shapiro_log_p": 0.014314874379179157
+      },
+      "crossed_count_stats": {
+        "n": 61,
+        "mean": 8.721311475409836,
+        "std": 6.646129569258045,
+        "median": 7.0,
+        "q25": 4.0,
+        "q75": 13.0,
+        "min": 0.0,
+        "max": 25.0,
+        "skew": 0.7799017246031863,
+        "kurtosis": -0.35792976727948567,
+        "shapiro_p": 0.0005533442946339618,
+        "shapiro_log_p": 0.019837132664630528
+      }
+    },
+    "mann_whitney_historical_vs_new_max_pct": {
+      "u_stat": 1077.0,
+      "p_value": 0.0007701938125818981,
+      "effect_size_r": 0.3653259238767631,
+      "effect_size_interpretation": "medium"
+    },
+    "mann_whitney_historical_vs_new_crossed": {
+      "u_stat": 875.5,
+      "p_value": 0.1619639563814126,
+      "effect_size_r": 0.15195440601830582,
+      "effect_size_interpretation": "small"
+    },
+    "severity_high_vs_low": {
+      "severity_ge_7": {
+        "n": 77,
+        "max_pct_standard_stats": {
+          "n": 77,
+          "mean": 19381.850649350654,
+          "std": 34040.8293149125,
+          "median": 6687.0,
+          "q25": 3280.0,
+          "q75": 19800.0,
+          "min": 149.0,
+          "max": 228000.0,
+          "skew": 3.8669775918709255,
+          "kurtosis": 18.269258978687485,
+          "shapiro_p": 4.693642884084394e-14,
+          "shapiro_log_p": 0.6825102716806537
+        }
+      },
+      "severity_lt_7": {
+        "n": 8,
+        "max_pct_standard_stats": {
+          "n": 8,
+          "mean": 157.89999999999998,
+          "std": 80.85369502997374,
+          "median": 164.05,
+          "q25": 129.77499999999998,
+          "q75": 219.7,
+          "min": 0.0,
+          "max": 250.0,
+          "skew": -0.8075449487387187,
+          "kurtosis": -0.16519897732253197,
+          "shapiro_p": 0.518149964803784,
+          "shapiro_log_p": 0.6963644907229893
+        }
+      },
+      "mann_whitney": {
+        "u_stat": 608.0,
+        "p_value": 6.55434199255996e-06,
+        "effect_size_r": 0.48973690600796976,
+        "effect_size_interpretation": "medium"
+      }
+    }
+  },
+  "temporal_comparison_pre2021_vs_recent": {
+    "note": "Compares pre-2021 vs 2021-2026. Based on 25 ALERT boreholes (only cohort with full history).",
+    "overall_counts": {
+      "pre_2021_measurements": 1845,
+      "recent_measurements": 827
+    },
+    "date_range_pre_2021": "2010-02-25 to 2020-12-31",
+    "date_range_recent": "2021-01-21 to 2026-02-10",
+    "by_parameter": {
+      " MTBE": {
+        "pre_2021": {
+          "n": 146,
+          "median_pct": 50.32,
+          "max_pct": 225157.5
+        },
+        "recent_2021_2026": {
+          "n": 93,
+          "median_pct": 148.75,
+          "max_pct": 115000.0
+        },
+        "mann_whitney": {
+          "u_stat": 5892.5,
+          "p_value": 0.08377333140513744,
+          "effect_size_r": 0.11128033987618932,
+          "effect_size_interpretation": "small"
+        },
+        "change_direction": "rising"
+      },
+      "ARSENIC AS AS": {
+        "pre_2021": {
+          "n": 44,
+          "median_pct": 10.45,
+          "max_pct": 5527.4
+        },
+        "recent_2021_2026": {
+          "n": 16,
+          "median_pct": 0.0,
+          "max_pct": 9.0
+        },
+        "mann_whitney": {
+          "u_stat": 558.5,
+          "p_value": 0.00018461881197705683,
+          "effect_size_r": 0.44563963181656496,
+          "effect_size_interpretation": "medium"
+        },
+        "change_direction": "falling"
+      },
+      "BENZENE": {
+        "pre_2021": {
+          "n": 149,
+          "median_pct": 51.6,
+          "max_pct": 128740.0
+        },
+        "recent_2021_2026": {
+          "n": 91,
+          "median_pct": 92.4,
+          "max_pct": 228000.0
+        },
+        "mann_whitney": {
+          "u_stat": 5372.5,
+          "p_value": 0.006546145310428147,
+          "effect_size_r": 0.1740430750512643,
+          "effect_size_interpretation": "small"
+        },
+        "change_direction": "rising"
+      },
+      "CADMIUM AS CD": {
+        "pre_2021": {
+          "n": 18,
+          "median_pct": 0.0,
+          "max_pct": 0.0
+        },
+        "recent_2021_2026": {
+          "n": 16,
+          "median_pct": 0.0,
+          "max_pct": 0.0
+        },
+        "mann_whitney": {
+          "u_stat": 144.0,
+          "p_value": 1.0,
+          "effect_size_r": 0.0,
+          "effect_size_interpretation": "small"
+        },
+        "change_direction": "stable"
+      },
+      "CARBON TETRACHLORIDE": {
+        "pre_2021": {
+          "n": 65,
+          "median_pct": 0.0,
+          "max_pct": 70.0
+        },
+        "recent_2021_2026": {
+          "n": 33,
+          "median_pct": 5.0,
+          "max_pct": 25.0
+        },
+        "mann_whitney": {
+          "u_stat": 779.0,
+          "p_value": 0.01707081228952242,
+          "effect_size_r": 0.222871453391007,
+          "effect_size_interpretation": "small"
+        },
+        "change_direction": "rising"
+      },
+      "CHLOROFORM": {
+        "pre_2021": {
+          "n": 82,
+          "median_pct": 7.4399999999999995,
+          "max_pct": 312.82
+        },
+        "recent_2021_2026": {
+          "n": 21,
+          "median_pct": 9.03,
+          "max_pct": 359.12
+        },
+        "mann_whitney": {
+          "u_stat": 678.5,
+          "p_value": 0.1352185016228984,
+          "effect_size_r": 0.1471979074821692,
+          "effect_size_interpretation": "small"
+        },
+        "change_direction": "rising"
+      },
+      "CHROMIUM AS CR": {
+        "pre_2021": {
+          "n": 60,
+          "median_pct": 27.8,
+          "max_pct": 665.33
+        },
+        "recent_2021_2026": {
+          "n": 17,
+          "median_pct": 62.83,
+          "max_pct": 8071.8
+        },
+        "mann_whitney": {
+          "u_stat": 452.0,
+          "p_value": 0.4794387384996065,
+          "effect_size_r": 0.08117566718192169,
+          "effect_size_interpretation": "small"
+        },
+        "change_direction": "rising"
+      },
+      "CIS 1,2 DICHLOROETHYLENE": {
+        "pre_2021": {
+          "n": 80,
+          "median_pct": 14.280000000000001,
+          "max_pct": 474.72
+        },
+        "recent_2021_2026": {
+          "n": 21,
+          "median_pct": 10.7,
+          "max_pct": 354.6
+        },
+        "mann_whitney": {
+          "u_stat": 951.5,
+          "p_value": 0.3515739557429457,
+          "effect_size_r": 0.09284319487513858,
+          "effect_size_interpretation": "small"
+        },
+        "change_direction": "falling"
+      },
+      "DICHLOROETHANE1,2": {
+        "pre_2021": {
+          "n": 67,
+          "median_pct": 0.0,
+          "max_pct": 31400.0
+        },
+        "recent_2021_2026": {
+          "n": 20,
+          "median_pct": 25.0,
+          "max_pct": 213.28
+        },
+        "mann_whitney": {
+          "u_stat": 491.5,
+          "p_value": 0.05857540803234683,
+          "effect_size_r": 0.19305252305387002,
+          "effect_size_interpretation": "small"
+        },
+        "change_direction": "rising"
+      },
+      "DICHLOROETHYLENE 1,1": {
+        "pre_2021": {
+          "n": 103,
+          "median_pct": 410.0,
+          "max_pct": 29030.0
+        },
+        "recent_2021_2026": {
+          "n": 34,
+          "median_pct": 18.67,
+          "max_pct": 10246.34
+        },
+        "mann_whitney": {
+          "u_stat": 2296.5,
+          "p_value": 0.006604393529212955,
+          "effect_size_r": 0.2322348971666847,
+          "effect_size_interpretation": "small"
+        },
+        "change_direction": "falling"
+      },
+      "ETHYL BENZENE": {
+        "pre_2021": {
+          "n": 128,
+          "median_pct": 0.165,
+          "max_pct": 1134.67
+        },
+        "recent_2021_2026": {
+          "n": 91,
+          "median_pct": 1.0,
+          "max_pct": 1183.33
+        },
+        "mann_whitney": {
+          "u_stat": 4709.5,
+          "p_value": 0.013626073931617626,
+          "effect_size_r": 0.16297148280746168,
+          "effect_size_interpretation": "small"
+        },
+        "change_direction": "rising"
+      },
+      "LEAD AS PB": {
+        "pre_2021": {
+          "n": 50,
+          "median_pct": 0.0,
+          "max_pct": 90.0
+        },
+        "recent_2021_2026": {
+          "n": 16,
+          "median_pct": 0.0,
+          "max_pct": 0.0
+        },
+        "mann_whitney": {
+          "u_stat": 536.0,
+          "p_value": 0.008349884360917425,
+          "effect_size_r": 0.25048121935247747,
+          "effect_size_interpretation": "small"
+        },
+        "change_direction": "stable"
+      },
+      "NICKEL AS NI": {
+        "pre_2021": {
+          "n": 49,
+          "median_pct": 6.4,
+          "max_pct": 100.0
+        },
+        "recent_2021_2026": {
+          "n": 16,
+          "median_pct": 0.0,
+          "max_pct": 50.0
+        },
+        "mann_whitney": {
+          "u_stat": 568.0,
+          "p_value": 0.004400558248199461,
+          "effect_size_r": 0.3324425565044226,
+          "effect_size_interpretation": "medium"
+        },
+        "change_direction": "falling"
+      },
+      "TETRACHLORO ETHYLENE": {
+        "pre_2021": {
+          "n": 97,
+          "median_pct": 81.0,
+          "max_pct": 5332.0
+        },
+        "recent_2021_2026": {
+          "n": 21,
+          "median_pct": 175.54,
+          "max_pct": 4975.1
+        },
+        "mann_whitney": {
+          "u_stat": 852.5,
+          "p_value": 0.24299840633581937,
+          "effect_size_r": 0.10751986544480822,
+          "effect_size_interpretation": "small"
+        },
+        "change_direction": "rising"
+      },
+      "TOLUENE": {
+        "pre_2021": {
+          "n": 160,
+          "median_pct": 0.49,
+          "max_pct": 1902.86
+        },
+        "recent_2021_2026": {
+          "n": 92,
+          "median_pct": 0.71,
+          "max_pct": 4300.0
+        },
+        "mann_whitney": {
+          "u_stat": 6328.0,
+          "p_value": 0.061274337547007805,
+          "effect_size_r": 0.11669597699604976,
+          "effect_size_interpretation": "small"
+        },
+        "change_direction": "rising"
+      },
+      "TRANS-1,2 DICHLOROETHYLENE": {
+        "pre_2021": {
+          "n": 54,
+          "median_pct": 0.0,
+          "max_pct": 4.0
+        },
+        "recent_2021_2026": {
+          "n": 20,
+          "median_pct": 2.0,
+          "max_pct": 2.0
+        },
+        "mann_whitney": {
+          "u_stat": 187.5,
+          "p_value": 9.835008013452375e-09,
+          "effect_size_r": 0.49875972297416044,
+          "effect_size_interpretation": "medium"
+        },
+        "change_direction": "rising"
+      },
+      "TRICHLORO ETHYLENE": {
+        "pre_2021": {
+          "n": 117,
+          "median_pct": 1213.33,
+          "max_pct": 371466.67
+        },
+        "recent_2021_2026": {
+          "n": 38,
+          "median_pct": 923.9000000000001,
+          "max_pct": 68660.11
+        },
+        "mann_whitney": {
+          "u_stat": 2527.0,
+          "p_value": 0.20678361511988141,
+          "effect_size_r": 0.10156669699573144,
+          "effect_size_interpretation": "small"
+        },
+        "change_direction": "falling"
+      },
+      "VINYL CHLORIDE": {
+        "pre_2021": {
+          "n": 66,
+          "median_pct": 0.0,
+          "max_pct": 5000.0
+        },
+        "recent_2021_2026": {
+          "n": 20,
+          "median_pct": 0.0,
+          "max_pct": 2767.0
+        },
+        "mann_whitney": {
+          "u_stat": 706.0,
+          "p_value": 0.4554921869973496,
+          "effect_size_r": 0.050705216006651226,
+          "effect_size_interpretation": "small"
+        },
+        "change_direction": "stable"
+      },
+      "XYLENE": {
+        "pre_2021": {
+          "n": 149,
+          "median_pct": 0.4,
+          "max_pct": 2281.6
+        },
+        "recent_2021_2026": {
+          "n": 94,
+          "median_pct": 1.0,
+          "max_pct": 4480.0
+        },
+        "mann_whitney": {
+          "u_stat": 5384.5,
+          "p_value": 0.0019984412100029964,
+          "effect_size_r": 0.19455760693450502,
+          "effect_size_interpretation": "small"
+        },
+        "change_direction": "rising"
+      }
+    }
+  },
+  "spatial_patterns": {
+    "top_tail_severity_ge_7": {
+      "n": 77,
+      "boreholes": [
+        {
+          "borehole_id": 15613103,
+          "borehole_name": "נד פז סיירים 2",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 14860.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15613104,
+          "borehole_name": "נד פז סיירים 4",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 24200.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15613105,
+          "borehole_name": "נד פז סיירים 3",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 5580.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15613107,
+          "borehole_name": "נת ארן  מטל חולון",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 387.8,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15613108,
+          "borehole_name": "נת ארן מטל חולון 1",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 1138.9,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15613205,
+          "borehole_name": "נד פז סיירים 1",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 7110.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15713001,
+          "borehole_name": "מק חולון 14",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 149.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15713104,
+          "borehole_name": "נת חולון 12",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 283.1,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15713105,
+          "borehole_name": "נת חולון 16",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 4506.6,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15713208,
+          "borehole_name": "נד המרכבה ק3",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 1200.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15713209,
+          "borehole_name": "נד סונול משמר השבעה 3",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 15800.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15713210,
+          "borehole_name": "נד סונול משמר השבעה 4",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 2090.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15713211,
+          "borehole_name": "נד סונול משמר השבעה 5",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 1590.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813003,
+          "borehole_name": "נת חולון 2",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 16750.5,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813004,
+          "borehole_name": "נת חולון 7",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 7587.8,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813005,
+          "borehole_name": "נת חולון 5",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 8460.2,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813102,
+          "borehole_name": "נד סונול המלאכה ק-1",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 4191.6,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813104,
+          "borehole_name": "נד סונול המלאכה מ-1",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 37188.1,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813114,
+          "borehole_name": "נת חולון 3",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 4528.6,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813115,
+          "borehole_name": "נת חולון 1",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 20000.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813116,
+          "borehole_name": "נת חולון 11",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 68660.1,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813118,
+          "borehole_name": "נד דלק מרכבות האש 1",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 47666.7,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813119,
+          "borehole_name": "נד דלק מרכבות האש 2",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 54000.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813120,
+          "borehole_name": "נד דלק מרכבות האש 3",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 16400.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813126,
+          "borehole_name": "נד דלק הצבי 1",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 20000.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813127,
+          "borehole_name": "נד טן חולון 1",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 1001.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813128,
+          "borehole_name": "נד דלק מרכבות האש 4",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 42666.7,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813129,
+          "borehole_name": "נד דלק מרכבות האש 5",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 12000.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813130,
+          "borehole_name": "נד דלק מרכבות האש 6",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 4020.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813133,
+          "borehole_name": "נד אגד אזור 1",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 228000.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813134,
+          "borehole_name": "נד אגד אזור 2",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 1890.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813135,
+          "borehole_name": "נד אגד אזור 3",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 10750.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813136,
+          "borehole_name": "נד אגד אזור 4",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 108800.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813137,
+          "borehole_name": "נד אגד אזור 5",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 4600.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813138,
+          "borehole_name": "נד אגד אזור 6",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 41500.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813141,
+          "borehole_name": "נד דלק הצבי 2",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 5750.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813142,
+          "borehole_name": "נד אגד אזור 7",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 132000.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813143,
+          "borehole_name": "נד אגד אזור 8",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 5150.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813144,
+          "borehole_name": "נד אגד אזור 9",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 13500.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813145,
+          "borehole_name": "נד אגד אזור 10",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 23500.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813146,
+          "borehole_name": "נד אגד אזור 13",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 7060.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813147,
+          "borehole_name": "נד אגד אזור 12",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 34250.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813148,
+          "borehole_name": "נד אגד אזור 14",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 6300.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813149,
+          "borehole_name": "נד אגד אזור 13",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 5025.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813150,
+          "borehole_name": "נד אגד אזור 9",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 2900.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813151,
+          "borehole_name": "נד אגד אזור 11",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 19800.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813152,
+          "borehole_name": "נד אגד איזור 7",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 71000.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813153,
+          "borehole_name": "נד אגד אזור 10",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 1382.5,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813156,
+          "borehole_name": "נת חולון 26",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 8071.8,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813157,
+          "borehole_name": "נת חולון 23",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 1295.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813158,
+          "borehole_name": "נת חולון 24",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 1958.7,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813159,
+          "borehole_name": "נת חולון 25",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 3493.3,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813160,
+          "borehole_name": "נת חולון 21",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 2342.4,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813161,
+          "borehole_name": "נת חולון 22",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 8114.7,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813162,
+          "borehole_name": "נד מרכבות האש 7",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 13800.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813163,
+          "borehole_name": "נד מרכבות האש 8",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 31750.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813164,
+          "borehole_name": "נד מרכבות האש 9",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 56100.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813165,
+          "borehole_name": "נד אגד אזור N1",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 6687.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813166,
+          "borehole_name": "נד אגד אזור N2",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 4550.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813167,
+          "borehole_name": "נד אגד אזור N3",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 12580.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813168,
+          "borehole_name": "נד אגד אזור N4",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 6220.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813170,
+          "borehole_name": "נד אגד אזור 15",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 59800.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813172,
+          "borehole_name": "נד אגד אזור 18",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 39200.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813203,
+          "borehole_name": "נד סונול משמר השבעה 2",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 4200.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15913001,
+          "borehole_name": "פ מקוה ישראל רוטשילד",
+          "severity_bucket": 8,
+          "families": NaN,
+          "max_pct_standard": 208.1,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15913004,
+          "borehole_name": "נד פז צבר 1",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 14860.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15913007,
+          "borehole_name": "נד פז צבר 2",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 3280.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15913011,
+          "borehole_name": "נת חולון 14",
+          "severity_bucket": 8,
+          "families": "CVOC,FUEL,METALS",
+          "max_pct_standard": 3729.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15913012,
+          "borehole_name": "נד פז צבר 6",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 6380.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15913014,
+          "borehole_name": "נד דלק מובילי גוש דן 2",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 2400.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15913015,
+          "borehole_name": "נד דן חולון 1",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 4300.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15913016,
+          "borehole_name": "נד דן חולון 2",
+          "severity_bucket": 8,
+          "families": "FUEL",
+          "max_pct_standard": 6480.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813154,
+          "borehole_name": "נת חווה חקלאית א",
+          "severity_bucket": 7,
+          "families": NaN,
+          "max_pct_standard": 1293.3,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813169,
+          "borehole_name": "נד אגד אזור 16",
+          "severity_bucket": 7,
+          "families": "FUEL",
+          "max_pct_standard": 9375.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813171,
+          "borehole_name": "נד אגד אזור 17",
+          "severity_bucket": 7,
+          "families": "FUEL",
+          "max_pct_standard": 2010.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15813202,
+          "borehole_name": "נד סונול משמר השבעה 1",
+          "severity_bucket": 7,
+          "families": "FUEL",
+          "max_pct_standard": 3000.0,
+          "classification": "WATCH"
+        },
+        {
+          "borehole_id": 15913010,
+          "borehole_name": "נד פז צבר 5",
+          "severity_bucket": 7,
+          "families": "FUEL",
+          "max_pct_standard": 7750.0,
+          "classification": "WATCH"
+        }
+      ]
+    },
+    "bounding_box_itm": {
+      "east_min": 180.192,
+      "east_max": 182.372,
+      "north_min": 656.455,
+      "north_max": 659.74,
+      "east_span_km": 2.18,
+      "north_span_km": 3.28
+    },
+    "centroids_per_family": {
+      "FUEL": {
+        "n_boreholes": 80,
+        "east_mean_km": 181.611,
+        "north_mean_km": 658.219,
+        "east_std_km": 0.493,
+        "north_std_km": 0.7,
+        "severity_median": 8.0
+      },
+      "CVOC": {
+        "n_boreholes": 27,
+        "east_mean_km": 181.327,
+        "north_mean_km": 658.029,
+        "east_std_km": 0.447,
+        "north_std_km": 0.755,
+        "severity_median": 8.0
+      },
+      "METALS": {
+        "n_boreholes": 26,
+        "east_mean_km": 181.302,
+        "north_mean_km": 658.069,
+        "east_std_km": 0.437,
+        "north_std_km": 0.741,
+        "severity_median": 8.0
+      }
+    }
+  }
+}

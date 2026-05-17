@@ -1,0 +1,1522 @@
+borehole,name_he,family,param_code,param_name,latest_date,latest_concentration,unit,drinking_water_standard,pct_of_standard
+מק_חולון_5,מק חולון 5,METALS,ARSENIC AS AS,ARSENIC AS AS,2011-06-20,0.0,microgr/L,10.0,0.0
+מק_חולון_5,מק חולון 5,FUEL,BENZENE,BENZENE,2010-06-15,0.0,microgr/L,5.0,0.0
+מק_חולון_5,מק חולון 5,METALS,CADMIUM AS CD,CADMIUM AS CD,2011-06-20,0.0,microgr/L,5.0,0.0
+מק_חולון_5,מק חולון 5,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2010-06-15,0.0,microgr/L,4.0,0.0
+מק_חולון_5,מק חולון 5,INDUSTRY,CHLOROFORM,CHLOROFORM,2010-06-15,0.0,microgr/L,80.0,0.0
+מק_חולון_5,מק חולון 5,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2011-06-20,3.0,microgr/L,50.0,6.0
+מק_חולון_5,מק חולון 5,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2010-06-15,0.0,microgr/L,50.0,0.0
+מק_חולון_5,מק חולון 5,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2010-06-15,0.0,microgr/L,4.0,0.0
+מק_חולון_5,מק חולון 5,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2010-06-15,1.4,microgr/L,10.0,14.0
+מק_חולון_5,מק חולון 5,FUEL,ETHYL BENZENE,ETHYL BENZENE,2010-06-15,0.0,microgr/L,300.0,0.0
+מק_חולון_5,מק חולון 5,METALS,LEAD AS PB,LEAD AS PB,2011-06-20,0.0,microgr/L,10.0,0.0
+מק_חולון_5,מק חולון 5,FUEL, MTBE,MTBE,2010-06-15,0.0,microgr/L,40.0,0.0
+מק_חולון_5,מק חולון 5,METALS,NICKEL AS NI,NICKEL AS NI,2011-06-20,0.0,microgr/L,20.0,0.0
+מק_חולון_5,מק חולון 5,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2010-06-15,0.2,microgr/L,10.0,2.0
+מק_חולון_5,מק חולון 5,FUEL,TOLUENE,TOLUENE,2010-06-15,0.0,microgr/L,700.0,0.0
+מק_חולון_5,מק חולון 5,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2010-06-15,0.0,microgr/L,50.0,0.0
+מק_חולון_5,מק חולון 5,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2010-06-15,0.0,microgr/L,7.5,0.0
+מק_חולון_5,מק חולון 5,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2010-06-15,0.0,microgr/L,0.5,0.0
+מק_חולון_5,מק חולון 5,FUEL,XYLENE,XYLENE,2010-06-15,0.0,microgr/L,500.0,0.0
+מק_חולון_5,מק חולון 5,METALS,MERCURY AS HG,MERCURY AS HG,2011-06-20,0.0,microgr/L,1.0,0.0
+נד_פז_סיירים_2,נד פז סיירים 2,FUEL,BENZENE,BENZENE,2025-05-25,7.0,microgr/L,5.0,140.0
+נד_פז_סיירים_2,נד פז סיירים 2,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-05-25,52.0,microgr/L,300.0,17.33
+נד_פז_סיירים_2,נד פז סיירים 2,FUEL, MTBE,MTBE,2025-05-25,12.0,microgr/L,40.0,30.0
+נד_פז_סיירים_2,נד פז סיירים 2,FUEL,TOLUENE,TOLUENE,2025-05-25,6.0,microgr/L,700.0,0.86
+נד_פז_סיירים_2,נד פז סיירים 2,FUEL,XYLENE,XYLENE,2025-05-25,0.73,microgr/L,500.0,0.15
+נד_פז_סיירים_4,נד פז סיירים 4,FUEL,BENZENE,BENZENE,2024-06-17,5.0,microgr/L,5.0,100.0
+נד_פז_סיירים_4,נד פז סיירים 4,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-06-17,83.0,microgr/L,300.0,27.67
+נד_פז_סיירים_4,נד פז סיירים 4,FUEL, MTBE,MTBE,2024-06-17,5.0,microgr/L,40.0,12.5
+נד_פז_סיירים_4,נד פז סיירים 4,FUEL,TOLUENE,TOLUENE,2024-06-17,5.0,microgr/L,700.0,0.71
+נד_פז_סיירים_4,נד פז סיירים 4,FUEL,XYLENE,XYLENE,2024-06-17,416.0,microgr/L,500.0,83.2
+נד_פז_סיירים_4,נד פז סיירים 4,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2021-04-20,0.0,microgr/L,,
+נד_פז_סיירים_4,נד פז סיירים 4,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2021-04-20,0.0,microgr/L,,
+נד_פז_סיירים_4,נד פז סיירים 4,METALS,ARSENIC AS AS,ARSENIC AS AS,2021-04-20,0.0,microgr/L,10.0,0.0
+נד_פז_סיירים_4,נד פז סיירים 4,METALS,CADMIUM AS CD,CADMIUM AS CD,2021-04-20,0.0,microgr/L,5.0,0.0
+נד_פז_סיירים_4,נד פז סיירים 4,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2021-04-20,0.0,microgr/L,4.0,0.0
+נד_פז_סיירים_4,נד פז סיירים 4,INDUSTRY,CHLOROFORM,CHLOROFORM,2021-04-20,0.0,microgr/L,80.0,0.0
+נד_פז_סיירים_4,נד פז סיירים 4,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2021-04-20,2.5,microgr/L,50.0,5.0
+נד_פז_סיירים_4,נד פז סיירים 4,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2021-04-20,0.0,microgr/L,50.0,0.0
+נד_פז_סיירים_4,נד פז סיירים 4,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2021-04-20,0.0,microgr/L,4.0,0.0
+נד_פז_סיירים_4,נד פז סיירים 4,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2021-04-20,0.0,microgr/L,10.0,0.0
+נד_פז_סיירים_4,נד פז סיירים 4,METALS,LEAD AS PB,LEAD AS PB,2021-04-20,0.0,microgr/L,10.0,0.0
+נד_פז_סיירים_4,נד פז סיירים 4,METALS,NICKEL AS NI,NICKEL AS NI,2021-04-20,240.38,microgr/L,20.0,1201.9
+נד_פז_סיירים_4,נד פז סיירים 4,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2021-04-20,0.0,microgr/L,10.0,0.0
+נד_פז_סיירים_4,נד פז סיירים 4,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2021-04-20,0.0,microgr/L,50.0,0.0
+נד_פז_סיירים_4,נד פז סיירים 4,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2021-04-20,0.0,microgr/L,7.5,0.0
+נד_פז_סיירים_4,נד פז סיירים 4,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2021-04-20,0.0,microgr/L,0.5,0.0
+נד_פז_סיירים_3,נד פז סיירים 3,FUEL,BENZENE,BENZENE,2025-05-25,5.0,microgr/L,5.0,100.0
+נד_פז_סיירים_3,נד פז סיירים 3,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-05-25,5.0,microgr/L,300.0,1.67
+נד_פז_סיירים_3,נד פז סיירים 3,FUEL, MTBE,MTBE,2025-05-25,12.0,microgr/L,40.0,30.0
+נד_פז_סיירים_3,נד פז סיירים 3,FUEL,TOLUENE,TOLUENE,2025-05-25,5.0,microgr/L,700.0,0.71
+נד_פז_סיירים_3,נד פז סיירים 3,FUEL,XYLENE,XYLENE,2025-05-25,5.0,microgr/L,500.0,1.0
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2024-11-18,1.0,microgr/L,,
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,METALS,ARSENIC AS AS,ARSENIC AS AS,2023-08-13,0.0,microgr/L,10.0,0.0
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,FUEL,BENZENE,BENZENE,2024-11-18,0.0,microgr/L,5.0,0.0
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,METALS,CADMIUM AS CD,CADMIUM AS CD,2023-08-13,0.0,microgr/L,5.0,0.0
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2024-11-18,0.0,microgr/L,4.0,0.0
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,INDUSTRY,CHLOROFORM,CHLOROFORM,2024-11-18,0.0,microgr/L,80.0,0.0
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2023-08-13,0.0,microgr/L,50.0,0.0
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2024-11-18,0.0,microgr/L,50.0,0.0
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2024-11-18,0.0,microgr/L,4.0,0.0
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2024-11-18,0.0,microgr/L,10.0,0.0
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-11-18,0.0,microgr/L,300.0,0.0
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,METALS,LEAD AS PB,LEAD AS PB,2023-08-13,0.0,microgr/L,10.0,0.0
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,FUEL, MTBE,MTBE,2024-11-18,0.0,microgr/L,40.0,0.0
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,METALS,NICKEL AS NI,NICKEL AS NI,2023-08-13,13.8,microgr/L,20.0,69.0
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2024-11-18,1.0,microgr/L,10.0,10.0
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,FUEL,TOLUENE,TOLUENE,2024-11-18,1.0,microgr/L,700.0,0.14
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2024-11-18,1.0,microgr/L,50.0,2.0
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2024-11-18,1.0,microgr/L,7.5,13.33
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2024-11-18,0.0,microgr/L,0.5,0.0
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,FUEL,XYLENE,XYLENE,2024-11-18,3.0,microgr/L,500.0,0.6
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2024-11-18,1.0,microgr/L,,
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,FUEL,n-Butyl benzene,n-Butyl benzene,2017-06-18,0.0,microgr/L,,
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,FUEL,o-Xylene ,o-Xylene,2017-06-18,0.0,microgr/L,,
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,FUEL,p-isopropyl toluene,p-isopropyl toluene,2015-07-12,0.0,microgr/L,,
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,FUEL,p-xylene,p-xylene,2015-07-12,0.0,microgr/L,,
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2026-02-10,0.0,microgr/L,3.0,0.0
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2024-11-18,0.0,microgr/L,,
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,METALS,ARSENIC AS AS,ARSENIC AS AS,2023-08-13,0.0,microgr/L,10.0,0.0
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,FUEL,BENZENE,BENZENE,2024-11-18,0.0,microgr/L,5.0,0.0
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,METALS,CADMIUM AS CD,CADMIUM AS CD,2023-08-13,0.0,microgr/L,5.0,0.0
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2024-11-18,0.0,microgr/L,4.0,0.0
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,INDUSTRY,CHLOROFORM,CHLOROFORM,2024-11-18,1.0,microgr/L,80.0,1.25
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2023-08-13,0.0,microgr/L,50.0,0.0
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2024-11-18,2.632,microgr/L,50.0,5.26
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2024-11-18,0.0,microgr/L,4.0,0.0
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2024-11-18,1.853,microgr/L,10.0,18.53
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-11-18,0.0,microgr/L,300.0,0.0
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,METALS,LEAD AS PB,LEAD AS PB,2023-08-13,0.0,microgr/L,10.0,0.0
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,FUEL, MTBE,MTBE,2024-11-18,0.0,microgr/L,40.0,0.0
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,METALS,NICKEL AS NI,NICKEL AS NI,2023-08-13,0.0,microgr/L,20.0,0.0
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2024-11-18,3.607,microgr/L,10.0,36.07
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,FUEL,TOLUENE,TOLUENE,2024-11-18,1.0,microgr/L,700.0,0.14
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2024-11-18,1.0,microgr/L,50.0,2.0
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2024-11-18,85.414,microgr/L,7.5,1138.85
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2024-11-18,0.0,microgr/L,0.5,0.0
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,FUEL,XYLENE,XYLENE,2024-11-18,0.0,microgr/L,500.0,0.0
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2024-11-18,0.0,microgr/L,,
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,FUEL,n-Butyl benzene,n-Butyl benzene,2017-06-18,0.0,microgr/L,,
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,FUEL,o-Xylene ,o-Xylene,2017-06-18,0.0,microgr/L,,
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,FUEL,p-isopropyl toluene,p-isopropyl toluene,2015-06-25,0.0,microgr/L,,
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,FUEL,p-xylene,p-xylene,2015-06-25,0.0,microgr/L,,
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2026-02-10,0.0,microgr/L,3.0,0.0
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,FUEL,BENZENE,BENZENE,2022-07-17,1.0,microgr/L,5.0,20.0
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2022-07-17,1.0,microgr/L,300.0,0.33
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,FUEL, MTBE,MTBE,2022-07-17,1.0,microgr/L,40.0,2.5
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,FUEL,TOLUENE,TOLUENE,2022-07-17,1.0,microgr/L,700.0,0.14
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,FUEL,XYLENE,XYLENE,2022-07-17,3.0,microgr/L,500.0,0.6
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,METALS,LEAD AS PB,LEAD AS PB,2015-11-18,0.0,microgr/L,10.0,0.0
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2022-07-17,1.0,microgr/L,,
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2022-07-17,1.0,microgr/L,,
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2022-07-17,0.0,microgr/L,4.0,0.0
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,INDUSTRY,CHLOROFORM,CHLOROFORM,2022-07-17,0.0,microgr/L,80.0,0.0
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2022-07-17,0.0,microgr/L,50.0,0.0
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2022-07-17,0.0,microgr/L,4.0,0.0
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2022-07-17,0.0,microgr/L,10.0,0.0
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2022-07-17,4.0,microgr/L,10.0,40.0
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2022-07-17,0.0,microgr/L,50.0,0.0
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2022-07-17,1.0,microgr/L,7.5,13.33
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2022-07-17,0.0,microgr/L,0.5,0.0
+נת_חולון_13,נת חולון 13,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2026-02-10,0.0,microgr/L,3.0,0.0
+נד_פז_סיירים_1,נד פז סיירים 1,FUEL,BENZENE,BENZENE,2025-05-25,5.0,microgr/L,5.0,100.0
+נד_פז_סיירים_1,נד פז סיירים 1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-05-25,5.0,microgr/L,300.0,1.67
+נד_פז_סיירים_1,נד פז סיירים 1,FUEL, MTBE,MTBE,2025-05-25,5.0,microgr/L,40.0,12.5
+נד_פז_סיירים_1,נד פז סיירים 1,FUEL,TOLUENE,TOLUENE,2025-05-25,5.0,microgr/L,700.0,0.71
+נד_פז_סיירים_1,נד פז סיירים 1,FUEL,XYLENE,XYLENE,2025-05-25,5.0,microgr/L,500.0,1.0
+מק_חולון_14,מק חולון 14,METALS,ARSENIC AS AS,ARSENIC AS AS,2021-07-04,0.9,microgr/L,10.0,9.0
+מק_חולון_14,מק חולון 14,FUEL,BENZENE,BENZENE,2021-07-04,0.0,microgr/L,5.0,0.0
+מק_חולון_14,מק חולון 14,METALS,CADMIUM AS CD,CADMIUM AS CD,2021-07-04,0.0,microgr/L,5.0,0.0
+מק_חולון_14,מק חולון 14,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2025-11-12,0.2,microgr/L,4.0,5.0
+מק_חולון_14,מק חולון 14,INDUSTRY,CHLOROFORM,CHLOROFORM,2021-07-04,0.0,microgr/L,80.0,0.0
+מק_חולון_14,מק חולון 14,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2021-07-04,7.1,microgr/L,50.0,14.2
+מק_חולון_14,מק חולון 14,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2021-07-04,0.0,microgr/L,50.0,0.0
+מק_חולון_14,מק חולון 14,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2021-07-04,0.0,microgr/L,4.0,0.0
+מק_חולון_14,מק חולון 14,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2025-11-12,0.44,microgr/L,10.0,4.4
+מק_חולון_14,מק חולון 14,METALS,LEAD AS PB,LEAD AS PB,2021-07-04,0.0,microgr/L,10.0,0.0
+מק_חולון_14,מק חולון 14,METALS,NICKEL AS NI,NICKEL AS NI,2021-07-04,0.0,microgr/L,20.0,0.0
+מק_חולון_14,מק חולון 14,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2021-07-04,0.0,microgr/L,10.0,0.0
+מק_חולון_14,מק חולון 14,FUEL,TOLUENE,TOLUENE,2021-07-04,0.0,microgr/L,700.0,0.0
+מק_חולון_14,מק חולון 14,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2021-07-04,0.0,microgr/L,50.0,0.0
+מק_חולון_14,מק חולון 14,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2025-11-12,6.64,microgr/L,7.5,88.53
+מק_חולון_14,מק חולון 14,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2021-07-04,0.0,microgr/L,0.5,0.0
+מק_חולון_14,מק חולון 14,FUEL,XYLENE,XYLENE,2021-07-04,0.0,microgr/L,500.0,0.0
+מק_חולון_14,מק חולון 14,FUEL,ETHYL BENZENE,ETHYL BENZENE,2021-07-04,0.0,microgr/L,300.0,0.0
+מק_חולון_14,מק חולון 14,METALS,MERCURY AS HG,MERCURY AS HG,2021-07-04,0.0,microgr/L,1.0,0.0
+מק_חולון_14,מק חולון 14,FUEL, MTBE,MTBE,2021-07-04,0.0,microgr/L,40.0,0.0
+מק_חולון_14,מק חולון 14,INDUSTRY,"CIS+ TRANS 1,2 DICHLOROETHELYENE","CIS+ TRANS 1,2 DICHLOROETHELYENE",2021-07-04,0.0,microgr/L,,
+מק_חולון_14,מק חולון 14,PFAS,Per-FluoroOctaneSulfonate,Per-FluoroOctaneSulfonate,2024-06-17,0.0,microgr/L,0.1,0.0
+מק_חולון_14,מק חולון 14,PFAS,Per-FluoroOctanoic Acid,Per-FluoroOctanoic Acid,2024-06-17,0.0,microgr/L,0.1,0.0
+מק_חולון_14,מק חולון 14,PFAS,Perfluorobutane Sulfonic Acid,Perfluorobutane Sulfonic Acid,2024-06-17,0.0,microgr/L,0.1,0.0
+מק_חולון_14,מק חולון 14,PFAS,Perfluoroheptanoic acid,Perfluoroheptanoic acid,2024-06-17,0.0,microgr/L,0.1,0.0
+מק_חולון_14,מק חולון 14,PFAS,Perfluorohexanesulfonic acid,Perfluorohexanesulfonic acid,2024-06-17,0.0,microgr/L,0.1,0.0
+מק_חולון_14,מק חולון 14,PFAS,Perfluorohexanoic acid,Perfluorohexanoic acid,2024-06-17,0.0,microgr/L,0.1,0.0
+נת_חולון_4,נת חולון 4,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2010-11-23,0.0,microgr/L,,
+נת_חולון_4,נת חולון 4,FUEL,BENZENE,BENZENE,2011-09-15,0.0,microgr/L,5.0,0.0
+נת_חולון_4,נת חולון 4,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2011-09-15,0.5,microgr/L,4.0,12.5
+נת_חולון_4,נת חולון 4,INDUSTRY,CHLOROFORM,CHLOROFORM,2011-09-15,1.7,microgr/L,80.0,2.12
+נת_חולון_4,נת חולון 4,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2010-11-23,0.0,microgr/L,50.0,0.0
+נת_חולון_4,נת חולון 4,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2011-09-15,0.0,microgr/L,4.0,0.0
+נת_חולון_4,נת חולון 4,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2011-09-15,0.0,microgr/L,10.0,0.0
+נת_חולון_4,נת חולון 4,FUEL, MTBE,MTBE,2011-09-15,0.0,microgr/L,40.0,0.0
+נת_חולון_4,נת חולון 4,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2011-09-15,0.0,microgr/L,10.0,0.0
+נת_חולון_4,נת חולון 4,FUEL,TOLUENE,TOLUENE,2011-09-15,0.0,microgr/L,700.0,0.0
+נת_חולון_4,נת חולון 4,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2010-11-23,0.0,microgr/L,50.0,0.0
+נת_חולון_4,נת חולון 4,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2011-09-15,2.3,microgr/L,7.5,30.67
+נת_חולון_4,נת חולון 4,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2010-11-23,0.0,microgr/L,0.5,0.0
+נת_חולון_4,נת חולון 4,FUEL,XYLENE,XYLENE,2011-09-15,0.0,microgr/L,500.0,0.0
+נת_חולון_4,נת חולון 4,FUEL,ETHYL BENZENE,ETHYL BENZENE,2010-11-23,0.0,microgr/L,300.0,0.0
+נת_חולון_4,נת חולון 4,METALS,ARSENIC AS AS,ARSENIC AS AS,2011-09-15,1.32,microgr/L,10.0,13.2
+נת_חולון_4,נת חולון 4,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2011-09-15,13.24,microgr/L,50.0,26.48
+נת_חולון_4,נת חולון 4,METALS,LEAD AS PB,LEAD AS PB,2011-09-15,0.0,microgr/L,10.0,0.0
+נת_חולון_4,נת חולון 4,METALS,NICKEL AS NI,NICKEL AS NI,2011-09-15,1.25,microgr/L,20.0,6.25
+נת_חולון_18,נת חולון 18,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2014-09-03,0.0,microgr/L,,
+נת_חולון_18,נת חולון 18,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2014-09-03,0.0,microgr/L,,
+נת_חולון_18,נת חולון 18,FUEL,BENZENE,BENZENE,2014-09-03,0.0,microgr/L,5.0,0.0
+נת_חולון_18,נת חולון 18,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2014-09-03,0.0,microgr/L,4.0,0.0
+נת_חולון_18,נת חולון 18,INDUSTRY,CHLOROFORM,CHLOROFORM,2014-09-03,2.0,microgr/L,80.0,2.5
+נת_חולון_18,נת חולון 18,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2014-09-03,1.0,microgr/L,50.0,2.0
+נת_חולון_18,נת חולון 18,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2014-09-03,0.0,microgr/L,4.0,0.0
+נת_חולון_18,נת חולון 18,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2014-09-03,1.56,microgr/L,10.0,15.6
+נת_חולון_18,נת חולון 18,FUEL,ETHYL BENZENE,ETHYL BENZENE,2014-09-03,0.0,microgr/L,300.0,0.0
+נת_חולון_18,נת חולון 18,FUEL, MTBE,MTBE,2014-09-03,2.0,microgr/L,40.0,5.0
+נת_חולון_18,נת חולון 18,FUEL,n-Butyl benzene,n-Butyl benzene,2014-09-03,0.0,microgr/L,,
+נת_חולון_18,נת חולון 18,FUEL,o-Xylene ,o-Xylene,2014-09-03,0.0,microgr/L,,
+נת_חולון_18,נת חולון 18,FUEL,p-isopropyl toluene,p-isopropyl toluene,2014-09-03,0.0,microgr/L,,
+נת_חולון_18,נת חולון 18,FUEL,p-xylene,p-xylene,2014-09-03,0.0,microgr/L,,
+נת_חולון_18,נת חולון 18,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2014-09-03,24.21,microgr/L,10.0,242.1
+נת_חולון_18,נת חולון 18,FUEL,TOLUENE,TOLUENE,2014-09-03,2.0,microgr/L,700.0,0.29
+נת_חולון_18,נת חולון 18,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2014-09-03,0.0,microgr/L,50.0,0.0
+נת_חולון_18,נת חולון 18,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2014-09-03,48.5,microgr/L,7.5,646.67
+נת_חולון_18,נת חולון 18,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2014-09-03,0.0,microgr/L,0.5,0.0
+נת_חולון_18,נת חולון 18,FUEL,XYLENE,XYLENE,2014-09-03,0.0,microgr/L,500.0,0.0
+נת_חולון_18,נת חולון 18,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2014-09-03,0.0,microgr/L,50.0,0.0
+נת_חולון_18,נת חולון 18,METALS,LEAD AS PB,LEAD AS PB,2014-09-03,0.0,microgr/L,10.0,0.0
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,FUEL,BENZENE,BENZENE,2020-09-21,0.0,microgr/L,5.0,0.0
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,FUEL, MTBE,MTBE,2020-09-21,0.0,microgr/L,40.0,0.0
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,FUEL,XYLENE,XYLENE,2020-09-21,0.0,microgr/L,500.0,0.0
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,FUEL,TOLUENE,TOLUENE,2020-09-21,0.0,microgr/L,700.0,0.0
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,FUEL,ETHYL BENZENE,ETHYL BENZENE,2020-09-21,0.0,microgr/L,300.0,0.0
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,METALS,LEAD AS PB,LEAD AS PB,2020-09-21,0.0,microgr/L,10.0,0.0
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2020-09-21,0.0,microgr/L,4.0,0.0
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,INDUSTRY,CHLOROFORM,CHLOROFORM,2020-09-21,1.0,microgr/L,80.0,1.25
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,FUEL,p-isopropyl toluene,p-isopropyl toluene,2010-10-18,0.0,microgr/L,,
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2020-09-21,1.964,microgr/L,7.5,26.19
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2020-09-21,0.0,microgr/L,50.0,0.0
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2020-09-21,0.0,microgr/L,,
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2020-09-21,0.0,microgr/L,,
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2020-09-21,1.1,microgr/L,3.0,36.67
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,METALS,ARSENIC AS AS,ARSENIC AS AS,2020-09-21,0.0,microgr/L,10.0,0.0
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,METALS,CADMIUM AS CD,CADMIUM AS CD,2020-09-21,2.5,microgr/L,5.0,50.0
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2020-09-21,8.275,microgr/L,50.0,16.55
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2020-09-21,1.0,microgr/L,50.0,2.0
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2020-09-21,0.0,microgr/L,4.0,0.0
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2020-09-21,0.0,microgr/L,10.0,0.0
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,METALS,NICKEL AS NI,NICKEL AS NI,2020-09-21,0.0,microgr/L,20.0,0.0
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2020-09-21,1.0,microgr/L,10.0,10.0
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2020-09-21,0.0,microgr/L,0.5,0.0
+נת_חולון_6,נת חולון 6,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2023-01-12,0.0,microgr/L,,
+נת_חולון_6,נת חולון 6,METALS,ARSENIC AS AS,ARSENIC AS AS,2023-01-12,0.0,microgr/L,10.0,0.0
+נת_חולון_6,נת חולון 6,FUEL,BENZENE,BENZENE,2023-01-12,1.0,microgr/L,5.0,20.0
+נת_חולון_6,נת חולון 6,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2023-01-12,0.0,microgr/L,4.0,0.0
+נת_חולון_6,נת חולון 6,INDUSTRY,CHLOROFORM,CHLOROFORM,2023-01-12,0.0,microgr/L,80.0,0.0
+נת_חולון_6,נת חולון 6,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2023-01-12,0.0,microgr/L,50.0,0.0
+נת_חולון_6,נת חולון 6,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2023-01-12,0.0,microgr/L,50.0,0.0
+נת_חולון_6,נת חולון 6,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2023-01-12,0.0,microgr/L,4.0,0.0
+נת_חולון_6,נת חולון 6,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2023-01-12,1.116,microgr/L,10.0,11.16
+נת_חולון_6,נת חולון 6,METALS,LEAD AS PB,LEAD AS PB,2023-01-12,0.0,microgr/L,10.0,0.0
+נת_חולון_6,נת חולון 6,FUEL, MTBE,MTBE,2023-01-12,0.0,microgr/L,40.0,0.0
+נת_חולון_6,נת חולון 6,METALS,NICKEL AS NI,NICKEL AS NI,2023-01-12,0.0,microgr/L,20.0,0.0
+נת_חולון_6,נת חולון 6,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2023-01-12,0.0,microgr/L,10.0,0.0
+נת_חולון_6,נת חולון 6,FUEL,TOLUENE,TOLUENE,2023-01-12,1.0,microgr/L,700.0,0.14
+נת_חולון_6,נת חולון 6,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2023-01-12,0.0,microgr/L,50.0,0.0
+נת_חולון_6,נת חולון 6,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2023-01-12,10.479,microgr/L,7.5,139.72
+נת_חולון_6,נת חולון 6,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2023-01-12,0.0,microgr/L,0.5,0.0
+נת_חולון_6,נת חולון 6,FUEL,XYLENE,XYLENE,2023-01-12,0.0,microgr/L,500.0,0.0
+נת_חולון_6,נת חולון 6,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2023-01-12,0.0,microgr/L,,
+נת_חולון_6,נת חולון 6,FUEL,ETHYL BENZENE,ETHYL BENZENE,2023-01-12,0.0,microgr/L,300.0,0.0
+נת_חולון_6,נת חולון 6,FUEL,n-Butyl benzene,n-Butyl benzene,2012-11-29,0.0,microgr/L,,
+נת_חולון_6,נת חולון 6,FUEL,o-Xylene ,o-Xylene,2015-12-03,0.0,microgr/L,,
+נת_חולון_6,נת חולון 6,FUEL,p-isopropyl toluene,p-isopropyl toluene,2012-11-29,0.0,microgr/L,,
+נת_חולון_6,נת חולון 6,FUEL,p-xylene,p-xylene,2012-11-29,0.0,microgr/L,,
+נת_חולון_6,נת חולון 6,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2023-01-12,0.7,microgr/L,3.0,23.33
+נת_חולון_6,נת חולון 6,METALS,CADMIUM AS CD,CADMIUM AS CD,2023-01-12,0.0,microgr/L,5.0,0.0
+נת_חולון_12,נת חולון 12,METALS,ARSENIC AS AS,ARSENIC AS AS,2021-05-26,0.0,microgr/L,10.0,0.0
+נת_חולון_12,נת חולון 12,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2021-05-26,7.066,microgr/L,50.0,14.13
+נת_חולון_12,נת חולון 12,METALS,LEAD AS PB,LEAD AS PB,2021-05-26,0.0,microgr/L,10.0,0.0
+נת_חולון_12,נת חולון 12,METALS,NICKEL AS NI,NICKEL AS NI,2021-05-26,0.0,microgr/L,20.0,0.0
+נת_חולון_12,נת חולון 12,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2024-11-27,0.0,microgr/L,,
+נת_חולון_12,נת חולון 12,FUEL,BENZENE,BENZENE,2024-11-27,0.0,microgr/L,5.0,0.0
+נת_חולון_12,נת חולון 12,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2024-11-27,1.0,microgr/L,4.0,25.0
+נת_חולון_12,נת חולון 12,INDUSTRY,CHLOROFORM,CHLOROFORM,2024-11-27,1.0,microgr/L,80.0,1.25
+נת_חולון_12,נת חולון 12,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2024-11-27,1.0,microgr/L,50.0,2.0
+נת_חולון_12,נת חולון 12,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2024-11-27,0.0,microgr/L,4.0,0.0
+נת_חולון_12,נת חולון 12,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2024-11-27,5.654,microgr/L,10.0,56.54
+נת_חולון_12,נת חולון 12,FUEL, MTBE,MTBE,2024-11-27,1.0,microgr/L,40.0,2.5
+נת_חולון_12,נת חולון 12,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2024-11-27,1.182,microgr/L,10.0,11.82
+נת_חולון_12,נת חולון 12,FUEL,TOLUENE,TOLUENE,2024-11-27,1.0,microgr/L,700.0,0.14
+נת_חולון_12,נת חולון 12,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2024-11-27,0.0,microgr/L,50.0,0.0
+נת_חולון_12,נת חולון 12,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2024-11-27,21.235,microgr/L,7.5,283.13
+נת_חולון_12,נת חולון 12,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2024-11-27,0.0,microgr/L,0.5,0.0
+נת_חולון_12,נת חולון 12,FUEL,XYLENE,XYLENE,2024-11-27,3.0,microgr/L,500.0,0.6
+נת_חולון_12,נת חולון 12,METALS,CADMIUM AS CD,CADMIUM AS CD,2021-05-26,0.0,microgr/L,5.0,0.0
+נת_חולון_12,נת חולון 12,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-11-27,1.0,microgr/L,300.0,0.33
+נת_חולון_12,נת חולון 12,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2024-11-27,0.0,microgr/L,,
+נת_חולון_12,נת חולון 12,FUEL,n-Butyl benzene,n-Butyl benzene,2017-10-22,0.0,microgr/L,,
+נת_חולון_12,נת חולון 12,FUEL,o-Xylene ,o-Xylene,2017-10-22,0.0,microgr/L,,
+נת_חולון_12,נת חולון 12,FUEL,p-isopropyl toluene,p-isopropyl toluene,2015-06-25,0.0,microgr/L,,
+נת_חולון_12,נת חולון 12,FUEL,p-xylene,p-xylene,2015-06-25,0.0,microgr/L,,
+נת_חולון_12,נת חולון 12,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2016-07-27,0.0,microgr/L,3.0,0.0
+נת_חולון_16,נת חולון 16,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2024-11-18,0.0,microgr/L,,
+נת_חולון_16,נת חולון 16,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2024-11-18,0.0,microgr/L,,
+נת_חולון_16,נת חולון 16,FUEL,BENZENE,BENZENE,2024-11-18,1.0,microgr/L,5.0,20.0
+נת_חולון_16,נת חולון 16,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2024-11-18,0.0,microgr/L,4.0,0.0
+נת_חולון_16,נת חולון 16,INDUSTRY,CHLOROFORM,CHLOROFORM,2024-11-18,1.0,microgr/L,80.0,1.25
+נת_חולון_16,נת חולון 16,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2024-11-18,56.906,microgr/L,50.0,113.81
+נת_חולון_16,נת חולון 16,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2024-11-18,0.0,microgr/L,4.0,0.0
+נת_חולון_16,נת חולון 16,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2024-11-18,33.228,microgr/L,10.0,332.28
+נת_חולון_16,נת חולון 16,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-11-18,0.0,microgr/L,300.0,0.0
+נת_חולון_16,נת חולון 16,FUEL, MTBE,MTBE,2024-11-18,1.0,microgr/L,40.0,2.5
+נת_חולון_16,נת חולון 16,FUEL,n-Butyl benzene,n-Butyl benzene,2017-10-22,0.0,microgr/L,,
+נת_חולון_16,נת חולון 16,FUEL,o-Xylene ,o-Xylene,2017-10-22,0.0,microgr/L,,
+נת_חולון_16,נת חולון 16,FUEL,p-isopropyl toluene,p-isopropyl toluene,2012-03-07,0.0,microgr/L,,
+נת_חולון_16,נת חולון 16,FUEL,p-xylene,p-xylene,2012-03-07,0.0,microgr/L,,
+נת_חולון_16,נת חולון 16,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2024-11-18,131.646,microgr/L,10.0,1316.46
+נת_חולון_16,נת חולון 16,FUEL,TOLUENE,TOLUENE,2024-11-18,1.0,microgr/L,700.0,0.14
+נת_חולון_16,נת חולון 16,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2024-11-18,1.357,microgr/L,50.0,2.71
+נת_חולון_16,נת חולון 16,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2024-11-18,337.998,microgr/L,7.5,4506.64
+נת_חולון_16,נת חולון 16,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2024-11-18,0.0,microgr/L,0.5,0.0
+נת_חולון_16,נת חולון 16,FUEL,XYLENE,XYLENE,2024-11-18,0.0,microgr/L,500.0,0.0
+נת_חולון_16,נת חולון 16,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2026-02-10,8.9,microgr/L,3.0,296.67
+נת_חולון_16,נת חולון 16,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2022-06-08,0.0,microgr/L,50.0,0.0
+נת_חולון_16,נת חולון 16,METALS,NICKEL AS NI,NICKEL AS NI,2022-06-08,0.0,microgr/L,20.0,0.0
+נת_חולון_16,נת חולון 16,METALS,ARSENIC AS AS,ARSENIC AS AS,2022-06-08,0.0,microgr/L,10.0,0.0
+נת_חולון_16,נת חולון 16,METALS,CADMIUM AS CD,CADMIUM AS CD,2022-06-08,0.0,microgr/L,5.0,0.0
+נת_חולון_16,נת חולון 16,METALS,LEAD AS PB,LEAD AS PB,2022-06-08,0.0,microgr/L,10.0,0.0
+נד_פז_קריית_שרת_1,נד פז קריית שרת 1,FUEL,BENZENE,BENZENE,2020-12-09,10.0,microgr/L,5.0,200.0
+נד_פז_קריית_שרת_1,נד פז קריית שרת 1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2020-12-09,10.0,microgr/L,300.0,3.33
+נד_פז_קריית_שרת_1,נד פז קריית שרת 1,FUEL, MTBE,MTBE,2020-12-09,10.0,microgr/L,40.0,25.0
+נד_פז_קריית_שרת_1,נד פז קריית שרת 1,FUEL,TOLUENE,TOLUENE,2020-12-09,10.0,microgr/L,700.0,1.43
+נד_פז_קריית_שרת_1,נד פז קריית שרת 1,FUEL,XYLENE,XYLENE,2020-12-09,10.0,microgr/L,500.0,2.0
+מק_חולון_12,מק חולון 12,METALS,ARSENIC AS AS,ARSENIC AS AS,2021-04-20,0.0,microgr/L,10.0,0.0
+מק_חולון_12,מק חולון 12,METALS,CADMIUM AS CD,CADMIUM AS CD,2021-04-20,0.0,microgr/L,5.0,0.0
+מק_חולון_12,מק חולון 12,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2021-04-20,1.9,microgr/L,50.0,3.8
+מק_חולון_12,מק חולון 12,METALS,LEAD AS PB,LEAD AS PB,2021-04-20,0.0,microgr/L,10.0,0.0
+מק_חולון_12,מק חולון 12,METALS,NICKEL AS NI,NICKEL AS NI,2021-04-20,0.0,microgr/L,20.0,0.0
+מק_חולון_12,מק חולון 12,METALS,MERCURY AS HG,MERCURY AS HG,2021-04-20,0.0,microgr/L,1.0,0.0
+מק_חולון_12,מק חולון 12,FUEL, MTBE,MTBE,2021-04-20,0.0,microgr/L,40.0,0.0
+מק_חולון_12,מק חולון 12,FUEL,BENZENE,BENZENE,2021-04-20,0.0,microgr/L,5.0,0.0
+מק_חולון_12,מק חולון 12,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2021-04-20,0.0,microgr/L,4.0,0.0
+מק_חולון_12,מק חולון 12,INDUSTRY,CHLOROFORM,CHLOROFORM,2021-04-20,0.0,microgr/L,80.0,0.0
+מק_חולון_12,מק חולון 12,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2021-04-20,0.0,microgr/L,50.0,0.0
+מק_חולון_12,מק חולון 12,INDUSTRY,"CIS+ TRANS 1,2 DICHLOROETHELYENE","CIS+ TRANS 1,2 DICHLOROETHELYENE",2021-04-20,0.0,microgr/L,,
+מק_חולון_12,מק חולון 12,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2021-04-20,0.0,microgr/L,4.0,0.0
+מק_חולון_12,מק חולון 12,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2021-04-20,0.0,microgr/L,10.0,0.0
+מק_חולון_12,מק חולון 12,FUEL,ETHYL BENZENE,ETHYL BENZENE,2021-04-20,0.0,microgr/L,300.0,0.0
+מק_חולון_12,מק חולון 12,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2021-04-20,0.0,microgr/L,10.0,0.0
+מק_חולון_12,מק חולון 12,FUEL,TOLUENE,TOLUENE,2021-04-20,0.0,microgr/L,700.0,0.0
+מק_חולון_12,מק חולון 12,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2021-04-20,0.0,microgr/L,50.0,0.0
+מק_חולון_12,מק חולון 12,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2021-04-20,0.0,microgr/L,7.5,0.0
+מק_חולון_12,מק חולון 12,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2021-04-20,0.0,microgr/L,0.5,0.0
+מק_חולון_12,מק חולון 12,FUEL,XYLENE,XYLENE,2021-04-20,0.0,microgr/L,500.0,0.0
+מק_חולון_12,מק חולון 12,PFAS,Perfluorobutane Sulfonic Acid,Perfluorobutane Sulfonic Acid,2024-06-17,0.0,microgr/L,0.1,0.0
+מק_חולון_12,מק חולון 12,PFAS,Perfluorobytanoic acid,Perfluorobytanoic acid,2023-06-05,0.0,microgr/L,0.1,0.0
+מק_חולון_12,מק חולון 12,PFAS,Perfluoroheptanoic acid,Perfluoroheptanoic acid,2024-06-17,0.0,microgr/L,0.1,0.0
+מק_חולון_12,מק חולון 12,PFAS,Perfluorohexanesulfonic acid,Perfluorohexanesulfonic acid,2024-06-17,0.0,microgr/L,0.1,0.0
+מק_חולון_12,מק חולון 12,PFAS,Perfluorohexanoic acid,Perfluorohexanoic acid,2024-06-17,0.0,microgr/L,0.1,0.0
+מק_חולון_12,מק חולון 12,PFAS,Perfluorononanoic acid,Perfluorononanoic acid,2023-06-05,0.0,microgr/L,0.1,0.0
+מק_חולון_12,מק חולון 12,PFAS,Per-FluoroOctaneSulfonate,Per-FluoroOctaneSulfonate,2024-06-17,0.0,microgr/L,0.1,0.0
+מק_חולון_12,מק חולון 12,PFAS,Per-FluoroOctanoic Acid,Per-FluoroOctanoic Acid,2024-06-17,0.0,microgr/L,0.1,0.0
+מק_חולון_12,מק חולון 12,PFAS,Perfluoropentanoic acid,Perfluoropentanoic acid,2023-06-05,0.0,microgr/L,0.1,0.0
+נד_המרכבה_ק2,נד המרכבה ק2,FUEL,BENZENE,BENZENE,2021-03-16,10.0,microgr/L,5.0,200.0
+נד_המרכבה_ק2,נד המרכבה ק2,FUEL,ETHYL BENZENE,ETHYL BENZENE,2021-03-16,10.0,microgr/L,300.0,3.33
+נד_המרכבה_ק2,נד המרכבה ק2,FUEL, MTBE,MTBE,2021-03-16,100.0,microgr/L,40.0,250.0
+נד_המרכבה_ק2,נד המרכבה ק2,FUEL,TOLUENE,TOLUENE,2021-03-16,10.0,microgr/L,700.0,1.43
+נד_המרכבה_ק2,נד המרכבה ק2,FUEL,XYLENE,XYLENE,2021-03-16,10.0,microgr/L,500.0,2.0
+נד_המרכבה_ק3,נד המרכבה ק3,FUEL,BENZENE,BENZENE,2021-04-11,0.0,microgr/L,5.0,0.0
+נד_המרכבה_ק3,נד המרכבה ק3,FUEL,ETHYL BENZENE,ETHYL BENZENE,2021-04-11,0.0,microgr/L,300.0,0.0
+נד_המרכבה_ק3,נד המרכבה ק3,FUEL, MTBE,MTBE,2021-04-11,309.501,microgr/L,40.0,773.75
+נד_המרכבה_ק3,נד המרכבה ק3,FUEL,TOLUENE,TOLUENE,2021-04-11,0.0,microgr/L,700.0,0.0
+נד_המרכבה_ק3,נד המרכבה ק3,FUEL,XYLENE,XYLENE,2021-04-11,0.0,microgr/L,500.0,0.0
+נד_המרכבה_ק3,נד המרכבה ק3,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2021-04-11,0.0,microgr/L,,
+נד_המרכבה_ק3,נד המרכבה ק3,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2021-04-11,0.0,microgr/L,,
+נד_המרכבה_ק3,נד המרכבה ק3,METALS,ARSENIC AS AS,ARSENIC AS AS,2021-04-11,0.0,microgr/L,10.0,0.0
+נד_המרכבה_ק3,נד המרכבה ק3,METALS,CADMIUM AS CD,CADMIUM AS CD,2021-04-11,0.0,microgr/L,5.0,0.0
+נד_המרכבה_ק3,נד המרכבה ק3,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2021-04-11,0.0,microgr/L,4.0,0.0
+נד_המרכבה_ק3,נד המרכבה ק3,INDUSTRY,CHLOROFORM,CHLOROFORM,2021-04-11,0.0,microgr/L,80.0,0.0
+נד_המרכבה_ק3,נד המרכבה ק3,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2021-04-11,0.0,microgr/L,50.0,0.0
+נד_המרכבה_ק3,נד המרכבה ק3,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2021-04-11,0.0,microgr/L,50.0,0.0
+נד_המרכבה_ק3,נד המרכבה ק3,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2021-04-11,0.0,microgr/L,4.0,0.0
+נד_המרכבה_ק3,נד המרכבה ק3,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2021-04-11,0.0,microgr/L,10.0,0.0
+נד_המרכבה_ק3,נד המרכבה ק3,METALS,LEAD AS PB,LEAD AS PB,2021-04-11,0.0,microgr/L,10.0,0.0
+נד_המרכבה_ק3,נד המרכבה ק3,METALS,NICKEL AS NI,NICKEL AS NI,2021-04-11,10.0,microgr/L,20.0,50.0
+נד_המרכבה_ק3,נד המרכבה ק3,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2021-04-11,0.0,microgr/L,10.0,0.0
+נד_המרכבה_ק3,נד המרכבה ק3,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2021-04-11,0.0,microgr/L,50.0,0.0
+נד_המרכבה_ק3,נד המרכבה ק3,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2021-04-11,0.0,microgr/L,7.5,0.0
+נד_המרכבה_ק3,נד המרכבה ק3,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2021-04-11,0.0,microgr/L,0.5,0.0
+נד_סונול_משמר_השבעה_3,נד סונול משמר השבעה 3,FUEL,BENZENE,BENZENE,2024-09-09,1.0,microgr/L,5.0,20.0
+נד_סונול_משמר_השבעה_3,נד סונול משמר השבעה 3,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-09-09,1.0,microgr/L,300.0,0.33
+נד_סונול_משמר_השבעה_3,נד סונול משמר השבעה 3,FUEL, MTBE,MTBE,2024-09-09,1.0,microgr/L,40.0,2.5
+נד_סונול_משמר_השבעה_3,נד סונול משמר השבעה 3,FUEL,TOLUENE,TOLUENE,2024-09-09,2.0,microgr/L,700.0,0.29
+נד_סונול_משמר_השבעה_3,נד סונול משמר השבעה 3,FUEL,XYLENE,XYLENE,2024-09-09,2.0,microgr/L,500.0,0.4
+נד_סונול_משמר_השבעה_4,נד סונול משמר השבעה 4,FUEL,BENZENE,BENZENE,2024-09-09,1.0,microgr/L,5.0,20.0
+נד_סונול_משמר_השבעה_4,נד סונול משמר השבעה 4,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-09-09,1.0,microgr/L,300.0,0.33
+נד_סונול_משמר_השבעה_4,נד סונול משמר השבעה 4,FUEL, MTBE,MTBE,2024-09-09,1.0,microgr/L,40.0,2.5
+נד_סונול_משמר_השבעה_4,נד סונול משמר השבעה 4,FUEL,TOLUENE,TOLUENE,2024-09-09,3.0,microgr/L,700.0,0.43
+נד_סונול_משמר_השבעה_4,נד סונול משמר השבעה 4,FUEL,XYLENE,XYLENE,2024-09-09,4.0,microgr/L,500.0,0.8
+נד_סונול_משמר_השבעה_5,נד סונול משמר השבעה 5,FUEL,BENZENE,BENZENE,2024-09-09,1.0,microgr/L,5.0,20.0
+נד_סונול_משמר_השבעה_5,נד סונול משמר השבעה 5,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-09-09,1.0,microgr/L,300.0,0.33
+נד_סונול_משמר_השבעה_5,נד סונול משמר השבעה 5,FUEL, MTBE,MTBE,2024-09-09,33.0,microgr/L,40.0,82.5
+נד_סונול_משמר_השבעה_5,נד סונול משמר השבעה 5,FUEL,TOLUENE,TOLUENE,2024-09-09,1.0,microgr/L,700.0,0.14
+נד_סונול_משמר_השבעה_5,נד סונול משמר השבעה 5,FUEL,XYLENE,XYLENE,2024-09-09,4.0,microgr/L,500.0,0.8
+נת_חולון_2,נת חולון 2,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2022-06-08,0.0,microgr/L,,
+נת_חולון_2,נת חולון 2,FUEL,BENZENE,BENZENE,2022-06-08,1.0,microgr/L,5.0,20.0
+נת_חולון_2,נת חולון 2,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2022-06-08,1.0,microgr/L,4.0,25.0
+נת_חולון_2,נת חולון 2,INDUSTRY,CHLOROFORM,CHLOROFORM,2022-06-08,287.3,microgr/L,80.0,359.12
+נת_חולון_2,נת חולון 2,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2022-06-08,177.3,microgr/L,50.0,354.6
+נת_חולון_2,נת חולון 2,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2022-06-08,1.0,microgr/L,4.0,25.0
+נת_חולון_2,נת חולון 2,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2022-06-08,67.0,microgr/L,10.0,670.0
+נת_חולון_2,נת חולון 2,FUEL, MTBE,MTBE,2022-06-08,1.0,microgr/L,40.0,2.5
+נת_חולון_2,נת חולון 2,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2022-06-08,497.51,microgr/L,10.0,4975.1
+נת_חולון_2,נת חולון 2,FUEL,TOLUENE,TOLUENE,2022-06-08,1.0,microgr/L,700.0,0.14
+נת_חולון_2,נת חולון 2,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2022-06-08,1.0,microgr/L,50.0,2.0
+נת_חולון_2,נת חולון 2,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2022-06-08,1256.288,microgr/L,7.5,16750.51
+נת_חולון_2,נת חולון 2,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2022-06-08,0.0,microgr/L,0.5,0.0
+נת_חולון_2,נת חולון 2,FUEL,XYLENE,XYLENE,2022-06-08,3.0,microgr/L,500.0,0.6
+נת_חולון_2,נת חולון 2,FUEL,ETHYL BENZENE,ETHYL BENZENE,2022-06-08,1.0,microgr/L,300.0,0.33
+נת_חולון_2,נת חולון 2,METALS,ARSENIC AS AS,ARSENIC AS AS,2022-06-08,0.0,microgr/L,10.0,0.0
+נת_חולון_2,נת חולון 2,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2022-06-08,60.375,microgr/L,50.0,120.75
+נת_חולון_2,נת חולון 2,METALS,LEAD AS PB,LEAD AS PB,2022-06-08,0.0,microgr/L,10.0,0.0
+נת_חולון_2,נת חולון 2,METALS,NICKEL AS NI,NICKEL AS NI,2022-06-08,0.0,microgr/L,20.0,0.0
+נת_חולון_2,נת חולון 2,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2022-06-08,0.0,microgr/L,,
+נת_חולון_2,נת חולון 2,FUEL,n-Butyl benzene,n-Butyl benzene,2017-10-23,0.0,microgr/L,,
+נת_חולון_2,נת חולון 2,FUEL,o-Xylene ,o-Xylene,2017-10-23,0.0,microgr/L,,
+נת_חולון_2,נת חולון 2,FUEL,p-isopropyl toluene,p-isopropyl toluene,2015-06-24,0.0,microgr/L,,
+נת_חולון_2,נת חולון 2,FUEL,p-xylene,p-xylene,2015-06-24,0.0,microgr/L,,
+נת_חולון_2,נת חולון 2,METALS,CADMIUM AS CD,CADMIUM AS CD,2022-06-08,0.0,microgr/L,5.0,0.0
+נת_חולון_2,נת חולון 2,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2016-07-17,190.0,microgr/L,3.0,6333.33
+נת_חולון_7,נת חולון 7,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2023-01-04,0.0,microgr/L,,
+נת_חולון_7,נת חולון 7,METALS,ARSENIC AS AS,ARSENIC AS AS,2023-01-04,0.0,microgr/L,10.0,0.0
+נת_חולון_7,נת חולון 7,FUEL,BENZENE,BENZENE,2023-01-04,1.0,microgr/L,5.0,20.0
+נת_חולון_7,נת חולון 7,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2023-01-04,0.0,microgr/L,4.0,0.0
+נת_חולון_7,נת חולון 7,INDUSTRY,CHLOROFORM,CHLOROFORM,2023-01-04,97.61,microgr/L,80.0,122.01
+נת_חולון_7,נת חולון 7,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2023-01-04,31.414,microgr/L,50.0,62.83
+נת_חולון_7,נת חולון 7,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2023-01-04,2.705,microgr/L,50.0,5.41
+נת_חולון_7,נת חולון 7,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2023-01-04,1.0,microgr/L,4.0,25.0
+נת_חולון_7,נת חולון 7,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2023-01-04,40.365,microgr/L,10.0,403.65
+נת_חולון_7,נת חולון 7,METALS,LEAD AS PB,LEAD AS PB,2023-01-04,0.0,microgr/L,10.0,0.0
+נת_חולון_7,נת חולון 7,FUEL, MTBE,MTBE,2023-01-04,0.0,microgr/L,40.0,0.0
+נת_חולון_7,נת חולון 7,METALS,NICKEL AS NI,NICKEL AS NI,2023-01-04,0.0,microgr/L,20.0,0.0
+נת_חולון_7,נת חולון 7,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2023-01-04,17.554,microgr/L,10.0,175.54
+נת_חולון_7,נת חולון 7,FUEL,TOLUENE,TOLUENE,2023-01-04,1.0,microgr/L,700.0,0.14
+נת_חולון_7,נת חולון 7,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2023-01-04,1.0,microgr/L,50.0,2.0
+נת_חולון_7,נת חולון 7,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2023-01-04,569.088,microgr/L,7.5,7587.84
+נת_חולון_7,נת חולון 7,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2023-01-04,0.0,microgr/L,0.5,0.0
+נת_חולון_7,נת חולון 7,FUEL,XYLENE,XYLENE,2023-01-04,3.0,microgr/L,500.0,0.6
+נת_חולון_7,נת חולון 7,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2023-01-04,0.0,microgr/L,,
+נת_חולון_7,נת חולון 7,FUEL,ETHYL BENZENE,ETHYL BENZENE,2023-01-04,1.0,microgr/L,300.0,0.33
+נת_חולון_7,נת חולון 7,FUEL,n-Butyl benzene,n-Butyl benzene,2012-11-29,0.0,microgr/L,,
+נת_חולון_7,נת חולון 7,FUEL,o-Xylene ,o-Xylene,2015-12-03,0.0,microgr/L,,
+נת_חולון_7,נת חולון 7,FUEL,p-isopropyl toluene,p-isopropyl toluene,2012-11-29,0.0,microgr/L,,
+נת_חולון_7,נת חולון 7,FUEL,p-xylene,p-xylene,2012-11-29,0.0,microgr/L,,
+נת_חולון_7,נת חולון 7,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2023-01-04,17.2,microgr/L,3.0,573.33
+נת_חולון_7,נת חולון 7,METALS,CADMIUM AS CD,CADMIUM AS CD,2023-01-04,0.0,microgr/L,5.0,0.0
+נת_חולון_5,נת חולון 5,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2023-01-04,0.0,microgr/L,,
+נת_חולון_5,נת חולון 5,METALS,ARSENIC AS AS,ARSENIC AS AS,2023-01-04,0.0,microgr/L,10.0,0.0
+נת_חולון_5,נת חולון 5,FUEL,BENZENE,BENZENE,2023-01-04,9.145,microgr/L,5.0,182.9
+נת_חולון_5,נת חולון 5,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2023-01-04,0.0,microgr/L,4.0,0.0
+נת_חולון_5,נת חולון 5,INDUSTRY,CHLOROFORM,CHLOROFORM,2023-01-04,1.615,microgr/L,80.0,2.02
+נת_חולון_5,נת חולון 5,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2023-01-04,0.0,microgr/L,50.0,0.0
+נת_חולון_5,נת חולון 5,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2023-01-04,17.32,microgr/L,50.0,34.64
+נת_חולון_5,נת חולון 5,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2023-01-04,3.662,microgr/L,4.0,91.55
+נת_חולון_5,נת חולון 5,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2023-01-04,98.057,microgr/L,10.0,980.57
+נת_חולון_5,נת חולון 5,METALS,LEAD AS PB,LEAD AS PB,2023-01-04,0.0,microgr/L,10.0,0.0
+נת_חולון_5,נת חולון 5,FUEL, MTBE,MTBE,2023-01-04,58.712,microgr/L,40.0,146.78
+נת_חולון_5,נת חולון 5,METALS,NICKEL AS NI,NICKEL AS NI,2023-01-04,0.0,microgr/L,20.0,0.0
+נת_חולון_5,נת חולון 5,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2023-01-04,3.478,microgr/L,10.0,34.78
+נת_חולון_5,נת חולון 5,FUEL,TOLUENE,TOLUENE,2023-01-04,1.0,microgr/L,700.0,0.14
+נת_חולון_5,נת חולון 5,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2023-01-04,1.0,microgr/L,50.0,2.0
+נת_חולון_5,נת חולון 5,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2023-01-04,634.517,microgr/L,7.5,8460.23
+נת_חולון_5,נת חולון 5,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2023-01-04,1.0,microgr/L,0.5,200.0
+נת_חולון_5,נת חולון 5,FUEL,XYLENE,XYLENE,2023-01-04,3.0,microgr/L,500.0,0.6
+נת_חולון_5,נת חולון 5,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2023-01-04,0.0,microgr/L,,
+נת_חולון_5,נת חולון 5,FUEL,ETHYL BENZENE,ETHYL BENZENE,2023-01-04,1.0,microgr/L,300.0,0.33
+נת_חולון_5,נת חולון 5,FUEL,n-Butyl benzene,n-Butyl benzene,2012-11-29,0.0,microgr/L,,
+נת_חולון_5,נת חולון 5,FUEL,o-Xylene ,o-Xylene,2015-12-03,0.0,microgr/L,,
+נת_חולון_5,נת חולון 5,FUEL,p-isopropyl toluene,p-isopropyl toluene,2012-11-29,0.0,microgr/L,,
+נת_חולון_5,נת חולון 5,FUEL,p-xylene,p-xylene,2012-11-29,0.0,microgr/L,,
+נת_חולון_5,נת חולון 5,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2023-01-04,68.4,microgr/L,3.0,2280.0
+נת_חולון_5,נת חולון 5,METALS,CADMIUM AS CD,CADMIUM AS CD,2023-01-04,0.0,microgr/L,5.0,0.0
+נת_חולון_9,נת חולון 9,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2012-05-24,0.0,microgr/L,,
+נת_חולון_9,נת חולון 9,METALS,ARSENIC AS AS,ARSENIC AS AS,2012-05-24,2.552,microgr/L,10.0,25.52
+נת_חולון_9,נת חולון 9,FUEL,BENZENE,BENZENE,2012-05-24,0.0,microgr/L,5.0,0.0
+נת_חולון_9,נת חולון 9,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2012-05-24,0.0,microgr/L,4.0,0.0
+נת_חולון_9,נת חולון 9,INDUSTRY,CHLOROFORM,CHLOROFORM,2012-05-24,8.47,microgr/L,80.0,10.59
+נת_חולון_9,נת חולון 9,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2012-05-24,17.695,microgr/L,50.0,35.39
+נת_חולון_9,נת חולון 9,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2012-05-24,6.59,microgr/L,50.0,13.18
+נת_חולון_9,נת חולון 9,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2012-05-24,0.0,microgr/L,4.0,0.0
+נת_חולון_9,נת חולון 9,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2012-05-24,444.5,microgr/L,10.0,4445.0
+נת_חולון_9,נת חולון 9,METALS,LEAD AS PB,LEAD AS PB,2012-05-24,0.0,microgr/L,10.0,0.0
+נת_חולון_9,נת חולון 9,FUEL, MTBE,MTBE,2012-05-24,2.0,microgr/L,40.0,5.0
+נת_חולון_9,נת חולון 9,METALS,NICKEL AS NI,NICKEL AS NI,2012-05-24,2.292,microgr/L,20.0,11.46
+נת_חולון_9,נת חולון 9,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2012-05-24,15.53,microgr/L,10.0,155.3
+נת_חולון_9,נת חולון 9,FUEL,TOLUENE,TOLUENE,2012-05-24,0.0,microgr/L,700.0,0.0
+נת_חולון_9,נת חולון 9,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2012-05-24,10.48,microgr/L,50.0,20.96
+נת_חולון_9,נת חולון 9,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2012-05-24,124.5,microgr/L,7.5,1660.0
+נת_חולון_9,נת חולון 9,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2012-05-24,0.0,microgr/L,0.5,0.0
+נת_חולון_9,נת חולון 9,FUEL,XYLENE,XYLENE,2012-05-24,0.0,microgr/L,500.0,0.0
+נת_חולון_9,נת חולון 9,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2012-05-24,0.0,microgr/L,,
+נת_חולון_9,נת חולון 9,METALS,CADMIUM AS CD,CADMIUM AS CD,2012-05-24,0.0,microgr/L,5.0,0.0
+נת_חולון_9,נת חולון 9,FUEL,ETHYL BENZENE,ETHYL BENZENE,2012-05-24,0.0,microgr/L,300.0,0.0
+נת_חולון_9,נת חולון 9,FUEL,n-Butyl benzene,n-Butyl benzene,2012-05-24,0.0,microgr/L,,
+נת_חולון_9,נת חולון 9,FUEL,o-Xylene ,o-Xylene,2012-05-24,0.0,microgr/L,,
+נת_חולון_9,נת חולון 9,FUEL,p-isopropyl toluene,p-isopropyl toluene,2012-05-24,0.0,microgr/L,,
+נת_חולון_9,נת חולון 9,FUEL,p-xylene,p-xylene,2012-05-24,0.0,microgr/L,,
+נת_יהודה_ייבוא_חולון,נת יהודה ייבוא חולון,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2013-04-15,30.0,microgr/L,,
+נת_יהודה_ייבוא_חולון,נת יהודה ייבוא חולון,METALS,ARSENIC AS AS,ARSENIC AS AS,2013-04-15,0.0,microgr/L,10.0,0.0
+נת_יהודה_ייבוא_חולון,נת יהודה ייבוא חולון,FUEL,BENZENE,BENZENE,2013-04-15,0.0,microgr/L,5.0,0.0
+נת_יהודה_ייבוא_חולון,נת יהודה ייבוא חולון,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2013-04-15,0.0,microgr/L,4.0,0.0
+נת_יהודה_ייבוא_חולון,נת יהודה ייבוא חולון,INDUSTRY,CHLOROFORM,CHLOROFORM,2013-04-15,0.0,microgr/L,80.0,0.0
+נת_יהודה_ייבוא_חולון,נת יהודה ייבוא חולון,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2013-04-15,0.0,microgr/L,50.0,0.0
+נת_יהודה_ייבוא_חולון,נת יהודה ייבוא חולון,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2013-04-15,0.0,microgr/L,50.0,0.0
+נת_יהודה_ייבוא_חולון,נת יהודה ייבוא חולון,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2013-04-15,0.0,microgr/L,10.0,0.0
+נת_יהודה_ייבוא_חולון,נת יהודה ייבוא חולון,METALS,LEAD AS PB,LEAD AS PB,2013-04-15,0.0,microgr/L,10.0,0.0
+נת_יהודה_ייבוא_חולון,נת יהודה ייבוא חולון,FUEL, MTBE,MTBE,2013-04-15,0.0,microgr/L,40.0,0.0
+נת_יהודה_ייבוא_חולון,נת יהודה ייבוא חולון,FUEL,n-Butyl benzene,n-Butyl benzene,2013-04-15,10.0,microgr/L,,
+נת_יהודה_ייבוא_חולון,נת יהודה ייבוא חולון,METALS,NICKEL AS NI,NICKEL AS NI,2013-04-15,0.0,microgr/L,20.0,0.0
+נת_יהודה_ייבוא_חולון,נת יהודה ייבוא חולון,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2013-04-15,0.0,microgr/L,10.0,0.0
+נת_יהודה_ייבוא_חולון,נת יהודה ייבוא חולון,FUEL,TOLUENE,TOLUENE,2013-04-15,0.0,microgr/L,700.0,0.0
+נת_יהודה_ייבוא_חולון,נת יהודה ייבוא חולון,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2013-04-15,560.0,microgr/L,7.5,7466.67
+נת_יהודה_ייבוא_חולון,נת יהודה ייבוא חולון,FUEL,XYLENE,XYLENE,2013-04-15,10.0,microgr/L,500.0,2.0
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,FUEL,BENZENE,BENZENE,2026-01-08,1.0,microgr/L,5.0,20.0
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2026-01-08,1.46,microgr/L,300.0,0.49
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,FUEL, MTBE,MTBE,2026-01-08,1.0,microgr/L,40.0,2.5
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,FUEL,TOLUENE,TOLUENE,2026-01-08,6.02,microgr/L,700.0,0.86
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,FUEL,XYLENE,XYLENE,2026-01-08,7.21,microgr/L,500.0,1.44
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2026-01-08,3.74,microgr/L,,
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2026-01-08,1.43,microgr/L,,
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,METALS,ARSENIC AS AS,ARSENIC AS AS,2026-01-08,0.0,microgr/L,10.0,0.0
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,METALS,CADMIUM AS CD,CADMIUM AS CD,2026-01-08,0.0,microgr/L,5.0,0.0
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2026-01-08,0.0,microgr/L,4.0,0.0
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,INDUSTRY,CHLOROFORM,CHLOROFORM,2026-01-08,1.03,microgr/L,80.0,1.29
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2026-01-08,50.0,microgr/L,50.0,100.0
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2026-01-08,2.24,microgr/L,50.0,4.48
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2026-01-08,1.0,microgr/L,4.0,25.0
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2026-01-08,31.08,microgr/L,10.0,310.8
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,METALS,LEAD AS PB,LEAD AS PB,2026-01-08,0.0,microgr/L,10.0,0.0
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,FUEL,n-Butyl benzene,n-Butyl benzene,2011-04-03,0.0,microgr/L,,
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,METALS,NICKEL AS NI,NICKEL AS NI,2026-01-08,0.0,microgr/L,20.0,0.0
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,FUEL,o-Xylene ,o-Xylene,2011-04-03,0.0,microgr/L,,
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,FUEL,p-isopropyl toluene,p-isopropyl toluene,2011-04-03,0.0,microgr/L,,
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,FUEL,p-xylene,p-xylene,2011-04-03,0.0,microgr/L,,
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2026-01-08,4.89,microgr/L,10.0,48.9
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2026-01-08,1.0,microgr/L,50.0,2.0
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2026-01-08,314.37,microgr/L,7.5,4191.6
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2026-01-08,0.0,microgr/L,0.5,0.0
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2026-01-08,2.65,microgr/L,3.0,88.33
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,METALS,ARSENIC AS AS,ARSENIC AS AS,2011-10-03,1.05,microgr/L,10.0,10.5
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,METALS,CADMIUM AS CD,CADMIUM AS CD,2011-04-03,0.0,microgr/L,5.0,0.0
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2011-10-03,29.7,microgr/L,50.0,59.4
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,METALS,LEAD AS PB,LEAD AS PB,2011-10-03,0.0,microgr/L,10.0,0.0
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,METALS,NICKEL AS NI,NICKEL AS NI,2011-10-03,2.21,microgr/L,20.0,11.05
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2013-02-13,0.0,microgr/L,,
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,FUEL,BENZENE,BENZENE,2013-02-13,0.0,microgr/L,5.0,0.0
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2013-02-13,0.0,microgr/L,4.0,0.0
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,INDUSTRY,CHLOROFORM,CHLOROFORM,2013-02-13,0.0,microgr/L,80.0,0.0
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2013-02-13,3.71,microgr/L,50.0,7.42
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2013-02-13,0.0,microgr/L,4.0,0.0
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2013-02-13,51.0,microgr/L,10.0,510.0
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,FUEL,ETHYL BENZENE,ETHYL BENZENE,2013-02-13,0.0,microgr/L,300.0,0.0
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,FUEL, MTBE,MTBE,2013-02-13,0.0,microgr/L,40.0,0.0
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2013-02-13,5.62,microgr/L,10.0,56.2
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,FUEL,TOLUENE,TOLUENE,2013-02-13,0.0,microgr/L,700.0,0.0
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2013-02-13,0.0,microgr/L,50.0,0.0
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2013-02-13,521.16,microgr/L,7.5,6948.8
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2013-02-13,0.0,microgr/L,0.5,0.0
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,FUEL,XYLENE,XYLENE,2013-02-13,0.0,microgr/L,500.0,0.0
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2013-02-13,0.0,microgr/L,,
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,FUEL,n-Butyl benzene,n-Butyl benzene,2013-02-13,0.0,microgr/L,,
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,FUEL,o-Xylene ,o-Xylene,2013-02-13,0.0,microgr/L,,
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,FUEL,p-isopropyl toluene,p-isopropyl toluene,2013-02-13,0.0,microgr/L,,
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,FUEL,p-xylene,p-xylene,2013-02-13,0.0,microgr/L,,
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,FUEL,BENZENE,BENZENE,2026-01-08,1.0,microgr/L,5.0,20.0
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2026-01-08,1.28,microgr/L,300.0,0.43
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,FUEL, MTBE,MTBE,2026-01-08,1.0,microgr/L,40.0,2.5
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,FUEL,TOLUENE,TOLUENE,2026-01-08,4.8,microgr/L,700.0,0.69
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,FUEL,XYLENE,XYLENE,2026-01-08,5.67,microgr/L,500.0,1.13
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,METALS,LEAD AS PB,LEAD AS PB,2026-01-08,0.0,microgr/L,10.0,0.0
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2026-01-08,2.22,microgr/L,,
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2026-01-08,1.14,microgr/L,,
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2026-01-08,0.0,microgr/L,4.0,0.0
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,INDUSTRY,CHLOROFORM,CHLOROFORM,2026-01-08,2.06,microgr/L,80.0,2.58
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2026-01-08,3.43,microgr/L,50.0,6.86
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2026-01-08,1.0,microgr/L,4.0,25.0
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2026-01-08,69.54,microgr/L,10.0,695.4
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2026-01-08,8.74,microgr/L,10.0,87.4
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2026-01-08,1.0,microgr/L,50.0,2.0
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2026-01-08,2722.24,microgr/L,7.5,36296.53
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2026-01-08,0.0,microgr/L,0.5,0.0
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2026-01-08,0.63,microgr/L,3.0,21.0
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,METALS,ARSENIC AS AS,ARSENIC AS AS,2026-01-08,0.0,microgr/L,10.0,0.0
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,METALS,CADMIUM AS CD,CADMIUM AS CD,2026-01-08,0.0,microgr/L,5.0,0.0
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2026-01-08,50.0,microgr/L,50.0,100.0
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,METALS,NICKEL AS NI,NICKEL AS NI,2026-01-08,0.0,microgr/L,20.0,0.0
+נד_המלאכה_מ_2,נד המלאכה מ 2,FUEL,BENZENE,BENZENE,2014-12-18,0.0,microgr/L,5.0,0.0
+נד_המלאכה_מ_2,נד המלאכה מ 2,FUEL,ETHYL BENZENE,ETHYL BENZENE,2014-12-18,0.0,microgr/L,300.0,0.0
+נד_המלאכה_מ_2,נד המלאכה מ 2,FUEL, MTBE,MTBE,2014-12-18,0.0,microgr/L,40.0,0.0
+נד_המלאכה_מ_2,נד המלאכה מ 2,FUEL,TOLUENE,TOLUENE,2014-12-18,0.0,microgr/L,700.0,0.0
+נד_המלאכה_מ_2,נד המלאכה מ 2,FUEL,XYLENE,XYLENE,2014-12-18,0.0,microgr/L,500.0,0.0
+נד_המלאכה_מ_2,נד המלאכה מ 2,METALS,LEAD AS PB,LEAD AS PB,2014-12-18,0.0,microgr/L,10.0,0.0
+נד_המלאכה_מ_2,נד המלאכה מ 2,METALS,ARSENIC AS AS,ARSENIC AS AS,2011-10-03,1.94,microgr/L,10.0,19.4
+נד_המלאכה_מ_2,נד המלאכה מ 2,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2011-10-03,2.6,microgr/L,50.0,5.2
+נד_המלאכה_מ_2,נד המלאכה מ 2,METALS,NICKEL AS NI,NICKEL AS NI,2011-10-03,18.11,microgr/L,20.0,90.55
+נת_תדירגן_2,נת תדירגן 2,METALS,ARSENIC AS AS,ARSENIC AS AS,2012-02-07,0.9,microgr/L,10.0,9.0
+נת_תדירגן_2,נת תדירגן 2,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2012-02-07,28.754,microgr/L,50.0,57.51
+נת_תדירגן_2,נת תדירגן 2,METALS,LEAD AS PB,LEAD AS PB,2012-02-07,0.155,microgr/L,10.0,1.55
+נת_תדירגן_2,נת תדירגן 2,METALS,NICKEL AS NI,NICKEL AS NI,2012-02-07,1.737,microgr/L,20.0,8.69
+נת_תדירגן_2,נת תדירגן 2,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2013-02-13,0.0,microgr/L,,
+נת_תדירגן_2,נת תדירגן 2,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2013-02-13,0.0,microgr/L,,
+נת_תדירגן_2,נת תדירגן 2,FUEL,BENZENE,BENZENE,2013-02-13,0.0,microgr/L,5.0,0.0
+נת_תדירגן_2,נת תדירגן 2,METALS,CADMIUM AS CD,CADMIUM AS CD,2012-02-07,0.0,microgr/L,5.0,0.0
+נת_תדירגן_2,נת תדירגן 2,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2013-02-13,0.0,microgr/L,4.0,0.0
+נת_תדירגן_2,נת תדירגן 2,INDUSTRY,CHLOROFORM,CHLOROFORM,2013-02-13,3.97,microgr/L,80.0,4.96
+נת_תדירגן_2,נת תדירגן 2,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2013-02-13,24.61,microgr/L,50.0,49.22
+נת_תדירגן_2,נת תדירגן 2,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2013-02-13,0.0,microgr/L,4.0,0.0
+נת_תדירגן_2,נת תדירגן 2,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2013-02-13,927.0,microgr/L,10.0,9270.0
+נת_תדירגן_2,נת תדירגן 2,FUEL,ETHYL BENZENE,ETHYL BENZENE,2013-02-13,0.0,microgr/L,300.0,0.0
+נת_תדירגן_2,נת תדירגן 2,FUEL, MTBE,MTBE,2013-02-13,0.0,microgr/L,40.0,0.0
+נת_תדירגן_2,נת תדירגן 2,FUEL,n-Butyl benzene,n-Butyl benzene,2013-02-13,0.0,microgr/L,,
+נת_תדירגן_2,נת תדירגן 2,FUEL,o-Xylene ,o-Xylene,2013-02-13,0.0,microgr/L,,
+נת_תדירגן_2,נת תדירגן 2,FUEL,p-isopropyl toluene,p-isopropyl toluene,2013-02-13,0.0,microgr/L,,
+נת_תדירגן_2,נת תדירגן 2,FUEL,p-xylene,p-xylene,2013-02-13,0.0,microgr/L,,
+נת_תדירגן_2,נת תדירגן 2,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2013-02-13,24.76,microgr/L,10.0,247.6
+נת_תדירגן_2,נת תדירגן 2,FUEL,TOLUENE,TOLUENE,2013-02-13,0.0,microgr/L,700.0,0.0
+נת_תדירגן_2,נת תדירגן 2,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2013-02-13,0.0,microgr/L,50.0,0.0
+נת_תדירגן_2,נת תדירגן 2,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2013-02-13,3513.1,microgr/L,7.5,46841.33
+נת_תדירגן_2,נת תדירגן 2,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2013-02-13,0.0,microgr/L,0.5,0.0
+נת_תדירגן_2,נת תדירגן 2,FUEL,XYLENE,XYLENE,2013-02-13,0.0,microgr/L,500.0,0.0
+נת_תדירגן_5,נת תדירגן 5,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2011-04-03,0.0,microgr/L,,
+נת_תדירגן_5,נת תדירגן 5,FUEL,BENZENE,BENZENE,2011-10-03,0.0,microgr/L,5.0,0.0
+נת_תדירגן_5,נת תדירגן 5,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2011-10-03,0.0,microgr/L,4.0,0.0
+נת_תדירגן_5,נת תדירגן 5,INDUSTRY,CHLOROFORM,CHLOROFORM,2011-10-03,0.3,microgr/L,80.0,0.38
+נת_תדירגן_5,נת תדירגן 5,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2011-04-03,5.91,microgr/L,50.0,11.82
+נת_תדירגן_5,נת תדירגן 5,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2011-10-03,0.6,microgr/L,4.0,15.0
+נת_תדירגן_5,נת תדירגן 5,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2011-10-03,150.0,microgr/L,10.0,1500.0
+נת_תדירגן_5,נת תדירגן 5,FUEL,ETHYL BENZENE,ETHYL BENZENE,2011-04-03,0.0,microgr/L,300.0,0.0
+נת_תדירגן_5,נת תדירגן 5,FUEL, MTBE,MTBE,2011-10-03,0.0,microgr/L,40.0,0.0
+נת_תדירגן_5,נת תדירגן 5,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2011-10-03,1.1,microgr/L,10.0,11.0
+נת_תדירגן_5,נת תדירגן 5,FUEL,TOLUENE,TOLUENE,2011-10-03,0.0,microgr/L,700.0,0.0
+נת_תדירגן_5,נת תדירגן 5,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2011-04-03,0.0,microgr/L,50.0,0.0
+נת_תדירגן_5,נת תדירגן 5,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2011-10-03,146.0,microgr/L,7.5,1946.67
+נת_תדירגן_5,נת תדירגן 5,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2011-04-03,0.0,microgr/L,0.5,0.0
+נת_תדירגן_5,נת תדירגן 5,FUEL,XYLENE,XYLENE,2011-10-03,0.0,microgr/L,500.0,0.0
+נת_תדירגן_5,נת תדירגן 5,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2011-04-03,0.0,microgr/L,,
+נת_תדירגן_5,נת תדירגן 5,METALS,ARSENIC AS AS,ARSENIC AS AS,2011-04-03,0.0,microgr/L,10.0,0.0
+נת_תדירגן_5,נת תדירגן 5,METALS,CADMIUM AS CD,CADMIUM AS CD,2011-04-03,0.0,microgr/L,5.0,0.0
+נת_תדירגן_5,נת תדירגן 5,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2011-04-03,4.37,microgr/L,50.0,8.74
+נת_תדירגן_5,נת תדירגן 5,METALS,LEAD AS PB,LEAD AS PB,2011-04-03,0.37,microgr/L,10.0,3.7
+נת_תדירגן_5,נת תדירגן 5,FUEL,n-Butyl benzene,n-Butyl benzene,2011-04-03,0.0,microgr/L,,
+נת_תדירגן_5,נת תדירגן 5,METALS,NICKEL AS NI,NICKEL AS NI,2011-04-03,1.87,microgr/L,20.0,9.35
+נת_תדירגן_5,נת תדירגן 5,FUEL,o-Xylene ,o-Xylene,2011-04-03,0.0,microgr/L,,
+נת_תדירגן_5,נת תדירגן 5,FUEL,p-isopropyl toluene,p-isopropyl toluene,2011-04-03,0.0,microgr/L,,
+נת_תדירגן_5,נת תדירגן 5,FUEL,p-xylene,p-xylene,2011-04-03,0.0,microgr/L,,
+נת_תדירגן_4,נת תדירגן 4,METALS,ARSENIC AS AS,ARSENIC AS AS,2011-10-03,1.15,microgr/L,10.0,11.5
+נת_תדירגן_4,נת תדירגן 4,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2011-10-03,132.96,microgr/L,50.0,265.92
+נת_תדירגן_4,נת תדירגן 4,METALS,LEAD AS PB,LEAD AS PB,2011-10-03,0.1,microgr/L,10.0,1.0
+נת_תדירגן_4,נת תדירגן 4,METALS,NICKEL AS NI,NICKEL AS NI,2011-10-03,2.55,microgr/L,20.0,12.75
+נת_תדירגן_4,נת תדירגן 4,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2013-02-13,0.0,microgr/L,,
+נת_תדירגן_4,נת תדירגן 4,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2013-02-13,0.0,microgr/L,,
+נת_תדירגן_4,נת תדירגן 4,FUEL,BENZENE,BENZENE,2013-02-13,3.49,microgr/L,5.0,69.8
+נת_תדירגן_4,נת תדירגן 4,METALS,CADMIUM AS CD,CADMIUM AS CD,2011-04-03,0.0,microgr/L,5.0,0.0
+נת_תדירגן_4,נת תדירגן 4,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2013-02-13,0.0,microgr/L,4.0,0.0
+נת_תדירגן_4,נת תדירגן 4,INDUSTRY,CHLOROFORM,CHLOROFORM,2013-02-13,3.25,microgr/L,80.0,4.06
+נת_תדירגן_4,נת תדירגן 4,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2013-02-13,162.8,microgr/L,50.0,325.6
+נת_תדירגן_4,נת תדירגן 4,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2013-02-13,0.0,microgr/L,4.0,0.0
+נת_תדירגן_4,נת תדירגן 4,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2013-02-13,2184.0,microgr/L,10.0,21840.0
+נת_תדירגן_4,נת תדירגן 4,FUEL,ETHYL BENZENE,ETHYL BENZENE,2013-02-13,0.0,microgr/L,300.0,0.0
+נת_תדירגן_4,נת תדירגן 4,FUEL, MTBE,MTBE,2013-02-13,127.0,microgr/L,40.0,317.5
+נת_תדירגן_4,נת תדירגן 4,FUEL,n-Butyl benzene,n-Butyl benzene,2013-02-13,0.0,microgr/L,,
+נת_תדירגן_4,נת תדירגן 4,FUEL,o-Xylene ,o-Xylene,2013-02-13,0.0,microgr/L,,
+נת_תדירגן_4,נת תדירגן 4,FUEL,p-isopropyl toluene,p-isopropyl toluene,2013-02-13,0.0,microgr/L,,
+נת_תדירגן_4,נת תדירגן 4,FUEL,p-xylene,p-xylene,2013-02-13,0.0,microgr/L,,
+נת_תדירגן_4,נת תדירגן 4,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2013-02-13,40.45,microgr/L,10.0,404.5
+נת_תדירגן_4,נת תדירגן 4,FUEL,TOLUENE,TOLUENE,2013-02-13,7.86,microgr/L,700.0,1.12
+נת_תדירגן_4,נת תדירגן 4,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2013-02-13,0.0,microgr/L,50.0,0.0
+נת_תדירגן_4,נת תדירגן 4,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2013-02-13,2756.3,microgr/L,7.5,36750.67
+נת_תדירגן_4,נת תדירגן 4,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2013-02-13,0.0,microgr/L,0.5,0.0
+נת_תדירגן_4,נת תדירגן 4,FUEL,XYLENE,XYLENE,2013-02-13,0.0,microgr/L,500.0,0.0
+נת_חולון_8,נת חולון 8,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2010-11-30,0.0,microgr/L,,
+נת_חולון_8,נת חולון 8,METALS,ARSENIC AS AS,ARSENIC AS AS,2011-09-14,3.63,microgr/L,10.0,36.3
+נת_חולון_8,נת חולון 8,FUEL,BENZENE,BENZENE,2011-09-14,0.0,microgr/L,5.0,0.0
+נת_חולון_8,נת חולון 8,METALS,CADMIUM AS CD,CADMIUM AS CD,2010-11-30,0.0,microgr/L,5.0,0.0
+נת_חולון_8,נת חולון 8,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2011-09-14,0.2,microgr/L,4.0,5.0
+נת_חולון_8,נת חולון 8,INDUSTRY,CHLOROFORM,CHLOROFORM,2011-09-14,9.0,microgr/L,80.0,11.25
+נת_חולון_8,נת חולון 8,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2011-09-14,61.98,microgr/L,50.0,123.96
+נת_חולון_8,נת חולון 8,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2010-11-30,14.94,microgr/L,50.0,29.88
+נת_חולון_8,נת חולון 8,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2011-09-14,9.7,microgr/L,4.0,242.5
+נת_חולון_8,נת חולון 8,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2011-09-14,1303.0,microgr/L,10.0,13030.0
+נת_חולון_8,נת חולון 8,FUEL,ETHYL BENZENE,ETHYL BENZENE,2010-11-30,0.0,microgr/L,300.0,0.0
+נת_חולון_8,נת חולון 8,METALS,LEAD AS PB,LEAD AS PB,2011-09-14,7.8,microgr/L,10.0,78.0
+נת_חולון_8,נת חולון 8,FUEL, MTBE,MTBE,2011-09-14,0.0,microgr/L,40.0,0.0
+נת_חולון_8,נת חולון 8,METALS,NICKEL AS NI,NICKEL AS NI,2011-09-14,5.21,microgr/L,20.0,26.05
+נת_חולון_8,נת חולון 8,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2011-09-14,17.6,microgr/L,10.0,176.0
+נת_חולון_8,נת חולון 8,FUEL,TOLUENE,TOLUENE,2011-09-14,0.0,microgr/L,700.0,0.0
+נת_חולון_8,נת חולון 8,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2010-11-30,0.0,microgr/L,50.0,0.0
+נת_חולון_8,נת חולון 8,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2011-09-14,584.0,microgr/L,7.5,7786.67
+נת_חולון_8,נת חולון 8,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2010-11-30,0.0,microgr/L,0.5,0.0
+נת_חולון_8,נת חולון 8,FUEL,XYLENE,XYLENE,2011-09-14,0.0,microgr/L,500.0,0.0
+נת_חולון_3,נת חולון 3,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2022-06-22,0.0,microgr/L,,
+נת_חולון_3,נת חולון 3,METALS,ARSENIC AS AS,ARSENIC AS AS,2022-06-22,0.0,microgr/L,10.0,0.0
+נת_חולון_3,נת חולון 3,FUEL,BENZENE,BENZENE,2022-06-22,1.0,microgr/L,5.0,20.0
+נת_חולון_3,נת חולון 3,METALS,CADMIUM AS CD,CADMIUM AS CD,2022-06-22,0.0,microgr/L,5.0,0.0
+נת_חולון_3,נת חולון 3,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2022-06-22,0.0,microgr/L,4.0,0.0
+נת_חולון_3,נת חולון 3,INDUSTRY,CHLOROFORM,CHLOROFORM,2022-06-22,1.0,microgr/L,80.0,1.25
+נת_חולון_3,נת חולון 3,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2022-06-22,82.886,microgr/L,50.0,165.77
+נת_חולון_3,נת חולון 3,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2022-06-22,3.629,microgr/L,50.0,7.26
+נת_חולון_3,נת חולון 3,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2022-06-22,0.0,microgr/L,4.0,0.0
+נת_חולון_3,נת חולון 3,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2022-06-22,1.0,microgr/L,10.0,10.0
+נת_חולון_3,נת חולון 3,FUEL,ETHYL BENZENE,ETHYL BENZENE,2022-06-22,0.0,microgr/L,300.0,0.0
+נת_חולון_3,נת חולון 3,METALS,LEAD AS PB,LEAD AS PB,2022-06-22,0.0,microgr/L,10.0,0.0
+נת_חולון_3,נת חולון 3,FUEL, MTBE,MTBE,2022-06-22,1.0,microgr/L,40.0,2.5
+נת_חולון_3,נת חולון 3,METALS,NICKEL AS NI,NICKEL AS NI,2022-06-22,0.0,microgr/L,20.0,0.0
+נת_חולון_3,נת חולון 3,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2022-06-22,2.249,microgr/L,10.0,22.49
+נת_חולון_3,נת חולון 3,FUEL,TOLUENE,TOLUENE,2022-06-22,0.0,microgr/L,700.0,0.0
+נת_חולון_3,נת חולון 3,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2022-06-22,1.0,microgr/L,50.0,2.0
+נת_חולון_3,נת חולון 3,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2022-06-22,161.018,microgr/L,7.5,2146.91
+נת_חולון_3,נת חולון 3,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2022-06-22,0.0,microgr/L,0.5,0.0
+נת_חולון_3,נת חולון 3,FUEL,XYLENE,XYLENE,2022-06-22,0.0,microgr/L,500.0,0.0
+נת_חולון_3,נת חולון 3,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2022-06-22,0.0,microgr/L,,
+נת_חולון_3,נת חולון 3,FUEL,n-Butyl benzene,n-Butyl benzene,2017-10-22,0.0,microgr/L,,
+נת_חולון_3,נת חולון 3,FUEL,o-Xylene ,o-Xylene,2017-10-22,0.0,microgr/L,,
+נת_חולון_3,נת חולון 3,FUEL,p-isopropyl toluene,p-isopropyl toluene,2015-06-24,0.0,microgr/L,,
+נת_חולון_3,נת חולון 3,FUEL,p-xylene,p-xylene,2015-06-24,0.0,microgr/L,,
+נת_חולון_3,נת חולון 3,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2022-06-22,1.2,microgr/L,3.0,40.0
+נת_חולון_1,נת חולון 1,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2024-11-18,0.0,microgr/L,,
+נת_חולון_1,נת חולון 1,FUEL,BENZENE,BENZENE,2024-11-18,1.0,microgr/L,5.0,20.0
+נת_חולון_1,נת חולון 1,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2024-11-18,1.0,microgr/L,4.0,25.0
+נת_חולון_1,נת חולון 1,INDUSTRY,CHLOROFORM,CHLOROFORM,2024-11-18,59.929,microgr/L,80.0,74.91
+נת_חולון_1,נת חולון 1,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2024-11-18,5.448,microgr/L,50.0,10.9
+נת_חולון_1,נת חולון 1,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2024-11-18,1.0,microgr/L,4.0,25.0
+נת_חולון_1,נת חולון 1,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2024-11-18,62.35,microgr/L,10.0,623.5
+נת_חולון_1,נת חולון 1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-11-18,0.0,microgr/L,300.0,0.0
+נת_חולון_1,נת חולון 1,FUEL, MTBE,MTBE,2024-11-18,33.501,microgr/L,40.0,83.75
+נת_חולון_1,נת חולון 1,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2024-11-18,39.254,microgr/L,10.0,392.54
+נת_חולון_1,נת חולון 1,FUEL,TOLUENE,TOLUENE,2024-11-18,1.0,microgr/L,700.0,0.14
+נת_חולון_1,נת חולון 1,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2024-11-18,1.0,microgr/L,50.0,2.0
+נת_חולון_1,נת חולון 1,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2024-11-18,419.293,microgr/L,7.5,5590.57
+נת_חולון_1,נת חולון 1,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2024-11-18,0.0,microgr/L,0.5,0.0
+נת_חולון_1,נת חולון 1,FUEL,XYLENE,XYLENE,2024-11-18,0.0,microgr/L,500.0,0.0
+נת_חולון_1,נת חולון 1,METALS,ARSENIC AS AS,ARSENIC AS AS,2023-08-09,0.0,microgr/L,10.0,0.0
+נת_חולון_1,נת חולון 1,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2023-08-09,18.5,microgr/L,50.0,37.0
+נת_חולון_1,נת חולון 1,METALS,LEAD AS PB,LEAD AS PB,2023-08-09,0.0,microgr/L,10.0,0.0
+נת_חולון_1,נת חולון 1,METALS,NICKEL AS NI,NICKEL AS NI,2023-08-09,0.0,microgr/L,20.0,0.0
+נת_חולון_1,נת חולון 1,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2024-11-18,0.0,microgr/L,,
+נת_חולון_1,נת חולון 1,FUEL,n-Butyl benzene,n-Butyl benzene,2017-10-19,0.0,microgr/L,,
+נת_חולון_1,נת חולון 1,FUEL,o-Xylene ,o-Xylene,2017-10-19,0.0,microgr/L,,
+נת_חולון_1,נת חולון 1,FUEL,p-isopropyl toluene,p-isopropyl toluene,2015-06-24,0.0,microgr/L,,
+נת_חולון_1,נת חולון 1,FUEL,p-xylene,p-xylene,2015-06-24,0.0,microgr/L,,
+נת_חולון_1,נת חולון 1,METALS,CADMIUM AS CD,CADMIUM AS CD,2023-08-09,0.0,microgr/L,5.0,0.0
+נת_חולון_1,נת חולון 1,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2026-02-10,5.5,microgr/L,3.0,183.33
+נת_חולון_11,נת חולון 11,METALS,ARSENIC AS AS,ARSENIC AS AS,2022-06-22,0.0,microgr/L,10.0,0.0
+נת_חולון_11,נת חולון 11,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2022-06-22,0.0,microgr/L,50.0,0.0
+נת_חולון_11,נת חולון 11,METALS,LEAD AS PB,LEAD AS PB,2022-06-22,0.0,microgr/L,10.0,0.0
+נת_חולון_11,נת חולון 11,METALS,NICKEL AS NI,NICKEL AS NI,2022-06-22,0.0,microgr/L,20.0,0.0
+נת_חולון_11,נת חולון 11,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2024-11-18,1.0,microgr/L,,
+נת_חולון_11,נת חולון 11,FUEL,BENZENE,BENZENE,2024-11-18,1.493,microgr/L,5.0,29.86
+נת_חולון_11,נת חולון 11,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2024-11-18,1.0,microgr/L,4.0,25.0
+נת_חולון_11,נת חולון 11,INDUSTRY,CHLOROFORM,CHLOROFORM,2024-11-18,3.105,microgr/L,80.0,3.88
+נת_חולון_11,נת חולון 11,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2024-11-18,7.14,microgr/L,50.0,14.28
+נת_חולון_11,נת חולון 11,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2024-11-18,2.309,microgr/L,4.0,57.73
+נת_חולון_11,נת חולון 11,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2024-11-18,200.814,microgr/L,10.0,2008.14
+נת_חולון_11,נת חולון 11,FUEL, MTBE,MTBE,2024-11-18,6.143,microgr/L,40.0,15.36
+נת_חולון_11,נת חולון 11,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2024-11-18,21.901,microgr/L,10.0,219.01
+נת_חולון_11,נת חולון 11,FUEL,TOLUENE,TOLUENE,2024-11-18,1.0,microgr/L,700.0,0.14
+נת_חולון_11,נת חולון 11,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2024-11-18,1.0,microgr/L,50.0,2.0
+נת_חולון_11,נת חולון 11,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2024-11-18,5149.508,microgr/L,7.5,68660.11
+נת_חולון_11,נת חולון 11,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2024-11-18,13.835,microgr/L,0.5,2767.0
+נת_חולון_11,נת חולון 11,FUEL,XYLENE,XYLENE,2024-11-18,3.0,microgr/L,500.0,0.6
+נת_חולון_11,נת חולון 11,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-11-18,0.0,microgr/L,300.0,0.0
+נת_חולון_11,נת חולון 11,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2024-11-18,1.0,microgr/L,,
+נת_חולון_11,נת חולון 11,METALS,CADMIUM AS CD,CADMIUM AS CD,2022-06-22,0.0,microgr/L,5.0,0.0
+נת_חולון_11,נת חולון 11,FUEL,n-Butyl benzene,n-Butyl benzene,2017-10-19,0.0,microgr/L,,
+נת_חולון_11,נת חולון 11,FUEL,o-Xylene ,o-Xylene,2017-10-19,0.0,microgr/L,,
+נת_חולון_11,נת חולון 11,FUEL,p-isopropyl toluene,p-isopropyl toluene,2015-06-24,0.0,microgr/L,,
+נת_חולון_11,נת חולון 11,FUEL,p-xylene,p-xylene,2015-06-24,0.0,microgr/L,,
+נת_חולון_11,נת חולון 11,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2026-02-10,1036.3,microgr/L,3.0,34543.33
+נד_נובר_מרכבה,נד נובר מרכבה,FUEL,BENZENE,BENZENE,2020-03-29,10.0,microgr/L,5.0,200.0
+נד_נובר_מרכבה,נד נובר מרכבה,FUEL,ETHYL BENZENE,ETHYL BENZENE,2020-03-29,10.0,microgr/L,300.0,3.33
+נד_נובר_מרכבה,נד נובר מרכבה,FUEL, MTBE,MTBE,2020-03-29,900.0,microgr/L,40.0,2250.0
+נד_נובר_מרכבה,נד נובר מרכבה,FUEL,TOLUENE,TOLUENE,2020-03-29,10.0,microgr/L,700.0,1.43
+נד_נובר_מרכבה,נד נובר מרכבה,FUEL,XYLENE,XYLENE,2020-03-29,10.0,microgr/L,500.0,2.0
+נד_דלק_מרכבות_האש_1,נד דלק מרכבות האש 1,FUEL,BENZENE,BENZENE,2025-05-14,10.0,microgr/L,5.0,200.0
+נד_דלק_מרכבות_האש_1,נד דלק מרכבות האש 1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-05-14,10.0,microgr/L,300.0,3.33
+נד_דלק_מרכבות_האש_1,נד דלק מרכבות האש 1,FUEL, MTBE,MTBE,2025-05-14,50.0,microgr/L,40.0,125.0
+נד_דלק_מרכבות_האש_1,נד דלק מרכבות האש 1,FUEL,TOLUENE,TOLUENE,2025-05-14,10.0,microgr/L,700.0,1.43
+נד_דלק_מרכבות_האש_1,נד דלק מרכבות האש 1,FUEL,XYLENE,XYLENE,2025-05-14,10.0,microgr/L,500.0,2.0
+נד_דלק_מרכבות_האש_2,נד דלק מרכבות האש 2,FUEL,BENZENE,BENZENE,2025-05-14,100.0,microgr/L,5.0,2000.0
+נד_דלק_מרכבות_האש_2,נד דלק מרכבות האש 2,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-05-14,20.0,microgr/L,300.0,6.67
+נד_דלק_מרכבות_האש_2,נד דלק מרכבות האש 2,FUEL, MTBE,MTBE,2025-05-14,900.0,microgr/L,40.0,2250.0
+נד_דלק_מרכבות_האש_2,נד דלק מרכבות האש 2,FUEL,TOLUENE,TOLUENE,2025-05-14,10.0,microgr/L,700.0,1.43
+נד_דלק_מרכבות_האש_2,נד דלק מרכבות האש 2,FUEL,XYLENE,XYLENE,2025-05-14,80.0,microgr/L,500.0,16.0
+נד_דלק_מרכבות_האש_3,נד דלק מרכבות האש 3,FUEL,BENZENE,BENZENE,2025-05-14,10.0,microgr/L,5.0,200.0
+נד_דלק_מרכבות_האש_3,נד דלק מרכבות האש 3,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-05-14,10.0,microgr/L,300.0,3.33
+נד_דלק_מרכבות_האש_3,נד דלק מרכבות האש 3,FUEL, MTBE,MTBE,2025-05-14,10.0,microgr/L,40.0,25.0
+נד_דלק_מרכבות_האש_3,נד דלק מרכבות האש 3,FUEL,TOLUENE,TOLUENE,2025-05-14,10.0,microgr/L,700.0,1.43
+נד_דלק_מרכבות_האש_3,נד דלק מרכבות האש 3,FUEL,XYLENE,XYLENE,2025-05-14,10.0,microgr/L,500.0,2.0
+נת_תדירגן_6,נת תדירגן 6,FUEL,BENZENE,BENZENE,2012-07-29,0.0,microgr/L,5.0,0.0
+נת_תדירגן_6,נת תדירגן 6,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2012-07-29,0.0,microgr/L,4.0,0.0
+נת_תדירגן_6,נת תדירגן 6,INDUSTRY,CHLOROFORM,CHLOROFORM,2012-07-29,0.0,microgr/L,80.0,0.0
+נת_תדירגן_6,נת תדירגן 6,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2012-07-29,9.71,microgr/L,4.0,242.75
+נת_תדירגן_6,נת תדירגן 6,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2012-07-29,464.83,microgr/L,10.0,4648.3
+נת_תדירגן_6,נת תדירגן 6,FUEL, MTBE,MTBE,2012-07-29,0.0,microgr/L,40.0,0.0
+נת_תדירגן_6,נת תדירגן 6,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2012-07-29,6.0,microgr/L,10.0,60.0
+נת_תדירגן_6,נת תדירגן 6,FUEL,TOLUENE,TOLUENE,2012-07-29,0.0,microgr/L,700.0,0.0
+נת_תדירגן_6,נת תדירגן 6,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2012-07-29,1182.0,microgr/L,7.5,15760.0
+נת_תדירגן_6,נת תדירגן 6,FUEL,XYLENE,XYLENE,2012-07-29,0.0,microgr/L,500.0,0.0
+נת_תדירגן_6,נת תדירגן 6,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2012-07-29,0.0,microgr/L,,
+נת_תדירגן_6,נת תדירגן 6,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2012-07-29,0.0,microgr/L,,
+נת_תדירגן_6,נת תדירגן 6,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2012-07-29,37.6,microgr/L,50.0,75.2
+נת_תדירגן_6,נת תדירגן 6,FUEL,ETHYL BENZENE,ETHYL BENZENE,2012-07-29,0.0,microgr/L,300.0,0.0
+נת_תדירגן_6,נת תדירגן 6,FUEL,n-Butyl benzene,n-Butyl benzene,2012-07-29,0.0,microgr/L,,
+נת_תדירגן_6,נת תדירגן 6,FUEL,o-Xylene ,o-Xylene,2012-07-29,0.0,microgr/L,,
+נת_תדירגן_6,נת תדירגן 6,FUEL,p-isopropyl toluene,p-isopropyl toluene,2012-07-29,0.0,microgr/L,,
+נת_תדירגן_6,נת תדירגן 6,FUEL,p-xylene,p-xylene,2012-07-29,0.0,microgr/L,,
+נת_תדירגן_6,נת תדירגן 6,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2012-07-29,0.0,microgr/L,50.0,0.0
+נת_תדירגן_6,נת תדירגן 6,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2012-07-29,0.0,microgr/L,0.5,0.0
+נת_תדירגן_7,נת תדירגן 7,FUEL,BENZENE,BENZENE,2012-07-25,0.0,microgr/L,5.0,0.0
+נת_תדירגן_7,נת תדירגן 7,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2012-07-25,0.0,microgr/L,4.0,0.0
+נת_תדירגן_7,נת תדירגן 7,INDUSTRY,CHLOROFORM,CHLOROFORM,2012-07-25,0.0,microgr/L,80.0,0.0
+נת_תדירגן_7,נת תדירגן 7,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2012-07-25,0.0,microgr/L,4.0,0.0
+נת_תדירגן_7,נת תדירגן 7,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2012-07-25,44.72,microgr/L,10.0,447.2
+נת_תדירגן_7,נת תדירגן 7,FUEL, MTBE,MTBE,2012-07-25,0.0,microgr/L,40.0,0.0
+נת_תדירגן_7,נת תדירגן 7,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2012-07-25,3.17,microgr/L,10.0,31.7
+נת_תדירגן_7,נת תדירגן 7,FUEL,TOLUENE,TOLUENE,2012-07-25,0.0,microgr/L,700.0,0.0
+נת_תדירגן_7,נת תדירגן 7,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2012-07-25,1486.08,microgr/L,7.5,19814.4
+נת_תדירגן_7,נת תדירגן 7,FUEL,XYLENE,XYLENE,2012-07-25,0.0,microgr/L,500.0,0.0
+נת_תדירגן_7,נת תדירגן 7,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2012-07-25,0.0,microgr/L,,
+נת_תדירגן_7,נת תדירגן 7,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2012-07-25,0.0,microgr/L,,
+נת_תדירגן_7,נת תדירגן 7,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2012-07-25,43.0,microgr/L,50.0,86.0
+נת_תדירגן_7,נת תדירגן 7,FUEL,ETHYL BENZENE,ETHYL BENZENE,2012-07-25,0.0,microgr/L,300.0,0.0
+נת_תדירגן_7,נת תדירגן 7,FUEL,n-Butyl benzene,n-Butyl benzene,2012-07-25,0.0,microgr/L,,
+נת_תדירגן_7,נת תדירגן 7,FUEL,o-Xylene ,o-Xylene,2012-07-25,0.0,microgr/L,,
+נת_תדירגן_7,נת תדירגן 7,FUEL,p-isopropyl toluene,p-isopropyl toluene,2012-07-25,0.0,microgr/L,,
+נת_תדירגן_7,נת תדירגן 7,FUEL,p-xylene,p-xylene,2012-07-25,0.0,microgr/L,,
+נת_תדירגן_7,נת תדירגן 7,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2012-07-25,0.0,microgr/L,50.0,0.0
+נת_תדירגן_7,נת תדירגן 7,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2012-07-25,0.0,microgr/L,0.5,0.0
+נת_תדירגן_10,נת תדירגן 10,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2012-07-25,0.0,microgr/L,,
+נת_תדירגן_10,נת תדירגן 10,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2012-07-25,0.0,microgr/L,,
+נת_תדירגן_10,נת תדירגן 10,FUEL,BENZENE,BENZENE,2012-07-25,0.0,microgr/L,5.0,0.0
+נת_תדירגן_10,נת תדירגן 10,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2012-07-25,0.0,microgr/L,4.0,0.0
+נת_תדירגן_10,נת תדירגן 10,INDUSTRY,CHLOROFORM,CHLOROFORM,2012-07-25,0.0,microgr/L,80.0,0.0
+נת_תדירגן_10,נת תדירגן 10,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2012-07-25,0.0,microgr/L,50.0,0.0
+נת_תדירגן_10,נת תדירגן 10,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2012-07-25,0.0,microgr/L,4.0,0.0
+נת_תדירגן_10,נת תדירגן 10,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2012-07-25,457.52,microgr/L,10.0,4575.2
+נת_תדירגן_10,נת תדירגן 10,FUEL,ETHYL BENZENE,ETHYL BENZENE,2012-07-25,0.0,microgr/L,300.0,0.0
+נת_תדירגן_10,נת תדירגן 10,FUEL, MTBE,MTBE,2012-07-25,0.0,microgr/L,40.0,0.0
+נת_תדירגן_10,נת תדירגן 10,FUEL,n-Butyl benzene,n-Butyl benzene,2012-07-25,0.0,microgr/L,,
+נת_תדירגן_10,נת תדירגן 10,FUEL,o-Xylene ,o-Xylene,2012-07-25,0.0,microgr/L,,
+נת_תדירגן_10,נת תדירגן 10,FUEL,p-isopropyl toluene,p-isopropyl toluene,2012-07-25,0.0,microgr/L,,
+נת_תדירגן_10,נת תדירגן 10,FUEL,p-xylene,p-xylene,2012-07-25,0.0,microgr/L,,
+נת_תדירגן_10,נת תדירגן 10,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2012-07-25,16.78,microgr/L,10.0,167.8
+נת_תדירגן_10,נת תדירגן 10,FUEL,TOLUENE,TOLUENE,2012-07-25,0.0,microgr/L,700.0,0.0
+נת_תדירגן_10,נת תדירגן 10,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2012-07-25,0.0,microgr/L,50.0,0.0
+נת_תדירגן_10,נת תדירגן 10,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2012-07-25,1898.02,microgr/L,7.5,25306.93
+נת_תדירגן_10,נת תדירגן 10,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2012-07-25,0.0,microgr/L,0.5,0.0
+נת_תדירגן_10,נת תדירגן 10,FUEL,XYLENE,XYLENE,2012-07-25,0.0,microgr/L,500.0,0.0
+נת_תדירגן_9,נת תדירגן 9,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2012-07-22,0.0,microgr/L,,
+נת_תדירגן_9,נת תדירגן 9,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2012-07-22,0.0,microgr/L,,
+נת_תדירגן_9,נת תדירגן 9,FUEL,BENZENE,BENZENE,2012-07-22,0.0,microgr/L,5.0,0.0
+נת_תדירגן_9,נת תדירגן 9,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2012-07-22,0.0,microgr/L,4.0,0.0
+נת_תדירגן_9,נת תדירגן 9,INDUSTRY,CHLOROFORM,CHLOROFORM,2012-07-22,0.0,microgr/L,80.0,0.0
+נת_תדירגן_9,נת תדירגן 9,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2012-07-22,14.33,microgr/L,50.0,28.66
+נת_תדירגן_9,נת תדירגן 9,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2012-07-22,0.0,microgr/L,4.0,0.0
+נת_תדירגן_9,נת תדירגן 9,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2012-07-22,163.4,microgr/L,10.0,1634.0
+נת_תדירגן_9,נת תדירגן 9,FUEL,ETHYL BENZENE,ETHYL BENZENE,2012-07-22,0.0,microgr/L,300.0,0.0
+נת_תדירגן_9,נת תדירגן 9,FUEL, MTBE,MTBE,2012-07-22,0.0,microgr/L,40.0,0.0
+נת_תדירגן_9,נת תדירגן 9,FUEL,n-Butyl benzene,n-Butyl benzene,2012-07-22,0.0,microgr/L,,
+נת_תדירגן_9,נת תדירגן 9,FUEL,o-Xylene ,o-Xylene,2012-07-22,0.0,microgr/L,,
+נת_תדירגן_9,נת תדירגן 9,FUEL,p-isopropyl toluene,p-isopropyl toluene,2012-07-22,0.0,microgr/L,,
+נת_תדירגן_9,נת תדירגן 9,FUEL,p-xylene,p-xylene,2012-07-22,0.0,microgr/L,,
+נת_תדירגן_9,נת תדירגן 9,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2012-07-22,23.77,microgr/L,10.0,237.7
+נת_תדירגן_9,נת תדירגן 9,FUEL,TOLUENE,TOLUENE,2012-07-22,0.0,microgr/L,700.0,0.0
+נת_תדירגן_9,נת תדירגן 9,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2012-07-22,0.0,microgr/L,50.0,0.0
+נת_תדירגן_9,נת תדירגן 9,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2012-07-22,1019.96,microgr/L,7.5,13599.47
+נת_תדירגן_9,נת תדירגן 9,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2012-07-22,0.0,microgr/L,0.5,0.0
+נת_תדירגן_9,נת תדירגן 9,FUEL,XYLENE,XYLENE,2012-07-22,0.0,microgr/L,500.0,0.0
+נת_תדירגן_8,נת תדירגן 8,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2012-07-22,0.0,microgr/L,,
+נת_תדירגן_8,נת תדירגן 8,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2012-07-22,0.0,microgr/L,,
+נת_תדירגן_8,נת תדירגן 8,FUEL,BENZENE,BENZENE,2012-07-22,0.0,microgr/L,5.0,0.0
+נת_תדירגן_8,נת תדירגן 8,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2012-07-22,0.0,microgr/L,4.0,0.0
+נת_תדירגן_8,נת תדירגן 8,INDUSTRY,CHLOROFORM,CHLOROFORM,2012-07-22,0.0,microgr/L,80.0,0.0
+נת_תדירגן_8,נת תדירגן 8,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2012-07-22,68.37,microgr/L,50.0,136.74
+נת_תדירגן_8,נת תדירגן 8,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2012-07-22,0.0,microgr/L,4.0,0.0
+נת_תדירגן_8,נת תדירגן 8,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2012-07-22,215.0,microgr/L,10.0,2150.0
+נת_תדירגן_8,נת תדירגן 8,FUEL,ETHYL BENZENE,ETHYL BENZENE,2012-07-22,0.0,microgr/L,300.0,0.0
+נת_תדירגן_8,נת תדירגן 8,FUEL, MTBE,MTBE,2012-07-22,0.0,microgr/L,40.0,0.0
+נת_תדירגן_8,נת תדירגן 8,FUEL,n-Butyl benzene,n-Butyl benzene,2012-07-22,0.0,microgr/L,,
+נת_תדירגן_8,נת תדירגן 8,FUEL,o-Xylene ,o-Xylene,2012-07-22,0.0,microgr/L,,
+נת_תדירגן_8,נת תדירגן 8,FUEL,p-isopropyl toluene,p-isopropyl toluene,2012-07-22,0.0,microgr/L,,
+נת_תדירגן_8,נת תדירגן 8,FUEL,p-xylene,p-xylene,2012-07-22,0.0,microgr/L,,
+נת_תדירגן_8,נת תדירגן 8,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2012-07-22,5.86,microgr/L,10.0,58.6
+נת_תדירגן_8,נת תדירגן 8,FUEL,TOLUENE,TOLUENE,2012-07-22,0.0,microgr/L,700.0,0.0
+נת_תדירגן_8,נת תדירגן 8,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2012-07-22,0.0,microgr/L,50.0,0.0
+נת_תדירגן_8,נת תדירגן 8,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2012-07-22,1713.12,microgr/L,7.5,22841.6
+נת_תדירגן_8,נת תדירגן 8,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2012-07-22,0.0,microgr/L,0.5,0.0
+נת_תדירגן_8,נת תדירגן 8,FUEL,XYLENE,XYLENE,2012-07-22,0.0,microgr/L,500.0,0.0
+נד_דלק_הצבי_1,נד דלק הצבי 1,FUEL,BENZENE,BENZENE,2024-09-29,1.0,microgr/L,5.0,20.0
+נד_דלק_הצבי_1,נד דלק הצבי 1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-09-29,1.0,microgr/L,300.0,0.33
+נד_דלק_הצבי_1,נד דלק הצבי 1,METALS,LEAD AS PB,LEAD AS PB,2023-09-14,0.0,microgr/L,10.0,0.0
+נד_דלק_הצבי_1,נד דלק הצבי 1,FUEL, MTBE,MTBE,2025-03-17,15.0,microgr/L,40.0,37.5
+נד_דלק_הצבי_1,נד דלק הצבי 1,FUEL,TOLUENE,TOLUENE,2024-09-29,1.0,microgr/L,700.0,0.14
+נד_דלק_הצבי_1,נד דלק הצבי 1,FUEL,XYLENE,XYLENE,2024-09-29,1.0,microgr/L,500.0,0.2
+נד_דלק_הצבי_1,נד דלק הצבי 1,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2023-09-14,1.0,microgr/L,,
+נד_דלק_הצבי_1,נד דלק הצבי 1,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2023-09-14,1.0,microgr/L,,
+נד_דלק_הצבי_1,נד דלק הצבי 1,METALS,ARSENIC AS AS,ARSENIC AS AS,2023-09-14,0.0,microgr/L,10.0,0.0
+נד_דלק_הצבי_1,נד דלק הצבי 1,METALS,CADMIUM AS CD,CADMIUM AS CD,2023-09-14,0.0,microgr/L,5.0,0.0
+נד_דלק_הצבי_1,נד דלק הצבי 1,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2023-09-14,0.0,microgr/L,4.0,0.0
+נד_דלק_הצבי_1,נד דלק הצבי 1,INDUSTRY,CHLOROFORM,CHLOROFORM,2023-09-14,1.0,microgr/L,80.0,1.25
+נד_דלק_הצבי_1,נד דלק הצבי 1,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2023-09-14,0.0,microgr/L,50.0,0.0
+נד_דלק_הצבי_1,נד דלק הצבי 1,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2023-09-14,2.255,microgr/L,50.0,4.51
+נד_דלק_הצבי_1,נד דלק הצבי 1,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2023-09-14,1.0,microgr/L,4.0,25.0
+נד_דלק_הצבי_1,נד דלק הצבי 1,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2023-09-14,3.687,microgr/L,10.0,36.87
+נד_דלק_הצבי_1,נד דלק הצבי 1,METALS,NICKEL AS NI,NICKEL AS NI,2023-09-14,11.4,microgr/L,20.0,57.0
+נד_דלק_הצבי_1,נד דלק הצבי 1,PFAS,Perfluorodecanoic acid,Perfluorodecanoic acid,2023-09-14,0.0,microgr/L,0.1,0.0
+נד_דלק_הצבי_1,נד דלק הצבי 1,PFAS,Perfluorododecanoic acid,Perfluorododecanoic acid,2023-09-14,0.0,microgr/L,0.1,0.0
+נד_דלק_הצבי_1,נד דלק הצבי 1,PFAS,Perfluorononanoic acid,Perfluorononanoic acid,2023-09-14,0.0,microgr/L,0.1,0.0
+נד_דלק_הצבי_1,נד דלק הצבי 1,PFAS,Perfluoropentanoic acid,Perfluoropentanoic acid,2023-09-14,0.0,microgr/L,0.1,0.0
+נד_דלק_הצבי_1,נד דלק הצבי 1,PFAS,PERFLUORO PFEESA,PERFLUORO PFEESA,2023-09-14,0.0,microgr/L,,
+נד_דלק_הצבי_1,נד דלק הצבי 1,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2023-09-14,66.871,microgr/L,10.0,668.71
+נד_דלק_הצבי_1,נד דלק הצבי 1,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2023-09-14,0.0,microgr/L,50.0,0.0
+נד_דלק_הצבי_1,נד דלק הצבי 1,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2023-09-14,17.637,microgr/L,7.5,235.16
+נד_דלק_הצבי_1,נד דלק הצבי 1,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2023-09-14,1.0,microgr/L,0.5,200.0
+נד_טן_חולון_1,נד טן חולון 1,FUEL, MTBE,MTBE,2025-05-15,0.49,microgr/L,40.0,1.23
+נד_טן_חולון_1,נד טן חולון 1,FUEL,BENZENE,BENZENE,2025-05-15,0.2,microgr/L,5.0,4.0
+נד_טן_חולון_1,נד טן חולון 1,FUEL,TOLUENE,TOLUENE,2025-05-15,0.5,microgr/L,700.0,0.07
+נד_טן_חולון_1,נד טן חולון 1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-05-15,0.1,microgr/L,300.0,0.03
+נד_טן_חולון_1,נד טן חולון 1,FUEL,XYLENE,XYLENE,2025-05-15,0.3,microgr/L,500.0,0.06
+נד_דלק_מרכבות_האש_4,נד דלק מרכבות האש 4,FUEL,BENZENE,BENZENE,2025-05-14,10.0,microgr/L,5.0,200.0
+נד_דלק_מרכבות_האש_4,נד דלק מרכבות האש 4,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-05-14,10.0,microgr/L,300.0,3.33
+נד_דלק_מרכבות_האש_4,נד דלק מרכבות האש 4,FUEL, MTBE,MTBE,2025-05-14,20.0,microgr/L,40.0,50.0
+נד_דלק_מרכבות_האש_4,נד דלק מרכבות האש 4,FUEL,TOLUENE,TOLUENE,2025-05-14,10.0,microgr/L,700.0,1.43
+נד_דלק_מרכבות_האש_4,נד דלק מרכבות האש 4,FUEL,XYLENE,XYLENE,2025-05-14,10.0,microgr/L,500.0,2.0
+נד_דלק_מרכבות_האש_5,נד דלק מרכבות האש 5,FUEL,BENZENE,BENZENE,2025-05-14,10.0,microgr/L,5.0,200.0
+נד_דלק_מרכבות_האש_5,נד דלק מרכבות האש 5,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-05-14,10.0,microgr/L,300.0,3.33
+נד_דלק_מרכבות_האש_5,נד דלק מרכבות האש 5,FUEL, MTBE,MTBE,2025-05-14,10.0,microgr/L,40.0,25.0
+נד_דלק_מרכבות_האש_5,נד דלק מרכבות האש 5,FUEL,TOLUENE,TOLUENE,2025-05-14,10.0,microgr/L,700.0,1.43
+נד_דלק_מרכבות_האש_5,נד דלק מרכבות האש 5,FUEL,XYLENE,XYLENE,2025-05-14,10.0,microgr/L,500.0,2.0
+נד_דלק_מרכבות_האש_6,נד דלק מרכבות האש 6,FUEL,BENZENE,BENZENE,2025-05-14,10.0,microgr/L,5.0,200.0
+נד_דלק_מרכבות_האש_6,נד דלק מרכבות האש 6,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-05-14,10.0,microgr/L,300.0,3.33
+נד_דלק_מרכבות_האש_6,נד דלק מרכבות האש 6,FUEL, MTBE,MTBE,2025-05-14,10.0,microgr/L,40.0,25.0
+נד_דלק_מרכבות_האש_6,נד דלק מרכבות האש 6,FUEL,TOLUENE,TOLUENE,2025-05-14,10.0,microgr/L,700.0,1.43
+נד_דלק_מרכבות_האש_6,נד דלק מרכבות האש 6,FUEL,XYLENE,XYLENE,2025-05-14,10.0,microgr/L,500.0,2.0
+נת_אלביט_חולון_1,נת אלביט חולון 1,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2016-11-15,1256.0,microgr/L,4.0,31400.0
+נת_אלביט_חולון_1,נת אלביט חולון 1,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2018-03-14,162.0,microgr/L,10.0,1620.0
+נת_אלביט_חולון_1,נת אלביט חולון 1,FUEL, MTBE,MTBE,2016-03-10,0.0,microgr/L,40.0,0.0
+נת_אלביט_חולון_1,נת אלביט חולון 1,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2018-03-14,25.0,microgr/L,10.0,250.0
+נת_אלביט_חולון_1,נת אלביט חולון 1,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2018-03-14,2668.0,microgr/L,7.5,35573.33
+נת_אלביט_חולון_1,נת אלביט חולון 1,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2016-03-10,0.0,microgr/L,0.5,0.0
+נת_אלביט_חולון_1,נת אלביט חולון 1,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2016-03-10,0.0,microgr/L,,
+נת_אלביט_חולון_1,נת אלביט חולון 1,METALS,ARSENIC AS AS,ARSENIC AS AS,2016-03-10,0.0,microgr/L,10.0,0.0
+נת_אלביט_חולון_1,נת אלביט חולון 1,FUEL,BENZENE,BENZENE,2016-03-10,0.0,microgr/L,5.0,0.0
+נת_אלביט_חולון_1,נת אלביט חולון 1,METALS,CADMIUM AS CD,CADMIUM AS CD,2016-03-10,0.0,microgr/L,5.0,0.0
+נת_אלביט_חולון_1,נת אלביט חולון 1,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2016-03-10,0.0,microgr/L,4.0,0.0
+נת_אלביט_חולון_1,נת אלביט חולון 1,INDUSTRY,CHLOROFORM,CHLOROFORM,2016-03-10,15.0,microgr/L,80.0,18.75
+נת_אלביט_חולון_1,נת אלביט חולון 1,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2016-03-10,10.0,microgr/L,50.0,20.0
+נת_אלביט_חולון_1,נת אלביט חולון 1,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2016-03-10,31.0,microgr/L,50.0,62.0
+נת_אלביט_חולון_1,נת אלביט חולון 1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2016-03-10,0.0,microgr/L,300.0,0.0
+נת_אלביט_חולון_1,נת אלביט חולון 1,METALS,LEAD AS PB,LEAD AS PB,2016-03-10,0.0,microgr/L,10.0,0.0
+נת_אלביט_חולון_1,נת אלביט חולון 1,METALS,NICKEL AS NI,NICKEL AS NI,2016-03-10,20.0,microgr/L,20.0,100.0
+נת_אלביט_חולון_1,נת אלביט חולון 1,FUEL,TOLUENE,TOLUENE,2016-03-10,0.0,microgr/L,700.0,0.0
+נת_אלביט_חולון_1,נת אלביט חולון 1,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2016-03-10,0.0,microgr/L,50.0,0.0
+נת_אלביט_חולון_1,נת אלביט חולון 1,FUEL,XYLENE,XYLENE,2016-03-10,0.0,microgr/L,500.0,0.0
+נת_אלביט_חולון_2,נת אלביט חולון 2,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2016-03-10,191.0,microgr/L,10.0,1910.0
+נת_אלביט_חולון_2,נת אלביט חולון 2,FUEL, MTBE,MTBE,2016-03-10,0.0,microgr/L,40.0,0.0
+נת_אלביט_חולון_2,נת אלביט חולון 2,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2016-03-10,10.1,microgr/L,10.0,101.0
+נת_אלביט_חולון_2,נת אלביט חולון 2,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2016-03-10,242.9,microgr/L,7.5,3238.67
+נת_אלביט_חולון_2,נת אלביט חולון 2,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2016-03-10,0.0,microgr/L,0.5,0.0
+נת_אלביט_חולון_2,נת אלביט חולון 2,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2016-03-10,0.0,microgr/L,,
+נת_אלביט_חולון_2,נת אלביט חולון 2,METALS,ARSENIC AS AS,ARSENIC AS AS,2016-03-10,0.0,microgr/L,10.0,0.0
+נת_אלביט_חולון_2,נת אלביט חולון 2,FUEL,BENZENE,BENZENE,2016-03-10,0.0,microgr/L,5.0,0.0
+נת_אלביט_חולון_2,נת אלביט חולון 2,METALS,CADMIUM AS CD,CADMIUM AS CD,2016-03-10,0.0,microgr/L,5.0,0.0
+נת_אלביט_חולון_2,נת אלביט חולון 2,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2016-03-10,0.0,microgr/L,4.0,0.0
+נת_אלביט_חולון_2,נת אלביט חולון 2,INDUSTRY,CHLOROFORM,CHLOROFORM,2016-03-10,11.56,microgr/L,80.0,14.45
+נת_אלביט_חולון_2,נת אלביט חולון 2,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2016-03-10,10.0,microgr/L,50.0,20.0
+נת_אלביט_חולון_2,נת אלביט חולון 2,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2016-03-10,4.31,microgr/L,50.0,8.62
+נת_אלביט_חולון_2,נת אלביט חולון 2,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2016-03-10,0.0,microgr/L,4.0,0.0
+נת_אלביט_חולון_2,נת אלביט חולון 2,FUEL,ETHYL BENZENE,ETHYL BENZENE,2016-03-10,0.0,microgr/L,300.0,0.0
+נת_אלביט_חולון_2,נת אלביט חולון 2,METALS,LEAD AS PB,LEAD AS PB,2016-03-10,0.0,microgr/L,10.0,0.0
+נת_אלביט_חולון_2,נת אלביט חולון 2,METALS,NICKEL AS NI,NICKEL AS NI,2016-03-10,10.0,microgr/L,20.0,50.0
+נת_אלביט_חולון_2,נת אלביט חולון 2,FUEL,TOLUENE,TOLUENE,2016-03-10,0.0,microgr/L,700.0,0.0
+נת_אלביט_חולון_2,נת אלביט חולון 2,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2016-03-10,0.0,microgr/L,50.0,0.0
+נת_אלביט_חולון_2,נת אלביט חולון 2,FUEL,XYLENE,XYLENE,2016-03-10,0.0,microgr/L,500.0,0.0
+נד_אגד_אזור_1,נד אגד אזור 1,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2017-07-17,1129.0,microgr/L,,
+נד_אגד_אזור_1,נד אגד אזור 1,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2017-07-17,285.0,microgr/L,,
+נד_אגד_אזור_1,נד אגד אזור 1,FUEL,BENZENE,BENZENE,2025-02-23,4250.0,microgr/L,5.0,85000.0
+נד_אגד_אזור_1,נד אגד אזור 1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-02-23,416.0,microgr/L,300.0,138.67
+נד_אגד_אזור_1,נד אגד אזור 1,FUEL, MTBE,MTBE,2025-02-23,7200.0,microgr/L,40.0,18000.0
+נד_אגד_אזור_1,נד אגד אזור 1,FUEL,TOLUENE,TOLUENE,2025-02-23,6960.0,microgr/L,700.0,994.29
+נד_אגד_אזור_1,נד אגד אזור 1,FUEL,XYLENE,XYLENE,2025-02-23,805.0,microgr/L,500.0,161.0
+נד_אגד_אזור_1,נד אגד אזור 1,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2019-07-17,9.0,microgr/L,50.0,18.0
+נד_אגד_אזור_1,נד אגד אזור 1,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2019-07-17,3.0,microgr/L,10.0,30.0
+נד_אגד_אזור_1,נד אגד אזור 1,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2019-07-17,3.0,microgr/L,10.0,30.0
+נד_אגד_אזור_1,נד אגד אזור 1,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2019-07-17,3.0,microgr/L,7.5,40.0
+נד_אגד_אזור_1,נד אגד אזור 1,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2019-07-17,21.0,microgr/L,0.5,4200.0
+נד_אגד_אזור_2,נד אגד אזור 2,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2017-07-17,20.0,microgr/L,,
+נד_אגד_אזור_2,נד אגד אזור 2,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2017-07-17,20.0,microgr/L,,
+נד_אגד_אזור_2,נד אגד אזור 2,FUEL,BENZENE,BENZENE,2024-02-26,0.2,microgr/L,5.0,4.0
+נד_אגד_אזור_2,נד אגד אזור 2,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-02-26,0.1,microgr/L,300.0,0.03
+נד_אגד_אזור_2,נד אגד אזור 2,FUEL, MTBE,MTBE,2024-02-26,28.3,microgr/L,40.0,70.75
+נד_אגד_אזור_2,נד אגד אזור 2,FUEL,TOLUENE,TOLUENE,2024-02-26,0.55,microgr/L,700.0,0.08
+נד_אגד_אזור_2,נד אגד אזור 2,FUEL,XYLENE,XYLENE,2024-02-26,0.48,microgr/L,500.0,0.1
+נד_אגד_אזור_2,נד אגד אזור 2,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2019-07-17,26.0,microgr/L,50.0,52.0
+נד_אגד_אזור_2,נד אגד אזור 2,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2019-07-17,64.0,microgr/L,10.0,640.0
+נד_אגד_אזור_2,נד אגד אזור 2,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2019-07-17,3.0,microgr/L,10.0,30.0
+נד_אגד_אזור_2,נד אגד אזור 2,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2019-07-17,138.0,microgr/L,7.5,1840.0
+נד_אגד_אזור_2,נד אגד אזור 2,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2019-07-17,0.1,microgr/L,0.5,20.0
+נד_אגד_אזור_3,נד אגד אזור 3,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2017-07-17,20.0,microgr/L,,
+נד_אגד_אזור_3,נד אגד אזור 3,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2017-07-17,25.6,microgr/L,,
+נד_אגד_אזור_3,נד אגד אזור 3,FUEL,BENZENE,BENZENE,2025-02-23,1.07,microgr/L,5.0,21.4
+נד_אגד_אזור_3,נד אגד אזור 3,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-02-23,0.1,microgr/L,300.0,0.03
+נד_אגד_אזור_3,נד אגד אזור 3,FUEL, MTBE,MTBE,2025-02-23,378.0,microgr/L,40.0,945.0
+נד_אגד_אזור_3,נד אגד אזור 3,FUEL,TOLUENE,TOLUENE,2025-02-23,0.5,microgr/L,700.0,0.07
+נד_אגד_אזור_3,נד אגד אזור 3,FUEL,XYLENE,XYLENE,2025-02-23,0.1,microgr/L,500.0,0.02
+נד_אגד_אזור_3,נד אגד אזור 3,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2019-07-17,203.0,microgr/L,50.0,406.0
+נד_אגד_אזור_3,נד אגד אזור 3,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2019-07-17,12.0,microgr/L,10.0,120.0
+נד_אגד_אזור_3,נד אגד אזור 3,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2019-07-17,3.0,microgr/L,10.0,30.0
+נד_אגד_אזור_3,נד אגד אזור 3,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2019-07-17,41.0,microgr/L,7.5,546.67
+נד_אגד_אזור_3,נד אגד אזור 3,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2019-07-17,3.0,microgr/L,0.5,600.0
+נד_אגד_אזור_4,נד אגד אזור 4,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2017-07-17,1472.0,microgr/L,,
+נד_אגד_אזור_4,נד אגד אזור 4,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2017-07-17,366.0,microgr/L,,
+נד_אגד_אזור_4,נד אגד אזור 4,FUEL,BENZENE,BENZENE,2025-02-23,165.0,microgr/L,5.0,3300.0
+נד_אגד_אזור_4,נד אגד אזור 4,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-02-23,259.0,microgr/L,300.0,86.33
+נד_אגד_אזור_4,נד אגד אזור 4,FUEL, MTBE,MTBE,2025-02-23,722.0,microgr/L,40.0,1805.0
+נד_אגד_אזור_4,נד אגד אזור 4,FUEL,TOLUENE,TOLUENE,2025-02-23,1390.0,microgr/L,700.0,198.57
+נד_אגד_אזור_4,נד אגד אזור 4,FUEL,XYLENE,XYLENE,2025-02-23,614.0,microgr/L,500.0,122.8
+נד_אגד_אזור_4,נד אגד אזור 4,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2019-07-17,11.0,microgr/L,50.0,22.0
+נד_אגד_אזור_4,נד אגד אזור 4,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2019-07-17,3.0,microgr/L,10.0,30.0
+נד_אגד_אזור_4,נד אגד אזור 4,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2019-07-17,3.0,microgr/L,10.0,30.0
+נד_אגד_אזור_4,נד אגד אזור 4,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2019-07-17,80.0,microgr/L,7.5,1066.67
+נד_אגד_אזור_4,נד אגד אזור 4,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2019-07-17,12.0,microgr/L,0.5,2400.0
+נד_אגד_אזור_5,נד אגד אזור 5,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2017-07-17,160.0,microgr/L,,
+נד_אגד_אזור_5,נד אגד אזור 5,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2017-07-17,34.6,microgr/L,,
+נד_אגד_אזור_5,נד אגד אזור 5,FUEL,BENZENE,BENZENE,2025-02-23,7.32,microgr/L,5.0,146.4
+נד_אגד_אזור_5,נד אגד אזור 5,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-02-23,0.36,microgr/L,300.0,0.12
+נד_אגד_אזור_5,נד אגד אזור 5,FUEL, MTBE,MTBE,2025-02-23,390.0,microgr/L,40.0,975.0
+נד_אגד_אזור_5,נד אגד אזור 5,FUEL,TOLUENE,TOLUENE,2025-02-23,0.5,microgr/L,700.0,0.07
+נד_אגד_אזור_5,נד אגד אזור 5,FUEL,XYLENE,XYLENE,2025-02-23,0.17,microgr/L,500.0,0.03
+נד_אגד_אזור_5,נד אגד אזור 5,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2019-07-17,11.0,microgr/L,50.0,22.0
+נד_אגד_אזור_5,נד אגד אזור 5,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2019-07-17,3.0,microgr/L,10.0,30.0
+נד_אגד_אזור_5,נד אגד אזור 5,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2019-07-17,3.0,microgr/L,10.0,30.0
+נד_אגד_אזור_5,נד אגד אזור 5,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2019-07-17,3.0,microgr/L,7.5,40.0
+נד_אגד_אזור_5,נד אגד אזור 5,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2019-07-17,12.0,microgr/L,0.5,2400.0
+נד_אגד_אזור_6,נד אגד אזור 6,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2017-07-17,20.0,microgr/L,,
+נד_אגד_אזור_6,נד אגד אזור 6,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2017-07-17,20.0,microgr/L,,
+נד_אגד_אזור_6,נד אגד אזור 6,FUEL,BENZENE,BENZENE,2025-02-23,0.54,microgr/L,5.0,10.8
+נד_אגד_אזור_6,נד אגד אזור 6,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-02-23,0.18,microgr/L,300.0,0.06
+נד_אגד_אזור_6,נד אגד אזור 6,FUEL, MTBE,MTBE,2025-02-23,191.0,microgr/L,40.0,477.5
+נד_אגד_אזור_6,נד אגד אזור 6,FUEL,TOLUENE,TOLUENE,2025-02-23,0.56,microgr/L,700.0,0.08
+נד_אגד_אזור_6,נד אגד אזור 6,FUEL,XYLENE,XYLENE,2025-02-23,0.1,microgr/L,500.0,0.02
+נד_אגד_אזור_6,נד אגד אזור 6,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2019-07-17,72.0,microgr/L,50.0,144.0
+נד_אגד_אזור_6,נד אגד אזור 6,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2019-07-17,32.0,microgr/L,10.0,320.0
+נד_אגד_אזור_6,נד אגד אזור 6,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2019-07-17,4.0,microgr/L,10.0,40.0
+נד_אגד_אזור_6,נד אגד אזור 6,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2019-07-17,430.0,microgr/L,7.5,5733.33
+נד_אגד_אזור_6,נד אגד אזור 6,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2019-07-17,21.0,microgr/L,0.5,4200.0
+נת_אלביט_חולון_3,נת אלביט חולון 3,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2017-11-29,625.0,microgr/L,3.0,20833.33
+נת_אלביט_חולון_3,נת אלביט חולון 3,INDUSTRY,CHLOROFORM,CHLOROFORM,2017-11-29,12.453,microgr/L,80.0,15.57
+נת_אלביט_חולון_3,נת אלביט חולון 3,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2017-11-29,3.537,microgr/L,50.0,7.07
+נת_אלביט_חולון_3,נת אלביט חולון 3,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2017-11-29,874.9,microgr/L,10.0,8749.0
+נת_אלביט_חולון_3,נת אלביט חולון 3,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2017-11-29,4.576,microgr/L,10.0,45.76
+נת_אלביט_חולון_3,נת אלביט חולון 3,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2017-11-29,0.0,microgr/L,50.0,0.0
+נת_אלביט_חולון_3,נת אלביט חולון 3,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2017-11-29,3013.01,microgr/L,7.5,40173.47
+נת_אלביט_חולון_3,נת אלביט חולון 3,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2017-11-29,0.0,microgr/L,0.5,0.0
+נת_אלביט_חולון_4,נת אלביט חולון 4,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2017-11-29,138.0,microgr/L,3.0,4600.0
+נת_אלביט_חולון_4,נת אלביט חולון 4,INDUSTRY,CHLOROFORM,CHLOROFORM,2017-11-29,31.702,microgr/L,80.0,39.63
+נת_אלביט_חולון_4,נת אלביט חולון 4,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2017-11-29,3.087,microgr/L,50.0,6.17
+נת_אלביט_חולון_4,נת אלביט חולון 4,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2017-11-29,807.11,microgr/L,10.0,8071.1
+נת_אלביט_חולון_4,נת אלביט חולון 4,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2017-11-29,2.9,microgr/L,10.0,29.0
+נת_אלביט_חולון_4,נת אלביט חולון 4,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2017-11-29,0.0,microgr/L,50.0,0.0
+נת_אלביט_חולון_4,נת אלביט חולון 4,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2017-11-29,3185.9,microgr/L,7.5,42478.67
+נת_אלביט_חולון_4,נת אלביט חולון 4,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2017-11-29,0.0,microgr/L,0.5,0.0
+נד_דלק_הצבי_2,נד דלק הצבי 2,FUEL,BENZENE,BENZENE,2025-03-17,36.0,microgr/L,5.0,720.0
+נד_דלק_הצבי_2,נד דלק הצבי 2,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-09-29,1.0,microgr/L,300.0,0.33
+נד_דלק_הצבי_2,נד דלק הצבי 2,FUEL, MTBE,MTBE,2025-03-17,1670.0,microgr/L,40.0,4175.0
+נד_דלק_הצבי_2,נד דלק הצבי 2,FUEL,TOLUENE,TOLUENE,2025-03-17,3.0,microgr/L,700.0,0.43
+נד_דלק_הצבי_2,נד דלק הצבי 2,FUEL,XYLENE,XYLENE,2024-09-29,1.0,microgr/L,500.0,0.2
+נד_דלק_הצבי_2,נד דלק הצבי 2,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2023-09-14,1.0,microgr/L,,
+נד_דלק_הצבי_2,נד דלק הצבי 2,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2023-09-14,1.0,microgr/L,,
+נד_דלק_הצבי_2,נד דלק הצבי 2,METALS,ARSENIC AS AS,ARSENIC AS AS,2023-09-14,0.0,microgr/L,10.0,0.0
+נד_דלק_הצבי_2,נד דלק הצבי 2,METALS,CADMIUM AS CD,CADMIUM AS CD,2023-09-14,0.0,microgr/L,5.0,0.0
+נד_דלק_הצבי_2,נד דלק הצבי 2,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2023-09-14,0.0,microgr/L,4.0,0.0
+נד_דלק_הצבי_2,נד דלק הצבי 2,INDUSTRY,CHLOROFORM,CHLOROFORM,2023-09-14,46.672,microgr/L,80.0,58.34
+נד_דלק_הצבי_2,נד דלק הצבי 2,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2023-09-14,0.0,microgr/L,50.0,0.0
+נד_דלק_הצבי_2,נד דלק הצבי 2,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2023-09-14,5.101,microgr/L,50.0,10.2
+נד_דלק_הצבי_2,נד דלק הצבי 2,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2023-09-14,1.982,microgr/L,4.0,49.55
+נד_דלק_הצבי_2,נד דלק הצבי 2,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2023-09-14,63.613,microgr/L,10.0,636.13
+נד_דלק_הצבי_2,נד דלק הצבי 2,METALS,LEAD AS PB,LEAD AS PB,2023-09-14,0.0,microgr/L,10.0,0.0
+נד_דלק_הצבי_2,נד דלק הצבי 2,METALS,NICKEL AS NI,NICKEL AS NI,2023-09-14,10.0,microgr/L,20.0,50.0
+נד_דלק_הצבי_2,נד דלק הצבי 2,PFAS,Perfluorodecanoic acid,Perfluorodecanoic acid,2023-09-14,0.0,microgr/L,0.1,0.0
+נד_דלק_הצבי_2,נד דלק הצבי 2,PFAS,Perfluorododecanoic acid,Perfluorododecanoic acid,2023-09-14,0.0,microgr/L,0.1,0.0
+נד_דלק_הצבי_2,נד דלק הצבי 2,PFAS,Perfluorononanoic acid,Perfluorononanoic acid,2023-09-14,0.0,microgr/L,0.1,0.0
+נד_דלק_הצבי_2,נד דלק הצבי 2,PFAS,Perfluoropentanoic acid,Perfluoropentanoic acid,2023-09-14,0.0,microgr/L,0.1,0.0
+נד_דלק_הצבי_2,נד דלק הצבי 2,PFAS,PERFLUORO PFEESA,PERFLUORO PFEESA,2023-09-14,0.0,microgr/L,,
+נד_דלק_הצבי_2,נד דלק הצבי 2,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2023-09-14,31.81,microgr/L,10.0,318.1
+נד_דלק_הצבי_2,נד דלק הצבי 2,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2023-09-14,0.0,microgr/L,50.0,0.0
+נד_דלק_הצבי_2,נד דלק הצבי 2,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2023-09-14,246.0,microgr/L,7.5,3280.0
+נד_דלק_הצבי_2,נד דלק הצבי 2,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2023-09-14,3.394,microgr/L,0.5,678.8
+נד_אגד_אזור_7,נד אגד אזור 7,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2017-07-17,20.0,microgr/L,,
+נד_אגד_אזור_7,נד אגד אזור 7,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2017-07-17,20.0,microgr/L,,
+נד_אגד_אזור_7,נד אגד אזור 7,FUEL,BENZENE,BENZENE,2025-02-23,14.4,microgr/L,5.0,288.0
+נד_אגד_אזור_7,נד אגד אזור 7,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-02-23,4.14,microgr/L,300.0,1.38
+נד_אגד_אזור_7,נד אגד אזור 7,FUEL, MTBE,MTBE,2025-02-23,59.5,microgr/L,40.0,148.75
+נד_אגד_אזור_7,נד אגד אזור 7,FUEL,TOLUENE,TOLUENE,2025-02-23,1.0,microgr/L,700.0,0.14
+נד_אגד_אזור_7,נד אגד אזור 7,FUEL,XYLENE,XYLENE,2025-02-23,0.1,microgr/L,500.0,0.02
+נד_אגד_אזור_7,נד אגד אזור 7,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2019-07-17,11.0,microgr/L,50.0,22.0
+נד_אגד_אזור_7,נד אגד אזור 7,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2019-07-17,3.0,microgr/L,10.0,30.0
+נד_אגד_אזור_7,נד אגד אזור 7,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2019-07-17,3.0,microgr/L,10.0,30.0
+נד_אגד_אזור_7,נד אגד אזור 7,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2019-07-17,3.0,microgr/L,7.5,40.0
+נד_אגד_אזור_7,נד אגד אזור 7,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2019-07-17,4.0,microgr/L,0.5,800.0
+נד_אגד_אזור_8,נד אגד אזור 8,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2017-07-17,20.0,microgr/L,,
+נד_אגד_אזור_8,נד אגד אזור 8,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2017-07-17,20.0,microgr/L,,
+נד_אגד_אזור_8,נד אגד אזור 8,FUEL,BENZENE,BENZENE,2025-02-23,202.0,microgr/L,5.0,4040.0
+נד_אגד_אזור_8,נד אגד אזור 8,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-02-23,17.9,microgr/L,300.0,5.97
+נד_אגד_אזור_8,נד אגד אזור 8,FUEL, MTBE,MTBE,2025-02-23,206.0,microgr/L,40.0,515.0
+נד_אגד_אזור_8,נד אגד אזור 8,FUEL,TOLUENE,TOLUENE,2025-02-23,8.51,microgr/L,700.0,1.22
+נד_אגד_אזור_8,נד אגד אזור 8,FUEL,XYLENE,XYLENE,2025-02-23,8.06,microgr/L,500.0,1.61
+נד_אגד_אזור_8,נד אגד אזור 8,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2019-07-17,51.0,microgr/L,50.0,102.0
+נד_אגד_אזור_8,נד אגד אזור 8,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2019-07-17,24.0,microgr/L,10.0,240.0
+נד_אגד_אזור_8,נד אגד אזור 8,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2019-07-17,3.0,microgr/L,10.0,30.0
+נד_אגד_אזור_8,נד אגד אזור 8,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2019-07-17,51.0,microgr/L,7.5,680.0
+נד_אגד_אזור_8,נד אגד אזור 8,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2019-07-17,0.3,microgr/L,0.5,60.0
+נד_אגד_אזור_9,נד אגד אזור 9,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2017-07-17,20.0,microgr/L,,
+נד_אגד_אזור_9,נד אגד אזור 9,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2017-07-17,20.0,microgr/L,,
+נד_אגד_אזור_9,נד אגד אזור 9,FUEL,BENZENE,BENZENE,2025-02-23,0.2,microgr/L,5.0,4.0
+נד_אגד_אזור_9,נד אגד אזור 9,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-02-23,0.1,microgr/L,300.0,0.03
+נד_אגד_אזור_9,נד אגד אזור 9,FUEL, MTBE,MTBE,2025-02-23,12.2,microgr/L,40.0,30.5
+נד_אגד_אזור_9,נד אגד אזור 9,FUEL,TOLUENE,TOLUENE,2025-02-23,0.5,microgr/L,700.0,0.07
+נד_אגד_אזור_9,נד אגד אזור 9,FUEL,XYLENE,XYLENE,2025-02-23,0.1,microgr/L,500.0,0.02
+נד_אגד_אזור_9,נד אגד אזור 9,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2019-07-17,24.0,microgr/L,50.0,48.0
+נד_אגד_אזור_9,נד אגד אזור 9,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2019-07-17,3.0,microgr/L,10.0,30.0
+נד_אגד_אזור_9,נד אגד אזור 9,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2019-07-17,3.0,microgr/L,10.0,30.0
+נד_אגד_אזור_9,נד אגד אזור 9,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2019-07-17,93.0,microgr/L,7.5,1240.0
+נד_אגד_אזור_9,נד אגד אזור 9,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2019-07-17,0.7,microgr/L,0.5,140.0
+נד_אגד_אזור_10,נד אגד אזור 10,FUEL,BENZENE,BENZENE,2024-01-15,0.54,microgr/L,5.0,10.8
+נד_אגד_אזור_10,נד אגד אזור 10,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-01-15,0.34,microgr/L,300.0,0.11
+נד_אגד_אזור_10,נד אגד אזור 10,FUEL, MTBE,MTBE,2024-01-15,360.0,microgr/L,40.0,900.0
+נד_אגד_אזור_10,נד אגד אזור 10,FUEL,TOLUENE,TOLUENE,2024-01-15,2.68,microgr/L,700.0,0.38
+נד_אגד_אזור_10,נד אגד אזור 10,FUEL,XYLENE,XYLENE,2024-01-15,1.97,microgr/L,500.0,0.39
+נד_אגד_אזור_13,נד אגד אזור 13,FUEL,BENZENE,BENZENE,2024-01-15,0.81,microgr/L,5.0,16.2
+נד_אגד_אזור_13,נד אגד אזור 13,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2019-07-17,5.0,microgr/L,50.0,10.0
+נד_אגד_אזור_13,נד אגד אזור 13,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2019-07-17,3.0,microgr/L,10.0,30.0
+נד_אגד_אזור_13,נד אגד אזור 13,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-01-15,0.46,microgr/L,300.0,0.15
+נד_אגד_אזור_13,נד אגד אזור 13,FUEL, MTBE,MTBE,2024-01-15,101.0,microgr/L,40.0,252.5
+נד_אגד_אזור_13,נד אגד אזור 13,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2019-07-17,3.0,microgr/L,10.0,30.0
+נד_אגד_אזור_13,נד אגד אזור 13,FUEL,TOLUENE,TOLUENE,2024-01-15,5.0,microgr/L,700.0,0.71
+נד_אגד_אזור_13,נד אגד אזור 13,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2019-07-17,188.0,microgr/L,7.5,2506.67
+נד_אגד_אזור_13,נד אגד אזור 13,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2019-07-17,0.6,microgr/L,0.5,120.0
+נד_אגד_אזור_13,נד אגד אזור 13,FUEL,XYLENE,XYLENE,2024-01-15,2.72,microgr/L,500.0,0.54
+נד_אגד_אזור_12,נד אגד אזור 12,FUEL,BENZENE,BENZENE,2024-01-15,401.0,microgr/L,5.0,8020.0
+נד_אגד_אזור_12,נד אגד אזור 12,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-01-15,90.4,microgr/L,300.0,30.13
+נד_אגד_אזור_12,נד אגד אזור 12,FUEL, MTBE,MTBE,2024-01-15,9660.0,microgr/L,40.0,24150.0
+נד_אגד_אזור_12,נד אגד אזור 12,FUEL,TOLUENE,TOLUENE,2024-01-15,177.0,microgr/L,700.0,25.29
+נד_אגד_אזור_12,נד אגד אזור 12,FUEL,XYLENE,XYLENE,2024-01-15,101.0,microgr/L,500.0,20.2
+נד_אגד_אזור_14,נד אגד אזור 14,FUEL,BENZENE,BENZENE,2024-01-15,0.37,microgr/L,5.0,7.4
+נד_אגד_אזור_14,נד אגד אזור 14,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-01-15,0.2,microgr/L,300.0,0.07
+נד_אגד_אזור_14,נד אגד אזור 14,FUEL, MTBE,MTBE,2024-01-15,7.46,microgr/L,40.0,18.65
+נד_אגד_אזור_14,נד אגד אזור 14,FUEL,TOLUENE,TOLUENE,2024-01-15,0.92,microgr/L,700.0,0.13
+נד_אגד_אזור_14,נד אגד אזור 14,FUEL,XYLENE,XYLENE,2024-01-15,1.75,microgr/L,500.0,0.35
+נד_אגד_אזור_11,נד אגד אזור 11,FUEL,BENZENE,BENZENE,2024-03-05,2.0,microgr/L,5.0,40.0
+נד_אגד_אזור_11,נד אגד אזור 11,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-03-05,1.0,microgr/L,300.0,0.33
+נד_אגד_אזור_11,נד אגד אזור 11,FUEL, MTBE,MTBE,2024-03-05,2000.0,microgr/L,40.0,5000.0
+נד_אגד_אזור_11,נד אגד אזור 11,FUEL,TOLUENE,TOLUENE,2024-03-05,5.0,microgr/L,700.0,0.71
+נד_אגד_אזור_11,נד אגד אזור 11,FUEL,XYLENE,XYLENE,2024-03-05,3.0,microgr/L,500.0,0.6
+נד_אגד_איזור_7,נד אגד איזור 7,FUEL,BENZENE,BENZENE,2022-04-15,3550.0,microgr/L,5.0,71000.0
+נד_אגד_איזור_7,נד אגד איזור 7,FUEL, MTBE,MTBE,2022-04-15,14600.0,microgr/L,40.0,36500.0
+נד_אגד_איזור_7,נד אגד איזור 7,FUEL,TOLUENE,TOLUENE,2022-04-15,71.1,microgr/L,700.0,10.16
+נד_אגד_איזור_7,נד אגד איזור 7,FUEL,XYLENE,XYLENE,2022-04-15,17.7,microgr/L,500.0,3.54
+נד_אגד_אזור_10,נד אגד אזור 10,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2019-07-17,3.0,microgr/L,50.0,6.0
+נד_אגד_אזור_10,נד אגד אזור 10,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2019-07-17,11.0,microgr/L,10.0,110.0
+נד_אגד_אזור_10,נד אגד אזור 10,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2019-07-17,3.0,microgr/L,10.0,30.0
+נד_אגד_אזור_10,נד אגד אזור 10,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2019-07-17,28.0,microgr/L,7.5,373.33
+נד_אגד_אזור_10,נד אגד אזור 10,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2019-07-17,0.1,microgr/L,0.5,20.0
+נת_חווה_חקלאית_א,נת חווה חקלאית א,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2026-02-15,38.8,microgr/L,3.0,1293.33
+נת_חווה_חקלאית_ב,נת חווה חקלאית ב,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2026-02-15,6.5,microgr/L,3.0,216.67
+נת_חולון_26,נת חולון 26,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2023-02-06,0.0,microgr/L,,
+נת_חולון_26,נת חולון 26,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2023-02-06,0.0,microgr/L,,
+נת_חולון_26,נת חולון 26,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2023-02-06,0.0,microgr/L,3.0,0.0
+נת_חולון_26,נת חולון 26,METALS,ARSENIC AS AS,ARSENIC AS AS,2023-02-06,0.0,microgr/L,10.0,0.0
+נת_חולון_26,נת חולון 26,FUEL,BENZENE,BENZENE,2023-02-06,0.0,microgr/L,5.0,0.0
+נת_חולון_26,נת חולון 26,METALS,CADMIUM AS CD,CADMIUM AS CD,2023-02-06,0.0,microgr/L,5.0,0.0
+נת_חולון_26,נת חולון 26,INDUSTRY,CHLOROFORM,CHLOROFORM,2023-02-06,55.3,microgr/L,80.0,69.12
+נת_חולון_26,נת חולון 26,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2023-02-06,4035.9,microgr/L,50.0,8071.8
+נת_חולון_26,נת חולון 26,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2023-02-06,0.25,microgr/L,50.0,0.5
+נת_חולון_26,נת חולון 26,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2023-02-06,0.0,microgr/L,4.0,0.0
+נת_חולון_26,נת חולון 26,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2023-02-06,1.8,microgr/L,10.0,18.0
+נת_חולון_26,נת חולון 26,FUEL,ETHYL BENZENE,ETHYL BENZENE,2023-02-06,0.0,microgr/L,300.0,0.0
+נת_חולון_26,נת חולון 26,METALS,LEAD AS PB,LEAD AS PB,2023-02-06,0.0,microgr/L,10.0,0.0
+נת_חולון_26,נת חולון 26,METALS,MERCURY AS HG,MERCURY AS HG,2023-02-06,0.0,microgr/L,1.0,0.0
+נת_חולון_26,נת חולון 26,FUEL, MTBE,MTBE,2023-02-06,1.0,microgr/L,40.0,2.5
+נת_חולון_26,נת חולון 26,METALS,NICKEL AS NI,NICKEL AS NI,2023-02-06,2.7,microgr/L,20.0,13.5
+נת_חולון_26,נת חולון 26,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2023-02-06,4.0,microgr/L,10.0,40.0
+נת_חולון_26,נת חולון 26,FUEL,TOLUENE,TOLUENE,2023-02-06,1.0,microgr/L,700.0,0.14
+נת_חולון_26,נת חולון 26,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2023-02-06,0.0,microgr/L,50.0,0.0
+נת_חולון_26,נת חולון 26,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2023-02-06,163.0,microgr/L,7.5,2173.33
+נת_חולון_26,נת חולון 26,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2023-02-06,0.0,microgr/L,0.5,0.0
+נת_חולון_26,נת חולון 26,FUEL,XYLENE,XYLENE,2023-02-06,3.0,microgr/L,500.0,0.6
+נת_חולון_26,נת חולון 26,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2023-02-06,0.0,microgr/L,4.0,0.0
+נת_חולון_23,נת חולון 23,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2024-11-27,0.0,microgr/L,,
+נת_חולון_23,נת חולון 23,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2024-11-27,0.0,microgr/L,,
+נת_חולון_23,נת חולון 23,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2026-02-10,0.5,microgr/L,3.0,16.67
+נת_חולון_23,נת חולון 23,METALS,ARSENIC AS AS,ARSENIC AS AS,2022-11-14,0.0,microgr/L,10.0,0.0
+נת_חולון_23,נת חולון 23,FUEL,BENZENE,BENZENE,2024-11-27,0.0,microgr/L,5.0,0.0
+נת_חולון_23,נת חולון 23,METALS,CADMIUM AS CD,CADMIUM AS CD,2022-11-14,0.0,microgr/L,5.0,0.0
+נת_חולון_23,נת חולון 23,INDUSTRY,CHLOROFORM,CHLOROFORM,2024-11-27,3.05,microgr/L,80.0,3.81
+נת_חולון_23,נת חולון 23,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2023-02-06,44.8,microgr/L,50.0,89.6
+נת_חולון_23,נת חולון 23,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2024-11-27,2.01,microgr/L,50.0,4.02
+נת_חולון_23,נת חולון 23,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2024-11-27,1.0,microgr/L,4.0,25.0
+נת_חולון_23,נת חולון 23,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2024-11-27,1.48,microgr/L,10.0,14.8
+נת_חולון_23,נת חולון 23,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-11-27,0.0,microgr/L,300.0,0.0
+נת_חולון_23,נת חולון 23,METALS,LEAD AS PB,LEAD AS PB,2022-11-14,0.0,microgr/L,10.0,0.0
+נת_חולון_23,נת חולון 23,METALS,MERCURY AS HG,MERCURY AS HG,2022-11-14,0.0,microgr/L,1.0,0.0
+נת_חולון_23,נת חולון 23,FUEL, MTBE,MTBE,2024-11-27,1.0,microgr/L,40.0,2.5
+נת_חולון_23,נת חולון 23,METALS,NICKEL AS NI,NICKEL AS NI,2022-11-14,39.3,microgr/L,20.0,196.5
+נת_חולון_23,נת חולון 23,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2024-11-27,10.065,microgr/L,10.0,100.65
+נת_חולון_23,נת חולון 23,FUEL,TOLUENE,TOLUENE,2024-11-27,1.0,microgr/L,700.0,0.14
+נת_חולון_23,נת חולון 23,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2024-11-27,0.0,microgr/L,50.0,0.0
+נת_חולון_23,נת חולון 23,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2024-11-27,76.446,microgr/L,7.5,1019.28
+נת_חולון_23,נת חולון 23,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2024-11-27,0.0,microgr/L,0.5,0.0
+נת_חולון_23,נת חולון 23,FUEL,XYLENE,XYLENE,2024-11-27,0.0,microgr/L,500.0,0.0
+נת_חולון_23,נת חולון 23,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2024-11-27,0.0,microgr/L,4.0,0.0
+נת_חולון_24,נת חולון 24,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2024-11-27,0.0,microgr/L,,
+נת_חולון_24,נת חולון 24,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2024-11-27,0.0,microgr/L,,
+נת_חולון_24,נת חולון 24,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2023-02-06,0.0,microgr/L,3.0,0.0
+נת_חולון_24,נת חולון 24,METALS,ARSENIC AS AS,ARSENIC AS AS,2023-02-06,0.0,microgr/L,10.0,0.0
+נת_חולון_24,נת חולון 24,FUEL,BENZENE,BENZENE,2024-11-27,1.0,microgr/L,5.0,20.0
+נת_חולון_24,נת חולון 24,METALS,CADMIUM AS CD,CADMIUM AS CD,2023-02-06,0.0,microgr/L,5.0,0.0
+נת_חולון_24,נת חולון 24,INDUSTRY,CHLOROFORM,CHLOROFORM,2024-11-27,9.732,microgr/L,80.0,12.16
+נת_חולון_24,נת חולון 24,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2023-02-06,44.8,microgr/L,50.0,89.6
+נת_חולון_24,נת חולון 24,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2024-11-27,1.0,microgr/L,50.0,2.0
+נת_חולון_24,נת חולון 24,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2024-11-27,1.0,microgr/L,4.0,25.0
+נת_חולון_24,נת חולון 24,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2024-11-27,15.163,microgr/L,10.0,151.63
+נת_חולון_24,נת חולון 24,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-11-27,0.0,microgr/L,300.0,0.0
+נת_חולון_24,נת חולון 24,METALS,LEAD AS PB,LEAD AS PB,2023-02-06,0.0,microgr/L,10.0,0.0
+נת_חולון_24,נת חולון 24,METALS,MERCURY AS HG,MERCURY AS HG,2023-02-06,0.0,microgr/L,1.0,0.0
+נת_חולון_24,נת חולון 24,FUEL, MTBE,MTBE,2024-11-27,1.0,microgr/L,40.0,2.5
+נת_חולון_24,נת חולון 24,METALS,NICKEL AS NI,NICKEL AS NI,2023-02-06,3.3,microgr/L,20.0,16.5
+נת_חולון_24,נת חולון 24,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2024-11-27,9.864,microgr/L,10.0,98.64
+נת_חולון_24,נת חולון 24,FUEL,TOLUENE,TOLUENE,2024-11-27,1.0,microgr/L,700.0,0.14
+נת_חולון_24,נת חולון 24,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2024-11-27,0.0,microgr/L,50.0,0.0
+נת_חולון_24,נת חולון 24,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2024-11-27,75.787,microgr/L,7.5,1010.49
+נת_חולון_24,נת חולון 24,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2024-11-27,0.0,microgr/L,0.5,0.0
+נת_חולון_24,נת חולון 24,FUEL,XYLENE,XYLENE,2024-11-27,0.0,microgr/L,500.0,0.0
+נת_חולון_24,נת חולון 24,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2024-11-27,0.0,microgr/L,4.0,0.0
+נת_חולון_25,נת חולון 25,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2023-02-10,0.0,microgr/L,,
+נת_חולון_25,נת חולון 25,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2023-02-10,0.0,microgr/L,,
+נת_חולון_25,נת חולון 25,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2023-02-10,0.0,microgr/L,3.0,0.0
+נת_חולון_25,נת חולון 25,METALS,ARSENIC AS AS,ARSENIC AS AS,2023-02-10,0.0,microgr/L,10.0,0.0
+נת_חולון_25,נת חולון 25,FUEL,BENZENE,BENZENE,2023-02-10,0.0,microgr/L,5.0,0.0
+נת_חולון_25,נת חולון 25,METALS,CADMIUM AS CD,CADMIUM AS CD,2023-02-10,0.0,microgr/L,5.0,0.0
+נת_חולון_25,נת חולון 25,INDUSTRY,CHLOROFORM,CHLOROFORM,2023-02-10,5.81,microgr/L,80.0,7.26
+נת_חולון_25,נת חולון 25,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2023-02-10,18.2,microgr/L,50.0,36.4
+נת_חולון_25,נת חולון 25,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2023-02-10,2.44,microgr/L,50.0,4.88
+נת_חולון_25,נת חולון 25,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2023-02-10,0.0,microgr/L,4.0,0.0
+נת_חולון_25,נת חולון 25,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2023-02-10,2.52,microgr/L,10.0,25.2
+נת_חולון_25,נת חולון 25,FUEL,ETHYL BENZENE,ETHYL BENZENE,2023-02-10,0.0,microgr/L,300.0,0.0
+נת_חולון_25,נת חולון 25,METALS,LEAD AS PB,LEAD AS PB,2023-02-10,0.0,microgr/L,10.0,0.0
+נת_חולון_25,נת חולון 25,METALS,MERCURY AS HG,MERCURY AS HG,2023-02-10,0.0,microgr/L,1.0,0.0
+נת_חולון_25,נת חולון 25,FUEL, MTBE,MTBE,2023-02-10,2.69,microgr/L,40.0,6.73
+נת_חולון_25,נת חולון 25,METALS,NICKEL AS NI,NICKEL AS NI,2023-02-10,12.7,microgr/L,20.0,63.5
+נת_חולון_25,נת חולון 25,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2023-02-10,1.56,microgr/L,10.0,15.6
+נת_חולון_25,נת חולון 25,FUEL,TOLUENE,TOLUENE,2023-02-10,0.0,microgr/L,700.0,0.0
+נת_חולון_25,נת חולון 25,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2023-02-10,0.13,microgr/L,50.0,0.26
+נת_חולון_25,נת חולון 25,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2023-02-10,262.0,microgr/L,7.5,3493.33
+נת_חולון_25,נת חולון 25,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2023-02-10,0.0,microgr/L,0.5,0.0
+נת_חולון_25,נת חולון 25,FUEL,XYLENE,XYLENE,2023-02-10,0.0,microgr/L,500.0,0.0
+נת_חולון_21,נת חולון 21,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2024-11-27,0.0,microgr/L,,
+נת_חולון_21,נת חולון 21,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2024-11-27,0.0,microgr/L,,
+נת_חולון_21,נת חולון 21,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2023-02-08,0.0,microgr/L,3.0,0.0
+נת_חולון_21,נת חולון 21,METALS,ARSENIC AS AS,ARSENIC AS AS,2023-02-08,0.0,microgr/L,10.0,0.0
+נת_חולון_21,נת חולון 21,FUEL,BENZENE,BENZENE,2024-11-27,1.0,microgr/L,5.0,20.0
+נת_חולון_21,נת חולון 21,METALS,CADMIUM AS CD,CADMIUM AS CD,2023-02-08,0.0,microgr/L,5.0,0.0
+נת_חולון_21,נת חולון 21,INDUSTRY,CHLOROFORM,CHLOROFORM,2024-11-27,4.303,microgr/L,80.0,5.38
+נת_חולון_21,נת חולון 21,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2023-02-08,44.8,microgr/L,50.0,89.6
+נת_חולון_21,נת חולון 21,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2024-11-27,2.382,microgr/L,50.0,4.76
+נת_חולון_21,נת חולון 21,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2024-11-27,1.0,microgr/L,4.0,25.0
+נת_חולון_21,נת חולון 21,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2024-11-27,55.37,microgr/L,10.0,553.7
+נת_חולון_21,נת חולון 21,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-11-27,0.0,microgr/L,300.0,0.0
+נת_חולון_21,נת חולון 21,METALS,LEAD AS PB,LEAD AS PB,2023-02-08,0.0,microgr/L,10.0,0.0
+נת_חולון_21,נת חולון 21,METALS,MERCURY AS HG,MERCURY AS HG,2023-02-08,0.0,microgr/L,1.0,0.0
+נת_חולון_21,נת חולון 21,FUEL, MTBE,MTBE,2024-11-27,0.0,microgr/L,40.0,0.0
+נת_חולון_21,נת חולון 21,METALS,NICKEL AS NI,NICKEL AS NI,2023-02-08,2.3,microgr/L,20.0,11.5
+נת_חולון_21,נת חולון 21,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2024-11-27,10.82,microgr/L,10.0,108.2
+נת_חולון_21,נת חולון 21,FUEL,TOLUENE,TOLUENE,2024-11-27,1.0,microgr/L,700.0,0.14
+נת_חולון_21,נת חולון 21,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2024-11-27,1.0,microgr/L,50.0,2.0
+נת_חולון_21,נת חולון 21,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2024-11-27,175.683,microgr/L,7.5,2342.44
+נת_חולון_21,נת חולון 21,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2024-11-27,0.0,microgr/L,0.5,0.0
+נת_חולון_21,נת חולון 21,FUEL,XYLENE,XYLENE,2024-11-27,0.0,microgr/L,500.0,0.0
+נת_חולון_21,נת חולון 21,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2024-11-27,0.0,microgr/L,4.0,0.0
+נת_חולון_22,נת חולון 22,FUEL,BENZENE,BENZENE,2024-11-27,1.0,microgr/L,5.0,20.0
+נת_חולון_22,נת חולון 22,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2023-02-08,44.8,microgr/L,50.0,89.6
+נת_חולון_22,נת חולון 22,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2024-11-27,14.906,microgr/L,50.0,29.81
+נת_חולון_22,נת חולון 22,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2024-11-27,1.0,microgr/L,4.0,25.0
+נת_חולון_22,נת חולון 22,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2024-11-27,271.95,microgr/L,10.0,2719.5
+נת_חולון_22,נת חולון 22,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-11-27,0.0,microgr/L,300.0,0.0
+נת_חולון_22,נת חולון 22,METALS,LEAD AS PB,LEAD AS PB,2023-02-08,0.0,microgr/L,10.0,0.0
+נת_חולון_22,נת חולון 22,FUEL, MTBE,MTBE,2024-11-27,0.0,microgr/L,40.0,0.0
+נת_חולון_22,נת חולון 22,METALS,NICKEL AS NI,NICKEL AS NI,2023-02-08,12.6,microgr/L,20.0,63.0
+נת_חולון_22,נת חולון 22,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2024-11-27,4.935,microgr/L,10.0,49.35
+נת_חולון_22,נת חולון 22,FUEL,TOLUENE,TOLUENE,2024-11-27,1.0,microgr/L,700.0,0.14
+נת_חולון_22,נת חולון 22,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2024-11-27,216.052,microgr/L,7.5,2880.69
+נת_חולון_22,נת חולון 22,FUEL,XYLENE,XYLENE,2024-11-27,0.0,microgr/L,500.0,0.0
+נת_חולון_22,נת חולון 22,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2024-11-27,0.0,microgr/L,,
+נת_חולון_22,נת חולון 22,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2024-11-27,0.0,microgr/L,,
+נת_חולון_22,נת חולון 22,METALS,ARSENIC AS AS,ARSENIC AS AS,2023-02-08,0.0,microgr/L,10.0,0.0
+נת_חולון_22,נת חולון 22,METALS,CADMIUM AS CD,CADMIUM AS CD,2023-02-08,0.0,microgr/L,5.0,0.0
+נת_חולון_22,נת חולון 22,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2024-11-27,0.0,microgr/L,4.0,0.0
+נת_חולון_22,נת חולון 22,INDUSTRY,CHLOROFORM,CHLOROFORM,2024-11-27,1.0,microgr/L,80.0,1.25
+נת_חולון_22,נת חולון 22,METALS,MERCURY AS HG,MERCURY AS HG,2023-02-08,0.0,microgr/L,1.0,0.0
+נת_חולון_22,נת חולון 22,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2024-11-27,1.0,microgr/L,50.0,2.0
+נת_חולון_22,נת חולון 22,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2024-11-27,0.0,microgr/L,0.5,0.0
+נת_חולון_22,נת חולון 22,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2026-02-10,14.3,microgr/L,3.0,476.67
+נד_מרכבות_האש_7,נד מרכבות האש 7,FUEL,BENZENE,BENZENE,2025-05-14,10.0,microgr/L,5.0,200.0
+נד_מרכבות_האש_7,נד מרכבות האש 7,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-05-14,10.0,microgr/L,300.0,3.33
+נד_מרכבות_האש_7,נד מרכבות האש 7,FUEL, MTBE,MTBE,2025-05-14,100.0,microgr/L,40.0,250.0
+נד_מרכבות_האש_7,נד מרכבות האש 7,FUEL,TOLUENE,TOLUENE,2025-05-14,10.0,microgr/L,700.0,1.43
+נד_מרכבות_האש_7,נד מרכבות האש 7,FUEL,XYLENE,XYLENE,2025-05-14,10.0,microgr/L,500.0,2.0
+נד_מרכבות_האש_8,נד מרכבות האש 8,FUEL,BENZENE,BENZENE,2025-05-14,80.0,microgr/L,5.0,1600.0
+נד_מרכבות_האש_8,נד מרכבות האש 8,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-05-14,300.0,microgr/L,300.0,100.0
+נד_מרכבות_האש_8,נד מרכבות האש 8,FUEL, MTBE,MTBE,2025-05-14,50.0,microgr/L,40.0,125.0
+נד_מרכבות_האש_8,נד מרכבות האש 8,FUEL,TOLUENE,TOLUENE,2025-05-14,700.0,microgr/L,700.0,100.0
+נד_מרכבות_האש_8,נד מרכבות האש 8,FUEL,XYLENE,XYLENE,2025-05-14,200.0,microgr/L,500.0,40.0
+נד_מרכבות_האש_9,נד מרכבות האש 9,FUEL,BENZENE,BENZENE,2025-05-14,10.0,microgr/L,5.0,200.0
+נד_מרכבות_האש_9,נד מרכבות האש 9,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-05-14,10.0,microgr/L,300.0,3.33
+נד_מרכבות_האש_9,נד מרכבות האש 9,FUEL, MTBE,MTBE,2025-05-14,500.0,microgr/L,40.0,1250.0
+נד_מרכבות_האש_9,נד מרכבות האש 9,FUEL,TOLUENE,TOLUENE,2025-05-14,10.0,microgr/L,700.0,1.43
+נד_מרכבות_האש_9,נד מרכבות האש 9,FUEL,XYLENE,XYLENE,2025-05-14,10.0,microgr/L,500.0,2.0
+נד_אגד_אזור_n1,נד אגד אזור N1,FUEL,BENZENE,BENZENE,2025-02-23,0.35,microgr/L,5.0,7.0
+נד_אגד_אזור_n1,נד אגד אזור N1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-02-23,0.1,microgr/L,300.0,0.03
+נד_אגד_אזור_n1,נד אגד אזור N1,FUEL, MTBE,MTBE,2025-02-23,1550.0,microgr/L,40.0,3875.0
+נד_אגד_אזור_n1,נד אגד אזור N1,FUEL,TOLUENE,TOLUENE,2025-02-23,0.5,microgr/L,700.0,0.07
+נד_אגד_אזור_n1,נד אגד אזור N1,FUEL,XYLENE,XYLENE,2025-02-23,0.1,microgr/L,500.0,0.02
+נד_אגד_אזור_n2,נד אגד אזור N2,FUEL,BENZENE,BENZENE,2025-02-23,143.0,microgr/L,5.0,2860.0
+נד_אגד_אזור_n2,נד אגד אזור N2,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-02-23,741.0,microgr/L,300.0,247.0
+נד_אגד_אזור_n2,נד אגד אזור N2,FUEL, MTBE,MTBE,2025-02-23,1820.0,microgr/L,40.0,4550.0
+נד_אגד_אזור_n2,נד אגד אזור N2,FUEL,TOLUENE,TOLUENE,2025-02-23,632.0,microgr/L,700.0,90.29
+נד_אגד_אזור_n2,נד אגד אזור N2,FUEL,XYLENE,XYLENE,2025-02-23,1780.0,microgr/L,500.0,356.0
+נד_אגד_אזור_n3,נד אגד אזור N3,FUEL,BENZENE,BENZENE,2025-02-23,629.0,microgr/L,5.0,12580.0
+נד_אגד_אזור_n3,נד אגד אזור N3,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-02-23,501.0,microgr/L,300.0,167.0
+נד_אגד_אזור_n3,נד אגד אזור N3,FUEL, MTBE,MTBE,2025-02-23,1260.0,microgr/L,40.0,3150.0
+נד_אגד_אזור_n3,נד אגד אזור N3,FUEL,TOLUENE,TOLUENE,2025-02-23,186.0,microgr/L,700.0,26.57
+נד_אגד_אזור_n3,נד אגד אזור N3,FUEL,XYLENE,XYLENE,2025-02-23,104.0,microgr/L,500.0,20.8
+נד_אגד_אזור_n4,נד אגד אזור N4,FUEL,BENZENE,BENZENE,2025-02-23,229.0,microgr/L,5.0,4580.0
+נד_אגד_אזור_n4,נד אגד אזור N4,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-02-23,125.0,microgr/L,300.0,41.67
+נד_אגד_אזור_n4,נד אגד אזור N4,FUEL, MTBE,MTBE,2025-02-23,495.0,microgr/L,40.0,1237.5
+נד_אגד_אזור_n4,נד אגד אזור N4,FUEL,TOLUENE,TOLUENE,2025-02-23,22.3,microgr/L,700.0,3.19
+נד_אגד_אזור_n4,נד אגד אזור N4,FUEL,XYLENE,XYLENE,2025-02-23,20.9,microgr/L,500.0,4.18
+נד_אגד_אזור_16,נד אגד אזור 16,FUEL,BENZENE,BENZENE,2024-01-15,2.0,microgr/L,5.0,40.0
+נד_אגד_אזור_16,נד אגד אזור 16,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-01-15,5.14,microgr/L,300.0,1.71
+נד_אגד_אזור_16,נד אגד אזור 16,FUEL, MTBE,MTBE,2024-01-15,3750.0,microgr/L,40.0,9375.0
+נד_אגד_אזור_16,נד אגד אזור 16,FUEL,TOLUENE,TOLUENE,2024-01-15,5.0,microgr/L,700.0,0.71
+נד_אגד_אזור_16,נד אגד אזור 16,FUEL,XYLENE,XYLENE,2024-01-15,38.0,microgr/L,500.0,7.6
+נד_אגד_אזור_15,נד אגד אזור 15,FUEL,BENZENE,BENZENE,2024-02-26,2990.0,microgr/L,5.0,59800.0
+נד_אגד_אזור_15,נד אגד אזור 15,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-02-26,787.0,microgr/L,300.0,262.33
+נד_אגד_אזור_15,נד אגד אזור 15,FUEL, MTBE,MTBE,2024-02-26,5510.0,microgr/L,40.0,13775.0
+נד_אגד_אזור_15,נד אגד אזור 15,FUEL,TOLUENE,TOLUENE,2024-02-26,8630.0,microgr/L,700.0,1232.86
+נד_אגד_אזור_15,נד אגד אזור 15,FUEL,XYLENE,XYLENE,2024-02-26,3360.0,microgr/L,500.0,672.0
+נד_אגד_אזור_17,נד אגד אזור 17,FUEL,BENZENE,BENZENE,2024-03-05,12.6,microgr/L,5.0,252.0
+נד_אגד_אזור_17,נד אגד אזור 17,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-03-05,13.8,microgr/L,300.0,4.6
+נד_אגד_אזור_17,נד אגד אזור 17,FUEL, MTBE,MTBE,2024-03-05,0.58,microgr/L,40.0,1.45
+נד_אגד_אזור_17,נד אגד אזור 17,FUEL,TOLUENE,TOLUENE,2024-03-05,101.0,microgr/L,700.0,14.43
+נד_אגד_אזור_17,נד אגד אזור 17,FUEL,XYLENE,XYLENE,2024-03-05,92.5,microgr/L,500.0,18.5
+נד_אגד_אזור_18,נד אגד אזור 18,FUEL,BENZENE,BENZENE,2024-03-05,1960.0,microgr/L,5.0,39200.0
+נד_אגד_אזור_18,נד אגד אזור 18,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-03-05,759.0,microgr/L,300.0,253.0
+נד_אגד_אזור_18,נד אגד אזור 18,FUEL, MTBE,MTBE,2024-03-05,1370.0,microgr/L,40.0,3425.0
+נד_אגד_אזור_18,נד אגד אזור 18,FUEL,TOLUENE,TOLUENE,2024-03-05,8900.0,microgr/L,700.0,1271.43
+נד_אגד_אזור_18,נד אגד אזור 18,FUEL,XYLENE,XYLENE,2024-03-05,4840.0,microgr/L,500.0,968.0
+מק_חולון_23,מק חולון 23,METALS,ARSENIC AS AS,ARSENIC AS AS,2016-09-19,0.0,microgr/L,10.0,0.0
+מק_חולון_23,מק חולון 23,METALS,CADMIUM AS CD,CADMIUM AS CD,2016-09-19,0.0,microgr/L,5.0,0.0
+מק_חולון_23,מק חולון 23,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2016-09-19,3.3,microgr/L,50.0,6.6
+מק_חולון_23,מק חולון 23,METALS,LEAD AS PB,LEAD AS PB,2016-09-19,0.0,microgr/L,10.0,0.0
+מק_חולון_23,מק חולון 23,METALS,NICKEL AS NI,NICKEL AS NI,2016-09-19,0.0,microgr/L,20.0,0.0
+מק_חולון_23,מק חולון 23,FUEL,BENZENE,BENZENE,2020-01-26,0.0,microgr/L,5.0,0.0
+מק_חולון_23,מק חולון 23,FUEL,ETHYL BENZENE,ETHYL BENZENE,2020-01-26,0.0,microgr/L,300.0,0.0
+מק_חולון_23,מק חולון 23,FUEL, MTBE,MTBE,2020-11-04,0.0,microgr/L,40.0,0.0
+מק_חולון_23,מק חולון 23,FUEL,TOLUENE,TOLUENE,2020-01-26,0.0,microgr/L,700.0,0.0
+מק_חולון_23,מק חולון 23,FUEL,XYLENE,XYLENE,2020-01-26,0.0,microgr/L,500.0,0.0
+מק_חולון_23,מק חולון 23,METALS,MERCURY AS HG,MERCURY AS HG,2016-09-19,0.0,microgr/L,1.0,0.0
+מק_חולון_23,מק חולון 23,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2016-12-12,0.0,microgr/L,4.0,0.0
+מק_חולון_23,מק חולון 23,INDUSTRY,CHLOROFORM,CHLOROFORM,2016-12-12,0.0,microgr/L,80.0,0.0
+מק_חולון_23,מק חולון 23,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2016-12-12,0.0,microgr/L,50.0,0.0
+מק_חולון_23,מק חולון 23,INDUSTRY,"CIS+ TRANS 1,2 DICHLOROETHELYENE","CIS+ TRANS 1,2 DICHLOROETHELYENE",2016-12-12,0.0,microgr/L,,
+מק_חולון_23,מק חולון 23,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2016-12-12,0.0,microgr/L,4.0,0.0
+מק_חולון_23,מק חולון 23,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2016-12-12,0.0,microgr/L,10.0,0.0
+מק_חולון_23,מק חולון 23,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2016-12-12,0.0,microgr/L,10.0,0.0
+מק_חולון_23,מק חולון 23,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2016-12-12,0.0,microgr/L,50.0,0.0
+מק_חולון_23,מק חולון 23,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2016-12-12,0.0,microgr/L,7.5,0.0
+מק_חולון_23,מק חולון 23,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2016-12-12,0.0,microgr/L,0.5,0.0
+נד_סונול_משמר_השבעה_1,נד סונול משמר השבעה 1,FUEL,BENZENE,BENZENE,2024-09-09,2.0,microgr/L,5.0,40.0
+נד_סונול_משמר_השבעה_1,נד סונול משמר השבעה 1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-09-09,1.0,microgr/L,300.0,0.33
+נד_סונול_משמר_השבעה_1,נד סונול משמר השבעה 1,FUEL, MTBE,MTBE,2024-09-09,5.0,microgr/L,40.0,12.5
+נד_סונול_משמר_השבעה_1,נד סונול משמר השבעה 1,FUEL,TOLUENE,TOLUENE,2024-09-09,3.0,microgr/L,700.0,0.43
+נד_סונול_משמר_השבעה_1,נד סונול משמר השבעה 1,FUEL,XYLENE,XYLENE,2024-09-09,4.0,microgr/L,500.0,0.8
+נד_סונול_משמר_השבעה_2,נד סונול משמר השבעה 2,FUEL,BENZENE,BENZENE,2024-09-09,210.0,microgr/L,5.0,4200.0
+נד_סונול_משמר_השבעה_2,נד סונול משמר השבעה 2,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-09-09,1.0,microgr/L,300.0,0.33
+נד_סונול_משמר_השבעה_2,נד סונול משמר השבעה 2,FUEL, MTBE,MTBE,2024-09-09,50.0,microgr/L,40.0,125.0
+נד_סונול_משמר_השבעה_2,נד סונול משמר השבעה 2,FUEL,TOLUENE,TOLUENE,2024-09-09,6.0,microgr/L,700.0,0.86
+נד_סונול_משמר_השבעה_2,נד סונול משמר השבעה 2,FUEL,XYLENE,XYLENE,2024-09-09,6.0,microgr/L,500.0,1.2
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2011-10-09,0.0,microgr/L,,
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,FUEL,BENZENE,BENZENE,2011-10-09,0.0,microgr/L,5.0,0.0
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2011-10-09,0.0,microgr/L,4.0,0.0
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,INDUSTRY,CHLOROFORM,CHLOROFORM,2011-10-09,0.8,microgr/L,80.0,1.0
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2011-10-09,0.0,microgr/L,50.0,0.0
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2011-10-09,0.0,microgr/L,4.0,0.0
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2011-10-09,0.2,microgr/L,10.0,2.0
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,FUEL,ETHYL BENZENE,ETHYL BENZENE,2011-10-09,0.0,microgr/L,300.0,0.0
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,FUEL, MTBE,MTBE,2011-10-09,0.0,microgr/L,40.0,0.0
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2011-10-09,0.0,microgr/L,10.0,0.0
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,FUEL,TOLUENE,TOLUENE,2011-10-09,0.0,microgr/L,700.0,0.0
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2011-10-09,0.0,microgr/L,50.0,0.0
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2011-10-09,1.8,microgr/L,7.5,24.0
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2011-10-09,0.0,microgr/L,0.5,0.0
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,FUEL,XYLENE,XYLENE,2011-10-09,0.0,microgr/L,500.0,0.0
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2011-10-09,0.0,microgr/L,,
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,METALS,ARSENIC AS AS,ARSENIC AS AS,2011-10-09,1.5,microgr/L,10.0,15.0
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,METALS,CADMIUM AS CD,CADMIUM AS CD,2011-10-09,0.0,microgr/L,5.0,0.0
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2011-10-09,4.76,microgr/L,50.0,9.52
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,METALS,LEAD AS PB,LEAD AS PB,2011-10-09,0.0,microgr/L,10.0,0.0
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,FUEL,n-Butyl benzene,n-Butyl benzene,2011-10-09,0.0,microgr/L,,
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,METALS,NICKEL AS NI,NICKEL AS NI,2011-10-09,1.37,microgr/L,20.0,6.85
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,FUEL,o-Xylene ,o-Xylene,2011-10-09,0.0,microgr/L,,
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,FUEL,p-isopropyl toluene,p-isopropyl toluene,2011-10-09,0.0,microgr/L,,
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,FUEL,p-xylene,p-xylene,2011-10-09,0.0,microgr/L,,
+נד_פז_צבר_1,נד פז צבר 1,FUEL,BENZENE,BENZENE,2024-08-01,590.0,microgr/L,5.0,11800.0
+נד_פז_צבר_1,נד פז צבר 1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-08-01,34.0,microgr/L,300.0,11.33
+נד_פז_צבר_1,נד פז צבר 1,FUEL, MTBE,MTBE,2024-08-01,0.9,microgr/L,40.0,2.25
+נד_פז_צבר_1,נד פז צבר 1,FUEL,TOLUENE,TOLUENE,2024-08-01,13.0,microgr/L,700.0,1.86
+נד_פז_צבר_1,נד פז צבר 1,FUEL,XYLENE,XYLENE,2024-08-01,684.0,microgr/L,500.0,136.8
+נד_דלק_השבעה_נ/1,נד דלק השבעה נ/1,FUEL,BENZENE,BENZENE,2025-02-02,0.5,microgr/L,5.0,10.0
+נד_דלק_השבעה_נ/1,נד דלק השבעה נ/1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-02-02,2.0,microgr/L,300.0,0.67
+נד_דלק_השבעה_נ/1,נד דלק השבעה נ/1,FUEL, MTBE,MTBE,2025-02-02,4.0,microgr/L,40.0,10.0
+נד_דלק_השבעה_נ/1,נד דלק השבעה נ/1,FUEL,TOLUENE,TOLUENE,2025-02-02,5.0,microgr/L,700.0,0.71
+נד_דלק_השבעה_נ/1,נד דלק השבעה נ/1,FUEL,XYLENE,XYLENE,2025-02-02,6.0,microgr/L,500.0,1.2
+נד_פז_צבר_2,נד פז צבר 2,FUEL,BENZENE,BENZENE,2024-08-01,0.7,microgr/L,5.0,14.0
+נד_פז_צבר_2,נד פז צבר 2,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-08-01,575.0,microgr/L,300.0,191.67
+נד_פז_צבר_2,נד פז צבר 2,FUEL, MTBE,MTBE,2024-08-01,0.1,microgr/L,40.0,0.25
+נד_פז_צבר_2,נד פז צבר 2,FUEL,TOLUENE,TOLUENE,2024-08-01,1109.0,microgr/L,700.0,158.43
+נד_פז_צבר_2,נד פז צבר 2,FUEL,XYLENE,XYLENE,2024-08-01,1365.0,microgr/L,500.0,273.0
+נד_פז_צבר_3,נד פז צבר 3,FUEL,BENZENE,BENZENE,2013-04-30,0.0,microgr/L,5.0,0.0
+נד_פז_צבר_3,נד פז צבר 3,FUEL,ETHYL BENZENE,ETHYL BENZENE,2013-04-30,0.0,microgr/L,300.0,0.0
+נד_פז_צבר_3,נד פז צבר 3,FUEL, MTBE,MTBE,2013-04-30,0.0,microgr/L,40.0,0.0
+נד_פז_צבר_3,נד פז צבר 3,FUEL,TOLUENE,TOLUENE,2013-04-30,0.0,microgr/L,700.0,0.0
+נד_פז_צבר_3,נד פז צבר 3,FUEL,XYLENE,XYLENE,2013-04-30,0.0,microgr/L,500.0,0.0
+נד_פז_צבר_4,נד פז צבר 4,FUEL,BENZENE,BENZENE,2018-12-03,47.0,microgr/L,5.0,940.0
+נד_פז_צבר_4,נד פז צבר 4,FUEL,ETHYL BENZENE,ETHYL BENZENE,2018-12-03,6.0,microgr/L,300.0,2.0
+נד_פז_צבר_4,נד פז צבר 4,FUEL, MTBE,MTBE,2018-12-03,0.0,microgr/L,40.0,0.0
+נד_פז_צבר_4,נד פז צבר 4,FUEL,TOLUENE,TOLUENE,2018-12-03,0.0,microgr/L,700.0,0.0
+נד_פז_צבר_4,נד פז צבר 4,FUEL,XYLENE,XYLENE,2018-12-03,19.0,microgr/L,500.0,3.8
+נד_פז_צבר_5,נד פז צבר 5,FUEL,BENZENE,BENZENE,2022-02-15,0.5,microgr/L,5.0,10.0
+נד_פז_צבר_5,נד פז צבר 5,FUEL,ETHYL BENZENE,ETHYL BENZENE,2022-02-15,0.1,microgr/L,300.0,0.03
+נד_פז_צבר_5,נד פז צבר 5,FUEL, MTBE,MTBE,2022-02-15,0.4,microgr/L,40.0,1.0
+נד_פז_צבר_5,נד פז צבר 5,FUEL,TOLUENE,TOLUENE,2022-02-15,0.5,microgr/L,700.0,0.07
+נד_פז_צבר_5,נד פז צבר 5,FUEL,XYLENE,XYLENE,2022-02-15,0.2,microgr/L,500.0,0.04
+נת_חולון_14,נת חולון 14,METALS,ARSENIC AS AS,ARSENIC AS AS,2022-06-15,0.0,microgr/L,10.0,0.0
+נת_חולון_14,נת חולון 14,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2022-06-15,165.683,microgr/L,50.0,331.37
+נת_חולון_14,נת חולון 14,METALS,LEAD AS PB,LEAD AS PB,2022-06-15,0.0,microgr/L,10.0,0.0
+נת_חולון_14,נת חולון 14,METALS,NICKEL AS NI,NICKEL AS NI,2022-06-15,0.0,microgr/L,20.0,0.0
+נת_חולון_14,נת חולון 14,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2024-11-18,1.0,microgr/L,,
+נת_חולון_14,נת חולון 14,FUEL,BENZENE,BENZENE,2024-11-18,1.0,microgr/L,5.0,20.0
+נת_חולון_14,נת חולון 14,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2024-11-18,1.0,microgr/L,4.0,25.0
+נת_חולון_14,נת חולון 14,INDUSTRY,CHLOROFORM,CHLOROFORM,2024-11-18,14.026,microgr/L,80.0,17.53
+נת_חולון_14,נת חולון 14,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2024-11-18,5.351,microgr/L,50.0,10.7
+נת_חולון_14,נת חולון 14,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2024-11-18,1.0,microgr/L,4.0,25.0
+נת_חולון_14,נת חולון 14,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2024-11-18,9.851,microgr/L,10.0,98.51
+נת_חולון_14,נת חולון 14,FUEL, MTBE,MTBE,2024-11-18,0.0,microgr/L,40.0,0.0
+נת_חולון_14,נת חולון 14,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2024-11-18,82.008,microgr/L,10.0,820.08
+נת_חולון_14,נת חולון 14,FUEL,TOLUENE,TOLUENE,2024-11-18,1.0,microgr/L,700.0,0.14
+נת_חולון_14,נת חולון 14,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2024-11-18,1.0,microgr/L,50.0,2.0
+נת_חולון_14,נת חולון 14,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2024-11-18,255.551,microgr/L,7.5,3407.35
+נת_חולון_14,נת חולון 14,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2024-11-18,0.0,microgr/L,0.5,0.0
+נת_חולון_14,נת חולון 14,FUEL,XYLENE,XYLENE,2024-11-18,3.0,microgr/L,500.0,0.6
+נת_חולון_14,נת חולון 14,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2024-11-18,1.0,microgr/L,,
+נת_חולון_14,נת חולון 14,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-11-18,0.0,microgr/L,300.0,0.0
+נת_חולון_14,נת חולון 14,FUEL,n-Butyl benzene,n-Butyl benzene,2017-10-19,0.0,microgr/L,,
+נת_חולון_14,נת חולון 14,FUEL,o-Xylene ,o-Xylene,2017-10-19,0.0,microgr/L,,
+נת_חולון_14,נת חולון 14,FUEL,p-isopropyl toluene,p-isopropyl toluene,2015-06-24,0.0,microgr/L,,
+נת_חולון_14,נת חולון 14,FUEL,p-xylene,p-xylene,2015-06-24,0.0,microgr/L,,
+נת_חולון_14,נת חולון 14,METALS,CADMIUM AS CD,CADMIUM AS CD,2022-06-15,0.0,microgr/L,5.0,0.0
+נת_חולון_14,נת חולון 14,INDUSTRY,"1,4 DIOXANE","1,4 DIOXANE",2026-02-10,5.1,microgr/L,3.0,170.0
+נד_פז_צבר_6,נד פז צבר 6,FUEL,BENZENE,BENZENE,2024-08-01,0.5,microgr/L,5.0,10.0
+נד_פז_צבר_6,נד פז צבר 6,FUEL,ETHYL BENZENE,ETHYL BENZENE,2024-08-01,1.0,microgr/L,300.0,0.33
+נד_פז_צבר_6,נד פז צבר 6,FUEL, MTBE,MTBE,2024-08-01,0.1,microgr/L,40.0,0.25
+נד_פז_צבר_6,נד פז צבר 6,FUEL,TOLUENE,TOLUENE,2024-08-01,5.0,microgr/L,700.0,0.71
+נד_פז_צבר_6,נד פז צבר 6,FUEL,XYLENE,XYLENE,2024-08-01,2.0,microgr/L,500.0,0.4
+נד_דלק_מובילי_גוש_דן_1,נד דלק מובילי גוש דן 1,FUEL,BENZENE,BENZENE,2020-08-18,1.0,microgr/L,5.0,20.0
+נד_דלק_מובילי_גוש_דן_1,נד דלק מובילי גוש דן 1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2020-08-18,1.0,microgr/L,300.0,0.33
+נד_דלק_מובילי_גוש_דן_1,נד דלק מובילי גוש דן 1,FUEL, MTBE,MTBE,2020-08-18,1.0,microgr/L,40.0,2.5
+נד_דלק_מובילי_גוש_דן_1,נד דלק מובילי גוש דן 1,FUEL,TOLUENE,TOLUENE,2020-08-18,1.0,microgr/L,700.0,0.14
+נד_דלק_מובילי_גוש_דן_1,נד דלק מובילי גוש דן 1,FUEL,XYLENE,XYLENE,2020-08-18,1.0,microgr/L,500.0,0.2
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,FUEL,BENZENE,BENZENE,2025-05-04,1.0,microgr/L,5.0,20.0
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-05-04,1.0,microgr/L,300.0,0.33
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,FUEL, MTBE,MTBE,2025-05-04,1.0,microgr/L,40.0,2.5
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,FUEL,TOLUENE,TOLUENE,2025-05-04,1.0,microgr/L,700.0,0.14
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,FUEL,XYLENE,XYLENE,2025-05-04,1.0,microgr/L,500.0,0.2
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2015-06-21,0.0,microgr/L,,
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2015-06-21,0.0,microgr/L,,
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2015-06-21,0.0,microgr/L,4.0,0.0
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,INDUSTRY,CHLOROFORM,CHLOROFORM,2015-06-21,37.16,microgr/L,80.0,46.45
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2015-06-21,0.0,microgr/L,50.0,0.0
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2015-06-21,0.0,microgr/L,4.0,0.0
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2015-06-21,0.0,microgr/L,10.0,0.0
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,FUEL,n-Butyl benzene,n-Butyl benzene,2015-06-21,0.0,microgr/L,,
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,FUEL,o-Xylene ,o-Xylene,2015-06-21,0.0,microgr/L,,
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,FUEL,p-isopropyl toluene,p-isopropyl toluene,2015-06-21,0.0,microgr/L,,
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,FUEL,p-xylene,p-xylene,2015-06-21,0.0,microgr/L,,
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2015-06-21,0.0,microgr/L,10.0,0.0
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2015-06-21,0.0,microgr/L,50.0,0.0
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2015-06-21,0.0,microgr/L,7.5,0.0
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2015-06-21,0.0,microgr/L,0.5,0.0
+נד_דן_חולון_1,נד דן חולון 1,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2019-09-05,3.0,microgr/L,,
+נד_דן_חולון_1,נד דן חולון 1,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2019-09-05,3.0,microgr/L,,
+נד_דן_חולון_1,נד דן חולון 1,FUEL,1 METHYLNAPHTHALENE,1 METHYLNAPHTHALENE,2019-03-13,3.0,microgr/L,,
+נד_דן_חולון_1,נד דן חולון 1,FUEL,BENZENE,BENZENE,2025-07-16,0.5,microgr/L,5.0,10.0
+נד_דן_חולון_1,נד דן חולון 1,INDUSTRY,CHLOROFORM,CHLOROFORM,2019-09-05,2.0,microgr/L,80.0,2.5
+נד_דן_חולון_1,נד דן חולון 1,FUEL,ETHYL BENZENE,ETHYL BENZENE,2025-07-16,1.0,microgr/L,300.0,0.33
+נד_דן_חולון_1,נד דן חולון 1,FUEL, MTBE,MTBE,2025-07-16,0.5,microgr/L,40.0,1.25
+נד_דן_חולון_1,נד דן חולון 1,FUEL,TOLUENE,TOLUENE,2025-07-16,5.0,microgr/L,700.0,0.71
+נד_דן_חולון_1,נד דן חולון 1,FUEL,XYLENE,XYLENE,2025-07-16,2.0,microgr/L,500.0,0.4
+נד_דן_חולון_1,נד דן חולון 1,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2019-09-05,3.0,microgr/L,7.5,40.0
+נד_דן_חולון_2,נד דן חולון 2,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2019-09-05,3.0,microgr/L,,
+נד_דן_חולון_2,נד דן חולון 2,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2019-09-05,3.0,microgr/L,,
+נד_דן_חולון_2,נד דן חולון 2,FUEL,1 METHYLNAPHTHALENE,1 METHYLNAPHTHALENE,2019-09-05,0.5,microgr/L,,
+נד_דן_חולון_2,נד דן חולון 2,FUEL,BENZENE,BENZENE,2023-03-16,0.5,microgr/L,5.0,10.0
+נד_דן_חולון_2,נד דן חולון 2,INDUSTRY,CHLOROFORM,CHLOROFORM,2019-09-05,2.0,microgr/L,80.0,2.5
+נד_דן_חולון_2,נד דן חולון 2,FUEL,ETHYL BENZENE,ETHYL BENZENE,2023-03-16,1.0,microgr/L,300.0,0.33
+נד_דן_חולון_2,נד דן חולון 2,FUEL, MTBE,MTBE,2023-03-16,0.2,microgr/L,40.0,0.5
+נד_דן_חולון_2,נד דן חולון 2,FUEL,TOLUENE,TOLUENE,2023-03-16,5.0,microgr/L,700.0,0.71
+נד_דן_חולון_2,נד דן חולון 2,FUEL,XYLENE,XYLENE,2023-03-16,1.0,microgr/L,500.0,0.2
+נד_דן_חולון_2,נד דן חולון 2,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2019-09-05,3.0,microgr/L,7.5,40.0
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,FUEL,"1,2,4 TRIMETHYLBENZENE","1,2,4 TRIMETHYLBENZENE",2012-06-20,0.0,microgr/L,,
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,FUEL,"1,3,5 TRIMETHYLBENZENE","1,3,5 TRIMETHYLBENZENE",2012-06-20,0.0,microgr/L,,
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,METALS,ARSENIC AS AS,ARSENIC AS AS,2012-06-20,4.37,microgr/L,10.0,43.7
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,FUEL,BENZENE,BENZENE,2012-06-20,0.0,microgr/L,5.0,0.0
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,METALS,CADMIUM AS CD,CADMIUM AS CD,2012-06-20,0.0,microgr/L,5.0,0.0
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,INDUSTRY,CARBON TETRACHLORIDE,CARBON TETRACHLORIDE,2012-06-20,0.0,microgr/L,4.0,0.0
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,INDUSTRY,CHLOROFORM,CHLOROFORM,2012-06-20,0.0,microgr/L,80.0,0.0
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,METALS,CHROMIUM AS CR,CHROMIUM AS CR,2012-06-20,10.17,microgr/L,50.0,20.34
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,INDUSTRY,"CIS 1,2 DICHLOROETHYLENE","CIS 1,2 DICHLOROETHYLENE",2012-06-20,0.0,microgr/L,50.0,0.0
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,INDUSTRY,"DICHLOROETHANE1,2","DICHLOROETHANE1,2",2012-06-20,0.0,microgr/L,4.0,0.0
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,INDUSTRY,"DICHLOROETHYLENE 1,1","DICHLOROETHYLENE 1,1",2012-06-20,0.0,microgr/L,10.0,0.0
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,FUEL,ETHYL BENZENE,ETHYL BENZENE,2012-06-20,0.0,microgr/L,300.0,0.0
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,METALS,LEAD AS PB,LEAD AS PB,2012-06-20,0.19,microgr/L,10.0,1.9
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,FUEL, MTBE,MTBE,2012-06-20,0.0,microgr/L,40.0,0.0
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,FUEL,n-Butyl benzene,n-Butyl benzene,2012-06-20,0.0,microgr/L,,
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,METALS,NICKEL AS NI,NICKEL AS NI,2012-06-20,4.11,microgr/L,20.0,20.55
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,FUEL,o-Xylene ,o-Xylene,2012-06-20,0.0,microgr/L,,
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,FUEL,p-isopropyl toluene,p-isopropyl toluene,2012-06-20,0.0,microgr/L,,
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,FUEL,p-xylene,p-xylene,2012-06-20,0.0,microgr/L,,
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,INDUSTRY,TETRACHLORO ETHYLENE,TETRACHLORO ETHYLENE,2012-06-20,0.0,microgr/L,10.0,0.0
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,FUEL,TOLUENE,TOLUENE,2012-06-20,0.0,microgr/L,700.0,0.0
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,INDUSTRY,"TRANS-1,2 DICHLOROETHYLENE","TRANS-1,2 DICHLOROETHYLENE",2012-06-20,0.0,microgr/L,50.0,0.0
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,INDUSTRY,TRICHLORO ETHYLENE,TRICHLORO ETHYLENE,2012-06-20,0.0,microgr/L,7.5,0.0
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,INDUSTRY,VINYL CHLORIDE,VINYL CHLORIDE,2012-06-20,0.0,microgr/L,0.5,0.0
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,FUEL,XYLENE,XYLENE,2012-06-20,0.0,microgr/L,500.0,0.0
