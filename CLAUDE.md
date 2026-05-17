@@ -298,7 +298,9 @@ The framework supports any of the 18 industrial zones in the coastal aquifer mon
 ### Workflow for a new zone (V5 hybrid — 7 steps)
 1. **Define scope** → `{zone}/01_scope/` (zone_wells.csv, selection_notes.md)
 2. **Run deterministic data pipeline** → `{zone}/02_data/` (6 CSVs: measurements_scoped, latest_results, severity_by_well_family, trends_by_well_parameter, monitoring_gaps, figure_ready_series — see `DATA_PIPELINE_SPEC.md`)
-3. **Assemble scoped NotebookLM-like context** → `{zone}/03_context/` (previous_reports_excerpts, hydrogeology_context, source_candidates_context, web_findings_context, approved_precedent_excerpt)
+3. **Assemble scoped NotebookLM-like context** → `{zone}/context_pack/03_context/`:
+   - **Reports Context Pack** (required before Zone Diagnosis — do not skip directly from Data Pack to report): `reports_context.md`, `report_sources_index.csv`, `context_questions_for_diagnosis.md`
+   - Additional: previous_reports_excerpts, hydrogeology_context, source_candidates_context, web_findings_context, approved_precedent_excerpt
 4. **Generate zone diagnosis** (Opus call #1) → `{zone}/04_diagnosis/zone_diagnosis.md` (8 professional questions)
 5. **Generate V5 expert report** (Opus call #2) → `{zone}/output/{ZONE}_REPORT_V5.md` (6 sections + appendices, per `REPORT_V5_SCHEMA.md`)
 6. **Render final figures + HTML** → `scripts/generate_{zone}_full_html.py` + `generate_{zone}_designed.py` (boreholes_override path)
