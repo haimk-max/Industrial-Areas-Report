@@ -384,6 +384,22 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 - **Report changes**: Commit after structure finalized; don't batch minor tweaks
 - **Don't commit**: Partial work, experimental branches, or uncommitted changes
 
+### Branching Rules (mandatory — established 2026-05-17 after PR #15 audit)
+
+1. **docs-only / methodology-refactor branches** must be created from current `main`, unless an explicit instruction states otherwise.
+2. If a branch is **not based on current `main`**, this must be reported to the user **before opening a PR** — do not silently proceed.
+3. **Do not mix** documentation refactor with implementation / data / output artifacts in the same PR unless this is explicitly stated in the PR title and body.
+4. **Before opening any PR**, always run and present the following pre-flight checks:
+
+   ```bash
+   git branch --show-current
+   git merge-base --is-ancestor origin/main HEAD && echo "based on main" || echo "not based on current main"
+   git diff origin/main...HEAD --name-only
+   ```
+
+5. If a PR is declared **docs-only** but the diff includes code, data, charts, HTML/PDF, or other outputs — **stop and report** before opening the PR.
+6. Background: PR #15 was declared docs-only but inadvertently introduced ~35 non-MD files into `main` because the branch was created from a Phase H feature branch (`claude/create-base-report-directory-5DqAR`) rather than from `main`. See `PROCESS.md` → "Post-Merge Audits → PR #15" for the full record.
+
 ---
 
 ## 11. Success Metrics
@@ -467,5 +483,5 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 - Phase H+ (V5 Hybrid Pipeline Refactor): ✓ Documentation complete (REQ #12); ⏳ Implementation planned (REQ #13)
 - Phase 2 (full 18-zone activation): ⏳ Pending V5 implementation + Holon V5 + Ministry coordination
 
-**Last Updated**: 2026-05-17 (Phase H+ documentation merged: V5 hybrid pipeline = binding methodology)  
+**Last Updated**: 2026-05-17 (PR #15 post-merge audit documented; §10 Branching Rules codified)  
 **Historical phases**: see `docs/HISTORY.md`

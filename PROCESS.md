@@ -3,7 +3,7 @@
 > **מטרה**: SSOT לדרישות פתוחות וסגורות. עודכן בכל שינוי.
 > **כלל**: ראה CLAUDE.md §12.
 
-**עודכן אחרון**: 2026-05-17 (Hybrid V5 Pipeline Refactor documentation complete; implementation planned)
+**עודכן אחרון**: 2026-05-17 (Post-merge audit of PR #15 documented; branching rule codified)
 
 ---
 
@@ -41,6 +41,33 @@
 | R4 | איור 2 (severity_matrix) — החזר | 2026-05-14 | 0fe1cfa + 1fcb2f4 | הוספת image markdown ב-V4.md §3, הוספת `fig_02_severity_matrix` ל-figure_svgs dict ב-generate_holon_full_html.py, regenerate HTML (174KB); 7 figures עכשיו |
 | Z1 | /scout — מחוק (לא רלוונטי) | 2026-05-14 | 0fe1cfa | משתמש ביקש למחוק בקשה זו; אין מטרה ברורה, דרישה סגורה |
 | 10 | (שלב 10) Simplify: קוד reuse + refactor | 2026-05-14 | 1628510 + 91cf5ad | בוצע שלב 4 (boreholes_override כבר pre-existing) + שלב 10 (simplify skill). סיכום: extracted md_utils.py (120 שורות), הסר dead fig_counter, fixed import direction (generators לא יובאים זה מזה). ~75 שורות duplicate code חוסלו |
+
+---
+
+## Post-Merge Audits
+
+### PR #15 — Hybrid V5 Pipeline Refactor (merged 2026-05-17, commit `3b0492a`)
+
+**הצהרה ב־PR**: refactor תיעודי בלבד (docs-only); 10 העוגנים המתודולוגיים נשמרים, אין שינויי קוד.
+
+**ממצא בפועל (post-merge audit)**:
+- ה־PR כלל אכן את כל ה־documentation refactor הצפוי (PROCESS.md, CLAUDE.md, ZONE_REPORT_PROCESS_GUIDE.md, DATA_PIPELINE_SPEC.md, REPORT_V5_SCHEMA.md).
+- בנוסף לכך הוכנסו ל־`main` גם Phase H / Holon V4.2 artifacts: scripts (`scripts/*.py`), קבצי נתונים (CSV/JSON/TXT), charts (PNG/SVG), `HOLON_REPORT_V4.html`/`.pdf`, ו־outputs תחת `Holon/`.
+- סך הכל ~75 קבצים נגעו ב־merge commit, מתוכם ~35 אינם Markdown.
+
+**שורש הבעיה**:
+- הענף `refactor/hybrid-v5-pipeline` נוצר מתוך `claude/create-base-report-directory-5DqAR` (feature branch של Phase H) ולא מתוך `main`.
+- בעקבות זאת, ה־diff מול `main` כלל גם את ה־Phase H artifacts שעוד לא היו ב־`main`, ולא רק את ה־refactor התיעודי שתוכנן.
+
+**החלטה**:
+- **לא מבוצע revert**. הקבצים הנוספים הם תוצרי Phase H / Holon V4.2 לגיטימיים ורלוונטיים להמשך העבודה (REQ #13 ואילך), והעלאתם ל־`main` אינה גורמת לרגרסיה.
+- האנומליה מתועדת כאן ובהמשך בכלל ההסתעפות שב־`CLAUDE.md` כדי למנוע חזרה.
+
+**לקח / כלל חדש**:
+- ענפי **docs-only / methodology-refactor** ייפתחו תמיד מתוך `main` המעודכן, אלא אם ניתנה הנחיה מפורשת אחרת.
+- לפני פתיחת PR יש להציג `git diff origin/main...HEAD --name-only` ולוודא שהתכולה תואמת להגדרת ה־PR.
+- אם PR מוגדר docs-only אך ה־diff כולל קוד / data / charts / outputs — לעצור ולדווח לפני הפתיחה.
+- ראה `CLAUDE.md §10` (Version Control & Collaboration) לכלל המחייב.
 
 ---
 
