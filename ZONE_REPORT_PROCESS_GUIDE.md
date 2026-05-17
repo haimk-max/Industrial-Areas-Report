@@ -182,64 +182,105 @@ Prompt filled instance שמנחה את Opus לכתוב V5 Report (ראה §II.5 
 
 ---
 
-## II. Opus Output Structure (Mandatory Framework)
+## II. V5 Report Schema (Mandatory Framework)
 
-### Section 1: Executive Summary (Findings, Not Narrative Arc)
-- ממצאים עיקריים: בורה, מזהם, ריכוז (% of standard), תאריך
-- שנויו מ-baseline (אם רלוונטי)
-- ללא "סיפור שנה מסוימת"
+### §II.5: Zone Diagnosis (Pre-V5 Report Step)
 
-### Section 2: Geographic Context (+ Map Figure)
-- Hydrogeology, flow direction, facilities identified
-- **Methodology** של facility discovery (which reports, PRTR result, web search queries)
+**מטרה**: אבחנה מקצועית של Opus על Context Pack, לפני כתיבת הדוח הסופי.
 
-### Section 3: Methodology (Mandatory Content)
-- **חישוב אינדקס חומרה**: נוסחה מפורשת — `bucket(C_last_since_YEAR / DWS × 100)` עם מיפוי 9 רמות:
-  - 0 = ND (לא זוהה)
-  - 1 = <10% מהתקן
-  - 2 = 10–25%
-  - 3 = 25–50%
-  - 4 = 50–100%
-  - 5 = 100–250%
-  - 6 = 250–1,000%
-  - 7 = 1,000–2,500%
-  - 8 = >2,500%
-- **כלל אגרגציה משפחתית**: family_index = max(parameter_index) על כל המזהמים במשפחה
-- **מנין קידוחים מפורש**: סך הקידוחים בתחום הדו"ח חייב להופיע בסעיף זה (לדוג' "27 קידוחי תעשייה + 53 קידוחי דלק = 80 פעילים"); הדו"ח חייב להתייחס לכל הקידוחים, ללא סתירות בין סעיפים
-- **חלון זמן**: יש לציין את ערך הסף `C_last_since_YEAR` (בד"כ 2018) ואת ההיגיון (מצב נוכחי, לא היסטוריה)
-- **שיטת מגמות**: Mann-Kendall עם SNR gating, חלון 5 שנים, soft_trigger=2
-- **Caveat סלקטיביות**: קידוחי ניטור ≠ תפוצה אזורית (הקידוחים הותקנו במכוון בסמיכות למקורות חשודים)
-- **הימנעות מטרמינולוגיה אנגלית**: לא "ALERT/WATCH/ELEVATED/STABLE/NONE". במקום זאת — labels עבריים (נקי/נמוך/בינוני/גבוה/גבוה מאוד) או ניסוחים תיאוריים ("קידוח חורג מובהק", "קידוח במגמת עלייה מובהקת"). אם נדרשת הגדרה תפעולית (קריטריון אופרטיבי), יש לתעד את המקור שלה (לדוג' "קריטריון = אינדקס משפחה ≥ 7 או מגמת עלייה שחצתה תקן, על פי severity_index_2025_[ZONE].csv").
+**קלטים**: 01_scope/ + 02_data/ + 03_context/ (מלא, לא תקציר).
 
-### Section 4: Contamination Analysis by Family
-- **סדר קבוע**: 1. CVOC → 2. METALS → 3. PFAS → 4. FUEL
-  - **CVOC** ראשון (ממסים מוכלרים תעשייתיים — ליבת הסיפור)
-  - **METALS** שני (מתכות כבדות — עדיפות משנית אם יש נתון משמעותי)
-  - **PFAS** שלישי (אם יש נתון משמעותי; אחרת — סעיף קצר על פער כיסוי. **אין להשמיט את הניתוח גם אם max_bucket=0** — מדובר בקבוצת חשיבות גלובלית עולה ו"היעדר ממצא" עצמו הוא ממצא)
-  - **FUEL אחרון ומופרד** — מסגור ברור כ-point-source / קידוחי דלק ייעודיים / משלים; **לא הכותרת של הדו"ח**
-- **לכל משפחה**: ממצאים נוכחיים + מגמות (Z, p, SNR) + שרשרות דעיכה (אם פעילות) + השערות מקור
+**פלטים**: `04_diagnosis/zone_diagnosis.md` (1-2 עמודים בעברית).
 
-### Section 4b: Geographic Foci (אופציונלי)
-- **קריטריון הפעלה**: באזור יש ≥3 מוקדי זיהום מובחנים במרחק >500מ' זה מזה, עם חתימות מזהם דומיננטיות שונות
-- **לכל מוקד**: שם (לפי רחוב/מפעל), קידוחים, חתימה דומיננטית, מפעלים מיוחסים, סטטוס (פעיל/סגור/שוקם)
-- **מתי לדלג**: באזורים קטנים, חד-מוקדיים, או באזורים בהם הגיאוגרפיה כבר שזורה בסעיף 4
+**שאלות ש-Opus עונה**:
+1. מהם מוקדי הזיהום המרכזיים בנתונים? (גיאוגרפיה + מזהמים)
+2. אילו קידוחים מובילים כל מוקד?
+3. אילו מזהמים מגדירים כל מוקד?
+4. מה השתנה ביחס לדוח 2021?
+5. אילו מגמות חשובות באמת? (MK p<0.05, SNR>5, soft_trigger=true?)
+6. אילו פערי ניטור קריטיים?
+7. אילו מקורות אפשריים ראויים לדיון?
+8. מה צריך להיכנס לגוף הדוח (§3) ומה לנספח?
 
-### Section 6: Trends & Temporal Patterns
-- Statistical findings from trends_alert.csv (Mann-Kendall results)
-- **Deep-dive Forensics** only where justified (e.g., rapid rise + biotic decay chain)
-- Cite: "Mann-Kendall Z=X, p=Y, SNR=Z; declining/stable/rising over [timeframe]"
+**הערה**: זו לא תקציר הנתונים — זו **אבחנה מקצועית** המכוונת את הכתיבה הסופית.
 
-### Section 7: Limitations & Data Gaps
-- Monitoring interruptions (closed wells)
-- Low sample counts (n < 5 measurements per parameter)
-- Selection bias caveat (monitoring wells ≠ zone-wide distribution)
+---
 
-### Section 8: Recommendations
-- **Structure**: Immediate (30-90d) | Ongoing (2026-2027) | Investigation (2027+)
-- Specific: borehole name + parameter + sampling frequency
+### V5 Report — 6 פרקים גנריים
 
-### Section 9: Sources & Confidence Levels
-- Table: [Finding] | [Value] | [Source Document] | [Date/Page] | [HIGH/MEDIUM/LOW confidence]
+```
+1. תקציר מקצועי
+2. תמונת מצב אזורית ומערך הניטור
+3. מוקדי זיהום עיקריים / משפחות מזהמים דומיננטיות
+4. מגמות, החמרה ופערי ניטור
+5. מקורות זיהום אפשריים ורמות ביטחון
+6. המלצות
+נספחים
+```
+
+#### פרק 1: תקציר מקצועי
+- ממצאים עיקריים: מוקדים, מזהמים, ריכוזים (% of standard), תאריכים
+- שנויים מ-דוח 2021 (אם רלוונטי)
+- פערי מידע קריטיים
+- תגובה מיידית נדרשת?
+
+#### פרק 2: תמונת מצב אזורית ומערך הניטור
+- גיאוגרפיה, הידרוגיאולוגיה, כיוון זרימה
+- מערך קידוחים: מספר, סוגים, מיקום, סטטוס (פעיל/סגור)
+- מפת קידוחים + מוקדים (איור 1)
+
+#### פרק 3: מוקדי זיהום עיקריים / משפחות מזהמים דומיננטיות
+
+**סדר**: לפי max_bucket יורד (FUEL תמיד אחרון).
+
+**תבנית לכל מוקד זיהום** (נשמרת זהה בכל אזור):
+```
+- שם המוקד (רחוב / מפעל / אזור)
+- קידוחים מרכזיים (מנהל + מיקום)
+- מזהמים מובילים (שמות כימיים + ריכוזים)
+- ריכוזים ותאריכים (טבלה קצרה)
+- מגמות (MK Z, p, SNR; soft_trigger?)
+- קשר לדוחות קודמים (מה השתנה מ-2021?)
+- מקורות אפשריים (שם מפעל + סוג עסק)
+- רמת ביטחון (HIGH/MEDIUM/LOW)
+- פערי מידע (מה חסר?)
+- פעולה נדרשת (בדיקה? סגירה? ניטור משופר?)
+```
+
+**חשוב**: PFAS תמיד בפרק זה (גם אם max_bucket=0 → "פער כיסוי וניטור").
+
+#### פרק 4: מגמות, החמרה ופערי ניטור
+- מגמות בולטות (MK results, only p<0.05 + SNR>5 + soft_trigger)
+- קידוחים שהופסק ניטורם (closed wells)
+- פערי ניטור אזוריים (אזורים ללא קידוחים, parameters שלא נשקלו)
+- Selection bias caveat: קידוחים הותקנו במכוון בסמיכות למקורות חשודים, לא נציגים של תפוצה אזורית
+
+#### פרק 5: מקורות זיהום אפשריים ורמות ביטחון
+- טבלה קצרה: [מוקד] | [מזהם עיקרי] | [מפעל משוער] | [סוג עסק] | [רמת ביטחון: HIGH/MEDIUM/LOW]
+- **רמות ביטחון**: HIGH = address confirmed + מזהם מתאים + שנות פעילות חופפות; MEDIUM = 2/3; LOW = 1/3
+
+#### פרק 6: המלצות
+- **Immediate** (30-90 ימים): דיגום אישור, בדיקות quick-look
+- **Short-term** (2026-2027): בדיקות עומק, דיגום פרובים, ניטור משופר
+- **Long-term** (2027+): עדכון מודל אזורי, תיקון מקורות, ניטור רציף
+
+#### מתודולוגיה (סעיף קצר)
+- formula אינדקס: `bucket(C_max_5y / DWS × 100)`
+- Mann-Kendall: tie-corrected, SNR=5 gate, soft_trigger=2, חלון 5 שנים
+- מנין קידוחים מפורש בדוח
+- selection bias caveat
+- הפניה ל-PROCESS_GUIDE §III לפרטים מלאים
+
+#### מגבלות (סעיף נפרד)
+- פערי ניטור (closed wells, n<5, gaps בזמן)
+- selection bias מפורש
+- הנחות על מקורות (confidence levels)
+
+#### נספחים
+- **נספח א**: טבלאות מלאות (כל קידוחים, מגמות, ALERT, אינדקסים)
+- **נספח ב**: פורנזיקה כימית (decay chains, co-occurrence, source signatures)
+- **נספח ג**: מועמדי מקורות מלאים (PRTR, web search, facility history)
+- **נספח ד**: Context Pack excerpts (source citations)
 
 ---
 
