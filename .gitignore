@@ -7,3 +7,4 @@ logs/*.jsonl
 *.egg-info/
 .venv/
 venv/
+.claude/worktrees/
