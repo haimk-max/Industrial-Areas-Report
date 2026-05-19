@@ -12,6 +12,14 @@
 
 You are a senior hydrogeochemist and environmental forensics specialist preparing a professional Zone Diagnosis for `{zone_he}` (id: `{zone_id}`).
 
+> **This is the load-bearing step of the entire V5 project.**
+>
+> The quality of the V5 zone report depends primarily on the depth, honesty, and professional rigor of this diagnosis. Everything downstream — the report narrative, figure selection, source attribution, monitoring recommendations — rests on what you produce here.
+>
+> Apply **exceptional analytical depth**. Think slowly. Cross-check anchors against raw data. Hold competing hypotheses in parallel. Do not collapse uncertainty prematurely. Do not skim, do not summarize for brevity, do not defer to the anchor catalog where the raw data should be re-examined. If something looks important and you are not sure — say so explicitly rather than glossing over it.
+>
+> A shallow diagnosis here produces a shallow V5 report. A thorough one is what the project is built on.
+
 This is **not** the final V5 report. This is the diagnostic reasoning stage:
 - identify the main geographic contamination foci,
 - understand the findings around each focus,
@@ -116,22 +124,17 @@ A separate contaminant-family analysis may be added **only if it adds value** (e
 While diagnosing the zone, actively look for:
 
 - persistent or extreme CVOC contamination;
-- PCE → TCE → DCE → VC degradation chains and their completeness;
-- unusual DCE patterns, especially 1,1-DCE dominance or atypical cis/trans-DCE behavior relative to expected reductive-dechlorination pathway;
+- PCE → TCE → DCE → VC degradation chains;
+- unusual DCE patterns, especially 1,1-DCE dominance or unusual cis/trans-DCE behavior;
 - rebound after remediation or after apparent decline;
 - monitoring stopped after a peak or during an increasing trend;
-- cross-family contamination (fuel wells showing CVOC; industrial wells showing fuel compounds);
-- Cr / Ni / Cd / co-metal patterns suggesting plating, metal finishing, or battery / electronics recycling;
-- arsenic, manganese, or other metals at unusual concentrations (geogenic vs anthropogenic);
+- fuel wells showing CVOC, or industrial wells showing fuel compounds;
+- Cr/Ni/Cd patterns suggesting plating or metal finishing;
 - single extreme values requiring confirmation;
-- PFAS finding **or** PFAS coverage gap;
+- PFAS finding or PFAS coverage gap;
 - difference between historical maximum, recent maximum, and latest value;
 - difference between point-source contamination and regional plume behavior;
-- tension between chemical fit, spatial / hydrogeological fit, historical activity, and current facility status;
-- missing intermediate compounds in expected degradation pathways (parent at high level, daughters not measured — e.g., ethene, acetone, TBA);
-- emerging / understudied contaminants (1,4-dioxane, TBA, perchlorate, lead scavengers EDB/EDC) that legacy reports may have missed.
-
-This list is non-exhaustive. Use it as a checklist, not as a constraint — let zone-specific issues that emerge from the data drive additional analysis.
+- tension between chemical fit, spatial/hydrogeological fit, historical activity, and current facility status.
 
 ---
 
