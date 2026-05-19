@@ -74,9 +74,23 @@ Treat A/B as strong; C as context only; D/E as background unless corroborated by
 
 ---
 
+## Working Order — Read This Before You Start
+
+**Start from the pre-processed artifacts, not from raw CSVs.** The pre-processing layers exist precisely so the diagnostic agent does not have to swim through tens of thousands of raw rows. Use them in this order:
+
+1. **First, read the structured anchors** (`statistical_signals.yaml`, `forensic_anchors.yaml`) — these are the navigation index. They tell you WHERE to look.
+2. **Then read the severity indices** (`severity_index_2025_{zone_id}.csv` and `_param_level.csv`) — these summarize the contamination picture per well per family.
+3. **Then read the forensics summary** (`contamination_families.json` — particularly `critical_exceedances` and any populated decay/signature/co-occurrence sections).
+4. **Then read the context pack** (`reports_context.md`, `source_candidates_context.md`, optional web findings).
+5. **Only return to raw data** (`trends.csv`, `measurements.csv`) **for targeted verification** — when an anchor points to a finding you want to confirm, or when a contradiction between sources needs resolution. **Do not read these files in bulk.** Use filtered queries (specific borehole + parameter) per the anchor's evidence_pointer.
+
+`trends.csv` and `measurements.csv` are TRUTH sources, but they are not the STARTING point. They are the verification layer beneath the navigation layer.
+
+---
+
 ## Core Principles
 
-1. **Base the diagnosis primarily on current monitoring data.** Anchors and signals are navigation aids — when an anchor or signal points to an important issue, **return to the underlying measurements / trends / report excerpts** before relying on it.
+1. **Base the diagnosis primarily on current monitoring data**, accessed via the pre-processed layers. Anchors and signals are navigation aids — when an anchor or signal points to an important issue, **return to the underlying measurements / trends / report excerpts** for targeted verification before relying on it.
 2. **Use prior reports as historical baseline**, context, and source of earlier interpretations.
 3. **Use web/external information only for current activity / status / context**, not as proof of source attribution.
 4. **Treat source candidates as hypotheses**, not conclusions.
