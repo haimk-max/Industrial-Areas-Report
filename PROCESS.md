@@ -3,7 +3,7 @@
 > **מטרה**: SSOT לדרישות פתוחות וסגורות. עודכן בכל שינוי.
 > **כלל**: ראה CLAUDE.md §12.
 
-**עודכן אחרון**: 2026-05-25 (REQ #13.5 anchors pilot verified PASS; #14 roadmap added; Phase H+ documentation complete)
+**עודכן אחרון**: 2026-05-25 (REQ #13 CLOSED — Holon V5 report + HTML complete, data pipeline bug fixed; #14 RAG roadmap remains deferred)
 
 ---
 
@@ -11,7 +11,6 @@
 
 | # | בעיה | תיאור | סטטוס | תאריך פתיחה | קבצים |
 |---|------|--------|--------|----------------|--------|
-| 13 | Hybrid V5 Pipeline Implementation | תת-שלבים: 13.1 ✓ Structured Data Pack; 13.2 ✓ Reports Context Pack + 7 excerpts; 13.3 ✓ Source Candidates Pack (Option 3 + A-E classification); 13.4 ✓ Zone Diagnosis (5 contamination systems, 7 sections + QC); 13.5 ✅ Structured Anchors YAML Pilot (Statistical 31 + Forensic 27; PASS, אומת 2026-05-25); 13.6 ⏳ V5 Report HTML Generation (Opus → figures → designed template) | ⚠️ Partial | 2026-05-17 | Holon/02_data/, Holon/context_pack/, Holon/output/ |
 | 14 | Agent RAG / Vector Store (Long-term Tooling) | Deferred: exploratory task for post-Holon completion. RAG infrastructure for enhanced context retrieval + semantic search on zone reports + forensic anchors. When triggered: design doc + prototype implementation. Status: roadmap entry in LESSONS.md § 3.3 | ⏳ Deferred | 2026-05-25 | LESSONS.md § 3.3 |
 | 7 | Skills/אוטומציה לתהליכים חוזרים | אימוץ simplify (קוד כפול), init (regen CLAUDE.md), review (PR) | ⏳ Deferred | 2026-05-14 | אחרי בעיות 2–4 |
 | 11 | HIGH-priority simplify fixes (regexes + data loader) | pre-compile 8 module-level regexes (hot-path optimization), extract load_all_core_data() לdata_loader.py | ⏳ Deferred | 2026-05-14 | scripts/generate_holon_*.py, data_loader.py |
@@ -22,6 +21,7 @@
 
 | # | בעיה | תאריך סגירה | commit | אימות |
 |---|------|---------------|--------|----------|
+| 13 | Hybrid V5 Pipeline Implementation (כולל 13.6 Holon V5 report) | 2026-05-25 | 7427f89, c3d5c57, 8e7679d | **13.1–13.5** ✓ (data pack, context, diagnosis, anchors PILOT). **13.6** ✅: HOLON_REPORT_V5.md (8 sections + 4 appendices, family order CVOC→METALS→PFAS→FUEL) + HOLON_REPORT_V5.html (185KB, 5 figures inline, 629 bidi). **תיקון נתונים קריטי** (CLAUDE.md §7): `severity_by_well_family.csv` היה חסר METALS+PFAS (107→191 שורות) — תוקן ב-`param_families.py` (הוספת METALS+FUEL patterns) + `generate_holon_data_pack.py` (classify_family במקום hardcoded map). פרומפט V5 גנרי (`zone_report_prompt_template_v5.md`) + instance ל-Holon. ולידציה §VII PASS |
 | 12 | Hybrid V5 Pipeline Refactor — Documentation | 2026-05-17 | 6b8b023, dec12ad, 15d6d0e, 158110d, 8ef25c9, 80c6f7f | PROCESS_GUIDE §I refactor (Zone Context Pack), §II.5 (Zone Diagnosis), §VIII (7-step); DATA_PIPELINE_SPEC.md, REPORT_V5_SCHEMA.md; CLAUDE.md Phase H+ + governance update |
 | 1 | SSOT terminology מפוזר | 2026-05-14 | 2b6e775 | PROCESS_GUIDE §III טבלה קנונית; METHODOLOGY.md redirect header |
 | 5a | CLAUDE.md אינדקס אזורים | 2026-05-14 | 2b6e775 | CLAUDE.md שורה 12-22 — Zone Status Index |

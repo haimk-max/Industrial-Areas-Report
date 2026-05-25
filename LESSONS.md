@@ -15,9 +15,17 @@
 
 ### 1.1 Cross-zone parameter naming variance
 - **Observation (Raanana → Holon)**: Raanana Excel uses short codes (`TCEY`, `PCE`); Holon uses full English names (`TRICHLORO ETHYLENE`).
-- **Solution applied**: `scripts/param_families.py` regex-based classifier returns `CVOC | BTEX | PFAS | OTHER` for either format.
+- **Solution applied**: `scripts/param_families.py` regex-based classifier returns `CVOC | METALS | PFAS | FUEL | OTHER` for either format (METALS + FUEL added 2026-05-25 — see §1.6; FUEL replaces the earlier BTEX label to match `DATA_PIPELINE_SPEC.md` §3 family enum).
 - **2nd-case test**: When zone #3 arrives — does its naming convention also fit one of the two patterns, or does it surface a 3rd? If 3rd, the regex approach may need rethinking (config-table?).
 - **Status**: ⏳ Awaiting zone #3.
+
+### 1.6 Hardcoded family map silently dropped contamination families (2026-05-25)
+- **Observation (Holon V5)**: `generate_holon_data_pack.py` carried a hardcoded `family_map` dict (commented "simplified; real implementation would use param_families.py") that listed only a handful of exact parameter strings. Real Holon parameter names (`CHROMIUM AS CR`, `NICKEL AS NI`, `MANGANESE TOTAL AS MN`) never matched, so `severity_by_well_family.csv` silently emitted **only CVOC + FUEL** (107 rows) — METALS and PFAS families were entirely absent. The Opus report agent caught it; the pipeline never errored.
+- **Root cause**: a "temporary simplified" lookup that was never replaced by the canonical classifier. Exact-string matching against an incomplete dict fails *silently* (unmatched → OTHER → skipped) rather than loudly.
+- **Solution applied**: routed the data pack through `param_families.classify_family()` (regex, the SSOT) + extended that module with METALS + FUEL patterns. Regenerated: 191 rows (CVOC 30, METALS 80, PFAS 4, FUEL 77).
+- **Lesson**: When a comment says "real implementation would use X", treat it as a live bug, not a note. A deterministic data file feeding a report must be validated for **family/category completeness**, not just row count — a missing category is invisible in a row count but fatal to a report.
+- **2nd-case test**: Zone #3 data pack generation — confirm all expected families appear in `severity_by_well_family.csv` before report generation (add to §VII validation?).
+- **Status**: ✅ Fixed for Holon. ⏳ Generalize as a pipeline assertion when zone #3 arrives.
 
 ### 1.2 Borehole-set vs. zone-set mismatch
 - **Observation (Holon)**: Excel contained 112 boreholes; only 111 were inside the zone polygon. Pipeline initially processed all 112 (wasteful + misleading metrics).

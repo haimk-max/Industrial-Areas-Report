@@ -294,7 +294,8 @@ The framework supports any of the 18 industrial zones in the coastal aquifer mon
 - `ZONE_REPORT_PROCESS_GUIDE.md` — terminology + 7-step pipeline ordering
 - `DATA_PIPELINE_SPEC.md` — schema for the 6 deterministic CSVs (Structured Data Pack)
 - `REPORT_V5_SCHEMA.md` — V5 report skeleton (6 sections + focus template)
-- `scripts/templates/zone_report_prompt_template.md` — generic prompt (will be replaced by V5 variant in Phase H+ Implementation, REQ #13)
+- `scripts/templates/zone_report_prompt_template_v5.md` — **generic V5 prompt** (6 sections + appendices, context_pack/02_data paths, anchors inputs; REQ #13 closed). The V4-era `zone_report_prompt_template.md` is retained for reference only.
+- `scripts/generate_holon_v5_html.py` — V5 HTML generator (renders all sections + injects inline SVG figures at `**איור N**` anchors; reuses `svg_charts.py` engine)
 - `scripts/report_designed/README.md` — chart engine docs
 
 ### Workflow for a new zone (V5 hybrid — 7 steps)
