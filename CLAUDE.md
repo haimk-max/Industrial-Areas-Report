@@ -121,7 +121,7 @@ Before implementing data processing:
 > תיעוד phases היסטוריים: ראה `docs/HISTORY.md` (Phases 1–4, A–G, G.1).
 
 **Phase H: Holon V4 + Pipeline Refactor** ✓ COMPLETE (May 2026)  
-**Phase H+: Methodological Refactor — Hybrid Pipeline** 🔄 IN PROGRESS (May 2026)
+**Phase H+: Methodological Refactor — Hybrid Pipeline** ✅ COMPLETE (May 2026)
 - Goal: Production pipeline for Holon zone (80 active boreholes, 2,672 measurements) + reusable architecture for 16 remaining zones
 - Status:
   - ✓ Holon V4.2 report: 10 sections in Hebrew, 5 contamination foci (CVOC, METALS, PFAS, FUEL), 25 significantly-exceeding boreholes
@@ -134,16 +134,18 @@ Before implementing data processing:
   - ✓ Family ordering: FUEL always last; CVOC/METALS/PFAS by zone max_bucket descending (§IV)
   - ✓ Web search & PDF ingestion documented in PROCESS_GUIDE §I.2 + §I.5 (External Data/{zone}/ structure, 6 channels)
 
-- **Phase H+ Status** (Documentation Phase — C1–C7):
-  - 🔄 PROCESS_GUIDE refactored: §I → Zone Context Pack (5 folders: scope/data/context/diagnosis/prompt)
-  - 🔄 §II → V5 Schema (6 sections, generic for all zones)
-  - 🔄 §II.5 → Zone Diagnosis (8 questions, pre-report step)
-  - 🔄 §VI → diagnostic + final figures (pre-Opus + post-Opus)
-  - 🔄 §VII → validation checklist (6 new checks: Context Pack, Data Pack, Diagnosis, PFAS, gaps, C_max_5y separation)
-  - 🔄 §VIII → 7-step hybrid pipeline
+- **Phase H+ Implementation** ✅ COMPLETE (2026-05-25):
+  - ✅ PROCESS_GUIDE refactored: §I → Zone Context Pack (5 folders: scope/data/context/diagnosis/prompt)
+  - ✅ §II → V5 Schema (6 sections, generic for all zones)
+  - ✅ §II.5 → Zone Diagnosis (8 questions, pre-report step)
+  - ✅ §VI → diagnostic + final figures (pre-Opus + post-Opus)
+  - ✅ §VII → validation checklist (6 new checks: Context Pack, Data Pack, Diagnosis, PFAS, gaps, C_max_5y separation)
+  - ✅ §VIII → 7-step hybrid pipeline
   - ✅ DATA_PIPELINE_SPEC.md created (6 CSVs schema)
   - ✅ REPORT_V5_SCHEMA.md created (V5 skeleton + templates)
-  - ⏳ CLAUDE.md §8 Scaling updated (hybrid pipeline workflow)
+  - ✅ CLAUDE.md §8 Scaling updated (hybrid pipeline workflow)
+  - ✅ Holon V5 report generation (REQ #13.6): Opus → figures → HTML designed
+  - ✅ Documentation sync: PROCESS.md (requirements tracking) + LESSONS.md (tech-debt roadmap)
 
 **Phase 3: Drilling Card & Report Generation** ✓ COMPLETE (R-001, R-004)
 - Goal: Generate R-001 and R-004 drilling cards; zone summary report

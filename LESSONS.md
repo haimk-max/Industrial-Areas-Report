@@ -70,6 +70,33 @@
 - **Decision**: Don't consolidate now — wait for Holon report to reveal which requirements are actually load-bearing.
 - **Trigger to revisit**: After Holon expert review approves the report. Then re-read REQUIREMENTS.md and mark `[ACTIVE]` / `[SUPERSEDED]` / `[ZONE-SPECIFIC]`.
 
+### 2.3a Holon Directory Organization — Cleanup Roadmap (2026-05-25)
+- **Issue discovered (post-review)**: Holon has 3 overlapping data trees:
+  1. `Holon/lean_workspace/{01..06}/` — V4-era workspace (includes anchors PILOT in `04_deterministic_anchors/`)
+  2. `Holon/context_pack/{03_context, 04_diagnosis}/` — V5 context + diagnosis
+  3. `Holon/02_data/` — V5 Structured Data Pack (6 CSVs, canonical per DATA_PIPELINE_SPEC.md)
+  4. Plus: `Holon/data/`, `Holon/data/external/`, `Holon/charts_v2/`, etc.
+  
+  **Naming collision**: Both `lean_workspace/04_deterministic_anchors` and `context_pack/04_diagnosis` use "04_", confusing schema readers. CLAUDE.md §8 defines V5 canonical structure as `{zone}/01_scope/`, `02_data/`, `context_pack/03_context/`, `context_pack/04_diagnosis/`, `output/` — but anchors are orphaned in legacy `lean_workspace`.
+
+- **Decision (pragmatic)**: Document paths explicitly in future prompts / generators. Do NOT refactor Holon mid-project (too risky; would require re-testing all outputs).
+
+- **Action — When next zone is created** (Raanana refresh or zone #3): Enforce CLAUDE.md §8 structure from day 1. No sprawl.
+
+- **Future REQ** (`future-tech-debt-cleanup`): After Holon V5 complete + approved: "Holon directory consolidation" — move `04_deterministic_anchors` to `context_pack/`, unify paths, retire `lean_workspace`. Est. 2 hours. Lower priority.
+
+### 2.3b Methodology File Sync — 5 Files Lag V5 Refactor (2026-05-25)
+- **Issue**: 5 governance MD files last updated 2026-05-06 (before V5 PROCESS_GUIDE refactor on 2026-05-17):
+  - `REQUIREMENTS.md` — mentions "Holon = first application", predates V5 scope clarity
+  - `LESSONS.md` — section 2.3 (now 2.3a/2.3b) references old patterns
+  - `DATA_DICTIONARY.md` — schema may mix old/V5
+  - `docs/STYLE_GUIDE.md` § H (facility discovery) — describes `facility_attribution.json` as primary source, but PROCESS_GUIDE §I deprecated this (artifact, not evidence)
+  - `docs/CHART_SPEC.md` — Raanana-only examples, may not reflect svg_charts.py `boreholes_override` API
+
+- **Decision**: No urgent fix. SSOT for V5 work = `ZONE_REPORT_PROCESS_GUIDE.md` §I–IX. Old files used as reference/style guidance only.
+
+- **Trigger to revisit**: On next cycle (zone #3 or refresh). Audit for broken references + update examples. Low priority; deferred.
+
 ### 2.4 ★ Water Authority ArcGIS Portal integration (deployment phase)
 - **Status**: System currently runs in a sandbox environment with no access to authoritative geographic data (Overpass / OSM tiles / govmap WMS — all blocked, 403 Forbidden). Zone polygons are loaded from one-off KMZ uploads converted via pyproj; street enumeration falls back to agent general knowledge; basemaps are offline ITM schematics.
 - **Future state**: When the system is deployed inside the Water Authority's enterprise infrastructure, the operator will have credentials to the **Water Authority's enterprise ArcGIS Portal** (פורטל ArcGIS הארגוני של רשות המים). This single integration solves multiple current limitations simultaneously:
