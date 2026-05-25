@@ -5,10 +5,11 @@ contaminants — short codes (TCEY, PCE) vs full names (TRICHLORO ETHYLENE).
 This module classifies parameters into canonical contaminant families using
 regex patterns that match common variants across all zones.
 
-Families:
+Families (per DATA_PIPELINE_SPEC.md §3):
   CVOC  — chlorinated volatile organic compounds (TCE, PCE, DCE, VC, etc.)
-  BTEX  — benzene, toluene, ethylbenzene, xylenes
+  METALS  — heavy metals (Chromium, Lead, Nickel, etc.)
   PFAS  — perfluoroalkyl substances (PFOS, PFOA, PFHxS, etc.)
+  FUEL  — petroleum hydrocarbons & BTEX (benzene, toluene, xylene, MTBE, naphthalene, etc.)
   OTHER — anything not matching the above families
 """
 from __future__ import annotations
@@ -24,13 +25,14 @@ _FAMILY_PATTERNS = {
         r"CARBON\s*TETRACHLORIDE|METHYLENE\s*CHLORIDE|"
         r"\bTCE\b|\bPCE\b|\bDCE\b|\bVC\b|\bDCA\b|"
         r"\bTCEY\b|\bCHLF\b|\bCCLA\b|\bTCAM\b|\bCHCL3\b|"
-        r"CIS.*DICHLOR|TRANS.*DICHLOR|TETRACHLOR\s*ETHANE|TRICHLOR\s*ETHANE)",
+        r"CIS.*DICHLOR|TRANS.*DICHLOR|TETRACHLOR\s*ETHANE|TRICHLOR\s*ETHANE|"
+        r"1,4\s*DIOXANE)",
         re.IGNORECASE,
     ),
-    "BTEX": re.compile(
-        r"(?:^BENZENE$|\bBENZENE\b(?!\w)|TOLUENE|XYLENE|ETHYL\s*BENZENE|"
-        r"\bETHYLB\b|\bMXYL\b|\bPXYL\b|\bOXYL\b|STYRENE|"
-        r"TRIMETHYLBENZENE|^o-Xylene$|^p-xylene$)",
+    "METALS": re.compile(
+        r"(?:CHROMIUM|CHROME|\bCR\(VI\)|\bCR\b|NICKEL|CADMIUM|COPPER|"
+        r"LEAD|\bPB\b|IRON|MANGANESE|\bMN\b|ARSENIC|BARIUM|SELENIUM|ZINC|"
+        r"\bNI\b|\bCD\b|\bCU\b|\bAS\b|\bBA\b|\bSE\b|\bZN\b|\bFE\b)",
         re.IGNORECASE,
     ),
     "PFAS": re.compile(
@@ -38,11 +40,21 @@ _FAMILY_PATTERNS = {
         r"PER[-\s]?FLUORO|PERFLUORO|PFOSA|PFHpA|PFPeA)",
         re.IGNORECASE,
     ),
+    "FUEL": re.compile(
+        r"(?:BTEX|\bBENZENE\b|TOLUENE|XYLENE|ETHYL\s*BENZENE|ETHYLBENZENE|"
+        r"MTBE|METHYL\s*TERT|STYRENE|NAPHTHALENE|NAPTHALENE|"
+        r"METHYLBENZENE|ETHYLBENZENE|PROPYLBENZENE|BUTYLBENZENE|"
+        r"TRIMETHYLBENZENE|ALKYLBENZENE|CHLOROTOLUENE|CHLOROBENZENE|"
+        r"DIMETHYLBENZENE|ISOPROPYL\s*BENZENE|\bo-Xylene\b|\bp-xylene\b|\bm-xylene\b|"
+        r"\bETHYLB\b|\bMXYL\b|\bPXYL\b|\bOXYL\b|"
+        r"ETHYLENE\s*DI\s*BROMIDE|DIBROMO|TRIBROMO|DIBROMOCHLORO)",
+        re.IGNORECASE,
+    ),
 }
 
 
 def classify_family(param_code: str | None, param_name: str | None = None) -> str:
-    """Classify a parameter into CVOC / BTEX / PFAS / OTHER.
+    """Classify a parameter into CVOC / METALS / PFAS / FUEL / OTHER.
 
     Checks param_code first, then param_name. Returns "OTHER" if no match
     or if both inputs are empty/None.
@@ -61,9 +73,13 @@ def is_cvoc(param_code: str | None, param_name: str | None = None) -> bool:
     return classify_family(param_code, param_name) == "CVOC"
 
 
-def is_btex(param_code: str | None, param_name: str | None = None) -> bool:
-    return classify_family(param_code, param_name) == "BTEX"
+def is_metals(param_code: str | None, param_name: str | None = None) -> bool:
+    return classify_family(param_code, param_name) == "METALS"
 
 
 def is_pfas(param_code: str | None, param_name: str | None = None) -> bool:
     return classify_family(param_code, param_name) == "PFAS"
+
+
+def is_fuel(param_code: str | None, param_name: str | None = None) -> bool:
+    return classify_family(param_code, param_name) == "FUEL"

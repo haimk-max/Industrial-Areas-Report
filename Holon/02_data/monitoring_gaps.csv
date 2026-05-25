@@ -1150,17 +1150,17 @@ canonical_well_id,parameter_canonical,last_measurement_date,is_active,reason_if_
 נד_המרכבה_ק3,VINYL CHLORIDE,2021-04-11,false,closed,1,0,No recent measurements
 נד_המרכבה_ק3,ZINC AS ZN,2021-04-11,false,closed,1,0,No recent measurements
 נד_המרכבה_ק3,עומק עד פני המים,2021-04-11,false,closed,1,0,No recent measurements
-נד_טן_חולון_1,PH MEASURED  IN FIELD,2025-05-15,true,,14,4,Only 4 measurements in 5y window
-נד_טן_חולון_1,FIELD ELECTRICAL CONDUCTIVITY,2025-05-15,true,,14,4,Only 4 measurements in 5y window
-נד_טן_חולון_1,TEMPERATURE CENTIGRADE,2023-06-01,true,,12,2,Only 2 measurements in 5y window
-נד_טן_חולון_1,DISSOLVED OXYGEN AS O2,2025-05-15,true,,14,4,Only 4 measurements in 5y window
-נד_טן_חולון_1,TURBIDITY NTU,2025-05-15,true,,14,4,Only 4 measurements in 5y window
-נד_טן_חולון_1,REDOX,2025-05-15,true,,14,4,Only 4 measurements in 5y window
-נד_טן_חולון_1, MTBE,2025-05-15,true,,14,4,Only 4 measurements in 5y window
-נד_טן_חולון_1,BENZENE,2025-05-15,true,,14,4,Only 4 measurements in 5y window
-נד_טן_חולון_1,TOLUENE,2025-05-15,true,,14,4,Only 4 measurements in 5y window
-נד_טן_חולון_1,ETHYL BENZENE,2025-05-15,true,,14,4,Only 4 measurements in 5y window
-נד_טן_חולון_1,XYLENE,2025-05-15,true,,14,4,Only 4 measurements in 5y window
+נד_טן_חולון_1,PH MEASURED  IN FIELD,2025-05-15,true,,14,3,Only 3 measurements in 5y window
+נד_טן_חולון_1,FIELD ELECTRICAL CONDUCTIVITY,2025-05-15,true,,14,3,Only 3 measurements in 5y window
+נד_טן_חולון_1,TEMPERATURE CENTIGRADE,2023-06-01,true,,12,1,Only 1 measurements in 5y window
+נד_טן_חולון_1,DISSOLVED OXYGEN AS O2,2025-05-15,true,,14,3,Only 3 measurements in 5y window
+נד_טן_חולון_1,TURBIDITY NTU,2025-05-15,true,,14,3,Only 3 measurements in 5y window
+נד_טן_חולון_1,REDOX,2025-05-15,true,,14,3,Only 3 measurements in 5y window
+נד_טן_חולון_1, MTBE,2025-05-15,true,,14,3,Only 3 measurements in 5y window
+נד_טן_חולון_1,BENZENE,2025-05-15,true,,14,3,Only 3 measurements in 5y window
+נד_טן_חולון_1,TOLUENE,2025-05-15,true,,14,3,Only 3 measurements in 5y window
+נד_טן_חולון_1,ETHYL BENZENE,2025-05-15,true,,14,3,Only 3 measurements in 5y window
+נד_טן_חולון_1,XYLENE,2025-05-15,true,,14,3,Only 3 measurements in 5y window
 נד_טן_חולון_1,OIL LAYER THIKNESS,2022-05-19,true,,1,1,Only 1 measurements in 5y window
 נד_מרכבות_האש_7,BENZENE,2025-05-14,true,,3,3,Only 3 measurements in 5y window
 נד_מרכבות_האש_7,DISSOLVED OXYGEN AS O2,2025-05-14,true,,2,2,Only 2 measurements in 5y window
@@ -1836,16 +1836,16 @@ canonical_well_id,parameter_canonical,last_measurement_date,is_active,reason_if_
 נת_ארן__מטל_חולון,Tribromomethane,2024-11-18,true,,7,3,Only 3 measurements in 5y window
 נת_ארן__מטל_חולון,Trichlorofluoromethane,2024-11-18,true,,7,3,Only 3 measurements in 5y window
 נת_ארן__מטל_חולון,BERYLIUM,2023-08-13,true,,5,2,Only 2 measurements in 5y window
-נת_ארן__מטל_חולון,DISSOLVED OXYGEN AS O2,2022-06-15,true,,8,2,Only 2 measurements in 5y window
+נת_ארן__מטל_חולון,DISSOLVED OXYGEN AS O2,2022-06-15,true,,8,1,Only 1 measurements in 5y window
 נת_ארן__מטל_חולון,ETHYLENE DI BROMIDE,2024-11-18,true,,7,3,Only 3 measurements in 5y window
 נת_ארן__מטל_חולון,IRON TOTAL AS FE,2023-08-13,true,,8,2,Only 2 measurements in 5y window
-נת_ארן__מטל_חולון,Lab EC comp to 25 C DEGR,2022-06-15,true,,8,2,Only 2 measurements in 5y window
-נת_ארן__מטל_חולון,PH MEASURED  IN FIELD,2022-06-15,true,,8,2,Only 2 measurements in 5y window
-נת_ארן__מטל_חולון,REDOX,2022-06-15,true,,8,2,Only 2 measurements in 5y window
+נת_ארן__מטל_חולון,Lab EC comp to 25 C DEGR,2022-06-15,true,,8,1,Only 1 measurements in 5y window
+נת_ארן__מטל_חולון,PH MEASURED  IN FIELD,2022-06-15,true,,8,1,Only 1 measurements in 5y window
+נת_ארן__מטל_חולון,REDOX,2022-06-15,true,,8,1,Only 1 measurements in 5y window
 נת_ארן__מטל_חולון,STRONTIUM AS SR,2023-08-13,true,,5,1,Only 1 measurements in 5y window
-נת_ארן__מטל_חולון,TEMPERATURE CENTIGRADE,2022-06-15,true,,8,2,Only 2 measurements in 5y window
+נת_ארן__מטל_חולון,TEMPERATURE CENTIGRADE,2022-06-15,true,,8,1,Only 1 measurements in 5y window
 נת_ארן__מטל_חולון,ZINC AS ZN,2023-08-13,true,,8,2,Only 2 measurements in 5y window
-נת_ארן__מטל_חולון,עומק עד פני המים,2022-06-15,true,,8,2,Only 2 measurements in 5y window
+נת_ארן__מטל_חולון,עומק עד פני המים,2022-06-15,true,,8,1,Only 1 measurements in 5y window
 נת_ארן__מטל_חולון,"1,4 DIOXANE",2026-02-10,true,,3,1,Only 1 measurements in 5y window
 נת_ארן__מטל_חולון,BICARBONATE AS HCO3,2026-02-10,true,,5,4,Only 4 measurements in 5y window
 נת_ארן__מטל_חולון,BROMIDE AS BR,2026-02-10,true,,5,4,Only 4 measurements in 5y window
@@ -1934,16 +1934,16 @@ canonical_well_id,parameter_canonical,last_measurement_date,is_active,reason_if_
 נת_ארן_מטל_חולון_1,Tribromomethane,2024-11-18,true,,8,3,Only 3 measurements in 5y window
 נת_ארן_מטל_חולון_1,Trichlorofluoromethane,2024-11-18,true,,8,3,Only 3 measurements in 5y window
 נת_ארן_מטל_חולון_1,BERYLIUM,2023-08-13,true,,6,2,Only 2 measurements in 5y window
-נת_ארן_מטל_חולון_1,DISSOLVED OXYGEN AS O2,2023-08-13,true,,9,3,Only 3 measurements in 5y window
+נת_ארן_מטל_חולון_1,DISSOLVED OXYGEN AS O2,2023-08-13,true,,9,2,Only 2 measurements in 5y window
 נת_ארן_מטל_חולון_1,ETHYLENE DI BROMIDE,2024-11-18,true,,8,3,Only 3 measurements in 5y window
 נת_ארן_מטל_חולון_1,IRON TOTAL AS FE,2023-08-13,true,,9,2,Only 2 measurements in 5y window
-נת_ארן_מטל_חולון_1,Lab EC comp to 25 C DEGR,2023-08-13,true,,9,3,Only 3 measurements in 5y window
-נת_ארן_מטל_חולון_1,PH MEASURED  IN FIELD,2023-08-13,true,,9,3,Only 3 measurements in 5y window
-נת_ארן_מטל_חולון_1,REDOX,2023-08-13,true,,9,3,Only 3 measurements in 5y window
+נת_ארן_מטל_חולון_1,Lab EC comp to 25 C DEGR,2023-08-13,true,,9,2,Only 2 measurements in 5y window
+נת_ארן_מטל_חולון_1,PH MEASURED  IN FIELD,2023-08-13,true,,9,2,Only 2 measurements in 5y window
+נת_ארן_מטל_חולון_1,REDOX,2023-08-13,true,,9,2,Only 2 measurements in 5y window
 נת_ארן_מטל_חולון_1,STRONTIUM AS SR,2023-08-13,true,,5,1,Only 1 measurements in 5y window
-נת_ארן_מטל_חולון_1,TEMPERATURE CENTIGRADE,2023-08-13,true,,9,3,Only 3 measurements in 5y window
+נת_ארן_מטל_חולון_1,TEMPERATURE CENTIGRADE,2023-08-13,true,,9,2,Only 2 measurements in 5y window
 נת_ארן_מטל_חולון_1,ZINC AS ZN,2023-08-13,true,,9,2,Only 2 measurements in 5y window
-נת_ארן_מטל_חולון_1,עומק עד פני המים,2023-08-13,true,,9,3,Only 3 measurements in 5y window
+נת_ארן_מטל_חולון_1,עומק עד פני המים,2023-08-13,true,,9,2,Only 2 measurements in 5y window
 נת_ארן_מטל_חולון_1,"1,4 DIOXANE",2026-02-10,true,,4,2,Only 2 measurements in 5y window
 נת_ארן_מטל_חולון_1,BICARBONATE AS HCO3,2026-02-10,true,,6,4,Only 4 measurements in 5y window
 נת_ארן_מטל_חולון_1,BROMIDE AS BR,2026-02-10,true,,6,4,Only 4 measurements in 5y window
@@ -2278,102 +2278,102 @@ canonical_well_id,parameter_canonical,last_measurement_date,is_active,reason_if_
 נת_חולון_13,TOTAL ORGANIC CARBON,2026-02-10,true,,1,1,Only 1 measurements in 5y window
 נת_חולון_14,ALUMINUM,2010-06-21,true,,2,0,No recent measurements
 נת_חולון_14,ANTIMONY,2010-06-21,true,,2,0,No recent measurements
-נת_חולון_14,ARSENIC AS AS,2022-06-15,true,,8,2,Only 2 measurements in 5y window
-נת_חולון_14,BARIUM AS BA,2022-06-15,true,,11,2,Only 2 measurements in 5y window
-נת_חולון_14,BERYLIUM,2022-06-15,true,,6,2,Only 2 measurements in 5y window
-נת_חולון_14,BORON AS B,2022-06-15,true,,9,2,Only 2 measurements in 5y window
-נת_חולון_14,CHROMIUM AS CR,2022-06-15,true,,11,2,Only 2 measurements in 5y window
-נת_חולון_14,COPPER AS CU,2022-06-15,true,,10,2,Only 2 measurements in 5y window
-נת_חולון_14,LEAD AS PB,2022-06-15,true,,9,2,Only 2 measurements in 5y window
+נת_חולון_14,ARSENIC AS AS,2022-06-15,true,,8,1,Only 1 measurements in 5y window
+נת_חולון_14,BARIUM AS BA,2022-06-15,true,,11,1,Only 1 measurements in 5y window
+נת_חולון_14,BERYLIUM,2022-06-15,true,,6,1,Only 1 measurements in 5y window
+נת_חולון_14,BORON AS B,2022-06-15,true,,9,1,Only 1 measurements in 5y window
+נת_חולון_14,CHROMIUM AS CR,2022-06-15,true,,11,1,Only 1 measurements in 5y window
+נת_חולון_14,COPPER AS CU,2022-06-15,true,,10,1,Only 1 measurements in 5y window
+נת_חולון_14,LEAD AS PB,2022-06-15,true,,9,1,Only 1 measurements in 5y window
 נת_חולון_14,LITHIUM,2010-06-21,true,,2,0,No recent measurements
-נת_חולון_14,MANGANESE TOTAL AS MN,2022-06-15,true,,9,2,Only 2 measurements in 5y window
-נת_חולון_14,NICKEL AS NI,2022-06-15,true,,9,2,Only 2 measurements in 5y window
-נת_חולון_14,SELENIUM AS SE,2022-06-15,true,,6,2,Only 2 measurements in 5y window
+נת_חולון_14,MANGANESE TOTAL AS MN,2022-06-15,true,,9,1,Only 1 measurements in 5y window
+נת_חולון_14,NICKEL AS NI,2022-06-15,true,,9,1,Only 1 measurements in 5y window
+נת_חולון_14,SELENIUM AS SE,2022-06-15,true,,6,1,Only 1 measurements in 5y window
 נת_חולון_14,THALLIUM,2011-09-19,true,,3,0,No recent measurements
 נת_חולון_14,URANIUM,2010-06-21,true,,2,0,No recent measurements
 נת_חולון_14,"1,1,1,2-tetrachloroethane",2016-07-17,true,,5,0,No recent measurements
 נת_חולון_14,"1,1,2,2-tetrachloroethane",2016-07-17,true,,5,0,No recent measurements
-נת_חולון_14,"1,1,2-trichloroethane",2024-11-18,true,,7,3,Only 3 measurements in 5y window
-נת_חולון_14,"1,1-dichloroethane",2024-11-18,true,,11,3,Only 3 measurements in 5y window
-נת_חולון_14,"1,2,4 TRIMETHYLBENZENE",2024-11-18,true,,9,3,Only 3 measurements in 5y window
-נת_חולון_14,BENZENE,2024-11-18,true,,11,3,Only 3 measurements in 5y window
-נת_חולון_14,bromobenzene,2024-11-18,true,,6,3,Only 3 measurements in 5y window
+נת_חולון_14,"1,1,2-trichloroethane",2024-11-18,true,,7,2,Only 2 measurements in 5y window
+נת_חולון_14,"1,1-dichloroethane",2024-11-18,true,,11,2,Only 2 measurements in 5y window
+נת_חולון_14,"1,2,4 TRIMETHYLBENZENE",2024-11-18,true,,9,2,Only 2 measurements in 5y window
+נת_חולון_14,BENZENE,2024-11-18,true,,11,2,Only 2 measurements in 5y window
+נת_חולון_14,bromobenzene,2024-11-18,true,,6,2,Only 2 measurements in 5y window
 נת_חולון_14,bromochloromethane,2016-07-17,true,,3,0,No recent measurements
 נת_חולון_14,Bromo dichloromethane,2016-07-17,true,,3,0,No recent measurements
 נת_חולון_14,Bromomethane,2016-07-17,true,,3,0,No recent measurements
-נת_חולון_14,CARBON TETRACHLORIDE,2024-11-18,true,,10,3,Only 3 measurements in 5y window
-נת_חולון_14,Chloroethane,2024-11-18,true,,9,3,Only 3 measurements in 5y window
-נת_חולון_14,CHLOROFORM,2024-11-18,true,,12,3,Only 3 measurements in 5y window
-נת_חולון_14,Chloromethane,2024-11-18,true,,6,3,Only 3 measurements in 5y window
-נת_חולון_14,"CIS 1,2 DICHLOROETHYLENE",2024-11-18,true,,11,3,Only 3 measurements in 5y window
-נת_חולון_14,"DICHLOROETHANE1,2",2024-11-18,true,,10,3,Only 3 measurements in 5y window
-נת_חולון_14,"DICHLOROETHYLENE 1,1",2024-11-18,true,,12,3,Only 3 measurements in 5y window
-נת_חולון_14, MTBE,2024-11-18,true,,11,3,Only 3 measurements in 5y window
-נת_חולון_14,NAPTHALENE,2024-11-18,true,,10,3,Only 3 measurements in 5y window
-נת_חולון_14,TETRACHLORO ETHYLENE,2024-11-18,true,,12,3,Only 3 measurements in 5y window
-נת_חולון_14,TOLUENE,2024-11-18,true,,11,3,Only 3 measurements in 5y window
-נת_חולון_14,"TRANS-1,2 DICHLOROETHYLENE",2024-11-18,true,,11,3,Only 3 measurements in 5y window
-נת_חולון_14,Tribromomethane,2024-11-18,true,,8,3,Only 3 measurements in 5y window
-נת_חולון_14,"TRICHLORO ETHANE 1,1,1",2024-11-18,true,,10,3,Only 3 measurements in 5y window
-נת_חולון_14,TRICHLORO ETHYLENE,2024-11-18,true,,12,3,Only 3 measurements in 5y window
-נת_חולון_14,Trichlorofluoromethane,2024-11-18,true,,8,3,Only 3 measurements in 5y window
-נת_חולון_14,VINYL CHLORIDE,2024-11-18,true,,11,3,Only 3 measurements in 5y window
-נת_חולון_14,XYLENE,2024-11-18,true,,11,3,Only 3 measurements in 5y window
-נת_חולון_14,"1,2,3-trichlorobenzene",2024-11-18,true,,8,3,Only 3 measurements in 5y window
-נת_חולון_14,"1,2,3-trichloropropane",2024-11-18,true,,6,3,Only 3 measurements in 5y window
-נת_חולון_14,"1,2,4-trichlorobenzene",2024-11-18,true,,7,3,Only 3 measurements in 5y window
-נת_חולון_14,"1,2-dibromo-3-chloropropane",2024-11-18,true,,7,3,Only 3 measurements in 5y window
-נת_חולון_14,"1,2-dichloropropane",2024-11-18,true,,7,3,Only 3 measurements in 5y window
-נת_חולון_14,"1,3,5 TRIMETHYLBENZENE",2024-11-18,true,,7,3,Only 3 measurements in 5y window
-נת_חולון_14,"1,3-dichlorobenzene",2024-11-18,true,,8,3,Only 3 measurements in 5y window
+נת_חולון_14,CARBON TETRACHLORIDE,2024-11-18,true,,10,2,Only 2 measurements in 5y window
+נת_חולון_14,Chloroethane,2024-11-18,true,,9,2,Only 2 measurements in 5y window
+נת_חולון_14,CHLOROFORM,2024-11-18,true,,12,2,Only 2 measurements in 5y window
+נת_חולון_14,Chloromethane,2024-11-18,true,,6,2,Only 2 measurements in 5y window
+נת_חולון_14,"CIS 1,2 DICHLOROETHYLENE",2024-11-18,true,,11,2,Only 2 measurements in 5y window
+נת_חולון_14,"DICHLOROETHANE1,2",2024-11-18,true,,10,2,Only 2 measurements in 5y window
+נת_חולון_14,"DICHLOROETHYLENE 1,1",2024-11-18,true,,12,2,Only 2 measurements in 5y window
+נת_חולון_14, MTBE,2024-11-18,true,,11,2,Only 2 measurements in 5y window
+נת_חולון_14,NAPTHALENE,2024-11-18,true,,10,2,Only 2 measurements in 5y window
+נת_חולון_14,TETRACHLORO ETHYLENE,2024-11-18,true,,12,2,Only 2 measurements in 5y window
+נת_חולון_14,TOLUENE,2024-11-18,true,,11,2,Only 2 measurements in 5y window
+נת_חולון_14,"TRANS-1,2 DICHLOROETHYLENE",2024-11-18,true,,11,2,Only 2 measurements in 5y window
+נת_חולון_14,Tribromomethane,2024-11-18,true,,8,2,Only 2 measurements in 5y window
+נת_חולון_14,"TRICHLORO ETHANE 1,1,1",2024-11-18,true,,10,2,Only 2 measurements in 5y window
+נת_חולון_14,TRICHLORO ETHYLENE,2024-11-18,true,,12,2,Only 2 measurements in 5y window
+נת_חולון_14,Trichlorofluoromethane,2024-11-18,true,,8,2,Only 2 measurements in 5y window
+נת_חולון_14,VINYL CHLORIDE,2024-11-18,true,,11,2,Only 2 measurements in 5y window
+נת_חולון_14,XYLENE,2024-11-18,true,,11,2,Only 2 measurements in 5y window
+נת_חולון_14,"1,2,3-trichlorobenzene",2024-11-18,true,,8,2,Only 2 measurements in 5y window
+נת_חולון_14,"1,2,3-trichloropropane",2024-11-18,true,,6,2,Only 2 measurements in 5y window
+נת_חולון_14,"1,2,4-trichlorobenzene",2024-11-18,true,,7,2,Only 2 measurements in 5y window
+נת_חולון_14,"1,2-dibromo-3-chloropropane",2024-11-18,true,,7,2,Only 2 measurements in 5y window
+נת_חולון_14,"1,2-dichloropropane",2024-11-18,true,,7,2,Only 2 measurements in 5y window
+נת_חולון_14,"1,3,5 TRIMETHYLBENZENE",2024-11-18,true,,7,2,Only 2 measurements in 5y window
+נת_חולון_14,"1,3-dichlorobenzene",2024-11-18,true,,8,2,Only 2 measurements in 5y window
 נת_חולון_14,"1,3-dichloropropane",2015-06-24,true,,3,0,No recent measurements
 נת_חולון_14,"1,3-Dichloropropene (e) CIS",2015-06-24,true,,3,0,No recent measurements
 נת_חולון_14,"1,3-Dichloropropene (z) TRANS",2015-06-24,true,,3,0,No recent measurements
 נת_חולון_14,"2,2-dichloropropane",2015-06-24,true,,3,0,No recent measurements
 נת_חולון_14,2-chlorotoluene,2016-07-17,true,,2,0,No recent measurements
 נת_חולון_14,4-chlorotoluene,2016-07-17,true,,2,0,No recent measurements
-נת_חולון_14,Dibromochloro methane  ,2024-11-18,true,,7,3,Only 3 measurements in 5y window
-נת_חולון_14,dibromomethane,2024-11-18,true,,7,3,Only 3 measurements in 5y window
-נת_חולון_14,"DICHLOR BENZEN 1,2",2024-11-18,true,,6,3,Only 3 measurements in 5y window
-נת_חולון_14,"DICHLOROBENZEN 1,4",2024-11-18,true,,6,3,Only 3 measurements in 5y window
-נת_חולון_14,Dichlorodifluoromethane,2024-11-18,true,,7,3,Only 3 measurements in 5y window
-נת_חולון_14,ETHYL BENZENE,2024-11-18,true,,8,3,Only 3 measurements in 5y window
-נת_חולון_14,ETHYLENE DI BROMIDE,2024-11-18,true,,8,3,Only 3 measurements in 5y window
+נת_חולון_14,Dibromochloro methane  ,2024-11-18,true,,7,2,Only 2 measurements in 5y window
+נת_חולון_14,dibromomethane,2024-11-18,true,,7,2,Only 2 measurements in 5y window
+נת_חולון_14,"DICHLOR BENZEN 1,2",2024-11-18,true,,6,2,Only 2 measurements in 5y window
+נת_חולון_14,"DICHLOROBENZEN 1,4",2024-11-18,true,,6,2,Only 2 measurements in 5y window
+נת_חולון_14,Dichlorodifluoromethane,2024-11-18,true,,7,2,Only 2 measurements in 5y window
+נת_חולון_14,ETHYL BENZENE,2024-11-18,true,,8,2,Only 2 measurements in 5y window
+נת_חולון_14,ETHYLENE DI BROMIDE,2024-11-18,true,,8,2,Only 2 measurements in 5y window
 נת_חולון_14,hexachlorobutadiene,2015-06-24,true,,3,0,No recent measurements
 נת_חולון_14,isopropylbenzene,2015-06-24,true,,3,0,No recent measurements
-נת_חולון_14,Methylene chloride ,2024-11-18,true,,7,3,Only 3 measurements in 5y window
-נת_חולון_14,MONOCHLOROBENZENE,2024-11-18,true,,7,3,Only 3 measurements in 5y window
+נת_חולון_14,Methylene chloride ,2024-11-18,true,,7,2,Only 2 measurements in 5y window
+נת_חולון_14,MONOCHLOROBENZENE,2024-11-18,true,,7,2,Only 2 measurements in 5y window
 נת_חולון_14,n-Butyl benzene,2017-10-19,true,,4,0,No recent measurements
 נת_חולון_14,n-propylbenzene,2017-10-19,true,,4,0,No recent measurements
 נת_חולון_14,o-Xylene ,2017-10-19,true,,4,0,No recent measurements
 נת_חולון_14,p-isopropyl toluene,2015-06-24,true,,3,0,No recent measurements
 נת_חולון_14,p-xylene,2015-06-24,true,,3,0,No recent measurements
 נת_חולון_14,sec-butylbenzene,2015-06-24,true,,3,0,No recent measurements
-נת_חולון_14,STYRENE,2024-11-18,true,,7,3,Only 3 measurements in 5y window
+נת_חולון_14,STYRENE,2024-11-18,true,,7,2,Only 2 measurements in 5y window
 נת_חולון_14,tert-butylbenzene,2015-06-24,true,,3,0,No recent measurements
 נת_חולון_14,ALUMINIUM FILTERED AS AL,2014-09-09,true,,1,0,No recent measurements
-נת_חולון_14,DISSOLVED OXYGEN AS O2,2022-06-15,true,,8,2,Only 2 measurements in 5y window
-נת_חולון_14,IRON TOTAL AS FE,2022-06-15,true,,8,2,Only 2 measurements in 5y window
-נת_חולון_14,Lab EC comp to 25 C DEGR,2022-06-15,true,,8,2,Only 2 measurements in 5y window
+נת_חולון_14,DISSOLVED OXYGEN AS O2,2022-06-15,true,,8,1,Only 1 measurements in 5y window
+נת_חולון_14,IRON TOTAL AS FE,2022-06-15,true,,8,1,Only 1 measurements in 5y window
+נת_חולון_14,Lab EC comp to 25 C DEGR,2022-06-15,true,,8,1,Only 1 measurements in 5y window
 נת_חולון_14,MANGANESE FILTERED AS MN,2014-09-09,true,,1,0,No recent measurements
-נת_חולון_14,PH MEASURED  IN FIELD,2022-06-15,true,,8,2,Only 2 measurements in 5y window
-נת_חולון_14,REDOX,2022-06-15,true,,8,2,Only 2 measurements in 5y window
+נת_חולון_14,PH MEASURED  IN FIELD,2022-06-15,true,,8,1,Only 1 measurements in 5y window
+נת_חולון_14,REDOX,2022-06-15,true,,8,1,Only 1 measurements in 5y window
 נת_חולון_14,STRONTIUM AS SR,2018-07-17,true,,5,0,No recent measurements
-נת_חולון_14,TEMPERATURE CENTIGRADE,2022-06-15,true,,8,2,Only 2 measurements in 5y window
-נת_חולון_14,ZINC AS ZN,2022-06-15,true,,8,2,Only 2 measurements in 5y window
-נת_חולון_14,עומק עד פני המים,2022-06-15,true,,8,2,Only 2 measurements in 5y window
-נת_חולון_14,CADMIUM AS CD,2022-06-15,true,,5,2,Only 2 measurements in 5y window
-נת_חולון_14,COBALT AS CO,2022-06-15,true,,5,2,Only 2 measurements in 5y window
+נת_חולון_14,TEMPERATURE CENTIGRADE,2022-06-15,true,,8,1,Only 1 measurements in 5y window
+נת_חולון_14,ZINC AS ZN,2022-06-15,true,,8,1,Only 1 measurements in 5y window
+נת_חולון_14,עומק עד פני המים,2022-06-15,true,,8,1,Only 1 measurements in 5y window
+נת_חולון_14,CADMIUM AS CD,2022-06-15,true,,5,1,Only 1 measurements in 5y window
+נת_חולון_14,COBALT AS CO,2022-06-15,true,,5,1,Only 1 measurements in 5y window
 נת_חולון_14,"1,4 DIOXANE",2026-02-10,true,,2,1,Only 1 measurements in 5y window
-נת_חולון_14,BICARBONATE AS HCO3,2026-02-10,true,,4,4,Only 4 measurements in 5y window
-נת_חולון_14,BROMIDE AS BR,2026-02-10,true,,4,4,Only 4 measurements in 5y window
-נת_חולון_14,CALCIUM AS CA,2026-02-10,true,,4,4,Only 4 measurements in 5y window
-נת_חולון_14,CHLORIDE AS CL,2026-02-10,true,,4,4,Only 4 measurements in 5y window
-נת_חולון_14,MAGNESIUM AS MG,2026-02-10,true,,4,4,Only 4 measurements in 5y window
-נת_חולון_14,NITRATE AS NO3,2026-02-10,true,,4,4,Only 4 measurements in 5y window
-נת_חולון_14,POTASSIUM AS K,2026-02-10,true,,4,4,Only 4 measurements in 5y window
-נת_חולון_14,SODIUM AS NA,2026-02-10,true,,4,4,Only 4 measurements in 5y window
-נת_חולון_14,SULFATE AS SO4,2026-02-10,true,,4,4,Only 4 measurements in 5y window
+נת_חולון_14,BICARBONATE AS HCO3,2026-02-10,true,,4,3,Only 3 measurements in 5y window
+נת_חולון_14,BROMIDE AS BR,2026-02-10,true,,4,3,Only 3 measurements in 5y window
+נת_חולון_14,CALCIUM AS CA,2026-02-10,true,,4,3,Only 3 measurements in 5y window
+נת_חולון_14,CHLORIDE AS CL,2026-02-10,true,,4,3,Only 3 measurements in 5y window
+נת_חולון_14,MAGNESIUM AS MG,2026-02-10,true,,4,3,Only 3 measurements in 5y window
+נת_חולון_14,NITRATE AS NO3,2026-02-10,true,,4,3,Only 3 measurements in 5y window
+נת_חולון_14,POTASSIUM AS K,2026-02-10,true,,4,3,Only 3 measurements in 5y window
+נת_חולון_14,SODIUM AS NA,2026-02-10,true,,4,3,Only 3 measurements in 5y window
+נת_חולון_14,SULFATE AS SO4,2026-02-10,true,,4,3,Only 3 measurements in 5y window
 נת_חולון_14,TOTAL NITROGREN  AS N,2026-02-10,true,,2,2,Only 2 measurements in 5y window
 נת_חולון_14,TOTAL ORGANIC CARBON,2026-02-10,true,,2,2,Only 2 measurements in 5y window
 נת_חולון_16,"1,1,1,2-tetrachloroethane",2016-09-26,true,,2,0,No recent measurements
@@ -2440,16 +2440,16 @@ canonical_well_id,parameter_canonical,last_measurement_date,is_active,reason_if_
 נת_חולון_16,BARIUM AS BA,2022-06-08,true,,7,1,Only 1 measurements in 5y window
 נת_חולון_16,BORON AS B,2022-06-08,true,,7,1,Only 1 measurements in 5y window
 נת_חולון_16,CHROMIUM AS CR,2022-06-08,true,,7,1,Only 1 measurements in 5y window
-נת_חולון_16,DISSOLVED OXYGEN AS O2,2022-06-08,true,,7,2,Only 2 measurements in 5y window
+נת_חולון_16,DISSOLVED OXYGEN AS O2,2022-06-08,true,,7,1,Only 1 measurements in 5y window
 נת_חולון_16,IRON TOTAL AS FE,2022-06-08,true,,7,1,Only 1 measurements in 5y window
-נת_חולון_16,Lab EC comp to 25 C DEGR,2022-06-08,true,,7,2,Only 2 measurements in 5y window
+נת_חולון_16,Lab EC comp to 25 C DEGR,2022-06-08,true,,7,1,Only 1 measurements in 5y window
 נת_חולון_16,MANGANESE TOTAL AS MN,2022-06-08,true,,7,1,Only 1 measurements in 5y window
-נת_חולון_16,PH MEASURED  IN FIELD,2022-06-08,true,,7,2,Only 2 measurements in 5y window
-נת_חולון_16,REDOX,2022-06-08,true,,7,2,Only 2 measurements in 5y window
+נת_חולון_16,PH MEASURED  IN FIELD,2022-06-08,true,,7,1,Only 1 measurements in 5y window
+נת_חולון_16,REDOX,2022-06-08,true,,7,1,Only 1 measurements in 5y window
 נת_חולון_16,STRONTIUM AS SR,2018-08-06,true,,3,0,No recent measurements
-נת_חולון_16,TEMPERATURE CENTIGRADE,2022-06-08,true,,7,2,Only 2 measurements in 5y window
+נת_חולון_16,TEMPERATURE CENTIGRADE,2022-06-08,true,,7,1,Only 1 measurements in 5y window
 נת_חולון_16,ZINC AS ZN,2022-06-08,true,,7,1,Only 1 measurements in 5y window
-נת_חולון_16,עומק עד פני המים,2022-06-08,true,,7,2,Only 2 measurements in 5y window
+נת_חולון_16,עומק עד פני המים,2022-06-08,true,,7,1,Only 1 measurements in 5y window
 נת_חולון_16,COPPER AS CU,2022-06-08,true,,6,1,Only 1 measurements in 5y window
 נת_חולון_16,NICKEL AS NI,2022-06-08,true,,6,1,Only 1 measurements in 5y window
 נת_חולון_16,ARSENIC AS AS,2022-06-08,true,,5,1,Only 1 measurements in 5y window

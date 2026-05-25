@@ -25,6 +25,11 @@ from collections import defaultdict
 import pandas as pd
 import numpy as np
 
+REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT))
+
+from scripts.param_families import classify_family
+
 
 def ensure_output_dir():
     """Create Holon/02_data/ directory if it doesn't exist."""
@@ -162,58 +167,13 @@ def create_severity_by_well_family(scoped, output_dir, window_days=365*5):
     """
     Create severity_by_well_family.csv: per-well × family, max in 5y window.
 
-    Families: CVOC, METALS, PFAS, FUEL
+    Families: CVOC, METALS, PFAS, FUEL (per DATA_PIPELINE_SPEC.md)
 
     Columns:
       canonical_well_id, family, max_value_window, max_value_date,
       window_start, window_end, lead_parameter_by_family, ratio_to_dws,
       severity_index, dws_reference_value
     """
-
-    # Family mapping (simplified; real implementation would use param_families.py)
-    family_map = {
-        # CVOC: chlorinated volatile organic compounds
-        "TCE": "CVOC", "TRICHLOROETHYLENE": "CVOC",
-        "PCE": "CVOC", "PERCHLOROETHYLENE": "CVOC",
-        "1,2-DCA": "CVOC", "1,2-DICHLOROETHANE": "CVOC",
-        "VC": "CVOC", "VINYL CHLORIDE": "CVOC",
-        "CVOC": "CVOC",
-        "1,1,2-TRICHLOROETHANE": "CVOC",
-        "1,1-DICHLOROETHANE": "CVOC",
-        "1,2-DICHLOROPROPANE": "CVOC",
-        "1,4 DIOXANE": "CVOC",
-
-        # FUEL: petroleum products and benzene/toluene series
-        "MTBE": "FUEL", "METHYL TERT-BUTYL ETHER": "FUEL",
-        "BTEX": "FUEL",
-        "BENZENE": "FUEL",
-        "TOLUENE": "FUEL",
-        "XYLENE": "FUEL",
-        "ETHYLBENZENE": "FUEL",
-        "1,2,4 TRIMETHYLBENZENE": "FUEL",
-        "1,3,5 TRIMETHYLBENZENE": "FUEL",
-        "2-CHLOROTOLUENE": "FUEL",
-        "4-CHLOROTOLUENE": "FUEL",
-
-        # METALS
-        "CHROMIUM": "METALS",
-        "CR(VI)": "METALS",
-        "NICKEL": "METALS",
-        "CADMIUM": "METALS",
-        "COPPER": "METALS",
-        "LEAD": "METALS",
-        "IRON": "METALS",
-        "MANGANESE": "METALS",
-
-        # PFAS: per- and poly-fluoroalkyl substances
-        "PFOA": "PFAS",
-        "PERFLUOROOCTANOIC ACID": "PFAS",
-        "PFOHXS": "PFAS",
-        "PFHXS": "PFAS",
-        "PERFLUOROHEXANE SULFONIC ACID": "PFAS",
-        "PFOS": "PFAS",
-        "PERFLUOROOCTANE SULFONIC ACID": "PFAS",
-    }
 
     scoped_copy = scoped.copy()
     scoped_copy["result_date"] = pd.to_datetime(scoped_copy["result_date"])
@@ -224,8 +184,10 @@ def create_severity_by_well_family(scoped, output_dir, window_days=365*5):
     # Filter to 5-year window
     windowed = scoped_copy[scoped_copy["result_date"] >= window_start].copy()
 
-    # Assign family based on parameter
-    windowed["family"] = windowed["parameter_canonical"].map(family_map).fillna("OTHER")
+    # Assign family using comprehensive classify_family() regex patterns
+    windowed["family"] = windowed["parameter_canonical"].apply(
+        lambda p: classify_family(p, None)
+    )
 
     # Group by well and family, find max
     family_results = []
