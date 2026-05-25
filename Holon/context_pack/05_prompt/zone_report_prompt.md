@@ -109,7 +109,7 @@ All CSVs are in `Holon/02_data/`:
 <source>trends_by_well_parameter.csv</source>
 <purpose>Mann-Kendall results (tie-corrected, SNR gating, soft_trigger=2).</purpose>
 <columns>canonical_well_id, parameter_canonical, mann_kendall_z, mann_kendall_p, snr, soft_trigger_met, trend_classification, n_measurements, time_span_years, notes</columns>
-<notes>SNR threshold = 0.3. soft_trigger = 2 consecutive rising in 5y. Report Z, p, SNR for significant trends (p<0.05 + SNR>5 recommended).</notes>
+<notes>SNR gating threshold = 0.3 (config min_snr). soft_trigger = 2 consecutive rising in 5y. Report Z, p, SNR for significant trends (p<0.05 + SNR above gating threshold). Note: SNR is relative signal-to-noise, typically 0–2 in this dataset — do NOT expect SNR>5.</notes>
 </document>
 
 <document index="6e">
@@ -152,7 +152,7 @@ All CSVs are in `Holon/02_data/`:
 - Figure 2–5 required (one per major family: CVOC, METALS, FUEL; optionally PFAS)
 
 ### Section 4: מגמות, החמרה ופערי ניטור (Trends & Gaps)
-- Significant trends only (p<0.05 + SNR>5): 3–5 key examples with Z/p/SNR
+- Significant trends only (p<0.05 + SNR above gating threshold 0.3): 3–5 key examples with Z/p/SNR
 - Closed wells: names, dates, reasons
 - Regional gaps: areas without coverage, parameters unsampled (esp. PFAS)
 - Selection bias caveat: monitoring wells ≠ zone-wide representation
