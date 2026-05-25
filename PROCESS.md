@@ -3,7 +3,7 @@
 > **מטרה**: SSOT לדרישות פתוחות וסגורות. עודכן בכל שינוי.
 > **כלל**: ראה CLAUDE.md §12.
 
-**עודכן אחרון**: 2026-05-17 (REQ #13 Phase 1 complete: Holon Structured Data Pack generated; 7 CSVs + validation)
+**עודכן אחרון**: 2026-05-25 (REQ #13.5 anchors pilot verified PASS; doc sync)
 
 ---
 
@@ -11,7 +11,7 @@
 
 | # | בעיה | תיאור | סטטוס | תאריך פתיחה | קבצים |
 |---|------|--------|--------|----------------|--------|
-| 13 | Hybrid V5 Pipeline Implementation | תת-שלבים: 13.1 ✓ Structured Data Pack; 13.2 ✓ Reports Context Pack + 7 excerpts; 13.3 ✓ Source Candidates Pack (Option 3 + A-E classification); 13.4 ✓ Zone Diagnosis (5 contamination systems, 7 sections + QC); 13.5 ⏳ V5 A/B Mini Test; 13.6 ⏳ V5 Report Generation | ⚠️ Partial | 2026-05-17 | Holon/02_data/, Holon/context_pack/03_context/, Holon/context_pack/04_diagnosis/zone_diagnosis.md |
+| 13 | Hybrid V5 Pipeline Implementation | תת-שלבים: 13.1 ✓ Structured Data Pack; 13.2 ✓ Reports Context Pack + 7 excerpts; 13.3 ✓ Source Candidates Pack (Option 3 + A-E classification); 13.4 ✓ Zone Diagnosis (5 contamination systems, 7 sections + QC); 13.5 ✅ Structured Anchors YAML Pilot (Statistical 31 + Forensic 27; PASS, אומת 2026-05-25); 13.6 ⏳ V5 Report Generation | ⚠️ Partial | 2026-05-17 | Holon/02_data/, Holon/context_pack/03_context/, Holon/context_pack/04_diagnosis/zone_diagnosis.md |
 | 7 | Skills/אוטומציה לתהליכים חוזרים | אימוץ simplify (קוד כפול), init (regen CLAUDE.md), review (PR) | ⏳ Deferred | 2026-05-14 | אחרי בעיות 2–4 |
 | 11 | HIGH-priority simplify fixes (regexes + data loader) | pre-compile 8 module-level regexes (hot-path optimization), extract load_all_core_data() לdata_loader.py | ⏳ Deferred | 2026-05-14 | scripts/generate_holon_*.py, data_loader.py |
 

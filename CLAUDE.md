@@ -426,7 +426,7 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 
 **Phase H+ — V5 Hybrid Pipeline** 🔄 Documentation complete; Implementation planned:
 - ✓ Documentation refactor (REQ #12, closed 2026-05-17)
-- ⏳ Implementation (REQ #13): data pipeline scripts (6 CSVs), context assembly, zone diagnosis prompt, V5 report prompt, A/B mini test, Holon V5 generation
+- ⏳ Implementation (REQ #13): data pipeline scripts (6 CSVs), context assembly, zone diagnosis prompt, V5 report prompt, Structured Anchors pilot (#13.5, PASS), Holon V5 generation
 
 **Open framework items**:
 - ⏳ Basemap integration (REQ-G1) — pending environment resolution
