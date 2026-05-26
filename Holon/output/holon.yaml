@@ -1,0 +1,94 @@
+# Industrial Areas Report — Engine Package
+
+This folder contains everything needed to generate the two-twin HTML reports for any Israeli industrial zone. Drop the folders into your repo root and you're ready.
+
+## What's inside
+
+```
+.
+├── CLAUDE.md                          ← top-level instructions for the build agent
+├── README.md                          ← this file
+├── design-system/                     ← FROZEN visual + voice contract
+│   ├── architecture.md                ← "twins, not identical" philosophy
+│   ├── tokens.css                     ← :root CSS variables (single source of truth)
+│   ├── typography.md                  ← fonts, RTL discipline, type scale
+│   ├── color.md                       ← semantic palette rules
+│   ├── voice.md                       ← copy rules for both audiences
+│   └── reference/
+│       ├── HOLON_INTERNAL.html        ← gold-standard internal output
+│       ├── HOLON_PUBLIC.html          ← gold-standard public output
+│       └── index.html                 ← landing page that links both
+├── schemas/
+│   └── zone-brief.schema.json         ← JSON Schema for per-zone YAML input
+└── briefs/
+    └── holon.yaml                     ← example brief — fully reproduces Holon output
+```
+
+## How the pipeline runs
+
+```
+                  ┌──────────────────────────┐
+   raw monitoring │  YOUR ETL                 │
+   data (DB/API)  │  Python / Airflow / etc.  │
+                  │  • filter, clean           │
+                  │  • compute severity        │
+                  │  • detect gaps             │
+                  │  • emit YAML per schema    │
+                  └──────────┬─────────────────┘
+                             ↓
+                  briefs/<zone>.yaml
+                             ↓
+                  ┌──────────────────────────┐
+                  │  CLAUDE CODE / LAMBDA    │
+                  │  reads:                  │
+                  │    • CLAUDE.md           │
+                  │    • design-system/      │
+                  │    • briefs/<zone>.yaml  │
+                  │  writes:                  │
+                  │    • output/<zone>/*.html │
+                  └──────────┬─────────────────┘
+                             ↓
+                  output/<zone>/{INTERNAL,PUBLIC,index}.html
+                             ↓
+                  publish / distribute / archive
+```
+
+## Quick start
+
+1. **Drop these folders into your repo:** `CLAUDE.md`, `design-system/`, `schemas/`, `briefs/`.
+2. **Validate `briefs/holon.yaml`** against `schemas/zone-brief.schema.json` to confirm your validator works.
+3. **Run Claude Code in the repo root**, telling it: "Generate `output/holon/INTERNAL.html` and `output/holon/PUBLIC.html` from `briefs/holon.yaml`." It will read `CLAUDE.md` automatically.
+4. **Diff the output** against `design-system/reference/HOLON_*.html`. They should match (modulo small whitespace).
+5. **Iterate.** When ready, add a new zone by emitting a new YAML under `briefs/` and running the same command.
+
+## Adding a new zone
+
+1. Your ETL emits `briefs/<zone>.yaml` (validates against schema).
+2. Run Claude Code: "Build output/<zone>/ from briefs/<zone>.yaml."
+3. Inspect output. If anything's off, the issue is almost always in the brief, not the engine.
+
+## When to modify the engine
+
+**Don't** modify the design system or schema casually. Both are stable contracts.
+
+Modify when:
+- The visual design itself changes (new requirement from stakeholders)
+- A new section type is needed (new schema field + new component pattern in design-system/components/)
+- A new data dimension emerges (e.g. a new contaminant family)
+
+Each engine change should bump a version, and CLAUDE.md should note the change.
+
+## Voice & semantic guards
+
+The system is designed so that **public output cannot leak private data by accident**. Specifically:
+
+- `sources[]` is the only place facility names appear in the brief. The schema does not provide a public-facing field for sources.
+- Each borehole has a separate `public.code` (anonymized) and `public.popup_rows` — public maps use ONLY these.
+- CLAUDE.md explicitly forbids leaking facility names into public output (see §10 anti-patterns).
+- The quality-bar checklist (CLAUDE.md §8) demands manual verification of public popups.
+
+If a future stakeholder asks "can the public version show the named facility for this one finding?" — the answer is **no without revising the schema and design system**. Trust by construction.
+
+## License & ownership
+
+This package is internal to the Israeli Water Authority groundwater team. Reference HTML files contain Holon data which is non-confidential. The schema and design system are reusable.
