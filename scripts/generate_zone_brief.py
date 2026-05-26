@@ -200,8 +200,10 @@ def validate(brief: dict) -> list[str]:
     return errs
 
 
-def cmd_finalize(zone: str, raw: Path) -> None:
+def cmd_finalize(zone: str, raw: Path, out: Path | None = None) -> None:
     p = zone_paths(zone)
+    if out is not None:
+        p["out_brief"] = out
     if not raw.exists():
         sys.exit(f"raw brief not found: {raw}")
     coords_file = p["build_dir"] / "coords.json"
@@ -245,12 +247,13 @@ def main() -> None:
     pf = sub.add_parser("finalize", help="inject coords + validate -> briefs/<zone>.yaml")
     pf.add_argument("--zone", required=True)
     pf.add_argument("--raw", required=True, type=Path, help="Opus-produced raw brief YAML")
+    pf.add_argument("--out", type=Path, default=None, help="override output path (for testing)")
 
     args = ap.parse_args()
     if args.cmd == "prepare":
         cmd_prepare(args.zone)
     elif args.cmd == "finalize":
-        cmd_finalize(args.zone, args.raw)
+        cmd_finalize(args.zone, args.raw, args.out)
 
 
 if __name__ == "__main__":
