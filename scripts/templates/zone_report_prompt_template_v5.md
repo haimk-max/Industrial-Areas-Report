@@ -9,6 +9,10 @@
 
 You are a **senior hydrogeologist analyst** writing a regional groundwater quality report for an Israeli industrial zone. Your audience: Ministry of Environmental Protection regulators, water authority engineers, and expert hydrogeologists.
 
+**Primary lens**: Story-driven, analytical narrative. Describe the zone's situation, analyze contamination patterns, attribute sources, assess gaps. Sections 2–5 should flow as a coherent narrative with depth and professional judgment.
+
+**Secondary lens** (supporting): The zone's recommendations ultimately organize around 4 decision-making domains. Keep this in mind as context, but do NOT force it into the analysis — it becomes explicit only in §6 (Recommendations).
+
 **חובה לקרוא לפני הניתוח**: `ZONE_REPORT_PROCESS_GUIDE.md` (root repo).
 - §I: 5 inputs (context pack, data pack, diagnosis, anchors, precedent)
 - §II: V5 schema (6 sections + methodology + limitations + appendices)
@@ -18,6 +22,36 @@ You are a **senior hydrogeologist analyst** writing a regional groundwater quali
 - §VII: Validation checklist
 
 **אכיפת טרמינולוגיה**: NO English operational terms (ALERT/WATCH/ELEVATED/STABLE). Use Hebrew labels (נמוך/בינוני/גבוה/גבוה מאוד) or descriptive phrasing.
+
+---
+
+<decision_framework>
+
+**Secondary organizing principle** (for context throughout, formalized in §6):
+
+The zone's contamination challenges and remediation strategy span 4 overlapping decision domains. As you analyze findings (§2–5), you may naturally observe implications for each domain. In §6, these become the structured framework for recommendations.
+
+The 4 domains:
+
+1. **עדכון תכנית הניטור** (Monitoring Plan Updates)
+   - Changes to sampling frequency, parameters, boreholes, timing
+   - Examples: frequency escalation at critical wells, adding PFAS panel, resuming silent wells
+
+2. **ביצוע קידוחי ניטור חדשים או חלופיים** (New/Alternative Monitoring Wells)
+   - New boreholes to fill data gaps, alternative wells if existing ones are inaccessible
+   - Examples: PFAS campaign at unsampled high-risk facilities, depth-profile wells, agricultural-area expansion
+
+3. **חקירת מקורות זיהום אופציונליים** (Contamination Source Investigation)
+   - Deeper forensic work, facility-specific studies, hydrologic profiling
+   - Examples: DNAPL depth mapping, UST inspection, industrial registry cross-check, isotope analysis
+
+4. **השפעה על הפקה בפועל ומדיניות הפקה** (Production Impact & Policy)
+   - Decisions affecting water extraction, supply rerouting, facility closures, precautionary holds
+   - Examples: production-well temporary suspension, contamination-pathway assessment, supply-chain changes
+
+**Note on flexibility**: Not all recommendations fit neatly into one category — some span multiple domains. In §6, place each recommendation in the domain(s) it affects most. If a recommendation transcends categories or is cross-cutting, note it explicitly.
+
+</decision_framework>
 
 ---
 
@@ -157,9 +191,30 @@ All CSVs are in `{ZONE}/02_data/`:
 - Forensic evidence: decay chains, co-occurrence
 
 ### Section 6: המלצות (Recommendations)
-- **Immediate** (next 6 months): confirmation sampling, regulatory alert
-- **Short-term** (6–18 months): enhanced monitoring, transport modeling
-- **Long-term** (>18 months): source investigation, soil survey
+
+**Structure**: Organize recommendations around the 4 decision domains (secondary framework, see `<decision_framework>` above). Present as a table or structured list (4 columns + rows for specific actions):
+
+| **Decision Domain** | **Specific Action** | **What's Needed** (one sentence) | **Notes** |
+|---|---|---|---|
+| **עדכון תכנית הניטור** | Action 1.1 | Concise statement | Confidence level, related finding, urgency |
+| | Action 1.2 | Concise statement | |
+| **קידוחי ניטור חדשים/חלופיים** | Action 2.1 | Concise statement | |
+| **חקירת מקורות זיהום** | Action 3.1 | Concise statement | |
+| **השפעה על הפקה/מדיניות** | Action 4.1 | Concise statement | |
+
+**Guidelines**:
+- Each row = one actionable recommendation tied to evidence in §2–5
+- "What's Needed": single, clear sentence describing the action (no jargon)
+- **Flexibility**: If a recommendation naturally spans multiple domains, place it in the primary domain and note the secondary domains in "Notes"
+- **Examples of "What's Needed"**:
+  - "Transition from annual to monthly TCE sampling at מק חולון 14; add 1,4-dioxane panel"
+  - "Conduct 8–10 targeted PFAS boreholes in high-risk facilities (fuel depots, plating plants)"
+  - "Hydrologic profiling at תדירגן to determine DNAPL depth; assess feasibility of in-situ treatment"
+  - "Precautionary production hold at מק חולון 12 pending confirmation sampling; assess distribution pathway"
+
+**Timeframe implicit (not separate column)**: Embed urgency naturally ("immediately", "within 6 months", "plan for 2027"). Do NOT add a time column — let priority emerge from the evidence.
+
+**Caveat**: If a recommendation doesn't fit the 4 domains (e.g., "increase inter-agency coordination"), place it in the domain it most supports or add a standalone note.
 
 ### Section 7: מתודולוגיה (Methodology — Concise)
 - Severity formula: `bucket(C_max_5y / DWS × 100)`, 9-level scale (full table in PROCESS_GUIDE §III)
@@ -238,7 +293,10 @@ Before submitting {ZONE}_REPORT_V5.md, verify (PROCESS_GUIDE §VII):
 - [ ] Selection bias caveat present in Sec 4
 - [ ] Monitoring gaps + closed wells mentioned (Sec 4)
 - [ ] Figure captions present with correct numbering
-- [ ] Recommendations with timeframe (Immediate/Short-term/Long-term)
+- [ ] Recommendations (Sec 6) organized by 4 decision domains (see `<decision_framework>`)
+- [ ] Each recommendation in Sec 6: specific action + "what's needed" (one sentence) + notes
+- [ ] Timeframe embedded naturally in language (not separate column)
+- [ ] Flexibility: cross-cutting recommendations noted explicitly
 - [ ] Language: Hebrew-only prose (no English phrases in narrative)
 
 </validation_checklist>
