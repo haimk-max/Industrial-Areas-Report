@@ -17,7 +17,17 @@ You are a **senior hydrogeologist analyst** writing a regional groundwater quali
 - §VI: Figure rules
 - §VII: Validation checklist
 
-**אכיפת טרמינולוגיה**: NO English operational terms (ALERT/WATCH/ELEVATED/STABLE). Use Hebrew labels (נמוך/בינוני/גבוה/גבוה מאוד) or descriptive phrasing.
+**⚠️ CRITICAL LANGUAGE RULE — Hebrew-Only Prose**:
+The entire report MUST be in Hebrew. ALL operational severity terms MUST be Hebrew, NEVER English:
+- ❌ "ALERT status" → ✓ "מצב חרום"
+- ❌ "WATCH list" → ✓ "קידוחים בעיצומו"
+- ❌ "ELEVATED levels" → ✓ "רמות מוגברות"
+- ❌ "STABLE trend" → ✓ "מגמה יציבה"
+- ❌ "INCREASING" → ✓ "עלייה" or "מגמה עולה"
+- ❌ "contamination" (in Hebrew prose) → ✓ "זיהום"
+- ❌ "borehole" (in Hebrew prose) → ✓ "קידוח"
+- ✓ Chemical names (TCE, CVOC, PFAS, BTEX, PCE, DCE, VC, MTBE, PFOA, PFOS, etc.) are acceptable as scientific nomenclature within Hebrew text.
+This is CLAUDE.md §1 Language Rules enforcement. FAIL this rule = report rejected.
 
 ---
 

@@ -85,6 +85,8 @@ def create_measurements_scoped(measurements, parameters, boreholes, output_dir):
       canonical_well_id, original_well_name, well_type, zone_scope_source,
       parameter_canonical, parameter_original, unit_original, unit_standardized,
       dws_value, result_value, result_date, result_qualifier, source_file, source_row_or_page
+
+    Option B (pre-filter): Excludes "OTHER" family parameters per CLAUDE.md §8 design decision.
     """
 
     # Measurements already has param_code, param_name, unit, drinking_water_standard
@@ -118,6 +120,13 @@ def create_measurements_scoped(measurements, parameters, boreholes, output_dir):
 
     # Remove rows with NULL result_value
     scoped = scoped[scoped["result_value"].notna()]
+
+    # Option B: Filter out "OTHER" family parameters (non-contaminant parameters)
+    scoped["family"] = scoped["parameter_canonical"].apply(
+        lambda p: classify_family(p, None)
+    )
+    scoped = scoped[scoped["family"] != "OTHER"]
+    scoped = scoped.drop(columns=["family"])
 
     output_path = output_dir / "measurements_scoped.csv"
     scoped.to_csv(output_path, index=False)
@@ -228,6 +237,8 @@ def create_trends_by_well_parameter(trends_df, output_dir):
     Columns:
       canonical_well_id, parameter_canonical, mann_kendall_z, mann_kendall_p, snr,
       soft_trigger_met, trend_classification, n_measurements, time_span_years, notes
+
+    Option B (pre-filter): Excludes "OTHER" family parameters per CLAUDE.md §8 design decision.
     """
 
     trends_copy = trends_df.copy()
@@ -253,6 +264,13 @@ def create_trends_by_well_parameter(trends_df, output_dir):
     # Notes
     trends_copy["notes"] = ""
     trends_copy.loc[trends_copy["n_measurements"] < 5, "notes"] = "Low measurement count"
+
+    # Option B: Filter out "OTHER" family parameters
+    trends_copy["family"] = trends_copy["parameter_canonical"].apply(
+        lambda p: classify_family(p, None)
+    )
+    trends_copy = trends_copy[trends_copy["family"] != "OTHER"]
+    trends_copy = trends_copy.drop(columns=["family"])
 
     result = trends_copy[[
         "canonical_well_id", "parameter_canonical", "mann_kendall_z", "mann_kendall_p",
