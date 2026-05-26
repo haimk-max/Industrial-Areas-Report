@@ -1,0 +1,69 @@
+/* ════════════════════════════════════════════════════════════
+   Industrial Areas Report · Design Tokens
+   Single source of truth for all visual values.
+   Copy this <style> block verbatim into every output HTML file.
+   ════════════════════════════════════════════════════════════ */
+
+:root{
+
+  /* ─── Surfaces ─────────────────────────────── */
+  --bg:           #fafaf8;   /* page background — warm near-white */
+  --surface:      #ffffff;   /* cards, panels, table cells */
+  --surface-2:    #f4f5f3;   /* secondary surface — table headers, kpi notes */
+  --surface-3:    #eef0ee;   /* tertiary surface — subtle elevation */
+
+  /* ─── Ink ──────────────────────────────────── */
+  --ink:          #0e1116;   /* primary text, hard borders, axis lines */
+  --ink-2:        #3a414a;   /* body prose, secondary text */
+  --ink-3:        #5b6470;   /* labels, captions */
+  --muted:        #8a939e;   /* meta, placeholder text */
+
+  /* ─── Rules ────────────────────────────────── */
+  --rule:         #dde1e3;   /* card borders, section dividers */
+  --rule-faint:   #e9ebe9;   /* row separators, internal dividers */
+
+  /* ─── Brand anchor (water identity) ────────── */
+  --teal:         #0f6b7a;
+  --teal-2:       #0c5664;
+  --teal-tint:    #e6f0f2;
+  --teal-tint-2:  #d4e3e6;
+  --teal-deep:    #0a4953;
+
+  /* ─── Semantics — exclusive use only ───────── */
+  --red:          #c0392b;   /* exceedance · gap · urgency */
+  --red-deep:     #962618;
+  --red-tint:     #fbeae7;
+
+  --amber:        #b87333;   /* caveat · framing warning */
+  --amber-tint:   #f6ecdf;
+
+  --green:        #1f7a4d;   /* remediation success */
+  --green-tint:   #e3efe8;
+
+  /* ─── Severity scale (matrix cells) ────────── */
+  --s0: transparent;
+  --s1: #f4f5f3;
+  --s2: #e6e8e6;
+  --s3: #d2d6d5;
+  --s4: #b7bdbd;
+  --s5: #8a8f8f;
+  --s6: #5a564f;
+  --s7: #962618;
+  --s8: #c0392b;
+
+  /* ─── Type stacks ──────────────────────────── */
+  --sans:'IBM Plex Sans Hebrew', 'IBM Plex Sans', system-ui, sans-serif;
+  --serif:'IBM Plex Serif', 'Frank Ruhl Libre', serif;  /* public only */
+  --mono:'IBM Plex Mono', ui-monospace, monospace;
+}
+
+/* ─── Global resets / baselines ──────────────── */
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  font-feature-settings:"tnum","ss01";
+}
+p,li,td,th,h1,h2,h3,h4,h5,figcaption{ unicode-bidi:isolate; }
+bdi{ font-feature-settings:"tnum"; }
