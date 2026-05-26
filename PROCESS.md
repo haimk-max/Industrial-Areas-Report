@@ -3,7 +3,7 @@
 > **מטרה**: SSOT לדרישות פתוחות וסגורות. עודכן בכל שינוי.
 > **כלל**: ראה CLAUDE.md §12.
 
-**עודכן אחרון**: 2026-05-25 (REQ #13 CLOSED — Holon V5 report + HTML complete, data pipeline bug fixed; #14 RAG roadmap remains deferred)
+**עודכן אחרון**: 2026-05-26 (REQ #13.6 COMPLETE — Methodology corrections + validation; V5 report final + HTML corrected)
 
 ---
 
@@ -21,7 +21,7 @@
 
 | # | בעיה | תאריך סגירה | commit | אימות |
 |---|------|---------------|--------|----------|
-| 13 | Hybrid V5 Pipeline Implementation (כולל 13.6 Holon V5 report) | 2026-05-25 | 7427f89, c3d5c57, 8e7679d | **13.1–13.5** ✓ (data pack, context, diagnosis, anchors PILOT). **13.6** ✅: HOLON_REPORT_V5.md (8 sections + 4 appendices, family order CVOC→METALS→PFAS→FUEL) + HOLON_REPORT_V5.html (185KB, 5 figures inline, 629 bidi). **תיקון נתונים קריטי** (CLAUDE.md §7): `severity_by_well_family.csv` היה חסר METALS+PFAS (107→191 שורות) — תוקן ב-`param_families.py` (הוספת METALS+FUEL patterns) + `generate_holon_data_pack.py` (classify_family במקום hardcoded map). פרומפט V5 גנרי (`zone_report_prompt_template_v5.md`) + instance ל-Holon. ולידציה §VII PASS |
+| 13 | Hybrid V5 Pipeline Implementation + REQ #13.6 Holon V5 Report (FINAL) | 2026-05-26 | 69b9f41, 02882c3 | **13.1–13.5** ✓ + **13.6 FINAL** ✅ **METHODOLOGY CORRECTIONS & VALIDATION COMPLETE**: (1) **Option B Family Filtering**: generate_holon_data_pack.py excludes "OTHER" family from all 7 CSVs → measurements_scoped 20,613→15,173 rows, trends cleaned, severity_by_well_family 191 rows (CVOC/METALS/PFAS/FUEL only). (2) **Graph Bug Fix**: svg_charts.py INDUSTRY→CVOC (15 occurrences) — critical refactor completed, regenerated V5.html with corrected graphs. (3) **Hebrew-Only Enforcement (CLAUDE.md §1)**: zone_report_prompt.md strengthened with explicit rules (ALERT→חרום, WATCH→אזהרה, etc.); Opus validated 0 English ops terms. (4) **Data Corrections**: Borehole count 112→111 (identified duplicate wells נד אגד אזור 7/איזור 7 with identical ITM coords); CVOC bucket-8 corrected 30→18; PFAS properly flagged "אי-בחינה". (5) **Final V5.md**: 310 שורות, 6 sections + methodology + limitations + 4 appendices; 27 boreholes in narrative; ✓ all figures with image markdown; ✓ severity_index matches CSV. (6) **V5.html**: 164KB, 12 sections, corrected graphs (CVOC references fixed). **Validation per §VII**: Structural PASS, data integrity PASS, methodology PASS, content PASS, technical/RTL PASS. Ready for hydrogeologist sign-off. |
 | 12 | Hybrid V5 Pipeline Refactor — Documentation | 2026-05-17 | 6b8b023, dec12ad, 15d6d0e, 158110d, 8ef25c9, 80c6f7f | PROCESS_GUIDE §I refactor (Zone Context Pack), §II.5 (Zone Diagnosis), §VIII (7-step); DATA_PIPELINE_SPEC.md, REPORT_V5_SCHEMA.md; CLAUDE.md Phase H+ + governance update |
 | 1 | SSOT terminology מפוזר | 2026-05-14 | 2b6e775 | PROCESS_GUIDE §III טבלה קנונית; METHODOLOGY.md redirect header |
 | 5a | CLAUDE.md אינדקס אזורים | 2026-05-14 | 2b6e775 | CLAUDE.md שורה 12-22 — Zone Status Index |
