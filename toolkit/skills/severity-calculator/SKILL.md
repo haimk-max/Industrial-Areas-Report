@@ -86,7 +86,7 @@ Recommended Action: Urgent investigation + remediation planning
 
 ## קובץ מקור
 
-קוד הכלי בנו מ-`toolkit/pylib/signalkit/severity_calculator.py`.
+🔧 **Implementation**: [`toolkit/pylib/signalkit/severity_calculator.py`](../../pylib/signalkit/severity_calculator.py)
 
 ---
 

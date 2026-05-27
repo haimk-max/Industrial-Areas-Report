@@ -113,7 +113,7 @@ Paste (comma-separated):
 
 ## קובץ מקור
 
-קוד הכלי בנו מ-`toolkit/pylib/signalkit/trend_analysis.py`.
+🔧 **Implementation**: [`toolkit/pylib/signalkit/trend_analysis.py`](../../pylib/signalkit/trend_analysis.py)
 
 ---
 

@@ -245,7 +245,7 @@ Hydrologist/expert fills in answers:
 
 ### Opus Prompt
 
-Use: `scripts/templates/zone_report_prompt_template_v5.md`
+📍 **V5 Report Prompt Template**: [`scripts/templates/zone_report_prompt_template_v5.md`](../../../scripts/templates/zone_report_prompt_template_v5.md)
 
 Includes XML tags:
 ```xml
@@ -341,5 +341,23 @@ python scripts/validate_report.py --zone holon --report-path zone/output/ZONE_RE
 
 ---
 
+## הפניות
+
+### Root SSOT (Methodology)
+📍 **V5 Hybrid Pipeline**: [`ZONE_REPORT_PROCESS_GUIDE.md`](../../../ZONE_REPORT_PROCESS_GUIDE.md) §VIII (Full ordering + philosophy)  
+📍 **Data Pipeline Specification**: [`DATA_PIPELINE_SPEC.md`](../../../DATA_PIPELINE_SPEC.md) (6 CSV schemas)  
+📍 **V5 Report Schema**: [`REPORT_V5_SCHEMA.md`](../../../REPORT_V5_SCHEMA.md) (Section structure + templates)
+
+### Toolkit Playbooks (Steps 3–4 Detail)
+📋 **Zone Diagnosis (Step 4)**: [`toolkit/playbooks/zone_diagnosis_template.md`](../zone_diagnosis_template.md)  
+📋 **Structured Data Pack (Step 2)**: [`toolkit/playbooks/data_pipeline_spec.md`](../data_pipeline_spec.md)
+
+### Scripts & Templates
+🔧 **V5 Report Opus Prompt**: [`scripts/templates/zone_report_prompt_template_v5.md`](../../../scripts/templates/zone_report_prompt_template_v5.md)  
+🔧 **HTML Generator**: `scripts/generate_{zone}_full_html.py` (rendered after Step 6)
+
+---
+
 **Last Updated**: 2026-05-27  
-**Status**: ✓ TEMPLATE DEFINED (Implementation in progress)
+**Status**: ✓ TEMPLATE DEFINED (Implementation in progress)  
+**Last Sanitized**: 2026-05-27 (References section added)

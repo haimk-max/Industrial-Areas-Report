@@ -577,6 +577,21 @@ body, p, li, td, th, h1, h2, h3, h4 { unicode-bidi: isolate; }
 
 ---
 
+## Toolkit Resources (Self-Contained Playbooks)
+
+🔧 **Zone Report V5 Process**: `toolkit/playbooks/zone_report_process_v5.md` (lightweight 7-step pipeline summary for team distribution)
+
+🔧 **Zone Diagnosis Template**: `toolkit/playbooks/zone_diagnosis_template.md` (8 professional diagnostic questions + reading order)
+
+🔧 **Forensics Attribution Guide**: `toolkit/playbooks/forensics_attribution_guide.md` (A–E evidence classification + 3-criterion confidence, with attribution workflow)
+
+🔧 **Monitoring Gaps Checklist**: `toolkit/playbooks/monitoring_gaps_checklist.md` (gap detection patterns + dual-audience framing)
+
+🔧 **Data Pipeline Spec**: `toolkit/playbooks/data_pipeline_spec.md` (6-CSV schema summary; references this guide's detailed version)
+
+---
+
 **Status**: V4.2 framework | SSOT לטרמינולוגיה ולסדר פייפליין | Scalable to all 18 zones  
 **Last Updated**: 2026-05-14 (Refactor: §III סולם 9-רמות קנוני, §IV סדר משפחות אדפטיבי, §VIII.1 pipeline ordering נפתר, §I.2 PDF ingestion, §I.5 Web sources)  
+**Last Sanitized**: 2026-05-27 (Toolkit back-references added)  
 **Governance**: CLAUDE.md (אינדקס אזורים + Phase H) + project REQUIREMENTS.md

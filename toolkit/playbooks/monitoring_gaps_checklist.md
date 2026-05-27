@@ -153,11 +153,14 @@
 
 ## הפניות
 
-- **Schema מלא**: `toolkit/playbooks/data_pipeline_spec.md` (CSV 5: monitoring_gaps)
-- **דוגמה אמיתית**: `Holon/02_data/monitoring_gaps.csv`
-- **שימוש באבחון**: `toolkit/playbooks/zone_diagnosis_template.md` §4 + קבוצת שאלות 4
-- **מתודולוגיית מכנה פעיל**: `LESSONS.md` (active-core well counting)
-- **CLAUDE.md**: Data Integrity Rule #2 (No Interpolation — flag gaps explicitly)
+### Root SSOT & Data Integrity
+📍 **Governance — Gaps as findings**: [`CLAUDE.md`](../../../CLAUDE.md) §5 Data Integrity Rule #2 (No Interpolation — flag gaps explicitly)  
+📍 **Active-core methodology**: [`LESSONS.md`](../../../LESSONS.md) (ה"ח תשובה — active-core well counting pattern)
+
+### Toolkit Playbooks & Data
+📋 **Data Pipeline CSV 5 schema**: [`toolkit/playbooks/data_pipeline_spec.md`](../data_pipeline_spec.md) (CSV 5: monitoring_gaps.csv columns)  
+📋 **Zone Diagnosis context**: [`toolkit/playbooks/zone_diagnosis_template.md`](../zone_diagnosis_template.md) §4 (Gap questions) + Question Group 4  
+📊 **Example (Holon)**: `Holon/02_data/monitoring_gaps.csv`
 
 ---
 

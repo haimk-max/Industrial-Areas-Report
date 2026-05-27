@@ -144,7 +144,7 @@
 שיוך מקור נדון בזהירות: אילו מועמדים סבירים (עם סיווג A–E); אילו חלשים או רקע בלבד; מה תומך/מחליש כל השערה; איזו ראיה נוספת תידרש לשיוך חזק יותר.
 
 ### 6. הנחיות לדוח V5
-הנחיה מעשית לכותב דוח ה-V5: מה חייב בגוף הראשי; מה יכול ללכת לנספח; אילו איורים/טבלאות נדרשים; מה אסור לטעון-יתר; התאמה לסכמת V5 (ראה `REPORT_V5_SCHEMA.md`).
+הנחיה מעשית לכותב דוח ה-V5: מה חייב בגוף הראשי; מה יכול ללכת לנספח; אילו איורים/טבלאות נדרשים; מה אסור לטעון-יתר; התאמה לסכמת V5 (📍 [`REPORT_V5_SCHEMA.md`](../../../REPORT_V5_SCHEMA.md) לפרטים מלאים).
 
 ---
 
@@ -201,10 +201,16 @@
 
 ## הפניות
 
-- **תבנית פרומפט מלאה**: `scripts/templates/zone_diagnosis_prompt_template.md`
-- **דוגמה מלאה**: `Holon/context_pack/04_diagnosis/zone_diagnosis.md`
-- **שלב בpipeline**: `toolkit/playbooks/zone_report_process_v5.md` §4
-- **סכמת דוח V5**: `REPORT_V5_SCHEMA.md`
+### Root SSOT (Methodology)
+📍 **V5 Report Schema**: [`REPORT_V5_SCHEMA.md`](../../../REPORT_V5_SCHEMA.md)  
+📍 **Zone Process Pipeline**: [`ZONE_REPORT_PROCESS_GUIDE.md`](../../../ZONE_REPORT_PROCESS_GUIDE.md) §II.5
+
+### Scripts & Templates
+🔧 **Zone Diagnosis Opus Prompt**: [`scripts/templates/zone_diagnosis_prompt_template.md`](../../../scripts/templates/zone_diagnosis_prompt_template.md)  
+📊 **Example (Holon)**: `Holon/context_pack/04_diagnosis/zone_diagnosis.md`
+
+### Toolkit Playbooks
+📋 **V5 Pipeline (Step 4 context)**: [`toolkit/playbooks/zone_report_process_v5.md`](../zone_report_process_v5.md) §4
 
 ---
 

@@ -203,12 +203,17 @@ chains = build_decay_chains(["PCE", "TCE", "DCE", "VC"])
 
 ## הפניות
 
-- **Evidence Classification**: `ZONE_REPORT_PROCESS_GUIDE.md` §I (A–E system)
-- **Confidence criteria**: `ZONE_REPORT_PROCESS_GUIDE.md` (HIGH/MEDIUM/LOW, שורות 223–225)
-- **קוד חתימות**: `toolkit/pylib/signalkit/forensics_engine.py`
-- **דוגמת facility JSON**: `Holon/data/facility_attribution.json` (60 מתקנים)
-- **שימוש באבחון**: `toolkit/playbooks/zone_diagnosis_template.md` §5
-- **CLAUDE.md**: Data Integrity Rule #4 (Forensics Probabilistic)
+### Root SSOT (Methodology)
+📍 **Evidence Classification (A–E)**: [`ZONE_REPORT_PROCESS_GUIDE.md`](../../../ZONE_REPORT_PROCESS_GUIDE.md) §I  
+📍 **Attribution Confidence Criteria**: [`ZONE_REPORT_PROCESS_GUIDE.md`](../../../ZONE_REPORT_PROCESS_GUIDE.md) §I.2  
+📍 **Forensics Rule**: [`CLAUDE.md`](../../../CLAUDE.md) §5 Data Integrity Rule #4 (Forensics Probabilistic)
+
+### Code & Data
+🔧 **Signature Definitions**: [`toolkit/pylib/signalkit/forensics_engine.py`](../../pylib/signalkit/forensics_engine.py)  
+📊 **Example Attribution JSON**: `Holon/data/facility_attribution.json` (60 מתקנים, reference only)
+
+### Toolkit Playbooks
+📋 **Zone Diagnosis (using attribution)**: [`toolkit/playbooks/zone_diagnosis_template.md`](../zone_diagnosis_template.md) §5
 
 ---
 
