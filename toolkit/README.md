@@ -130,18 +130,18 @@ bucket = calculate_bucket(c_max_5y, dws)
 |----------|-------|--------|
 | **zone_report_process_v5.md** | V5 hybrid pipeline (7-step workflow, context assembly, diagnosis, report) | ✓ COMPLETE |
 | **data_pipeline_spec.md** | Structured Data Pack (6 CSVs schema + generation scripts) | ✓ COMPLETE |
-| **zone_diagnosis_template.md** | 8-question professional zone assessment | ⏳ PLANNED |
-| **monitoring_gaps_checklist.md** | Identification + flagging of monitoring gaps | ⏳ PLANNED |
-| **forensics_attribution_guide.md** | HIGH/MEDIUM/LOW confidence levels for source attribution | ⏳ PLANNED |
+| **zone_diagnosis_template.md** | אבחון אזורי מקצועי (8 קבוצות שאלות, מוקדים גיאוגרפיים, evidence A–E, 6 סעיפים) | ✓ COMPLETE |
+| **forensics_attribution_guide.md** | שיוך מקורות (Evidence A–E + Confidence HIGH/MEDIUM/LOW, חתימות, decay chains) | ✓ COMPLETE |
+| **monitoring_gaps_checklist.md** | פערי ניטור כממצאים אבחוניים (ספי זיהוי, 5 דפוסים, מכנה פעיל, דו-קהלי) | ✓ COMPLETE |
 
 ### ספרייה
 ```
 toolkit/playbooks/
-├── zone_report_process_v5.md
-├── data_pipeline_spec.md
-├── zone_diagnosis_template.md
-├── monitoring_gaps_checklist.md
-└── forensics_attribution_guide.md
+├── zone_report_process_v5.md       ✓ 7-step pipeline
+├── data_pipeline_spec.md           ✓ 6-CSV schema
+├── zone_diagnosis_template.md      ✓ אבחון אזורי
+├── monitoring_gaps_checklist.md    ✓ פערי ניטור
+└── forensics_attribution_guide.md  ✓ שיוך מקורות
 ```
 
 ### שימוש
@@ -239,17 +239,19 @@ toolkit/
 | **B** | setup.py + pip metadata | ✓ COMPLETE |
 | **C** | zone_report_process_v5.md | ✓ COMPLETE |
 | **C** | data_pipeline_spec.md | ✓ COMPLETE |
-| **C** | 3 additional playbooks | ⏳ PLANNED |
+| **C** | zone_diagnosis_template.md | ✓ COMPLETE |
+| **C** | forensics_attribution_guide.md | ✓ COMPLETE |
+| **C** | monitoring_gaps_checklist.md | ✓ COMPLETE |
 
 ### Next Steps
 
 1. **Test pylib**: `pip install -e ./toolkit/pylib` + quick test
 2. **Develop agent-rag orchestration**: Opus LLM + PDF extraction
-3. **Port remaining playbooks**: zone_diagnosis_template, forensics_guide, monitoring_gaps
+3. **hydro-analyzer skill**: 4th skill (parse hydrogeologic reports)
 4. **Integrate with current projects**: Holon V5, Raanana updates
 5. **Documentation**: Installation guide for users + developers
 
 ---
 
 **Last Updated**: 2026-05-27  
-**Status**: Tier A (3/4 skills) + Tier B (complete) + Tier C (2/5 playbooks) ✓ READY FOR INTEGRATION
+**Status**: Tier A (3/4 skills) + Tier B (complete) + Tier C (5/5 playbooks ✓) — READY FOR INTEGRATION
