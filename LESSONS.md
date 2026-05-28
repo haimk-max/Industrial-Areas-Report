@@ -93,17 +93,17 @@
 
 - **Future REQ** (`future-tech-debt-cleanup`): After Holon V5 complete + approved: "Holon directory consolidation" — move `04_deterministic_anchors` to `context_pack/`, unify paths, retire `lean_workspace`. Est. 2 hours. Lower priority.
 
-### 2.3b Methodology File Sync — 5 Files Lag V5 Refactor (2026-05-25)
-- **Issue**: 5 governance MD files last updated 2026-05-06 (before V5 PROCESS_GUIDE refactor on 2026-05-17):
-  - `REQUIREMENTS.md` — mentions "Holon = first application", predates V5 scope clarity
-  - `LESSONS.md` — section 2.3 (now 2.3a/2.3b) references old patterns
-  - `DATA_DICTIONARY.md` — schema may mix old/V5
+### 2.3b Methodology File Sync — Partial Update (2026-05-28)
+- **Status (2026-05-28)**: CLAUDE.md, README.md, REQUIREMENTS.md, PROCESS.md, LESSONS.md (this entry) synced to Phase H+ Implementation completion (PR #19 / a19a917). Remaining files unchanged:
+  - `DATA_DICTIONARY.md` — schema may still mix old/V5 (not audited; deferred)
   - `docs/STYLE_GUIDE.md` § H (facility discovery) — describes `facility_attribution.json` as primary source, but PROCESS_GUIDE §I deprecated this (artifact, not evidence)
   - `docs/CHART_SPEC.md` — Raanana-only examples, may not reflect svg_charts.py `boreholes_override` API
 
-- **Decision**: No urgent fix. SSOT for V5 work = `ZONE_REPORT_PROCESS_GUIDE.md` §I–IX. Old files used as reference/style guidance only.
+- **Decision**: No urgent fix on remaining 3 docs. SSOT for V5 work = `ZONE_REPORT_PROCESS_GUIDE.md` §I–IX + new `DATA_PIPELINE_SPEC.md` + `REPORT_V5_SCHEMA.md`. STYLE_GUIDE/CHART_SPEC used as reference/style guidance only.
 
-- **Trigger to revisit**: On next cycle (zone #3 or refresh). Audit for broken references + update examples. Low priority; deferred.
+- **Trigger to revisit**: On zone #3 (post-Holon hydrogeologist approval) — audit broken references + update examples. Low priority; deferred.
+
+- **History**: Originally flagged 2026-05-25 as "5 Files Lag V5 Refactor"; partial sync completed 2026-05-28 post-PR #19 merge.
 
 ### 2.4 ★ Water Authority ArcGIS Portal integration (deployment phase)
 - **Status**: System currently runs in a sandbox environment with no access to authoritative geographic data (Overpass / OSM tiles / govmap WMS — all blocked, 403 Forbidden). Zone polygons are loaded from one-off KMZ uploads converted via pyproj; street enumeration falls back to agent general knowledge; basemaps are offline ITM schematics.

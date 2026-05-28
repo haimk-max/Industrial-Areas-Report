@@ -18,8 +18,9 @@
 | F | 28 automated regression tests + 3 report validators | ✅ Complete |
 | G | Facility discovery (AI agent) + zone site map (offline ITM schematic) | ✅ Complete (Raanana) |
 | 4 | Expert hydrogeologist review of Raanana | ✅ Complete (May 2026, approved as-is) |
-| 5 | Zone application framework — first run on Holon | 🟡 In progress (pipeline ✅, report ⏳) |
-| 2 | Systematic activation of remaining 16 zones | ⏳ After Holon report sign-off |
+| 5 | Zone application framework — first run on Holon | ✅ Pipeline complete; V4 + V5 reports drafted |
+| H+ | V5 Hybrid Pipeline (Implementation: data pack, context, diagnosis, engines, toolkit) | ✅ Complete (2026-05-28, PR #19 / a19a917) |
+| 2 | Systematic activation of remaining 16 zones | ⏳ After Holon V5 hydrogeologist sign-off |
 
 ---
 

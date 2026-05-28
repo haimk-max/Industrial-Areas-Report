@@ -134,7 +134,7 @@ Before implementing data processing:
   - ✓ Family ordering: FUEL always last; CVOC/METALS/PFAS by zone max_bucket descending (§IV)
   - ✓ Web search & PDF ingestion documented in PROCESS_GUIDE §I.2 + §I.5 (External Data/{zone}/ structure, 6 channels)
 
-- **Phase H+ Implementation** ✅ COMPLETE (2026-05-25):
+- **Phase H+ Implementation** ✅ COMPLETE (2026-05-28, PR #19 merged via a19a917):
   - ✅ PROCESS_GUIDE refactored: §I → Zone Context Pack (5 folders: scope/data/context/diagnosis/prompt)
   - ✅ §II → V5 Schema (6 sections, generic for all zones)
   - ✅ §II.5 → Zone Diagnosis (8 questions, pre-report step)
@@ -144,8 +144,14 @@ Before implementing data processing:
   - ✅ DATA_PIPELINE_SPEC.md created (6 CSVs schema)
   - ✅ REPORT_V5_SCHEMA.md created (V5 skeleton + templates)
   - ✅ CLAUDE.md §8 Scaling updated (hybrid pipeline workflow)
-  - ✅ Holon V5 report generation (REQ #13.6): Opus → figures → HTML designed
+  - ✅ Holon V5 report generation (REQ #13.6): Opus → figures → HTML designed (164KB+177KB)
   - ✅ Documentation sync: PROCESS.md (requirements tracking) + LESSONS.md (tech-debt roadmap)
+  - ✅ Data pipeline scripts (REQ #13.1): generate_holon_data_pack.py → 7 CSVs (15,173 rows)
+  - ✅ Reports Context Pack (REQ #13.2) + Source Candidates (REQ #13.3) + Zone Diagnosis (REQ #13.4) + Templates (REQ #13.5)
+  - ✅ Executive summaries (REQ #15): INTERNAL.html (64KB, 1,698 lines) + PUBLIC.html (52KB, 1,323 lines)
+  - ✅ Report Engine (REQ #16): 14-file generic report-engine/ for all 18 zones
+  - ✅ Brief YAML + Twin HTML generators (REQ #17, #18)
+  - ✅ Toolkit system (REQ #19): Tier A skills + Tier B pylib (signalkit) + Tier C playbooks (5/5), sanitized cross-references
 
 **Phase 3: Drilling Card & Report Generation** ✓ COMPLETE (R-001, R-004)
 - Goal: Generate R-001 and R-004 drilling cards; zone summary report
@@ -341,9 +347,9 @@ Each PDF sub-agent (hydrogeologist persona, model="sonnet") produces `_findings_
 ### Implementation Trigger
 - ✓ Methodology validated on Raanana (May 2026, hydrogeologist approval) — **style precedent**
 - ✓ V4.2 stress-tested on Holon — **methodological precedent, not a binding template**
-- 🔄 V5 hybrid pipeline documented (Phase H+, REQ #12 closed)
-- ⏳ V5 hybrid pipeline implementation (Phase H+ Implementation, REQ #13 — scripts + Holon V5 generation)
-- ⏳ After Holon V5 validation → systematic application to remaining 16 zones
+- ✓ V5 hybrid pipeline documented (Phase H+, REQ #12 closed)
+- ✓ V5 hybrid pipeline implementation (Phase H+ Implementation, REQ #13 closed 2026-05-28 — PR #19 a19a917)
+- ⏳ Hydrogeologist review of Holon V5 → systematic application to remaining 16 zones
 - Requires Ministry of Environmental Protection coordination per zone
 
 ---
@@ -427,9 +433,14 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 4. ⏳ Hydrogeologist approval
 5. **Note**: V4.2 used prompt-driven workflow. New zones use V5 hybrid pipeline (Phase H+).
 
-**Phase H+ — V5 Hybrid Pipeline** 🔄 Documentation complete; Implementation planned:
+**Phase H+ — V5 Hybrid Pipeline** ✅ COMPLETE (Documentation + Implementation):
 - ✓ Documentation refactor (REQ #12, closed 2026-05-17)
-- ⏳ Implementation (REQ #13): data pipeline scripts (6 CSVs), context assembly, zone diagnosis prompt, V5 report prompt, Structured Anchors pilot (#13.5, PASS), Holon V5 generation
+- ✓ Implementation (REQ #13, closed 2026-05-28 via PR #19 / a19a917): data pipeline scripts (7 CSVs), context assembly, zone diagnosis prompt, V5 report prompt, Structured Anchors pilot (#13.5, PASS), Holon V5 generation (164KB+177KB MD/HTML)
+- ✓ Executive summaries (REQ #15): INTERNAL + PUBLIC HTML
+- ✓ Report engine (REQ #16): 14-file generic architecture
+- ✓ Brief + Twin HTML generators (REQ #17, #18)
+- ✓ Toolkit system (REQ #19, sanitization sub-task complete): 3 tiers (skills + pylib + 5 playbooks)
+- ⏳ Hydrogeologist review of Holon V5 (next step)
 
 **Open framework items**:
 - ⏳ Basemap integration (REQ-G1) — pending environment resolution
@@ -473,8 +484,8 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 **Project Status**:
 - Framework (Phases A–G): ✓ Complete — pipeline zone-agnostic, validated on Raanana, expert-approved
 - Phase 5 (Zone Application Framework): ✓ Complete on framework side; Holon V4.2 as stress-test (awaiting hydrogeologist)
-- Phase H+ (V5 Hybrid Pipeline Refactor): ✓ Documentation complete (REQ #12); ⏳ Implementation planned (REQ #13)
-- Phase 2 (full 18-zone activation): ⏳ Pending V5 implementation + Holon V5 + Ministry coordination
+- Phase H+ (V5 Hybrid Pipeline): ✅ COMPLETE — Documentation (REQ #12) + Implementation (REQ #13, PR #19 merged 2026-05-28 / a19a917)
+- Phase 2 (full 18-zone activation): ⏳ Pending Holon V5 hydrogeologist sign-off + Ministry coordination
 
-**Last Updated**: 2026-05-17 (Phase H+ documentation merged: V5 hybrid pipeline = binding methodology)  
+**Last Updated**: 2026-05-28 (Phase H+ Implementation COMPLETE via PR #19 / a19a917 — Holon V5 + Toolkit + Engines + Governance all merged to main)  
 **Historical phases**: see `docs/HISTORY.md`
