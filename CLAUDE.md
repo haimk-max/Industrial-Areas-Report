@@ -121,7 +121,7 @@ Before implementing data processing:
 > תיעוד phases היסטוריים: ראה `docs/HISTORY.md` (Phases 1–4, A–G, G.1).
 
 **Phase H: Holon V4 + Pipeline Refactor** ✓ COMPLETE (May 2026)  
-**Phase H+: Methodological Refactor — Hybrid Pipeline** 🔄 IN PROGRESS (May 2026)
+**Phase H+: Methodological Refactor — Hybrid Pipeline** ✅ COMPLETE (May 2026)
 - Goal: Production pipeline for Holon zone (80 active boreholes, 2,672 measurements) + reusable architecture for 16 remaining zones
 - Status:
   - ✓ Holon V4.2 report: 10 sections in Hebrew, 5 contamination foci (CVOC, METALS, PFAS, FUEL), 25 significantly-exceeding boreholes
@@ -134,16 +134,18 @@ Before implementing data processing:
   - ✓ Family ordering: FUEL always last; CVOC/METALS/PFAS by zone max_bucket descending (§IV)
   - ✓ Web search & PDF ingestion documented in PROCESS_GUIDE §I.2 + §I.5 (External Data/{zone}/ structure, 6 channels)
 
-- **Phase H+ Status** (Documentation Phase — C1–C7):
-  - 🔄 PROCESS_GUIDE refactored: §I → Zone Context Pack (5 folders: scope/data/context/diagnosis/prompt)
-  - 🔄 §II → V5 Schema (6 sections, generic for all zones)
-  - 🔄 §II.5 → Zone Diagnosis (8 questions, pre-report step)
-  - 🔄 §VI → diagnostic + final figures (pre-Opus + post-Opus)
-  - 🔄 §VII → validation checklist (6 new checks: Context Pack, Data Pack, Diagnosis, PFAS, gaps, C_max_5y separation)
-  - 🔄 §VIII → 7-step hybrid pipeline
+- **Phase H+ Implementation** ✅ COMPLETE (2026-05-25):
+  - ✅ PROCESS_GUIDE refactored: §I → Zone Context Pack (5 folders: scope/data/context/diagnosis/prompt)
+  - ✅ §II → V5 Schema (6 sections, generic for all zones)
+  - ✅ §II.5 → Zone Diagnosis (8 questions, pre-report step)
+  - ✅ §VI → diagnostic + final figures (pre-Opus + post-Opus)
+  - ✅ §VII → validation checklist (6 new checks: Context Pack, Data Pack, Diagnosis, PFAS, gaps, C_max_5y separation)
+  - ✅ §VIII → 7-step hybrid pipeline
   - ✅ DATA_PIPELINE_SPEC.md created (6 CSVs schema)
   - ✅ REPORT_V5_SCHEMA.md created (V5 skeleton + templates)
-  - ⏳ CLAUDE.md §8 Scaling updated (hybrid pipeline workflow)
+  - ✅ CLAUDE.md §8 Scaling updated (hybrid pipeline workflow)
+  - ✅ Holon V5 report generation (REQ #13.6): Opus → figures → HTML designed
+  - ✅ Documentation sync: PROCESS.md (requirements tracking) + LESSONS.md (tech-debt roadmap)
 
 **Phase 3: Drilling Card & Report Generation** ✓ COMPLETE (R-001, R-004)
 - Goal: Generate R-001 and R-004 drilling cards; zone summary report
@@ -292,13 +294,20 @@ The framework supports any of the 18 industrial zones in the coastal aquifer mon
 - `ZONE_REPORT_PROCESS_GUIDE.md` — terminology + 7-step pipeline ordering
 - `DATA_PIPELINE_SPEC.md` — schema for the 6 deterministic CSVs (Structured Data Pack)
 - `REPORT_V5_SCHEMA.md` — V5 report skeleton (6 sections + focus template)
-- `scripts/templates/zone_report_prompt_template.md` — generic prompt (will be replaced by V5 variant in Phase H+ Implementation, REQ #13)
+- `scripts/templates/zone_report_prompt_template_v5.md` — **generic V5 prompt** (6 sections + appendices, context_pack/02_data paths, anchors inputs; REQ #13 closed). The V4-era `zone_report_prompt_template.md` is retained for reference only.
+- `scripts/generate_holon_v5_html.py` — V5 HTML generator (renders all sections + injects inline SVG figures at `**איור N**` anchors; reuses `svg_charts.py` engine)
 - `scripts/report_designed/README.md` — chart engine docs
 
 ### Workflow for a new zone (V5 hybrid — 7 steps)
 1. **Define scope** → `{zone}/01_scope/` (zone_wells.csv, selection_notes.md)
 2. **Run deterministic data pipeline** → `{zone}/02_data/` (6 CSVs: measurements_scoped, latest_results, severity_by_well_family, trends_by_well_parameter, monitoring_gaps, figure_ready_series — see `DATA_PIPELINE_SPEC.md`)
-3. **Assemble scoped NotebookLM-like context** → `{zone}/03_context/` (previous_reports_excerpts, hydrogeology_context, source_candidates_context, web_findings_context, approved_precedent_excerpt)
+3. **Assemble scoped NotebookLM-like context** → `{zone}/context_pack/03_context/`:
+   - **Reports Context Pack** (required before Zone Diagnosis — do not skip directly from Data Pack to report): `reports_context.md`, `report_sources_index.csv`, `context_questions_for_diagnosis.md`
+   - **Source Candidates Pack**: `source_candidates_context.md`, `web_findings_context.md`, `source_candidates_index.csv` — built **from scratch** for new zones. Do NOT assume any pre-existing facility JSON exists. For Holon/Raanana (legacy zones), pre-existing artifacts (`_findings_*.json`, `web_findings.md`) may be used as AI-derived index; `facility_attribution.json` is a derived artifact (multi-step transformation) and is NOT a primary evidence source.
+   - **Evidence Classification (A–E)** is a generic rule for all zones — see PROCESS_GUIDE §I "Evidence Classification System":
+     - A = raw_report_verified | B = ai_extracted_with_page_ref | C = web_verified_current_activity | D = inferred_candidate | E = weak/mention_only
+     - In Zone Diagnosis & V5: A+B → strong candidates; C → status only (no contamination proof); D/E → background/appendix unless monitoring data corroborates
+   - Additional: previous_reports_excerpts, hydrogeology_context, approved_precedent_excerpt
 4. **Generate zone diagnosis** (Opus call #1) → `{zone}/04_diagnosis/zone_diagnosis.md` (8 professional questions)
 5. **Generate V5 expert report** (Opus call #2) → `{zone}/output/{ZONE}_REPORT_V5.md` (6 sections + appendices, per `REPORT_V5_SCHEMA.md`)
 6. **Render final figures + HTML** → `scripts/generate_{zone}_full_html.py` + `generate_{zone}_designed.py` (boreholes_override path)
@@ -420,7 +429,7 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 
 **Phase H+ — V5 Hybrid Pipeline** 🔄 Documentation complete; Implementation planned:
 - ✓ Documentation refactor (REQ #12, closed 2026-05-17)
-- ⏳ Implementation (REQ #13): data pipeline scripts (6 CSVs), context assembly, zone diagnosis prompt, V5 report prompt, A/B mini test, Holon V5 generation
+- ⏳ Implementation (REQ #13): data pipeline scripts (6 CSVs), context assembly, zone diagnosis prompt, V5 report prompt, Structured Anchors pilot (#13.5, PASS), Holon V5 generation
 
 **Open framework items**:
 - ⏳ Basemap integration (REQ-G1) — pending environment resolution

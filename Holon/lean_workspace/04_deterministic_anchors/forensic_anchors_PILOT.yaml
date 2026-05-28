@@ -1,0 +1,1087 @@
+zone_id: "holon"
+zone_he: "חולון"
+generated_at: "2026-05-19T00:00:00Z"
+schema_version: "1.0"
+notes:
+  - "Source `forensics_analyzer` output (`Holon/forensics/contamination_families.json`) has empty `decay_chains` and `source_signatures` keys; family/chain-level forensics were reconstructed from `Holon/data/measurements.csv` cross-tabulation of co-located parent/daughter compounds and `Holon/data/trends.csv` for Mann-Kendall directionality."
+  - "PFAS: zero `PFOA|PFOS|PFHxS|PFBS|PFNA|PFDA|PFAS` parameter codes in this dataset (96 contamination_families keys checked). PFAS coverage is documented as F10."
+  - "All concentrations in µg/L unless otherwise stated. Drinking-water standards (DWS) per Israeli MoH (1303/2013) where defined; US EPA fallback for 1,1-DCE, 1,4-dioxane, TBA, VC."
+anchors:
+
+  # ===== CVOC / INDUSTRY family =====
+
+  - anchor_id: "F1_001"
+    anchor_type: "F1"
+    well: "נת_חולון_11"
+    well_name_he: "נת חולון 11"
+    family: "INDUSTRY"
+    forensic_framework_applied: "reductive dechlorination pathway analysis (PCE→TCE→DCE→VC) with parent-vs-daughter isomer ratio diagnostics"
+    detection_metrics:
+      detected_members: ["PCE", "TCE", "1,1-DCE", "cis-1,2-DCE", "trans-1,2-DCE", "VC"]
+      pce_max_ug_L: 61.0
+      tce_max_ug_L: 27860.0
+      dce_1_1_max_ug_L: 1939.0
+      cis12_dce_max_ug_L: 30.4
+      vc_max_ug_L: 13.84
+      tce_to_pce_ratio: 456.7
+      dce11_to_cis12_ratio: 63.8
+      pct_of_DWS_tce: 371467
+      pct_of_DWS_11dce_us_epa: 27700
+      latest_measurement_date: "2024-11-18"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "1,1-DCE (1,939 µg/L) >> cis-1,2-DCE (30 µg/L) — ratio ~64:1. Biotic reductive dechlorination of TCE yields predominantly cis-1,2-DCE, not 1,1-DCE."
+      direction: "Investigate 1,1-DCE as direct industrial input (PVDC manufacture, vinylidene-chloride feedstock, or solvent stabiliser) parallel to or instead of dechlorination origin."
+      caveat: "1,1-DCE can also form abiotically from 1,1,1-TCA hydrolysis under low-pH or chemically-reduced conditions; presence of 1,1,1-TCA at the well or upgradient should be checked before locking in direct-source hypothesis."
+    evidence_pointer:
+      primary_file: "Holon/forensics/contamination_families.json"
+      json_path: "critical_exceedances['נת_חולון_11']"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "canonical_id == 'נת_חולון_11' AND param_code IN ('TRICHLORO ETHYLENE','TETRACHLORO ETHYLENE','DICHLOROETHYLENE 1,1','CIS 1,2 DICHLOROETHYLENE','VINYL CHLORIDE','TRANS-1,2 DICHLOROETHYLENE','TRICHLORO ETHANE 1,1,1')"
+    open_questions:
+      - "Is 1,1,1-TCA present (parent of abiotic 1,1-DCE)? Check measurement history at this well and adjacent industrial wells."
+      - "What is the historical activity within 200 m upgradient — PVDC/PVC operations, vinylidene-chloride users, solvent reclaimers?"
+      - "Are concurrent VC and 1,1-DCE elevations spatially co-located in the borehole's screen interval, or stratified (suggesting two source layers)?"
+    candidate_source_categories:
+      - "PVDC / vinylidene-chloride manufacturing or formulation"
+      - "metal-degreasing using TCE-based solvents (legacy)"
+      - "solvent recycling / reclaim operations"
+      - "abiotic transformation of 1,1,1-TCA from upgradient release"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Direct release of TCE + 1,1-DCE from industrial solvent feedstock storage (1,1-DCE used as monomer or stabiliser); biotic VC formation is secondary signal of in-situ degradation."
+      - "HYPOTHESIS B: TCE-only release from metal-degreasing; high 1,1-DCE is abiotic hydrolysis of co-released 1,1,1-TCA under low-pH aquifer conditions; cis-1,2-DCE suppressed by competitive electron-donor limitation."
+      - "HYPOTHESIS C: DNAPL pool at depth with stratified source — upper interval delivers 1,1-DCE-rich water, lower delivers TCE-rich; well screen averages both."
+
+  - anchor_id: "F1_002"
+    anchor_type: "F1"
+    well: "נת_חולון_5"
+    well_name_he: "נת חולון 5"
+    family: "INDUSTRY"
+    related_wells: ["נת_חולון_11", "נת_חולון_2", "נת_חולון_7"]
+    forensic_framework_applied: "reductive dechlorination pathway analysis with daughter-product ratio diagnostics (TCE/1,1-DCE/cis-1,2-DCE/VC)"
+    detection_metrics:
+      detected_members: ["TCE", "1,1-DCE", "cis-1,2-DCE", "VC", "PCE", "chloroform"]
+      tce_max_ug_L: 1088.0
+      dce_1_1_max_ug_L: 2903.0
+      cis12_dce_max_ug_L: 57.0
+      vc_max_ug_L: 2.0
+      pce_max_ug_L: 37.8
+      chloroform_max_ug_L: 52.9
+      dce11_to_tce_ratio: 2.67
+      pct_of_DWS_11dce_us_epa: 41471
+      latest_measurement_date: "2023-01-04"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "1,1-DCE (2,903 µg/L) exceeds parent TCE (1,088 µg/L) by ~2.7×; cis-1,2-DCE remains low (57 µg/L)."
+      direction: "Daughter-exceeds-parent for 1,1-DCE plus suppressed cis-1,2-DCE strengthens the 'direct 1,1-DCE source' or 'abiotic-from-TCA' alternatives at this well-cluster; treat 1,1-DCE as primary, not derived, contaminant for upgradient source-search."
+      caveat: "Could reflect preferential dissolution from a 1,1-DCE-rich DNAPL phase; without DNAPL confirmation, ratios are non-unique."
+    evidence_pointer:
+      primary_file: "Holon/forensics/contamination_families.json"
+      json_path: "critical_exceedances['נת_חולון_5']"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "canonical_id == 'נת_חולון_5' AND param_code IN ('TRICHLORO ETHYLENE','DICHLOROETHYLENE 1,1','CIS 1,2 DICHLOROETHYLENE','VINYL CHLORIDE','TETRACHLORO ETHYLENE','CHLOROFORM','TRICHLORO ETHANE 1,1,1')"
+    open_questions:
+      - "Is 1,1-DCE rising or falling over the 2010–2023 record? (trend not flagged as INCREASING but well sits in active plume.)"
+      - "What is the lateral distance and gradient relation between נת חולון 5 and נת חולון 11 — are these one plume or two?"
+    candidate_source_categories:
+      - "polymer / PVDC feedstock handling"
+      - "TCE-using metal-degreasing"
+      - "industrial solvent storage with co-release of TCA"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Shared upgradient industrial source releasing TCE + 1,1-DCE feedstocks; both wells (5 and 11) sample the same plume at different distances."
+      - "HYPOTHESIS B: Distinct local sources at each well, with similar industrial signature because the same sector dominates the area."
+      - "HYPOTHESIS C: One DNAPL source with 1,1-DCE-dominated dissolution at well 5 and TCE-dominated dissolution at well 11 due to depth-stratified residual NAPL."
+
+  - anchor_id: "F1_003"
+    anchor_type: "F1"
+    well: "נד_אגד_אזור_6"
+    well_name_he: "נד אגד אזור 6"
+    family: "INDUSTRY"
+    related_wells: ["נד_אגד_אזור_1", "נד_אגד_אזור_9", "נד_אגד_אזור_5"]
+    forensic_framework_applied: "advanced reductive dechlorination pathway analysis — VC accumulation signature under sustained anaerobic conditions"
+    detection_metrics:
+      detected_members: ["TCE", "1,1-DCE", "cis-1,2-DCE", "VC"]
+      tce_max_ug_L: 430.0
+      dce_1_1_max_ug_L: 32.0
+      cis12_dce_max_ug_L: 72.0
+      vc_max_ug_L: 21.0
+      cis12_to_tce_ratio: 0.167
+      vc_to_cis12_ratio: 0.29
+      pct_of_DWS_vc_us_epa: 4200
+      latest_measurement_date: "2019-07-17"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "cis-1,2-DCE (72) > 1,1-DCE (32) — opposite of the נת חולון cluster — and VC at 21 µg/L (4,200% of US EPA DWS) under fuel-station setting with strong anaerobic indicators."
+      direction: "Sequential biotic reductive dechlorination is the dominant pathway here; investigate whether co-released fuel hydrocarbons are providing electron donors that sustain dechlorination to VC."
+      caveat: "VC accumulation without methane data is ambiguous — could be 'stalled at VC' (dechlorinator community lacks Dehalococcoides 16S-rRNA spp.) or 'transient VC en route to ethene'; biological characterization needed before treatment decision."
+    evidence_pointer:
+      primary_file: "Holon/forensics/contamination_families.json"
+      json_path: "critical_exceedances['נד_אגד_אזור_6']"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "canonical_id == 'נד_אגד_אזור_6' AND param_code IN ('TRICHLORO ETHYLENE','CIS 1,2 DICHLOROETHYLENE','DICHLOROETHYLENE 1,1','VINYL CHLORIDE',' MTBE','BENZENE')"
+    open_questions:
+      - "Is ethene/ethane measured at this well? Confirms complete dechlorination vs. stall."
+      - "Is the chlorinated plume here a separate release from the fuel plume, or a co-mingled industrial-fuel commingled plume?"
+      - "Does Dehalococcoides spp. abundance match a complete-dechlorinator community?"
+    candidate_source_categories:
+      - "transport / bus depot maintenance"
+      - "fuel-handling site with legacy degreaser use"
+      - "auto-mechanic workshop with mixed solvent + fuel waste"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Historical TCE/PCE release at depot service area; in-situ dechlorination driven by co-located fuel hydrocarbons as electron donors; VC accumulating because community is stuck at VC step."
+      - "HYPOTHESIS B: Original release was already DCE-dominated (cleaning-product formulations); apparent dechlorination is partly artefactual."
+      - "HYPOTHESIS C: VC influx from off-site upgradient industrial source; the depot itself contributed only fuel hydrocarbons."
+
+  - anchor_id: "F2_001"
+    anchor_type: "F2"
+    well: "נת_חולון_5"
+    well_name_he: "נת חולון 5"
+    related_wells: ["נת_חולון_11", "נת_תדירגן_4", "נת_אלביט_חולון_1", "נת_אלביט_חולון_2"]
+    family: "INDUSTRY"
+    forensic_framework_applied: "daughter-exceeds-parent ratio analysis for CVOC plume diagnosis — 1,1-DCE/TCE inversion as direct-source indicator"
+    detection_metrics:
+      wells_with_11DCE_over_TCE: ["נת_חולון_5 (ratio 2.67)", "נת_תדירגן_4 (1,1-DCE 2,368 vs TCE 4,538 — ratio 0.52, but absolute very high)", "נת_אלביט_חולון_2 (1,1-DCE 191 vs TCE 243 — ratio 0.79)"]
+      zone_pattern: "1,1-DCE > 10% of TCE in ≥7 industrial wells, inconsistent with biotic-dechlorination-only origin"
+      latest_measurement_date: "2024-11-18"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "1,1-DCE / cis-1,2-DCE ratio is >>1 across the entire 'נת חולון' industrial cluster (typical biotic dechlorination yields ratio <0.2)."
+      direction: "Treat 1,1-DCE as a zone-wide forensic marker for non-biotic source. Pursue (a) abiotic transformation of 1,1,1-TCA, or (b) direct industrial release of 1,1-DCE / vinylidene-chloride."
+      caveat: "1,1,1-TCA data are present in zone (21 boreholes) but at modest levels; the precursor mass-balance does not obviously close. Other abiotic pathways (e.g., reactive iron, alkaline hydrolysis) also produce 1,1-DCE."
+    evidence_pointer:
+      primary_file: "Holon/forensics/contamination_families.json"
+      json_path: "contamination_families['DICHLOROETHYLENE 1,1'].boreholes"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "param_code IN ('DICHLOROETHYLENE 1,1','TRICHLORO ETHYLENE','CIS 1,2 DICHLOROETHYLENE','TRICHLORO ETHANE 1,1,1') AND canonical_id LIKE 'נת_%'"
+    open_questions:
+      - "Map per-well 1,1,1-TCA history and compute TCA → 1,1-DCE mass-conversion ratio; does it match the observed 1,1-DCE inventory?"
+      - "Is there a historical PVDC, vinylidene-chloride, or chlorinated polymer producer in this zone's industrial registry?"
+    candidate_source_categories:
+      - "vinylidene-chloride / PVDC industry"
+      - "1,1,1-TCA users (cold cleaning, vapor degreasing) with abiotic transformation"
+      - "chlorinated solvent reclaimer / recycler"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Historical 1,1,1-TCA user(s) at the industrial cluster; abiotic hydrolysis under low-pH conditions yields zone-wide 1,1-DCE signal."
+      - "HYPOTHESIS B: Direct release of 1,1-DCE as feedstock from a PVDC / chlorinated-polymer manufacturer; TCA pathway not material."
+      - "HYPOTHESIS C: Mixed history — both TCA users AND polymer producer co-existed; current 1,1-DCE is the integral of both inputs."
+
+  - anchor_id: "F3_001"
+    anchor_type: "F3"
+    well: "נד_אגד_אזור_5"
+    well_name_he: "נד אגד אזור 5"
+    related_wells: ["נד_אגד_אזור_1", "נד_אגד_אזור_2", "נד_אגד_אזור_4", "נד_אגד_אזור_6", "נד_אגד_אזור_7"]
+    family: "INDUSTRY"
+    forensic_framework_applied: "terminal-product (VC) accumulation as indicator of advanced reductive dechlorination, mapped across cluster"
+    detection_metrics:
+      vc_concentrations_by_well_ug_L:
+        נד_אגד_אזור_5: 39.0
+        נד_אגד_אזור_1: 25.0
+        נד_אגד_אזור_6: 21.0
+        נד_אגד_אזור_4: 13.0
+        נד_אגד_אזור_2: 10.0
+        נד_אגד_אזור_7: 6.0
+        נד_אגד_אזור_3: 3.0
+      drinking_water_standard_us_epa_vc: 0.5
+      pct_of_DWS_vc_max: 7800
+      cluster_wells_with_VC_over_DWS: 9
+      latest_measurement_date: "2019-04-01"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "VC detected and exceeding DWS at 9 wells of the אגד אזור cluster, with cis-1,2-DCE > 1,1-DCE — diametrically opposite pattern to the נת חולון industrial cluster."
+      direction: "Two distinct CVOC source-types coexist in zone: (i) industrial direct-1,1-DCE/TCE at נת חולון cluster, (ii) advanced biotic dechlorination of TCE → cis-1,2-DCE → VC at אגד אזור cluster. Source-attribution must be done separately for each."
+      caveat: "Last measurements at אגד wells are 2019; current state unknown. VC may have decreased (further dechlorinated to ethene) or increased."
+    evidence_pointer:
+      primary_file: "Holon/forensics/contamination_families.json"
+      json_path: "contamination_families['VINYL CHLORIDE'].boreholes"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "param_code = 'VINYL CHLORIDE' AND canonical_id LIKE 'נד_אגד_אזור_%' AND concentration > 0.5"
+    open_questions:
+      - "Re-sample אגד cluster (last data 2019) — is VC still elevated, declining, or eliminated?"
+      - "What does the Dehalococcoides spp. molecular-biology assessment show at these wells?"
+      - "Is the upgradient TCE source identified and contained?"
+    candidate_source_categories:
+      - "transport-depot maintenance facility (historical TCE use)"
+      - "legacy chlorinated-solvent disposal in vicinity of bus depot"
+      - "automotive service operations"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Historical single-source TCE release upgradient of אגד; cluster represents biotic dechlorination plume in late stage."
+      - "HYPOTHESIS B: Multiple smaller releases at each אגד well; pattern is incidental, not a single plume."
+      - "HYPOTHESIS C: Ongoing TCE influx from off-site (industrial cluster to north?); אגד cluster acts as natural attenuation zone."
+
+  - anchor_id: "F4_001"
+    anchor_type: "F4"
+    well: "נת_חולון_2"
+    well_name_he: "נת חולון 2"
+    related_wells: ["נת_חולון_7"]
+    family: "INDUSTRY"
+    forensic_framework_applied: "co-increase trend analysis (Mann-Kendall) — multi-compound concurrent rise as indicator of active source or expanding anaerobic zone"
+    detection_metrics:
+      pce_trend_5y: "INCREASING"
+      chloroform_trend_5y: "INCREASING (crossed_standard=True)"
+      trans12_dce_trend_5y: "INCREASING"
+      tce_trend_5y: "STABLE at high level (max 1,256 µg/L; 16,751% of DWS)"
+      ccl4_present_ug_L: 1.0
+      monitoring_status: "DISCONTINUED in 2022 at near-peak TCE"
+      latest_measurement_date: "2022-06-08"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "PCE, chloroform, and trans-1,2-DCE all rising concurrently while TCE is stable at very high level; chloroform also rising concurrently at the spatially-adjacent נת חולון 7 (z=1.97, p=0.049)."
+      direction: "Multi-compound co-increase points to an active or re-mobilising source or an expanding redox front (anaerobic conditions reaching previously aerobic CCl₄ allowing reductive transformation to chloroform). Investigate hydraulic disturbance, water-table change, or new release."
+      caveat: "Monitoring discontinued 2022 — cannot validate trend extension; trans-1,2-DCE rise is from low base; chloroform rise could be analytical-method change."
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      json_path: "trends.csv rows WHERE borehole_id='נת_חולון_2' AND classification='INCREASING'"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "canonical_id IN ('נת_חולון_2','נת_חולון_7') AND param_code IN ('TETRACHLORO ETHYLENE','CHLOROFORM','TRANS-1,2 DICHLOROETHYLENE','TRICHLORO ETHYLENE','CARBON TETRACHLORIDE')"
+    open_questions:
+      - "Why was monitoring discontinued at peak TCE? Was the well decommissioned, capped, or simply de-scheduled?"
+      - "Is CCl₄ co-monitored at well 7 to test 'expanding anaerobic front' hypothesis?"
+      - "Has there been any source-zone activity (excavation, construction dewatering, infrastructure works) upgradient since 2020?"
+    candidate_source_categories:
+      - "industrial DNAPL source (historical CVOC user) — re-mobilising"
+      - "construction dewatering disturbing residual DNAPL pool"
+      - "long-screen well integrating new pulse from upper zone"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Hydraulic event (dewatering, recharge change) re-mobilised existing DNAPL; chloroform rise reflects CCl₄ now degrading under newly-anaerobic conditions."
+      - "HYPOTHESIS B: New or recent release at upgradient industrial site adding to baseline plume."
+      - "HYPOTHESIS C: Analytical / lab method change inflating apparent recent values; not a true plume change."
+
+  - anchor_id: "F4_002"
+    anchor_type: "F4"
+    well: "נד_פז_סיירים_3"
+    well_name_he: "נד פז סיירים 3"
+    related_wells: ["נד_פז_סיירים_2", "נד_פז_סיירים_4"]
+    family: "FUEL"
+    forensic_framework_applied: "BTEX + MTBE concurrent-rise + dissolved-oxygen ascent — recent-release indicator at fuel station"
+    detection_metrics:
+      mtbe_trend_5y: "INCREASING z=1.73 p=0.084 (crossed_standard=True)"
+      benzene_trend_5y: "INCREASING z=2.03 p=0.043 (crossed_standard=True)"
+      do_trend_5y: "INCREASING z=1.98 p=0.048"
+      turbidity_trend_5y: "INCREASING (rising particulates)"
+      tba_max_ug_L_in_cluster: 19000.0
+      latest_measurement_date: "2025-05-14"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "Concurrent rise of MTBE + Benzene + dissolved-oxygen at the same well, with extreme TBA in cluster (19,000 µg/L)."
+      direction: "Active or recent gasoline release likely. Rising DO is unexpected for fuel-impacted aquifer (BTEX biodegradation usually consumes DO); could indicate (a) new product entering before biodegradation establishes, or (b) seasonal water-table fluctuation pulling oxygen in, or (c) re-aeration from disturbance."
+      caveat: "MTBE+TBA pattern alone could indicate older release where TBA accumulates as MTBE degrades; need full BTEX+oxygenate timeseries to confirm 'recent' vs 'aged-and-re-mobilised'."
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      json_path: "trends.csv rows WHERE borehole_id='נד_פז_סיירים_3' AND classification='INCREASING'"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "canonical_id LIKE 'נד_פז_סיירים_%' AND param_code IN (' MTBE','BENZENE','TOLUENE','XYLENE','ETHYL BENZENE','Tertiary Butyl Alcohol','DISSOLVED OXYGEN AS O2')"
+    open_questions:
+      - "Is there evidence of recent station refurbishment, tank replacement, or product change?"
+      - "What is the ratio of TBA / MTBE per sample? Rising TBA/MTBE = ageing release; declining = fresh."
+      - "Has UST tightness testing been performed in last 3 years?"
+    candidate_source_categories:
+      - "fuel-retail / petrol-station underground storage tank (UST)"
+      - "fuel-dispensing infrastructure leak"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Recent leak from UST or piping; fresh MTBE + BTEX driving the trend."
+      - "HYPOTHESIS B: Older release with cycling water-table mobilising residual product; DO rise from seasonal recharge, not new mass."
+      - "HYPOTHESIS C: Adjacent station release migrating into well; not this station's own UST."
+
+  - anchor_id: "F5_001"
+    anchor_type: "F5"
+    well: "נד_אגד_אזור_1"
+    well_name_he: "נד אגד אזור 1"
+    family: "MIXED"
+    forensic_framework_applied: "cross-family commingled-plume analysis (CVOC + petroleum) + free-product/dissolution-cap diagnostics"
+    detection_metrics:
+      benzene_max_ug_L: 11400.0
+      toluene_max_ug_L: 30100.0
+      xylene_max_ug_L: 22400.0
+      ethylbenzene_max_ug_L: 3550.0
+      mtbe_max_ug_L: 46000.0
+      vc_max_ug_L: 25.0
+      cis12_dce_max_ug_L: 33.0
+      total_btex_ug_L: 67450.0
+      pct_of_DWS_benzene: 228000
+      pct_of_DWS_mtbe: 115000
+      pct_of_DWS_vc_us_epa: 5000
+      latest_measurement_date: "2025-02-23"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "Co-occurrence of (a) free-product-suggestive BTEX + MTBE (sum ~110,000 µg/L) and (b) CVOC daughters (cis-1,2-DCE, VC) at single well."
+      direction: "Two source-types are commingled at this well. Investigate whether the fuel hydrocarbons are providing electron donors that drive dechlorination of an underlying CVOC plume — high-leverage opportunity for natural-attenuation assessment but complicates source attribution."
+      caveat: "BTEX concentrations approach LNAPL solubility ceilings (benzene at ~30% pure-phase solubility); strongly suggests free product nearby. CVOC daughters may originate elsewhere and pass through."
+    evidence_pointer:
+      primary_file: "Holon/forensics/contamination_families.json"
+      json_path: "critical_exceedances['נד_אגד_אזור_1']"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "canonical_id == 'נד_אגד_אזור_1' AND param_code IN ('BENZENE','TOLUENE','XYLENE','ETHYL BENZENE',' MTBE','VINYL CHLORIDE','CIS 1,2 DICHLOROETHYLENE','TRICHLORO ETHYLENE')"
+    open_questions:
+      - "Is LNAPL physically present at this well (oil-layer thickness gauge, sheen on water)?"
+      - "What is the spatial overlap of the CVOC and fuel plumes — coincident sources or sequential releases?"
+      - "Is the parent TCE of the cis-1,2-DCE/VC observed somewhere in the cluster, or has it been fully dechlorinated?"
+    candidate_source_categories:
+      - "bus depot / transport facility with fuel storage + historic solvent use"
+      - "fuel-handling site with adjacent industrial activity"
+      - "commingled LNAPL + DNAPL release"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Single facility with both fuel UST leak AND historical chlorinated-solvent disposal (maintenance shop on fuel-station property)."
+      - "HYPOTHESIS B: Two separate releases co-locating only at this monitoring well; physically distinct sources."
+      - "HYPOTHESIS C: Off-site CVOC migration into the fuel-impacted zone; the BTEX is local but VC is influent."
+
+  - anchor_id: "F7_001"
+    anchor_type: "F7"
+    well: "נד_אגד_אזור_16"
+    well_name_he: "נד אגד אזור 16"
+    related_wells: ["נד_סונול_המלאכה_מ-1", "נד_אגד_אזור_7"]
+    family: "FUEL"
+    forensic_framework_applied: "BTEX age-dating via MTBE/benzene ratio + toluene-suppression diagnostic (anaerobic degradation preferentially removes toluene & ethylbenzene)"
+    detection_metrics:
+      mtbe_max_ug_L: 3750.0
+      benzene_max_ug_L: 2.0
+      toluene_max_ug_L: 5.0
+      xylene_max_ug_L: 38.0
+      mtbe_to_benzene_ratio: 1875
+      pct_of_DWS_mtbe: 9375
+      pct_of_DWS_benzene: 40
+      latest_measurement_date: "2020-04-01"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "MTBE/Benzene ratio ~1,875; benzene below DWS while MTBE 94× DWS. Toluene suppressed (5 µg/L) relative to xylene (38)."
+      direction: "Aged petroleum release. BTEX has been substantially biodegraded under anaerobic conditions (toluene most labile, hence most depleted), while MTBE persists due to slow anaerobic biodegradation. Investigate source-age (≥10 y) and whether ongoing low-level leak is masked by the persistent MTBE."
+      caveat: "Could also reflect MTBE-rich gasoline (e.g., reformulated fuel with ≥10% MTBE) atop a thin slick, with surface-volatilised BTEX. Aged-source vs MTBE-rich-fuel are not separable from ratios alone."
+    evidence_pointer:
+      primary_file: "Holon/forensics/contamination_families.json"
+      json_path: "critical_exceedances['נד_אגד_אזור_16']"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "canonical_id == 'נד_אגד_אזור_16' AND param_code IN (' MTBE','BENZENE','TOLUENE','XYLENE','ETHYL BENZENE','Tertiary Butyl Alcohol')"
+    open_questions:
+      - "Are TBA concentrations rising over time (indicates ongoing MTBE biodegradation; ageing release)?"
+      - "Is there historic UST removal / tank replacement record for the site?"
+      - "What is the upgradient source candidate — same depot or independent station?"
+    candidate_source_categories:
+      - "legacy gasoline UST release"
+      - "fuel-handling site predating MTBE phase-out (Israel: pre-2008)"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Aged (≥10-year) gasoline release; anaerobic conditions have removed BTEX preferentially while MTBE persists."
+      - "HYPOTHESIS B: MTBE-rich slug release (e.g., spilled gasoline blend) with most BTEX rapidly vapor-stripped at release time."
+      - "HYPOTHESIS C: Source already removed; well is sampling the long-tail of a closed plume."
+
+  - anchor_id: "F8_001"
+    anchor_type: "F8"
+    well: "נד_אגד_אזור_12"
+    well_name_he: "נד אגד אזור 12"
+    related_wells: ["נד_פז_צבר_1"]
+    family: "FUEL"
+    forensic_framework_applied: "fresh-fuel BTEX fingerprint analysis (B:T:X composition near unweathered gasoline)"
+    detection_metrics:
+      benzene_max_ug_L: 994.8
+      toluene_max_ug_L: 268.0
+      xylene_max_ug_L: 243.0
+      ethylbenzene_max_ug_L: 90.4
+      mtbe_max_ug_L: 13700.0
+      btx_ratio_B_T_X_pct: "66:18:16"
+      reference_fresh_gasoline_ratio_pct: "approx 60:25:15"
+      latest_measurement_date: "2024-09-15"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "Benzene:Toluene:Xylene ≈ 66:18:16 — close to unweathered gasoline (~60:25:15)."
+      direction: "Fresh or recently-released gasoline signature; biodegradation has not significantly altered the BTEX fingerprint. Investigate active or recent leak (UST, dispensary, piping)."
+      caveat: "Single-time-point ratio can be misleading — confirm with at least two sample dates and check ethylbenzene/xylene ratio (less sensitive to evaporation than benzene)."
+    evidence_pointer:
+      primary_file: "Holon/forensics/contamination_families.json"
+      json_path: "critical_exceedances['נד_אגד_אזור_12']"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "canonical_id == 'נד_אגד_אזור_12' AND param_code IN ('BENZENE','TOLUENE','XYLENE','ETHYL BENZENE',' MTBE')"
+    open_questions:
+      - "Is there a UST integrity-test record for the candidate stations within 100 m?"
+      - "How does the B:T:X ratio compare across multiple recent samples at this well?"
+      - "Are oxygenate ratios (MTBE / TBA) consistent with current Israeli gasoline formulations (post-MTBE phase-out)?"
+    candidate_source_categories:
+      - "active fuel-retail station UST or piping leak"
+      - "recent vehicle / tanker spill"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Currently-leaking UST at fuel station; benzene loading ongoing."
+      - "HYPOTHESIS B: Recent (within last 1–2 y) spill event from tanker truck or dispensary."
+      - "HYPOTHESIS C: Apparent freshness is an artefact of fast recharge mobilising residual product that hadn't reached the well until now."
+
+  - anchor_id: "F9_001"
+    anchor_type: "F9"
+    well: "נד_דלק_מרכבות_האש_1"
+    well_name_he: "נד דלק מרכבות האש 1"
+    related_wells: ["נד_מרכבות_האש_9", "נד_דלק_מרכבות_האש_4", "נד_דלק_מרכבות_האש_5"]
+    family: "FUEL"
+    forensic_framework_applied: "NAPL indicator analysis — dissolved-phase concentrations approaching effective solubility of gasoline-component (TBA) + cluster-wide elevation pattern"
+    detection_metrics:
+      tba_max_ug_L: 120000.0
+      tba_cluster_max_ug_L: 120000.0
+      tba_max_other_wells_ug_L:
+        נד_מרכבות_האש_9: 66200.0
+        נד_דלק_מרכבות_האש_4: 55900.0
+        נד_דלק_מרכבות_האש_5: 45000.0
+        נד_מרכבות_האש_8: 38100.0
+        נד_דלק_מרכבות_האש_2: 30600.0
+      tba_drinking_water_standard_us_epa_ug_L: 12.0
+      pct_of_DWS_tba_max: 1000000
+      latest_measurement_date: "2023-05-30"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "TBA at 120,000 µg/L — approaching the solubility shelf of MTBE-derived oxygenate accumulation; co-elevated across 6 cluster wells."
+      direction: "LNAPL likely present at or upgradient of cluster. The 'TBA mountain' implies long-term MTBE degradation at a high-flux source (i.e., persistent LNAPL pool, not a single past spill)."
+      caveat: "TBA alone is not a NAPL indicator; need free-product gauging, oil-layer thickness measurements, or vacuum-extraction yield to confirm LNAPL physical presence."
+    evidence_pointer:
+      primary_file: "Holon/data/measurements.csv"
+      json_path: "measurements.csv WHERE param_code='Tertiary Butyl Alcohol' AND canonical_id LIKE 'נד_%מרכבות%'"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "param_code = 'Tertiary Butyl Alcohol' AND concentration > 10000"
+    open_questions:
+      - "Has free-product gauging been done at this fire-station cluster recently?"
+      - "Is MTBE itself still measurable, or has it been almost-entirely converted to TBA (terminal state of MTBE biodegradation)?"
+      - "Are there fuel-piping or fuel-storage facilities at this 'מרכבות האש' (fire-truck depot) — a known historical heavy-fueling site?"
+    candidate_source_categories:
+      - "emergency-vehicle fueling depot (fire-truck garage with bulk fuel storage)"
+      - "historical leaded-fuel storage converted to unleaded with MTBE"
+      - "fuel-truck loading rack with chronic spillage"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Persistent LNAPL pool from decades of bulk-fueling operations; MTBE has been almost fully degraded to TBA, which is now the dominant oxygenate."
+      - "HYPOTHESIS B: Single large historical release (truck collision, tank rupture) with current state being long-tail TBA after MTBE depletion."
+      - "HYPOTHESIS C: Multiple smaller chronic releases summing to high TBA but no contiguous LNAPL body."
+
+  # ===== METALS family =====
+
+  - anchor_id: "F6_001"
+    anchor_type: "F6"
+    well: "נת_חולון_26"
+    well_name_he: "נת חולון 26"
+    family: "METALS"
+    forensic_framework_applied: "chromium speciation + plume-axis analysis (point-source vs ambient background discrimination); Cr(VI) mobility indicator under aerobic aquifer"
+    detection_metrics:
+      cr_total_max_ug_L: 4035.9
+      drinking_water_standard_ug_L: 50.0
+      pct_of_DWS_cr: 8072
+      n_measurements: 3
+      cr_total_max_date: "2023"
+      next_highest_cr_in_zone_ug_L: 332.7
+      ratio_to_next_highest: 12.1
+      chloroform_co_present_ug_L: 55.3
+      latest_measurement_date: "2023-08-13"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "Cr at 4,036 µg/L (8,072% of DWS) — 12× the second-highest Cr concentration in zone (נת חולון 14, 333 µg/L); only 3 measurements available."
+      direction: "Point-source signature (massive single-well anomaly) — investigate (a) operational electroplating/metal-finishing facility within ~100 m, (b) historical waste pit, (c) acid-bath / chromate-mist plume axis. Cr(VI) speciation needed to confirm anthropogenic vs geogenic origin."
+      caveat: "Cr(III) vs Cr(VI) split not measured — total-Cr at this magnitude is almost certainly anthropogenic, but speciation governs both toxicity and likely source."
+    evidence_pointer:
+      primary_file: "Holon/forensics/contamination_families.json"
+      json_path: "critical_exceedances['נת_חולון_26']"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "canonical_id == 'נת_חולון_26' AND param_code = 'CHROMIUM AS CR'"
+    open_questions:
+      - "Cr(III) vs Cr(VI) speciation — what fraction is hexavalent?"
+      - "What is the local hydraulic gradient direction from נת חולון 14 (333 µg/L, rising) to נת חולון 26 (4,036 µg/L) — does it support a single-plume axis?"
+      - "Are there visible discoloration / staining / yellow plating-waste evidence at the well-head, suggesting a near-field source?"
+      - "What is the well construction — long-screen integrating multiple zones, or short-screen targeting a specific stratum?"
+    candidate_source_categories:
+      - "active electroplating / metal-finishing facility"
+      - "chrome-plating bath disposal pit (historical)"
+      - "leather tanning (Cr(III) source) — unusual but documented in some Israeli industrial zones"
+      - "aerospace surface-treatment / anodising"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Active chrome-plating shop with leaking floor drain or undocumented disposal within 100 m of well 26."
+      - "HYPOTHESIS B: Historical chrome-waste pit / sludge pile; ongoing leaching with rising trend at adjacent well 14 supports continuing source."
+      - "HYPOTHESIS C: Well-construction artefact — well may intercept a thin Cr-rich layer that other wells miss; concentration is real but plume volume is small."
+
+  - anchor_id: "F6_002"
+    anchor_type: "F6"
+    well: "נת_חולון_23"
+    well_name_he: "נת חולון 23"
+    related_wells: ["נת_חולון_22", "נת_חולון_25", "נת_אלביט_חולון_1", "נת_אלביט_חולון_2"]
+    family: "METALS"
+    forensic_framework_applied: "Cr + Ni co-signature analysis (galvanic / electroplating fingerprint) — cluster-wide pattern"
+    detection_metrics:
+      cluster_signature:
+        נת_חולון_22:
+          cr_ug_L: 44.8
+          ni_ug_L: 26.2
+          pb_ug_L: 13.0
+          cr_pct_DWS: 90
+          ni_pct_DWS: 131
+        נת_חולון_23:
+          cr_ug_L: 76.5
+          ni_ug_L: 39.3
+          cr_pct_DWS: 153
+          ni_pct_DWS: 196
+        נת_חולון_25:
+          cr_ug_L: 18.2
+          ni_ug_L: 12.7
+        נת_אלביט_חולון_1:
+          cr_ug_L: 10.0
+          ni_ug_L: 20.0
+        נת_אלביט_חולון_2:
+          cr_ug_L: 10.0
+          ni_ug_L: 10.0
+      typical_galvanic_signature: "Cr + Ni ± Cu ± Zn, ratio Cr/Ni 1–3"
+      latest_measurement_date: "2023-08-13"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "Cr + Ni co-elevated in 5+ industrial wells with Cr/Ni ratio 0.5–2 — within textbook galvanic-bath signature range. Pb additionally at נת חולון 22 (13 µg/L, 130% DWS)."
+      direction: "Multi-well galvanic-electroplating signature — investigate sector-wide rather than point-source. Map active electroplaters and prior operations across the cluster."
+      caveat: "Pb at נת חולון 22 is the only zone-wide elevated Pb hit; could be (a) co-released from plating waste containing Pb, (b) unrelated source (e.g., leaded-paint runoff, historical leaded gasoline). Investigate separately."
+    evidence_pointer:
+      primary_file: "Holon/forensics/contamination_families.json"
+      json_path: "contamination_families['CHROMIUM AS CR'].boreholes AND contamination_families['NICKEL AS NI'].boreholes (intersection)"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "param_code IN ('CHROMIUM AS CR','NICKEL AS NI','COPPER AS CU','ZINC AS ZN','LEAD AS PB') AND canonical_id IN ('נת_חולון_22','נת_חולון_23','נת_חולון_25','נת_אלביט_חולון_1','נת_אלביט_חולון_2')"
+    open_questions:
+      - "How many active electroplaters operate within the cluster footprint, and what is their effluent-treatment compliance history?"
+      - "Are there decommissioned plating shops with under-floor sumps or wastewater drains still in the subsurface?"
+      - "Is the source of Pb at well 22 separable from the galvanic signature (different timing? different soil profile?)?"
+    candidate_source_categories:
+      - "electroplating / galvanic-coating workshops"
+      - "metal-fabrication with chromating / passivation"
+      - "anodising and surface-treatment"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Diffuse impact from multiple small plating shops across the industrial cluster — characteristic of pre-regulation operations with shared groundwater impact."
+      - "HYPOTHESIS B: One or two dominant historical sources (large electroplaters) created the cluster pattern; current operators are not contributing."
+      - "HYPOTHESIS C: Stormwater conveyance / paved-yard runoff aggregates plating-waste residues across the cluster, producing a 'pseudo-diffuse' signal from a non-groundwater pathway."
+
+  - anchor_id: "F6_003"
+    anchor_type: "F6"
+    well: "נת_חולון_7"
+    well_name_he: "נת חולון 7"
+    related_wells: ["נת_חולון_5", "נת_חולון_6"]
+    family: "METALS"
+    forensic_framework_applied: "arsenic-redox speciation + co-occurrence with Mn / Fe (geogenic vs anthropogenic discrimination); legacy-pesticide/wood-preservative signature"
+    detection_metrics:
+      as_max_ug_L_per_well:
+        נת_חולון_7: 552.74
+        נת_חולון_5: 431.47
+        נת_חולון_6: 427.01
+      as_drinking_water_standard_ug_L: 10.0
+      pct_of_DWS_as_max: 5527
+      next_highest_as_zone_ug_L: 6.56
+      ratio_to_next_highest: 84
+      mn_co_present: true
+      antimony_co_present_max_ug_L: 7.54
+      uranium_co_present: true
+      latest_measurement_date: "2011-09-13"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "Arsenic 400–550 µg/L at three contiguous נת חולון wells, 40–55× DWS, and 80× higher than the next-highest well in zone — extreme spatial focus. Co-elevation of Mn, Sb, U at the same wells."
+      direction: "Hot-spot pattern. Differentiate (a) anthropogenic source — historical pesticide manufacture (As trioxide, Pb arsenate), wood-preservative (CCA = Cr-Cu-As), metallurgical As — from (b) geogenic mobilisation under reducing conditions (Mn/Fe-mediated). Sb co-elevation supports anthropogenic (metallurgical or pesticide); U co-elevation supports redox-driven (geogenic)."
+      caveat: "Last data is 2011 — current state unknown. Some Israeli aquifer zones do have geogenic As from redox-mobilisation; but 500+ µg/L is too high to be purely natural without an anthropogenic enhancer."
+    evidence_pointer:
+      primary_file: "Holon/data/measurements.csv"
+      json_path: "measurements.csv WHERE canonical_id IN ('נת_חולון_5','נת_חולון_6','נת_חולון_7') AND param_code='ARSENIC AS AS'"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "param_code IN ('ARSENIC AS AS','ANTIMONY','MANGANESE TOTAL AS MN','IRON TOTAL AS FE','URANIUM','REDOX') AND canonical_id IN ('נת_חולון_5','נת_חולון_6','נת_חולון_7')"
+    open_questions:
+      - "Why has As not been re-sampled since 2011 at these critical wells? Re-sampling is the single highest-leverage analytical investment for this zone."
+      - "Is there historical record of pesticide-formulation, wood-preservative (CCA), or As-producing metallurgy in the vicinity?"
+      - "What is the As(III) / As(V) speciation? Reduced-state predominance (As(III)) supports redox mobilisation; oxidised (As(V)) supports anthropogenic anion."
+    candidate_source_categories:
+      - "historical pesticide / herbicide manufacture or formulation"
+      - "CCA wood preservative (Cr-Cu-As) — wood-treatment plant historic"
+      - "metallurgical As-trioxide processing"
+      - "geogenic redox-driven mobilisation enhanced by anthropogenic organic loading"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Historical pesticide / herbicide formulator at industrial cluster; legacy As(III/V) source mobilising slowly into groundwater."
+      - "HYPOTHESIS B: CCA wood-treatment legacy; Cr-Cu-As co-signature should be checked but Cu/Cr at these specific wells is moderate, not extreme."
+      - "HYPOTHESIS C: Redox-driven geogenic As release at depth, enhanced by anaerobic conditions from co-located organic contaminants (TCE plume providing electron donor)."
+      - "HYPOTHESIS D: Coincidence of a hydrogeologic As-bearing horizon intercepted by these three wells but not others; lithology-specific exposure."
+
+  - anchor_id: "F6_004"
+    anchor_type: "F6"
+    well: "נת_חולון_22"
+    well_name_he: "נת חולון 22"
+    family: "METALS"
+    forensic_framework_applied: "Mn-Fe-Al cluster anomaly + cobalt enrichment — reductive mobilisation under organic loading, or battery / electronics-waste signature"
+    detection_metrics:
+      mn_max_ug_L: 8730.0
+      mn_pct_DWS: 2182
+      al_max_ug_L: 4100.0
+      al_pct_DWS: 2050
+      co_max_ug_L: 11.10
+      co_pct_DWS: 277
+      cr_max_ug_L: 44.8
+      ni_max_ug_L: 26.2
+      pb_max_ug_L: 13.0
+      latest_measurement_date: "2022-11-14"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "Highest Mn in zone (8,730 µg/L, 22× DWS), co-elevated with Al (2,050% DWS), Co (277% DWS), Cr, Ni, Pb at single well."
+      direction: "Two-track investigation: (a) reductive mobilisation pathway — strongly anaerobic groundwater could mobilise Mn and Co from aquifer minerals; co-located Al rise (Al is unusual under reducing pH-neutral conditions) suggests this is not pure reduction. (b) battery / NiCd / NiMH / Li-ion electronics-waste signature — Mn+Co+Ni+Cu+Zn is the classical cathode-material assemblage."
+      caveat: "Al at 4,100 µg/L could be sampling artefact (turbid sample with colloidal Al); the rising-turbidity signal in this cluster supports this possibility. Co (4× DWS) is independent of turbidity."
+    evidence_pointer:
+      primary_file: "Holon/forensics/contamination_families.json"
+      json_path: "critical_exceedances['נת_חולון_22']"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "canonical_id == 'נת_חולון_22' AND param_code IN ('MANGANESE TOTAL AS MN','ALUMINUM','COBALT AS CO','NICKEL AS NI','CHROMIUM AS CR','LEAD AS PB','REDOX','DISSOLVED OXYGEN AS O2','TURBIDITY NTU')"
+    open_questions:
+      - "What is the sample turbidity at the high-Al measurements — filtered or unfiltered?"
+      - "Is there a battery / electronics waste-processing or recycling operation at or upgradient of this well?"
+      - "What is the redox state? Strongly reducing (Eh < 0 mV) supports geogenic; oxidising supports anthropogenic point source."
+    candidate_source_categories:
+      - "battery / electronics waste processing"
+      - "metal-plating with concurrent reductive groundwater conditions"
+      - "construction / demolition fill with high Al-Mn mineralogy + reducing recharge"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Battery / electronics recycling facility nearby; Mn-Co-Ni cathode-material signature."
+      - "HYPOTHESIS B: Organic-loading-driven reductive mobilisation of natural Mn-rich aquifer matrix; rise in turbidity supports colloidal transport."
+      - "HYPOTHESIS C: Sampling artefact — high turbidity from well-development issues inflating total-metal results; dissolved fractions much lower."
+
+  - anchor_id: "F6_005"
+    anchor_type: "F6"
+    well: "נת_מוסך_קטרפילר_חולון"
+    well_name_he: "נת מוסך קטרפילר חולון"
+    family: "METALS"
+    forensic_framework_applied: "Cd-Cr-Cu signature analysis (vehicle workshop signature) + lubricant-metal markers"
+    detection_metrics:
+      cd_max_ug_L: 2.5
+      cr_max_ug_L: 8.3
+      cu_max_ug_L: 2.5
+      zn_max_ug_L: 19.6
+      tce_max_ug_L: 166.0
+      mtbe_max_ug_L: 10.0
+      benzene_max_ug_L: 10.0
+      cd_pct_DWS: 50
+      latest_measurement_date: "2020-04-13"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "Cd at 50% DWS in a workshop well, with low-but-detectable Cr/Cu/Zn and moderate TCE + fuel BTEX — composite vehicle-maintenance signature."
+      direction: "Cd marker for older lubricant / hydraulic-oil formulations (Cd was used in extreme-pressure additives until 1980s) and for heavy-equipment brake-pad wear. Cr from brake-pad / chrome-plating swarf. Investigate older workshop activities and waste-oil disposal."
+      caveat: "Cd at 2.5 µg/L is below DWS (5) but unusual for ambient groundwater — even small Cd is forensically informative."
+    evidence_pointer:
+      primary_file: "Holon/data/measurements.csv"
+      json_path: "measurements.csv WHERE canonical_id='נת_מוסך_קטרפילר_חולון'"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "canonical_id == 'נת_מוסך_קטרפילר_חולון' AND param_code IN ('CADMIUM AS CD','CHROMIUM AS CR','COPPER AS CU','ZINC AS ZN','TRICHLORO ETHYLENE',' MTBE','BENZENE','LEAD AS PB')"
+    open_questions:
+      - "Is waste-oil collection / disposal historically recorded at this site?"
+      - "What is the Cd:Cr:Pb ratio compared to typical brake-wear vs lubricant-additive sources?"
+    candidate_source_categories:
+      - "heavy-equipment maintenance shop"
+      - "waste-oil collection / disposal site"
+      - "vehicle de-greasing operations"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Historical waste-oil disposal at workshop site; Cd from EP additive formulations, Cr from chrome-plated component swarf, TCE from de-greaser."
+      - "HYPOTHESIS B: Currently-ongoing minor contributions from heavy-equipment maintenance (Cd levels are low and stable, not rising)."
+      - "HYPOTHESIS C: Off-site source migrating in; on-site activities not contributing materially."
+
+  - anchor_id: "F6_006"
+    anchor_type: "F6"
+    well: "נת_תדירגן_4"
+    well_name_he: "נת תדירגן 4"
+    family: "METALS"
+    forensic_framework_applied: "Cr signature analysis combined with co-located CVOC plume — degreaser+plating co-located source"
+    detection_metrics:
+      cr_max_ug_L: 143.6
+      ni_max_ug_L: 2.5
+      cr_pct_DWS: 287
+      tce_max_ug_L: 4538.0
+      dce_1_1_max_ug_L: 2368.0
+      uranium_max_ug_L: 4.02
+      latest_measurement_date: "2011-06-08"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "Cr 287% of DWS but Ni only 13% — Cr-without-Ni pattern (atypical for galvanic plating which usually shows Cr+Ni). Co-elevated TCE (60,500% DWS) and 1,1-DCE (23,680% DWS US EPA)."
+      direction: "Cr-dominant (low Ni) signature suggests chromate-based passivation (chromating, conversion-coating) or chromic-acid cleaning rather than full electroplating; co-presence of high TCE + 1,1-DCE points to combined metal-treatment + degreaser facility. Investigate single facility with both operations."
+      caveat: "Last data is 2011; current state unknown. U detection (4 µg/L) is non-trivial but below DWS — could be local lithology or anthropogenic."
+    evidence_pointer:
+      primary_file: "Holon/data/measurements.csv"
+      json_path: "measurements.csv WHERE canonical_id='נת_תדירגן_4'"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "canonical_id == 'נת_תדירגן_4' AND param_code IN ('CHROMIUM AS CR','NICKEL AS NI','TRICHLORO ETHYLENE','DICHLOROETHYLENE 1,1','URANIUM','ARSENIC AS AS')"
+    open_questions:
+      - "Re-sample — 14 years since last data."
+      - "Was historical operation at this facility chromating (Cr) without Ni-plating, or a mixed metal-treatment workshop?"
+    candidate_source_categories:
+      - "chromate-passivation / conversion-coating workshop"
+      - "metal-treatment with chromic-acid use"
+      - "aerospace / aviation surface-treatment (chromating common)"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Single facility historically using both chromic-acid passivation AND TCE/1,1-DCE solvents for parts-cleaning."
+      - "HYPOTHESIS B: Two adjacent facilities (metal-treatment + degreaser-user) contributing to one well."
+      - "HYPOTHESIS C: Off-site TCE plume migrating into a locally-elevated Cr area; sources are independent."
+
+  # ===== EMERGING (1,4-dioxane) family =====
+
+  - anchor_id: "F4_003"
+    anchor_type: "F4"
+    well: "נת_אלביט_חולון_3"
+    well_name_he: "נת אלביט חולון 3"
+    related_wells: ["נת_אלביט_חולון_4", "נת_חולון_11", "נת_חולון_2", "נת_חולון_5"]
+    family: "EMERGING"
+    forensic_framework_applied: "1,4-dioxane co-occurrence with chlorinated solvents — solvent-stabiliser persistence diagnostic; transport-front offset analysis"
+    detection_metrics:
+      dioxane_max_ug_L_per_well:
+        נת_אלביט_חולון_3: 625.0
+        נת_אלביט_חולון_4: 138.0
+        נת_חולון_11: 1036.3
+        נת_חולון_2: 190.0
+        נת_חולון_5: 68.4
+        נת_חווה_חקלאית_א: 38.8
+      drinking_water_standard_us_epa_ug_L: 35.0
+      pct_of_DWS_dioxane_max: 2961
+      co_present_with_TCA: "low (1,1,1-TCA 21 boreholes, modest levels)"
+      co_present_with_TCE: "high"
+      latest_measurement_date: "2026-02-15"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "1,4-dioxane at 6 wells with concentrations 38–1,036 µg/L (up to 30× US EPA DWS). 1,4-dioxane is the classical stabiliser for 1,1,1-TCA-based solvents (used at 3–8% w/w)."
+      direction: "Dioxane is a transport-leading marker — it is more mobile and less degradable than the parent chlorinated solvent. Map dioxane plume to detect the leading edge of TCA-based degreaser releases; expect dioxane to extend further downgradient than the parent solvent."
+      caveat: "Dioxane is also used in textile / surfactant formulations and as a separate industrial solvent, so co-presence with CVOCs is not definitive proof of TCA origin. Cross-check against TCA history."
+    evidence_pointer:
+      primary_file: "Holon/data/measurements.csv"
+      json_path: "measurements.csv WHERE param_code='1,4 DIOXANE'"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "param_code IN ('1,4 DIOXANE','TRICHLORO ETHANE 1,1,1','TRICHLORO ETHYLENE','DICHLOROETHYLENE 1,1') AND canonical_id IN ('נת_אלביט_חולון_3','נת_אלביט_חולון_4','נת_חולון_11','נת_חולון_2','נת_חולון_5','נת_חווה_חקלאית_א')"
+    open_questions:
+      - "Map dioxane vs TCA mass over time — does dioxane lead TCA (transport-front) or trail it (recalcitrant tail)?"
+      - "Are there industrial users of pure 1,4-dioxane (textile finishing, pharmaceutical, polymer industry) in the cluster, separate from TCA users?"
+      - "Has the agricultural well (נת חווה חקלאית א, 38.8 µg/L, 2026) detected dioxane recently — is the plume reaching irrigation supply?"
+    candidate_source_categories:
+      - "1,1,1-TCA solvent users with dioxane stabiliser (electronics, optics, metal-finishing)"
+      - "direct 1,4-dioxane users (textile, surfactant manufacture)"
+      - "polymer / plastics industry"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Stabiliser-of-TCA origin — historical TCA-based degreaser releases; dioxane has out-transported its parent. Source facility = same as TCE/1,1-DCE plumes."
+      - "HYPOTHESIS B: Independent dioxane source (textile / polymer industry) at the אלביט cluster, distinct from CVOC plume sources."
+      - "HYPOTHESIS C: Combined origin — partly from TCA stabiliser, partly from direct dioxane use; cannot be separated from current data."
+
+  # ===== PFAS family =====
+
+  - anchor_id: "F10_001"
+    anchor_type: "F10"
+    well: "ZONE-WIDE"
+    well_name_he: "אזור חולון — כלל המוקדים"
+    family: "PFAS"
+    forensic_framework_applied: "PFAS coverage gap analysis — sampling-design vs facility-type matrix"
+    detection_metrics:
+      total_wells_in_zone: 111
+      wells_sampled_for_PFAS: 4
+      wells_pfas_sampled_list: ["מק_חולון_12 (production)", "מק_חולון_14 (production)", "נד_דלק_הצבי_1 (fuel)", "נד_דלק_הצבי_2 (fuel)"]
+      pct_wells_sampled: 3.6
+      total_pfas_detections_above_DL: 0
+      contamination_families_json_keys_pfas: 0
+      facility_types_unsampled:
+        - "transport / bus depots (אגד)"
+        - "fire-truck depot (מרכבות האש) — known AFFF user, multi-decade fueling"
+        - "industrial cluster (נת חולון) — known historical solvent + plating"
+        - "53 of 57 fuel stations (98%) unsampled for PFAS"
+      latest_measurement_date: "2024-09-14"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "4 of 111 (3.6%) wells sampled for PFAS, all returning zero detections. Facility types most likely to be PFAS sources (fire-truck depot, fuel stations, electroplating) are entirely unsampled or under-sampled."
+      direction: "Treat current PFAS data as NON-EVIDENCE rather than evidence-of-absence. Design targeted sampling: minimum 8 wells covering (a) fire-station depot, (b) one downgradient well per industrial sub-cluster, (c) downgradient of the largest historical fuel sites, (d) one upgradient regional background well."
+      caveat: "Zero is consistent with truly low PFAS, but the sample size cannot establish that — confidence is statistically weak."
+    evidence_pointer:
+      primary_file: "Holon/forensics/contamination_families.json"
+      json_path: "contamination_families keys grep -iE '(PFOA|PFOS|PFAS|PFHx|PFNA|PFDA|PFBS)' returns empty"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "param_code LIKE '%PERFLUORO%' OR param_code LIKE '%PFAS%' OR param_code LIKE '%PFOS%' OR param_code LIKE '%PFOA%'"
+    open_questions:
+      - "What is the budget envelope to add 8–12 PFAS samples in next monitoring round?"
+      - "Are any historical AFFF training-grounds documented at the fire-truck depot (מרכבות האש)?"
+      - "What is the regional upgradient PFAS background concentration (from other coastal-aquifer studies)?"
+    candidate_source_categories:
+      - "fire-fighting foam training grounds (AFFF — historical 3M C8 + telomer formulations)"
+      - "fuel-handling operations using fire-suppression systems"
+      - "metal-finishing (PFOS used as chrome-mist suppressant pre-2010)"
+      - "textile / paper industry"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: PFAS is present at known source-types (especially AFFF at מרכבות האש and chrome-mist-suppressant at plating cluster) but not yet detected because not sampled."
+      - "HYPOTHESIS B: PFAS is genuinely below detection across the zone — possibly because historical practices were limited or because the deep coastal aquifer dilutes effectively."
+      - "HYPOTHESIS C: Past PFAS releases have already migrated downgradient past the zone (the four sampled wells are not on the plume axis)."
+
+  # ===== Source-signature catalog hits =====
+
+  - anchor_id: "F11_001"
+    anchor_type: "F11"
+    well: "ZONE-WIDE-NETACVOC"
+    well_name_he: "אזור תעשייה — קבוצת נת חולון (קידוחים תעשייתיים)"
+    related_wells: ["נת_חולון_11", "נת_חולון_5", "נת_חולון_2", "נת_חולון_7", "נת_חולון_14", "נת_אלביט_חולון_1", "נת_אלביט_חולון_2", "נת_תדירגן_4"]
+    family: "INDUSTRY"
+    forensic_framework_applied: "named-signature catalog matching — TCE + 1,1-DCE-rich CVOC pattern (legacy industrial degreaser cluster) — manual catalog (forensics_analyzer signatures dict empty for this zone)"
+    detection_metrics:
+      signature_name: "Industrial CVOC cluster (TCE / 1,1-DCE dominant, low cis-1,2-DCE)"
+      n_wells_matching: 8
+      tce_concentration_range_ug_L: "76 – 27,860"
+      dce_1_1_concentration_range_ug_L: "2 – 2,903"
+      cis12_dce_concentration_range_ug_L: "2 – 237"
+      manual_signature_confidence: "HIGH"
+      latest_measurement_date: "2024-11-18"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "8 wells in the נת חולון / נת אלביט / נת תדירגן grouping share the same TCE + 1,1-DCE dominant signature with subordinate cis-1,2-DCE. Pattern is consistent across multiple operators."
+      direction: "Treat as a single contamination-sector signature — investigate which industrial activities clustered in this area historically. Plume modelling should treat these wells as one regional plume, not 8 independent sources."
+      caveat: "Signature similarity does not prove single source — multiple independent facilities using the same industrial-grade solvents would produce indistinguishable signatures."
+    evidence_pointer:
+      primary_file: "Holon/forensics/contamination_families.json"
+      json_path: "contamination_families['TRICHLORO ETHYLENE'].boreholes ∩ contamination_families['DICHLOROETHYLENE 1,1'].boreholes"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "param_code IN ('TRICHLORO ETHYLENE','DICHLOROETHYLENE 1,1','CIS 1,2 DICHLOROETHYLENE','TETRACHLORO ETHYLENE') AND canonical_id LIKE 'נת_%'"
+    open_questions:
+      - "Is there a regional source axis (one dominant historical industrial operator)?"
+      - "Can stable-isotope analysis (CSIA on δ13C of TCE) differentiate sources within this cluster?"
+    candidate_source_categories:
+      - "metal-finishing / engineering workshops (cluster)"
+      - "electronics / optics manufacturing (legacy)"
+      - "aviation / defence-industry maintenance"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: One dominant historical industrial operator released the bulk of the CVOC inventory; current operators inherit groundwater impact."
+      - "HYPOTHESIS B: Multiple independent operators using the same commercial-grade solvents produced an indistinguishable composite signature."
+      - "HYPOTHESIS C: A regional supplier / waste-oil contractor distributed contaminated solvent across multiple sites — composite source via supply-chain pathway."
+
+  - anchor_id: "F11_002"
+    anchor_type: "F11"
+    well: "ZONE-WIDE-AGEDFUEL"
+    well_name_he: "תחנות דלק ישנות — סונול / אגד / פז"
+    related_wells: ["נד_סונול_המלאכה_מ-1", "נד_אגד_אזור_7", "נד_אגד_אזור_16"]
+    family: "FUEL"
+    forensic_framework_applied: "manual named-signature catalog — 'aged gasoline / MTBE persistence' pattern (MTBE/Benzene >> 10, toluene suppressed)"
+    detection_metrics:
+      signature_name: "Aged-gasoline residual (BTEX degraded, MTBE persistent)"
+      example_wells_metrics:
+        נד_סונול_המלאכה_מ-1: "MTBE ratio >> Benzene, BTEX degraded (per V4.2 brief)"
+        נד_אגד_אזור_7: "MTBE 90,063 µg/L; Toluene 92.5 µg/L; Benzene 6,600 — Tol/Benz 0.014 (aged-fuel suppression)"
+        נד_אגד_אזור_16: "MTBE 3,750; Benzene 2; Toluene 5 — Tol/MTBE 0.0013"
+      manual_signature_confidence: "HIGH"
+      latest_measurement_date: "2024-09-15"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "Multiple fuel-station wells share the 'aged gasoline' signature: high MTBE persisting; toluene & ethylbenzene preferentially depleted; benzene partially retained."
+      direction: "Investigate which stations have legacy UST infrastructure (pre-2000 installations) and have not undergone tank replacement. The 'aged-fuel signature' wells are candidates for source-closed plumes (lower remediation urgency) but plume-extent assessment is still needed for receptor protection."
+      caveat: "Some wells are pre-2008 MTBE phase-out releases (Israel reduced MTBE in 2008); the persistence of MTBE over 15+ years is expected without active remediation."
+    evidence_pointer:
+      primary_file: "Holon/forensics/contamination_families.json"
+      json_path: "critical_exceedances for [נד_אגד_אזור_7, נד_אגד_אזור_16, נד_סונול_המלאכה_מ-1]"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "param_code IN (' MTBE','BENZENE','TOLUENE','XYLENE','ETHYL BENZENE') AND canonical_id IN ('נד_סונול_המלאכה_מ-1','נד_אגד_אזור_7','נד_אגד_אזור_16')"
+    open_questions:
+      - "What is the UST installation / replacement record at each of these stations?"
+      - "Is the dissolved-phase MTBE plume still expanding, stable, or contracting?"
+    candidate_source_categories:
+      - "fuel-retail stations with legacy USTs (pre-2000)"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: All three sites are 'closed source' aged plumes from pre-2008 MTBE-era releases; passive monitoring suffices."
+      - "HYPOTHESIS B: Sites have intermittent slow leaks providing continued mass input; degraded BTEX masks the freshness."
+      - "HYPOTHESIS C: Plume mixing between adjacent sites masks each site's true age — apparent signature is the average."
+
+  # ===== Missing intermediates =====
+
+  - anchor_id: "F12_001"
+    anchor_type: "F12"
+    well: "נת_חולון_11"
+    well_name_he: "נת חולון 11"
+    family: "INDUSTRY"
+    forensic_framework_applied: "missing-intermediate analysis — expected biotic-degradation by-products (ethene, methane, CO₂, chloride) absent from monitoring matrix"
+    detection_metrics:
+      parent_TCE_max_ug_L: 27860
+      missing_parameters_expected: ["ethene", "ethane", "methane", "carbon dioxide (dissolved)", "chloride mass balance", "Dehalococcoides 16S-rRNA quantification"]
+      parameters_actually_measured_relevant: ["dissolved oxygen", "REDOX", "chloride (as anion)", "TCE/DCE/VC"]
+      latest_measurement_date: "2024-11-18"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "Highest TCE plume in zone (27,860 µg/L), with detectable VC implying biotic dechlorination active. But ethene (terminal product) and bio-marker (Dehalococcoides) are not measured."
+      direction: "Add ethene/ethane and Dehalococcoides quantification to next sampling round; without these, cannot determine whether dechlorination is reaching ethene (complete) or stalling at VC (incomplete, problematic for treatment design)."
+      caveat: "Adding ethene is analytically demanding (requires gas-tight sampling); should be planned with the lab in advance."
+    evidence_pointer:
+      primary_file: "Holon/data/measurements.csv"
+      json_path: "absence — no rows for canonical_id='נת_חולון_11' with param_code IN ('ETHENE','ETHANE','METHANE')"
+      cross_validation_file: "Holon/data/parameters.csv"
+      cross_validation_filter: "param_code NOT IN any of ('ETHENE','ETHANE','METHANE','Dehalococcoides')"
+    open_questions:
+      - "Can ethene + Dehalococcoides be added to next sampling round at the 5–8 most impacted CVOC wells?"
+      - "What is the chloride mass-balance — does it support claimed dechlorination extent?"
+    candidate_source_categories:
+      - "monitoring-design gap (not a source category)"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Full dechlorination to ethene IS occurring but unobserved; natural attenuation is more effective than apparent."
+      - "HYPOTHESIS B: Dechlorination stalls at VC (no Dehalococcoides spp.); MNA insufficient, active treatment will be required."
+      - "HYPOTHESIS C: Apparent VC is being lost to volatilisation or abiotic decay rather than full biotic dechlorination."
+
+  - anchor_id: "F12_002"
+    anchor_type: "F12"
+    well: "נד_דלק_מרכבות_האש_1"
+    well_name_he: "נד דלק מרכבות האש 1"
+    family: "FUEL"
+    forensic_framework_applied: "missing-intermediate analysis — MTBE → TBA → 2-methyl-2-hydroxy-propionate / acetone (terminal) — partial measurement chain"
+    detection_metrics:
+      tba_max_ug_L: 120000.0
+      mtbe_max_ug_L_other_wells_cluster: "varies (per V4.2 brief, MTBE persists)"
+      missing_parameters_expected: ["acetone", "2-methyl-2-hydroxy-propionate (HIBA)", "formate", "isopropyl alcohol (IPA)"]
+      latest_measurement_date: "2023-05-30"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "TBA at 120,000 µg/L is reached only after substantial MTBE biodegradation; the next-step intermediates (acetone, HIBA) would confirm whether biodegradation is proceeding past TBA or stalling."
+      direction: "Add acetone (and ideally HIBA) to next round at this cluster; needed to differentiate 'TBA terminal' (stalled, persistent contamination) from 'TBA transient' (active biodegradation continuing)."
+      caveat: "Acetone has multiple non-fuel sources; interpretation requires baseline."
+    evidence_pointer:
+      primary_file: "Holon/data/parameters.csv"
+      json_path: "absence — no acetone / HIBA / formate measurements"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "canonical_id LIKE 'נד_%מרכבות%' AND param_code IN ('Tertiary Butyl Alcohol',' MTBE','BENZENE')"
+    open_questions:
+      - "Can acetone be added as a routine analyte at the high-TBA cluster?"
+      - "Is the TBA plume expanding, stable, or contracting?"
+    candidate_source_categories:
+      - "monitoring-design gap (not a source category)"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: TBA biodegradation is continuing (active acetone production); plume will attenuate naturally over time."
+      - "HYPOTHESIS B: TBA is terminal — no further biodegradation under current geochemistry; plume is recalcitrant and persistent."
+      - "HYPOTHESIS C: Continuous LNAPL input maintains apparent TBA steady-state regardless of degradation; mass-balance not informative."
+
+  # ===== Monitoring discontinuity & spatial-plume anchors =====
+
+  - anchor_id: "F99_001"
+    anchor_type: "F99"
+    well: "נת_חולון_2"
+    well_name_he: "נת חולון 2"
+    related_wells: ["נד_המרכבה_ק2"]
+    family: "MIXED"
+    forensic_framework_applied: "monitoring discontinuity analysis — administrative gap at high-priority well (data-flow / management forensics, not chemical)"
+    detection_metrics:
+      monitoring_status: "DISCONTINUED 2022 at peak TCE (1,256 µg/L, 16,751% DWS)"
+      mk_trends_at_discontinuation:
+        PCE: "INCREASING z=2.13 p=0.034"
+        chloroform: "INCREASING z=2.06 p=0.039"
+        trans12_DCE: "INCREASING"
+      analogous_case_nd_hamarkhava_k2:
+        analyte: "MTBE"
+        status: "Monitoring stopped 2021 at significant rise (z=2.60 p=0.009; concentration 1,200 µg/L, 3,000% DWS)"
+      latest_measurement_date: "2022-06-08"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "Two wells with statistically-significant rising trends had monitoring discontinued precisely at their peak. Not a chemical signal — an institutional / data-completeness signal."
+      direction: "Reinstate sampling at both wells immediately. Without resumption, no trend assessment is possible and any future risk assessment cannot incorporate the current state of two of the highest-priority plumes in the zone."
+      caveat: "Wells may have been decommissioned for valid reasons (well-integrity failure, access loss); confirm physical status before assuming administrative oversight."
+    evidence_pointer:
+      primary_file: "Holon/data/measurements.csv"
+      json_path: "max(date) per canonical_id"
+      cross_validation_file: "Holon/data/trends.csv"
+      cross_validation_filter: "borehole_id IN ('נת_חולון_2','נד_המרכבה_ק2') AND classification = 'INCREASING'"
+    open_questions:
+      - "Were wells physically decommissioned, or only de-scheduled from sampling?"
+      - "If physically intact, can they be re-added to next monitoring round (2026)?"
+      - "If decommissioned, are replacement wells installed nearby?"
+    candidate_source_categories:
+      - "monitoring-program governance issue (not a contamination source)"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Administrative gap — wells operational but de-scheduled; can be re-instated at low cost."
+      - "HYPOTHESIS B: Wells physically failed (corrosion, screen blockage); replacement required."
+      - "HYPOTHESIS C: Wells deliberately removed due to property-access dispute or owner objection; institutional resolution required."
+
+  - anchor_id: "F4_004"
+    anchor_type: "F4"
+    well: "נת_חולון_14"
+    well_name_he: "נת חולון 14"
+    related_wells: ["נת_חולון_26"]
+    family: "METALS"
+    forensic_framework_applied: "spatial plume-axis analysis — Cr co-increase along hydraulic gradient indicating active source"
+    detection_metrics:
+      cr_well_14_trend: "INCREASING (per V4.2 brief: z=1.87 p=0.062; crossed_standard=True)"
+      cr_well_14_max_ug_L: 332.7
+      cr_well_26_max_ug_L: 4035.9
+      hydraulic_relationship: "well 14 → well 26 axis aligned with regional SW flow per V4.2 brief"
+      latest_measurement_date: "2023-08-13"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "Cr rising at well 14 (z=1.87) AND massively elevated at downgradient well 26 (4,036 µg/L); both wells co-axial with regional flow direction."
+      direction: "Active Cr source upgradient of well 14 likely. Investigation needs to (a) identify the source, (b) characterise the plume between wells 14 and 26, (c) determine whether well 26's extreme value represents the plume core or a separate sub-source."
+      caveat: "The 12× concentration jump between wells 14 and 26 over a short flow-distance is unusual for a single source plume; could suggest second source at or near well 26 in addition to the upgradient source."
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      json_path: "trends.csv WHERE borehole_id='נת_חולון_14' AND parameter='CHROMIUM AS CR'"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "canonical_id IN ('נת_חולון_14','נת_חולון_26') AND param_code = 'CHROMIUM AS CR'"
+    open_questions:
+      - "Install a sentinel well between 14 and 26 — does Cr concentration vary smoothly or jump?"
+      - "Is the rising trend at well 14 visible in the past 12 months, or is it driven by older data?"
+    candidate_source_categories:
+      - "electroplating / chromating facility upgradient of well 14"
+      - "separate active source near well 26 in addition to upgradient input"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Single upgradient plating source; well 26 sits closer to source-mass-centre, well 14 is the dilute leading edge with rising trend."
+      - "HYPOTHESIS B: Two distinct sources — a smaller upgradient source feeding well 14 and a large near-field source at well 26."
+      - "HYPOTHESIS C: Hydraulic disturbance (pumping at production wells) is altering plume geometry and concentration spatial pattern over time."
+
+  - anchor_id: "F5_002"
+    anchor_type: "F5"
+    well: "נת_חולון_7"
+    well_name_he: "נת חולון 7"
+    related_wells: ["נת_חולון_5", "נת_חולון_6"]
+    family: "MIXED"
+    forensic_framework_applied: "cross-family unexpected co-occurrence analysis — CVOC + extreme arsenic + heavy metals at single well-cluster"
+    detection_metrics:
+      contaminants_present:
+        TCE_ug_L: 569.1
+        DCE_1_1_ug_L: 121.5
+        cis12_DCE_ug_L: 57.0
+        chloroform_ug_L: 97.6
+        arsenic_ug_L: 552.74
+        antimony_ug_L: 7.54
+        chromium_ug_L: 321.6
+        aluminum_ug_L: 2044.09
+        selenium_ug_L: 2.42
+      families_co_located: ["INDUSTRY (CVOC)", "METALS (As/Sb/Cr/Al)"]
+      latest_measurement_date: "2023-01-04"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "Co-occurrence of high-CVOC plume (TCE+1,1-DCE) with extreme As+Sb+Cr+Al at the same well — a combination not typical of any single industrial signature."
+      direction: "Either (a) two distinct sources happen to be co-located at this well, or (b) one site historically conducted both solvent-using AND metal-processing operations (e.g., pesticide-formulation often used Cr-As compounds plus chlorinated solvents as carrier), or (c) the strong CVOC plume creates anaerobic conditions that mobilise geogenic As+Mn from the matrix."
+      caveat: "Hypothesis (c) is testable via redox-state measurement and matrix-iron correlation; without these data, source attribution is ambiguous."
+    evidence_pointer:
+      primary_file: "Holon/forensics/contamination_families.json"
+      json_path: "critical_exceedances['נת_חולון_7']"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "canonical_id IN ('נת_חולון_5','נת_חולון_6','נת_חולון_7') AND param_code IN ('TRICHLORO ETHYLENE','DICHLOROETHYLENE 1,1','ARSENIC AS AS','ANTIMONY','CHROMIUM AS CR','ALUMINUM','REDOX','DISSOLVED OXYGEN AS O2','IRON TOTAL AS FE')"
+    open_questions:
+      - "What is the historical land-use at this cluster — agriculture / pesticide-formulation, or pure industry?"
+      - "Is the matrix iron correlated with arsenic (suggests reductive Fe-oxide dissolution releasing sorbed As)?"
+      - "Does the redox state explain the As+Mn pattern as geogenic, or is it independent of redox?"
+    candidate_source_categories:
+      - "legacy pesticide / herbicide formulator (uses both As / Pb arsenate AND chlorinated solvent carriers)"
+      - "metal-processing with concurrent solvent-using cleaning"
+      - "co-located but independent industrial activities (separate facilities at same site)"
+      - "geogenic As-Mn mobilisation enhanced by anaerobic CVOC plume"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Single historical pesticide / herbicide operation released both arsenic compounds and chlorinated solvent carriers."
+      - "HYPOTHESIS B: Two independent sources — As-bearing facility and CVOC-using facility — happened to overlap at this monitoring well."
+      - "HYPOTHESIS C: CVOC plume created reducing conditions that mobilised geogenic As + Mn + matrix Al from the aquifer matrix; As is enhanced-geogenic, CVOC is anthropogenic."
+
+  # ===== Production-well anchor (downstream-receptor concern) =====
+
+  - anchor_id: "F4_005"
+    anchor_type: "F4"
+    well: "מק_חולון_14"
+    well_name_he: "מק חולון 14"
+    family: "MIXED"
+    forensic_framework_applied: "production-well integration analysis — multi-parameter co-rise indicating upgradient plume reaching receptor"
+    detection_metrics:
+      tce_max_ug_L: 9.5
+      tce_pct_DWS: 126.7
+      dichloromethane_max_ug_L: 7.4
+      dichloromethane_pct_DWS: 148.0
+      pce_max_ug_L: 4.5
+      nitrate_trend: "INCREASING z=1.91 p=0.057"
+      arsenic_trend: "INCREASING (per trends.csv classification)"
+      calcium_trend: "INCREASING (crossed_standard=True)"
+      hardness_trend: "INCREASING (crossed_standard via HARDNESS)"
+      latest_measurement_date: "2024-11-18"
+      forensics_analyzer_confidence: null
+    interpretive_trigger:
+      observation: "Production well (water-supply) shows TCE 127% DWS, dichloromethane 148% DWS, with rising nitrate, As, calcium, hardness — multi-parameter co-rise."
+      direction: "The water-supply well is integrating an arriving plume from upgradient industrial sources. Highest-priority public-health receptor — assess (a) whether well is still in production, (b) treatment efficacy if any, (c) source upgradient and travel-time."
+      caveat: "Some parameters (Ca, hardness) may rise due to geogenic mineralogical contact rather than anthropogenic; TCE + dichloromethane are unambiguously anthropogenic."
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      json_path: "trends.csv WHERE borehole_id='מק_חולון_14' AND classification='INCREASING'"
+      cross_validation_file: "Holon/data/measurements.csv"
+      cross_validation_filter: "canonical_id == 'מק_חולון_14' AND param_code IN ('TRICHLORO ETHYLENE','Methylene chloride ','TETRACHLORO ETHYLENE','NITRATE AS NO3','ARSENIC AS AS','CALCIUM AS CA')"
+    open_questions:
+      - "Is מק חולון 14 currently in active water production? If yes, what treatment is applied?"
+      - "What is the upgradient source-axis — is it the נת חולון industrial cluster, or a different one?"
+      - "What is the travel-time from candidate sources to this well, and is the rising-trend pattern consistent with expected plume arrival?"
+    candidate_source_categories:
+      - "upgradient industrial CVOC plume (from נת חולון cluster) arriving at production well"
+      - "agricultural / land-use change driving nitrate"
+      - "geogenic carbonate / hardness contribution (separate from anthropogenic)"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: CVOC plume from נת חולון cluster has reached production well 14; rising trend will continue."
+      - "HYPOTHESIS B: Local-scale source close to well 14 (rather than distant industrial cluster); shorter response time."
+      - "HYPOTHESIS C: Two unrelated processes — upgradient anthropogenic CVOC + independent hydrogeologic shift driving hardness and nitrate."

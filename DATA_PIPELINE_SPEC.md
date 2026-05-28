@@ -176,5 +176,12 @@ nt_holon_05,PFAS,2024-06-15,true,,8,3,only 3 PFAS measurements
 
 ---
 
+## See Also
+
+🔧 **Self-contained toolkit playbook**: `toolkit/playbooks/data_pipeline_spec.md` (lightweight summary for team distribution; references this SSOT for full details)
+
+---
+
 **Last Updated**: 2026-05-17  
-**Phase**: H+ (Hybrid V5 Pipeline — Documentation)
+**Phase**: H+ (Hybrid V5 Pipeline — Documentation)  
+**Last Sanitized**: 2026-05-27 (Back-references added)

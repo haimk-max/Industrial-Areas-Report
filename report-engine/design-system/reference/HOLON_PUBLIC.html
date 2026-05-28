@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>איכות מי-התהום באזה״ת חולון · דוח שקיפות · 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<style>
+:root{
+  --bg:           #fafaf8;
+  --surface:      #ffffff;
+  --surface-2:    #f4f5f3;
+  --surface-3:    #eef0ee;
+
+  --ink:          #0e1116;
+  --ink-2:        #3a414a;
+  --ink-3:        #5b6470;
+  --muted:        #8a939e;
+
+  --rule:         #dde1e3;
+  --rule-faint:   #e9ebe9;
+
+  --teal:         #0f6b7a;
+  --teal-2:       #0c5664;
+  --teal-tint:    #e6f0f2;
+  --teal-tint-2:  #d4e3e6;
+  --teal-deep:    #0a4953;
+
+  --red:          #c0392b;
+  --red-deep:     #962618;
+  --red-tint:     #fbeae7;
+  --amber:        #b87333;
+  --amber-tint:   #f6ecdf;
+  --green:        #1f7a4d;
+  --green-tint:   #e3efe8;
+
+  --sans:'IBM Plex Sans Hebrew', 'IBM Plex Sans', system-ui, sans-serif;
+  --serif:'IBM Plex Serif', 'Frank Ruhl Libre', serif;
+  --mono:'IBM Plex Mono', ui-monospace, monospace;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  font-feature-settings:"tnum","ss01";
+}
+body{ font-size:15px; line-height:1.65; }
+p,li,td,th,h1,h2,h3,h4,h5,figcaption{ unicode-bidi:isolate; }
+bdi{ font-feature-settings:"tnum"; }
+.mono{ font-family:var(--mono); font-feature-settings:"tnum"; }
+
+/* ════════════════ TOP RIBBON ════════════════ */
+.ribbon{
+  background:var(--teal);
+  color:#fff;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.08em;
+}
+.ribbon-inner{
+  max-width:1080px; margin:0 auto;
+  padding:8px 32px;
+  display:flex; justify-content:space-between; align-items:center;
+  gap:24px;
+}
+.ribbon .left{ display:flex; gap:18px; align-items:center; }
+.ribbon .right{ display:flex; gap:18px; align-items:center; opacity:0.85; }
+.ribbon .badge{
+  background:rgba(255,255,255,0.15);
+  padding:2px 9px;
+  letter-spacing:0.1em;
+  font-weight:500;
+  text-transform:uppercase;
+}
+
+/* ════════════════ PAGE FRAME ════════════════ */
+.page{
+  max-width:1080px;
+  margin:0 auto;
+  padding:0 32px 96px;
+  background:var(--bg);
+}
+
+/* ════════════════ HERO ════════════════ */
+.hero{
+  padding:80px 0 56px;
+  border-bottom:1px solid var(--ink);
+}
+.hero .eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--teal);
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  font-weight:500;
+  margin-bottom:22px;
+  display:flex; align-items:center; gap:14px;
+}
+.hero .eyebrow::before{
+  content:""; display:inline-block;
+  width:32px; height:1.5px; background:var(--teal);
+}
+.hero h1{
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:64px;
+  line-height:1.04;
+  letter-spacing:-0.025em;
+  color:var(--ink);
+  max-width:880px;
+  margin-bottom:24px;
+}
+.hero h1 .acc{
+  font-weight:500;
+  color:var(--teal);
+}
+.hero .lead{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:22px;
+  line-height:1.5;
+  color:var(--ink-2);
+  max-width:760px;
+}
+
+.hero-meta{
+  margin-top:48px;
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:0;
+  border-top:1px solid var(--rule);
+}
+.hero-meta .cell{
+  padding:20px 0 4px;
+  border-left:1px solid var(--rule);
+  padding-right:20px;
+}
+.hero-meta .cell:first-child{ padding-right:0; }
+.hero-meta .cell:last-child{ border-left:none; }
+.hero-meta .k{
+  font-family:var(--mono);
+  font-size:10.5px;
+  color:var(--muted);
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.hero-meta .v{
+  font-family:var(--sans);
+  font-size:18px;
+  color:var(--ink);
+  font-weight:500;
+}
+
+/* ════════════════ SECTION ════════════════ */
+.section{ margin-top:80px; }
+.section-head{
+  display:grid;
+  grid-template-columns:80px 1fr auto;
+  gap:24px;
+  align-items:baseline;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--ink);
+  margin-bottom:36px;
+}
+.section-head .num{
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--teal);
+  font-weight:500;
+  letter-spacing:0.08em;
+}
+.section-head h2{
+  font-family:var(--sans);
+  font-weight:500;
+  font-size:32px;
+  letter-spacing:-0.01em;
+  color:var(--ink);
+}
+.section-head .meta{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+}
+
+/* ════════════════ CONTEXT SECTION ════════════════ */
+.context-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:48px;
+  align-items:start;
+}
+.context-prose{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:18px;
+  line-height:1.65;
+  color:var(--ink-2);
+}
+.context-prose p + p{ margin-top:18px; }
+.context-prose strong{ color:var(--ink); font-weight:500; }
+.context-prose .drop{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:62px;
+  line-height:0.9;
+  color:var(--teal);
+  float:right;
+  margin-left:10px;
+  margin-top:6px;
+  letter-spacing:-0.02em;
+}
+
+.framing-card{
+  background:var(--amber-tint);
+  border-right:3px solid var(--amber);
+  padding:22px 24px;
+}
+.framing-card .hdr{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--amber);
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  font-weight:600;
+  margin-bottom:10px;
+}
+.framing-card .body{
+  font-size:15px;
+  color:var(--ink-2);
+  line-height:1.6;
+}
+.framing-card .body strong{ color:var(--ink); font-weight:600; }
+
+/* ════════════════ STAT GRID (public KPIs) ════════════════ */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  margin-top:32px;
+}
+.stat{
+  background:var(--surface);
+  padding:28px 24px 24px;
+}
+.stat .k{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--ink-3);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+.stat .v{
+  font-family:var(--sans);
+  font-size:54px;
+  font-weight:300;
+  letter-spacing:-0.03em;
+  line-height:1;
+  color:var(--ink);
+}
+.stat .v .unit{
+  font-size:22px;
+  color:var(--ink-3);
+  font-weight:400;
+  letter-spacing:0;
+  margin-right:6px;
+}
+.stat .v.teal{ color:var(--teal); }
+.stat .v.red{ color:var(--red); }
+.stat .v.green{ color:var(--green); }
+.stat .note{
+  font-family:var(--sans);
+  font-size:13.5px;
+  color:var(--ink-3);
+  line-height:1.5;
+  margin-top:14px;
+}
+.placeholder{
+  font-family:var(--mono);
+  font-size:0.5em;
+  color:var(--muted);
+  border:1px dashed var(--muted);
+  padding:1px 6px;
+  letter-spacing:0;
+  font-weight:400;
+  vertical-align:middle;
+}
+
+/* ════════════════ TIMELINE ════════════════ */
+.timeline{
+  position:relative;
+  padding:0;
+  background:var(--surface);
+  border:1px solid var(--rule);
+}
+.timeline-track{
+  position:relative;
+  height:480px;
+  margin:24px 60px 0;
+  direction:ltr; /* left-to-right axis; cards remain rtl */
+}
+.timeline-axis{
+  position:absolute;
+  bottom:64px; left:0; right:0;
+  height:1px;
+  background:var(--ink);
+}
+.timeline-ticks{
+  position:absolute;
+  bottom:64px; left:0; right:0;
+  height:24px;
+}
+.timeline-ticks .tick{
+  position:absolute;
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  letter-spacing:0.05em;
+  padding-top:10px;
+  transform:translateX(-50%);
+  white-space:nowrap;
+}
+.timeline-ticks .tick::before{
+  content:""; position:absolute; top:-1px; left:50%;
+  width:1px; height:6px; background:var(--rule);
+  transform:translateX(-50%);
+}
+.timeline-events{
+  position:absolute; inset:0;
+}
+.event{
+  position:absolute;
+  bottom:64px;
+  width:1px;
+  direction:rtl;
+}
+.event .dot{
+  position:absolute;
+  width:13px; height:13px;
+  border-radius:50%;
+  border:2.5px solid #fff;
+  box-shadow:0 0 0 1.5px var(--ink), 0 2px 6px rgba(0,0,0,0.1);
+  left:-6.5px; bottom:-7px;
+  z-index:3;
+}
+.event.crit .dot{ background:var(--red); box-shadow:0 0 0 1.5px var(--red), 0 2px 6px rgba(192,57,43,0.25); }
+.event.good .dot{ background:var(--green); box-shadow:0 0 0 1.5px var(--green), 0 2px 6px rgba(31,122,77,0.2); }
+.event.hist .dot{ background:#fff; box-shadow:0 0 0 1.5px var(--ink-3); }
+.event.cur .dot{ background:var(--teal); box-shadow:0 0 0 1.5px var(--teal), 0 2px 6px rgba(15,107,122,0.25); }
+.event .leader{
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:1px;
+  background:var(--rule);
+}
+.event .card{
+  position:absolute;
+  width:170px;
+  padding:8px 12px 9px;
+  background:#fff;
+  border:1px solid var(--rule);
+  font-size:12px;
+  line-height:1.38;
+  left:-85px;
+  z-index:2;
+}
+.event.crit .card{ border-color:#f0c7c0; }
+.event.good .card{ border-color:#c2dccc; }
+.event.cur .card{ border-color:var(--teal-tint-2); }
+/* edge alignment */
+.event.edge-l .card{ left:-12px; }
+.event.edge-r .card{ left:auto; right:-12px; }
+.event .card .y{
+  font-family:var(--mono); font-size:10.5px;
+  color:var(--ink-3); letter-spacing:0.08em;
+  text-transform:uppercase;
+  margin-bottom:4px;
+  font-weight:500;
+}
+.event.crit .card .y{ color:var(--red); }
+.event.good .card .y{ color:var(--green); }
+.event.cur .card .y{ color:var(--teal); }
+.event .card .t{
+  color:var(--ink);
+  font-weight:500;
+  font-size:13px;
+}
+.timeline-legend{
+  border-top:1px solid var(--rule);
+  padding:14px 40px;
+  display:flex; gap:24px; flex-wrap:wrap;
+  font-family:var(--mono); font-size:11px;
+  color:var(--ink-3);
+}
+.timeline-legend .lk{ display:inline-flex; align-items:center; gap:6px; }
+.timeline-legend .d{
+  width:9px; height:9px; border-radius:50%;
+  border:1.5px solid #fff;
+  box-shadow:0 0 0 1px var(--ink);
+}
+
+/* ════════════════ FINDINGS — public ════════════════ */
+.findings-public{
+  display:grid;
+  gap:0;
+  border:1px solid var(--rule);
+  background:var(--surface);
+}
+.fp{
+  display:grid;
+  grid-template-columns:80px 1fr 1fr;
+  gap:32px;
+  padding:32px 28px;
+  border-bottom:1px solid var(--rule);
+  align-items:start;
+}
+.fp:last-child{ border-bottom:none; }
+.fp .lead{
+  font-family:var(--mono);
+  display:flex; flex-direction:column; gap:8px;
+}
+.fp .lead .n{
+  font-size:13px;
+  color:var(--muted);
+  letter-spacing:0.06em;
+}
+.fp .lead .badge{
+  display:inline-block;
+  width:fit-content;
+  font-size:10px;
+  font-weight:600;
+  padding:3px 9px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+}
+.fp .lead .badge.crit{ background:var(--red); color:#fff; }
+.fp .lead .badge.high{ background:var(--amber); color:#fff; }
+.fp .lead .badge.good{ background:var(--green); color:#fff; }
+
+.fp .title{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:22px;
+  line-height:1.25;
+  margin-bottom:10px;
+  letter-spacing:-0.005em;
+}
+.fp .desc{
+  font-family:var(--serif);
+  font-size:16px;
+  color:var(--ink-2);
+  line-height:1.55;
+}
+.fp .desc strong{ color:var(--ink); font-weight:500; }
+
+.fp .panel{
+  background:var(--surface-2);
+  padding:16px 18px;
+  border-right:2px solid var(--teal);
+}
+.fp .panel .lbl{
+  font-family:var(--mono);
+  font-size:10.5px;
+  color:var(--teal);
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  font-weight:600;
+  margin-bottom:8px;
+}
+.fp .panel .txt{
+  font-family:var(--sans);
+  font-size:14px;
+  color:var(--ink);
+  line-height:1.55;
+}
+.fp .panel .txt + .lbl{ margin-top:14px; }
+
+/* finding "the number" stat */
+.fp-stat{
+  margin-top:14px;
+  display:flex; align-items:baseline; gap:14px;
+}
+.fp-stat .v{
+  font-family:var(--sans);
+  font-size:42px;
+  font-weight:300;
+  letter-spacing:-0.025em;
+  line-height:1;
+  color:var(--ink);
+}
+.fp-stat .v.red{ color:var(--red); }
+.fp-stat .v.green{ color:var(--green); }
+.fp-stat .lbl{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--ink-3);
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+}
+
+/* ════════════════ MAP ════════════════ */
+.map-wrap{
+  background:var(--surface);
+  border:1px solid var(--rule);
+}
+.map-intro{
+  padding:18px 22px;
+  border-bottom:1px solid var(--rule);
+  font-size:14.5px;
+  color:var(--ink-3);
+  line-height:1.55;
+}
+.map-intro strong{ color:var(--ink); font-weight:500; }
+#holon-map-pub{
+  height:540px; width:100%;
+  direction:ltr;
+  background:#f4f5f3;
+}
+.map-legend{
+  display:flex; flex-wrap:wrap; gap:16px 28px;
+  padding:16px 22px;
+  border-top:1px solid var(--rule);
+  font-family:var(--mono); font-size:11px;
+  color:var(--ink-3);
+}
+.map-legend .lk{
+  display:inline-flex; align-items:center; gap:8px;
+}
+.map-legend .dot{
+  width:13px; height:13px; border-radius:50%;
+  display:inline-block; flex-shrink:0;
+  border:1.5px solid #fff;
+  box-shadow:0 0 0 1px var(--rule);
+}
+
+/* Leaflet overrides */
+.leaflet-container{ font-family:var(--sans) !important; background:#f4f5f3 !important; }
+.leaflet-control-attribution{
+  font-family:var(--mono) !important;
+  font-size:10px !important;
+  background:rgba(255,255,255,0.88) !important;
+  color:var(--ink-3) !important;
+}
+.leaflet-control-attribution a{ color:var(--teal) !important; }
+.leaflet-control-zoom a{
+  background:#fff !important; color:var(--ink) !important;
+  border:1px solid var(--rule) !important;
+  font-family:var(--mono) !important;
+  border-radius:0 !important;
+}
+.leaflet-popup-content-wrapper{
+  border-radius:0 !important;
+  border:1px solid var(--ink) !important;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08) !important;
+  padding:0 !important; background:#fff !important;
+}
+.leaflet-popup-content{ margin:0 !important; padding:0 !important; font-family:var(--sans) !important; min-width:240px; }
+.leaflet-popup-tip{ border:1px solid var(--ink) !important; }
+.popup{ direction:rtl; }
+.popup .hdr{
+  padding:10px 12px;
+  background:var(--ink); color:#fff;
+  font-family:var(--mono); font-size:11px;
+  letter-spacing:0.06em; text-transform:uppercase;
+  display:flex; justify-content:space-between;
+}
+.popup .hdr.crit{ background:var(--red); }
+.popup .hdr.high{ background:var(--amber); }
+.popup .hdr.good{ background:var(--green); }
+.popup .hdr.teal{ background:var(--teal); }
+.popup .body{ padding:12px 14px; }
+.popup .ttl{ font-size:15px; font-weight:600; color:var(--ink); margin-bottom:4px; }
+.popup .sub{ font-family:var(--mono); font-size:11px; color:var(--ink-3); margin-bottom:8px; }
+.popup .row{
+  display:flex; justify-content:space-between;
+  font-size:12.5px; padding:4px 0;
+  border-top:1px solid var(--rule-faint);
+}
+.popup .row .k{ font-family:var(--mono); font-size:10.5px; color:var(--ink-3); letter-spacing:0.05em; text-transform:uppercase; }
+.popup .row .v{ font-family:var(--mono); font-weight:500; color:var(--ink); }
+.popup .row .v.red{ color:var(--red); }
+
+.bh-marker{
+  border-radius:50%;
+  border:2.5px solid #fff;
+  box-shadow:0 0 0 1px rgba(0,0,0,0.18), 0 2px 5px rgba(0,0,0,0.12);
+  cursor:pointer;
+  transition:transform 0.12s ease;
+}
+.bh-marker:hover{ transform:scale(1.2); z-index:1000; }
+.bh-marker.silent{
+  border-style:dashed;
+  border-color:var(--red);
+  background:#fff !important;
+}
+
+/* ════════════════ WHAT IT MEANS ════════════════ */
+.means-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:24px;
+}
+.means-card{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  padding:28px 28px 26px;
+  position:relative;
+}
+.means-card::before{
+  content:""; position:absolute; top:0; right:0; left:0; height:3px;
+  background:var(--teal);
+}
+.means-card .num{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--teal);
+  letter-spacing:0.12em;
+  font-weight:500;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+.means-card h3{
+  font-family:var(--sans);
+  font-weight:500;
+  font-size:22px;
+  line-height:1.3;
+  margin-bottom:14px;
+  letter-spacing:-0.005em;
+  color:var(--ink);
+}
+.means-card p{
+  font-family:var(--serif);
+  font-size:15.5px;
+  color:var(--ink-2);
+  line-height:1.6;
+}
+.means-card p + p{ margin-top:12px; }
+.means-card ul{
+  list-style:none;
+  margin-top:14px;
+}
+.means-card li{
+  font-family:var(--sans);
+  font-size:14px;
+  color:var(--ink-2);
+  padding:8px 0 8px 0;
+  border-bottom:1px solid var(--rule-faint);
+  display:flex;
+  gap:14px;
+  align-items:baseline;
+}
+.means-card li:last-child{ border-bottom:none; }
+.means-card li::before{
+  content:"";
+  display:inline-block;
+  width:6px; height:6px;
+  background:var(--teal);
+  flex-shrink:0;
+  margin-top:6px;
+}
+
+/* ════════════════ METHODOLOGY ════════════════ */
+.methodology{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+}
+.method-cell{
+  padding:24px;
+  border-left:1px solid var(--rule);
+}
+.method-cell:last-child{ border-left:none; }
+.method-cell .num{
+  font-family:var(--mono);
+  font-size:32px;
+  font-weight:300;
+  color:var(--teal);
+  letter-spacing:-0.04em;
+  line-height:1;
+  margin-bottom:12px;
+}
+.method-cell h4{
+  font-family:var(--sans);
+  font-size:15px;
+  font-weight:600;
+  margin-bottom:8px;
+}
+.method-cell p{
+  font-family:var(--sans);
+  font-size:13.5px;
+  color:var(--ink-3);
+  line-height:1.55;
+}
+
+/* ════════════════ FOOTER ════════════════ */
+.footer{
+  margin-top:80px;
+  padding:28px 0 0;
+  border-top:1px solid var(--ink);
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:32px;
+}
+.footer .col .lbl{
+  font-family:var(--mono); font-size:11px;
+  color:var(--ink-3); letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.footer .col .val{
+  font-size:14px; color:var(--ink-2); line-height:1.55;
+}
+.footer .col .val a{
+  color:var(--teal);
+  text-decoration:none;
+  border-bottom:1px solid var(--teal-tint-2);
+}
+
+/* ════════════════ RESPONSIVE ════════════════ */
+@media (max-width: 920px){
+  .hero h1{ font-size:44px; }
+  .hero .lead{ font-size:18px; }
+  .hero-meta{ grid-template-columns:repeat(2, 1fr); }
+  .hero-meta .cell:nth-child(2){ border-left:none; }
+  .stats{ grid-template-columns:1fr; }
+  .context-grid{ grid-template-columns:1fr; }
+  .fp{ grid-template-columns:1fr; gap:18px; }
+  .means-grid{ grid-template-columns:1fr; }
+  .methodology{ grid-template-columns:1fr; }
+  .method-cell{ border-left:none; border-bottom:1px solid var(--rule); }
+  .footer{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════ RIBBON ════════════════ -->
+<div class="ribbon">
+  <div class="ribbon-inner">
+    <div class="left">
+      <span class="badge">דוח שקיפות</span>
+      <span>רשות המים · אגף מי תהום</span>
+    </div>
+    <div class="right">
+      <span>מהדורת ציבור · מאי <bdi>2026</bdi></span>
+      <span>גרסה <bdi>1.0</bdi></span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ════════════════ HERO ════════════════ -->
+  <header class="hero">
+    <div class="eyebrow">אזה״ת חולון · דוח איכות מי-תהום <bdi>2026</bdi></div>
+    <h1>איכות מי-התהום באזור התעשייה<br/><span class="acc">חולון</span> — מה אנחנו מנטרים, מה מצאנו</h1>
+    <p class="lead">דוח שקיפות שמרכז שש שנות נתוני ניטור (<bdi>2020–2026</bdi>) מ-כ-<bdi>58</bdi> קידוחים פעילים. מטרת המסמך: להציג בבהירות את מצב מי-התהום, את המוקדים שאנחנו עוקבים אחריהם, את הצלחות השיקום, ואת תחומי הניטור שעדיין צריכים להתחזק.</p>
+
+    <div class="hero-meta">
+      <div class="cell">
+        <div class="k">תקופת ניתוח</div>
+        <div class="v"><bdi>2020 — 2026</bdi></div>
+      </div>
+      <div class="cell">
+        <div class="k">קידוחים במעקב</div>
+        <div class="v"><span class="placeholder">~58</span> קידוחים</div>
+      </div>
+      <div class="cell">
+        <div class="k">משפחות מזהמים</div>
+        <div class="v"><bdi>4</bdi> משפחות</div>
+      </div>
+      <div class="cell">
+        <div class="k">תדירות עדכון</div>
+        <div class="v">דיגום שוטף</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ════════════════ CONTEXT ════════════════ -->
+  <section class="section" style="margin-top:64px">
+    <div class="section-head">
+      <span class="num">§ 01</span>
+      <h2>הקשר</h2>
+      <span class="meta">למה אנחנו מנטרים את חולון</span>
+    </div>
+
+    <div class="context-grid">
+      <div class="context-prose">
+        <p><span class="drop">א</span>זור התעשייה של חולון הוא מהוותיקים בארץ — פעיל מאז שנות ה-<bdi>60</bdi>, ומכיל היסטוריה תעשייתית מגוונת: מפעלי ציפוי מתכות, אלקטרוניקה, מתקני דלק, מחזור, טקסטיל וכימיקלים. חלק מהפעילויות הללו השאירו טביעה ויסטורית בקרקע ובמי-התהום.</p>
+        <p>החל מסוף שנות ה-<bdi>90</bdi> אנחנו מפעילים מערך ניטור באזור — כיום <strong>כ-<bdi>58</bdi> קידוחי ליבה</strong> שנדגמים בתדירות משתנה. הדוח הזה מסכם את שש השנים האחרונות: רוב הקידוחים תקינים, אך באזורים מסוימים זוהו מוקדים היסטוריים שאנחנו עוקבים אחריהם בצמוד.</p>
+        <p>המסמך נכתב במחויבות לשקיפות: אנו מציגים את <strong>מה שמצאנו</strong>, את <strong>מה שעדיין לא יודעים</strong>, ואת <strong>מה שאנחנו עושים</strong> — ללא הסתרה.</p>
+      </div>
+
+      <div class="framing-card">
+        <div class="hdr">⚠ הערת קריאה חשובה</div>
+        <div class="body">
+          קידוחי הניטור באזה״ת חולון <strong>מוקמו בכוונה תחילה ליד מקורות זיהום חשודים</strong> — תחנות דלק, מתקני תעשייה היסטוריים, ואתרי ציפוי. לכן, <strong>שיעור החריגות שמופיע בדוח אינו מייצג את כלל המים באזור</strong> — הוא מייצג מצב באזורי הסיכון. רוב המים באזה״ת חולון תקינים.
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stat">
+        <div class="k">קידוחים שנדגמו</div>
+        <div class="v teal"><span class="placeholder">~58</span></div>
+        <div class="note">מהווים את "ליבת הניטור" — נדגמו לפחות פעם אחת ב-<bdi>5</bdi> השנים האחרונות.</div>
+      </div>
+      <div class="stat">
+        <div class="k">חריגת תקן · קידוח אספקה</div>
+        <div class="v red"><bdi>1</bdi></div>
+        <div class="note">קידוח אספקה (<bdi>מק חולון 14</bdi>) חצה ב-<bdi>04/2025</bdi> את תקן <bdi>TCE</bdi>. המדידות הבאות חזרו מתחת לסף.</div>
+      </div>
+      <div class="stat">
+        <div class="k">שיקום מוצלח</div>
+        <div class="v green">×<bdi>57</bdi></div>
+        <div class="note">ירידה בריכוז ניקל באתר רימטל לאחר התערבות שיקום — מודל הצלחה.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ TIMELINE ════════════════ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="num">§ 02</span>
+      <h2>סיפור בקו-זמן</h2>
+      <span class="meta">מהיסטוריה ועד היום</span>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-track">
+        <div class="timeline-axis"></div>
+        <div class="timeline-ticks">
+          <span class="tick" style="left:5%"><bdi>1965</bdi></span>
+          <span class="tick" style="left:20%"><bdi>1985</bdi></span>
+          <span class="tick" style="left:38%"><bdi>2000</bdi></span>
+          <span class="tick" style="left:55%"><bdi>2013</bdi></span>
+          <span class="tick" style="left:70%"><bdi>2020</bdi></span>
+          <span class="tick" style="left:82%"><bdi>2023</bdi></span>
+          <span class="tick" style="left:92%"><bdi>2025</bdi></span>
+          <span class="tick" style="left:98%"><bdi>2026</bdi></span>
+        </div>
+        <div class="timeline-events">
+
+          <!-- 1965-1985 · Layer B (mid-low) · edge-l -->
+          <div class="event hist edge-l" style="left:8%">
+            <div class="dot"></div>
+            <div class="leader" style="height:120px"></div>
+            <div class="card" style="bottom:110px">
+              <div class="y">1965–85 · רקע</div>
+              <div class="t">הקמת אזור התעשייה. תקופת הזיהום ההיסטורית.</div>
+            </div>
+          </div>
+
+          <!-- 2000 · Layer C (mid-high) -->
+          <div class="event hist" style="left:38%">
+            <div class="dot"></div>
+            <div class="leader" style="height:220px"></div>
+            <div class="card" style="bottom:210px">
+              <div class="y">2000 · מעקב</div>
+              <div class="t">תחילת ניטור שיטתי של מי-התהום באזור.</div>
+            </div>
+          </div>
+
+          <!-- 2013-20 · Layer A (lowest) -->
+          <div class="event hist" style="left:55%">
+            <div class="dot"></div>
+            <div class="leader" style="height:20px"></div>
+            <div class="card" style="bottom:10px">
+              <div class="y">2013–20 · שיקום</div>
+              <div class="t">פעולות שיקום באתרים תעשייתיים סגורים.</div>
+            </div>
+          </div>
+
+          <!-- 2023 · Layer D (top — prominent positive) -->
+          <div class="event good" style="left:80%">
+            <div class="dot"></div>
+            <div class="leader" style="height:320px"></div>
+            <div class="card" style="bottom:310px">
+              <div class="y">2023 · הצלחה ✓</div>
+              <div class="t">ירידה של פי <bdi>57</bdi> בריכוז ניקל באתר משוקם.</div>
+            </div>
+          </div>
+
+          <!-- 11/2024 · Layer A (lowest) · edge-r -->
+          <div class="event crit edge-r" style="left:89%">
+            <div class="dot"></div>
+            <div class="leader" style="height:20px"></div>
+            <div class="card" style="bottom:10px">
+              <div class="y">11/2024 · התראה</div>
+              <div class="t">זיהוי תוצר פירוק מסרטן (<bdi>VC</bdi>) בקידוח ניטור.</div>
+            </div>
+          </div>
+
+          <!-- 04/2025 · Layer C (high — critical exceedance) · edge-r -->
+          <div class="event crit edge-r" style="left:94%">
+            <div class="dot"></div>
+            <div class="leader" style="height:220px"></div>
+            <div class="card" style="bottom:210px">
+              <div class="y">04/2025 · חריגה</div>
+              <div class="t">קידוח אספקה חצה את תקן <bdi>TCE</bdi> — לראשונה זה עשור.</div>
+            </div>
+          </div>
+
+          <!-- 02/2026 · Layer B (mid-low) · edge-r -->
+          <div class="event cur edge-r" style="left:98%">
+            <div class="dot"></div>
+            <div class="leader" style="height:120px"></div>
+            <div class="card" style="bottom:110px">
+              <div class="y">02/2026 · עדכני</div>
+              <div class="t">פלאום <bdi>1,4-דיאוקסן</bdi> מתפשט לעבר אזור חקלאי.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="timeline-legend">
+        <span class="lk"><span class="d" style="background:#fff; box-shadow:0 0 0 1px #5b6470"></span>אירוע היסטורי</span>
+        <span class="lk"><span class="d" style="background:#1f7a4d; box-shadow:0 0 0 1px #1f7a4d"></span>הצלחה</span>
+        <span class="lk"><span class="d" style="background:#c0392b; box-shadow:0 0 0 1px #c0392b"></span>התראה / חריגה</span>
+        <span class="lk"><span class="d" style="background:#0f6b7a; box-shadow:0 0 0 1px #0f6b7a"></span>עדכני · פעיל</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ FINDINGS PUBLIC ════════════════ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="num">§ 03</span>
+      <h2>שבעת הממצאים</h2>
+      <span class="meta">מה זיהינו · מה עושים</span>
+    </div>
+
+    <div class="findings-public">
+
+      <!-- F1 -->
+      <article class="fp">
+        <div class="lead">
+          <span class="n">ממצא · <bdi>01</bdi></span>
+          <span class="badge crit">קריטי</span>
+        </div>
+        <div>
+          <div class="title">חציית סף בקידוח אספקה</div>
+          <div class="desc">בחודש <bdi>אפריל 2025</bdi> חצה קידוח אספקה אחד את תקן <bdi>TCE</bdi> (ממס תעשייתי) ברמה של <strong>פי <bdi>1.01</bdi> מהתקן</strong> — לראשונה זה עשור. הניטור הוגבר מיד, והמדידות הבאות חזרו מתחת לתקן.</div>
+          <div class="fp-stat">
+            <span class="v red">×<bdi>1.01</bdi></span>
+            <span class="lbl">פי תקן<br/><bdi>04/2025</bdi></span>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="lbl">מה זה אומר</div>
+          <div class="txt">אירוע שדורש מעקב צמוד. החריגה הייתה רגעית; המים שיוצאים מהקידוח עוברים תהליך טיפול לפני אספקה לרשת.</div>
+          <div class="lbl">מה אנחנו עושים</div>
+          <div class="txt">ניטור חודשי תכוף בקידוח, בדיקת נתיב האספקה, ובחינת קידוחים סמוכים.</div>
+        </div>
+      </article>
+
+      <!-- F2 -->
+      <article class="fp">
+        <div class="lead">
+          <span class="n">ממצא · <bdi>02</bdi></span>
+          <span class="badge crit">קריטי</span>
+        </div>
+        <div>
+          <div class="title">מוקד תעשייתי היסטורי עיקש</div>
+          <div class="desc">באחד מאתרי הציפוי הסגורים מ-<bdi>2013</bdi> אנחנו ממשיכים למדוד ריכוזים גבוהים של <bdi>TCE</bdi>, גם לאחר טיפול שיקום של <bdi>7</bdi> שנים. זה מצביע על <strong>מקור עומק שלא נוקה</strong>.</div>
+          <div class="fp-stat">
+            <span class="v red"><bdi>2,722</bdi></span>
+            <span class="lbl">µg/L<br/>יציב <bdi>3</bdi> שנים</span>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="lbl">מה זה אומר</div>
+          <div class="txt">המים בקידוחי הניטור באתר אינם משמשים לאספקה. הזיהום ממוקד וידוע, ואינו מתפשט באופן משמעותי לסביבה.</div>
+          <div class="lbl">מה אנחנו עושים</div>
+          <div class="txt">חקירת מקור הזיהום בעומק, ובחינת אפשרות לשלב נוסף של טיפול שיקום.</div>
+        </div>
+      </article>
+
+      <!-- F3 -->
+      <article class="fp">
+        <div class="lead">
+          <span class="n">ממצא · <bdi>03</bdi></span>
+          <span class="badge crit">קריטי</span>
+        </div>
+        <div>
+          <div class="title">מזהם חדש מתפשט לעבר אזור חקלאי</div>
+          <div class="desc">זוהה פלאום של מזהם פחות מוכר (<bdi>1,4-דיאוקסן</bdi>) שמתפשט מהאשכול התעשייתי לקידוח חקלאי במרחק כקילומטר. הריכוזים מצטברים — נדרשת חקירת מקור והגברת הניטור.</div>
+          <div class="fp-stat">
+            <span class="v red">×<bdi>13</bdi></span>
+            <span class="lbl">מתקן EPA<br/>קידוח חקלאי</span>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="lbl">מה זה אומר</div>
+          <div class="txt">המזהם אינו עומד בתקן ה-<bdi>EPA</bdi> האמריקאי (תקן רפרנס; אין עדיין תקן ישראלי רשמי). הקידוח החקלאי בו זוהה אינו מספק מים לשתייה.</div>
+          <div class="lbl">מה אנחנו עושים</div>
+          <div class="txt">דיגום חוזר דחוף, איתור מקור הזיהום במרשם התעשייה, והרחבת פאנל הבדיקות.</div>
+        </div>
+      </article>
+
+      <!-- F4 -->
+      <article class="fp">
+        <div class="lead">
+          <span class="n">ממצא · <bdi>04</bdi></span>
+          <span class="badge high">גבוה</span>
+        </div>
+        <div>
+          <div class="title">אזורים שבהם הניטור צריך להתחזק</div>
+          <div class="desc">שבעה קידוחים — חלקם בריכוזי שיא היסטוריים — לא נדגמו בין <strong><bdi>39</bdi> ל-<bdi>150</bdi> חודשים</strong>. אנחנו מתחייבים לחדש את הדיגום בכולם ולוודא שאף אזור סיכון לא יוצא ממערך המעקב.</div>
+          <div class="fp-stat">
+            <span class="v red"><bdi>7</bdi>+</span>
+            <span class="lbl">קידוחים<br/>שותקים</span>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="lbl">מה זה אומר</div>
+          <div class="txt">פערי ניטור הם נושא שמתפרסם במסמך זה ב<strong>שקיפות מלאה</strong> — לא כדי להמעיט בחשיבותם, אלא כדי להציג את התמונה האמיתית.</div>
+          <div class="lbl">מה אנחנו עושים</div>
+          <div class="txt">חידוש דיגום בכל שבעת הקידוחים והאשכולות, וביצוע סקירה תפעולית של תהליך תיעדוף הניטור.</div>
+        </div>
+      </article>
+
+      <!-- F5 -->
+      <article class="fp">
+        <div class="lead">
+          <span class="n">ממצא · <bdi>05</bdi></span>
+          <span class="badge high">גבוה</span>
+        </div>
+        <div>
+          <div class="title">זיהוי תוצר פירוק מסרטן</div>
+          <div class="desc">לראשונה זוהה בקידוח ניטור תוצר לוואי של פירוק כימי — חומר המסווג כמסרטן (<bdi>VC</bdi>). הריכוזים נמוכים מבחינה מוחלטת אך גבוהים יחסית לסף הבריאותי האמריקאי.</div>
+          <div class="fp-stat">
+            <span class="v red"><bdi>13.8</bdi></span>
+            <span class="lbl">µg/L<br/>קידוח ניטור</span>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="lbl">מה זה אומר</div>
+          <div class="txt">הקידוח אינו משמש לאספקה. הימצאות החומר מעידה על כך שתהליך פירוק כימי טבעי או יזום פעיל באזור.</div>
+          <div class="lbl">מה אנחנו עושים</div>
+          <div class="txt">דיגום נוסף לאישוש, והוספת בדיקות לתוצרי פירוק נוספים בפאנל הקבוע.</div>
+        </div>
+      </article>
+
+      <!-- F6 -->
+      <article class="fp">
+        <div class="lead">
+          <span class="n">ממצא · <bdi>06</bdi></span>
+          <span class="badge high">גבוה</span>
+        </div>
+        <div>
+          <div class="title">פערי כיסוי לחומרי <bdi>PFAS</bdi></div>
+          <div class="desc">משפחת מזהמים נוספת (<bdi>PFAS</bdi> — "כימיקלים נצחיים") נבדקה רק ב-<bdi>~3.6%</bdi> מהקידוחים. <strong>כל הקידוחים שנדגמו היו תקינים</strong>, אך אנחנו עדיין לא דגמנו במתקני הסיכון הגבוה. נדרש קמפיין דיגום ממוקד.</div>
+          <div class="fp-stat">
+            <span class="v"><bdi>3.6</bdi>%</span>
+            <span class="lbl">כיסוי<br/>נוכחי</span>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="lbl">מה זה אומר</div>
+          <div class="txt">פער הכיסוי הזה מפורסם בשקיפות. הקמפיין יכלול <bdi>8–12</bdi> קידוחים נוספים סביב מתקני סיכון.</div>
+          <div class="lbl">מה אנחנו עושים</div>
+          <div class="txt">תכנון קמפיין דיגום <bdi>PFAS</bdi> ייעודי בקידוחים חדשים וקיימים.</div>
+        </div>
+      </article>
+
+      <!-- F7 -->
+      <article class="fp">
+        <div class="lead">
+          <span class="n">ממצא · <bdi>07</bdi></span>
+          <span class="badge good">חיובי</span>
+        </div>
+        <div>
+          <div class="title">שיקום מוצלח — מודל לאתרים אחרים</div>
+          <div class="desc">באתר מחזור מתכות הוכיחו פעולות שיקום (סגירת בור ספיגה + ניקוי קרקע) ירידה דרמטית בריכוזי ניקל — <strong>פי <bdi>57</bdi> פחות</strong> תוך שלוש שנים. זהו מודל הצלחה שאנחנו מתעדים ומבקשים לשכפל באתרים דומים.</div>
+          <div class="fp-stat">
+            <span class="v green">×<bdi>57</bdi> ↓</span>
+            <span class="lbl">ירידה<br/>2.0 mg/L → 13.8 µg/L</span>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="lbl">מה זה אומר</div>
+          <div class="txt">פעולות שיקום ממוקדות עובדות. זוהי הוכחה שתהליך השיקום הסביבתי באזה״ת חולון מניב תוצאות.</div>
+          <div class="lbl">מה אנחנו עושים</div>
+          <div class="txt">תיעוד מתודולוגי של ההצלחה, והחלת המודל על אתרים נוספים שעדיין דורשים טיפול.</div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ════════════════ MAP ════════════════ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="num">§ 04</span>
+      <h2>מפת הקידוחים</h2>
+      <span class="meta">לפי דרגת חומרה</span>
+    </div>
+    <div class="map-wrap">
+      <div class="map-intro">
+        <strong>איך לקרוא את המפה:</strong> כל נקודה היא קידוח ניטור. הצבע מציין את דרגת החומרה — אדום לקידוחים שחרגו או קרובים לחרוג מהתקן, אפור-כהה לקידוחים עם ריכוזי רקע מוגברים, ובהיר לקידוחים תקינים. ניתן ללחוץ על כל נקודה לקבלת פרטים. <em>שמות המתקנים התעשייתיים שמסומנים כמקורות זיהום אינם מפורסמים במסמך זה.</em>
+      </div>
+      <div id="holon-map-pub"></div>
+      <div class="map-legend">
+        <span class="lk"><span class="dot" style="background:#c0392b"></span>חריגת תקן או קרוב לסף</span>
+        <span class="lk"><span class="dot" style="background:#5a564f"></span>ריכוזי רקע מוגברים</span>
+        <span class="lk"><span class="dot" style="background:#8a8f8f"></span>רקע נמוך</span>
+        <span class="lk"><span class="dot" style="background:#d2d6d5"></span>תקין</span>
+        <span class="lk"><span class="dot" style="background:#1f7a4d"></span>אתר משוקם</span>
+        <span class="lk"><span class="dot" style="background:#fff; border:1.5px dashed #c0392b; box-shadow:none"></span>טרם נדגם לאחרונה</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ WHAT IT MEANS ════════════════ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="num">§ 05</span>
+      <h2>מה זה אומר · מה אנחנו עושים</h2>
+      <span class="meta">סיכום אזרחי</span>
+    </div>
+    <div class="means-grid">
+
+      <div class="means-card">
+        <div class="num">סיכום · א</div>
+        <h3>הסיפור הגדול הוא לא דרמטי, אבל גם לא רגוע</h3>
+        <p>רוב המים באזה״ת חולון תקינים. אבל יש שני סוגי "סיפורי-משנה" שאנחנו לוקחים ברצינות: <strong>מוקדים היסטוריים</strong> שעדיין משפיעים על איכות המים המקומית, ו<strong>איתות חדש</strong> של מזהם פוטנציאלי שמתפשט לעבר אזור חקלאי.</p>
+        <p>אנחנו לא מתעלמים מאף אחד מהם, וגם לא מגזימים בדרמה. הדוח הזה הוא הניסיון שלנו להציג את התמונה כפי שהיא.</p>
+      </div>
+
+      <div class="means-card">
+        <div class="num">סיכום · ב</div>
+        <h3>מה אנחנו עושים מעכשיו</h3>
+        <ul>
+          <li>חידוש דיגום בכל הקידוחים שלא נדגמו לאחרונה — ביטול "פערי השתיקה".</li>
+          <li>קמפיין <bdi>PFAS</bdi> ממוקד באזורים שעדיין לא נדגמו.</li>
+          <li>הגברת ניטור בקידוח האספקה שחצה את התקן, ובחינת קידוחים סמוכים.</li>
+          <li>חקירת מקור פלאום ה-<bdi>1,4-דיאוקסן</bdi> ואיתורו במרשם התעשייה.</li>
+          <li>הוספת תוצרי פירוק נוספים לפאנל בדיקות הקבוע.</li>
+          <li>תיעוד מודל ההצלחה של רימטל והחלתו על אתרים דומים.</li>
+        </ul>
+      </div>
+
+      <div class="means-card">
+        <div class="num">סיכום · ג</div>
+        <h3>מה הדוח הזה לא אומר</h3>
+        <p>הדוח <strong>אינו</strong> מסקנה לגבי המים שזורמים בברז שלכם. רוב המים באזור עוברים תהליכי טיפול, ובדיקות איכות מתבצעות בנקודות אספקה נפרדות.</p>
+        <p>הדוח גם <strong>אינו תחליף</strong> למסמכים מקצועיים מלאים — הוא תקציר. מי שמעוניין בנתונים גולמיים מוזמן לפנות אלינו.</p>
+      </div>
+
+      <div class="means-card">
+        <div class="num">סיכום · ד</div>
+        <h3>למה לפרסם דוח כזה</h3>
+        <p>מי-תהום הוא משאב ציבורי. ניטור איכותו ממומן מכספי ציבור, והממצאים שייכים לציבור.</p>
+        <p>שקיפות במצב הסביבה היא חלק מהמחויבות שלנו, גם — ובמיוחד — כשהממצאים אינם נוחים. דוח זה הוא צעד אחד בכיוון הזה, ולא אחרון.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════ METHODOLOGY ════════════════ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="num">§ 06</span>
+      <h2>איך הדוח נכתב</h2>
+      <span class="meta">מתודולוגיה ונתונים</span>
+    </div>
+    <div class="methodology">
+      <div class="method-cell">
+        <div class="num">01</div>
+        <h4>מקור הנתונים</h4>
+        <p>מסד נתוני הניטור של רשות המים, אגף מי-תהום. נתונים מתאריכי דיגום <bdi>01/2020 – 02/2026</bdi>.</p>
+      </div>
+      <div class="method-cell">
+        <div class="num">02</div>
+        <h4>קריטריון השוואה</h4>
+        <p>תקנות מי-שתייה (<bdi>2013</bdi>) לישראל. עבור מזהמים ללא תקן ישראלי, השוואה לתקני <bdi>EPA</bdi> אמריקאיים.</p>
+      </div>
+      <div class="method-cell">
+        <div class="num">03</div>
+        <h4>חישוב חומרה</h4>
+        <p>מבוסס על <bdi>C_max</bdi> ב-<bdi>5</bdi> השנים האחרונות, כאחוז מהתקן. ערכים מוצגים בפועל, לא מעובדים סטטיסטית.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+  <footer class="footer">
+    <div class="col">
+      <div class="lbl">פנייה והבהרות</div>
+      <div class="val">לבירורים נוספים, גישה לנתונים גולמיים, או בקשות מקצועיות —<br/><a href="mailto:water@water.gov.il">water@water.gov.il</a></div>
+    </div>
+    <div class="col">
+      <div class="lbl">מהדורה</div>
+      <div class="val">דוח שקיפות · מהדורת ציבור · v<bdi>1.0</bdi> · <bdi>05/2026</bdi></div>
+    </div>
+    <div class="col">
+      <div class="lbl">מזהה מסמך</div>
+      <div class="val mono"><bdi>HOL/EXEC/PUB/2026-01</bdi></div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  const CENTER = [32.0125, 34.7835];
+  const ZOOM   = 15;
+
+  // Public version: boreholes only, NO facility names in popups.
+  // Categorize by severity tier only.
+  const boreholes = [
+    { lat:32.01510, lon:34.78090, tier:'crit', code:'B-01',
+      desc:'קידוח אספקה', rows:[ ['חומרה','גבוהה','red'], ['חריגת תקן','×1.01 (04/2025)','red'], ['מזהם','TCE'] ]},
+    { lat:32.01180, lon:34.78870, tier:'crit', code:'B-02',
+      desc:'קידוח ניטור', rows:[ ['חומרה','גבוהה מאוד','red'], ['מזהם','ממס תעשייתי'], ['הקשר','מוקד תעשייתי היסטורי'] ]},
+    { lat:32.01340, lon:34.78580, tier:'crit', code:'B-03',
+      desc:'קידוח ניטור', rows:[ ['חומרה','גבוהה','red'], ['מזהמים','דיאוקסן · VC'], ['הקשר','פלאום מתפשט'] ]},
+    { lat:32.02020, lon:34.77380, tier:'crit', code:'B-04',
+      desc:'קידוח חקלאי', rows:[ ['חומרה','גבוהה','red'], ['מזהם','1,4-דיאוקסן'], ['הקשר','אינו לאספקה'] ]},
+    { lat:32.01040, lon:34.78320, tier:'high', code:'B-05',
+      desc:'קידוח ניטור', rows:[ ['חומרה','גבוהה'], ['מזהם','כרום (Cr)'] ]},
+    { lat:32.00950, lon:34.79080, tier:'high', code:'B-06',
+      desc:'חוץ-ליבה', rows:[ ['חומרה','גבוהה'], ['מזהם','CVOC'] ]},
+    { lat:32.00840, lon:34.78950, tier:'high', code:'B-07',
+      desc:'קידוח ניטור', rows:[ ['חומרה','גבוהה'], ['מזהם','CVOC'] ]},
+    { lat:32.01390, lon:34.79320, tier:'silent', code:'B-08',
+      desc:'טרם נדגם לאחרונה', rows:[ ['חומרה','-'], ['סטטוס','חידוש דיגום מתוכנן','red'] ]},
+    { lat:32.01530, lon:34.78760, tier:'silent', code:'B-09',
+      desc:'טרם נדגם לאחרונה', rows:[ ['חומרה','-'], ['סטטוס','חידוש דיגום מתוכנן','red'] ]},
+    { lat:32.00720, lon:34.78720, tier:'silent', code:'B-10',
+      desc:'טרם נדגם לאחרונה', rows:[ ['חומרה','-'], ['סטטוס','חידוש דיגום מתוכנן','red'] ]},
+    { lat:32.00690, lon:34.79140, tier:'success', code:'B-11',
+      desc:'אתר משוקם', rows:[ ['שינוי','×57 ירידה','green'], ['מזהם','ניקל'], ['סטטוס','שיקום מוצלח','green'] ]},
+    { lat:32.01290, lon:34.78250, tier:'med', code:'B-12',
+      desc:'קידוח ניטור', rows:[ ['חומרה','בינונית'], ['סטטוס','רקע מוגבר'] ]},
+    { lat:32.00880, lon:34.78460, tier:'low', code:'B-13',
+      desc:'קידוח ניטור', rows:[ ['חומרה','נמוכה'], ['סטטוס','תקין'] ]},
+    { lat:32.01680, lon:34.78440, tier:'low', code:'B-14',
+      desc:'קידוח ניטור', rows:[ ['חומרה','נמוכה'], ['סטטוס','תקין'] ]},
+    { lat:32.01840, lon:34.79100, tier:'med', code:'B-15',
+      desc:'קידוח ניטור', rows:[ ['חומרה','בינונית'] ]},
+    { lat:32.00930, lon:34.79430, tier:'low', code:'B-16',
+      desc:'קידוח ניטור', rows:[ ['חומרה','נמוכה'] ]},
+    { lat:32.01210, lon:34.78130, tier:'med', code:'B-17',
+      desc:'קידוח ניטור', rows:[ ['חומרה','בינונית'] ]},
+    { lat:32.00650, lon:34.78670, tier:'low', code:'B-18',
+      desc:'קידוח ניטור', rows:[ ['חומרה','נמוכה'] ]},
+  ];
+
+  const colors = {
+    crit:'#c0392b', high:'#5a564f', med:'#8a8f8f', low:'#d2d6d5',
+    silent:'#fff', success:'#1f7a4d',
+  };
+  const sizes = { crit:22, high:20, med:18, low:16, silent:20, success:20 };
+  const tierBadge = {
+    crit:'חריגה / סף', high:'רקע מוגבר', med:'רקע נמוך',
+    low:'תקין', silent:'דרוש חידוש', success:'אתר משוקם'
+  };
+  const tierClass = { crit:'crit', high:'high', med:'', low:'', silent:'', success:'good' };
+
+  const map = L.map('holon-map-pub', {
+    center: CENTER, zoom: ZOOM, minZoom: 13, maxZoom: 18,
+    scrollWheelZoom: false,
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains:'abcd', maxZoom:19,
+  }).addTo(map);
+
+  boreholes.forEach(b => {
+    const sz = sizes[b.tier];
+    const isSilent = b.tier === 'silent';
+    const bg = isSilent ? '#fff' : colors[b.tier];
+    const html = `<div class="bh-marker ${isSilent ? 'silent' : ''}" style="
+      width:${sz}px; height:${sz}px; background:${bg};
+    "></div>`;
+    const icon = L.divIcon({ className:'', html, iconSize:[sz,sz], iconAnchor:[sz/2,sz/2] });
+    const m = L.marker([b.lat, b.lon], { icon }).addTo(map);
+
+    const rowsHtml = b.rows.map(r => {
+      const vClass = r[2] ? ` ${r[2]}` : '';
+      return `<div class="row"><span class="k">${r[0]}</span><span class="v${vClass}">${r[1]}</span></div>`;
+    }).join('');
+    m.bindPopup(`<div class="popup">
+      <div class="hdr ${tierClass[b.tier]}"><span>קידוח · ${b.code}</span><span>${tierBadge[b.tier]}</span></div>
+      <div class="body">
+        <div class="ttl">${b.desc}</div>
+        ${rowsHtml}
+      </div>
+    </div>`);
+  });
+
+  // Plume polyline — public version: shows direction but no source name
+  L.polyline([
+    [32.01340, 34.78580], [32.01600, 34.78200],
+    [32.01850, 34.77750], [32.02020, 34.77380]
+  ], {
+    color:'#c0392b', weight:2, opacity:0.5, dashArray:'4 6',
+  }).addTo(map).bindTooltip('כיוון התפשטות פלאום מזהם', { sticky:true });
+
+  map.on('click', () => map.scrollWheelZoom.enable());
+  map.on('mouseout', () => map.scrollWheelZoom.disable());
+})();
+</script>
+
+</body>
+</html>

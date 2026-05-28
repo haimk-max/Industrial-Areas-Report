@@ -1,0 +1,113 @@
+canonical_well_id,name_he,itm_easting,itm_northing,well_type,zone_scope_source,monitoring_site
+יו_מקוה_ישראל_29/2,יו מקוה ישראל 29/2,180500,660280,monitoring,Holon_main_industrial,
+מק_חולון_12,מק חולון 12,182088,657195,monitoring,Holon_main_industrial,
+מק_חולון_14,מק חולון 14,180289,657578,monitoring,Holon_main_industrial,
+מק_חולון_23,מק חולון 23,182124,658134,monitoring,Holon_main_industrial,
+מק_חולון_5,מק חולון 5,181339,656645,monitoring,Holon_main_industrial,
+מק_מולדת_8,מק מולדת 8,182615,656613,monitoring,Holon_main_industrial,
+נד_אגד_אזור_1,נד אגד אזור 1,181824,658242,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_10,נד אגד אזור 10,181787,658217,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_11,נד אגד אזור 11,181789,658234,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_12,נד אגד אזור 12,181800,658252,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_13,נד אגד אזור 13,181854,658260,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_14,נד אגד אזור 14,181832,658286,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_15,נד אגד אזור 15,181955,658330,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_16,נד אגד אזור 16,181974,658337,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_17,נד אגד אזור 17,181967,658312,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_18,נד אגד אזור 18,181947,658323,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_2,נד אגד אזור 2,181847,658209,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_3,נד אגד אזור 3,181829,658242,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_4,נד אגד אזור 4,181821,658233,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_5,נד אגד אזור 5,181819,658254,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_6,נד אגד אזור 6,181834,658256,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_7,נד אגד אזור 7,181800,658234,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_8,נד אגד אזור 8,181874,658221,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_9,נד אגד אזור 9,181865,658232,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_n1,נד אגד אזור N1,182110,658258,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_n2,נד אגד אזור N2,181811,658249,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_n3,נד אגד אזור N3,181835,658250,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_אזור_n4,נד אגד אזור N4,181814,658234,fuel_monitoring,Holon_main_industrial,דלק
+נד_אגד_איזור_7,נד אגד איזור 7,181800,658234,fuel_monitoring,Holon_main_industrial,דלק
+נד_דלק_הצבי_1,נד דלק הצבי 1,181034,658808,fuel_monitoring,Holon_main_industrial,דלק
+נד_דלק_הצבי_2,נד דלק הצבי 2,181024,658800,fuel_monitoring,Holon_main_industrial,דלק
+נד_דלק_השבעה_נ/1,נד דלק השבעה נ/1,180996,659434,fuel_monitoring,Holon_main_industrial,דלק
+נד_דלק_מובילי_גוש_דן_1,נד דלק מובילי גוש דן 1,180841,659747,fuel_monitoring,Holon_main_industrial,דלק
+נד_דלק_מובילי_גוש_דן_2,נד דלק מובילי גוש דן 2,180825,659740,fuel_monitoring,Holon_main_industrial,דלק
+נד_דלק_מרכבות_האש_1,נד דלק מרכבות האש 1,181954,658093,fuel_monitoring,Holon_main_industrial,דלק
+נד_דלק_מרכבות_האש_2,נד דלק מרכבות האש 2,181956,658085,fuel_monitoring,Holon_main_industrial,דלק
+נד_דלק_מרכבות_האש_3,נד דלק מרכבות האש 3,181964,658093,fuel_monitoring,Holon_main_industrial,דלק
+נד_דלק_מרכבות_האש_4,נד דלק מרכבות האש 4,181959,658092,fuel_monitoring,Holon_main_industrial,דלק
+נד_דלק_מרכבות_האש_5,נד דלק מרכבות האש 5,181957,658088,fuel_monitoring,Holon_main_industrial,דלק
+נד_דלק_מרכבות_האש_6,נד דלק מרכבות האש 6,181968,658092,fuel_monitoring,Holon_main_industrial,דלק
+נד_דן_חולון_1,נד דן חולון 1,180939,659240,fuel_monitoring,Holon_main_industrial,דלק
+נד_דן_חולון_2,נד דן חולון 2,180882,659230,fuel_monitoring,Holon_main_industrial,דלק
+נד_המלאכה_מ_2,נד המלאכה מ 2,181362,658247,fuel_monitoring,Holon_main_industrial,דלק
+נד_המרכבה_ק2,נד המרכבה ק2,182017,657960,fuel_monitoring,Holon_main_industrial,דלק
+נד_המרכבה_ק3,נד המרכבה ק3,182008,657966,fuel_monitoring,Holon_main_industrial,דלק
+נד_טן_חולון_1,נד טן חולון 1,181031,658855,fuel_monitoring,Holon_main_industrial,דלק
+נד_מרכבות_האש_7,נד מרכבות האש 7,181954,658089,fuel_monitoring,Holon_main_industrial,דלק
+נד_מרכבות_האש_8,נד מרכבות האש 8,181956,658102,fuel_monitoring,Holon_main_industrial,דלק
+נד_מרכבות_האש_9,נד מרכבות האש 9,181961,658111,fuel_monitoring,Holon_main_industrial,דלק
+נד_נובר_מרכבה,נד נובר מרכבה,182028,657968,fuel_monitoring,Holon_main_industrial,דלק
+נד_סונול_המלאכה_מ-1,נד סונול המלאכה מ-1,181351,658241,fuel_monitoring,Holon_main_industrial,דלק
+נד_סונול_המלאכה_ק-1,נד סונול המלאכה ק-1,181360,658252,fuel_monitoring,Holon_main_industrial,דלק
+נד_סונול_מרכבה_1,נד סונול מרכבה 1,181963,656999,fuel_monitoring,Holon_main_industrial,דלק
+נד_סונול_משמר_השבעה_1,נד סונול משמר השבעה 1,182357,658011,fuel_monitoring,Holon_main_industrial,דלק
+נד_סונול_משמר_השבעה_2,נד סונול משמר השבעה 2,182370,658000,fuel_monitoring,Holon_main_industrial,דלק
+נד_סונול_משמר_השבעה_3,נד סונול משמר השבעה 3,182372,657976,fuel_monitoring,Holon_main_industrial,דלק
+נד_סונול_משמר_השבעה_4,נד סונול משמר השבעה 4,182366,657996,fuel_monitoring,Holon_main_industrial,דלק
+נד_סונול_משמר_השבעה_5,נד סונול משמר השבעה 5,182366,657996,fuel_monitoring,Holon_main_industrial,דלק
+נד_פז_סיירים_1,נד פז סיירים 1,181961,656689,fuel_monitoring,Holon_main_industrial,דלק
+נד_פז_סיירים_2,נד פז סיירים 2,181949,656664,fuel_monitoring,Holon_main_industrial,דלק
+נד_פז_סיירים_3,נד פז סיירים 3,181923,656643,fuel_monitoring,Holon_main_industrial,דלק
+נד_פז_סיירים_4,נד פז סיירים 4,181973,656649,fuel_monitoring,Holon_main_industrial,דלק
+נד_פז_סיירים_5,נד פז סיירים 5,181913,656666,fuel_monitoring,Holon_main_industrial,דלק
+נד_פז_צבר_1,נד פז צבר 1,180682,659739,fuel_monitoring,Holon_main_industrial,דלק
+נד_פז_צבר_2,נד פז צבר 2,180708,659696,fuel_monitoring,Holon_main_industrial,דלק
+נד_פז_צבר_3,נד פז צבר 3,180748,659729,fuel_monitoring,Holon_main_industrial,דלק
+נד_פז_צבר_4,נד פז צבר 4,180704,659709,fuel_monitoring,Holon_main_industrial,דלק
+נד_פז_צבר_5,נד פז צבר 5,180679,659707,fuel_monitoring,Holon_main_industrial,דלק
+נד_פז_צבר_6,נד פז צבר 6,180693,659696,fuel_monitoring,Holon_main_industrial,דלק
+נד_פז_קריית_שרת_1,נד פז קריית שרת 1,181141,657640,fuel_monitoring,Holon_main_industrial,דלק
+נת_אלביט_חולון_1,נת אלביט חולון 1,181193,658395,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_אלביט_חולון_2,נת אלביט חולון 2,181261,658395,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_אלביט_חולון_3,נת אלביט חולון 3,181163,658253,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_אלביט_חולון_4,נת אלביט חולון 4,181116,658300,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_ארן__מטל_חולון,נת ארן  מטל חולון,181380,656455,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_ארן_מטל_חולון_1,נת ארן מטל חולון 1,181370,656530,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חווה_חקלאית_א,נת חווה חקלאית א,181144,658203,industrial_monitoring,Holon_main_industrial,
+נת_חווה_חקלאית_ב,נת חווה חקלאית ב,181143,658204,industrial_monitoring,Holon_main_industrial,
+נת_חולון_1,נת חולון 1,181036,658814,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_11,נת חולון 11,181181,658237,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_12,נת חולון 12,181173,657941,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_13,נת חולון 13,181390,656825,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_14,נת חולון 14,180631,659044,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_16,נת חולון 16,181713,657027,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_18,נת חולון 18,180312,657980,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_2,נת חולון 2,180920,658664,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_21,נת חולון 21,181215,658330,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_22,נת חולון 22,181410,658390,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_23,נת חולון 23,181730,658580,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_24,נת חולון 24,181570,658570,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_25,נת חולון 25,181370,658540,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_26,נת חולון 26,181590,658670,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_3,נת חולון 3,181784,658062,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_4,נת חולון 4,180365,657909,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_5,נת חולון 5,180887,658232,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_6,נת חולון 6,181016,657734,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_7,נת חולון 7,180759,658487,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_8,נת חולון 8,181013,658395,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_חולון_9,נת חולון 9,180630,658788,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_יהודה_ייבוא_חולון,נת יהודה ייבוא חולון,180769,658928,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_מוסך_קטרפילר_חולון,נת מוסך קטרפילר חולון,181434,657064,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_תדירגן_10,נת תדירגן 10,181471,658264,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_תדירגן_2,נת תדירגן 2,181444,658312,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_תדירגן_4,נת תדירגן 4,181505,658298,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_תדירגן_5,נת תדירגן 5,181548,658380,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_תדירגן_6,נת תדירגן 6,181476,658263,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_תדירגן_7,נת תדירגן 7,181477,658259,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_תדירגן_8,נת תדירגן 8,181478,658262,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_תדירגן_9,נת תדירגן 9,181475,658265,industrial_monitoring,Holon_main_industrial,תעשיה
+נת_תדירגן_א.ת.חולון,נת תדירגן א.ת.חולון,181569,658294,industrial_monitoring,Holon_main_industrial,תעשיה
+פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,182567,659210,private_production,Holon_main_industrial,
+פ_מקוה_ישראל_רוטשילד,פ מקוה ישראל רוטשילד,180192,659682,private_production,Holon_main_industrial,
