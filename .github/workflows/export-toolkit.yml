@@ -12,17 +12,11 @@ jobs:
         with:
           ref: toolkit-standalone
           fetch-depth: 0
-
-      - name: Verify repo exists and PAT works
-        env:
-          GH_TOKEN: ${{ secrets.TOOLKIT_PAT }}
-        run: |
-          echo "Checking access to target repo..."
-          gh repo view haimk-max/ground-water-quality-toolkit || echo "ERROR: cannot access repo"
+          persist-credentials: false
 
       - name: Push to ground-water-quality-toolkit
         env:
-          GH_TOKEN: ${{ secrets.TOOLKIT_PAT }}
+          PAT: ${{ secrets.TOOLKIT_PAT }}
         run: |
-          git remote add toolkit https://x-access-token:${{ secrets.TOOLKIT_PAT }}@github.com/haimk-max/ground-water-quality-toolkit.git
-          git push toolkit HEAD:main --force --verbose
+          git remote add toolkit https://haimk-max:${PAT}@github.com/haimk-max/ground-water-quality-toolkit.git
+          git push toolkit HEAD:main --force
