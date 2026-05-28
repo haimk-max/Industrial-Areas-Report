@@ -1,0 +1,21 @@
+name: Export Toolkit to ground-water-quality-toolkit
+
+on:
+  workflow_dispatch:
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout toolkit-standalone branch
+        uses: actions/checkout@v4
+        with:
+          ref: toolkit-standalone
+          fetch-depth: 0
+
+      - name: Push to ground-water-quality-toolkit
+        run: |
+          git config user.email "haimk@water.gov.il"
+          git config user.name "GitHub Actions"
+          git remote add toolkit https://x-access-token:${{ secrets.TOOLKIT_PAT }}@github.com/haimk-max/ground-water-quality-toolkit.git
+          git push toolkit HEAD:main --force
