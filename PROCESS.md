@@ -11,7 +11,7 @@
 
 | # | בעיה | תיאור | סטטוס | תאריך פתיחה | קבצים |
 |---|------|--------|--------|----------------|--------|
-| 20 | PR #19 Merge (REQ #13–19 to main) | מיזוג של feature/hybrid-v5-implementation ל-main — תוכן: REQ #13–19 (Holon V5 pipeline, toolkit, executives, governance) | ⏳ In Review | 2026-05-28 | feature/hybrid-v5-implementation @ c7ffab0 |
+| 20 | PR #19 Merge + branch cleanup | מיזוג של feature/hybrid-v5-implementation ל-main + מחיקת toolkit-release branch מהשרת לאחר המיזוג | 🔄 In Progress | 2026-05-28 | feature/hybrid-v5-implementation @ c7ffab0, origin/toolkit-release |
 | 7 | Skills/אוטומציה לתהליכים חוזרים | אימוץ simplify (קוד כפול), init (regen CLAUDE.md), review (PR) | ⏳ Deferred | 2026-05-14 | אחרי בעיות 2–4 |
 | 11 | HIGH-priority simplify fixes (regexes + data loader) | pre-compile 8 module-level regexes (hot-path optimization), extract load_all_core_data() לdata_loader.py | ⏳ Deferred | 2026-05-14 | scripts/generate_holon_*.py, data_loader.py |
 
@@ -21,12 +21,12 @@
 
 | # | בעיה | תאריך סגירה | commit | אימות |
 |---|------|---------------|--------|----------|
-| 13.1-13.6 | Hybrid V5 Pipeline Implementation (REQ #13 sub-phases 1–6) | 2026-05-26 | 2aed15f, 69b9f41, 02882c3 | ✅ Data pack (7 CSVs), context pack, source candidates, zone diagnosis, V5 report, validation complete; Holon V5.md (310 שורות), HTML (164KB) ready for hydrogeologist review |
-| 15 | Executive Summary Engine (INTERNAL + PUBLIC) | 2026-05-26 | 1426659, 0e31665 | ✅ HOLON_EXECUTIVE_SUMMARY_INTERNAL.html (1,698 lines, real names, decision matrix), PUBLIC.html (1,323 lines, generic), YAML design spec (473 lines), RTL/print-ready verified |
-| 16 | Report Engine (Generic Architecture) | 2026-05-26 | (multiple) | ✅ 14-file report-engine/ (design system, schemas, per-zone briefs); zone-agnostic; DATA→BRIEF→HTML pipeline operational |
-| 17 | Brief YAML Generator Engine | 2026-05-26 | (multiple) | ✅ generate_zone_brief.py (prepare + finalize), zone_brief_prompt_template.md, Holon pilot validated, coords textually injected |
+| 19 | Toolkit Sanitization (Back-references) | 2026-05-27 | c7ffab0 | ✅ 5/5 playbooks with unified reference format (📍 [file](../../../path)); root SSOT enhanced with back-references; duplicate content removed. אימות: `git grep -n "📍 \[" toolkit/playbooks/` → 5 hits; `grep -r "\[.*\](\./" toolkit/playbooks/` → 0 broken paths |
 | 18 | Twin HTML Generator Engine | 2026-05-26 | 357751c | ✅ generate_zone_html_from_brief.py, frozen reference templates, field-mappings per CLAUDE.md §5, Holon: 64KB INTERNAL + 52KB PUBLIC |
-| 19 | Toolkit Sanitization (Back-references) | 2026-05-27 | c7ffab0 | ✅ 5/5 playbooks with unified reference format (📍 [file](../../../path)); root SSOT enhanced with back-references; duplicate content removed; no broken links |
+| 17 | Brief YAML Generator Engine | 2026-05-26 | 2a81002, 01a272f, e161e47 | ✅ generate_zone_brief.py (prepare + finalize), zone_brief_prompt_template.md, Holon pilot validated, coords textually injected |
+| 16 | Report Engine (Generic Architecture) | 2026-05-26 | d106a06 | ✅ 14-file report-engine/ (design system, schemas, per-zone briefs); zone-agnostic; DATA→BRIEF→HTML pipeline operational |
+| 15 | Executive Summary Engine (INTERNAL + PUBLIC) | 2026-05-26 | 9708ca4, 0e31665, 3cfa82b | ✅ HOLON_EXECUTIVE_SUMMARY_INTERNAL.html (1,698 lines, real names, decision matrix), PUBLIC.html (1,323 lines, generic), YAML design spec (473 lines), RTL/print-ready verified |
+| 13 | Hybrid V5 Pipeline Implementation (sub-phases 13.1–13.6) | 2026-05-26 | 2aed15f, 69b9f41, 02882c3, 8e7679d | ✅ Data pack (7 CSVs), context pack, source candidates, zone diagnosis, V5 report, validation complete; Holon V5.md (310 שורות), HTML (164KB) ready for hydrogeologist review |
 | 12 | Hybrid V5 Pipeline Refactor — Documentation | 2026-05-17 | 6b8b023, dec12ad, 15d6d0e, 158110d, 8ef25c9, 80c6f7f | PROCESS_GUIDE §I refactor (Zone Context Pack), §II.5 (Zone Diagnosis), §VIII (7-step); DATA_PIPELINE_SPEC.md, REPORT_V5_SCHEMA.md; CLAUDE.md Phase H+ + governance update |
 | 1 | SSOT terminology מפוזר | 2026-05-14 | 2b6e775 | PROCESS_GUIDE §III טבלה קנונית; METHODOLOGY.md redirect header |
 | 5a | CLAUDE.md אינדקס אזורים | 2026-05-14 | 2b6e775 | CLAUDE.md שורה 12-22 — Zone Status Index |
@@ -80,30 +80,28 @@
 
 ---
 
----
-
-## סיכום ההחלטה בינואי 28, 2026 — PR #17 vs. feature/hybrid-v5-implementation
+## סיכום ההחלטה ב-28 במאי 2026 — PR #17 vs. feature/hybrid-v5-implementation
 
 ### בעיה שהופקה
-PR #17 (toolkit-release) נפתח ב-2026-05-27 כציפיה של toolkit להמשך Phase. עם זאת, במקביל, work continued on `feature/hybrid-v5-implementation` לעיצום REQ #13-19.
+PR #17 (toolkit-release) נפתח ב-2026-05-27 כענף נפרד להוצאת ה-toolkit לצוות, ללא churn של עבודת Holon V5. במקביל, ההמשך פותח על `feature/hybrid-v5-implementation` להשלמת REQ #13–19.
 
 ### ניתוח עומק (48 שעות אחרונות)
 - **PR #17**: 20 קבצים (toolkit/), חסר PROCESS.md update + sanitization
 - **feature/hybrid-v5-implementation**: 56 commits, **47 קבצים נוספים** (data pack, context, diagnosis, V5 report, executives, engines, sanitization, PROCESS.md governance)
 
-### החלטה מתקבלת
+### החלטה
 **סגור PR #17 כ-obsolete; יצור PR #19 מ-feature/hybrid-v5-implementation.**
 
 **הנימוק**:
 1. feature/hybrid-v5-implementation מכיל את כל הקבצים של PR #17 + עוד הרבה
-2. Merging PR #17 לבדו יזיק לסדר (שני merges של אותם 20 קבצים)
+2. Merging PR #17 לבדו ייצור סדר עבודה כפול (שני merges של אותם 20 קבצים)
 3. feature/hybrid-v5-implementation כבר complete + validated + audit-trailed ב-PROCESS.md
-4. PR #19 = מסלול יחיד לעיצום; toolkit-release branch יימחק
+4. PR #19 = מסלול מיזוג יחיד להשלמה; toolkit-release branch יימחק כחלק מ-REQ #20
 
 **סטטוס**:
-- ✅ PR #17 סגור עם הערה; comment added
+- ✅ PR #17 סגור עם הערה הפניה (comment added)
 - ✅ PR #19 פתוחה (feature/hybrid-v5-implementation → main)
-- 🔄 toolkit-release branch — pending delete (chmod issue; ignore)
-- ⏳ REQ #20: Awaiting PR #19 merge
+- ⚠️ toolkit-release branch — `git push origin --delete toolkit-release` נכשל עם HTTP 403 ב-environment הנוכחי; מחיקה תתבצע ע"י המשתמש דרך GitHub UI לאחר מיזוג PR #19
+- 🔄 REQ #20: ממתין למיזוג PR #19 + מחיקת toolkit-release
 
 **אכיפה**: CLAUDE.md §12 (Requirements Tracking).
