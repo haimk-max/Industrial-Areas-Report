@@ -3,7 +3,7 @@
 > **מטרה**: SSOT לדרישות פתוחות וסגורות. עודכן בכל שינוי.
 > **כלל**: ראה CLAUDE.md §12.
 
-**עודכן אחרון**: 2026-05-28 (REQ #20 closed — PR #19 merged to main via a19a917; Phase H+ Implementation complete)
+**עודכן אחרון**: 2026-05-28 (REQ #21 opened — Verification Rerun: full V5 pipeline regeneration as second deliverable for diff vs. main)
 
 ---
 
@@ -11,6 +11,7 @@
 
 | # | בעיה | תיאור | סטטוס | תאריך פתיחה | קבצים |
 |---|------|--------|--------|----------------|--------|
+| 21 | Verification Rerun — Full V5 pipeline regeneration | משתמש ביקש הרצה מלאה של הפייפליין כדי לראות תוצר נוסף עצמאי. הצעדים הדטרמיניסטיים (Steps 1-3 deterministic, 6, 7) הורצו ב-rerun-verification-2026-05-28 branch — אומתו hash-IDENTICAL לגיבוי (commit 1559137). שלב 3 הקונטקסטואלי + 4 (Diagnosis) + 5 (V5 Report) מורצים כעת ע"י סוכני Opus מקבילים אל `Holon/rerun_2026-05-28/` (לא דורס את הקיים). יציאה: השוואת תוצרים חדש vs main. גיבוי: `Holon/_backup_2026-05-28/` (80MB, hash-verified). | 🔄 In Progress | 2026-05-28 | Holon/rerun_2026-05-28/, branch: rerun-verification-2026-05-28 |
 | 19 | Toolkit system — Testing + Integration | Validate `pip install -e ./toolkit/pylib` on current projects (Holon, Raanana). Write unit tests for pylib. Integrate skills into Claude Code. hydro-analyzer skill (4th). NOTE: All 5 playbooks now complete (zone_report_process_v5, data_pipeline_spec, zone_diagnosis_template, forensics_attribution_guide, monitoring_gaps_checklist). **Sub-task closed**: Cross-reference sanitization complete (c7ffab0, 2026-05-27) — 5/5 playbooks with unified 📍 [file](../../../path) format; root SSOT back-references added; duplicate content removed. אימות: `git grep -n "📍 \[" toolkit/playbooks/` → 5 hits. | ⚠️ Partial | 2026-05-27 | toolkit/ |
 | 14 | Agent RAG / Vector Store (Long-term Tooling) | Deferred: exploratory task for post-Holon completion. RAG infrastructure for enhanced context retrieval + semantic search on zone reports + forensic anchors. When triggered: design doc + prototype implementation. Status: roadmap entry in LESSONS.md § 3.3 | ⏳ Deferred | 2026-05-25 | LESSONS.md § 3.3 |
 | 7 | Skills/אוטומציה לתהליכים חוזרים | אימוץ simplify (קוד כפול), init (regen CLAUDE.md), review (PR) | ⏳ Deferred | 2026-05-14 | אחרי בעיות 2–4 |
