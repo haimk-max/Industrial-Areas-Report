@@ -50,7 +50,7 @@ def svg_severity_ledger(severity: pd.DataFrame) -> str:
     Order: CVOC → METALS → FUEL (last, per user request).
     PFAS omitted entirely (max bucket = 0 in Holon, not a focus).
     """
-    industry = severity[severity.family == "INDUSTRY"].sort_values("contributing_pct", ascending=False)
+    industry = severity[severity.family == "CVOC"].sort_values("contributing_pct", ascending=False)
     metals = severity[severity.family == "METALS"].sort_values("contributing_pct", ascending=False)
     fuel = severity[severity.family == "FUEL"].sort_values("contributing_pct", ascending=False)
 
@@ -144,12 +144,12 @@ def svg_severity_matrix(severity: pd.DataFrame, trends: pd.DataFrame,
     ).reset_index()
 
     pivot.columns.name = None
-    for col in ["INDUSTRY", "METALS", "FUEL"]:
+    for col in ["CVOC", "METALS", "FUEL"]:
         if col not in pivot.columns:
             pivot[col] = 0
-    pivot[["INDUSTRY", "METALS", "FUEL"]] = pivot[["INDUSTRY", "METALS", "FUEL"]].fillna(0)
+    pivot[["CVOC", "METALS", "FUEL"]] = pivot[["CVOC", "METALS", "FUEL"]].fillna(0)
 
-    pivot["max_bucket"] = pivot[["INDUSTRY", "METALS", "FUEL"]].max(axis=1)
+    pivot["max_bucket"] = pivot[["CVOC", "METALS", "FUEL"]].max(axis=1)
     # Skip boreholes with no contamination at all
     pivot = pivot[pivot["max_bucket"] > 0].copy()
 
@@ -194,10 +194,10 @@ def svg_severity_matrix(severity: pd.DataFrame, trends: pd.DataFrame,
     # which discusses the same borehole under multiple foci, e.g., נת חולון 14
     # appears in both CVOC §4.1 and METALS §4.2).
     # FUEL section: boreholes with ONLY FUEL contamination (no CVOC, no METALS).
-    cvoc_rows = pivot[pivot["INDUSTRY"] > 0].sort_values("INDUSTRY", ascending=False)
+    cvoc_rows = pivot[pivot["CVOC"] > 0].sort_values("CVOC", ascending=False)
     metals_rows = pivot[pivot["METALS"] > 0].sort_values("METALS", ascending=False)
     fuel_rows = pivot[(pivot["FUEL"] > 0) &
-                       (pivot["INDUSTRY"] == 0) &
+                       (pivot["CVOC"] == 0) &
                        (pivot["METALS"] == 0)].sort_values("FUEL", ascending=False)
 
     def make_row(r, section_family: str):
@@ -224,7 +224,7 @@ def svg_severity_matrix(severity: pd.DataFrame, trends: pd.DataFrame,
         return (
             f'<tr>'
             f'<td class="lbl">{esc(nm)}{mark_inc}{mark_stop}{sub}</td>'
-            f'<td class="val">{_bucket_cell(int(r.INDUSTRY))}</td>'
+            f'<td class="val">{_bucket_cell(int(r.CVOC))}</td>'
             f'<td class="val">{_bucket_cell(int(r.METALS))}</td>'
             f'<td class="val">{_bucket_cell(int(r.FUEL))}</td>'
             f'</tr>'
@@ -238,7 +238,7 @@ def svg_severity_matrix(severity: pd.DataFrame, trends: pd.DataFrame,
     body_parts = []
     if not cvoc_rows.empty:
         body_parts.append(section_header("מוקד CVOC — תרכובות אורגניות מוכלרות", len(cvoc_rows)))
-        body_parts.extend(make_row(r, "INDUSTRY") for _, r in cvoc_rows.iterrows())
+        body_parts.extend(make_row(r, "CVOC") for _, r in cvoc_rows.iterrows())
     if not metals_rows.empty:
         body_parts.append(section_header("מוקד מתכות — כרום וניקל", len(metals_rows)))
         body_parts.extend(make_row(r, "METALS") for _, r in metals_rows.iterrows())
@@ -344,7 +344,7 @@ def svg_cvoc_panels(measurements: pd.DataFrame, severity: pd.DataFrame,
     """CVOC time-series panels (top 3 compounds by exceedance: TCE, 1,4-Dioxane, PCE).
 
     boreholes_override: explicit list of canonical_ids from V4.md (Opus's selection).
-        If None, falls back to top-6 INDUSTRY by max_bucket. See PROCESS_GUIDE §VIII.1.
+        If None, falls back to top-6 CVOC by max_bucket. See PROCESS_GUIDE §VIII.1.
     """
     alert_boreholes = set(measurements['canonical_id'].unique())
     if boreholes_override:
@@ -352,13 +352,13 @@ def svg_cvoc_panels(measurements: pd.DataFrame, severity: pd.DataFrame,
         # This ensures the most severe CVOC wells are illustrated even when Opus
         # mentions metals/fuel wells first in narrative order.
         cvoc_wells = set(measurements[measurements.param_code.isin(_CVOC_PARAMS)]['canonical_id'])
-        cvoc_sev = severity[severity.family == "INDUSTRY"].set_index("borehole")["max_bucket"]
+        cvoc_sev = severity[severity.family == "CVOC"].set_index("borehole")["max_bucket"]
         candidates = [w for w in boreholes_override if w in alert_boreholes and w in cvoc_wells]
         candidates.sort(key=lambda w: cvoc_sev.get(w, 0), reverse=True)
         top_wells = candidates[:6]
     else:
         industry = severity[
-            (severity.family == "INDUSTRY") &
+            (severity.family == "CVOC") &
             (severity.borehole.isin(alert_boreholes))
         ].sort_values("max_bucket", ascending=False)
         top_wells = industry.head(6)["borehole"].tolist()
@@ -668,7 +668,7 @@ def svg_monitoring_gaps(data_avail: pd.DataFrame, severity: pd.DataFrame) -> str
     """Timeline showing monitoring gaps: only wells with high contamination index that stopped before 2023.
 
     Filter:
-      - Non-FUEL families (INDUSTRY/METALS/PFAS): max_index > 3
+      - Non-FUEL families (CVOC/METALS/PFAS): max_index > 3
       - Production wells (prefix מק_): max_index > 2
     """
     if data_avail.empty:
@@ -686,7 +686,7 @@ def svg_monitoring_gaps(data_avail: pd.DataFrame, severity: pd.DataFrame) -> str
 
     # Determine primary contamination family per borehole
     for idx, row in sev_summary.iterrows():
-        families_present = [fam for fam in ["INDUSTRY", "METALS", "PFAS"] if row.get(fam, 0) > 0]
+        families_present = [fam for fam in ["CVOC", "METALS", "PFAS"] if row.get(fam, 0) > 0]
         sev_summary.loc[idx, "primary_family"] = families_present[0] if families_present else "FUEL"
 
     # Aggregate per borehole: first_year, last_year
@@ -735,7 +735,7 @@ def svg_monitoring_gaps(data_avail: pd.DataFrame, severity: pd.DataFrame) -> str
 
         # Map family to Hebrew name
         family_he = {
-            "INDUSTRY": "תרכובות אורגניות",
+            "CVOC": "תרכובות אורגניות",
             "METALS": "מתכות כבדות",
             "PFAS": "כימיקלים מעמידים",
             "FUEL": "דלקים"

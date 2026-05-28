@@ -1,0 +1,954 @@
+zone_id: "holon"
+zone_he: "חולון"
+generated_at: "2026-05-19T00:00:00Z"
+schema_version: "1.0"
+signals:
+
+  # ============================================================
+  # S1 — uptrend_significant (classification=INCREASING, p<0.05, snr>=0.3)
+  # ============================================================
+
+  - signal_id: "S1_001"
+    signal_type: "S1"
+    well: "נד_אגד_אזור_1"
+    well_name_he: "נד אגד אזור 1"
+    parameter: "TOLUENE"
+    family: "FUEL"
+    detection_metrics:
+      mk_z_5y: 2.09657
+      mk_p_5y: 0.0360317
+      snr_5y: 1.04336
+      n_measurements_5y: null
+      latest_value: 6960.0
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 994.29
+      latest_measurement_date: "2025-02-23"
+      drinking_water_standard: 700
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      filter_expression: "borehole_id == 'נד_אגד_אזור_1' AND parameter == 'TOLUENE'"
+      cross_validation_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon_param_level.csv"
+    open_questions:
+      - "Is the rising toluene paired with a rise in benzene/MTBE in the same well, indicating a fresh fuel release rather than legacy weathered hydrocarbons?"
+      - "What is the spatial extent of this rise — do downgradient wells show a lagged toluene rise consistent with plume migration?"
+      - "Is the source upgradient infrastructure (fuel handling area) or a deeper buried legacy?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Ongoing surface release from a nearby fuel-handling activity (toluene as fresh component, not yet weathered)"
+      - "HYPOTHESIS B: Plume migration — older fuel release pulse arriving at this monitoring point from an upgradient source"
+      - "HYPOTHESIS C: Sampling/analytical variation (single late-period spike inflating the rank statistic)"
+
+  - signal_id: "S1_002"
+    signal_type: "S1"
+    well: "נד_אגד_אזור_6"
+    well_name_he: "נד אגד אזור 6"
+    parameter: " MTBE"
+    family: "FUEL"
+    detection_metrics:
+      mk_z_5y: 2.30623
+      mk_p_5y: 0.021098
+      snr_5y: 1.05849
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: null
+      latest_measurement_date: "2025-02-23"
+      drinking_water_standard: 40
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      filter_expression: "borehole_id == 'נד_אגד_אזור_6' AND parameter == ' MTBE'"
+      cross_validation_file: "Holon/data/measurements.csv"
+    open_questions:
+      - "MTBE in Israel is largely phased out — does an ongoing rise indicate a recent release of legacy-formulated fuel, or mobilisation of pre-existing soil residuals?"
+      - "Are downgradient wells showing a synchronous MTBE rise that would support a unified plume vs. local source hypothesis?"
+      - "What is the BTEX:MTBE ratio trend at this well — is MTBE outpacing BTEX (suggesting residual mass mobilisation)?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Mobilisation of residual MTBE soil mass triggered by water-table rise or recharge change"
+      - "HYPOTHESIS B: Recent release of legacy-formulated fuel inventory (e.g., older blends still in storage)"
+      - "HYPOTHESIS C: Plume migration from an upgradient source previously unmonitored"
+
+  - signal_id: "S1_003"
+    signal_type: "S1"
+    well: "נד_פז_סיירים_3"
+    well_name_he: "נד פז סיירים 3"
+    parameter: "BENZENE"
+    family: "FUEL"
+    detection_metrics:
+      mk_z_5y: 2.02778
+      mk_p_5y: 0.0425828
+      snr_5y: 1.10581
+      n_measurements_5y: null
+      latest_value: 5.0
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 100.0
+      latest_measurement_date: "2025-05-25"
+      drinking_water_standard: 5
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      filter_expression: "borehole_id == 'נד_פז_סיירים_3' AND parameter == 'BENZENE'"
+      cross_validation_file: "Holon/data/measurements.csv"
+    open_questions:
+      - "Benzene at exactly 100% of standard with a significant uptrend — is the well crossing the threshold permanently, or fluctuating near it?"
+      - "Does the same well show a parallel MTBE rise (which the data confirms via S1_004) — suggesting a common source rather than isolated benzene events?"
+      - "Is sentinel sampling frequency sufficient to detect the crossing date precisely?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Ongoing or recent fuel release reaching the monitoring point, with benzene as fresh component"
+      - "HYPOTHESIS B: Slow upgradient plume migration approaching this well; concentrations rising as plume front arrives"
+      - "HYPOTHESIS C: Detection-limit / analytical artefact — values at exactly the standard may reflect rounding to reporting limit"
+
+  - signal_id: "S1_004"
+    signal_type: "S1"
+    well: "נד_פז_סיירים_3"
+    well_name_he: "נד פז סיירים 3"
+    parameter: " MTBE"
+    family: "FUEL"
+    detection_metrics:
+      mk_z_5y: 1.72821
+      mk_p_5y: 0.0839498
+      snr_5y: 1.01947
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: null
+      latest_measurement_date: "2025-05-25"
+      drinking_water_standard: 40
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      filter_expression: "borehole_id == 'נד_פז_סיירים_3' AND parameter == ' MTBE'"
+      cross_validation_file: "Holon/data/measurements.csv"
+    open_questions:
+      - "MTBE rising in parallel with benzene (S1_003) — is this a single fresh fuel-release fingerprint, or two independent sources?"
+      - "Is the rate of MTBE rise faster than benzene (suggestive of higher mobility) or slower (suggestive of degradation)?"
+      - "How does this signal compare to neighbouring פז_סיירים wells — clustered or isolated?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Co-released fuel mass migrating with BTEX, consistent with a recent or ongoing release"
+      - "HYPOTHESIS B: Background residual MTBE mobilisation from soil, independent of current benzene source"
+      - "HYPOTHESIS C: Crossing into borderline significance (p≈0.08) — may be a statistical artefact pending more measurements"
+
+  - signal_id: "S1_005"
+    signal_type: "S1"
+    well: "מק_חולון_12"
+    well_name_he: "מק חולון 12"
+    parameter: "CHLORIDE AS CL"
+    family: "INDUSTRY"
+    detection_metrics:
+      mk_z_5y: 2.20454
+      mk_p_5y: 0.0274863
+      snr_5y: 1.27078
+      n_measurements_5y: null
+      latest_value: 247.0
+      latest_value_unit: "MG/L"
+      latest_value_percent_of_standard: 61.75
+      latest_measurement_date: "2025-04-21"
+      drinking_water_standard: 400
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      filter_expression: "borehole_id == 'מק_חולון_12' AND parameter == 'CHLORIDE AS CL'"
+      cross_validation_file: "Holon/data/measurements.csv"
+    open_questions:
+      - "Chloride rising in a Mekorot supply well — is this saltwater intrusion (coastal aquifer), upgradient industrial brine discharge, or recharge-related ionic shift?"
+      - "Does the chloride rise correlate temporally with electrical conductivity (Lab EC) trend (also rising at p=0.086 in this well)?"
+      - "Is sodium/sulfate behaviour consistent with a single saline source signature or with mixed inputs?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Seawater intrusion progressing inland (coastal aquifer at risk in supply wells)"
+      - "HYPOTHESIS B: Upgradient industrial discharge (cleaning/regenerant brines, cooling-tower blowdown) contributing chloride load"
+      - "HYPOTHESIS C: Reduced fresh recharge concentrating native solutes (drought / pumping-induced concentration)"
+
+  - signal_id: "S1_006"
+    signal_type: "S1"
+    well: "נד_אגד_אזור_4"
+    well_name_he: "נד אגד אזור 4"
+    parameter: "TURBIDITY NTU"
+    family: "INDUSTRY"
+    detection_metrics:
+      mk_z_5y: 1.98367
+      mk_p_5y: 0.0472923
+      snr_5y: 0.712651
+      n_measurements_5y: null
+      latest_value: 33.5
+      latest_value_unit: "NTU"
+      latest_value_percent_of_standard: 3350.0
+      latest_measurement_date: "2025-02-23"
+      drinking_water_standard: 1
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      filter_expression: "borehole_id == 'נד_אגד_אזור_4' AND parameter == 'TURBIDITY NTU'"
+      cross_validation_file: "Holon/data/measurements.csv"
+    open_questions:
+      - "Rising turbidity across multiple אגד-אזור wells — is this a sampling-procedure issue (well development insufficient) or a real geochemical change (mobilisation of fines)?"
+      - "Does turbidity rise correlate with redox shift or fuel-component rise (suggesting biofouling/colloid transport linked to plume biodegradation)?"
+      - "Are turbidity-elevated samples being acid-preserved/filtered for metals in a way that biases concentration values?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Geochemical mobilisation of fines / colloidal phases driven by redox change (sub-surface biotransformation of hydrocarbons)"
+      - "HYPOTHESIS B: Well-integrity degradation (gravel pack settling, well screen biofouling) producing artefactually turbid samples"
+      - "HYPOTHESIS C: Sampling-method drift (purging volume/rate changes between campaigns)"
+
+  - signal_id: "S1_007"
+    signal_type: "S1"
+    well: "נד_אגד_אזור_7"
+    well_name_he: "נד אגד אזור 7"
+    parameter: "TURBIDITY NTU"
+    family: "INDUSTRY"
+    detection_metrics:
+      mk_z_5y: 2.16401
+      mk_p_5y: 0.0304638
+      snr_5y: 0.954282
+      n_measurements_5y: null
+      latest_value: 38.1
+      latest_value_unit: "NTU"
+      latest_value_percent_of_standard: 3810.0
+      latest_measurement_date: "2025-02-23"
+      drinking_water_standard: 1
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      filter_expression: "borehole_id == 'נד_אגד_אזור_7' AND parameter == 'TURBIDITY NTU'"
+      cross_validation_file: "Holon/data/measurements.csv"
+    open_questions:
+      - "Multiple אגד-אזור wells (4, 6, 7, 9) show simultaneous turbidity rise — what is the common factor (regional groundwater table change, common sampling crew, common analytical lab)?"
+      - "Does the turbidity rise lag or lead the dissolved-oxygen/redox shift seen at nearby wells?"
+      - "Are turbidity readings being made on filtered vs. unfiltered samples consistently across periods?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Regional anoxic-front migration mobilising iron/manganese colloids across the well cluster"
+      - "HYPOTHESIS B: Site-wide sampling-protocol change in the past 1–2 years (different pump rate / filter use)"
+      - "HYPOTHESIS C: Well-network ageing — multiple wells past their effective screen lifetime showing parallel degradation"
+
+  - signal_id: "S1_008"
+    signal_type: "S1"
+    well: "נד_טן_חולון_1"
+    well_name_he: "נד טן חולון 1"
+    parameter: "TURBIDITY NTU"
+    family: "INDUSTRY"
+    detection_metrics:
+      mk_z_5y: 2.21481
+      mk_p_5y: 0.0267728
+      snr_5y: 1.47564
+      n_measurements_5y: null
+      latest_value: 10.01
+      latest_value_unit: "NTU"
+      latest_value_percent_of_standard: 1001.0
+      latest_measurement_date: "2025-05-15"
+      drinking_water_standard: 1
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      filter_expression: "borehole_id == 'נד_טן_חולון_1' AND parameter == 'TURBIDITY NTU'"
+      cross_validation_file: "Holon/data/measurements.csv"
+    open_questions:
+      - "Turbidity at this well rising on a different facility cluster than אגד — is the regional pattern truly site-wide or is it specific to certain operator chains?"
+      - "Does the dissolved-oxygen trend (also rising, S1 candidate at same well) align with a single redox-driven mechanism?"
+      - "Should this well be flagged for sampling QA audit given parallel turbidity and DO rises?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Local well-integrity degradation specific to this borehole"
+      - "HYPOTHESIS B: Sampling-protocol drift in the operator chain (filter / pump rate change)"
+      - "HYPOTHESIS C: Genuine geochemical shift — colloid mobilisation linked to subsurface redox change"
+
+  # ============================================================
+  # S2 — uptrend_borderline (INCREASING, 0.05 <= p < 0.10) and full-record uptrends with no 5y stats
+  # ============================================================
+
+  - signal_id: "S2_001"
+    signal_type: "S2"
+    well: "נת_חולון_1"
+    well_name_he: "נת חולון 1"
+    parameter: "TRICHLORO ETHYLENE"
+    family: "INDUSTRY"
+    detection_metrics:
+      mk_z_5y: 1.69842
+      mk_p_5y: 0.0894294
+      snr_5y: 1.32418
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: null
+      latest_measurement_date: null
+      drinking_water_standard: 7.5
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      filter_expression: "borehole_id == 'נת_חולון_1' AND parameter == 'TRICHLORO ETHYLENE'"
+      cross_validation_file: "Holon/data/measurements.csv"
+    open_questions:
+      - "Borderline TCE uptrend at a well within a known TCE-impacted cluster (נת_חולון_2/5/7/11 all bucket≥7) — is this leading-edge plume migration or background fluctuation?"
+      - "How does the trend compare to neighbouring wells (נת_חולון_2/5/7) — synchronous or lagged?"
+      - "Is the borderline p-value (0.089) likely to harden to significance with more measurements?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Leading edge of a TCE plume migrating from upgradient sources in the זוז cluster"
+      - "HYPOTHESIS B: Local source contribution distinct from the main TCE focus"
+      - "HYPOTHESIS C: Sub-significant noise that will not consolidate (borderline statistical artefact)"
+
+  - signal_id: "S2_002"
+    signal_type: "S2"
+    well: "נת_חולון_14"
+    well_name_he: "נת חולון 14"
+    parameter: "CHROMIUM AS CR"
+    family: "METALS"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      mk_z_full: 1.8684
+      mk_p_full: 0.0617067
+      snr_full: null
+      n_measurements_5y: null
+      latest_value: 165.683
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 331.37
+      latest_measurement_date: "2022-06-15"
+      drinking_water_standard: 50
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      filter_expression: "borehole_id == 'נת_חולון_14' AND parameter == 'CHROMIUM AS CR'"
+      cross_validation_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon_param_level.csv"
+    open_questions:
+      - "Chromium full-record uptrend (5y window insufficient) at >3x standard, last measured 2022 — is the well still active and rising, or stopped?"
+      - "What is the chromium species distribution (Cr-III vs. Cr-VI) — does it indicate an industrial plating/treatment source?"
+      - "Is the rising trend confirmed by neighbouring wells, or isolated to this borehole?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Active industrial chromium source (metal-finishing / plating) upgradient"
+      - "HYPOTHESIS B: Mobilisation of legacy chromium soil mass driven by changing redox or pH"
+      - "HYPOTHESIS C: Single late-period high reading inflating full-record statistic — borderline pending re-sampling"
+
+  - signal_id: "S2_003"
+    signal_type: "S2"
+    well: "נד_המרכבה_ק2"
+    well_name_he: "נד המרכבה ק2"
+    parameter: " MTBE"
+    family: "FUEL"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      mk_z_full: 2.60428
+      mk_p_full: 0.00920683
+      snr_full: null
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: null
+      latest_measurement_date: "2021-03-16"
+      drinking_water_standard: 40
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      filter_expression: "borehole_id == 'נד_המרכבה_ק2' AND parameter == ' MTBE'"
+      cross_validation_file: "Holon/data/measurements.csv"
+    open_questions:
+      - "Strong full-record MTBE uptrend (p<0.01) but well stopped reporting in 2021 — is the trend representative of current conditions or frozen at the last data point?"
+      - "Was monitoring discontinued because of administrative reasons or because the well was decommissioned/no longer accessible?"
+      - "Are neighbouring wells in the same fuel-related cluster showing MTBE behaviour that would support extrapolation?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Real rising MTBE plume — last 2021 datapoint may be far below the current state"
+      - "HYPOTHESIS B: Well decommissioned/replaced; trend obsolete and not informative"
+      - "HYPOTHESIS C: Statistical artefact of a small-n full-record series (sensitive to ordering)"
+
+  # ============================================================
+  # S3 — uptrend_with_monitoring_stop (uptrend AND latest > 18 months ago)
+  # ============================================================
+
+  - signal_id: "S3_001"
+    signal_type: "S3"
+    well: "נת_חולון_2"
+    well_name_he: "נת חולון 2"
+    parameter: "TETRACHLORO ETHYLENE"
+    family: "INDUSTRY"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      mk_z_full: 2.12575
+      mk_p_full: 0.0335242
+      snr_full: null
+      n_measurements_5y: null
+      latest_value: 497.51
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 4975.1
+      latest_measurement_date: "2022-06-08"
+      drinking_water_standard: 10
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      filter_expression: "borehole_id == 'נת_חולון_2' AND parameter == 'TETRACHLORO ETHYLENE'"
+      cross_validation_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon_param_level.csv"
+    open_questions:
+      - "Well with PCE at ~5000% of standard and a significant full-record uptrend (p=0.034) — last measured June 2022, now ~47 months silent. Is monitoring formally discontinued or just lapsed?"
+      - "If the well is still rising at the rate suggested, what is the extrapolated current concentration and is it endangering downgradient receptors?"
+      - "Was the silence preceded by a regulatory event, a property transfer, or a procedural lapse?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Active source still discharging; current concentrations may be substantially higher than the 2022 snapshot"
+      - "HYPOTHESIS B: Concentrations have peaked and are now declining (no way to verify without sampling)"
+      - "HYPOTHESIS C: Well decommissioned / inaccessible — administrative monitoring gap rather than environmental signal"
+
+  - signal_id: "S3_002"
+    signal_type: "S3"
+    well: "נת_חולון_2"
+    well_name_he: "נת חולון 2"
+    parameter: "CHLOROFORM"
+    family: "INDUSTRY"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      mk_z_full: 2.06203
+      mk_p_full: 0.0392049
+      snr_full: null
+      n_measurements_5y: null
+      latest_value: 287.3
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 359.12
+      latest_measurement_date: "2022-06-08"
+      drinking_water_standard: 80
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      filter_expression: "borehole_id == 'נת_חולון_2' AND parameter == 'CHLOROFORM'"
+      cross_validation_file: "Holon/data/measurements.csv"
+    open_questions:
+      - "Chloroform at >3x standard and rising, but monitoring silent since 2022 — is chloroform here a TCE/PCE breakdown product or an independent halomethane source?"
+      - "Does chloroform behaviour parallel the PCE uptrend at the same well (S3_001) — suggesting common transformation pathway?"
+      - "What chlorinated solvents inventory is suspected in the area's industrial history?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Co-occurring with PCE/TCE as part of a chlorinated solvents mixed-release legacy"
+      - "HYPOTHESIS B: Independent chloroform source (chlorination by-product / different industrial process)"
+      - "HYPOTHESIS C: Trend may be artefactual given monitoring silence — extrapolation unreliable"
+
+  - signal_id: "S3_003"
+    signal_type: "S3"
+    well: "נת_חולון_7"
+    well_name_he: "נת חולון 7"
+    parameter: "CHLOROFORM"
+    family: "INDUSTRY"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      mk_z_full: 1.97
+      mk_p_full: 0.0487449
+      snr_full: null
+      n_measurements_5y: null
+      latest_value: 97.61
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 122.01
+      latest_measurement_date: "2023-01-04"
+      drinking_water_standard: 80
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      filter_expression: "borehole_id == 'נת_חולון_7' AND parameter == 'CHLOROFORM'"
+      cross_validation_file: "Holon/data/measurements.csv"
+    open_questions:
+      - "Chloroform rising and crossing standard at a neighbouring well (נת_חולון_7) — is this a coherent plume signature linking to נת_חולון_2 (S3_002)?"
+      - "Monitoring stopped January 2023 — same operator pause as נת_חולון_2/5? Coordinated administrative gap?"
+      - "What does the spatial pattern of chloroform across the נת_חולון_* cluster suggest about source location?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Plume of chlorinated solvents spanning multiple נת_חולון wells with a common upgradient source"
+      - "HYPOTHESIS B: Independent local sources at each well; coincidental similar trends"
+      - "HYPOTHESIS C: Monitoring pause obscures whether trend continued, plateaued, or reversed"
+
+  - signal_id: "S3_004"
+    signal_type: "S3"
+    well: "נד_המרכבה_ק3"
+    well_name_he: "נד המרכבה ק3"
+    parameter: "FIELD ELECTRICAL CONDUCTIVITY"
+    family: "INDUSTRY"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      mk_z_full: 3.57771
+      mk_p_full: 0.000346619
+      snr_full: null
+      n_measurements_5y: null
+      latest_value: 3.656
+      latest_value_unit: "mS/cm"
+      latest_value_percent_of_standard: null
+      latest_measurement_date: "2021-03-16"
+      drinking_water_standard: null
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      filter_expression: "borehole_id == 'נד_המרכבה_ק3' AND parameter == 'FIELD ELECTRICAL CONDUCTIVITY'"
+      cross_validation_file: "Holon/data/measurements.csv"
+    open_questions:
+      - "Strong EC uptrend (p<0.001) but well silent since 2021 — does the rise reflect saltwater intrusion, industrial ionic loading, or general mineralisation?"
+      - "Are partner ions (Cl, Na, SO4) all rising in lockstep with EC?"
+      - "Was the well decommissioned, or is monitoring informally paused?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Saltwater intrusion proximate to the well (coastal aquifer pressure shift)"
+      - "HYPOTHESIS B: Industrial-effluent ionic loading from a nearby operation"
+      - "HYPOTHESIS C: Pump/screen ageing causing increasing concentration during sample collection"
+
+  - signal_id: "S3_005"
+    signal_type: "S3"
+    well: "נת_ארן_מטל_חולון_1"
+    well_name_he: "נת ארן מטל חולון 1"
+    parameter: "STRONTIUM AS SR"
+    family: "INDUSTRY"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      mk_z_full: 1.71464
+      mk_p_full: 0.0864107
+      snr_full: null
+      n_measurements_5y: null
+      latest_value: 625.0
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: null
+      latest_measurement_date: "2023-08-13"
+      drinking_water_standard: null
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      filter_expression: "borehole_id == 'נת_ארן_מטל_חולון_1' AND parameter == 'STRONTIUM AS SR'"
+      cross_validation_file: "Holon/data/measurements.csv"
+    open_questions:
+      - "Strontium rising at a metal-industry-associated well, monitoring stopped August 2023 — is Sr here an industrial signature (treatment chemistry) or geogenic?"
+      - "Does Sr correlate with Ca/Mg (suggesting carbonate-water equilibration) or stand alone (suggesting industrial input)?"
+      - "Is the 33-month monitoring lapse expected to be resumed?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Industrial Sr source linked to metal-processing activity"
+      - "HYPOTHESIS B: Geogenic Sr release from aquifer matrix (carbonate dissolution)"
+      - "HYPOTHESIS C: Trend obsolete due to monitoring stop; current state unknown"
+
+  # ============================================================
+  # S4 — peak_then_silence (contributing_pct >= 1000% AND last measurement > 24 months ago)
+  # ============================================================
+
+  - signal_id: "S4_001"
+    signal_type: "S4"
+    well: "נת_חולון_2"
+    well_name_he: "נת חולון 2"
+    parameter: "TRICHLORO ETHYLENE"
+    family: "INDUSTRY"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      snr_5y: null
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 16750.51
+      latest_measurement_date: "2022-06-08"
+      drinking_water_standard: 7.5
+    evidence_pointer:
+      primary_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon.csv"
+      filter_expression: "borehole == 'נת_חולון_2' AND family == 'INDUSTRY'"
+      cross_validation_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon_param_level.csv"
+    open_questions:
+      - "TCE at ~16,750% of standard recorded June 2022, then 47+ months of monitoring silence — what is the current state of this hotspot?"
+      - "Is the well still physically accessible / functional, or has it been damaged/decommissioned?"
+      - "What downgradient wells should be sampled to characterise the plume that has moved during the silence period?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Concentrations remain near peak; active source ongoing — high-priority resampling needed"
+      - "HYPOTHESIS B: Concentrations have declined naturally; site reached equilibrium / source exhausted"
+      - "HYPOTHESIS C: Well no longer usable; monitoring gap is administrative artefact"
+
+  - signal_id: "S4_002"
+    signal_type: "S4"
+    well: "נת_אלביט_חולון_1"
+    well_name_he: "נת אלביט חולון 1"
+    parameter: "TRICHLORO ETHYLENE"
+    family: "INDUSTRY"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      snr_5y: null
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 35573.33
+      latest_measurement_date: "2018-03-14"
+      drinking_water_standard: 7.5
+    evidence_pointer:
+      primary_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon.csv"
+      filter_expression: "borehole == 'נת_אלביט_חולון_1' AND family == 'INDUSTRY'"
+      cross_validation_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon_param_level.csv"
+    open_questions:
+      - "TCE at ~35,573% of standard last measured March 2018 — nearly 8 years of monitoring silence at an extreme hotspot. Why?"
+      - "Was the well part of a remediation site that was administratively closed, transferred, or had monitoring waived?"
+      - "What is the current operational status of the associated industrial activity?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Active remediation underway; monitoring transitioned to a different well network not in this dataset"
+      - "HYPOTHESIS B: Well decommissioned / property change ended monitoring obligation"
+      - "HYPOTHESIS C: Long-term monitoring gap without resolution — site still poses risk but is unmonitored"
+
+  - signal_id: "S4_003"
+    signal_type: "S4"
+    well: "נד_אגד_איזור_7"
+    well_name_he: "נד אגד איזור 7"
+    parameter: "Benzene"
+    family: "FUEL"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      snr_5y: null
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 71000.0
+      latest_measurement_date: "2022-04-15"
+      drinking_water_standard: 5
+    evidence_pointer:
+      primary_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon.csv"
+      filter_expression: "borehole == 'נד_אגד_איזור_7' AND family == 'FUEL'"
+      cross_validation_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon_param_level.csv"
+    open_questions:
+      - "Benzene at 71,000% of standard (likely free-product or near-source) — last measured April 2022, now 49 months silent. Is this a known active source or undocumented release?"
+      - "Note ID variant ('איזור' with yod vs. 'אזור' in others) — is this a data-naming inconsistency requiring crosswalk?"
+      - "What remediation status applies and which authority oversees it?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Free-phase fuel still present at depth; concentrations unchanged but unmonitored"
+      - "HYPOTHESIS B: Source partially remediated; benzene partially attenuated"
+      - "HYPOTHESIS C: ID-naming inconsistency means data attribution is unreliable; well-mapping audit required"
+
+  - signal_id: "S4_004"
+    signal_type: "S4"
+    well: "נד_נובר_מרכבה"
+    well_name_he: "נד נובר מרכבה"
+    parameter: " MTBE"
+    family: "FUEL"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      snr_5y: null
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 2250.0
+      latest_measurement_date: "2020-03-29"
+      drinking_water_standard: 40
+    evidence_pointer:
+      primary_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon.csv"
+      filter_expression: "borehole == 'נד_נובר_מרכבה' AND family == 'FUEL'"
+      cross_validation_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon_param_level.csv"
+    open_questions:
+      - "MTBE at 2,250% of standard last measured March 2020 — 74 months silent. Is the well known to be inactive or simply lapsed?"
+      - "MTBE is a fuel marker; what does the absence of follow-up sampling imply about regulatory tracking of this site?"
+      - "Are downgradient wells (within ~200m) showing detectable MTBE that would corroborate plume movement?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Well is decommissioned / inaccessible (no monitoring possible)"
+      - "HYPOTHESIS B: Monitoring is suspended pending regulatory closure or site transfer"
+      - "HYPOTHESIS C: Active source persists but is unmonitored; risk under-characterised"
+
+  - signal_id: "S4_005"
+    signal_type: "S4"
+    well: "נת_חולון_26"
+    well_name_he: "נת חולון 26"
+    parameter: "Chromium"
+    family: "METALS"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      snr_5y: null
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 7540.0
+      latest_measurement_date: "2023-02-06"
+      drinking_water_standard: 50
+    evidence_pointer:
+      primary_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon.csv"
+      filter_expression: "borehole == 'נת_חולון_26' AND family == 'METALS'"
+      cross_validation_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon_param_level.csv"
+    open_questions:
+      - "Chromium at 75x standard recorded February 2023, 39 months silent — well also has TCE at 2,144% (cross-family signature in same well)."
+      - "What chromium species is this — Cr-VI would indicate active metal-finishing input; Cr-III would suggest different mechanism?"
+      - "Is the monitoring gap site-specific or part of a broader pause across the נת_חולון_* cluster?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Active industrial chromium release continues, but monitoring lapsed"
+      - "HYPOTHESIS B: Co-located metals + solvents source pointing to a single multi-contaminant facility"
+      - "HYPOTHESIS C: Source ceased; concentrations may have attenuated but cannot be confirmed without sampling"
+
+  # ============================================================
+  # S5 — cross_family_severity_cluster (same well, bucket >= 6 in 2+ families)
+  # ============================================================
+
+  - signal_id: "S5_001"
+    signal_type: "S5"
+    well: "נד_אגד_אזור_1"
+    well_name_he: "נד אגד אזור 1"
+    parameter: "(Benzene + Vinyl Chloride co-occurrence)"
+    family: "FUEL"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      snr_5y: null
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 85000.0
+      latest_measurement_date: "2025-02-23"
+      drinking_water_standard: 5
+    evidence_pointer:
+      primary_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon.csv"
+      filter_expression: "borehole == 'נד_אגד_אזור_1' AND max_bucket >= 6"
+      cross_validation_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon_param_level.csv"
+    open_questions:
+      - "Single well co-impacted by Benzene (85,000% of standard, FUEL family, bucket=8) AND Vinyl Chloride (4,200% of standard, INDUSTRY family, bucket=6) — what does this combination suggest about the source(s)?"
+      - "Is the vinyl chloride a transformation product of an upgradient chlorinated solvents plume that happens to be co-located with a fuel release, or part of a single mixed industrial release?"
+      - "Should this well receive multi-family forensic prioritisation (decay chain + BTEX fingerprinting)?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Two independent sources (fuel + chlorinated solvents) happen to intersect at this well"
+      - "HYPOTHESIS B: Single facility historically handled both fuels and chlorinated solvents — mixed release"
+      - "HYPOTHESIS C: Vinyl chloride arises from microbial degradation of TCE/PCE plume migrating into a fuel-impacted zone (anaerobic conditions favouring reductive dechlorination)"
+
+  # ============================================================
+  # S6 — extreme_severity (max_bucket = 8, >5000% of standard)
+  # ============================================================
+
+  - signal_id: "S6_001"
+    signal_type: "S6"
+    well: "נד_אגד_אזור_1"
+    well_name_he: "נד אגד אזור 1"
+    parameter: "Benzene"
+    family: "FUEL"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      snr_5y: null
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 85000.0
+      latest_measurement_date: "2025-02-23"
+      drinking_water_standard: 5
+    evidence_pointer:
+      primary_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon.csv"
+      filter_expression: "borehole == 'נד_אגד_אזור_1' AND family == 'FUEL' AND max_bucket == 8"
+      cross_validation_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon_param_level.csv"
+    open_questions:
+      - "Benzene at 85,000% (4,250 µg/L) of standard — this is in the range of free-phase product or near-source concentrations. Is residual NAPL present?"
+      - "Is monitoring at this hotspot scheduled to continue or has it dropped to annual/biennial?"
+      - "What separation distance to the nearest supply well or receptor?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Free-phase fuel (LNAPL) in the source zone; benzene partition into groundwater drives sustained extreme concentrations"
+      - "HYPOTHESIS B: Recent or ongoing release maintaining the dissolved-phase concentration"
+      - "HYPOTHESIS C: Sampling location is within the source footprint — concentrations reflect source rather than plume"
+
+  - signal_id: "S6_002"
+    signal_type: "S6"
+    well: "נת_חולון_11"
+    well_name_he: "נת חולון 11"
+    parameter: "TCE"
+    family: "INDUSTRY"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      snr_5y: null
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 68660.11
+      latest_measurement_date: "2024-11-18"
+      drinking_water_standard: 7.5
+    evidence_pointer:
+      primary_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon.csv"
+      filter_expression: "borehole == 'נת_חולון_11' AND family == 'INDUSTRY' AND max_bucket == 8"
+      cross_validation_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon_param_level.csv"
+    open_questions:
+      - "TCE at 68,660% of standard (over 5,000 µg/L) — well within free-phase DNAPL territory. Is DNAPL suspected at the source?"
+      - "How does this concentration compare with neighbouring TCE-impacted wells (נת_חולון_2, 5, 7) — does it identify the source zone?"
+      - "What daughter products (cis-DCE, VC) are present and at what ratios — is the plume actively biodegrading?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: DNAPL source zone proximate to this well — sustained dissolved-phase concentrations"
+      - "HYPOTHESIS B: Single sample artefact (matrix interference, contamination at sampling) inflating the bucket"
+      - "HYPOTHESIS C: Active solvents source from a current operation, not legacy contamination"
+
+  - signal_id: "S6_003"
+    signal_type: "S6"
+    well: "נד_סונול_המלאכה_מ-1"
+    well_name_he: "נד סונול המלאכה מ-1"
+    parameter: "TCE"
+    family: "INDUSTRY"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      snr_5y: null
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 36296.53
+      latest_measurement_date: "2026-01-08"
+      drinking_water_standard: 7.5
+    evidence_pointer:
+      primary_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon.csv"
+      filter_expression: "borehole == 'נד_סונול_המלאכה_מ-1' AND family == 'INDUSTRY' AND max_bucket == 8"
+      cross_validation_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon_param_level.csv"
+    open_questions:
+      - "TCE at 36,296% in a fuel-station-named well (סונול) — is the well intercepting an upgradient solvents plume distinct from the fuel-station activity?"
+      - "Is this well also tracking benzene/MTBE — and if so are the trends synchronised?"
+      - "The well naming (a fuel operator) but with massive TCE — suggests intersected solvents plume from a different facility; what is upgradient?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Solvents plume from an upgradient (non-fuel) industrial source intersects this well"
+      - "HYPOTHESIS B: Historical co-located industrial activity at the same site (mixed use) released both solvents and fuel"
+      - "HYPOTHESIS C: Well-naming-versus-source mismatch — the well's location may have been re-purposed or mis-attributed administratively"
+
+  - signal_id: "S6_004"
+    signal_type: "S6"
+    well: "נד_אגד_אזור_12"
+    well_name_he: "נד אגד אזור 12"
+    parameter: "MTBE"
+    family: "FUEL"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      snr_5y: null
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 24150.0
+      latest_measurement_date: "2024-01-15"
+      drinking_water_standard: 40
+    evidence_pointer:
+      primary_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon.csv"
+      filter_expression: "borehole == 'נד_אגד_אזור_12' AND family == 'FUEL' AND max_bucket == 8"
+      cross_validation_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon_param_level.csv"
+    open_questions:
+      - "MTBE at 24,150% of standard last measured January 2024 (28 months silent) — given MTBE phase-out, is this a legacy mass release or recent?"
+      - "Why is monitoring lapsed at a site with this severity?"
+      - "Are BTEX components correspondingly extreme, or is MTBE disproportionately high (indicating selective MTBE source)?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Legacy mass of MTBE-formulated fuel released years ago and slowly partitioning to groundwater"
+      - "HYPOTHESIS B: Recent operational release contradicting the assumption MTBE is no longer in circulation"
+      - "HYPOTHESIS C: Monitoring lapse means actual concentrations may differ substantially (up or down) from the 2024 value"
+
+  # ============================================================
+  # S9 — parameter_coverage_gap
+  # ============================================================
+
+  - signal_id: "S9_001"
+    signal_type: "S9"
+    well: "(ZONE-WIDE)"
+    well_name_he: "כלל-אזורי"
+    parameter: "PFAS (per/polyfluoroalkyl substances)"
+    family: "PFAS"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      snr_5y: null
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: null
+      latest_value_percent_of_standard: 0.0
+      latest_measurement_date: null
+      drinking_water_standard: null
+    evidence_pointer:
+      primary_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon.csv"
+      filter_expression: "family == 'PFAS' (counts unique boreholes; result: 4 of 87 wells = 5%)"
+      cross_validation_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon_param_level.csv"
+    open_questions:
+      - "Only 4 of 87 wells in the zone have any PFAS sampling — was PFAS deemed not relevant, or simply not on the historical analytical panel?"
+      - "Given the zone's heavy fuel-handling and military-vehicle activity (e.g., אגד fleet operations), is fire-fighting-foam-derived PFAS plausible and worth widespread screening?"
+      - "Which subset of high-priority wells (e.g., fuel-station hotspots, downgradient supply wells) should be added to the PFAS panel first?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: PFAS may be widespread at sub-standard concentrations but undetected due to lack of sampling (coverage artefact)"
+      - "HYPOTHESIS B: PFAS is genuinely absent / very low because no PFAS-bearing activities operated in this zone"
+      - "HYPOTHESIS C: PFAS is present in localised hotspots (firefighter-training areas, vehicle-fire response sites) but missed by the current sampled wells"
+
+  # ============================================================
+  # S10 — closed_well_post_exceedance (subset of S3/S4; emphasised separately for the very-long silences)
+  # ============================================================
+
+  - signal_id: "S10_001"
+    signal_type: "S10"
+    well: "נת_אלביט_חולון_1"
+    well_name_he: "נת אלביט חולון 1"
+    parameter: "TCE"
+    family: "INDUSTRY"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      snr_5y: null
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 35573.33
+      latest_measurement_date: "2018-03-14"
+      drinking_water_standard: 7.5
+    evidence_pointer:
+      primary_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon.csv"
+      filter_expression: "borehole == 'נת_אלביט_חולון_1' AND family == 'INDUSTRY'"
+      cross_validation_file: "Holon/data/measurements.csv"
+    open_questions:
+      - "98 months since last sample at this extreme hotspot (bucket 8, TCE 35,573% of standard, March 2018). Is the well status formally 'closed', 'inactive', or simply 'no data'?"
+      - "What documentation exists for the cessation of monitoring (regulatory order, voluntary cessation, well damage)?"
+      - "What replacement monitoring (if any) has been established for the surrounding plume?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Well formally closed under a regulatory remediation plan with monitoring transferred elsewhere"
+      - "HYPOTHESIS B: Well abandoned without formal closure; monitoring obligation lapsed"
+      - "HYPOTHESIS C: Site under active remediation but data not reflected in this dataset (data-pipeline gap)"
+
+  - signal_id: "S10_002"
+    signal_type: "S10"
+    well: "נד_נובר_מרכבה"
+    well_name_he: "נד נובר מרכבה"
+    parameter: "MTBE"
+    family: "FUEL"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      snr_5y: null
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: "microgr/L"
+      latest_value_percent_of_standard: 2250.0
+      latest_measurement_date: "2020-03-29"
+      drinking_water_standard: 40
+    evidence_pointer:
+      primary_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon.csv"
+      filter_expression: "borehole == 'נד_נובר_מרכבה' AND family == 'FUEL'"
+      cross_validation_file: "Holon/data/measurements.csv"
+    open_questions:
+      - "74 months since last sample; MTBE at 22.5x standard. Is the well closed, the source remediated, or both?"
+      - "If the well is permanently lost, what nearby wells are now used for site monitoring?"
+      - "Has any post-2020 PFAS sampling been considered at this fuel-related site?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Site remediated and monitoring formally closed"
+      - "HYPOTHESIS B: Well damaged or property transferred — monitoring not transferred to replacement"
+      - "HYPOTHESIS C: Monitoring informally lapsed; concentrations may still exceed standard"
+
+  # ============================================================
+  # S99 — other_statistical_finding
+  # ============================================================
+
+  - signal_id: "S99_001"
+    signal_type: "S99"
+    well: "(MULTI-WELL)"
+    well_name_he: "אשכול אגד-אזור (אזור 3, 4, 5, 6, 7, 9, דלק הצבי 2, דלק מרכבות האש 6)"
+    parameter: "REDOX / DISSOLVED OXYGEN / TURBIDITY (cluster of synchronous trends)"
+    family: "INDUSTRY"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      snr_5y: null
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: null
+      latest_value_percent_of_standard: null
+      latest_measurement_date: "2025-02-23"
+      drinking_water_standard: null
+    evidence_pointer:
+      primary_file: "Holon/data/trends.csv"
+      filter_expression: "classification == 'INCREASING' AND parameter IN ('REDOX', 'DISSOLVED OXYGEN AS O2', 'TURBIDITY NTU', 'PH MEASURED  IN FIELD') AND mk_p_5y < 0.10"
+      cross_validation_file: "Holon/data/measurements.csv"
+    open_questions:
+      - "Multiple wells across the אגד / fuel-operator chain show synchronous rises in field parameters (REDOX, DO, turbidity, pH) — does this reflect a sampling-method change, an analytical-lab change, or a real geochemical shift?"
+      - "If real, does it indicate aquifer aeration (recharge / water-table change) or a regional anoxic-to-oxic shift?"
+      - "Should this cluster be QA-audited before being interpreted as a real environmental signal?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Sampling-procedure change in the operator chain (new SOP, new pump, new field meters) creating a systematic artefact across multiple wells"
+      - "HYPOTHESIS B: Real regional geochemical shift — water-table rise causing aeration / oxidation of previously anoxic groundwater"
+      - "HYPOTHESIS C: Lab/instrument calibration drift causing parallel false trends in field parameters"
+
+  - signal_id: "S99_002"
+    signal_type: "S99"
+    well: "(MULTI-WELL CLUSTER)"
+    well_name_he: "אשכול נת חולון 2/5/7/11/14/26"
+    parameter: "Coordinated monitoring stop pattern"
+    family: "INDUSTRY"
+    detection_metrics:
+      mk_z_5y: null
+      mk_p_5y: null
+      snr_5y: null
+      n_measurements_5y: null
+      latest_value: null
+      latest_value_unit: null
+      latest_value_percent_of_standard: null
+      latest_measurement_date: "2022-06 to 2023-02 (clustered)"
+      drinking_water_standard: null
+    evidence_pointer:
+      primary_file: "Holon/lean_workspace/04_deterministic_anchors/severity_index_2025_holon.csv"
+      filter_expression: "borehole IN ('נת_חולון_2','נת_חולון_5','נת_חולון_7','נת_חולון_14','נת_חולון_25','נת_חולון_26') — cross-check last date in measurements.csv"
+      cross_validation_file: "Holon/data/measurements.csv"
+    open_questions:
+      - "Six high-severity נת_חולון_* wells all stop reporting within an 8-month window (June 2022 – February 2023). Coincidence or coordinated?"
+      - "Was there a regulatory restructuring, a regional monitoring-budget cut, or an operator-change event in that period?"
+      - "What is the formal status of these wells now (closed, inactive, pending)?"
+    hypothesis_pointers:
+      - "HYPOTHESIS A: Regulatory or operator-level decision (budget cut, programme transition) ended monitoring across the cluster"
+      - "HYPOTHESIS B: Coincidental — each well stopped for independent reasons within the same window"
+      - "HYPOTHESIS C: Wells were transferred to a different monitoring programme whose data is not in this pipeline (administrative pipeline-gap)"

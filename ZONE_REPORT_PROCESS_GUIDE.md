@@ -43,6 +43,24 @@
 
 ### 03_context — NotebookLM-like Context (קטעים מלאים, לא תקצירים)
 
+#### Reports Context Pack
+
+שלב זה נועד לעבד דוחות עבר באופן scoped לאזור, לפני Zone Diagnosis.
+
+המטרה אינה ליצור facts.md יבש, ואינה להכניס raw dump מלא של הדוחות, אלא לבנות קונטקסט דמוי NotebookLM: קטעים משמעותיים ורלוונטיים מדוחות קודמים, בצירוף הערות פרשניות קצרות.
+
+**תוצרים**:
+- `03_context/reports_context.md`
+- `03_context/report_sources_index.csv`
+- `03_context/context_questions_for_diagnosis.md`
+
+**תפקיד המקורות**:
+- דוח 2021 = baseline פרשני רשמי אחרון.
+- דוחות 2008 / תה"ל / אקולוג = הקשר היסטורי, מוקדים, מפעלים, הידרוגיאולוגיה ושיקום.
+- נתוני ניטור עדכניים = המקור המרכזי לקביעת מצב נוכחי, חומרה ומגמות.
+
+**הערה**: המידע מדוח 2021 לא יופיע כפרק השוואה נפרד בדוח V5, אלא יוטמע בתוך ניתוח המוקדים, המגמות והשינויים.
+
 #### previous_reports_excerpts.md
 - קטעים משמעותיים מדוח 2021, דוח TAHAL 2008, דוחות אקולוג, רלוונטיים לאזור
 - **לא תקציר** — טקסט מלא מהמקור (עם ציטוט עמוד)
@@ -52,13 +70,41 @@
 - כיוון זרימה, שכבות אקוויפר, רקע הידרוגיאולוגי של האזור
 - מקור: דוחות TAHAL, מודלים אזוריים
 
-#### source_candidates_context.md
-- מעמד `facility_candidates_{zone}.md` + רקע על פעילות מפעלים, שנות פעילות, סוג מלוכלך צפוי
-- מקור: PRTR, B144, חיפוש רשת, דוחות מקומיים
+#### Source Candidates Pack
 
-#### web_findings_context.md
-- תוצאות חיפוש ברשת (PRTR queries, B144 searches, Google local searches) — סיכום scoped לאזור
-- מקור: 6 ערוצי חיפוש (§V)
+מועמדי מקורות זיהום ייבנו כתוצר של התהליך — **לא** input מובטח. לכל אזור חדש, ה-Pack ייבנה מאפס.
+
+**תוצרים**:
+- `03_context/source_candidates_context.md` — מועמדים פרשניים עם סיווג ראיה
+- `03_context/web_findings_context.md` — סטטוס פעילות נוכחי בלבד
+- `03_context/source_candidates_index.csv` — אינדקס מתועד
+
+**מקורות לבנייה**:
+- דוחות עבר (extracted PDF text + raw text במידת הצורך לאימות נקודתי)
+- חיפוש Web מתועד (PRTR, B144, Google local — ראה §V)
+- נתוני ניטור (severity_by_well_family, trends_by_well_parameter, monitoring_gaps)
+- חתימות כימיות (forensics — decay chains, co-occurrence, BTEX ratios)
+
+**הערה לחולון/רעננה**: באזורים אלה קיימים artifacts קודמים (`_findings_*.json`, `extracted_findings.json`, `facility_attribution.json`, `web_findings.md`). שימוש בהם מותר בכפוף לכללים בסעיף §X (Evidence Classification) — אבל **אין להכליל הנחה זו לאזורים חדשים**.
+
+**אזורים חדשים**: אין להניח שקיים `facility_attribution.json` או JSON אחר של מועמדים. ה-Pack ייבנה מאפס מהמקורות לעיל.
+
+#### Evidence Classification System (A–E)
+
+**כלל גנרי לכל האזורים** — מוטמע ב-`source_candidates_index.csv` תחת עמודה `evidence_class`:
+
+| Class | משמעות | בסיס ראיה |
+|-------|---------|-----------|
+| **A** | `raw_report_verified` | ציטוט ישיר מטקסט גולמי של דוח (raw text excerpt) |
+| **B** | `ai_extracted_with_page_ref` | AI-derived מ-`_findings_*.json` או extracted PDF text, עם page_ref מפורש; לא אומת ב-raw text |
+| **C** | `web_verified_current_activity` | סטטוס פעילות עדכני מ-web. **אינו מוכיח קישור לזיהום** |
+| **D** | `inferred_candidate` | קרבה גיאוגרפית / שם קידוח / הקשר; ללא ראיית מסמך ישירה |
+| **E** | `weak / mention_only` | אזכור בודד במסמך אחד; ללא קישור לקידוח/מזהם |
+
+**מדיניות שימוש ב-Zone Diagnosis ובדוח V5**:
+- **A + B** → מועמדים חזקים; ייכנסו לגוף ה-Zone Diagnosis ולסעיף 5 בדוח V5
+- **C** → משלים מצב נוכחי; אסור להציג כראיית זיהום בעצמו
+- **D / E** → רקע או נספח. ייכנסו לסעיף 5 רק אם נתוני הניטור (severity, trends, חתימות כימיות) מחזקים אותם עצמאית
 
 #### approved_precedent_excerpt.md
 - קטע מדוח רעננה V2 או חולון V4.2 מאושר (סגנון, טון, מבנה)
@@ -531,6 +577,21 @@ body, p, li, td, th, h1, h2, h3, h4 { unicode-bidi: isolate; }
 
 ---
 
+## Toolkit Resources (Self-Contained Playbooks)
+
+🔧 **Zone Report V5 Process**: `toolkit/playbooks/zone_report_process_v5.md` (lightweight 7-step pipeline summary for team distribution)
+
+🔧 **Zone Diagnosis Template**: `toolkit/playbooks/zone_diagnosis_template.md` (8 professional diagnostic questions + reading order)
+
+🔧 **Forensics Attribution Guide**: `toolkit/playbooks/forensics_attribution_guide.md` (A–E evidence classification + 3-criterion confidence, with attribution workflow)
+
+🔧 **Monitoring Gaps Checklist**: `toolkit/playbooks/monitoring_gaps_checklist.md` (gap detection patterns + dual-audience framing)
+
+🔧 **Data Pipeline Spec**: `toolkit/playbooks/data_pipeline_spec.md` (6-CSV schema summary; references this guide's detailed version)
+
+---
+
 **Status**: V4.2 framework | SSOT לטרמינולוגיה ולסדר פייפליין | Scalable to all 18 zones  
 **Last Updated**: 2026-05-14 (Refactor: §III סולם 9-רמות קנוני, §IV סדר משפחות אדפטיבי, §VIII.1 pipeline ordering נפתר, §I.2 PDF ingestion, §I.5 Web sources)  
+**Last Sanitized**: 2026-05-27 (Toolkit back-references added)  
 **Governance**: CLAUDE.md (אינדקס אזורים + Phase H) + project REQUIREMENTS.md

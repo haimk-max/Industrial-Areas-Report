@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>אזה״ת חולון · תקציר מנהלים · מאי 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<style>
+:root{
+  /* Surfaces */
+  --bg:           #fafaf8;
+  --surface:      #ffffff;
+  --surface-2:    #f4f5f3;
+  --surface-3:    #eef0ee;
+
+  /* Ink */
+  --ink:          #0e1116;
+  --ink-2:        #3a414a;
+  --ink-3:        #5b6470;
+  --muted:        #8a939e;
+
+  /* Rules */
+  --rule:         #dde1e3;
+  --rule-faint:   #e9ebe9;
+  --rule-strong:  #0e1116;
+
+  /* Brand anchor — Water */
+  --teal:         #0f6b7a;
+  --teal-2:       #0c5664;
+  --teal-tint:    #e6f0f2;
+  --teal-tint-2:  #d4e3e6;
+
+  /* Semantics */
+  --red:          #c0392b;
+  --red-deep:     #962618;
+  --red-tint:     #fbeae7;
+  --amber:        #b87333;
+  --amber-tint:   #f6ecdf;
+  --green:        #1f7a4d;
+  --green-tint:   #e3efe8;
+
+  /* Severity scale */
+  --s0: transparent;
+  --s1: #f4f5f3;
+  --s2: #e6e8e6;
+  --s3: #d2d6d5;
+  --s4: #b7bdbd;
+  --s5: #8a8f8f;
+  --s6: #5a564f;
+  --s7: #962618;
+  --s8: #c0392b;
+
+  --sans:'IBM Plex Sans Hebrew', 'IBM Plex Sans', system-ui, sans-serif;
+  --mono:'IBM Plex Mono', ui-monospace, monospace;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{ background:var(--bg); color:var(--ink); font-family:var(--sans); -webkit-font-smoothing:antialiased; font-feature-settings:"tnum","ss01"; }
+body{ font-size:14.5px; line-height:1.6; }
+
+p,li,td,th,h1,h2,h3,h4,h5,figcaption{ unicode-bidi:isolate; }
+
+bdi{ font-feature-settings:"tnum"; }
+.mono{ font-family:var(--mono); font-feature-settings:"tnum","zero"; }
+
+/* ════════════════ TOP BAR ════════════════ */
+.topbar{
+  background:var(--ink);
+  color:#fff;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.04em;
+}
+.topbar-inner{
+  max-width:1180px; margin:0 auto;
+  padding:8px 32px;
+  display:flex; justify-content:space-between; align-items:center;
+  gap:24px;
+}
+.topbar .left{ display:flex; gap:18px; align-items:center; }
+.topbar .right{ display:flex; gap:18px; align-items:center; color:#a0acb5; }
+.topbar .classify{
+  background:var(--red);
+  padding:2px 8px;
+  color:#fff;
+  letter-spacing:0.1em;
+  font-weight:600;
+  text-transform:uppercase;
+}
+.topbar .dot{
+  display:inline-block; width:6px; height:6px;
+  background:var(--green); border-radius:50%;
+  margin-left:6px; vertical-align:middle;
+  animation:pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse{ 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+/* ════════════════ PAGE FRAME ════════════════ */
+.page{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 32px 96px;
+  background:var(--bg);
+}
+
+/* ════════════════ MASTHEAD ════════════════ */
+.masthead{
+  padding:36px 0 28px;
+  border-bottom:1px solid var(--rule-strong);
+  display:grid;
+  grid-template-columns:1fr 320px;
+  gap:48px;
+  align-items:end;
+}
+.masthead .hgroup .eyebrow{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--teal);
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  font-weight:500;
+  margin-bottom:14px;
+}
+.masthead h1{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:38px;
+  line-height:1.08;
+  letter-spacing:-0.01em;
+  color:var(--ink);
+}
+.masthead h1 .acc{
+  color:var(--teal);
+  font-weight:500;
+}
+.masthead h1 .div{
+  display:inline-block;
+  width:1px; height:0.85em;
+  background:var(--rule);
+  margin:0 14px;
+  vertical-align:-2px;
+}
+.masthead .sub{
+  font-size:15px; color:var(--ink-3);
+  margin-top:10px;
+  font-weight:400;
+}
+
+.docmeta{
+  display:flex; flex-direction:column; gap:0;
+  border:1px solid var(--rule);
+  background:var(--surface);
+}
+.docmeta-row{
+  display:grid;
+  grid-template-columns:100px 1fr;
+  font-family:var(--mono);
+  font-size:11px;
+  border-bottom:1px solid var(--rule-faint);
+}
+.docmeta-row:last-child{ border-bottom:none; }
+.docmeta-row .k{
+  background:var(--surface-2);
+  color:var(--ink-3);
+  padding:7px 10px;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  font-weight:500;
+  border-left:1px solid var(--rule-faint);
+}
+.docmeta-row .v{
+  padding:7px 10px;
+  color:var(--ink);
+  font-weight:500;
+}
+.docmeta-row .v.red{ color:var(--red); }
+.docmeta-row .v.teal{ color:var(--teal); }
+
+/* ════════════════ CHIPS STRIP ════════════════ */
+.chips-strip{
+  display:flex; flex-wrap:wrap; gap:6px;
+  padding:16px 0;
+  border-bottom:1px solid var(--rule);
+  margin-bottom:0;
+}
+.chip{
+  font-family:var(--mono);
+  font-size:11px;
+  padding:4px 10px;
+  background:var(--surface);
+  border:1px solid var(--rule);
+  color:var(--ink-2);
+  letter-spacing:0.02em;
+  display:inline-flex; align-items:center; gap:6px;
+}
+.chip .n{ color:var(--ink); font-weight:600; }
+.chip.teal{ background:var(--teal-tint); border-color:var(--teal-tint-2); color:var(--teal-2); }
+.chip.teal .n{ color:var(--teal); }
+.chip.red{ background:var(--red-tint); border-color:#f3cfc8; color:var(--red-deep); }
+.chip.red .n{ color:var(--red); }
+.chip .dot{ display:inline-block; width:6px; height:6px; border-radius:50%; }
+
+/* ════════════════ SECTIONS ════════════════ */
+.section{ margin-top:64px; }
+.section-head{
+  display:grid;
+  grid-template-columns:60px 1fr auto;
+  gap:18px;
+  align-items:baseline;
+  padding-bottom:10px;
+  border-bottom:1px solid var(--ink);
+  margin-bottom:24px;
+}
+.section-head .num{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--teal);
+  font-weight:500;
+  letter-spacing:0.08em;
+}
+.section-head h2{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:24px;
+  letter-spacing:-0.005em;
+}
+.section-head .meta{
+  font-family:var(--mono);
+  font-size:10.5px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+}
+
+/* ════════════════ BOTTOM LINE ════════════════ */
+.bottomline{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  border-right:3px solid var(--teal);
+  padding:24px 28px;
+  font-size:17px;
+  line-height:1.55;
+  color:var(--ink);
+}
+.bottomline p{ font-weight:400; }
+.bottomline p + p{ margin-top:14px; }
+.bottomline strong{ color:var(--ink); font-weight:600; }
+.bottomline .red{ color:var(--red); font-weight:600; }
+.bottomline .teal{ color:var(--teal); font-weight:600; }
+
+/* ════════════════ KPI GRID ════════════════ */
+.kpi-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+}
+.kpi{
+  background:var(--surface);
+  padding:22px 20px 20px;
+  display:flex; flex-direction:column;
+  min-height:160px;
+  position:relative;
+}
+.kpi.urgent{ background:#fffaf8; }
+.kpi.urgent::before{
+  content:""; position:absolute; top:0; right:0; left:0;
+  height:3px; background:var(--red);
+}
+.kpi.good::before{
+  content:""; position:absolute; top:0; right:0; left:0;
+  height:3px; background:var(--green);
+}
+.kpi.teal::before{
+  content:""; position:absolute; top:0; right:0; left:0;
+  height:3px; background:var(--teal);
+}
+.kpi .label{
+  font-family:var(--mono);
+  font-size:10.5px;
+  color:var(--ink-3);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.kpi .value{
+  font-family:var(--sans);
+  font-size:44px;
+  font-weight:500;
+  color:var(--ink);
+  letter-spacing:-0.025em;
+  line-height:1;
+  margin-top:14px;
+  font-feature-settings:"tnum";
+}
+.kpi.urgent .value{ color:var(--red); }
+.kpi.good .value{ color:var(--green); }
+.kpi.teal .value{ color:var(--teal); }
+.kpi .value .unit{
+  font-size:18px;
+  color:var(--ink-3);
+  font-weight:400;
+  letter-spacing:0;
+  margin-right:4px;
+}
+.kpi .delta{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  margin-top:8px;
+}
+.kpi .delta.up{ color:var(--red); }
+.kpi .delta.down{ color:var(--green); }
+.kpi .note{
+  font-family:var(--sans);
+  font-size:13px;
+  color:var(--ink-3);
+  line-height:1.4;
+  margin-top:auto;
+  padding-top:14px;
+}
+.placeholder{
+  font-family:var(--mono);
+  font-size:0.7em;
+  color:var(--muted);
+  border:1px dashed var(--muted);
+  padding:1px 6px;
+  letter-spacing:0;
+  font-weight:400;
+  vertical-align:middle;
+}
+
+/* spark mini-chart inside kpi */
+.spark{
+  display:flex; align-items:flex-end; gap:2px;
+  height:24px; margin-top:8px;
+}
+.spark span{
+  flex:1;
+  background:var(--rule);
+  min-height:2px;
+}
+.spark span.hi{ background:var(--red); }
+.spark span.lo{ background:var(--green); }
+
+/* ════════════════ LEDGER (family severity) ════════════════ */
+.ledger{
+  border:1px solid var(--rule);
+  background:var(--surface);
+}
+.ledger-row{
+  display:grid;
+  grid-template-columns:200px 1fr 200px;
+  border-bottom:1px solid var(--rule);
+}
+.ledger-row:last-child{ border-bottom:none; }
+.ledger-cell{
+  padding:18px 20px;
+}
+.ledger-cell.fam{
+  border-left:1px solid var(--rule);
+  background:var(--surface-2);
+  display:flex; flex-direction:column; gap:6px;
+}
+.ledger-cell.fam .name{
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:0.04em;
+  color:var(--ink);
+}
+.ledger-cell.fam .desc{
+  font-size:13px;
+  color:var(--ink-3);
+  font-weight:400;
+}
+.ledger-cell.narrative{
+  font-size:14px;
+  line-height:1.55;
+  color:var(--ink-2);
+}
+.ledger-cell.count{
+  border-right:1px solid var(--rule);
+  text-align:left;
+  display:flex; flex-direction:column; gap:6px;
+  justify-content:center;
+}
+.ledger-cell.count .n{
+  font-family:var(--sans);
+  font-size:36px;
+  font-weight:500;
+  color:var(--red);
+  letter-spacing:-0.025em;
+  line-height:1;
+}
+.ledger-cell.count.dim .n{ color:var(--ink-3); }
+.ledger-cell.count .lbl{
+  font-family:var(--mono);
+  font-size:10.5px;
+  color:var(--muted);
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+}
+
+/* ════════════════ FRAMING WARNING ════════════════ */
+.framing{
+  margin-top:18px;
+  background:var(--amber-tint);
+  border-right:3px solid var(--amber);
+  padding:14px 18px;
+  font-size:13.5px;
+  color:var(--ink-2);
+  line-height:1.55;
+}
+.framing strong{ color:var(--amber); font-weight:600; }
+
+/* ════════════════ FINDINGS ════════════════ */
+.findings-toc{
+  display:grid;
+  grid-template-columns:repeat(7, 1fr);
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  margin-bottom:32px;
+}
+.toc-item{
+  background:var(--surface);
+  padding:12px 10px 14px;
+  text-align:right;
+  display:flex; flex-direction:column; gap:4px;
+  position:relative;
+}
+.toc-item::before{
+  content:""; position:absolute; top:0; right:0; left:0; height:3px;
+  background:var(--muted);
+}
+.toc-item.crit::before{ background:var(--red); }
+.toc-item.high::before{ background:var(--amber); }
+.toc-item.good::before{ background:var(--green); }
+.toc-item .n{
+  font-family:var(--mono); font-size:11px;
+  color:var(--muted); letter-spacing:0.05em;
+  font-weight:500;
+}
+.toc-item .t{
+  font-size:12.5px; color:var(--ink);
+  line-height:1.3;
+  font-weight:500;
+}
+
+.finding{
+  border-top:1px solid var(--rule);
+  padding:28px 0 32px;
+  display:grid;
+  grid-template-columns:64px 1fr 260px;
+  gap:28px;
+  align-items:start;
+}
+.finding:last-child{ border-bottom:1px solid var(--rule); }
+.finding .num{
+  font-family:var(--mono);
+  font-size:32px;
+  font-weight:300;
+  color:var(--teal);
+  letter-spacing:-0.04em;
+  line-height:1;
+}
+.finding .body h3{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:21px;
+  line-height:1.25;
+  margin-bottom:6px;
+  letter-spacing:-0.005em;
+}
+.urgency-tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:600;
+  padding:2px 8px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  margin-right:8px;
+  vertical-align:3px;
+}
+.urgency-tag.crit{ background:var(--red); color:#fff; }
+.urgency-tag.high{ background:var(--amber); color:#fff; }
+.urgency-tag.good{ background:var(--green); color:#fff; }
+.finding .body p{
+  font-size:14.5px;
+  color:var(--ink-2);
+  line-height:1.6;
+  margin-top:8px;
+}
+.finding .body .action{
+  margin-top:14px;
+  background:var(--teal-tint);
+  border-right:3px solid var(--teal);
+  padding:12px 16px;
+  font-size:13.5px;
+  color:var(--ink);
+  line-height:1.55;
+}
+.finding .body .action::before{
+  content:"לפעולה · ";
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:600;
+  color:var(--teal);
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+}
+
+.finding aside{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  padding:0;
+}
+.finding aside .meta-row{
+  display:grid;
+  grid-template-columns:90px 1fr;
+  font-size:12px;
+  border-bottom:1px solid var(--rule-faint);
+}
+.finding aside .meta-row:last-child{ border-bottom:none; }
+.finding aside .meta-row .k{
+  background:var(--surface-2);
+  font-family:var(--mono); font-size:10.5px;
+  padding:7px 10px;
+  color:var(--ink-3);
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  font-weight:500;
+  border-left:1px solid var(--rule-faint);
+}
+.finding aside .meta-row .v{
+  padding:7px 10px;
+  font-family:var(--mono);
+  color:var(--ink);
+  font-weight:500;
+  font-size:12px;
+}
+.finding aside .meta-row .v.red{ color:var(--red); }
+.finding aside .meta-row .v.green{ color:var(--green); }
+.cert{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:9.5px;
+  font-weight:600;
+  padding:1.5px 6px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+}
+.cert.high{ background:var(--ink); color:#fff; }
+.cert.med{ background:var(--surface-3); color:var(--ink); border:1px solid var(--rule); }
+.cert.low{ background:var(--surface); color:var(--ink-3); border:1px dashed var(--rule); }
+
+/* ════════════════ SEVERITY MATRIX ════════════════ */
+.matrix-wrap{
+  border:1px solid var(--rule);
+  background:var(--surface);
+  overflow-x:auto;
+}
+.matrix{
+  width:100%;
+  border-collapse:collapse;
+  font-family:var(--sans);
+  font-size:12.5px;
+}
+.matrix th, .matrix td{
+  padding:9px 10px;
+  text-align:right;
+  border-left:1px solid var(--rule-faint);
+  border-bottom:1px solid var(--rule-faint);
+}
+.matrix thead th{
+  background:var(--surface-2);
+  font-family:var(--mono);
+  font-size:10.5px;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  color:var(--ink-3);
+  font-weight:600;
+  text-align:center;
+}
+.matrix thead th:first-child{ text-align:right; }
+.matrix tbody td:first-child{
+  background:var(--surface-2);
+  font-weight:500;
+  font-size:13px;
+  white-space:nowrap;
+}
+.matrix tbody td:first-child .sub{
+  display:block;
+  font-family:var(--mono);
+  font-size:10.5px;
+  color:var(--muted);
+  font-weight:400;
+  margin-top:2px;
+  letter-spacing:0;
+}
+.matrix .cell{
+  text-align:center;
+  font-family:var(--mono);
+  font-size:11.5px;
+  font-weight:500;
+  min-width:64px;
+}
+.cell.s0{ background:transparent; color:var(--muted); }
+.cell.s1{ background:var(--s1); color:var(--ink-3); }
+.cell.s2{ background:var(--s2); color:var(--ink-2); }
+.cell.s3{ background:var(--s3); color:var(--ink); }
+.cell.s4{ background:var(--s4); color:var(--ink); }
+.cell.s5{ background:var(--s5); color:#fff; }
+.cell.s6{ background:var(--s6); color:#fff; }
+.cell.s7{ background:var(--s7); color:#fff; }
+.cell.s8{ background:var(--s8); color:#fff; }
+
+.matrix-legend{
+  display:flex; justify-content:space-between; align-items:center;
+  margin-top:12px;
+  font-family:var(--mono); font-size:10.5px;
+  color:var(--ink-3); gap:24px;
+  flex-wrap:wrap;
+}
+.scale{
+  display:flex; gap:0; align-items:center;
+  border:1px solid var(--rule);
+}
+.scale span{
+  width:36px; height:16px; display:inline-flex;
+  align-items:center; justify-content:center;
+  font-size:9px;
+  border-left:1px solid var(--rule-faint);
+}
+.scale span:last-child{ border-left:none; }
+
+/* ════════════════ DECISIONS MATRIX ════════════════ */
+.decisions{
+  width:100%;
+  border-collapse:collapse;
+  font-family:var(--sans);
+  font-size:13.5px;
+  background:var(--surface);
+  border:1px solid var(--rule);
+}
+.decisions thead th{
+  background:var(--ink);
+  color:#fff;
+  text-align:right;
+  padding:11px 14px;
+  font-family:var(--mono);
+  font-size:10.5px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  font-weight:600;
+  border-left:1px solid var(--ink-2);
+}
+.decisions thead th:last-child{ border-left:none; }
+.decisions tbody td{
+  padding:13px 14px;
+  border-bottom:1px solid var(--rule-faint);
+  border-left:1px solid var(--rule-faint);
+  vertical-align:top;
+  line-height:1.5;
+  color:var(--ink-2);
+}
+.decisions tbody td:last-child{ border-left:none; }
+.decisions tbody td.cat{
+  font-family:var(--mono);
+  font-weight:600;
+  font-size:11px;
+  background:var(--teal-tint);
+  color:var(--teal-2);
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  width:160px;
+  vertical-align:middle;
+  border-right:3px solid var(--teal);
+}
+.decisions tbody td.act{
+  font-weight:600;
+  font-size:13.5px;
+  width:200px;
+  color:var(--ink);
+}
+.decisions tbody td.note{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  width:130px;
+  line-height:1.5;
+}
+.decisions tbody td.note .red{ color:var(--red); }
+.decisions tbody tr.spacer td{
+  background:var(--surface-2);
+  height:6px; padding:0; border:none;
+}
+
+/* ════════════════ MAP ════════════════ */
+.map-wrap{
+  background:var(--surface);
+  border:1px solid var(--rule);
+}
+.map-toolbar{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 14px;
+  border-bottom:1px solid var(--rule);
+  background:var(--surface-2);
+  font-family:var(--mono); font-size:10.5px;
+  color:var(--ink-3); letter-spacing:0.06em;
+  text-transform:uppercase;
+}
+.map-toolbar .filters{ display:flex; gap:4px; }
+.map-toolbar button{
+  font-family:var(--mono); font-size:10.5px;
+  background:var(--surface); border:1px solid var(--rule);
+  padding:5px 10px; cursor:pointer; color:var(--ink-2);
+  letter-spacing:0.06em; text-transform:uppercase;
+  transition:all 0.15s ease;
+}
+.map-toolbar button:hover{ background:var(--surface-3); }
+.map-toolbar button.active{
+  background:var(--ink); color:#fff; border-color:var(--ink);
+}
+.map-toolbar .crs{
+  font-family:var(--mono); color:var(--muted);
+}
+#holon-map{
+  height:560px; width:100%;
+  direction:ltr;
+  background:#f4f5f3;
+}
+.map-legend{
+  display:flex; flex-wrap:wrap; gap:16px 24px;
+  padding:14px 18px;
+  border-top:1px solid var(--rule);
+  font-family:var(--mono); font-size:11px;
+  color:var(--ink-3);
+}
+.map-legend .lk{
+  display:inline-flex; align-items:center; gap:8px;
+}
+.map-legend .dot{
+  width:11px; height:11px; border-radius:50%;
+  display:inline-block; flex-shrink:0;
+  border:1.5px solid #fff;
+  box-shadow:0 0 0 1px var(--rule);
+}
+.map-legend .sq{
+  width:11px; height:11px; display:inline-block; flex-shrink:0;
+  transform:rotate(45deg);
+  border:1.5px solid var(--ink);
+  background:#fff;
+}
+
+/* Leaflet overrides — match dashboard chrome */
+.leaflet-container{
+  font-family:var(--sans) !important;
+  background:#f4f5f3 !important;
+}
+.leaflet-control-attribution{
+  font-family:var(--mono) !important;
+  font-size:10px !important;
+  background:rgba(255,255,255,0.85) !important;
+  color:var(--ink-3) !important;
+  padding:2px 6px !important;
+}
+.leaflet-control-attribution a{ color:var(--teal) !important; }
+.leaflet-control-zoom a{
+  background:#fff !important; color:var(--ink) !important;
+  border:1px solid var(--rule) !important;
+  font-family:var(--mono) !important;
+  border-radius:0 !important;
+}
+.leaflet-control-zoom a:hover{ background:var(--surface-2) !important; }
+.leaflet-popup-content-wrapper{
+  border-radius:0 !important;
+  border:1px solid var(--ink) !important;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08) !important;
+  padding:0 !important;
+  background:#fff !important;
+}
+.leaflet-popup-content{
+  margin:0 !important; padding:0 !important;
+  font-family:var(--sans) !important;
+  min-width:220px;
+}
+.leaflet-popup-tip{
+  border:1px solid var(--ink) !important;
+}
+.popup{ direction:rtl; }
+.popup .hdr{
+  padding:10px 12px;
+  background:var(--ink); color:#fff;
+  font-family:var(--mono); font-size:11px;
+  letter-spacing:0.06em; text-transform:uppercase;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.popup .hdr.crit{ background:var(--red); }
+.popup .hdr.high{ background:var(--amber); }
+.popup .hdr.good{ background:var(--green); }
+.popup .hdr.src{ background:var(--teal); }
+.popup .hdr .tag{ font-weight:600; }
+.popup .body{
+  padding:10px 12px;
+}
+.popup .ttl{
+  font-size:14px; font-weight:600; color:var(--ink);
+  margin-bottom:4px;
+}
+.popup .sub{
+  font-family:var(--mono); font-size:11px;
+  color:var(--ink-3); margin-bottom:8px;
+}
+.popup .row{
+  display:flex; justify-content:space-between;
+  font-size:12px; padding:3px 0;
+  border-top:1px solid var(--rule-faint);
+}
+.popup .row .k{
+  font-family:var(--mono); font-size:10.5px;
+  color:var(--ink-3); letter-spacing:0.05em;
+  text-transform:uppercase;
+}
+.popup .row .v{
+  font-family:var(--mono); font-weight:500;
+  color:var(--ink);
+}
+.popup .row .v.red{ color:var(--red); }
+.popup .row .v.green{ color:var(--green); }
+
+/* Custom markers */
+.bh-marker{
+  border-radius:50%;
+  border:2px solid #fff;
+  box-shadow:0 0 0 1px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.12);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:9.5px; font-weight:600;
+  color:#fff;
+  cursor:pointer;
+  transition:transform 0.12s ease;
+}
+.bh-marker:hover{ transform:scale(1.18); z-index:1000; }
+.bh-marker.silent{
+  border-style:dashed;
+  border-color:var(--red);
+  background:#fff !important;
+  color:var(--red) !important;
+}
+.src-marker{
+  width:14px; height:14px;
+  background:#fff;
+  border:1.5px solid var(--ink);
+  transform:rotate(45deg);
+  box-shadow:0 1px 3px rgba(0,0,0,0.15);
+  cursor:pointer;
+  transition:transform 0.12s ease;
+}
+.src-marker.high{ border-color:var(--ink); background:var(--ink); }
+.src-marker.med{ border-color:var(--ink-3); background:#fff; }
+.src-marker:hover{ transform:rotate(45deg) scale(1.25); z-index:1000; }
+.src-label{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:9.5px; color:var(--ink-2);
+  background:rgba(255,255,255,0.85);
+  padding:0 4px; white-space:nowrap;
+  border:1px solid var(--rule);
+  pointer-events:none;
+  direction:ltr;
+}
+
+/* ════════════════ COLOPHON ════════════════ */
+.colophon{
+  margin-top:80px;
+  padding-top:18px;
+  border-top:1px solid var(--ink);
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:24px;
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+}
+.colophon .lbl{
+  color:var(--ink-3);
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  display:block;
+  margin-bottom:4px;
+}
+.colophon .val{ color:var(--ink-2); }
+
+/* ════════════════ RESPONSIVE GUARD ════════════════ */
+@media (max-width: 960px){
+  .masthead{ grid-template-columns:1fr; }
+  .kpi-grid{ grid-template-columns:repeat(2,1fr); }
+  .ledger-row{ grid-template-columns:1fr; }
+  .ledger-cell.fam{ border-left:none; border-bottom:1px solid var(--rule); }
+  .ledger-cell.count{ border-right:none; border-top:1px solid var(--rule); text-align:right; }
+  .finding{ grid-template-columns:1fr; }
+  .findings-toc{ grid-template-columns:repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════ TOP BAR ════════════════ -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="left">
+      <span class="classify">פנים-ארגוני</span>
+      <span>רשות המים · אגף מי תהום</span>
+    </div>
+    <div class="right">
+      <span>גיליון <bdi>HOL/2026/01</bdi></span>
+      <span>סטטוס נתונים<span class="dot"></span></span>
+      <span>גרסה <bdi>1.0</bdi></span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ════════════════ MASTHEAD ════════════════ -->
+  <header class="masthead">
+    <div class="hgroup">
+      <div class="eyebrow">דו״ח איכות מי-תהום · מאי <bdi>2026</bdi></div>
+      <h1>אזה״ת חולון<span class="div"></span><span class="acc">תקציר מנהלים</span></h1>
+      <div class="sub">סקירת ממצאים, מטריצת חומרה ומטריקס החלטות לאחר עיבוד נתוני <bdi>2020–2026</bdi></div>
+    </div>
+    <div class="docmeta">
+      <div class="docmeta-row"><span class="k">מסמך</span><span class="v">תקציר מנהלים</span></div>
+      <div class="docmeta-row"><span class="k">קהל</span><span class="v">הנהלת רשות המים · מנהלי סביבה</span></div>
+      <div class="docmeta-row"><span class="k">מקור נתונים</span><span class="v">מסד ניטור חולון · 02/2026</span></div>
+      <div class="docmeta-row"><span class="k">דחיפות</span><span class="v red">קריטי · פעולה נדרשת</span></div>
+      <div class="docmeta-row"><span class="k">סיווג</span><span class="v">פנים-ארגוני</span></div>
+    </div>
+  </header>
+
+  <!-- chips strip -->
+  <div class="chips-strip">
+    <span class="chip teal"><span class="dot" style="background:var(--teal)"></span>תקופה <span class="n"><bdi>2020–2026</bdi></span></span>
+    <span class="chip">קידוחי ליבה <span class="n"><span class="placeholder">~58</span></span></span>
+    <span class="chip">משפחות מזהמים <span class="n"><bdi>4</bdi></span></span>
+    <span class="chip red"><span class="dot" style="background:var(--red)"></span>חריגת תקן בקידוח הפקה</span>
+    <span class="chip">פערי ניטור <span class="n"><bdi>7+</bdi></span></span>
+    <span class="chip">כיסוי <bdi>PFAS</bdi> <span class="n"><bdi>3.6%</bdi></span></span>
+    <span class="chip">פלאום <bdi>1,4-Dioxane</bdi> מתפשט</span>
+  </div>
+
+  <!-- ════════════════ BOTTOM LINE ════════════════ -->
+  <section class="section" style="margin-top:36px">
+    <div class="section-head">
+      <span class="num">§ 00</span>
+      <h2>השורה התחתונה</h2>
+      <span class="meta">קריאת <bdi>30</bdi> שניות</span>
+    </div>
+    <div class="bottomline">
+      <p>מי-התהום באזה״ת חולון מציגים תמונה <strong>דו-קוטבית</strong>: רוב הקידוחים תקינים — אך באפריל <bdi>2025</bdi> חצה קידוח ההפקה <strong>מק חולון <bdi>14</bdi></strong> לראשונה זה עשור את תקן <bdi>TCE</bdi> (<span class="red"><bdi>101%</bdi></span>), ומזהם חדש (<bdi>1,4-דיאוקסן</bdi>) מתפשט אל קידוח חקלאי במרחק כקילומטר.</p>
+      <p>במקביל, מערך הניטור מציג <strong>פערים שיטתיים</strong> — שבעה קידוחים ואשכולות שותקים <bdi>39–150+</bdi> חודשים, חלקם בריכוזי שיא; כיסוי <bdi>PFAS</bdi> עומד על <span class="red"><bdi>~3.6%</bdi></span> בלבד, ולא במתקני הסיכון הגבוה.</p>
+      <p>נדרשת פעולה מתואמת בארבעה צירים: <span class="teal">עדכון תכנית הניטור</span>, <span class="teal">קידוחים חדשים</span>, <span class="teal">חקירת מקורות</span>, ו<span class="teal">מדיניות הפקה</span> — כמפורט במטריקס ההחלטות בסעיף §<bdi>05</bdi>.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════ KPIS ════════════════ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="num">§ 01</span>
+      <h2>מדדים מרכזיים</h2>
+      <span class="meta">תמונת מצב · מאי <bdi>2026</bdi></span>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi urgent">
+        <div class="label">חריגת תקן · קידוח הפקה</div>
+        <div class="value"><bdi>101</bdi><span class="unit">%</span></div>
+        <div class="delta up">▲ <bdi>+101 pp</bdi> מעל ספי תקן (<bdi>04/2025</bdi>)</div>
+        <div class="spark" aria-hidden="true">
+          <span style="height:14%"></span><span style="height:18%"></span><span style="height:12%"></span>
+          <span style="height:20%"></span><span style="height:24%"></span><span style="height:22%"></span>
+          <span style="height:30%"></span><span style="height:40%"></span><span style="height:54%"></span>
+          <span class="hi" style="height:100%"></span><span style="height:62%"></span><span style="height:48%"></span>
+        </div>
+        <div class="note"><bdi>מק חולון 14</bdi> · TCE <bdi>7.59 µg/L</bdi></div>
+      </div>
+
+      <div class="kpi teal">
+        <div class="label">קידוחי ליבה פעילה</div>
+        <div class="value"><span class="placeholder">~58</span></div>
+        <div class="delta">נדגמו <bdi>2021–2026</bdi> · מעבר לדלק</div>
+        <div class="note">ליבה אנליטית של הדוח. הספירה המדויקת תקובע בסגירת הגיליון.</div>
+      </div>
+
+      <div class="kpi urgent">
+        <div class="label">פערי ניטור</div>
+        <div class="value"><bdi>7</bdi><span class="unit">+ קידוחים</span></div>
+        <div class="delta up">▲ <bdi>39–150+</bdi> חודשי שתיקה</div>
+        <div class="spark" aria-hidden="true">
+          <span style="height:60%"></span><span class="hi" style="height:78%"></span><span class="hi" style="height:92%"></span>
+          <span class="hi" style="height:64%"></span><span class="hi" style="height:88%"></span><span style="height:32%"></span>
+          <span class="hi" style="height:72%"></span><span style="height:20%"></span><span class="hi" style="height:96%"></span>
+          <span style="height:24%"></span><span class="hi" style="height:84%"></span><span style="height:38%"></span>
+        </div>
+        <div class="note">כולל קידוחים בריכוזי שיא ושני דפוסי "שתיקה מתואמת"</div>
+      </div>
+
+      <div class="kpi urgent">
+        <div class="label">כיסוי <bdi>PFAS</bdi></div>
+        <div class="value"><bdi>3.6</bdi><span class="unit">%</span></div>
+        <div class="delta">כל הנדגמים תחת הסף · אתרי סיכון לא נדגמו</div>
+        <div class="note">נקודה עיוורת ב-<bdi>AFFF</bdi> וציפוי כרום. נדרש קמפיין <bdi>8–12</bdi> קידוחים.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ LEDGER ════════════════ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="num">§ 02</span>
+      <h2>פנקס חומרה לפי משפחת מזהמים</h2>
+      <span class="meta">ריכוז שיא · <bdi>5</bdi> שנים אחרונות</span>
+    </div>
+    <div class="ledger">
+      <div class="ledger-row">
+        <div class="ledger-cell fam">
+          <span class="name">CVOC</span>
+          <span class="desc">ממסים כלורניים</span>
+        </div>
+        <div class="ledger-cell narrative">
+          המשפחה הדומיננטית. שני מוקדי <bdi>DNAPL</bdi> עיקשים (תדירגן, אלביט), פלאום <bdi>1,4-דיאוקסן</bdi> מתפשט, והופעת <bdi>VC</bdi> ב-<bdi>נת חולון 11</bdi>. חריגת תקן ראשונה בקידוח הפקה לאחר עשור.
+        </div>
+        <div class="ledger-cell count">
+          <span class="n"><bdi>×9</bdi></span>
+          <span class="lbl">קידוחים בסף</span>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-cell fam">
+          <span class="name">METALS</span>
+          <span class="desc">מתכות וכרום</span>
+        </div>
+        <div class="ledger-cell narrative">
+          סיפור מעורב — הצלחת שיקום ברימטל (<bdi>Ni</bdi> פי <bdi>57</bdi>↓), אך כרום נקודתי בנת חולון <bdi>26</bdi> ועליית סטרונציום באתרים משוקמים.
+        </div>
+        <div class="ledger-cell count">
+          <span class="n"><bdi>×4</bdi></span>
+          <span class="lbl">קידוחים בסף</span>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-cell fam">
+          <span class="name">PFAS</span>
+          <span class="desc">פר-/פוליפלואוריים</span>
+        </div>
+        <div class="ledger-cell narrative">
+          נקודה עיוורת. כיסוי <bdi>~3.6%</bdi>, כל הנדגמים תחת הסף — אך מתקני הסיכון הגבוה (<bdi>AFFF</bdi>, ציפוי כרום) <em>לא נדגמו</em>.
+        </div>
+        <div class="ledger-cell count dim">
+          <span class="n"><bdi>0/2</bdi></span>
+          <span class="lbl">חיובי / נדגם</span>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-cell fam">
+          <span class="name">FUEL</span>
+          <span class="desc">פחמימני דלק · BTEX/MTBE</span>
+        </div>
+        <div class="ledger-cell narrative">
+          רקע ספציפי-לאתר. מוקדי <bdi>MTBE</bdi> סביב תחנות דלק ואגד, אך ללא חציית תקן ברורה בקידוחי הליבה.
+        </div>
+        <div class="ledger-cell count dim">
+          <span class="n"><bdi>×2</bdi></span>
+          <span class="lbl">קידוחים בסף</span>
+        </div>
+      </div>
+    </div>
+    <div class="framing">
+      <strong>אזהרת מסגור:</strong> שיעור החריגות אינו מייצג את כלל מרחב חולון — קידוחי הניטור מוקמו בכוונה ליד מקורות זיהום חשודים (הטיית-בחירה). אין להסיק מהמדגם הזה לאיכות מי-התהום הכללית.
+    </div>
+  </section>
+
+  <!-- ════════════════ FINDINGS ════════════════ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="num">§ 03</span>
+      <h2>שבעת הממצאים</h2>
+      <span class="meta">ייחוס מקורות בשם · ודאות מצויינת</span>
+    </div>
+
+    <!-- TOC -->
+    <div class="findings-toc">
+      <div class="toc-item crit"><span class="n">F·01</span><span class="t">חריגת תקן בקידוח הפקה</span></div>
+      <div class="toc-item crit"><span class="n">F·02</span><span class="t">DNAPL עיקש · תדירגן</span></div>
+      <div class="toc-item crit"><span class="n">F·03</span><span class="t">פלאום 1,4-דיאוקסן</span></div>
+      <div class="toc-item high"><span class="n">F·04</span><span class="t">פערי ניטור שיטתיים</span></div>
+      <div class="toc-item high"><span class="n">F·05</span><span class="t">הופעת ויניל-כלוריד</span></div>
+      <div class="toc-item high"><span class="n">F·06</span><span class="t">נקודה עיוורת PFAS</span></div>
+      <div class="toc-item good"><span class="n">F·07</span><span class="t">הצלחת שיקום · רימטל</span></div>
+    </div>
+
+    <!-- F1 -->
+    <article class="finding">
+      <div class="num">01</div>
+      <div class="body">
+        <h3><span class="urgency-tag crit">קריטי</span>חריגת תקן בקידוח הפקה</h3>
+        <p><bdi>מק חולון 14</bdi> חצה ב-<bdi>04/2025</bdi> את תקן <bdi>TCE</bdi> הישראלי (<bdi>7.59 µg/L</bdi> ≈ <strong style="color:var(--red)"><bdi>101%</bdi> מהתקן</strong>) לראשונה זה עשור. המדידות שלאחר מכן ירדו מתחת לתקן.</p>
+        <div class="action">דרושה הצהרה רגולטורית, ניטור חודשי בקידוח, ובדיקת נתיב אספקה לרשת. שיקול השעיה זהירה לקידוחים סמוכים (<bdi>מק 12, 23</bdi>) במידה ותחזור עלייה.</div>
+      </div>
+      <aside>
+        <div class="meta-row"><span class="k">קידוח</span><span class="v"><bdi>מק חולון 14</bdi></span></div>
+        <div class="meta-row"><span class="k">מזהם</span><span class="v">TCE</span></div>
+        <div class="meta-row"><span class="k">ריכוז</span><span class="v red"><bdi>7.59 µg/L</bdi></span></div>
+        <div class="meta-row"><span class="k">% תקן</span><span class="v red"><bdi>101%</bdi></span></div>
+        <div class="meta-row"><span class="k">תאריך</span><span class="v"><bdi>04/2025</bdi></span></div>
+        <div class="meta-row"><span class="k">ודאות מקור</span><span class="v"><span class="cert med">MEDIUM</span></span></div>
+      </aside>
+    </article>
+
+    <!-- F2 -->
+    <article class="finding">
+      <div class="num">02</div>
+      <div class="body">
+        <h3><span class="urgency-tag crit">קריטי</span><bdi>DNAPL</bdi> עיקש · תדירגן/סונול</h3>
+        <p><bdi>נד סונול המלאכה מ-1</bdi> מציג <bdi>TCE 2,722 µg/L</bdi> (<bdi>01/2026</bdi>) — יציב לאורך <bdi>3</bdi> שנים, על אף שיקום <bdi>ISCO</bdi> שבוצע באתר הציפוי הסגור בין <bdi>2013–2020</bdi>.</p>
+        <div class="action">מצביע על מקור עומק שלא נוקה. נדרשת חקירת <bdi>DNAPL</bdi> רב-מפלסית בתדירגן + אלביט + הפלד-הסדנה. ייתכן שיש להחזיר ל-<bdi>ISCO</bdi> שלב ב׳.</div>
+      </div>
+      <aside>
+        <div class="meta-row"><span class="k">קידוח</span><span class="v"><bdi>נד סונול ה.מ-1</bdi></span></div>
+        <div class="meta-row"><span class="k">מזהם</span><span class="v">TCE</span></div>
+        <div class="meta-row"><span class="k">ריכוז</span><span class="v red"><bdi>2,722 µg/L</bdi></span></div>
+        <div class="meta-row"><span class="k">% תקן</span><span class="v red"><bdi>36,293%</bdi></span></div>
+        <div class="meta-row"><span class="k">מקור</span><span class="v">תדירגן · ציפוי</span></div>
+        <div class="meta-row"><span class="k">ודאות מקור</span><span class="v"><span class="cert high">HIGH</span></span></div>
+      </aside>
+    </article>
+
+    <!-- F3 -->
+    <article class="finding">
+      <div class="num">03</div>
+      <div class="body">
+        <h3><span class="urgency-tag crit">קריטי</span>התפשטות <bdi>1,4-דיאוקסן</bdi></h3>
+        <p>הפלאום מתפשט מהאשכול התעשייתי אל קידוח חקלאי במרחק <bdi>~1</bdi> ק״מ. <bdi>נת חווה חקלאית א</bdi>: <bdi>38.8 µg/L</bdi> (<bdi>02/2026</bdi>) ≈ <bdi>1,293%</bdi> מתקן <bdi>EPA</bdi>. <bdi>נת חולון 11</bdi> הגיע ל-<bdi>1,036 µg/L</bdi>.</p>
+        <div class="action">דיגום חוזר דחוף בקידוחי החוות. חיפוש במרשם התעשייה אחר יצרני <bdi>PVDC</bdi> ושימושי דיאוקסן. הרחבת פאנל <bdi>CVOC</bdi> לכלול דיאוקסן בכל הליבה.</div>
+      </div>
+      <aside>
+        <div class="meta-row"><span class="k">קידוח שיא</span><span class="v"><bdi>נת חולון 11</bdi></span></div>
+        <div class="meta-row"><span class="k">מזהם</span><span class="v">1,4-Dioxane</span></div>
+        <div class="meta-row"><span class="k">שיא</span><span class="v red"><bdi>1,036 µg/L</bdi></span></div>
+        <div class="meta-row"><span class="k">% EPA</span><span class="v red"><bdi>34,533%</bdi></span></div>
+        <div class="meta-row"><span class="k">תאריך</span><span class="v"><bdi>02/2026</bdi></span></div>
+        <div class="meta-row"><span class="k">ודאות מקור</span><span class="v"><span class="cert low">LOW</span></span></div>
+      </aside>
+    </article>
+
+    <!-- F4 -->
+    <article class="finding">
+      <div class="num">04</div>
+      <div class="body">
+        <h3><span class="urgency-tag high">גבוה</span>פערי ניטור שיטתיים</h3>
+        <p>שבעה קידוחים ואשכולות שקטים בין <bdi>39</bdi> ל-<bdi>150+</bdi> חודשים — חלקם בריכוזי שיא היסטוריים. מזוהים שני דפוסי "שתיקה מתואמת" באשכולות אגד ובקידוחי <bdi>נת חולון 2</bdi> + <bdi>נד המרכבה ק2</bdi>.</p>
+        <div class="action">חידוש דיגום <bdi>CVOC</bdi> מיידי בכל השבעה. סקירת אחריות תפעולית — מי הופסק להידגם וכיצד נפל מהתכנית.</div>
+      </div>
+      <aside>
+        <div class="meta-row"><span class="k">קידוחים שקטים</span><span class="v"><bdi>7+</bdi></span></div>
+        <div class="meta-row"><span class="k">טווח שתיקה</span><span class="v"><bdi>39–150+ ח׳</bdi></span></div>
+        <div class="meta-row"><span class="k">דפוסים</span><span class="v"><bdi>×2</bdi> אשכולות</span></div>
+        <div class="meta-row"><span class="k">קטגוריה</span><span class="v">תפעולית</span></div>
+        <div class="meta-row"><span class="k">ודאות</span><span class="v"><span class="cert high">HIGH</span></span></div>
+      </aside>
+    </article>
+
+    <!-- F5 -->
+    <article class="finding">
+      <div class="num">05</div>
+      <div class="body">
+        <h3><span class="urgency-tag high">גבוה</span>הופעת ויניל-כלוריד</h3>
+        <p>ב-<bdi>נת חולון 11</bdi> זוהה <bdi>VC 13.8 µg/L</bdi> (<bdi>11/2024</bdi>) — <bdi>2,767%</bdi> מתקן <bdi>EPA</bdi>, לאחר שנות אפס. <bdi>VC</bdi> הוא תוצר פירוק מסרטן (group <bdi>1</bdi>) המעיד על דה-הלוגנציה אנאירובית פעילה.</p>
+        <div class="action">דיגום דופליקט לאישוש. הוספת תוצרי פירוק (<bdi>VC</bdi>, <bdi>ethene</bdi>) לפאנל הליבה. בדיקת אם דה-הלוגנציה טבעית או תוצר התערבות שיקום.</div>
+      </div>
+      <aside>
+        <div class="meta-row"><span class="k">קידוח</span><span class="v"><bdi>נת חולון 11</bdi></span></div>
+        <div class="meta-row"><span class="k">מזהם</span><span class="v">VC</span></div>
+        <div class="meta-row"><span class="k">ריכוז</span><span class="v red"><bdi>13.8 µg/L</bdi></span></div>
+        <div class="meta-row"><span class="k">% EPA</span><span class="v red"><bdi>2,767%</bdi></span></div>
+        <div class="meta-row"><span class="k">משמעות</span><span class="v">מסרטן · פירוק</span></div>
+        <div class="meta-row"><span class="k">ודאות</span><span class="v"><span class="cert med">MEDIUM</span></span></div>
+      </aside>
+    </article>
+
+    <!-- F6 -->
+    <article class="finding">
+      <div class="num">06</div>
+      <div class="body">
+        <h3><span class="urgency-tag high">גבוה</span>נקודה עיוורת <bdi>PFAS</bdi></h3>
+        <p>רק <bdi>~3.6%</bdi> מקידוחי הליבה נדגמו ל-<bdi>PFAS</bdi>. כל הנדגמים אפס — אך אתרי <bdi>AFFF</bdi> (קצף-כיבוי בתחנות דלק ומחנות צה״ל) ואתרי ציפוי כרום (שהשתמשו ב-<bdi>PFOS</bdi> עד <bdi>2010</bdi>) <em>לא נדגמו</em>.</p>
+        <div class="action">קמפיין דיגום ממוקד של <bdi>8–12</bdi> קידוחים סביב מתקני <bdi>AFFF</bdi> וציפוי. תלוי תקציב — להעלות בישיבת תקציב <bdi>Q3</bdi>.</div>
+      </div>
+      <aside>
+        <div class="meta-row"><span class="k">כיסוי</span><span class="v red"><bdi>3.6%</bdi></span></div>
+        <div class="meta-row"><span class="k">חיוביים</span><span class="v"><bdi>0/2</bdi></span></div>
+        <div class="meta-row"><span class="k">פערים</span><span class="v">AFFF · ציפוי</span></div>
+        <div class="meta-row"><span class="k">קמפיין</span><span class="v"><bdi>8–12</bdi> קידוחים</span></div>
+        <div class="meta-row"><span class="k">ודאות פער</span><span class="v"><span class="cert high">HIGH</span></span></div>
+      </aside>
+    </article>
+
+    <!-- F7 -->
+    <article class="finding">
+      <div class="num">07</div>
+      <div class="body">
+        <h3><span class="urgency-tag good">חיובי</span>הצלחת שיקום · רימטל</h3>
+        <p>קידוחי רימטל מציגים ירידה של פי <bdi>~57</bdi> בניקל: מ-<bdi>2.0 mg/L</bdi> אל <bdi>13.8 µg/L</bdi> בעקבות סגירת בור ספיגה וניקוי קרקע (<bdi>2023</bdi>). מודל הצלחה ראוי לשכפול.</p>
+        <div class="action">לתעד כ-case study, להחיל על אתרים דומים. אזהרה נלווית: עליית סטרונציום באותם קידוחים — לעקוב.</div>
+      </div>
+      <aside>
+        <div class="meta-row"><span class="k">קידוח</span><span class="v">רימטל</span></div>
+        <div class="meta-row"><span class="k">מזהם</span><span class="v">Ni</span></div>
+        <div class="meta-row"><span class="k">לפני</span><span class="v"><bdi>2.0 mg/L</bdi></span></div>
+        <div class="meta-row"><span class="k">אחרי</span><span class="v"><bdi>13.8 µg/L</bdi></span></div>
+        <div class="meta-row"><span class="k">שינוי</span><span class="v green">×<bdi>57</bdi> ↓</span></div>
+        <div class="meta-row"><span class="k">ודאות</span><span class="v"><span class="cert high">HIGH</span></span></div>
+      </aside>
+    </article>
+  </section>
+
+  <!-- ════════════════ SEVERITY MATRIX ════════════════ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="num">§ 04</span>
+      <h2>מטריצת חומרה · קידוחים <bdi>×</bdi> משפחות</h2>
+      <span class="meta">סולם <bdi>s0–s8</bdi></span>
+    </div>
+    <div class="matrix-wrap">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th style="width:220px">קידוח</th>
+            <th>CVOC</th>
+            <th>1,4-Dioxane</th>
+            <th>VC</th>
+            <th>METALS</th>
+            <th>PFAS</th>
+            <th>FUEL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><bdi>מק חולון 14</bdi><span class="sub">קידוח הפקה</span></td>
+            <td class="cell s8">s8</td><td class="cell s4">s4</td><td class="cell s0">·</td>
+            <td class="cell s2">s2</td><td class="cell s0">·</td><td class="cell s2">s2</td>
+          </tr>
+          <tr>
+            <td><bdi>נד סונול ה.מ-1</bdi><span class="sub">ניטור</span></td>
+            <td class="cell s8">s8</td><td class="cell s6">s6</td><td class="cell s4">s4</td>
+            <td class="cell s5">s5</td><td class="cell s0">·</td><td class="cell s3">s3</td>
+          </tr>
+          <tr>
+            <td><bdi>נת חולון 11</bdi><span class="sub">ניטור</span></td>
+            <td class="cell s8">s8</td><td class="cell s8">s8</td><td class="cell s8">s8</td>
+            <td class="cell s4">s4</td><td class="cell s0">·</td><td class="cell s3">s3</td>
+          </tr>
+          <tr>
+            <td><bdi>נת חווה חקלאית א</bdi><span class="sub">חקלאי</span></td>
+            <td class="cell s6">s6</td><td class="cell s8">s8</td><td class="cell s3">s3</td>
+            <td class="cell s2">s2</td><td class="cell s0">·</td><td class="cell s0">—</td>
+          </tr>
+          <tr>
+            <td><bdi>נת חולון 26</bdi><span class="sub">ניטור</span></td>
+            <td class="cell s5">s5</td><td class="cell s2">s2</td><td class="cell s0">·</td>
+            <td class="cell s7">s7</td><td class="cell s0">·</td><td class="cell s2">s2</td>
+          </tr>
+          <tr>
+            <td><bdi>נד תדירגן</bdi><span class="sub">חוץ ליבה</span></td>
+            <td class="cell s7">s7</td><td class="cell s4">s4</td><td class="cell s5">s5</td>
+            <td class="cell s5">s5</td><td class="cell s0">·</td><td class="cell s2">s2</td>
+          </tr>
+          <tr>
+            <td><bdi>נד אלביט</bdi><span class="sub">ניטור</span></td>
+            <td class="cell s6">s6</td><td class="cell s3">s3</td><td class="cell s2">s2</td>
+            <td class="cell s4">s4</td><td class="cell s0">·</td><td class="cell s2">s2</td>
+          </tr>
+          <tr>
+            <td><bdi>אשכול אגד</bdi><span class="sub">שותק <bdi>74 ח׳</bdi></span></td>
+            <td class="cell s4">s4</td><td class="cell s0">·</td><td class="cell s0">·</td>
+            <td class="cell s2">s2</td><td class="cell s0">·</td><td class="cell s5">s5</td>
+          </tr>
+          <tr>
+            <td>רימטל<span class="sub">משוקם</span></td>
+            <td class="cell s2">s2</td><td class="cell s0">·</td><td class="cell s0">·</td>
+            <td class="cell s3">s3</td><td class="cell s0">·</td><td class="cell s3">s3</td>
+          </tr>
+          <tr>
+            <td><bdi>נת חולון 2</bdi><span class="sub">שותק <bdi>47 ח׳</bdi></span></td>
+            <td class="cell s3">s3</td><td class="cell s0">·</td><td class="cell s0">·</td>
+            <td class="cell s2">s2</td><td class="cell s0">·</td><td class="cell s2">s2</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="matrix-legend">
+      <span>חומרה לפי <bdi>bucket(C_max_5y / DWS × 100)</bdi> · נקודה (·) = לא נדגם · מקף (—) = אפס</span>
+      <span class="scale">
+        <span class="cell s0">s0</span>
+        <span class="cell s2">s2</span>
+        <span class="cell s3">s3</span>
+        <span class="cell s4">s4</span>
+        <span class="cell s5">s5</span>
+        <span class="cell s6">s6</span>
+        <span class="cell s7">s7</span>
+        <span class="cell s8">s8</span>
+      </span>
+    </div>
+  </section>
+
+  <!-- ════════════════ DECISIONS ════════════════ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="num">§ 05</span>
+      <h2>מטריקס החלטות · פנים-ארגוני</h2>
+      <span class="meta">פעולה · משפט אחד · מקור</span>
+    </div>
+    <table class="decisions">
+      <thead>
+        <tr><th>קטגוריית פעילות</th><th>פעולה</th><th>מה צריך</th><th>הערות</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="cat" rowspan="4">עדכון תכנית הניטור</td>
+            <td class="act">ניטור חודשי במק <bdi>14</bdi></td>
+            <td>מעבר לדיגום <bdi>TCE</bdi> + <bdi>1,4-דיאוקסן</bdi> חודשי בקידוח ההפקה שחצה תקן.</td>
+            <td class="note"><span class="red">חריגה <bdi>101%</bdi></span><br/>F·01</td></tr>
+        <tr><td class="act">חידוש קידוחים שקטים</td>
+            <td>החזרת <bdi>נת חולון 2</bdi> + <bdi>נד המרכבה ק2</bdi> + אשכול אגד לדיגום <bdi>CVOC</bdi>.</td>
+            <td class="note">פער <bdi>47–74 ח׳</bdi><br/>F·04</td></tr>
+        <tr><td class="act">הרחבת פאנל</td>
+            <td>הוספת <bdi>1,4-דיאוקסן</bdi> ותוצרי פירוק (<bdi>VC, ethene</bdi>) לפאנל ה-<bdi>CVOC</bdi>.</td>
+            <td class="note">F·03, F·05</td></tr>
+        <tr><td class="act">ספציאציה</td>
+            <td>דיגום חוזר עם הפרדת <bdi>Cr(VI)/Cr(III)</bdi> בנת חולון <bdi>26</bdi> + <bdi>14</bdi>.</td>
+            <td class="note">סמנטיקה<br/>בריאותית</td></tr>
+
+        <tr class="spacer"><td colspan="4"></td></tr>
+
+        <tr><td class="cat" rowspan="3">קידוחי ניטור חדשים</td>
+            <td class="act">קמפיין <bdi>PFAS</bdi></td>
+            <td>קידוח/דיגום <bdi>8–12</bdi> קידוחים באתרי סיכון (מרכבות האש, אגד, ציפוי, הפקה).</td>
+            <td class="note">תלוי תקציב<br/>F·06</td></tr>
+        <tr><td class="act">קידוחים חקלאיים</td>
+            <td>דגימה חוזרת דחופה בנת חווה חקלאית א/ב.</td>
+            <td class="note"><span class="red">דחוף</span><br/>F·03</td></tr>
+        <tr><td class="act">ניטור עומק</td>
+            <td>קידוחי ניטור רב-מפלסיים באתרי <bdi>DNAPL</bdi> חשודים.</td>
+            <td class="note">F·02</td></tr>
+
+        <tr class="spacer"><td colspan="4"></td></tr>
+
+        <tr><td class="cat" rowspan="4">חקירת מקורות זיהום</td>
+            <td class="act">מיפוי <bdi>DNAPL</bdi> בעומק</td>
+            <td>חקירת מקור עומק בתדירגן/סונול, אלביט, הפלד-הסדנה.</td>
+            <td class="note">ודאות גבוהה<br/>F·02</td></tr>
+        <tr><td class="act">איתור מקור <bdi>1,4-דיאוקסן</bdi></td>
+            <td>חיפוש במרשם התעשייה אחר יצרני <bdi>PVDC</bdi>/דיאוקסן.</td>
+            <td class="note">ראשון מסוגו<br/>F·03</td></tr>
+        <tr><td class="act">בדיקת מיכלים תת-קרקעיים</td>
+            <td>בדיקת <bdi>UST</bdi> בכל תחנות אגד ברמת index <bdi>8</bdi>.</td>
+            <td class="note">F·04</td></tr>
+        <tr><td class="act">מקור <bdi>Cr</bdi> נקודתי</td>
+            <td>סקר רדיוס <bdi>50 מ׳</bdi> סביב נת חולון <bdi>26</bdi>.</td>
+            <td class="note">מטריצה</td></tr>
+
+        <tr class="spacer"><td colspan="4"></td></tr>
+
+        <tr><td class="cat" rowspan="3">מדיניות הפקה</td>
+            <td class="act">הצהרה רגולטורית</td>
+            <td>דיווח על חריגת <bdi>מק חולון 14</bdi> + הערכת נתיב אספקה לרשת.</td>
+            <td class="note"><span class="red">דחוף</span><br/>F·01</td></tr>
+        <tr><td class="act">קריטריון השעיה</td>
+            <td>מדיניות השעיה זהירה לקידוחי הפקה בסיכון (<bdi>מק חולון 12, 23</bdi>).</td>
+            <td class="note">מניעתי</td></tr>
+        <tr><td class="act">סקירת קידוחים שנפסלו</td>
+            <td>סקירת סטטוס <bdi>מק חולון 7, 8, 13, 15, 21</bdi> (נפסלו היסטורית).</td>
+            <td class="note">ארכיון</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ════════════════ MAP ════════════════ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="num">§ 06</span>
+      <h2>מפת המרחב · קידוחים ומקורות זיהום</h2>
+      <span class="meta">בסיס <bdi>OSM/Carto</bdi> · <bdi>WGS-84</bdi></span>
+    </div>
+    <div class="map-wrap">
+      <div class="map-toolbar">
+        <div class="filters">
+          <button class="active" data-filter="all">הכל</button>
+          <button data-filter="boreholes">קידוחים בלבד</button>
+          <button data-filter="sources">מקורות בלבד</button>
+          <button data-filter="exceedance">חריגות תקן</button>
+          <button data-filter="silent">קידוחים שקטים</button>
+        </div>
+        <span class="crs">מערכת ייחוס · <bdi>EPSG:4326</bdi></span>
+      </div>
+      <div id="holon-map" dir="ltr"></div>
+      <div class="map-legend">
+        <span class="lk" style="font-weight:600; color:var(--ink); letter-spacing:0.1em">קידוחים</span>
+        <span class="lk"><span class="dot" style="background:#c0392b"></span>s7–s8 · חריגת תקן</span>
+        <span class="lk"><span class="dot" style="background:#5a564f"></span>s5–s6 · קרוב לסף</span>
+        <span class="lk"><span class="dot" style="background:#8a8f8f"></span>s3–s4 · רקע מוגבה</span>
+        <span class="lk"><span class="dot" style="background:#d2d6d5"></span>s0–s2 · נקי</span>
+        <span class="lk"><span class="dot" style="background:#1f7a4d"></span>שיקום מוצלח</span>
+        <span class="lk"><span class="dot" style="background:transparent; border:1.5px dashed #c0392b; box-shadow:none"></span>קידוח שקט</span>
+        <span style="border-right:1px solid var(--rule); padding-right:16px; margin-right:8px; font-weight:600; color:var(--ink); letter-spacing:0.1em">מקורות זיהום</span>
+        <span class="lk"><span class="sq" style="background:var(--ink); border-color:var(--ink)"></span>ודאות גבוהה (HIGH)</span>
+        <span class="lk"><span class="sq" style="background:#fff; border-color:var(--ink-3)"></span>ודאות בינונית (MEDIUM)</span>
+      </div>
+        <span class="lk"><span class="dot" style="background:#c0392b"></span>s7–s8 · חריגת תקן</span>
+        <span class="lk"><span class="dot" style="background:#5a564f"></span>s5–s6 · קרוב לסף</span>
+        <span class="lk"><span class="dot" style="background:#8a8f8f"></span>s3–s4 · רקע מוגבה</span>
+        <span class="lk"><span class="dot" style="background:#d2d6d5"></span>s0–s2 · נקי</span>
+        <span class="lk"><span class="dot" style="background:#1f7a4d"></span>שיקום מוצלח</span>
+        <span class="lk"><span class="dot" style="background:transparent; border:1.5px dashed #c0392b"></span>קידוח שקט</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ COLOPHON ════════════════ -->
+  <footer class="colophon">
+    <div>
+      <span class="lbl">מפיק</span>
+      <span class="val">רשות המים · אגף מי תהום</span>
+    </div>
+    <div>
+      <span class="lbl">תקופת ניתוח</span>
+      <span class="val"><bdi>2020–2026</bdi> · עודכן <bdi>05/2026</bdi></span>
+    </div>
+    <div>
+      <span class="lbl">מזהה מסמך</span>
+      <span class="val"><bdi>HOL/EXEC/INT/2026-01</bdi> · v<bdi>1.0</bdi></span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  // ───────── DATA ─────────
+  // Holon industrial zone center
+  const CENTER = [32.0125, 34.7835];
+  const ZOOM   = 15;
+
+  // Boreholes: [lat, lon, kind, name, code, props]
+  // kind: 'crit' | 'high' | 'med' | 'low' | 'silent' | 'success'
+  const boreholes = [
+    { lat:32.01510, lon:34.78090, kind:'crit', name:'מק חולון 14', code:'MK-14',
+      role:'קידוח הפקה',
+      rows:[ ['מזהם','TCE'], ['ריכוז','7.59 µg/L'], ['% תקן','101%','red'], ['תאריך','04/2025'], ['חומרה','s8','red'] ]},
+    { lat:32.01180, lon:34.78870, kind:'crit', name:'נד סונול ה.מ-1', code:'SONOL-1',
+      role:'ניטור · DNAPL',
+      rows:[ ['מזהם','TCE'], ['ריכוז','2,722 µg/L','red'], ['% תקן','36,293%','red'], ['תאריך','01/2026'], ['חומרה','s8','red'] ]},
+    { lat:32.01340, lon:34.78580, kind:'crit', name:'נת חולון 11', code:'NT-11',
+      role:'ניטור',
+      rows:[ ['מזהם','1,4-Dioxane + VC'], ['Dioxane','1,036 µg/L','red'], ['VC','13.8 µg/L','red'], ['% EPA','34,533%','red'], ['חומרה','s8','red'] ]},
+    { lat:32.02020, lon:34.77380, kind:'crit', name:'נת חווה חקלאית א', code:'FARM-A',
+      role:'קידוח חקלאי',
+      rows:[ ['מזהם','1,4-Dioxane'], ['ריכוז','38.8 µg/L','red'], ['% EPA','1,293%','red'], ['תאריך','02/2026'], ['חומרה','s8','red'] ]},
+    { lat:32.01040, lon:34.78320, kind:'high', name:'נת חולון 26', code:'NT-26',
+      role:'ניטור',
+      rows:[ ['מזהם','Cr (כרום)'], ['חומרה','s7','red'], ['פעולה','ספציאציה Cr(VI)/Cr(III)'] ]},
+    { lat:32.00950, lon:34.79080, kind:'high', name:'נד תדירגן', code:'TADIRAN-NM',
+      role:'חוץ-ליבה',
+      rows:[ ['מזהם','TCE/PCE'], ['חומרה','s7','red'], ['הקשר','DNAPL עיקש'] ]},
+    { lat:32.00840, lon:34.78950, kind:'high', name:'נד אלביט', code:'ELBIT-NM',
+      role:'ניטור',
+      rows:[ ['מזהם','CVOC'], ['חומרה','s6'], ['הקשר','אתר ביטחוני'] ]},
+    { lat:32.01390, lon:34.79320, kind:'silent', name:'אשכול אגד', code:'EGGED-CL',
+      role:'שותק · 74 ח׳',
+      rows:[ ['מזהם','FUEL · MTBE'], ['חומרה','s5'], ['שתיקה','74 חודשים','red'], ['סטטוס','דרוש חידוש'] ]},
+    { lat:32.01530, lon:34.78760, kind:'silent', name:'נת חולון 2', code:'NT-2',
+      role:'שותק · 47 ח׳',
+      rows:[ ['מזהם','CVOC'], ['חומרה','s3'], ['שתיקה','47 חודשים','red'], ['סטטוס','דרוש חידוש'] ]},
+    { lat:32.00720, lon:34.78720, kind:'silent', name:'נד המרכבה ק2', code:'MRK-K2',
+      role:'שותק',
+      rows:[ ['מזהם','CVOC'], ['שתיקה','> 60 חודשים','red'], ['סטטוס','דרוש חידוש'] ]},
+    { lat:32.00690, lon:34.79140, kind:'success', name:'רימטל', code:'REMITAL',
+      role:'משוקם · case study',
+      rows:[ ['מזהם','Ni (ניקל)'], ['לפני','2.0 mg/L'], ['אחרי','13.8 µg/L','green'], ['שינוי','×57 ↓','green'], ['פעולה','שכפול למודל'] ]},
+    { lat:32.01290, lon:34.78250, kind:'med', name:'נת חולון 28', code:'NT-28',
+      role:'ניטור',
+      rows:[ ['מזהם','CVOC רקע'], ['חומרה','s4'] ]},
+    { lat:32.00880, lon:34.78460, kind:'low', name:'נת חולון 31', code:'NT-31',
+      role:'ניטור',
+      rows:[ ['חומרה','s2'], ['סטטוס','תקין'] ]},
+    { lat:32.01680, lon:34.78440, kind:'low', name:'נת חולון 5', code:'NT-5',
+      role:'ניטור',
+      rows:[ ['חומרה','s2'], ['סטטוס','תקין'] ]},
+  ];
+
+  // Pollution sources: [lat, lon, certainty, category, name, contaminants]
+  const sources = [
+    { lat:32.00990, lon:34.79050, cert:'high', cat:'אלקטרוניקה / ביטחוני', name:'תדיראן קשר',
+      contam:'TCE · PCE · כרומאט · ציאנידים', status:'פעיל'},
+    { lat:32.00880, lon:34.78930, cert:'high', cat:'מתקן ביטחוני', name:'אלביט',
+      contam:'TCE · PCE · DCE · כרומאט', status:'פעיל'},
+    { lat:32.00950, lon:34.78250, cert:'high', cat:'ציפוי מתכות', name:'תדירגן (סגור)',
+      contam:'TCE · PCE · כרומאט · ציאנידים', status:'סגור · שוקם 2013–2020'},
+    { lat:32.01160, lon:34.78840, cert:'med', cat:'תחנת דלק', name:'סונול',
+      contam:'BTEX · MTBE · ממסים', status:'פעיל'},
+    { lat:32.01410, lon:34.79280, cert:'med', cat:'חניון תחבורה', name:'אגד',
+      contam:'BTEX · MTBE · רכיבי דלק', status:'פעיל'},
+    { lat:32.01580, lon:34.79050, cert:'high', cat:'מפעל מתכות וציפוי', name:'אמקור פליז',
+      contam:'TCE · PCE · כספית · כרום · Cd', status:'היסטורי'},
+    { lat:32.01440, lon:34.78000, cert:'high', cat:'מפעל טקסטיל', name:'לודג׳יה',
+      contam:'כרום · צבענים', status:'היסטורי'},
+    { lat:32.00710, lon:34.79180, cert:'high', cat:'מחזור מתכות', name:'רימטל',
+      contam:'Ni · Al · Cu · Pb · TPH', status:'משוקם'},
+    { lat:32.01080, lon:34.78380, cert:'high', cat:'מפעל מתכות', name:'כור מתכת',
+      contam:'TCE · DCE · 1,4-דיאוקסן · כרום', status:'היסטורי'},
+    { lat:32.01680, lon:34.78460, cert:'high', cat:'מפעל דבקים / כימיקלים', name:'נצח · גונן',
+      contam:'TCE · DCE · דבקים', status:'היסטורי'},
+    { lat:32.00650, lon:34.78670, cert:'med', cat:'מתקן ביטחוני', name:'מחנה דלק צה״ל',
+      contam:'BTEX · MTBE · שמנים', status:'היסטורי'},
+    { lat:32.01210, lon:34.78130, cert:'med', cat:'תחנת דלק', name:'פז',
+      contam:'BTEX · MTBE', status:'פעיל'},
+    { lat:32.01840, lon:34.79100, cert:'med', cat:'תחנת דלק', name:'דלק',
+      contam:'BTEX · MTBE', status:'פעיל'},
+    { lat:32.00930, lon:34.79430, cert:'med', cat:'חניון תחבורה', name:'מרכבות האש',
+      contam:'BTEX · AFFF (פוטנציאלי)', status:'פעיל'},
+  ];
+
+  // ───────── COLOR MAP ─────────
+  const bhColor = {
+    crit:    '#c0392b',
+    high:    '#5a564f',
+    med:     '#8a8f8f',
+    low:     '#d2d6d5',
+    silent:  '#ffffff',
+    success: '#1f7a4d',
+  };
+  const bhSize = { crit:30, high:24, med:20, low:18, silent:24, success:22 };
+  const popupClass = { crit:'crit', high:'high', med:'high', low:'', silent:'', success:'good' };
+  const popupLabel = { crit:'קריטי', high:'גבוה', med:'בינוני', low:'תקין', silent:'פער ניטור', success:'הצלחה' };
+
+  // ───────── MAP INIT ─────────
+  const map = L.map('holon-map', {
+    center: CENTER,
+    zoom: ZOOM,
+    minZoom: 13,
+    maxZoom: 18,
+    zoomControl: true,
+    attributionControl: true,
+    scrollWheelZoom: false,
+  });
+
+  // CartoDB Positron — neutral light basemap
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 19,
+  }).addTo(map);
+
+  // ───────── LAYER GROUPS ─────────
+  const bhLayer  = L.layerGroup().addTo(map);
+  const srcLayer = L.layerGroup().addTo(map);
+
+  function buildPopup(b){
+    const tag = popupLabel[b.kind] || '';
+    const cls = popupClass[b.kind] || '';
+    const rowsHtml = b.rows.map(r => {
+      const vClass = r[2] ? ` ${r[2]}` : '';
+      return `<div class="row"><span class="k">${r[0]}</span><span class="v${vClass}">${r[1]}</span></div>`;
+    }).join('');
+    return `<div class="popup">
+      <div class="hdr ${cls}"><span>קידוח · ${b.code}</span><span class="tag">${tag}</span></div>
+      <div class="body">
+        <div class="ttl">${b.name}</div>
+        <div class="sub">${b.role}</div>
+        ${rowsHtml}
+      </div>
+    </div>`;
+  }
+
+  function buildSrcPopup(s){
+    const cert = s.cert === 'high' ? 'HIGH' : 'MEDIUM';
+    return `<div class="popup">
+      <div class="hdr src"><span>מקור זיהום · ${cert}</span><span class="tag">${s.cat}</span></div>
+      <div class="body">
+        <div class="ttl">${s.name}</div>
+        <div class="sub">${s.status}</div>
+        <div class="row"><span class="k">מזהמים</span><span class="v" style="font-family:var(--mono); font-size:11px">${s.contam}</span></div>
+      </div>
+    </div>`;
+  }
+
+  // ───────── DRAW BOREHOLES ─────────
+  boreholes.forEach(b => {
+    const sz = bhSize[b.kind];
+    const isSilent = b.kind === 'silent';
+    const bg = isSilent ? '#fff' : bhColor[b.kind];
+    const fg = isSilent ? '#c0392b' : (b.kind === 'low' || b.kind === 'med' ? '#0e1116' : '#fff');
+    const html = `<div class="bh-marker ${isSilent ? 'silent' : ''}" style="
+      width:${sz}px; height:${sz}px;
+      background:${bg};
+      color:${fg};
+      font-size:${sz>=24 ? '10px' : '9px'};
+    ">${b.code.split('-')[0].substring(0,3)}</div>`;
+    const icon = L.divIcon({
+      className:'',
+      html: html,
+      iconSize: [sz, sz],
+      iconAnchor: [sz/2, sz/2],
+    });
+    const m = L.marker([b.lat, b.lon], { icon: icon }).addTo(bhLayer);
+    m.bindPopup(buildPopup(b), { offset: [0, -sz/2 + 4], closeButton: true });
+    m._bhData = b;
+  });
+
+  // ───────── DRAW SOURCES ─────────
+  sources.forEach(s => {
+    const cls = s.cert === 'high' ? 'high' : 'med';
+    const html = `<div class="src-marker ${cls}"></div>`;
+    const icon = L.divIcon({
+      className:'',
+      html: html,
+      iconSize: [14, 14],
+      iconAnchor: [7, 7],
+    });
+    const m = L.marker([s.lat, s.lon], { icon: icon, zIndexOffset: -100 }).addTo(srcLayer);
+    m.bindPopup(buildSrcPopup(s), { offset: [0, -4] });
+    m._srcData = s;
+  });
+
+  // ───────── PLUME ARROW (CVOC → agricultural) ─────────
+  const plume = L.polyline([
+    [32.01340, 34.78580],   // NT-11
+    [32.01600, 34.78200],
+    [32.01850, 34.77750],
+    [32.02020, 34.77380],   // FARM-A
+  ], {
+    color: '#c0392b',
+    weight: 2,
+    opacity: 0.55,
+    dashArray: '4 6',
+  }).addTo(map);
+  plume.bindTooltip('פלאום 1,4-דיאוקסן · כיוון התפשטות', { sticky:true, direction:'top' });
+
+  // ───────── FILTER CONTROLS ─────────
+  const buttons = document.querySelectorAll('.map-toolbar button');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      bhLayer.clearLayers();
+      srcLayer.clearLayers();
+      const showBh  = filter === 'all' || filter === 'boreholes' || filter === 'exceedance' || filter === 'silent';
+      const showSrc = filter === 'all' || filter === 'sources';
+      if (showBh) {
+        boreholes.forEach(b => {
+          if (filter === 'exceedance' && b.kind !== 'crit') return;
+          if (filter === 'silent' && b.kind !== 'silent') return;
+          const sz = bhSize[b.kind];
+          const isSilent = b.kind === 'silent';
+          const bg = isSilent ? '#fff' : bhColor[b.kind];
+          const fg = isSilent ? '#c0392b' : (b.kind === 'low' || b.kind === 'med' ? '#0e1116' : '#fff');
+          const html = `<div class="bh-marker ${isSilent ? 'silent' : ''}" style="
+            width:${sz}px; height:${sz}px; background:${bg}; color:${fg};
+            font-size:${sz>=24 ? '10px' : '9px'};
+          ">${b.code.split('-')[0].substring(0,3)}</div>`;
+          const icon = L.divIcon({ className:'', html, iconSize:[sz,sz], iconAnchor:[sz/2,sz/2] });
+          L.marker([b.lat, b.lon], { icon }).bindPopup(buildPopup(b)).addTo(bhLayer);
+        });
+      }
+      if (showSrc) {
+        sources.forEach(s => {
+          const cls = s.cert === 'high' ? 'high' : 'med';
+          const icon = L.divIcon({ className:'', html:`<div class="src-marker ${cls}"></div>`, iconSize:[14,14], iconAnchor:[7,7] });
+          L.marker([s.lat, s.lon], { icon, zIndexOffset:-100 }).bindPopup(buildSrcPopup(s)).addTo(srcLayer);
+        });
+      }
+    });
+  });
+
+  // Click on map enables scroll zoom; outside disables (UX)
+  map.on('click', () => map.scrollWheelZoom.enable());
+  map.on('mouseout', () => map.scrollWheelZoom.disable());
+})();
+</script>
+
+</body>
+</html>

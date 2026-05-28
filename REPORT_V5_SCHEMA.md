@@ -304,5 +304,14 @@
 
 ---
 
+## See Also
+
+🔧 **Zone Diagnosis template** (self-contained playbook): `toolkit/playbooks/zone_diagnosis_template.md` (Step 4 of V5 pipeline — diagnostic questions, reading order, principles)
+
+🔧 **V5 Report prompt** (Opus call reference): `scripts/templates/zone_report_prompt_template_v5.md`
+
+---
+
 **Last Updated**: 2026-05-17  
-**Phase**: H+ (Hybrid V5 Pipeline — Documentation)
+**Phase**: H+ (Hybrid V5 Pipeline — Documentation)  
+**Last Sanitized**: 2026-05-27 (Back-references + toolkit pointers added)
