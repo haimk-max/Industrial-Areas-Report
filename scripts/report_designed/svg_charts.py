@@ -832,6 +832,7 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
     """Generate SVG map showing borehole locations colored by severity bucket.
 
     Uses ITM coordinates (בקואורדינטות ITM).
+    Includes street-level background and borehole name labels.
     """
     if classification.empty:
         return '<div style="padding:20px;color:#6b6b6b;text-align:center">אין נתוני קידוחים זמינים</div>'
@@ -840,9 +841,9 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
     east_min, east_max = 180, 183
     north_min, north_max = 655, 659
 
-    # SVG dimensions
-    svg_width, svg_height = 600, 500
-    padding = 40
+    # SVG dimensions (increased to accommodate labels)
+    svg_width, svg_height = 800, 600
+    padding = 50
     plot_width = svg_width - 2 * padding
     plot_height = svg_height - 2 * padding
 
@@ -863,6 +864,38 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
     lines.append(f'<svg viewBox="0 0 {svg_width} {svg_height}" xmlns="http://www.w3.org/2000/svg">')
     lines.append(f'<rect width="{svg_width}" height="{svg_height}" fill="{PAPER}"/>')
 
+    # Add SVG style for street-level background and hover effects
+    lines.append('<style>')
+    lines.append('.borehole-label { font-size: 9px; fill: ' + INK + '; text-anchor: end; direction: rtl; unicode-bidi: isolate; }')
+    lines.append('.borehole-group:hover .borehole-label { font-weight: bold; }')
+    lines.append('.borehole-group:hover circle { stroke-width: 2; }')
+    lines.append('</style>')
+
+    # Street-level background pattern with neutral colors (building blocks)
+    # Create a grid of light rectangular blocks to simulate buildings
+    block_size_east = 0.3  # ITM units
+    block_size_north = 0.3  # ITM units
+
+    east_curr = east_min
+    while east_curr < east_max:
+        north_curr = north_min
+        while north_curr < north_max:
+            # Alternate colors to create a street pattern
+            is_street = ((int((east_curr - east_min) / block_size_east) +
+                         int((north_curr - north_min) / block_size_north)) % 2) == 0
+            fill_color = "#f5f3ed" if is_street else "#ebe8e1"  # Light neutral colors
+
+            x1 = padding + (east_curr - east_min) / (east_max - east_min) * plot_width
+            y1 = svg_height - padding - (north_curr + block_size_north - north_min) / (north_max - north_min) * plot_height
+            x2 = padding + (min(east_curr + block_size_east, east_max) - east_min) / (east_max - east_min) * plot_width
+            y2 = svg_height - padding - (north_curr - north_min) / (north_max - north_min) * plot_height
+
+            lines.append(f'<rect x="{x1:.1f}" y="{y1:.1f}" width="{x2-x1:.1f}" height="{y2-y1:.1f}" '
+                        f'fill="{fill_color}" stroke="none"/>')
+
+            north_curr += block_size_north
+        east_curr += block_size_east
+
     # Axes
     lines.append(f'<line x1="{padding}" y1="{svg_height-padding}" x2="{svg_width-padding}" y2="{svg_height-padding}" stroke="{INK}" stroke-width="2"/>')
     lines.append(f'<line x1="{padding}" y1="{padding}" x2="{padding}" y2="{svg_height-padding}" stroke="{INK}" stroke-width="2"/>')
@@ -870,13 +903,13 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
     # Grid lines (light)
     for east in range(int(east_min), int(east_max)+1):
         x = padding + (east - east_min) / (east_max - east_min) * plot_width
-        lines.append(f'<line x1="{x}" y1="{padding}" x2="{x}" y2="{svg_height-padding}" stroke="{RULE_FAINT}" stroke-width="0.5"/>')
+        lines.append(f'<line x1="{x}" y1="{padding}" x2="{x}" y2="{svg_height-padding}" stroke="{RULE_LIGHT}" stroke-width="0.5" opacity="0.6"/>')
 
     for north in range(int(north_min), int(north_max)+1):
         y = svg_height - padding - (north - north_min) / (north_max - north_min) * plot_height
-        lines.append(f'<line x1="{padding}" y1="{y}" x2="{svg_width-padding}" y2="{y}" stroke="{RULE_FAINT}" stroke-width="0.5"/>')
+        lines.append(f'<line x1="{padding}" y1="{y}" x2="{svg_width-padding}" y2="{y}" stroke="{RULE_LIGHT}" stroke-width="0.5" opacity="0.6"/>')
 
-    # Plot boreholes
+    # Plot boreholes with labels
     for _, row in classification.iterrows():
         if pd.notna(row['east_itm']) and pd.notna(row['north_itm']):
             x = padding + (row['east_itm'] - east_min) / (east_max - east_min) * plot_width
@@ -885,7 +918,13 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
             bucket = int(row['severity_bucket'])
             color = color_map.get(bucket, GREY_3)
 
-            lines.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4" fill="{color}" stroke="{INK}" stroke-width="0.5"/>')
+            # Get borehole name for label
+            label = esc(row.get('name_he', 'לא זיהוי')) if 'name_he' in row else 'לא זיהוי'
+
+            lines.append(f'<g class="borehole-group">')
+            lines.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="5" fill="{color}" stroke="{INK}" stroke-width="1"/>')
+            lines.append(f'<text x="{x-8:.1f}" y="{y-8:.1f}" class="borehole-label">{label}</text>')
+            lines.append(f'</g>')
 
     # Axis labels — RTL for mixed Hebrew/English content
     lines.append(f'<text x="{svg_width/2}" y="{svg_height-10}" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="12" fill="{INK}">מזרח (ITM)</text>')
@@ -895,9 +934,9 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
     lines.append(f'<text x="{svg_width/2}" y="25" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="14" font-weight="bold" fill="{INK}">מיקומי קידוחים לפי אינדקס חומרה</text>')
 
     # Legend
-    legend_x = svg_width - 150
+    legend_x = svg_width - 180
     legend_y = 50
-    lines.append(f'<rect x="{legend_x}" y="{legend_y}" width="140" height="120" fill="{PAPER}" stroke="{RULE_LIGHT}"/>')
+    lines.append(f'<rect x="{legend_x}" y="{legend_y}" width="160" height="145" fill="{PAPER}" stroke="{RULE_LIGHT}"/>')
 
     legend_items = [
         (RED, "אינדקס 8"),
@@ -907,9 +946,12 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
     ]
 
     for i, (color, label) in enumerate(legend_items):
-        ly = legend_y + 10 + i * 25
-        lines.append(f'<circle cx="{legend_x+10}" cy="{ly+6}" r="3" fill="{color}"/>')
-        lines.append(f'<text x="{legend_x+20}" y="{ly+8}" direction="rtl" unicode-bidi="isolate" font-size="11" fill="{INK}">{label}</text>')
+        ly = legend_y + 10 + i * 28
+        lines.append(f'<circle cx="{legend_x+15}" cy="{ly+8}" r="4" fill="{color}" stroke="{INK}" stroke-width="0.5"/>')
+        lines.append(f'<text x="{legend_x+30}" y="{ly+11}" direction="rtl" unicode-bidi="isolate" font-size="11" fill="{INK}">{label}</text>')
+
+    # Add note about street background
+    lines.append(f'<text x="{legend_x+5}" y="{legend_y+135}" direction="rtl" unicode-bidi="isolate" font-size="8" fill="{SOFT}" font-style="italic">רקע ניטרלי: אזורי דרכים ובנייה</text>')
 
     lines.append('</svg>')
 
