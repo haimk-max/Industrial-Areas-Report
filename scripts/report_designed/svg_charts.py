@@ -861,9 +861,35 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
     # Background: paper color
     lines.append(f'<rect width="{svg_width}" height="{svg_height}" fill="{PAPER}"/>')
 
-    # Plot area background: light grey base (street pavement)
+    # Plot area background - street/map style
+    # Create actual building blocks pattern (darker streets, lighter building areas)
+    block_width = plot_width / 10
+    block_height = plot_height / 12
+
+    # Draw building blocks with streets between them
+    for i in range(11):  # Columns
+        for j in range(13):  # Rows
+            x = padding + (i * block_width)
+            y = padding + (j * block_height)
+
+            # Alternate colors to create checkerboard (buildings vs streets)
+            is_street = ((i + j) % 2 == 0)
+            if is_street:
+                # Street: darker color
+                color = "#a89878"
+                opacity = "0.5"
+            else:
+                # Building: lighter color
+                color = "#e8dcc8"
+                opacity = "1"
+
+            if i < 10 and j < 12:  # Don't draw outside plot area
+                lines.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{block_width:.1f}" height="{block_height:.1f}" '
+                            f'fill="{color}" opacity="{opacity}" stroke="none"/>')
+
+    # Outer border of plot area
     lines.append(f'<rect x="{padding}" y="{padding}" width="{plot_width}" height="{plot_height}" '
-                f'fill="#e8e3d8" stroke="{RULE_LIGHT}" stroke-width="1"/>')
+                f'fill="none" stroke="{RULE_LIGHT}" stroke-width="1"/>')
 
     # CSS styles
     lines.append('<style>')
@@ -871,22 +897,6 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
     lines.append('.label-bg { fill: white; fill-opacity: 0.9; stroke: none; }')
     lines.append('.borehole:hover { r: 7; }')
     lines.append('</style>')
-
-    # Building blocks pattern (street grid visualization)
-    # Darker lines to represent streets clearly
-    block_size_x = plot_width / 10  # 10 blocks horizontally
-    block_size_y = plot_height / 12  # 12 blocks vertically
-
-    # Draw light background rectangles (buildings) with dark streets between them
-    for i in range(11):  # Vertical street lines
-        x = padding + (i * block_size_x)
-        lines.append(f'<line x1="{x:.1f}" y1="{padding}" x2="{x:.1f}" y2="{svg_height-padding}" '
-                    f'stroke="#9a9078" stroke-width="1.5" opacity="0.6"/>')
-
-    for i in range(13):  # Horizontal street lines
-        y = padding + (i * block_size_y)
-        lines.append(f'<line x1="{padding}" y1="{y:.1f}" x2="{svg_width-padding}" y2="{y:.1f}" '
-                    f'stroke="#9a9078" stroke-width="1.5" opacity="0.6"/>')
 
     # ITM coordinate ticks (every 1 km)
     for east in range(int(east_min), int(east_max)+1):
