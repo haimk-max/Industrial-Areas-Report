@@ -317,6 +317,7 @@ The framework supports any of the 18 industrial zones in the coastal aquifer mon
 4. **Generate zone diagnosis** (Opus call #1) → `{zone}/04_diagnosis/zone_diagnosis.md` (8 professional questions)
 5. **Generate V5 expert report** (Opus call #2) → `{zone}/output/{ZONE}_REPORT_V5.md` (6 sections + appendices, per `REPORT_V5_SCHEMA.md`)
 6. **Render final figures + HTML** → `scripts/generate_{zone}_full_html.py` + `generate_{zone}_designed.py` (boreholes_override path)
+   - **Map generation** (`svg_borehole_map_html()` in `scripts/report_designed/svg_charts.py`): bounds calculated DYNAMICALLY from data (east/north min/max in ITM meters, ±5% margin). No hardcoded zone-specific bounds — function is coordinate-system-agnostic.
 7. **Validate** per PROCESS_GUIDE §VII checklist (including Context Pack, Structured Data Pack, Zone Diagnosis, PFAS logic, monitoring gaps, C_max_5y separation)
 
 ### Existing zone-agnostic scripts (used inside Step 2 of V5 pipeline)

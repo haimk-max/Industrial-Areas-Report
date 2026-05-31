@@ -56,6 +56,16 @@
 - **Status**: 🟢 Ready to promote to REQUIREMENTS.md (2-case rule satisfied: Raanana sparse → web works; Holon rich → web times out twice).
 - **What changes in STYLE_GUIDE.md § H**: methodology should branch on extraction richness check (Step 0d count of `facilities_suspected[]`).
 
+### 1.7 Coordinate system SSOT violation (hardcoded bounds) — Fixed 2026-05-31
+- **Observation (Holon, post-V5)**: Map function `svg_borehole_map_html()` had hardcoded ITM bounds (east_min=180, east_max=183, north_min=655, north_max=659) intended for km-scale coordinates. But the deterministic data pipeline (`parse_excel.py`) correctly normalizes all borehole coordinates to ITM meters (180500–182615, 656455–660280). When the map consumed meter-format data with km-scale bounds, all boreholes rendered at millions of pixels off-canvas — invisible despite data being valid.
+- **Root cause**: Legacy script `build_holon_borehole_classification.py` was designed for km format; a comment ("data uses km-scale coords, e.g., 181.949") perpetuated the wrong assumption into the map generator even after the pipeline was fixed to use meters.
+- **SSOT violation**: Two conflicting coordinate representations — the pipeline's authoritative source (meters) vs. the map's hardcoded bounds (km) — created a silent data integrity failure.
+- **Solution applied (2026-05-31)**: Refactored `svg_borehole_map_html()` to calculate bounds dynamically from data (east_itm.min()/.max() in meters), add 5% margin, and compute smart axis tick intervals. Function now zone-agnostic and coordinate-system-agnostic. CLAUDE.md §8 updated to document dynamic bounds requirement. Commit a289da9.
+- **Lesson**: Hardcoded limits (scales, bounds, thresholds) are architectural debt. Replace with data-driven calculation. Especially dangerous when the comment describing the limit becomes stale (km assumption was documented in comments but reality was meters).
+- **2nd-case test**: Zone #3 generation will validate that dynamic bounds work for a different zone's coordinate range. If bounds calculation breaks (e.g., missing data columns, coordinate type issues), we'll discover it immediately.
+- **What changes in CLAUDE.md**: §8 § "Render final figures + HTML" — now explicitly states map bounds MUST be dynamic, not hardcoded per zone.
+- **Status**: ✅ Fixed for Holon. 🟢 Promoted to CLAUDE.md §8 (best practice codified).
+
 ---
 
 ## 2. Deferred Decisions (Trigger to Reopen)

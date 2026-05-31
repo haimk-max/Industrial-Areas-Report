@@ -3,7 +3,7 @@
 > **מטרה**: SSOT לדרישות פתוחות וסגורות. עודכן בכל שינוי.
 > **כלל**: ראה CLAUDE.md §12.
 
-**עודכן אחרון**: 2026-05-28 (REQ #21 closed — Verification Rerun complete: full V5 pipeline regenerated under strict SSOT, all deliverables produced)
+**עודכן אחרון**: 2026-05-31 (REQ #22 in progress — Coordinate System SSOT Fix; Step 1 committed a289da9)
 
 ---
 
@@ -11,6 +11,7 @@
 
 | # | בעיה | תיאור | סטטוס | תאריך פתיחה | קבצים |
 |---|------|--------|--------|----------------|--------|
+| 22 | Coordinate System SSOT Violation Fix | **Root cause**: Legacy script `build_holon_borehole_classification.py` designed for km-scale coordinates (180–183, 655–659), but pipeline's `parse_excel.py` correctly normalizes all data to ITM meters (180500–182615, 656455–660280). Map function `svg_borehole_map_html()` had hardcoded bounds expecting km, causing all boreholes to render off-canvas when fed meter data. **Fix (3 steps)**: (1) ✅ **Step 1 - DONE**: Make map bounds dynamic: calculate from data min/max in meters, add 5% margin, smart axis ticks. Commit a289da9 + HTML regenerated (V5.html 194KB, DESIGNED.html 167KB). (2) 🔄 **Step 2 - IN PROGRESS**: Update CLAUDE.md §8 (document dynamic bounds) + PROCESS.md (this table) + LESSONS.md (architectural lesson). (3) ⏳ **Step 3 - PENDING**: Plan merge to target branch `claude/create-base-report-directory-5DqAR` (currently 19 commits behind). | 🔄 In Progress | 2026-05-31 | scripts/report_designed/svg_charts.py, CLAUDE.md, LESSONS.md |
 | 19 | Toolkit system — Testing + Integration | Validate `pip install -e ./toolkit/pylib` on current projects (Holon, Raanana). Write unit tests for pylib. Integrate skills into Claude Code. hydro-analyzer skill (4th). NOTE: All 5 playbooks now complete (zone_report_process_v5, data_pipeline_spec, zone_diagnosis_template, forensics_attribution_guide, monitoring_gaps_checklist). **Sub-task closed**: Cross-reference sanitization complete (c7ffab0, 2026-05-27) — 5/5 playbooks with unified 📍 [file](../../../path) format; root SSOT back-references added; duplicate content removed. אימות: `git grep -n "📍 \[" toolkit/playbooks/` → 5 hits. | ⚠️ Partial | 2026-05-27 | toolkit/ |
 | 14 | Agent RAG / Vector Store (Long-term Tooling) | Deferred: exploratory task for post-Holon completion. RAG infrastructure for enhanced context retrieval + semantic search on zone reports + forensic anchors. When triggered: design doc + prototype implementation. Status: roadmap entry in LESSONS.md § 3.3 | ⏳ Deferred | 2026-05-25 | LESSONS.md § 3.3 |
 | 7 | Skills/אוטומציה לתהליכים חוזרים | אימוץ simplify (קוד כפול), init (regen CLAUDE.md), review (PR) | ⏳ Deferred | 2026-05-14 | אחרי בעיות 2–4 |
