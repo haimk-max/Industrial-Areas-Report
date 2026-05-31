@@ -832,126 +832,178 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
     """Generate SVG map showing borehole locations colored by severity bucket.
 
     Uses ITM coordinates (בקואורדינטות ITM).
-    Includes street-level background and borehole name labels.
+    Includes subtle street grid background and borehole name labels for high-severity wells.
     """
     if classification.empty:
         return '<div style="padding:20px;color:#6b6b6b;text-align:center">אין נתוני קידוחים זמינים</div>'
 
-    # ITM bounds for Holon area (approximate)
+    # ITM bounds for Holon area (data uses km-scale coords, e.g., 181.949)
     east_min, east_max = 180, 183
     north_min, north_max = 655, 659
 
-    # SVG dimensions (increased to accommodate labels)
+    # SVG dimensions
     svg_width, svg_height = 800, 600
-    padding = 50
+    padding = 60
     plot_width = svg_width - 2 * padding
     plot_height = svg_height - 2 * padding
 
     # Color mapping for severity buckets
     color_map = {
-        0: GREY_1,  # No contamination
-        1: GREY_2,  # Low
-        2: GREY_2,  # Low-medium
-        3: GREY_3,  # Medium
-        4: GREY_3,  # Medium-high
-        5: INK_2,   # High
-        6: INK,     # Very high
-        7: RED_SOFT,  # Critical
-        8: RED,     # Extreme
+        0: GREY_1, 1: GREY_2, 2: GREY_2,
+        3: GREY_3, 4: GREY_3,
+        5: INK_2, 6: INK,
+        7: RED_SOFT, 8: RED,
     }
 
     lines = []
     lines.append(f'<svg viewBox="0 0 {svg_width} {svg_height}" xmlns="http://www.w3.org/2000/svg">')
+
+    # Background: paper color (no checkerboard)
     lines.append(f'<rect width="{svg_width}" height="{svg_height}" fill="{PAPER}"/>')
 
-    # Add SVG style for street-level background and hover effects
+    # Plot area background (subtle map-like cream tone)
+    lines.append(f'<rect x="{padding}" y="{padding}" width="{plot_width}" height="{plot_height}" '
+                f'fill="#f7f5ef" stroke="{RULE_LIGHT}" stroke-width="1"/>')
+
+    # CSS styles
     lines.append('<style>')
-    lines.append('.borehole-label { font-size: 9px; fill: ' + INK + '; text-anchor: end; direction: rtl; unicode-bidi: isolate; }')
-    lines.append('.borehole-group:hover .borehole-label { font-weight: bold; }')
-    lines.append('.borehole-group:hover circle { stroke-width: 2; }')
+    lines.append('.label { font-size: 8px; fill: #1a1a1a; pointer-events: none; }')
+    lines.append('.label-bg { fill: white; fill-opacity: 0.85; stroke: none; }')
+    lines.append('.borehole:hover { r: 7; }')
     lines.append('</style>')
 
-    # Street-level background pattern with neutral colors (building blocks)
-    # Create a grid of light rectangular blocks to simulate buildings
-    block_size_east = 0.3  # ITM units
-    block_size_north = 0.3  # ITM units
+    # Simulated "street grid" — thin parallel lines suggesting street network
+    # Horizontal "streets" (every 0.25 km)
+    n_h_streets = 16
+    for i in range(1, n_h_streets):
+        y = padding + (plot_height * i / n_h_streets)
+        opacity = 0.4 if i % 4 == 0 else 0.15
+        lines.append(f'<line x1="{padding}" y1="{y:.1f}" x2="{svg_width-padding}" y2="{y:.1f}" '
+                    f'stroke="#c8c4ba" stroke-width="0.5" opacity="{opacity}"/>')
 
-    east_curr = east_min
-    while east_curr < east_max:
-        north_curr = north_min
-        while north_curr < north_max:
-            # Alternate colors to create a street pattern
-            is_street = ((int((east_curr - east_min) / block_size_east) +
-                         int((north_curr - north_min) / block_size_north)) % 2) == 0
-            fill_color = "#f5f3ed" if is_street else "#ebe8e1"  # Light neutral colors
+    # Vertical "streets"
+    n_v_streets = 12
+    for i in range(1, n_v_streets):
+        x = padding + (plot_width * i / n_v_streets)
+        opacity = 0.4 if i % 3 == 0 else 0.15
+        lines.append(f'<line x1="{x:.1f}" y1="{padding}" x2="{x:.1f}" y2="{svg_height-padding}" '
+                    f'stroke="#c8c4ba" stroke-width="0.5" opacity="{opacity}"/>')
 
-            x1 = padding + (east_curr - east_min) / (east_max - east_min) * plot_width
-            y1 = svg_height - padding - (north_curr + block_size_north - north_min) / (north_max - north_min) * plot_height
-            x2 = padding + (min(east_curr + block_size_east, east_max) - east_min) / (east_max - east_min) * plot_width
-            y2 = svg_height - padding - (north_curr - north_min) / (north_max - north_min) * plot_height
-
-            lines.append(f'<rect x="{x1:.1f}" y="{y1:.1f}" width="{x2-x1:.1f}" height="{y2-y1:.1f}" '
-                        f'fill="{fill_color}" stroke="none"/>')
-
-            north_curr += block_size_north
-        east_curr += block_size_east
-
-    # Axes
-    lines.append(f'<line x1="{padding}" y1="{svg_height-padding}" x2="{svg_width-padding}" y2="{svg_height-padding}" stroke="{INK}" stroke-width="2"/>')
-    lines.append(f'<line x1="{padding}" y1="{padding}" x2="{padding}" y2="{svg_height-padding}" stroke="{INK}" stroke-width="2"/>')
-
-    # Grid lines (light)
+    # ITM coordinate ticks (every 1 km)
     for east in range(int(east_min), int(east_max)+1):
         x = padding + (east - east_min) / (east_max - east_min) * plot_width
-        lines.append(f'<line x1="{x}" y1="{padding}" x2="{x}" y2="{svg_height-padding}" stroke="{RULE_LIGHT}" stroke-width="0.5" opacity="0.6"/>')
+        lines.append(f'<line x1="{x}" y1="{svg_height-padding}" x2="{x}" y2="{svg_height-padding+5}" stroke="{INK}" stroke-width="1"/>')
+        lines.append(f'<text x="{x}" y="{svg_height-padding+18}" text-anchor="middle" font-size="9" fill="{SOFT}">{east}</text>')
 
     for north in range(int(north_min), int(north_max)+1):
         y = svg_height - padding - (north - north_min) / (north_max - north_min) * plot_height
-        lines.append(f'<line x1="{padding}" y1="{y}" x2="{svg_width-padding}" y2="{y}" stroke="{RULE_LIGHT}" stroke-width="0.5" opacity="0.6"/>')
+        lines.append(f'<line x1="{padding}" y1="{y}" x2="{padding-5}" y2="{y}" stroke="{INK}" stroke-width="1"/>')
+        lines.append(f'<text x="{padding-8}" y="{y+3}" text-anchor="end" font-size="9" fill="{SOFT}">{north}</text>')
 
-    # Plot boreholes with labels
-    for _, row in classification.iterrows():
+    # Plot border (axes)
+    lines.append(f'<line x1="{padding}" y1="{svg_height-padding}" x2="{svg_width-padding}" y2="{svg_height-padding}" stroke="{INK}" stroke-width="1.5"/>')
+    lines.append(f'<line x1="{padding}" y1="{padding}" x2="{padding}" y2="{svg_height-padding}" stroke="{INK}" stroke-width="1.5"/>')
+
+    # Sort by severity (low first) so high-severity dots render on top
+    sorted_classification = classification.sort_values('severity_bucket', ascending=True)
+
+    # First pass: draw all dots
+    points = []
+    for _, row in sorted_classification.iterrows():
         if pd.notna(row['east_itm']) and pd.notna(row['north_itm']):
             x = padding + (row['east_itm'] - east_min) / (east_max - east_min) * plot_width
             y = svg_height - padding - (row['north_itm'] - north_min) / (north_max - north_min) * plot_height
 
             bucket = int(row['severity_bucket'])
             color = color_map.get(bucket, GREY_3)
+            radius = 5 if bucket >= 5 else 3.5
 
-            # Get borehole name for label
-            label = esc(row.get('name_he', 'לא זיהוי')) if 'name_he' in row else 'לא זיהוי'
+            name = row.get('borehole_name', '') or ''
+            points.append({'x': x, 'y': y, 'color': color, 'radius': radius,
+                          'bucket': bucket, 'name': str(name)})
 
-            lines.append(f'<g class="borehole-group">')
-            lines.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="5" fill="{color}" stroke="{INK}" stroke-width="1"/>')
-            lines.append(f'<text x="{x-8:.1f}" y="{y-8:.1f}" class="borehole-label">{label}</text>')
-            lines.append(f'</g>')
+            lines.append(f'<circle class="borehole" cx="{x:.1f}" cy="{y:.1f}" r="{radius}" '
+                        f'fill="{color}" stroke="{INK}" stroke-width="0.7"/>')
+            lines.append(f'<title>{esc(str(name))} (אינדקס {bucket})</title>')
 
-    # Axis labels — RTL for mixed Hebrew/English content
-    lines.append(f'<text x="{svg_width/2}" y="{svg_height-10}" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="12" fill="{INK}">מזרח (ITM)</text>')
-    lines.append(f'<text x="15" y="{svg_height/2}" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="12" fill="{INK}" transform="rotate(-90 15 {svg_height/2})">צפון (ITM)</text>')
+    # Second pass: labels ONLY for high-severity (≥6) to avoid clutter
+    # Use simple anti-overlap: track placed label rectangles
+    placed_labels = []
+    high_severity_points = sorted([p for p in points if p['bucket'] >= 6],
+                                   key=lambda p: -p['bucket'])
 
-    # Title — Hebrew, RTL
-    lines.append(f'<text x="{svg_width/2}" y="25" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="14" font-weight="bold" fill="{INK}">מיקומי קידוחים לפי אינדקס חומרה</text>')
+    for p in high_severity_points:
+        name = p['name']
+        if not name:
+            continue
 
-    # Legend
-    legend_x = svg_width - 180
-    legend_y = 50
-    lines.append(f'<rect x="{legend_x}" y="{legend_y}" width="160" height="145" fill="{PAPER}" stroke="{RULE_LIGHT}"/>')
+        # Try several offset positions to avoid overlap
+        text_width = len(name) * 4.5  # approx char width at 8px
+        text_height = 10
+
+        for offset_x, offset_y in [(8, -8), (-8, -8), (8, 12), (-8, 12), (12, 0), (-12, 0)]:
+            label_x = p['x'] + offset_x
+            label_y = p['y'] + offset_y
+
+            # Adjust anchor based on direction
+            if offset_x < 0:
+                anchor_x = label_x - text_width
+            else:
+                anchor_x = label_x
+
+            label_box = (anchor_x, label_y - text_height, anchor_x + text_width, label_y + 2)
+
+            # Check overlap with existing labels
+            overlaps = False
+            for placed in placed_labels:
+                if not (label_box[2] < placed[0] or label_box[0] > placed[2] or
+                        label_box[3] < placed[1] or label_box[1] > placed[3]):
+                    overlaps = True
+                    break
+
+            # Also check if label is inside plot area
+            if (label_box[0] < padding or label_box[2] > svg_width - padding or
+                label_box[1] < padding or label_box[3] > svg_height - padding):
+                continue
+
+            if not overlaps:
+                placed_labels.append(label_box)
+                text_anchor = "end" if offset_x < 0 else "start"
+                # White background for readability
+                lines.append(f'<rect class="label-bg" x="{label_box[0]:.1f}" y="{label_box[1]:.1f}" '
+                            f'width="{text_width:.1f}" height="{text_height}" rx="1"/>')
+                lines.append(f'<text class="label" x="{label_x:.1f}" y="{label_y:.1f}" '
+                            f'text-anchor="{text_anchor}" direction="rtl" unicode-bidi="isolate">{esc(name)}</text>')
+                break
+
+    # Axis labels
+    lines.append(f'<text x="{svg_width/2}" y="{svg_height-15}" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="11" fill="{INK}">מזרח (ITM, ק"מ)</text>')
+    lines.append(f'<text x="20" y="{svg_height/2}" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="11" fill="{INK}" transform="rotate(-90 20 {svg_height/2})">צפון (ITM, ק"מ)</text>')
+
+    # Title
+    lines.append(f'<text x="{svg_width/2}" y="30" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="14" font-weight="bold" fill="{INK}">מיקומי קידוחים — אזה"ת חולון</text>')
+    lines.append(f'<text x="{svg_width/2}" y="46" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="10" fill="{SOFT}">צבע לפי אינדקס חומרה (0–8) · תוויות לקידוחים באינדקס ≥6</text>')
+
+    # Legend (bottom-right, compact)
+    legend_x = svg_width - padding - 130
+    legend_y = svg_height - padding - 110
+    lines.append(f'<rect x="{legend_x}" y="{legend_y}" width="120" height="100" fill="white" stroke="{RULE_LIGHT}" stroke-width="0.8" opacity="0.95"/>')
+    lines.append(f'<text x="{legend_x+115}" y="{legend_y+14}" text-anchor="end" direction="rtl" unicode-bidi="isolate" font-size="10" font-weight="bold" fill="{INK}">אינדקס חומרה</text>')
 
     legend_items = [
-        (RED, "אינדקס 8"),
-        (RED_SOFT, "אינדקס 7"),
-        (INK, "אינדקס 6"),
-        (INK_2, "אינדקס 5"),
+        (RED, 8, "8 — חמור מאוד"),
+        (RED_SOFT, 7, "7 — חמור"),
+        (INK, 6, "6 — גבוה"),
+        (INK_2, 5, "5 — בינוני-גבוה"),
+        (GREY_3, 3, "3–4 — בינוני"),
+        (GREY_2, 1, "0–2 — נמוך"),
     ]
 
-    for i, (color, label) in enumerate(legend_items):
-        ly = legend_y + 10 + i * 28
-        lines.append(f'<circle cx="{legend_x+15}" cy="{ly+8}" r="4" fill="{color}" stroke="{INK}" stroke-width="0.5"/>')
-        lines.append(f'<text x="{legend_x+30}" y="{ly+11}" direction="rtl" unicode-bidi="isolate" font-size="11" fill="{INK}">{label}</text>')
-
-    # Add note about street background
-    lines.append(f'<text x="{legend_x+5}" y="{legend_y+135}" direction="rtl" unicode-bidi="isolate" font-size="8" fill="{SOFT}" font-style="italic">רקע ניטרלי: אזורי דרכים ובנייה</text>')
+    for i, (color, bucket, label) in enumerate(legend_items):
+        ly = legend_y + 26 + i * 12
+        radius = 4 if bucket >= 5 else 2.5
+        lines.append(f'<circle cx="{legend_x+108}" cy="{ly}" r="{radius}" fill="{color}" stroke="{INK}" stroke-width="0.5"/>')
+        lines.append(f'<text x="{legend_x+100}" y="{ly+3}" text-anchor="end" direction="rtl" unicode-bidi="isolate" font-size="9" fill="{INK}">{label}</text>')
 
     lines.append('</svg>')
 
