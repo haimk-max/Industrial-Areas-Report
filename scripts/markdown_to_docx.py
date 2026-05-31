@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
-"""Convert Holon V5 Markdown report to Word (.docx) format with RTL and justified text."""
+"""Convert Holon V5 Markdown report to Word (.docx) format with RTL and justified text.
+
+Supports two methods:
+1. Direct markdown parsing (lightweight, basic formatting)
+2. HTML-to-DOCX via LibreOffice (preserves all styling and graphics)
+
+Use HTML method for full-fidelity conversion with embedded SVG maps.
+Use Markdown method for lightweight, minimal-dependency conversion.
+"""
 
 import sys
 import re
