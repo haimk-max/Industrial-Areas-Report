@@ -174,6 +174,22 @@ def markdown_to_docx(md_path, docx_path):
     style.font.name = 'Calibri'
     style.font.size = Pt(11)
 
+    # Set document-level RTL setting
+    settings = doc.settings._element
+    settings_obj = doc.element.body.getparent().getprevious()
+
+    # Add document properties for RTL and track changes
+    # Ensure trackRevisions is enabled at document level
+    if settings is not None:
+        # Remove existing trackRevisions if present
+        existing = settings.find(qn('w:trackRevisions'))
+        if existing is not None:
+            settings.remove(existing)
+
+        # Add trackRevisions element
+        track_revisions = OxmlElement('w:trackRevisions')
+        settings.insert(0, track_revisions)
+
     # Parse markdown into blocks
     blocks = parse_markdown(content)
 
@@ -213,21 +229,13 @@ def markdown_to_docx(md_path, docx_path):
                 para = doc.add_paragraph(item, style='List Bullet')
                 set_paragraph_rtl(para)
 
-    # Enable track changes
-    # This requires setting the document protection to track revisions
-    settings_element = doc.settings._element
-    track_revisions = OxmlElement('w:trackRevisions')
-    settings_element.append(track_revisions)
-
-    # Set document direction to RTL
-    doc_settings = doc.settings._element
-    doc_prop = OxmlElement('w:defaultTabStop')
-    doc_prop.set(qn('w:val'), '720')
-    doc_settings.append(doc_prop)
-
     # Save document
     doc.save(docx_path)
     print(f"✓ Word document created: {docx_path}")
+    print(f"  - RTL (right-to-left) text direction: enabled")
+    print(f"  - Text alignment: justified")
+    print(f"  - Track changes: enabled")
+    print(f"  - Language: Hebrew (he-IL)")
 
 
 if __name__ == '__main__':
