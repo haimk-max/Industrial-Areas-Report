@@ -931,7 +931,7 @@ def svg_borehole_map_html(classification: pd.DataFrame,
     # CSS styles
     lines.append('<style>')
     lines.append('.label { font-size: 8px; fill: #1a1a1a; pointer-events: none; }')
-    lines.append('.label-bg { fill: white; fill-opacity: 0.9; stroke: none; }')
+    lines.append('.label-bg { fill: white; fill-opacity: 0.92; stroke: #d8d3c8; stroke-width: 0.4; }')
     lines.append('.borehole:hover { r: 7; }')
     lines.append('</style>')
 
@@ -987,49 +987,57 @@ def svg_borehole_map_html(classification: pd.DataFrame,
     high_severity_points = sorted([p for p in points if p['bucket'] >= 6],
                                    key=lambda p: -p['bucket'])
 
+    char_w = 6.0   # Hebrew glyph width at 8px font (wider than Latin)
+    pad_x = 4.0    # horizontal padding inside the white box
+    text_height = 12
+
+    label_draw = []  # defer drawing so all labels sit above all dots/boxes
     for p in high_severity_points:
         name = p['name']
         if not name:
             continue
 
-        # Try several offset positions to avoid overlap
-        text_width = len(name) * 4.5  # approx char width at 8px
-        text_height = 10
+        text_width = len(name) * char_w
+        box_w = text_width + 2 * pad_x
+        half_w = box_w / 2
 
-        for offset_x, offset_y in [(8, -8), (-8, -8), (8, 12), (-8, 12), (12, 0), (-12, 0)]:
-            label_x = p['x'] + offset_x
-            label_y = p['y'] + offset_y
+        # Candidate CENTER positions for the label box relative to the dot.
+        # Using a center anchor makes geometry direction-independent (RTL-safe).
+        for off_x, off_y in [(half_w + 6, -10), (-half_w - 6, -10),
+                             (half_w + 6, 12), (-half_w - 6, 12),
+                             (half_w + 10, 1), (-half_w - 10, 1),
+                             (half_w + 6, -24), (-half_w - 6, -24)]:
+            cx = p['x'] + off_x
+            cy = p['y'] + off_y
 
-            # Adjust anchor based on direction
-            if offset_x < 0:
-                anchor_x = label_x - text_width
-            else:
-                anchor_x = label_x
+            box = (cx - half_w, cy - text_height + 2, cx + half_w, cy + 3)
 
-            label_box = (anchor_x, label_y - text_height, anchor_x + text_width, label_y + 2)
-
-            # Check overlap with existing labels
-            overlaps = False
-            for placed in placed_labels:
-                if not (label_box[2] < placed[0] or label_box[0] > placed[2] or
-                        label_box[3] < placed[1] or label_box[1] > placed[3]):
-                    overlaps = True
-                    break
-
-            # Also check if label is inside plot area
-            if (label_box[0] < padding or label_box[2] > svg_width - padding or
-                label_box[1] < padding or label_box[3] > svg_height - padding):
+            # Reject if outside plot area
+            if (box[0] < padding or box[2] > svg_width - padding or
+                    box[1] < padding or box[3] > svg_height - padding):
                 continue
 
-            if not overlaps:
-                placed_labels.append(label_box)
-                text_anchor = "end" if offset_x < 0 else "start"
-                # White background for readability
-                lines.append(f'<rect class="label-bg" x="{label_box[0]:.1f}" y="{label_box[1]:.1f}" '
-                            f'width="{text_width:.1f}" height="{text_height}" rx="1"/>')
-                lines.append(f'<text class="label" x="{label_x:.1f}" y="{label_y:.1f}" '
-                            f'text-anchor="{text_anchor}" direction="rtl" unicode-bidi="isolate">{esc(name)}</text>')
-                break
+            # Reject if overlapping an already-placed label
+            if any(not (box[2] < q[0] or box[0] > q[2] or
+                        box[3] < q[1] or box[1] > q[3]) for q in placed_labels):
+                continue
+
+            placed_labels.append(box)
+            label_draw.append((p['x'], p['y'], cx, cy, box, name))
+            break
+
+    # Leader lines first (under boxes)
+    for bx, by, cx, cy, box, name in label_draw:
+        # connect dot to the nearest horizontal edge of its label box
+        edge_x = box[0] if cx > bx else box[2]
+        lines.append(f'<line x1="{bx:.1f}" y1="{by:.1f}" x2="{edge_x:.1f}" y2="{cy-3:.1f}" '
+                    f'stroke="#999" stroke-width="0.5" opacity="0.7"/>')
+    # Boxes + text on top (center-anchored: RTL-safe)
+    for bx, by, cx, cy, box, name in label_draw:
+        lines.append(f'<rect class="label-bg" x="{box[0]:.1f}" y="{box[1]:.1f}" '
+                    f'width="{box[2]-box[0]:.1f}" height="{box[3]-box[1]:.1f}" rx="1.5"/>')
+        lines.append(f'<text class="label" x="{cx:.1f}" y="{cy:.1f}" '
+                    f'text-anchor="middle" direction="rtl" unicode-bidi="isolate">{esc(name)}</text>')
 
     # Axis labels
     lines.append(f'<text x="{svg_width/2}" y="{svg_height-15}" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="11" fill="{INK}">מזרח (ITM, ק"מ)</text>')
