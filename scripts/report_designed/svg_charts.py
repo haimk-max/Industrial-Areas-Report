@@ -858,36 +858,35 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
     lines = []
     lines.append(f'<svg viewBox="0 0 {svg_width} {svg_height}" xmlns="http://www.w3.org/2000/svg">')
 
-    # Background: paper color (no checkerboard)
+    # Background: paper color
     lines.append(f'<rect width="{svg_width}" height="{svg_height}" fill="{PAPER}"/>')
 
-    # Plot area background (subtle map-like cream tone)
+    # Plot area background: light grey base (street pavement)
     lines.append(f'<rect x="{padding}" y="{padding}" width="{plot_width}" height="{plot_height}" '
-                f'fill="#f7f5ef" stroke="{RULE_LIGHT}" stroke-width="1"/>')
+                f'fill="#e8e3d8" stroke="{RULE_LIGHT}" stroke-width="1"/>')
 
     # CSS styles
     lines.append('<style>')
     lines.append('.label { font-size: 8px; fill: #1a1a1a; pointer-events: none; }')
-    lines.append('.label-bg { fill: white; fill-opacity: 0.85; stroke: none; }')
+    lines.append('.label-bg { fill: white; fill-opacity: 0.9; stroke: none; }')
     lines.append('.borehole:hover { r: 7; }')
     lines.append('</style>')
 
-    # Simulated "street grid" — thin parallel lines suggesting street network
-    # Horizontal "streets" (every 0.25 km)
-    n_h_streets = 16
-    for i in range(1, n_h_streets):
-        y = padding + (plot_height * i / n_h_streets)
-        opacity = 0.4 if i % 4 == 0 else 0.15
-        lines.append(f'<line x1="{padding}" y1="{y:.1f}" x2="{svg_width-padding}" y2="{y:.1f}" '
-                    f'stroke="#c8c4ba" stroke-width="0.5" opacity="{opacity}"/>')
+    # Building blocks pattern (street grid visualization)
+    # Darker lines to represent streets clearly
+    block_size_x = plot_width / 10  # 10 blocks horizontally
+    block_size_y = plot_height / 12  # 12 blocks vertically
 
-    # Vertical "streets"
-    n_v_streets = 12
-    for i in range(1, n_v_streets):
-        x = padding + (plot_width * i / n_v_streets)
-        opacity = 0.4 if i % 3 == 0 else 0.15
+    # Draw light background rectangles (buildings) with dark streets between them
+    for i in range(11):  # Vertical street lines
+        x = padding + (i * block_size_x)
         lines.append(f'<line x1="{x:.1f}" y1="{padding}" x2="{x:.1f}" y2="{svg_height-padding}" '
-                    f'stroke="#c8c4ba" stroke-width="0.5" opacity="{opacity}"/>')
+                    f'stroke="#9a9078" stroke-width="1.5" opacity="0.6"/>')
+
+    for i in range(13):  # Horizontal street lines
+        y = padding + (i * block_size_y)
+        lines.append(f'<line x1="{padding}" y1="{y:.1f}" x2="{svg_width-padding}" y2="{y:.1f}" '
+                    f'stroke="#9a9078" stroke-width="1.5" opacity="0.6"/>')
 
     # ITM coordinate ticks (every 1 km)
     for east in range(int(east_min), int(east_max)+1):
