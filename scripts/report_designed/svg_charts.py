@@ -831,15 +831,37 @@ def svg_borehole_classification_table(classification: pd.DataFrame, classificati
 def svg_borehole_map_html(classification: pd.DataFrame) -> str:
     """Generate SVG map showing borehole locations colored by severity bucket.
 
-    Uses ITM coordinates (בקואורדינטות ITM).
+    Uses ITM coordinates (בקואורדינטות ITM) in meters.
+    Calculates bounds dynamically from data to support any zone.
     Includes subtle street grid background and borehole name labels for high-severity wells.
     """
     if classification.empty:
         return '<div style="padding:20px;color:#6b6b6b;text-align:center">אין נתוני קידוחים זמינים</div>'
 
-    # ITM bounds for Holon area (data uses km-scale coords, e.g., 181.949)
-    east_min, east_max = 180, 183
-    north_min, north_max = 655, 659
+    # Calculate ITM bounds dynamically from actual data (in meters)
+    # Filter to valid coordinates only
+    valid_coords = classification[
+        (pd.notna(classification['east_itm'])) &
+        (pd.notna(classification['north_itm']))
+    ]
+
+    if valid_coords.empty:
+        return '<div style="padding:20px;color:#6b6b6b;text-align:center">אין נתוני קידוחים עם קואורדינטות</div>'
+
+    # Get data bounds
+    data_east_min = valid_coords['east_itm'].min()
+    data_east_max = valid_coords['east_itm'].max()
+    data_north_min = valid_coords['north_itm'].min()
+    data_north_max = valid_coords['north_itm'].max()
+
+    # Add 5% margin around data
+    east_margin = (data_east_max - data_east_min) * 0.05
+    north_margin = (data_north_max - data_north_min) * 0.05
+
+    east_min = data_east_min - east_margin
+    east_max = data_east_max + east_margin
+    north_min = data_north_min - north_margin
+    north_max = data_north_max + north_margin
 
     # SVG dimensions
     svg_width, svg_height = 800, 600
@@ -898,16 +920,26 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
     lines.append('.borehole:hover { r: 7; }')
     lines.append('</style>')
 
-    # ITM coordinate ticks (every 1 km)
-    for east in range(int(east_min), int(east_max)+1):
+    # ITM coordinate ticks (smart intervals based on data range)
+    # For east-west (meters): show every 500m or 1000m depending on range
+    east_range = east_max - east_min
+    east_interval = 1000 if east_range > 5000 else 500
+    east_start = int((east_min / east_interval) + 0.5) * east_interval
+
+    for east in range(east_start, int(east_max) + east_interval, east_interval):
         x = padding + (east - east_min) / (east_max - east_min) * plot_width
         lines.append(f'<line x1="{x}" y1="{svg_height-padding}" x2="{x}" y2="{svg_height-padding+5}" stroke="{INK}" stroke-width="1"/>')
-        lines.append(f'<text x="{x}" y="{svg_height-padding+18}" text-anchor="middle" font-size="9" fill="{SOFT}">{east}</text>')
+        lines.append(f'<text x="{x}" y="{svg_height-padding+18}" text-anchor="middle" font-size="9" fill="{SOFT}">{east/1000:.1f}</text>')
 
-    for north in range(int(north_min), int(north_max)+1):
+    # For north-south (meters): similar logic
+    north_range = north_max - north_min
+    north_interval = 1000 if north_range > 5000 else 500
+    north_start = int((north_min / north_interval) + 0.5) * north_interval
+
+    for north in range(north_start, int(north_max) + north_interval, north_interval):
         y = svg_height - padding - (north - north_min) / (north_max - north_min) * plot_height
         lines.append(f'<line x1="{padding}" y1="{y}" x2="{padding-5}" y2="{y}" stroke="{INK}" stroke-width="1"/>')
-        lines.append(f'<text x="{padding-8}" y="{y+3}" text-anchor="end" font-size="9" fill="{SOFT}">{north}</text>')
+        lines.append(f'<text x="{padding-8}" y="{y+3}" text-anchor="end" font-size="9" fill="{SOFT}">{north/1000:.1f}</text>')
 
     # Plot border (axes)
     lines.append(f'<line x1="{padding}" y1="{svg_height-padding}" x2="{svg_width-padding}" y2="{svg_height-padding}" stroke="{INK}" stroke-width="1.5"/>')
