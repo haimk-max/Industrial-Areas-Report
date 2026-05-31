@@ -828,18 +828,19 @@ def svg_borehole_classification_table(classification: pd.DataFrame, classificati
     return "".join(rows)
 
 
-def svg_borehole_map_html(classification: pd.DataFrame) -> str:
+def svg_borehole_map_html(classification: pd.DataFrame,
+                          zone_polygon: list | None = None) -> str:
     """Generate SVG map showing borehole locations colored by severity bucket.
 
     Uses ITM coordinates (בקואורדינטות ITM) in meters.
     Calculates bounds dynamically from data to support any zone.
-    Includes subtle street grid background and borehole name labels for high-severity wells.
+    Optionally draws the zone polygon boundary (ITM meters list of [east, north]).
+    Labels shown for high-severity wells (≥6).
     """
     if classification.empty:
         return '<div style="padding:20px;color:#6b6b6b;text-align:center">אין נתוני קידוחים זמינים</div>'
 
     # Calculate ITM bounds dynamically from actual data (in meters)
-    # Filter to valid coordinates only
     valid_coords = classification[
         (pd.notna(classification['east_itm'])) &
         (pd.notna(classification['north_itm']))
@@ -848,15 +849,19 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
     if valid_coords.empty:
         return '<div style="padding:20px;color:#6b6b6b;text-align:center">אין נתוני קידוחים עם קואורדינטות</div>'
 
-    # Get data bounds
-    data_east_min = valid_coords['east_itm'].min()
-    data_east_max = valid_coords['east_itm'].max()
-    data_north_min = valid_coords['north_itm'].min()
-    data_north_max = valid_coords['north_itm'].max()
+    # Get data bounds, extended to include polygon vertices if provided
+    all_east = list(valid_coords['east_itm'])
+    all_north = list(valid_coords['north_itm'])
+    if zone_polygon:
+        all_east += [pt[0] for pt in zone_polygon]
+        all_north += [pt[1] for pt in zone_polygon]
 
-    # Add 5% margin around data
-    east_margin = (data_east_max - data_east_min) * 0.05
-    north_margin = (data_north_max - data_north_min) * 0.05
+    data_east_min, data_east_max = min(all_east), max(all_east)
+    data_north_min, data_north_max = min(all_north), max(all_north)
+
+    # Add 7% margin around data
+    east_margin = (data_east_max - data_east_min) * 0.07
+    north_margin = (data_north_max - data_north_min) * 0.07
 
     east_min = data_east_min - east_margin
     east_max = data_east_max + east_margin
@@ -869,6 +874,12 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
     plot_width = svg_width - 2 * padding
     plot_height = svg_height - 2 * padding
 
+    def to_svg(east_m, north_m):
+        """Convert ITM meters to SVG pixel coordinates."""
+        x = padding + (east_m - east_min) / (east_max - east_min) * plot_width
+        y = svg_height - padding - (north_m - north_min) / (north_max - north_min) * plot_height
+        return x, y
+
     # Color mapping for severity buckets
     color_map = {
         0: GREY_1, 1: GREY_2, 2: GREY_2,
@@ -880,38 +891,42 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
     lines = []
     lines.append(f'<svg viewBox="0 0 {svg_width} {svg_height}" xmlns="http://www.w3.org/2000/svg">')
 
-    # Background: paper color
+    # Background: light map color (like a standard topographic base)
     lines.append(f'<rect width="{svg_width}" height="{svg_height}" fill="{PAPER}"/>')
 
-    # Plot area background - street/map style
-    # Create actual building blocks pattern (darker streets, lighter building areas)
-    block_width = plot_width / 10
-    block_height = plot_height / 12
+    # Plot area: slightly off-white base (open area / unbuilt land tone)
+    lines.append(f'<rect x="{padding}" y="{padding}" width="{plot_width}" height="{plot_height}" '
+                f'fill="#eee9e0" stroke="none"/>')
 
-    # Draw building blocks with streets between them
-    for i in range(11):  # Columns
-        for j in range(13):  # Rows
-            x = padding + (i * block_width)
-            y = padding + (j * block_height)
+    # KM grid lines (every 500m)
+    east_start = int((east_min / 500 + 1)) * 500
+    north_start = int((north_min / 500 + 1)) * 500
+    for eg in range(east_start, int(east_max) + 500, 500):
+        gx, _ = to_svg(eg, north_min)
+        lines.append(f'<line x1="{gx:.1f}" y1="{padding}" x2="{gx:.1f}" y2="{svg_height-padding}" '
+                    f'stroke="#d0ccc4" stroke-width="0.6" stroke-dasharray="3,4"/>')
+    for ng in range(north_start, int(north_max) + 500, 500):
+        _, gy = to_svg(east_min, ng)
+        lines.append(f'<line x1="{padding}" y1="{gy:.1f}" x2="{svg_width-padding}" y2="{gy:.1f}" '
+                    f'stroke="#d0ccc4" stroke-width="0.6" stroke-dasharray="3,4"/>')
 
-            # Alternate colors to create checkerboard (buildings vs streets)
-            is_street = ((i + j) % 2 == 0)
-            if is_street:
-                # Street: darker color
-                color = "#a89878"
-                opacity = "0.5"
-            else:
-                # Building: lighter color
-                color = "#e8dcc8"
-                opacity = "1"
-
-            if i < 10 and j < 12:  # Don't draw outside plot area
-                lines.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{block_width:.1f}" height="{block_height:.1f}" '
-                            f'fill="{color}" opacity="{opacity}" stroke="none"/>')
+    # Zone polygon (industrial area boundary from zone_polygons.json)
+    if zone_polygon and len(zone_polygon) >= 3:
+        pts = [to_svg(pt[0], pt[1]) for pt in zone_polygon]
+        poly_pts = " ".join(f"{x:.1f},{y:.1f}" for x, y in pts)
+        lines.append(f'<polygon points="{poly_pts}" '
+                    f'fill="#dde8d8" fill-opacity="0.55" '
+                    f'stroke="#6a9a64" stroke-width="1.8" stroke-dasharray="6,3" stroke-linejoin="round"/>')
+        # Label the polygon
+        cx = sum(p[0] for p in pts) / len(pts)
+        cy = min(p[1] for p in pts) - 8
+        lines.append(f'<text x="{cx:.0f}" y="{cy:.0f}" text-anchor="middle" '
+                    f'font-size="9" fill="#4a7a44" font-style="italic" direction="rtl" unicode-bidi="isolate">'
+                    f'גבולות אזה"ת</text>')
 
     # Outer border of plot area
     lines.append(f'<rect x="{padding}" y="{padding}" width="{plot_width}" height="{plot_height}" '
-                f'fill="none" stroke="{RULE_LIGHT}" stroke-width="1"/>')
+                f'fill="none" stroke="{RULE_LIGHT}" stroke-width="1.2"/>')
 
     # CSS styles
     lines.append('<style>')
@@ -952,8 +967,7 @@ def svg_borehole_map_html(classification: pd.DataFrame) -> str:
     points = []
     for _, row in sorted_classification.iterrows():
         if pd.notna(row['east_itm']) and pd.notna(row['north_itm']):
-            x = padding + (row['east_itm'] - east_min) / (east_max - east_min) * plot_width
-            y = svg_height - padding - (row['north_itm'] - north_min) / (north_max - north_min) * plot_height
+            x, y = to_svg(row['east_itm'], row['north_itm'])
 
             bucket = int(row['severity_bucket'])
             color = color_map.get(bucket, GREY_3)

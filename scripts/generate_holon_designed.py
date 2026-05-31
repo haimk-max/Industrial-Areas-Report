@@ -168,7 +168,17 @@ def main() -> None:
     # Include classification definitions extracted from V4
     class_intro = narrative.get("classification_intro", "")
     class_table_f8 = sc.svg_borehole_classification_table(classification, class_intro)
-    class_map_f9 = sc.svg_borehole_map_html(classification)
+    # Load zone polygon for map background
+    import json as _json
+    _poly_path = REPO_ROOT / "zone_definitions" / "zone_polygons.json"
+    _zone_polygon = None
+    try:
+        with open(_poly_path, encoding="utf-8") as _pf:
+            _pd = _json.load(_pf)
+        _zone_polygon = _pd.get("holon", _pd.get("Holon", {})).get("polygon")
+    except Exception:
+        pass
+    class_map_f9 = sc.svg_borehole_map_html(classification, zone_polygon=_zone_polygon)
 
     print("Filling template ...")
     template = args.template.read_text(encoding="utf-8")

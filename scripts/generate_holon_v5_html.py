@@ -238,8 +238,19 @@ def build_figures() -> dict:
     alert_ids = set(measurements["canonical_id"].unique())
     severity_alert = severity[severity["borehole"].isin(alert_ids)].copy()
 
+    # Load zone polygon for map background
+    import json
+    _poly_path = REPO_ROOT / "zone_definitions" / "zone_polygons.json"
+    _zone_polygon = None
+    try:
+        with open(_poly_path, encoding="utf-8") as _f:
+            _poly_data = json.load(_f)
+        _zone_polygon = _poly_data.get("holon", _poly_data.get("Holon", {})).get("polygon")
+    except Exception:
+        pass
+
     figures = {
-        1: sc.svg_borehole_map_html(classification),
+        1: sc.svg_borehole_map_html(classification, zone_polygon=_zone_polygon),
         2: sc.svg_cvoc_panels(measurements, severity, boreholes_override=report_boreholes),
         3: sc.svg_chromium_panels(measurements, boreholes_override=report_boreholes),
         4: sc.svg_btex_panels(measurements, boreholes_override=report_boreholes),
