@@ -503,13 +503,51 @@ def family_order(zone_max_buckets: Dict[str, int]) -> List[str]:
 
 ## VIII. Scaling Pattern — 7-Step Hybrid Pipeline (For Zone N+1, N+2, …)
 
+> **אכיפת QA**: לכל שלב שמייצר פלט — יש שער QA אוטומטי. הפקודה הרלוונטית מצוינת לכל שלב.
+> כלי: `python scripts/qa_pipeline.py --gate <N> --zone <ZONE>`
+> פלט: PASS / WARN (ממשיכים) / FAIL (חסימה — אסור להמשיך לשלב הבא).
+
 1. **Define zone scope** → 01_scope/ (zone_wells.csv, zone_boundary_or_selection_notes.md)
+
 2. **Run deterministic data pipeline** → 02_data/ (6 CSVs: measurements_scoped, latest_results, severity_by_well_family, trends_by_well_parameter, monitoring_gaps, figure_ready_series)
+   ```bash
+   python scripts/qa_pipeline.py --gate 2 --zone {ZONE}
+   ```
+   **חסימה על FAIL**: עמודות חסרות, CSVs חסרים, מנין קידוחים לא עקבי ב-CSVs ראשיים, TPFAS/BETK בניתוח.
+
 3. **Assemble scoped NotebookLM-like context** → 03_context/ (previous_reports_excerpts, hydrogeology_context, source_candidates_context, web_findings_context, approved_precedent_excerpt)
+
 4. **Generate zone diagnosis** → Opus call #1 (קלט: 01–03) → 04_diagnosis/zone_diagnosis.md (עונה על 8 שאלות)
+   ```bash
+   python scripts/qa_pipeline.py --gate 4 --zone {ZONE}
+   ```
+   **חסימה על FAIL**: zone_diagnosis.md חסר, נושאים קריטיים לא מכוסים.
+   **אזהרה על WARN**: מבנה גיאוגרפי חלש, PFAS לא מוסגר כפער, תאריכי סגירה חסרים.
+   **כלל גישור שלב 4→5**: המבנה הגיאוגרפי של האבחון (מוקד 1 — שם+מיקום, מוקד 2 — ...) **חייב** לעצב את כותרות פרק 3 בדוח. PFAS שמוסגר כ"פער כיסוי" באבחון **חייב** להישמר כ"פער כיסוי" בדוח — לא לעלות לרמת מוקד שווה.
+
 5. **Generate V5 expert report** → Opus call #2 (קלט: 01–04 + zone_report_prompt.md) → output/{ZONE}_REPORT_V5.md (לפי §II V5 schema)
+   ```bash
+   python scripts/qa_pipeline.py --gate 5 --zone {ZONE}
+   ```
+   **חסימה על FAIL**: טרמינולוגיית pipeline בגוף הדוח, סעיפים חסרים, חוסר עקביות במנין קידוחים, FUEL לא אחרון, PFAS חסר לחלוטין, רמות ביטחון חסרות בפרק 5.
+   **אזהרה על WARN**: קביעות נחרצות יתר (דורשות ריכוך), PFAS ללא ניסוח "פער כיסוי", מתודולוגיה ארוכה מ-15 שורות.
+
+   **איסור טרמינולוגיית pipeline בגוף הדוח** (חדש — §VIII.5):
+   - אסור: שמות קבצים (`severity_by_well_family.csv`), שלבים (`Step 5`, `Opus Call #2`), שמות pipeline (`V5 Hybrid Pipeline`, `PROCESS_GUIDE`), קודי סיווג (`A+B`, `C-class`, `D-class`), מונחים סטטיסטיים פנימיים (`soft_trigger`, `SNR gating`, `bucket`)
+   - מותר: מונחים מקצועיים סטנדרטיים בתחום (TCE, Mann-Kendall, CVOC, PFAS, ISCO, DNAPL)
+   - הכלל: אם הקורא הוא הידרוגיאולוג מרשות המים — האם יבין את המונח ללא הכשרה בפייפליין הפנימי? לא → החלף.
+
 6. **Generate final figures + HTML** → `emit_figures.py` (boreholes_override path) → `generate_{zone}_full_html.py` + `generate_{zone}_designed.py`
-7. **Validate** → §VII: Checklist
+   ```bash
+   python scripts/qa_pipeline.py --gate 6 --zone {ZONE}
+   ```
+   **חסימה על FAIL**: SVG מפה עם פחות מ-50 עיגולים, RTL חסר ב-HTML, Word ללא איורים מוטבעים, RTL פסקאות מתחת ל-85%.
+
+7. **Validate** → §VII: Checklist ידני + הרצת כל השערים:
+   ```bash
+   python scripts/qa_pipeline.py --gate all --zone {ZONE}
+   ```
+   פלט אוטומטי: `{ZONE}/output/QA_REPORT_{date}.md` — יש לצרף ל-commit.
 
 **Precedent for Zone N+1**: Once Zone N passes expert validation, store as `[N+1]/lean_workspace/01_inputs/[N]_approved_precedent.md`.
 
