@@ -486,7 +486,8 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 - Framework (Phases A–G): ✓ Complete — pipeline zone-agnostic, validated on Raanana, expert-approved
 - Phase 5 (Zone Application Framework): ✓ Complete on framework side; Holon V4.2 as stress-test (awaiting hydrogeologist)
 - Phase H+ (V5 Hybrid Pipeline): ✅ COMPLETE — Documentation (REQ #12) + Implementation (REQ #13, PR #19 merged 2026-05-28 / a19a917)
+- Phase H+ QA Automation: ✅ COMPLETE (REQ #23, 2026-06-07 — `scripts/qa_pipeline.py` with 4 gates, all passing for Holon V5)
 - Phase 2 (full 18-zone activation): ⏳ Pending Holon V5 hydrogeologist sign-off + Ministry coordination
 
-**Last Updated**: 2026-05-28 (Phase H+ Implementation COMPLETE via PR #19 / a19a917 — Holon V5 + Toolkit + Engines + Governance all merged to main)  
+**Last Updated**: 2026-06-07 (REQ #23 COMPLETE — QA Gates automation: Gate 2/4/6 PASS, Gate 5 WARN; all governance docs synced)  
 **Historical phases**: see `docs/HISTORY.md`
