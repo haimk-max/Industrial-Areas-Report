@@ -659,13 +659,139 @@ def gate6_output(zone: str, html_path: Optional[Path] = None,
     return result
 
 
+# ── Gate 3: Prompt Layer freshness ────────────────────────────────────────────
+
+# Ordering language abolished by REQ #24 (§IV is focus-first). Its presence in
+# any generation-driving artifact (template or rendered prompt) is a drift FAIL.
+ABOLISHED_ORDERING = [
+    r"FUEL\s+always\s+last",
+    r"FUEL\s+last\b",
+    r"<?/?family_order>?",
+    r"Family\s+[Oo]rdering",
+    r"CVOC\s*→\s*METALS\s*→\s*PFAS\s*→\s*FUEL",
+    r"FUEL.{0,8}אחרון",
+]
+
+# Placeholder tokens that MUST be substituted at render time, per prompt step.
+_PLACEHOLDER_TOKENS = {
+    "report": re.compile(r"\{[A-Z_][A-Z0-9_]*\}"),
+    "diagnosis": re.compile(
+        r"\{(?:zone_id|zone_he|data_dir|workspace_dir|forensics_dir|context_dir|output_path)\}"
+    ),
+}
+
+
+def _sha12(path: Path) -> str:
+    import hashlib
+    return hashlib.sha256(path.read_text(encoding="utf-8").encode("utf-8")).hexdigest()[:12]
+
+
+def gate3_prompt_layer(zone: str) -> QAResult:
+    """Validate the PROMPT/INSTRUCTION layer that drives Opus generation.
+
+    This gate closes the gap that REQ #24 left open: §IV was made the ordering
+    SSOT and the governance docs became references, but the *rendered zone
+    prompts* and the *prompt templates* are materialized artifacts that can drift
+    silently. Checks:
+    - Templates (report + diagnosis) contain no abolished family-first ordering.
+    - Rendered prompts exist, carry a provenance stamp, match the current
+      template's sha (not stale), have no unreplaced placeholders, and contain
+      no abolished ordering language.
+    - No stale duplicate rendered prompt survives outside the canonical location.
+    - The V4-era template carries a DEPRECATED banner (footgun guard).
+    """
+    result = QAResult("3 (Prompt Layer)", zone)
+
+    templates = {
+        "report": REPO_ROOT / "scripts" / "templates" / "zone_report_prompt_template_v5.md",
+        "diagnosis": REPO_ROOT / "scripts" / "templates" / "zone_diagnosis_prompt_template.md",
+    }
+    rendered = {
+        "report": REPO_ROOT / zone / "context_pack" / "05_prompt" / "zone_report_prompt.md",
+        "diagnosis": REPO_ROOT / zone / "context_pack" / "05_prompt" / "zone_diagnosis_prompt.md",
+    }
+
+    # 1. Templates must be focus-first (SSOT-aligned)
+    for name, tpath in templates.items():
+        if not tpath.exists():
+            result.error(f"template חסר: {tpath.relative_to(REPO_ROOT)}")
+            continue
+        ttext = tpath.read_text(encoding="utf-8")
+        hits = [p for p in ABOLISHED_ORDERING if re.search(p, ttext)]
+        if hits:
+            result.error(f"template '{name}' מכיל שפת-סדר מבוטלת (§IV focus-first): {hits}")
+        else:
+            result.info(f"template '{name}': focus-first — תקין")
+
+    # 2. Rendered prompts: existence, freshness vs template, placeholders, ordering
+    for name, rpath in rendered.items():
+        if not rpath.exists():
+            result.warn(
+                f"prompt מרונדר חסר: {rpath.relative_to(REPO_ROOT)} — "
+                f"הרץ: python scripts/render_zone_prompt.py --zone {zone} --step {name}"
+            )
+            continue
+        rtext = rpath.read_text(encoding="utf-8")
+
+        hits = [p for p in ABOLISHED_ORDERING if re.search(p, rtext)]
+        if hits:
+            result.error(
+                f"prompt מרונדר '{name}' מכיל שפת-סדר מבוטלת (family-first) — "
+                f"רנדר מחדש: {hits}"
+            )
+
+        leftover = sorted(set(_PLACEHOLDER_TOKENS[name].findall(rtext)))
+        if leftover:
+            result.error(f"prompt מרונדר '{name}': placeholders לא-מוחלפים {leftover[:6]}")
+
+        stamp = re.search(r"template_sha256_12=([0-9a-f]{12})", rtext)
+        tpath = templates[name]
+        if not stamp:
+            result.warn(
+                f"prompt מרונדר '{name}': חסרה חותמת provenance — "
+                f"רנדר מחדש דרך render_zone_prompt.py"
+            )
+        elif tpath.exists() and stamp.group(1) != _sha12(tpath):
+            result.error(
+                f"prompt מרונדר '{name}' מיושן: ה-template השתנה מאז הרינדור "
+                f"(stamp {stamp.group(1)} ≠ current {_sha12(tpath)}) — רנדר מחדש"
+            )
+        elif not hits and not leftover:
+            result.info(f"prompt מרונדר '{name}': טרי, תואם template, ללא placeholders — תקין")
+
+    # 3. Stale duplicate rendered prompts outside the canonical context_pack/05_prompt
+    for dup in REPO_ROOT.glob(f"{zone}/**/05_prompt/zone_report_prompt.md"):
+        dup_str = str(dup)
+        if "context_pack" in dup.parts or "_backup" in dup_str or "rerun" in dup_str:
+            continue
+        dtext = dup.read_text(encoding="utf-8")
+        if any(re.search(p, dtext) for p in ABOLISHED_ORDERING):
+            result.warn(
+                f"prompt מרונדר כפול/מיושן מחוץ למיקום הקנוני: "
+                f"{dup.relative_to(REPO_ROOT)} — שקול מחיקה (family-first)"
+            )
+
+    # 4. V4-era template footgun guard
+    v4 = REPO_ROOT / "scripts" / "templates" / "zone_report_prompt_template.md"
+    if v4.exists():
+        head = v4.read_text(encoding="utf-8")[:600]
+        if not re.search(r"DEPRECATED|מיושן|אין להשתמש", head):
+            result.warn(
+                "scripts/templates/zone_report_prompt_template.md (V4-era) ללא באנר "
+                "DEPRECATED — footgun: מכיל סדר family-first ונראה שמיש"
+            )
+
+    return result
+
+
 # ── Run all gates ─────────────────────────────────────────────────────────────
 
 def run_all_gates(zone: str, args) -> int:
-    """Run gates 2→4→5→6 in sequence. Returns exit code."""
+    """Run gates 2→3→4→5→6 in sequence. Returns exit code."""
     results = []
     gate_funcs = [
         ("2", lambda: gate2_data_pack(zone, getattr(args, "data_dir", None))),
+        ("3", lambda: gate3_prompt_layer(zone)),
         ("4", lambda: gate4_diagnosis(zone, getattr(args, "diagnosis", None))),
         ("5", lambda: gate5_report(zone, getattr(args, "report", None))),
         ("6", lambda: gate6_output(zone, getattr(args, "html", None), getattr(args, "docx", None))),
@@ -740,7 +866,7 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="Example: python scripts/qa_pipeline.py --gate all --zone Holon",
     )
-    parser.add_argument("--gate", choices=["2", "4", "5", "6", "all"], required=True)
+    parser.add_argument("--gate", choices=["2", "3", "4", "5", "6", "all"], required=True)
     parser.add_argument("--zone", required=True, help="Zone directory name (e.g. Holon)")
     parser.add_argument("--report", type=Path, help="Override path to V5 report .md")
     parser.add_argument("--html", type=Path, help="Override path to HTML output")
@@ -758,6 +884,7 @@ def main():
 
     gate_map = {
         "2": lambda: gate2_data_pack(zone, args.data_dir),
+        "3": lambda: gate3_prompt_layer(zone),
         "4": lambda: gate4_diagnosis(zone, args.diagnosis),
         "5": lambda: gate5_report(zone, args.report),
         "6": lambda: gate6_output(zone, args.html, args.docx),

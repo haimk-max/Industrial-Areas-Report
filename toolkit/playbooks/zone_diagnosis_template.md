@@ -24,10 +24,10 @@
 
 | # | קובץ | מטרה |
 |---|------|------|
-| 1 | `{data_dir}/statistical_signals.yaml` | עוגנים סטטיסטיים (S1–S11 / S99) — סיוע ניווט |
-| 2 | `{data_dir}/forensic_anchors.yaml` | עוגנים פורנזיים (F1–F12 / F99) — סיוע ניווט |
-| 3 | `{data_dir}/trends.csv` | תוצאות Mann-Kendall לכל (קידוח, פרמטר) |
-| 4 | `{data_dir}/measurements.csv` | מדידות גולמיות |
+| 1 | `{data_dir}/statistical_signals_PILOT.yaml` | עוגנים סטטיסטיים (S1–S11 / S99) — סיוע ניווט |
+| 2 | `{data_dir}/forensic_anchors_PILOT.yaml` | עוגנים פורנזיים (F1–F12 / F99) — סיוע ניווט |
+| 3 | `{data_dir}/trends_by_well_parameter.csv` | תוצאות Mann-Kendall לכל (קידוח, פרמטר) |
+| 4 | `{data_dir}/measurements_scoped.csv` | מדידות גולמיות |
 | 5 | `{data_dir}/severity_by_well_family.csv` | severity לכל (קידוח, משפחה) |
 | 6 | `{data_dir}/severity_..._param_level.csv` | severity לכל (קידוח, משפחה, פרמטר) |
 | 7 | `{forensics_dir}/contamination_families.json` | decay chains, source signatures, co-occurrence, critical exceedances |
@@ -48,13 +48,13 @@
 
 **התחל מהartifacts המעובדים, לא מה-CSVs הגולמיים.** שכבות העיבוד-המקדים קיימות בדיוק כדי שהסוכן האבחוני לא יצטרך לשחות בעשרות אלפי שורות גולמיות:
 
-1. **קודם — קרא את העוגנים המבניים** (`statistical_signals.yaml`, `forensic_anchors.yaml`) — אלה אינדקס הניווט. הם אומרים **היכן** להסתכל.
+1. **קודם — קרא את העוגנים המבניים** (`statistical_signals_PILOT.yaml`, `forensic_anchors_PILOT.yaml`) — אלה אינדקס הניווט. הם אומרים **היכן** להסתכל.
 2. **אחר כך — אינדקסי ה-severity** (`severity_by_well_family.csv` + param_level) — מסכמים את תמונת הזיהום לכל קידוח לכל משפחה.
 3. **אחר כך — סיכום הפורנזיקה** (`contamination_families.json` — במיוחד `critical_exceedances` וסעיפי decay/signature/co-occurrence מאוכלסים).
 4. **אחר כך — context pack** (`reports_context.md`, `source_candidates_context.md`, web findings אופציונלי).
-5. **רק אז — חזור לנתונים הגולמיים** (`trends.csv`, `measurements.csv`) **לאימות ממוקד** — כשעוגן מצביע על ממצא שרוצים לאשש, או כשסתירה בין מקורות צריכה פתרון. **אל תקרא את הקבצים האלה בכמות.** השתמש בשאילתות מסוננות (קידוח + פרמטר ספציפי).
+5. **רק אז — חזור לנתונים הגולמיים** (`trends_by_well_parameter.csv`, `measurements_scoped.csv`) **לאימות ממוקד** — כשעוגן מצביע על ממצא שרוצים לאשש, או כשסתירה בין מקורות צריכה פתרון. **אל תקרא את הקבצים האלה בכמות.** השתמש בשאילתות מסוננות (קידוח + פרמטר ספציפי).
 
-`trends.csv` ו-`measurements.csv` הם מקורות אמת, אך הם **לא נקודת ההתחלה**. הם שכבת האימות מתחת לשכבת הניווט.
+`trends_by_well_parameter.csv` ו-`measurements_scoped.csv` הם מקורות אמת, אך הם **לא נקודת ההתחלה**. הם שכבת האימות מתחת לשכבת הניווט.
 
 ---
 
@@ -184,7 +184,7 @@
 ## מוסכמת ציטוט
 
 - עוגנים/סיגנלים: ציטוט inline — `(ראה S1_001, F1_002)`
-- אימות נתונים גולמיים: קובץ + פילטר — `(trends.csv: borehole_id == 'X' AND parameter == 'Y')`
+- אימות נתונים גולמיים: קובץ + פילטר — `(trends_by_well_parameter.csv: borehole_id == 'X' AND parameter == 'Y')`
 - ממצאי דוח קודם: `(reports_context.md §X)` או הפניית עמוד
 - מקורות web: `(web_findings_context.md, classification C)`
 

@@ -1,5 +1,11 @@
 # Zone Report Generation Prompt — תבנית גנרית
 
+> ## ⛔ DEPRECATED — אין להשתמש (V4-era)
+> תבנית זו **מיושנת** ומכילה סדר **family-first** שבוטל ב-REQ #24 (§IV הוא focus-first).
+> **התבנית הקנונית היחידה לדוח V5 היא** `scripts/templates/zone_report_prompt_template_v5.md`,
+> ורינדור נעשה **אך ורק** דרך `scripts/render_zone_prompt.py --step report`.
+> קובץ זה נשמר לארכיון בלבד; `qa_pipeline.py` gate 3 חוסם שימוש בו.
+
 > **כיצד להשתמש**: החלף את כל ה-`{PLACEHOLDERS}` בערכים של האזור הנסקר. שמור את הקובץ המלא ב-`{ZONE}/lean_workspace/05_prompt/zone_report_prompt.md`.
 > תבנית זו עוקבת אחר **Anthropic XML-tag pattern** ל-structured prompting (ראה [docs.anthropic.com/.../use-xml-tags](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags)).
 
