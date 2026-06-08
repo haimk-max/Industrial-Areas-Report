@@ -223,11 +223,12 @@ All CSVs are in `{ZONE}/02_data/`:
 **Caveat**: If a recommendation doesn't fit the 4 domains (e.g., "increase inter-agency coordination"), place it in the domain it most supports or add a standalone note.
 
 ### Section 7: מתודולוגיה (Methodology — Concise)
-- Severity formula: `bucket(C_max_5y / DWS × 100)`, 9-level scale (full table in PROCESS_GUIDE §III)
-- Window: 5 years (2021–{YEAR_END})
-- Borehole count: {GENERAL_COUNT} general + {FUEL_COUNT} fuel = {TOTAL_ACTIVE}
-- Trend analysis: Mann-Kendall (tie-corrected variance, SNR gating, soft_trigger=2)
-- **Do NOT include 9-level table** — reference PROCESS_GUIDE §III
+Write this section in Hebrew prose, ≤10 lines, using the report-prose terminology rules (no raw tokens):
+- אינדקס חומרה: `C_max_5y / DWS × 100`, סולם 9 רמות (0–8) — הפנה למתודולוגיה המלאה, אל תשכפל את הטבלה
+- חלון: 5 שנים (2021–{YEAR_END})
+- מנין קידוחים: {GENERAL_COUNT} ניטור כללי + {FUEL_COUNT} דלק = {TOTAL_ACTIVE} (זה המספר היחיד שמותר לצמוד למילה "קידוחים")
+- ניתוח מגמות: Mann-Kendall (שונות מתוקנת-קשרים, סינון יחס אות/רעש, טריגר רך = שני ערכים עולים רצופים) — אין רגרסיה לינארית
+- **אל תכלול את טבלת 9 הרמות** — הפנה למסמכי המתודולוגיה הכלליים
 
 ### Section 8: מגבלות (Limitations)
 - Data gaps (PFAS coverage, temporal gaps, closed wells)
@@ -273,11 +274,18 @@ All CSVs are in `{ZONE}/02_data/`:
 
 - **Language**: Professional Hebrew. Technical terms in English only when standard (TCE, Mann-Kendall, etc.)
 - **Numbers**: Always % of standard (not absolute concentration alone). Example: "TCE 1,200 µg/L (2,400% of standard)"
-- **Citations**: Every claim → source. Format: "(severity_by_well_family.csv row 47)" or "(Historical Report 2021, p. 23)"
+- **Citations**: Every claim → source. For historical claims cite the report + page: "(דוח 2021, עמ' 23)". For monitoring data, cite the well + parameter in prose ("נמדד ב-נת חולון 11"); **NEVER cite raw pipeline filenames** (no `*.csv` / `*.json` / `*.yaml`) in the report — those are internal artifacts.
+- **Report-prose terminology (HARD — a QA gate FAILs on raw tokens)**: in the report PROSE, translate every internal token to Hebrew/standard wording, never the raw token:
+  - `bucket` / `bucket(...)` → "אינדקס חומרה"
+  - `SNR gating` → "סינון יחס אות/רעש"; `soft_trigger` → "טריגר רך (שני ערכים עולים רצופים)"
+  - evidence codes `A+B` / `C-class` → confidence **HIGH / MEDIUM / LOW** (these three English words are allowed) + Hebrew evidence description
+  - English ops labels `ALERT / WATCH / ELEVATED / STABLE / NONE` → Hebrew ("מצב חירום", "מגמה יציבה", "אין מגמה")
+  - never write `Step N`, `Opus call`, `PROCESS_GUIDE`, `REPORT_V5_SCHEMA` in the report
+  - Allowed in prose: chemical names (TCE, PFAS, MTBE, VC…) and HIGH/MEDIUM/LOW.
 - **Tone**: Neutral, professional. Avoid narrative arcs ("crisis", "alarming"). Describe findings, don't dramatize.
 - **Selection bias caveat**: Every statistical section must note that monitoring wells ≠ zone-wide representation
 - **Summarize, don't enumerate**: 3–5 key boreholes per focus; table for summary; paragraph for synthesis. **Never list all exceeding boreholes in prose.**
-- **Consistency**: Borehole count must match {TOTAL_ACTIVE} everywhere
+- **Consistency (STRICT — QA gate)**: the ONLY multi-digit number that may directly precede the word "קידוח/קידוחים" is **{TOTAL_ACTIVE}**. For any other count, keep a 2–3 digit number away from "קידוח": write "X מתוך {TOTAL_ACTIVE} הקידוחים", "כ-N נקודות ניטור", or "N חריגות". A distinct "NN קידוחים" elsewhere FAILs the gate.
 
 </style_guide>
 
