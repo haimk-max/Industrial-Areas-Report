@@ -1,5 +1,32 @@
 # CLAUDE.md - Industrial Areas Report Project Governance
 
+## אילוצי סביבה (Environment — חשוב לכל סשן)
+
+- המשתמש עובד **אך ורק** דרך Claude Code on the web (GitHub integration) — **אין גישה לטרמינל**.
+- `~/.claude/` לא שורד בין סשנים (container חולף). כל זיכרון בין-סשן חייב להיות committed לריפו.
+- **זיכרון בין-סשן**: `HANDOVER.md` בשורש הריפו — קרא אותו בתחילת כל סשן.
+- **סקיל `/handover`**: מותקן ב-`.claude/skills/handover/SKILL.md` — הפעל בסוף כל סשן.
+
+## קונבנציות שפה
+
+- **קבצי Markdown** (CLAUDE.md, PROCESS.md, planning, todos): **עברית**.
+- **קוד** (Python, JS, shell, שמות משתנים, comments, docstrings): **אנגלית**.
+- **Commit messages**: אנגלית (convention של Git).
+- **כותרות סעיפים בדוחות**: עברית בלבד.
+
+## העדפות יציבות
+
+- סיים כל סשן עבודה ב-`/handover` (או בבקשה חופשית "תעשה handover") כדי לייצר הערת מסירה מסוננת.
+- ברירת מחדל: **שאל לפני commit או push**, גם אם הסשן כבר רץ זמן מה.
+- שינויים הרסניים (`reset --hard`, `force push`, מחיקת ענפים) — דורשים אישור מפורש, גם בריפו זה.
+
+## footguns בין-פרויקטיים
+
+<!-- הוסף כאן רק דפוסים שגרמו לבעיות יותר מפעם אחת -->
+—
+
+---
+
 > **Methodology layering**: This file is **prescriptive** (what we do). For per-feature **descriptive** history, see commit messages. For **open patterns awaiting 2nd-case validation, deferred decisions, and tooling roadmap**, see `LESSONS.md`. Promote items from `LESSONS.md` to `REQUIREMENTS.md` only after a 2nd real case validates the pattern.
 
 ## Project Overview
