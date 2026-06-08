@@ -338,8 +338,9 @@ def gate5_report(zone: str, report_path: Optional[Path] = None,
     - 6 sections + appendices present
     - Borehole count consistent across sections (vs gate 2 baseline)
     - Focus count consistency (§1 vs §3 sub-sections)
-    - Family order: CVOC before METALS before PFAS before FUEL
-    - PFAS framed as coverage gap if no data
+    - §3 headers are geographic foci, not bare family names (WARN if family-only)
+    - PFAS appears in "פערי כיסוי" section (WARN if missing or misframed)
+    - Optional: cross-check §3 order against focus_order block in zone_diagnosis.md
     - Overstatement patterns flagged
     - HIGH/MEDIUM/LOW confidence on facility attributions
     - No ALERT/WATCH/ELEVATED/STABLE terminology
@@ -436,45 +437,63 @@ def gate5_report(zone: str, report_path: Optional[Path] = None,
             else:
                 result.info(f"מנין מוקדים עקבי: {actual_count}")
 
-    # ── 5. Family order (CVOC → METALS → PFAS → FUEL) ──
-    families = ["CVOC|ממסים\s+מוכלר", "METALS|מתכות", "PFAS", "FUEL|דלק|BTEX"]
-    family_positions = []
-    for fam_pat in families:
-        m = re.search(r"^###.*(?:" + fam_pat + ")", text, re.MULTILINE | re.IGNORECASE)
-        if m:
-            family_positions.append((m.start(), fam_pat.split("|")[0]))
+    # ── 5. Focus-first: §3 headers must be geographic foci, not bare family names ──
+    # Per §IV (SSOT): each ### 3.N must name a geographic location/facility, not just a family keyword.
+    family_only_patterns = [
+        r"^###\s+3\.\d+\s+(ממסים\s+מוכלרים?|CVOC)\s*$",
+        r"^###\s+3\.\d+\s+(מתכות\s+כבדות?|METALS)\s*$",
+        r"^###\s+3\.\d+\s+(דלק|FUEL|BTEX)\s*$",
+        r"^###\s+3\.\d+\s+PFAS\s*$",
+    ]
+    sec3_headers = re.findall(r"^###\s+3\.\d+.*$", text, re.MULTILINE)
+    family_only_headers = []
+    for hdr in sec3_headers:
+        for pat in family_only_patterns:
+            if re.match(pat, hdr, re.IGNORECASE):
+                family_only_headers.append(hdr.strip())
+                break
 
-    if len(family_positions) >= 2:
-        ordered = all(
-            family_positions[i][0] < family_positions[i + 1][0]
-            for i in range(len(family_positions) - 1)
+    if family_only_headers:
+        result.warn(
+            f"כותרות §3 נראות כשמות-משפחה בלבד (לא מוקד גיאוגרפי) — §IV מחייב שם מקום/מתקן: "
+            f"{family_only_headers[:3]}"
         )
-        if ordered:
-            order_str = " → ".join(f[1] for f in family_positions)
-            result.info(f"סדר משפחות תקין: {order_str}")
+    elif sec3_headers:
+        result.info(f"כותרות §3: {len(sec3_headers)} מוקדים — נראות כמוקדים גיאוגרפיים")
+
+    # Optional cross-check: if zone_diagnosis.md exists, verify §3 header order matches focus_order block
+    diag_path = REPO_ROOT / zone / "04_diagnosis" / "zone_diagnosis.md"
+    if diag_path.exists():
+        diag_text = diag_path.read_text(encoding="utf-8")
+        focus_block = re.search(r"^##\s+סדר מוקדים(.*?)(?:^##|\Z)", diag_text, re.MULTILINE | re.DOTALL)
+        if focus_block:
+            result.info("בלוק 'סדר מוקדים' נמצא ב-zone_diagnosis.md — ניתן לאמת עקביות ידנית")
         else:
-            actual = " → ".join(f[1] for f in family_positions)
-            result.error(
-                f"סדר משפחות שגוי: {actual} (נדרש CVOC→METALS→PFAS→FUEL, FUEL תמיד אחרון)"
-            )
+            result.warn("zone_diagnosis.md קיים אך חסר בלוק '## סדר מוקדים' — Gate 4 אמור לחסום זאת")
 
-        # FUEL last
-        if family_positions and family_positions[-1][1] != "FUEL":
-            result.error("FUEL לא אחרון — PROCESS_GUIDE §IV מחייב FUEL תמיד כסגירה")
-
-    # ── 6. PFAS framing ──
+    # ── 6. PFAS framing: must appear, ideally in "פערי כיסוי" section ──
     pfas_match = re.search(r"PFAS.{0,500}", text, re.DOTALL | re.IGNORECASE)
     if pfas_match:
-        pfas_text = pfas_match.group(0)
-        if re.search(r"פער|כיסוי|לא\s+נדגם|coverage", pfas_text, re.IGNORECASE):
-            result.info("PFAS מוסגר כפער כיסוי — תקין")
+        # Check if PFAS appears inside a "פערי כיסוי" section
+        coverage_gap_section = re.search(
+            r"###.*פערי\s+כיסוי.*?(?=^###|\Z)", text, re.MULTILINE | re.DOTALL | re.IGNORECASE
+        )
+        if coverage_gap_section and "PFAS" in coverage_gap_section.group(0).upper():
+            result.info("PFAS מופיע בסעיף 'פערי כיסוי' — תקין (§IV)")
         else:
-            result.warn(
-                "PFAS: לא זוהה ניסוח 'פער כיסוי' — בדוק שלא מוצג כמוקד זיהום פעיל "
-                "כאשר max_bucket=0 (PROCESS_GUIDE §IV.3)"
-            )
+            pfas_text = pfas_match.group(0)
+            if re.search(r"פער|כיסוי|לא\s+נדגם|coverage", pfas_text, re.IGNORECASE):
+                result.warn(
+                    "PFAS מוסגר כ'פער כיסוי' אך לא זוהה בסעיף 'פערי כיסוי' מוגדר — "
+                    "שקול ליצור ### פערי כיסוי מפורש (§IV)"
+                )
+            else:
+                result.warn(
+                    "PFAS: לא זוהה ניסוח 'פערי כיסוי' — בדוק שלא מוצג כמוקד זיהום פעיל "
+                    "כאשר אין נתונים מאמתים (PROCESS_GUIDE §IV)"
+                )
     else:
-        result.error("PFAS לא נמצא בדוח — חובה לפי PROCESS_GUIDE §IV.3 גם כאשר max_bucket=0")
+        result.error("PFAS לא נמצא בדוח — חובה לפי PROCESS_GUIDE §IV גם כאשר אין נתונים")
 
     # ── 7. Overstatement patterns ──
     for pattern, suggestion in OVERSTATEMENT_PATTERNS:

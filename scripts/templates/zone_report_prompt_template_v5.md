@@ -17,7 +17,7 @@ You are a **senior hydrogeologist analyst** writing a regional groundwater quali
 - §I: 5 inputs (context pack, data pack, diagnosis, anchors, precedent)
 - §II: V5 schema (6 sections + methodology + limitations + appendices)
 - §III: Severity scale (9-level bucket, 5-label summary)
-- §IV: Family ordering (FUEL last; others by max_bucket descending)
+- §IV: Focus ordering — §3 לפי מוקד גיאוגרפי; משפחות משניות בתוך מוקד; כלל קישור מנגנוני; "פערי כיסוי" אחרון
 - §VI: Figure rules
 - §VII: Validation checklist
 
@@ -63,16 +63,22 @@ Fuel boreholes: {FUEL_COUNT}
 Total active boreholes: {TOTAL_ACTIVE}
 Measurements (TPFAS/BETK excluded): {N_MEASUREMENTS}
 Year range: {YEAR_START}–{YEAR_END}
-Family max_buckets (for §IV ordering): CVOC={CVOC_MAX} | METALS={METALS_MAX} | PFAS={PFAS_MAX} | FUEL={FUEL_MAX}
+Focus order (from zone_diagnosis.md ## סדר מוקדים): {FOCUS_ORDER_LIST}
 Precedent zone (style reference): {PRECEDENT_ZONE}
 Report version: V5 Hybrid Pipeline
 </zone_metadata>
 
-<family_order>
-Per §IV: FUEL always last. Computed order for this zone:
-{FAMILY_ORDER_LIST}
-# Example: CVOC → METALS → PFAS → FUEL (Holon) or METALS → CVOC → PFAS → FUEL (other zone)
-</family_order>
+<focus_order>
+Per §IV: §3 = geographic foci ordered by focus severity descending. Families are secondary within each focus.
+Foci order for this zone (from zone_diagnosis.md "## סדר מוקדים" block):
+{FOCUS_ORDER_LIST}
+# Example row: 1 | מוקד אלביט / נת חולון | רח' ההסתדרות | CVOC | 8 | 1,4-dioxane | קישור: dioxane כמייצב TCA
+# Mechanical link rule: if family B is physicochemically linked to dominant family A within same focus
+# (VC from TCE decay, 1,4-dioxane as TCA stabilizer, LNAPL as electron donor for CVOC reductive dechlorination)
+# → present B immediately after A, before any unlinked family with higher severity.
+# Cross-focus links → treat as "signal crossing" with competing hypotheses.
+# Last section = "פערי כיסוי" (coverage gaps): PFAS without geographic data + spatial/parametric gaps.
+</focus_order>
 
 ---
 
@@ -173,7 +179,7 @@ All CSVs are in `{ZONE}/02_data/`:
 - Figure 1 required (map with wells + contamination foci)
 
 ### Section 3: מוקדי זיהום עיקריים (Contamination Foci / Families)
-- **Order**: by max_bucket descending ({FAMILY_ORDER_LIST}), FUEL always last
+- **Order**: by geographic focus per §IV ({FOCUS_ORDER_LIST}); families secondary within each focus; "פערי כיסוי" last
 - **Per focus/family**: name, leading boreholes, top contaminants (with sev index), table (3–5 key measurements), trends (Z/p/SNR for significant ones), possible sources (HIGH/MEDIUM/LOW), data gaps
 - **Key rule**: Summarize, don't enumerate all exceeding boreholes
 - **PFAS**: mandatory section even if max_bucket=0 (coverage gap brief note)
@@ -283,7 +289,7 @@ Before submitting {ZONE}_REPORT_V5.md, verify (PROCESS_GUIDE §VII):
 
 - [ ] 6 sections + Methodology + Limitations + Appendices (V5 schema)
 - [ ] All numbers tied to source (CSV row or historical document page)
-- [ ] Family order correct ({FAMILY_ORDER_LIST}, FUEL last)
+- [ ] Focus order correct: §3 = geographic foci (חומרה יורדת); families secondary within focus; "פערי כיסוי" last (ראה §IV; order per {FOCUS_ORDER_LIST})
 - [ ] PFAS section present (full or coverage-gap note)
 - [ ] Severity scale consistent: 5-level summary; 9-bucket index in tables
 - [ ] **NO English operational terms** (ALERT, WATCH, ELEVATED, STABLE, NONE)

@@ -131,7 +131,7 @@ Before implementing data processing:
   - ✓ Safety net: HTML generator auto-injects `![]()` image markdown when Opus omits it (figure caption present but image markdown missing)
   - ✓ SSOT: `ZONE_REPORT_PROCESS_GUIDE.md` for terminology + pipeline; `STATISTICAL_OVERVIEW_METHODOLOGY.md` redirects to §III
   - ✓ Generic Zone Prompt Template: `scripts/templates/zone_report_prompt_template.md` (Anthropic XML-tag structure, 30 placeholders, `<figure_rules>` enforcing image-before-caption)
-  - ✓ Family ordering: FUEL always last; CVOC/METALS/PFAS by zone max_bucket descending (§IV)
+  - ✓ Focus-first ordering (§IV): §3 by geographic focus (severity descending); families secondary within focus; "פערי כיסוי" last
   - ✓ Web search & PDF ingestion documented in PROCESS_GUIDE §I.2 + §I.5 (External Data/{zone}/ structure, 6 channels)
 
 - **Phase H+ Implementation** ✅ COMPLETE (2026-05-28, PR #19 merged via a19a917):

@@ -20,9 +20,9 @@
 [גיאוגרפיה, הידרוגיאולוגיה, מערך קידוחים]
 ### איור 1: מפת קידוחים ומוקדים
 
-## 3. מוקדי זיהום עיקריים / משפחות מזהמים דומיננטיות
+## 3. מוקדי זיהום עיקריים
 
-### 3.1 / 3.2 / ... [מוקדים לפי max_bucket יורד]
+### 3.1 / 3.2 / ... [מוקדים גיאוגרפיים לפי חומרת-מוקד יורדת — ראה §IV]
 [תבנית מוקד חוזרת לכל אחד]
 
 ## 4. מגמות, החמרה ופערי ניטור
@@ -74,11 +74,11 @@
 
 ---
 
-## Section 3: מוקדי זיהום עיקריים / משפחות מזהמים דומיננטיות
+## Section 3: מוקדי זיהום עיקריים
 
-**מטרה**: תיאור מפורט של כל מוקד זיהום או משפחה כימית דומיננטית.
+**מטרה**: תיאור מפורט של כל מוקד זיהום גיאוגרפי, ובתוכו המשפחות הכימיות הדומיננטיות.
 
-**סדר**: לפי max_bucket יורד (FUEL תמיד אחרון).
+**סדר**: לפי מוקד גיאוגרפי (חומרת-מוקד יורדת); משפחות בתוך מוקד לפי §IV. סעיף "פערי כיסוי" אחרון.
 
 ### תבנית לכל מוקד (חוזרת)
 
@@ -114,7 +114,7 @@
 - ניטור משופר לאחרונה (ramp up frequency)
 ```
 
-**הערה**: תבנית זו חוזרת לכל מוקד (3.1, 3.2, ...). סדר = לפי max_bucket יורד.
+**הערה**: תבנית זו חוזרת לכל מוקד גיאוגרפי (3.1, 3.2, ...). סדר = לפי §IV.
 
 ---
 
@@ -234,7 +234,7 @@
 - [ ] 6 sections present (1–6 content + 7–8 methodology/limits)
 - [ ] Section 3 uses consistent sub-template for each focus
 - [ ] PFAS always included (even if max_bucket=0)
-- [ ] FUEL last (section 3.4 or equivalent)
+- [ ] §3 headers are geographic foci (not bare family names); ordered by focus severity descending (ראה §IV)
 - [ ] Severity scale: 5-level labels only (נקי/נמוך/בינוני/גבוה/גבוה מאוד)
 - [ ] No English operational terminology (ALERT/WATCH/ELEVATED)
 - [ ] Confidence levels (HIGH/MEDIUM/LOW) on all facility attributions
