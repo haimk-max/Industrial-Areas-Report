@@ -556,17 +556,25 @@ def gate6_output(zone: str, html_path: Optional[Path] = None,
     """
     result = QAResult("6 (HTML / Word Output)", zone)
 
-    # Locate HTML
+    # Locate HTML (prefer highest version present: V6 > V5 > legacy)
     if html_path is None:
-        html_path = REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V5.html"
-        if not html_path.exists():
-            html_path = REPO_ROOT / zone / "output" / "HOLON_REPORT_V5.html"
+        html_candidates = [
+            REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V6.html",
+            REPO_ROOT / zone / "output" / "HOLON_REPORT_V6.html",
+            REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V5.html",
+            REPO_ROOT / zone / "output" / "HOLON_REPORT_V5.html",
+        ]
+        html_path = next((p for p in html_candidates if p.exists()), html_candidates[-1])
 
     # Locate DOCX
     if docx_path is None:
-        docx_path = REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V5.docx"
-        if not docx_path.exists():
-            docx_path = REPO_ROOT / zone / "output" / "HOLON_REPORT_V5.docx"
+        docx_candidates = [
+            REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V6.docx",
+            REPO_ROOT / zone / "output" / "HOLON_REPORT_V6.docx",
+            REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V5.docx",
+            REPO_ROOT / zone / "output" / "HOLON_REPORT_V5.docx",
+        ]
+        docx_path = next((p for p in docx_candidates if p.exists()), docx_candidates[-1])
 
     # ── HTML checks ──
     if not html_path.exists():
