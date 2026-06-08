@@ -349,7 +349,10 @@ def gate5_report(zone: str, report_path: Optional[Path] = None,
     result = QAResult("5 (V5 Report)", zone)
 
     if report_path is None:
+        # Prefer the highest version present (V6 > V5 > legacy names)
         candidates = [
+            REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V6.md",
+            REPO_ROOT / zone / "output" / "HOLON_REPORT_V6.md",
             REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V5.md",
             REPO_ROOT / zone / "output" / "HOLON_REPORT_V5.md",
         ]
@@ -462,7 +465,13 @@ def gate5_report(zone: str, report_path: Optional[Path] = None,
         result.info(f"כותרות §3: {len(sec3_headers)} מוקדים — נראות כמוקדים גיאוגרפיים")
 
     # Optional cross-check: if zone_diagnosis.md exists, verify §3 header order matches focus_order block
-    diag_path = REPO_ROOT / zone / "04_diagnosis" / "zone_diagnosis.md"
+    diag_candidates = [
+        REPO_ROOT / zone / "context_pack" / "04_diagnosis" / "zone_diagnosis.md",
+        REPO_ROOT / zone / "04_diagnosis" / "zone_diagnosis.md",
+    ]
+    diag_path = next((p for p in diag_candidates if p.exists()), None)
+    if diag_path is None:
+        diag_path = REPO_ROOT / zone / "04_diagnosis" / "zone_diagnosis.md"  # fallback for error msg
     if diag_path.exists():
         diag_text = diag_path.read_text(encoding="utf-8")
         focus_block = re.search(r"^##\s+סדר מוקדים(.*?)(?:^##|\Z)", diag_text, re.MULTILINE | re.DOTALL)
