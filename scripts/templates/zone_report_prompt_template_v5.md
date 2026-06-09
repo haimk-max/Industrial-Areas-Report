@@ -23,6 +23,14 @@ You are a **senior hydrogeologist analyst** writing a regional groundwater quali
 
 **אכיפת טרמינולוגיה**: NO English operational terms (ALERT/WATCH/ELEVATED/STABLE). Use Hebrew labels (נמוך/בינוני/גבוה/גבוה מאוד) or descriptive phrasing.
 
+<terminology>
+**מילון מונחים מחייב** (SSOT: `docs/STYLE_GUIDE.md` §B.5). המונחים בעמודה הימנית בלבד; המונחים בעמודה השמאלית **אסורים** בפרוזה — ה-QA (Gate 5) חוסם אותם:
+
+{TERMINOLOGY_BLOCK}
+
+בנוסף: דירוג ודאות שיוך מקורות (§5) ייכתב תמיד **"רמת ודאות: גבוהה / בינונית / נמוכה"** — לעולם לא HIGH/MEDIUM/LOW בפרוזה העברית.
+</terminology>
+
 ---
 
 <decision_framework>
@@ -180,8 +188,10 @@ All CSVs are in `{ZONE}/02_data/`:
 
 ### Section 3: מוקדי זיהום עיקריים (Contamination Foci / Families)
 - **Order**: by geographic focus per §IV ({FOCUS_ORDER_LIST}); families secondary within each focus; "פערי כיסוי" last
-- **Per focus/family**: name, leading boreholes, top contaminants (with sev index), table (3–5 key measurements), trends (Z/p/SNR for significant ones), possible sources (HIGH/MEDIUM/LOW), data gaps
+- **Header rule (HARD — Gate 5)**: each `### 3.N` heading MUST be a **geographic focus name** (facility/site/area, e.g. "מוקד סביבת מתקן אלביט / נת חולון"), **NOT** a bare family name. "CVOC" / "מתכות" / "דלק" alone as a 3.N heading FAILs the gate — the family is secondary *inside* the focus.
+- **Per focus/family**: name, leading boreholes, top contaminants (with sev index), table (3–5 key measurements), trends (Z/p/SNR for significant ones), possible sources (רמת ודאות גבוהה/בינונית/נמוכה), data gaps
 - **Key rule**: Summarize, don't enumerate all exceeding boreholes
+- **Table format (per focus)**: columns = קידוח | מזהם מוביל | **ריכוז אחרון (מקס' היסטורי)** | מגמה. The central per-borehole value is the **latest** concentration with the **historical maximum in parentheses**, e.g. "נת חולון 11 | TCE | 840 (1,200) מקג"ל | עלייה". Drop the "% of standard" column from the table (% may still appear in prose for emphasis). Units once in the header where possible.
 - **PFAS**: mandatory section even if max_bucket=0 (coverage gap brief note)
 - Figure 2–5 required (one per major family: CVOC, METALS, FUEL; optionally PFAS)
 
@@ -192,8 +202,9 @@ All CSVs are in `{ZONE}/02_data/`:
 - Selection bias caveat: monitoring wells ≠ zone-wide representation
 
 ### Section 5: מקורות זיהום אפשריים (Source Attribution)
-- Table: focus | leading contaminant | suspected facility | confidence level (HIGH/MEDIUM/LOW)
-- Short narrative per HIGH-confidence attribution
+- Table: מוקד | מזהם מוביל | מתקן חשוד | **רמת ודאות (גבוהה/בינונית/נמוכה)**
+- **Ranking basis (required)**: open §5 with one sentence stating *how* confidence is assigned — e.g. "רמת הוודאות נקבעת לפי הצטברות הראיות: כתובת מאומתת + סקטור מאושר + קרבה הידרולוגית במעלה-הזרם = גבוהה; סקטור בלבד או קרבה ללא אישור = בינונית; היקש מסקטור/שם-קידוח בלבד = נמוכה." (criteria per STYLE_GUIDE §H.3)
+- Short narrative per **רמת-ודאות-גבוהה** attribution
 - Forensic evidence: decay chains, co-occurrence
 
 ### Section 6: המלצות (Recommendations)
@@ -238,7 +249,7 @@ Write this section in Hebrew prose, ≤10 lines, using the report-prose terminol
 ### Appendices
 - א: Boreholes classification table (name | family max_index | status | notes)
 - ב: External sources reviewed (PRTR, B144, web findings)
-- ג: Facility candidates index (with HIGH/MEDIUM/LOW confidence)
+- ג: Facility candidates index (with רמת ודאות גבוהה/בינונית/נמוכה)
 - ד: Abbreviations & terminology
 
 </output_format>
@@ -275,13 +286,13 @@ Write this section in Hebrew prose, ≤10 lines, using the report-prose terminol
 - **Language**: Professional Hebrew. Technical terms in English only when standard (TCE, Mann-Kendall, etc.)
 - **Numbers**: Always % of standard (not absolute concentration alone). Example: "TCE 1,200 µg/L (2,400% of standard)"
 - **Citations**: Every claim → source. For historical claims cite the report + page: "(דוח 2021, עמ' 23)". For monitoring data, cite the well + parameter in prose ("נמדד ב-נת חולון 11"); **NEVER cite raw pipeline filenames** (no `*.csv` / `*.json` / `*.yaml`) in the report — those are internal artifacts.
-- **Report-prose terminology (HARD — a QA gate FAILs on raw tokens)**: in the report PROSE, translate every internal token to Hebrew/standard wording, never the raw token:
+- **Report-prose terminology (HARD — a QA gate FAILs on raw tokens)**: in the report PROSE, translate every internal token to Hebrew/standard wording, never the raw token. See the binding `<terminology>` block above (SSOT: STYLE_GUIDE §B.5) for the three mandatory substitutions (ריקבון→פירוק, שתיקה→הפסקת ניטור, קיצוני→אינדקס). In addition:
   - `bucket` / `bucket(...)` → "אינדקס חומרה"
   - `SNR gating` → "סינון יחס אות/רעש"; `soft_trigger` → "טריגר רך (שני ערכים עולים רצופים)"
-  - evidence codes `A+B` / `C-class` → confidence **HIGH / MEDIUM / LOW** (these three English words are allowed) + Hebrew evidence description
+  - evidence codes `A+B` / `C-class` → **רמת ודאות גבוהה / בינונית / נמוכה** + Hebrew evidence description (NOT the English words HIGH/MEDIUM/LOW in Hebrew prose)
   - English ops labels `ALERT / WATCH / ELEVATED / STABLE / NONE` → Hebrew ("מצב חירום", "מגמה יציבה", "אין מגמה")
   - never write `Step N`, `Opus call`, `PROCESS_GUIDE`, `REPORT_V5_SCHEMA` in the report
-  - Allowed in prose: chemical names (TCE, PFAS, MTBE, VC…) and HIGH/MEDIUM/LOW.
+  - Allowed in prose: chemical names only (TCE, PFAS, MTBE, VC…). Confidence is Hebrew (גבוהה/בינונית/נמוכה), never HIGH/MEDIUM/LOW.
 - **Tone**: Neutral, professional. Avoid narrative arcs ("crisis", "alarming"). Describe findings, don't dramatize.
 - **Selection bias caveat**: Every statistical section must note that monitoring wells ≠ zone-wide representation
 - **Summarize, don't enumerate**: 3–5 key boreholes per focus; table for summary; paragraph for synthesis. **Never list all exceeding boreholes in prose.**
@@ -303,7 +314,7 @@ Before submitting {ZONE}_REPORT_V5.md, verify (PROCESS_GUIDE §VII):
 - [ ] **NO English operational terms** (ALERT, WATCH, ELEVATED, STABLE, NONE)
 - [ ] Methodology includes formula + borehole count ({TOTAL_ACTIVE}) + MK description
 - [ ] Borehole count consistent across all sections
-- [ ] Source confidence (HIGH/MEDIUM/LOW) on all facility attributions
+- [ ] Source confidence in Hebrew (רמת ודאות גבוהה/בינונית/נמוכה) on all facility attributions — never HIGH/MEDIUM/LOW in prose
 - [ ] Selection bias caveat present in Sec 4
 - [ ] Monitoring gaps + closed wells mentioned (Sec 4)
 - [ ] Figure captions present with correct numbering

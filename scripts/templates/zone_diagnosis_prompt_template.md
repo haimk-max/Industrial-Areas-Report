@@ -28,6 +28,12 @@ This is **not** the final V5 report. This is the diagnostic reasoning stage:
 
 Write in professional Hebrew. Use standard abbreviations where appropriate: TCE, PCE, CVOC, MTBE, BTEX, PFAS, DNAPL, LNAPL, VC, DCE, TCA, NAPL.
 
+<terminology>
+**מילון מונחים מחייב** (SSOT: `docs/STYLE_GUIDE.md` §B.5). המונחים בעמודה הימנית בלבד; המונחים בעמודה השמאלית **אסורים** בפרוזה — ה-QA חוסם אותם:
+
+{TERMINOLOGY_BLOCK}
+</terminology>
+
 ---
 
 ## Inputs

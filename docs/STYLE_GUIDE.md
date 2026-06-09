@@ -72,6 +72,9 @@
 | Cross-section | חתך גיאולוגי | "פרופיל" |
 | Concentration (units in text) | **מקג"ל** (μg/L in charts OK) | ~~"µg/L" in flowing text~~ |
 | Chlorinated organics | **תרכובות אורגניות מוכלרות** | ~~"ממסים כלוריניים"~~ |
+| Degradation (biochemical) | **פירוק** — שרשרת פירוק, פירוק מיקרוביאלי, פירוק מיקרוביאלי אירובי, פירוק מיקרוביאלי אנ-אירובי, תוצרי פירוק | ~~"ריקבון"~~ / ~~"ריקבון ביולוגי"~~ / ~~"ריקבון ביוטי"~~ |
+| Monitoring cessation / data gap | **הפסקת ניטור** (+ הטיות נדרשות: הופסק הניטור, ניטור שהופסק, תקופת הפסקת ניטור) | ~~"שתיקה"~~ / ~~"שתיקה מתואמת"~~ / ~~"קידוח שקט"~~ |
+| Source-attribution confidence (in prose) | **רמת ודאות: גבוהה / בינונית / נמוכה** | ~~"HIGH" / "MEDIUM" / "LOW" in Hebrew prose~~ |
 
 ### A.4 Approved Tone Examples (from 2021 Report)
 
@@ -123,6 +126,23 @@
 ✗ "אולי הוא מקור"       → "כל הנראה מקור הזיהום הוא [X]" (2021 phrasing)
 ✗ "די מסוכן"             → "ריכוז של X µg/L (Y% מהתקן)"
 ```
+
+### B.5 Mandatory Terminology Substitutions (CRITICAL — Hebrew prose only)
+
+These three substitutions are **absolute** in report prose. The QA pipeline (Gate 5) blocks the left-column terms.
+
+```
+✗ "ריקבון" / "ריקבון ביולוגי" / "ריקבון ביוטי"
+                         → "פירוק" (שרשרת פירוק / פירוק מיקרוביאלי / פירוק מיקרוביאלי אירובי / אנ-אירובי / תוצרי פירוק)
+✗ "שתיקה" / "שתיקה מתואמת" / "קידוח שקט"
+                         → "הפסקת ניטור" (+ הטיות: הופסק הניטור / תקופת הפסקת ניטור / ניטור שהופסק)
+✗ "קיצוני" / "כמעט מוחלט" / "extreme"
+                         → severity index + % of standard ("אינדקס 8, >2,500% מהתקן"); labels: גבוה / גבוה מאוד
+✗ "HIGH" / "MEDIUM" / "LOW" (in Hebrew prose)
+                         → "רמת ודאות: גבוהה / בינונית / נמוכה"
+```
+
+**Note**: The English codes `HIGH|MEDIUM|LOW` remain valid **only** inside data artifacts (`facility_attribution.json` `confidence` field — see §H.3) and code. In any Hebrew sentence of the report they must read **גבוהה / בינונית / נמוכה**.
 
 ---
 
@@ -514,11 +534,13 @@ The four anchors (geometry, streets, monitored entities, PDF facilities) are all
 
 ### H.3 Confidence Levels
 
-| Level | Criteria | Example |
-|---|---|---|
-| **HIGH** | Address verified + sector confirmed (D&B/news/PDF report) + operational timeline known | תדיראן (אזור התעשייה, electronics, multiple PDF mentions) |
-| **MEDIUM** | Sector confirmed + address approximate OR historical operation cited in older reports | Aerospheres (רחוב המסגר, aviation MRO, sector inferred) |
-| **LOW** | Sector inference only OR borehole-name attribution without independent verification | Closed facility upgradient of high-TCE borehole, sector unclear |
+The `confidence` field in `facility_attribution.json` (a **data artifact** — see §H.2) uses the English codes below. **In report prose these render as Hebrew** (§A.3 / §B.5): גבוהה / בינונית / נמוכה.
+
+| Level (JSON) | In prose | Criteria | Example |
+|---|---|---|---|
+| **HIGH** | רמת ודאות גבוהה | Address verified + sector confirmed (D&B/news/PDF report) + operational timeline known | תדיראן (אזור התעשייה, electronics, multiple PDF mentions) |
+| **MEDIUM** | רמת ודאות בינונית | Sector confirmed + address approximate OR historical operation cited in older reports | Aerospheres (רחוב המסגר, aviation MRO, sector inferred) |
+| **LOW** | רמת ודאות נמוכה | Sector inference only OR borehole-name attribution without independent verification | Closed facility upgradient of high-TCE borehole, sector unclear |
 
 ### H.4 Integration with facility_attribution.json
 
@@ -553,6 +575,7 @@ The four anchors (geometry, streets, monitored entities, PDF facilities) are all
 | 2026-05-04 | Created spec | Standardize tone after multiple rewrites |
 | 2026-05-05 | Major expansion: extracted patterns from 2021 full report (voice, lexicon, sentence patterns, recommendation types/hierarchy, side-by-side examples), added central map figure cross-reference | Per user request: clearer reference to 2021 style + recommendation character from full report + central map figure spec |
 | 2026-05-06 | Added Section H: Industrial Facility Discovery Methodology (REQ-A8) | Document systematic AI-assisted sector-based facility search process; confidence levels; integration with facility_attribution.json; limitations |
+| 2026-06-09 | §A.3 +3 lexicon rows (פירוק / הפסקת ניטור / רמת ודאות); §B.5 mandatory substitutions; §H.3 prose-vs-JSON confidence note | User terminology decisions: no "ריקבון" (only פירוק), no "שתיקה" (only הפסקת ניטור), Hebrew confidence (גבוהה/בינונית/נמוכה) not HIGH/MEDIUM/LOW. SSOT for the prompt + Gate 5 layers. |
 
 ---
 

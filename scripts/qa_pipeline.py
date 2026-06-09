@@ -5,9 +5,10 @@ Enforces governance rules at each pipeline step, preventing bad outputs
 from propagating to downstream steps.
 
 Gates:
-  2  — Structured Data Pack (6 CSVs schema + borehole count baseline)
+  2  — Structured Data Pack (6 CSVs schema + borehole baseline + series coherence)
+  3  — Prompt layer freshness (render provenance, no abolished ordering language)
   4  — Zone Diagnosis (8 questions, geographic framing, PFAS as gap)
-  5  — V5 Report (terminology, consistency, structure, framing)
+  5  — V5 Report (terminology incl. §B.5 substitutions, consistency, structure, framing)
   6  — HTML/Word output (figures, RTL, borehole rendering)
   all — Run gates 2→4→5→6 in sequence
 
@@ -73,9 +74,23 @@ OVERSTATEMENT_PATTERNS = [
     (r"חודרת\s+כבר\s+ל", "→ 'נמדדה חריגה ב...' או 'עשויה להעיד על...'"),
     (r"מצביע\s+על\s+גוף\s+LNAPL\s+פיזי", "→ 'מעלה חשד לקיום מקור דלקי מתמשך'"),
     (r"דליפת\s+UST\s+טריה", "→ 'תואמת אפשרות של דליפה פעילה'"),
-    (r"בוודאות\s+(גורמת|מקור|אחראי)", "→ הוסף רמת ביטחון (HIGH/MEDIUM/LOW)"),
-    (r"אחראי\s+לזיהום", "→ 'מועמד סביר' + רמת ביטחון"),
+    (r"בוודאות\s+(גורמת|מקור|אחראי)", "→ הוסף רמת ודאות (גבוהה/בינונית/נמוכה)"),
+    (r"אחראי\s+לזיהום", "→ 'מועמד סביר' + רמת ודאות"),
     (r"הגיעה\s+(כבר\s+)?לקידוח\s+אספקה", "→ 'נמדד TCE בקידוח אספקה פעיל'"),
+]
+
+# Mandatory Hebrew-prose substitutions (STYLE_GUIDE §B.5) — FAIL in the report body.
+# These three user-mandated decisions live in STYLE_GUIDE §B.5 (the SSOT); this list
+# is the enforcement arm. Matched case-sensitively so the English confidence codes
+# only trip on the uppercase HIGH/MEDIUM/LOW used as ratings, not ordinary words.
+BANNED_PROSE_TERMS = [
+    (r"ריקבון", "→ 'פירוק' (שרשרת פירוק / פירוק מיקרוביאלי אירובי / אנ-אירובי / תוצרי פירוק)"),
+    (r"שתיק(?:ה|ות|ת)", "→ 'הפסקת ניטור' (הופסק הניטור / תקופת הפסקת ניטור)"),
+    (r"קיצוני(?:ים|ת|ות)?", "→ אינדקס חומרה + % מהתקן ('גבוה' / 'גבוה מאוד')"),
+    (r"כמעט\s+מוחלט", "→ ניסוח עובדתי ('X מתוך Y קידוחים')"),
+    (r"\bHIGH\b", "→ 'רמת ודאות גבוהה' (לא HIGH בפרוזה עברית)"),
+    (r"\bMEDIUM\b", "→ 'רמת ודאות בינונית' (לא MEDIUM בפרוזה עברית)"),
+    (r"\bLOW\b", "→ 'רמת ודאות נמוכה' (לא LOW בפרוזה עברית)"),
 ]
 
 # DATA_PIPELINE_SPEC.md — required columns per CSV
@@ -176,6 +191,8 @@ def gate2_data_pack(zone: str, data_dir: Optional[Path] = None) -> QAResult:
     - Borehole count consistent across CSVs (within ±5 tolerance)
     - No TPFAS/BETK in parameter columns
     - measurements_scoped has >100 rows (not empty run)
+    - Series coherence (WARN, non-blocking): near-duplicate well IDs (merged-well
+      defect) + disconnected (well, parameter) sub-series joined across a long gap
     """
     result = QAResult("2 (Data Pack)", zone)
     base = data_dir or (REPO_ROOT / zone / "02_data")
@@ -250,6 +267,73 @@ def gate2_data_pack(zone: str, data_dir: Optional[Path] = None) -> QAResult:
                 result.info(
                     f"CSVs נגזרים (סינון לפי ספים — צפוי שיהיו פחות): {derived_detail}"
                 )
+
+    # ── Series coherence (WARN — never blocks) ──
+    # Two recurring data defects that schema checks miss:
+    #   (a) near-duplicate well IDs that are really one physical well (e.g. an
+    #       "אזור"/"איזור" spelling split — the נד אגד אזור 7 case), and
+    #   (b) a (well, parameter) series joining two unrelated sub-series across a long
+    #       gap — the chart then draws a line between two points that don't belong.
+    ms_path = base / "measurements_scoped.csv"
+    if ms_path.exists():
+        try:
+            with open(ms_path, encoding="utf-8") as f:
+                ms_rows = list(csv.DictReader(f))
+        except Exception:
+            ms_rows = []
+
+        # (a) near-duplicate well IDs (normalize whitespace, punctuation, איזור→אזור)
+        def _norm_id(s: str) -> str:
+            s = re.sub(r"\s+", "", s or "")
+            s = s.replace("איזור", "אזור")
+            return re.sub(r"[\"'\-_.]", "", s)
+
+        norm_map: dict[str, set] = {}
+        for r in ms_rows:
+            wid = r.get("canonical_well_id", "")
+            if wid:
+                norm_map.setdefault(_norm_id(wid), set()).add(wid)
+        dups = {k: v for k, v in norm_map.items() if len(v) > 1}
+        if dups:
+            for variants in list(dups.values())[:5]:
+                result.warn(
+                    f"קידוחים שעלולים להיות כפילות (מזהים דומים מאוד): {sorted(variants)} — "
+                    f"בדוק אם זה קידוח פיזי אחד לפני שילוב סדרות"
+                )
+        else:
+            result.info("קוהרנטיות מזהים: לא נמצאו מזהי-קידוח כפולים — תקין")
+
+        # (b) disconnected sub-series: >3yr gap straddling a >100× concentration jump
+        series: dict = {}
+        for r in ms_rows:
+            wid, par = r.get("canonical_well_id", ""), r.get("parameter_canonical", "")
+            try:
+                v = float(r.get("result_value", ""))
+                d = datetime.strptime((r.get("result_date", "") or "")[:10], "%Y-%m-%d")
+            except (ValueError, TypeError):
+                continue
+            if v > 0 and wid and par:
+                series.setdefault((wid, par), []).append((d, v))
+
+        disconnected = []
+        for (wid, par), pts in series.items():
+            if len(pts) < 3:
+                continue
+            pts.sort()
+            for (d1, v1), (d2, v2) in zip(pts, pts[1:]):
+                gap_days = (d2 - d1).days
+                ratio = max(v1, v2) / min(v1, v2)
+                if gap_days > 1095 and ratio > 100:
+                    disconnected.append((wid, par, gap_days, ratio))
+                    break
+        if disconnected:
+            for wid, par, gap, ratio in disconnected[:5]:
+                result.warn(
+                    f"סדרה אפשרית-מנותקת: {wid} / {par} — קפיצה ×{ratio:.0f} על פני "
+                    f"~{gap // 365} שנים ללא דגימות ביניים (ודא שאין חיבור שתי תקופות לא-קשורות)"
+                )
+        else:
+            result.info("קוהרנטיות סדרות: לא זוהו סדרות מנותקות חשודות — תקין")
 
     return result
 
@@ -335,6 +419,8 @@ def gate5_report(zone: str, report_path: Optional[Path] = None,
 
     Checks:
     - Pipeline terminology absent from body
+    - Mandatory Hebrew-prose terms (§B.5: פירוק not ריקבון; הפסקת ניטור not שתיקה;
+      רמת ודאות not HIGH/MEDIUM/LOW; no קיצוני/כמעט מוחלט)
     - 6 sections + appendices present
     - Borehole count consistent across sections (vs gate 2 baseline)
     - Focus count consistency (§1 vs §3 sub-sections)
@@ -342,7 +428,7 @@ def gate5_report(zone: str, report_path: Optional[Path] = None,
     - PFAS appears in "פערי כיסוי" section (WARN if missing or misframed)
     - Optional: cross-check §3 order against focus_order block in zone_diagnosis.md
     - Overstatement patterns flagged
-    - HIGH/MEDIUM/LOW confidence on facility attributions
+    - Hebrew confidence (רמת ודאות גבוהה/בינונית/נמוכה) on facility attributions
     - No ALERT/WATCH/ELEVATED/STABLE terminology
     - Methodology section ≤ 10 lines (per PROCESS_GUIDE §II)
     """
@@ -385,6 +471,22 @@ def gate5_report(zone: str, report_path: Optional[Path] = None,
             )
     else:
         result.info("טרמינולוגיית pipeline: לא נמצאה — תקין")
+
+    # ── 1b. Mandatory Hebrew-prose terminology (STYLE_GUIDE §B.5) ──
+    prose_hits = []
+    for pattern, hint in BANNED_PROSE_TERMS:
+        linenos = [i + 1 for i, l in enumerate(lines) if re.search(pattern, l)]
+        if linenos:
+            sample = re.search(pattern, text).group(0)
+            prose_hits.append((sample, hint, linenos))
+    if prose_hits:
+        for sample, hint, linenos in prose_hits:
+            result.error(
+                f"מונח אסור בפרוזה (STYLE_GUIDE §B.5) — {len(linenos)}× שורות {linenos[:4]}: "
+                f"'{sample}' {hint}"
+            )
+    else:
+        result.info("טרמינולוגיה מחייבת (§B.5: פירוק/הפסקת ניטור/רמת ודאות): נקי — תקין")
 
     # ── 2. Section structure ──
     required_sections = [
@@ -514,15 +616,20 @@ def gate5_report(zone: str, report_path: Optional[Path] = None,
                 f"{suggestion}"
             )
 
-    # ── 8. Confidence levels on facility attributions ──
+    # ── 8. Confidence levels on facility attributions (Hebrew prose — §B.5) ──
     sec5_match = re.search(r"^##\s+5\.(.*?)^##\s+6\.", text, re.MULTILINE | re.DOTALL)
     if sec5_match:
         sec5_text = sec5_match.group(1)
-        has_confidence = bool(re.search(r"HIGH|MEDIUM|LOW|גבוה|בינוני|נמוך", sec5_text, re.IGNORECASE))
+        has_confidence = bool(re.search(
+            r"רמת\s+ודאות|ודאות\s+(?:גבוהה|בינונית|נמוכה)|(?:גבוהה|בינונית|נמוכה)\s+ודאות",
+            sec5_text))
         if not has_confidence:
-            result.error("פרק 5 (מקורות): לא נמצאו רמות ביטחון (HIGH/MEDIUM/LOW) — חובה על כל שיוך מקור")
+            result.error(
+                "פרק 5 (מקורות): חסר דירוג 'רמת ודאות: גבוהה/בינונית/נמוכה' על שיוכי מקור "
+                "(§B.5 — לא HIGH/MEDIUM/LOW)"
+            )
         else:
-            result.info("רמות ביטחון בפרק 5: קיימות")
+            result.info("רמת ודאות בפרק 5 (מינוח עברי): קיימת")
 
     # ── 9. Methodology section length ──
     method_match = re.search(r"^##\s+(?:7\.|מתודולוגיה)(.*?)^##\s+(?:8\.|מגבלות)", text, re.MULTILINE | re.DOTALL)

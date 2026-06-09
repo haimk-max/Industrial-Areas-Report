@@ -110,6 +110,26 @@ def derive_focus_order(zone: str) -> str:
     return "\n".join(rows)
 
 
+def derive_terminology_block() -> str:
+    """Lift the §B.5 mandatory-substitutions block from STYLE_GUIDE.md (the SSOT).
+
+    The terminology rules live in exactly one place (STYLE_GUIDE §B.5). Both Opus
+    prompts receive them by injection here — never by a hand-copied list in the
+    template — so they cannot drift from the QA gate that enforces them.
+    """
+    style = REPO_ROOT / "docs" / "STYLE_GUIDE.md"
+    if not style.exists():
+        sys.exit(f"ERROR: {style} not found — terminology SSOT missing")
+    block = re.search(
+        r"^### B\.5 [^\n]*\n(.*?)(?=^---$)",
+        style.read_text(encoding="utf-8"),
+        re.MULTILINE | re.DOTALL,
+    )
+    if not block:
+        sys.exit("ERROR: no '### B.5' block in docs/STYLE_GUIDE.md — terminology SSOT missing")
+    return block.group(1).strip()
+
+
 def strip_scaffold(text: str, step: str) -> str:
     """Remove template-authoring meta that should not reach Opus."""
     if step == "report":
@@ -140,6 +160,7 @@ def replacements_for(step: str, zone: str, args) -> dict:
             "YEAR_START": md["year_start"],
             "YEAR_END": md["year_end"],
             "FOCUS_ORDER_LIST": derive_focus_order(zone),
+            "TERMINOLOGY_BLOCK": derive_terminology_block(),
             "PRECEDENT_ZONE": args.precedent,
             "PRECEDENT_ZONE_REPORT_NAME": args.precedent_report,
         }, md
@@ -153,6 +174,7 @@ def replacements_for(step: str, zone: str, args) -> dict:
         "forensics_dir": f"{zone}/forensics",
         "context_dir": f"{zone}/context_pack/03_context",
         "output_path": f"{zone}/context_pack/04_diagnosis/zone_diagnosis.md",
+        "TERMINOLOGY_BLOCK": derive_terminology_block(),
     }, None
 
 
@@ -203,7 +225,7 @@ def main() -> None:
         leftover = sorted(set(re.findall(r"\{[A-Z_][A-Z0-9_]*\}", out)))
     else:
         leftover = sorted(set(re.findall(
-            r"\{(?:zone_id|zone_he|data_dir|workspace_dir|forensics_dir|context_dir|output_path)\}",
+            r"\{(?:zone_id|zone_he|data_dir|workspace_dir|forensics_dir|context_dir|output_path|TERMINOLOGY_BLOCK)\}",
             out)))
 
     print(f"✓ rendered {dest.relative_to(REPO_ROOT)}")
