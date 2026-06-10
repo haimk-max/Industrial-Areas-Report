@@ -413,6 +413,24 @@ def gate4_diagnosis(zone: str, diagnosis_path: Optional[Path] = None) -> QAResul
 
 # ── Gate 5: V5 Report ─────────────────────────────────────────────────────────
 
+def _latest_report(zone: str, suffix: str) -> Optional[Path]:
+    """Highest-version {ZONE}_REPORT_V<n>.<suffix> in {zone}/output/, or None.
+
+    Version-generic: globs for any V<n> so new report iterations (V7, V8, …) are
+    picked up automatically without editing this gate. Returns the file with the
+    largest integer after 'V'. suffix is 'md' or 'html'.
+    """
+    out_dir = REPO_ROOT / zone / "output"
+    if not out_dir.exists():
+        return None
+    best, best_v = None, -1
+    for p in out_dir.glob(f"*_REPORT_V*.{suffix}"):
+        m = re.search(r"_REPORT_V(\d+)", p.name)
+        if m and int(m.group(1)) > best_v:
+            best, best_v = p, int(m.group(1))
+    return best
+
+
 def gate5_report(zone: str, report_path: Optional[Path] = None,
                  data_dir: Optional[Path] = None) -> QAResult:
     """Validate {ZONE}_REPORT_V5.md.
@@ -435,14 +453,8 @@ def gate5_report(zone: str, report_path: Optional[Path] = None,
     result = QAResult("5 (V5 Report)", zone)
 
     if report_path is None:
-        # Prefer the highest version present (V6 > V5 > legacy names)
-        candidates = [
-            REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V6.md",
-            REPO_ROOT / zone / "output" / "HOLON_REPORT_V6.md",
-            REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V5.md",
-            REPO_ROOT / zone / "output" / "HOLON_REPORT_V5.md",
-        ]
-        report_path = next((p for p in candidates if p.exists()), None)
+        # Highest version present (version-generic glob: V5, V6, V7, V8, …)
+        report_path = _latest_report(zone, "md")
 
     if report_path is None or not report_path.exists():
         result.error(f"דוח V5 לא נמצא (ציפי {zone.upper()}_REPORT_V5.md ב-{zone}/output/)")
@@ -663,15 +675,10 @@ def gate6_output(zone: str, html_path: Optional[Path] = None,
     """
     result = QAResult("6 (HTML / Word Output)", zone)
 
-    # Locate HTML (prefer highest version present: V6 > V5 > legacy)
+    # Locate HTML (version-generic glob: highest V<n> present)
     if html_path is None:
-        html_candidates = [
-            REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V6.html",
-            REPO_ROOT / zone / "output" / "HOLON_REPORT_V6.html",
-            REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V5.html",
-            REPO_ROOT / zone / "output" / "HOLON_REPORT_V5.html",
-        ]
-        html_path = next((p for p in html_candidates if p.exists()), html_candidates[-1])
+        html_path = _latest_report(zone, "html") or (
+            REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V5.html")
 
     # Locate DOCX
     if docx_path is None:

@@ -1,29 +1,31 @@
 #!/usr/bin/env python3
 """
-Generate Holon Structured Data Pack (7 CSVs) for V5 hybrid pipeline.
+Generate a zone's Structured Data Pack (7 CSVs) for the V5 hybrid pipeline.
+
+Zone-agnostic: all paths derive from --zone (directory name, e.g. Holon), matching
+the convention used by render_zone_prompt.py and qa_pipeline.py.
 
 Reference: DATA_PIPELINE_SPEC.md
 
-Output:
-  Holon/02_data/zone_wells.csv
-  Holon/02_data/measurements_scoped.csv
-  Holon/02_data/latest_results.csv
-  Holon/02_data/severity_by_well_family.csv
-  Holon/02_data/trends_by_well_parameter.csv
-  Holon/02_data/monitoring_gaps.csv
-  Holon/02_data/figure_ready_series.csv
+Input  (per zone):  {zone}/data/{boreholes,measurements,parameters,trends}.csv
+Output (per zone):  {zone}/02_data/zone_wells.csv
+                    {zone}/02_data/measurements_scoped.csv
+                    {zone}/02_data/latest_results.csv
+                    {zone}/02_data/severity_by_well_family.csv
+                    {zone}/02_data/trends_by_well_parameter.csv
+                    {zone}/02_data/monitoring_gaps.csv
+                    {zone}/02_data/figure_ready_series.csv
+
+Usage:
+    python scripts/generate_zone_data_pack.py --zone Holon
 """
 
-import os
+import argparse
 import sys
-import csv
 from pathlib import Path
 from datetime import datetime, timedelta
-import json
-from collections import defaultdict
 
 import pandas as pd
-import numpy as np
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
@@ -31,19 +33,20 @@ sys.path.insert(0, str(REPO_ROOT))
 from scripts.param_families import classify_family
 
 
-def ensure_output_dir():
-    """Create Holon/02_data/ directory if it doesn't exist."""
-    output_dir = Path("Holon/02_data")
+def ensure_output_dir(zone):
+    """Create {zone}/02_data/ directory if it doesn't exist."""
+    output_dir = REPO_ROOT / zone / "02_data"
     output_dir.mkdir(parents=True, exist_ok=True)
     return output_dir
 
 
-def load_existing_data():
-    """Load existing Holon CSV files."""
-    boreholes = pd.read_csv("Holon/data/boreholes.csv")
-    measurements = pd.read_csv("Holon/data/measurements.csv")
-    parameters = pd.read_csv("Holon/data/parameters.csv")
-    trends = pd.read_csv("Holon/data/trends.csv")
+def load_existing_data(zone):
+    """Load existing {zone}/data/ CSV files."""
+    data_dir = REPO_ROOT / zone / "data"
+    boreholes = pd.read_csv(data_dir / "boreholes.csv")
+    measurements = pd.read_csv(data_dir / "measurements.csv")
+    parameters = pd.read_csv(data_dir / "parameters.csv")
+    trends = pd.read_csv(data_dir / "trends.csv")
 
     print(f"Loaded: {len(boreholes)} boreholes, {len(measurements)} measurements, "
           f"{len(parameters)} parameters, {len(trends)} trend rows")
@@ -51,7 +54,7 @@ def load_existing_data():
     return boreholes, measurements, parameters, trends
 
 
-def create_zone_wells(boreholes, output_dir):
+def create_zone_wells(boreholes, output_dir, zone):
     """
     Create zone_wells.csv: list of all boreholes in scope.
 
@@ -63,8 +66,8 @@ def create_zone_wells(boreholes, output_dir):
     wells.columns = ["canonical_well_id", "name_he", "itm_easting", "itm_northing",
                      "well_type", "monitoring_site"]
 
-    # Set zone_scope_source to "Holon_main_industrial"
-    wells["zone_scope_source"] = "Holon_main_industrial"
+    # zone_scope_source identifies the scoping basis, e.g. "Holon_main_industrial"
+    wells["zone_scope_source"] = f"{zone}_main_industrial"
 
     # Reorder columns for readability
     wells = wells[["canonical_well_id", "name_he", "itm_easting", "itm_northing",
@@ -77,7 +80,7 @@ def create_zone_wells(boreholes, output_dir):
     return wells
 
 
-def create_measurements_scoped(measurements, parameters, boreholes, output_dir):
+def create_measurements_scoped(measurements, parameters, boreholes, output_dir, zone):
     """
     Create measurements_scoped.csv: all scoped measurements with full traceability.
 
@@ -102,7 +105,7 @@ def create_measurements_scoped(measurements, parameters, boreholes, output_dir):
     scoped["canonical_well_id"] = merged["canonical_id"]
     scoped["original_well_name"] = merged["name_he_bore"]
     scoped["well_type"] = merged["borehole_type"].fillna("monitoring")
-    scoped["zone_scope_source"] = "Holon_main_industrial"
+    scoped["zone_scope_source"] = f"{zone}_main_industrial"
     scoped["parameter_canonical"] = merged["param_code"]
     scoped["parameter_original"] = merged["param_name"]
     scoped["unit_original"] = merged["unit"]
@@ -115,7 +118,7 @@ def create_measurements_scoped(measurements, parameters, boreholes, output_dir):
     scoped["result_qualifier"] = "="
     scoped.loc[merged.get("is_below_lod", False) == True, "result_qualifier"] = "<"
 
-    scoped["source_file"] = "Holon_current_monitoring_2024"  # Placeholder; would come from original source
+    scoped["source_file"] = f"{zone}_current_monitoring_2024"  # Placeholder; would come from original source
     scoped["source_row_or_page"] = ""  # Placeholder; would come from original extraction metadata
 
     # Remove rows with NULL result_value
@@ -418,24 +421,30 @@ def bucket_severity(ratio_to_dws):
 
 
 def main():
-    """Generate all 7 CSVs for Holon Structured Data Pack."""
+    """Generate all 7 CSVs for a zone's Structured Data Pack."""
+    parser = argparse.ArgumentParser(description=__doc__,
+                                     formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--zone", default="Holon",
+                        help="Zone directory name (e.g. Holon). Paths derive from it.")
+    args = parser.parse_args()
+    zone = args.zone
 
-    print("🔄 Generating Holon Structured Data Pack (7 CSVs)...\n")
+    print(f"🔄 Generating {zone} Structured Data Pack (7 CSVs)...\n")
 
-    output_dir = ensure_output_dir()
-    boreholes, measurements, parameters, trends = load_existing_data()
+    output_dir = ensure_output_dir(zone)
+    boreholes, measurements, parameters, trends = load_existing_data(zone)
 
     print("\n📊 Creating CSVs...\n")
 
-    wells = create_zone_wells(boreholes, output_dir)
-    scoped = create_measurements_scoped(measurements, parameters, boreholes, output_dir)
+    wells = create_zone_wells(boreholes, output_dir, zone)
+    scoped = create_measurements_scoped(measurements, parameters, boreholes, output_dir, zone)
     latest = create_latest_results(scoped, output_dir)
     severity = create_severity_by_well_family(scoped, output_dir)
     trends_result = create_trends_by_well_parameter(trends, output_dir)
     gaps = create_monitoring_gaps(boreholes, trends, scoped, output_dir)
     series = create_figure_ready_series(scoped, output_dir)
 
-    print("\n✅ Holon Structured Data Pack complete!")
+    print(f"\n✅ {zone} Structured Data Pack complete!")
     print(f"   Output: {output_dir}/\n")
 
 

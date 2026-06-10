@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
 """Build comprehensive borehole classification for all Holon boreholes.
 
+⚠️ DEPRECATED (V4-era legacy, Holon-specific). Reads a hardcoded Holon Excel file
+   and writes the legacy borehole_classification_all.csv consumed by the V4 HTML
+   generators (via report_designed/data_loader.py). The V5 pipeline derives severity
+   dynamically from the Structured Data Pack (severity_by_well_family.csv via
+   generate_zone_data_pack.py) — this script is NOT part of the V5 path. Kept for
+   historical reproduction only. See PROCESS.md REQ #28.
+
 Analyzes water quality measurements (2021-2026) to classify each borehole by:
   - Contamination severity (max bucket across families)
   - Contamination families present

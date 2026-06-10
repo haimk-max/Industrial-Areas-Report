@@ -1,5 +1,12 @@
 """Generate the FULL Holon V4 report as standalone HTML (all 10 sections).
 
+⚠️ DEPRECATED (V4-era, Holon-specific). The V5 hybrid pipeline renders HTML via
+   scripts/generate_holon_v5_html.py (reads HOLON_REPORT_V5/V7/V8.md). This script
+   targets the V4 report (HOLON_REPORT_V4.md) and hardcodes a Holon V4 title/label.
+   Kept only to reproduce the historical V4 HTML. Do NOT extend for new zones —
+   see PROCESS.md REQ #28 (HTML-generator genericization, blocked on data_loader.py
+   V4-lean_workspace coupling).
+
 Converts HOLON_REPORT_V4.md → HOLON_REPORT_V4.html with:
   - Full markdown → HTML conversion (H1-H4, tables, lists, paragraphs, code, bold)
   - Inline SVG charts for figures 2-6 (replacing PNG references)

@@ -100,7 +100,7 @@ python scripts/trend_analysis.py --zone holon
 python scripts/forensics_analyzer.py --zone holon
 
 # Generate aggregates (6 CSVs)
-python scripts/generate_data_pack.py --zone holon
+python scripts/generate_zone_data_pack.py --zone Holon
 ```
 
 ---

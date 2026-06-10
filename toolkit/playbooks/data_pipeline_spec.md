@@ -41,11 +41,11 @@ python scripts/parse_excel.py --zone holon
 python scripts/trend_analysis.py --zone holon
 python scripts/forensics_analyzer.py --zone holon
 
-# 3. Bundle into 6 CSVs
-python scripts/generate_data_pack.py --zone holon
+# 3. Bundle into 6 CSVs (note: V5 pack tools use the directory name, e.g. Holon)
+python scripts/generate_zone_data_pack.py --zone Holon
 ```
 
-**Output**: כל 6 CSVs ב-`holon/02_data/`
+**Output**: כל 6 CSVs ב-`Holon/02_data/`
 
 ---
 
