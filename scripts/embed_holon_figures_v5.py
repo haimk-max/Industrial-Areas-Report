@@ -47,12 +47,17 @@ def extract_svg_figures(html_path):
     return figures
 
 
-def svg_to_png(svg_bytes):
-    """Convert SVG bytes to PNG bytes using cairosvg."""
+def svg_to_png(svg_bytes, scale=3):
+    """Convert SVG bytes to PNG bytes using cairosvg.
+
+    scale>1 renders at higher pixel density so the figure stays crisp when Word
+    stretches it to 5.5in (scale=3 ≈ 220 DPI). Without it the SVG's nominal
+    ~400px width is blurry/pixelated in the document.
+    """
     try:
         import cairosvg
         png_io = io.BytesIO()
-        cairosvg.svg2png(bytestring=svg_bytes, write_to=png_io)
+        cairosvg.svg2png(bytestring=svg_bytes, write_to=png_io, scale=scale)
         png_io.seek(0)
         return png_io.getvalue()
     except Exception as e:
