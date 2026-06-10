@@ -66,6 +66,14 @@
 - **What changes in CLAUDE.md**: §8 § "Render final figures + HTML" — now explicitly states map bounds MUST be dynamic, not hardcoded per zone.
 - **Status**: ✅ Fixed for Holon. 🟢 Promoted to CLAUDE.md §8 (best practice codified).
 
+### 1.8 RTL text transform corrupted inline SVG (bdi-in-SVG) — Fixed 2026-06-10
+- **Observation (Holon, V7 figures)**: `_time_series_panel` correctly emitted year ticks, contaminant labels and "DWS <param>" labels (REQ #26), yet none rendered — the chart looked like the pre-REQ#26 version. The text was present in the HTML *source* but invisible.
+- **Root cause**: `build_figure_html` passed the inline SVG through `md_utils.wrap_bidi()`, a prose RTL helper that wraps Latin/numeric runs in `<bdi>`. `<bdi>` is an HTML element with no meaning inside SVG `<text>`; the SVG renderer drops the wrapped content. A transform scoped to "HTML text" was applied to a different representation (SVG) that merely looked like HTML.
+- **Solution applied (2026-06-10)**: Embed the SVG raw — the chart engine already handles bidi internally (`direction="ltr"` root + `rtl-title` class). Captions, being real HTML, still go through `wrap_bidi`. One-line removal + explanatory comment. Commit 1588ba7.
+- **Lesson**: A string transform must be scoped to the representation it understands. SVG and HTML share `<text>`-like syntax but are different grammars; "wrap all numbers for RTL" silently corrupts the one it wasn't written for. Same class as 1.7 (a value/transform applied across a boundary it shouldn't cross).
+- **2nd-case test**: Any future zone's HTML generation reuses `build_figure_html`; if a new SVG element type appears mangled, suspect a prose transform leaking into the SVG.
+- **Status**: ✅ Fixed for Holon. Watch for promotion to a generic "never run prose transforms over embedded SVG" note if a 2nd zone hits it.
+
 ---
 
 ## 2. Deferred Decisions (Trigger to Reopen)
