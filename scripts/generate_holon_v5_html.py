@@ -228,22 +228,30 @@ def render_section(section_md: str, figures: dict) -> str:
     return f'<section>\n{header_html}\n{body_html}\n</section>'
 
 
-def build_figures(report_path: Path = None) -> dict:
+def build_figures(zone: str = "holon", report_path: Path = None) -> dict:
     """Generate the 5 V5 figures via the shared chart engine.
 
+    zone: zone name (e.g., "holon", "raanana") — used to load zone-specific data
     report_path: the report whose borehole mentions drive panel selection. Must be
     the SAME report being rendered (V7, V8, …) — otherwise the figures show a
-    different report's wells. Defaults to V5 only for backward compatibility.
+    different report's wells. Defaults to latest V5+ report.
     """
-    measurements = dl.load_measurements_alert()
-    trends = dl.load_trends_alert()
-    severity = dl.load_severity_index()
-    data_avail = dl.load_data_availability()
-    classification = dl.load_borehole_classification()
+    measurements = dl.load_measurements_alert(zone=zone)
+    trends = dl.load_trends_alert(zone=zone)
+    severity = dl.load_severity_index(zone=zone)
+    data_avail = dl.load_data_availability(zone=zone)
+    classification = dl.load_borehole_classification(zone=zone)
 
     if report_path is None:
-        report_path = REPO_ROOT / "Holon" / "output" / "HOLON_REPORT_V5.md"
-    report_boreholes = dl.extract_report_boreholes(report_path, severity)
+        # Auto-detect latest report V5+
+        report_path = next(
+            (p for p in sorted((REPO_ROOT / zone / "output").glob("*_REPORT_V*.md"), reverse=True)),
+            None
+        )
+        if report_path is None:
+            report_path = REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V5.md"
+
+    report_boreholes = dl.extract_report_boreholes(report_path, severity, zone=zone)
     print(f"  boreholes_override from {report_path.name}: {len(report_boreholes)} mentioned")
 
     alert_ids = set(measurements["canonical_id"].unique())
@@ -256,7 +264,8 @@ def build_figures(report_path: Path = None) -> dict:
     try:
         with open(_poly_path, encoding="utf-8") as _f:
             _poly_data = json.load(_f)
-        _zone_polygon = _poly_data.get("holon", _poly_data.get("Holon", {})).get("polygon")
+        _zone_key = zone.lower()
+        _zone_polygon = _poly_data.get(_zone_key, _poly_data.get(zone.upper(), {})).get("polygon")
     except Exception:
         pass
 
@@ -271,20 +280,36 @@ def build_figures(report_path: Path = None) -> dict:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Generate Holon V5 designed HTML (full content)")
+    parser = argparse.ArgumentParser(description="Generate zone V5 designed HTML (full content)")
+    parser.add_argument("--zone", type=str, default="holon",
+                        help="Zone name (e.g., holon, raanana)")
     parser.add_argument("--report", type=Path,
-                        default=REPO_ROOT / "Holon" / "output" / "HOLON_REPORT_V5.md")
+                        help="Override report path (auto-detected from --zone if not provided)")
     parser.add_argument("--template", type=Path,
                         default=REPO_ROOT / "scripts" / "report_designed" / "template.html")
     parser.add_argument("--output", type=Path,
-                        default=REPO_ROOT / "Holon" / "output" / "HOLON_REPORT_V5.html")
+                        help="Override output path (auto-detected from --zone if not provided)")
     args = parser.parse_args()
+
+    # Auto-detect report/output paths if not provided
+    zone = args.zone.lower()
+    if args.report is None:
+        # Try latest version V5+ of report
+        args.report = next(
+            (p for p in sorted((REPO_ROOT / zone / "output").glob("*_REPORT_V*.md"), reverse=True)),
+            REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V5.md"
+        )
+    if args.output is None:
+        # Output name matches highest input version
+        version_match = __import__("re").search(r"_REPORT_V(\d+)", args.report.name)
+        output_name = f"{zone.upper()}_REPORT_V{version_match.group(1)}" if version_match else f"{zone.upper()}_REPORT_V5"
+        args.output = REPO_ROOT / zone / "output" / f"{output_name}.html"
 
     print(f"Reading V5 report: {args.report.name}")
     report_md = args.report.read_text(encoding="utf-8")
 
     print("Building SVG figures (shared engine)...")
-    figures = build_figures(report_path=args.report)
+    figures = build_figures(zone=zone, report_path=args.report)
 
     print("Extracting CSS head from template...")
     template = args.template.read_text(encoding="utf-8")
@@ -327,18 +352,23 @@ def main() -> None:
             continue  # version sub-header → masthead meta
         rendered_sections.append(render_section(bstripped, figures))
 
+    # Extract metadata from report (dynamic)
+    boreholes_count = len(classification) if not classification.empty else "?"
+    measurements_count = len(measurements) if not measurements.empty else "?"
+    families_count = len(measurements["family"].unique()) if not measurements.empty else "?"
+
     masthead = f'''<header class="masthead">
   <div class="top">
-    <span>HOLON / ZONE REPORT V5</span>
+    <span>{zone.upper()} / ZONE REPORT V5</span>
     <span>גרסה מעוצבת · {datetime.now().strftime("%Y-%m-%d %H:%M")}</span>
   </div>
   <h1>{md_inline_to_html(report_title)}</h1>
   <p class="sub">{md_utils.wrap_bidi(md_inline_to_html(masthead_intro))}</p>
   <div class="meta">
-    <span><b>112</b> קידוחים פעילים</span>
-    <span><b>20,613</b> מדידות</span>
+    <span><b>{boreholes_count}</b> קידוחים</span>
+    <span><b>{measurements_count:,}</b> מדידות</span>
     <span><b>2010–2026</b> טווח</span>
-    <span><b>4</b> משפחות מזהמים</span>
+    <span><b>{families_count}</b> משפחות מזהמים</span>
   </div>
 </header>'''
 

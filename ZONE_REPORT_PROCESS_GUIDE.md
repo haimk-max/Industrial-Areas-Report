@@ -1,6 +1,6 @@
 # מדריך עקרונות — דוחות אזורי תעשייה (Zone Reports Framework)
 
-**מטרה**: עקרונות מפנה (compass points) לכל דוח אזורי תעשייה, מבוסס על Holon V4 iterations. לא טוקסונומיה — טו־דלת־טו־שלוש משפטים לכל עקרון.
+**מטרה**: עקרונות מפנה (compass points) לכל דוח אזורי תעשייה, מבוסס על Holon V5 hybrid pipeline. לא טוקסונומיה — שניים-שלוש משפטים לכל עקרון.
 
 **Scope**: Holon + מעבר ל-18 אזורים (אם יתקבל אישור מומחה).
 
@@ -107,7 +107,7 @@
 - **D / E** → רקע או נספח. ייכנסו לסעיף 5 רק אם נתוני הניטור (severity, trends, חתימות כימיות) מחזקים אותם עצמאית
 
 #### approved_precedent_excerpt.md
-- קטע מדוח רעננה V2 או חולון V4.2 מאושר (סגנון, טון, מבנה)
+- קטע מדוח רעננה V2 (סגנון, טון, מבנה) או חולון V4–V8 validated
 - **לא תוכני** — רק דוגמה לאיך לכתוב
 
 #### 01_scope / 02_data / 03_context
@@ -597,7 +597,7 @@ FUEL אינו "תמיד אחרון" עוד — מוקד דלק חמור יכול
 
 **Precedent for Zone N+1**: Once Zone N passes expert validation, store as `[N+1]/lean_workspace/01_inputs/[N]_approved_precedent.md`.
 
-### VIII.1 Pipeline Ordering — תקין (V4.2+)
+### VIII.1 Pipeline Ordering — תקין (V5+)
 
 **עיקרון מרכזי**: **Opus בוחר אילו קידוחים** לאייר; **הסקריפט מחליט איך** לאייר (גודל, צבעים, סדר, סוג גרף) על בסיס סגנון מוסכם.
 
@@ -675,7 +675,7 @@ body, p, li, td, th, h1, h2, h3, h4 { unicode-bidi: isolate; }
 
 ---
 
-**Status**: V4.2 framework | SSOT לטרמינולוגיה ולסדר פייפליין | Scalable to all 18 zones  
+**Status**: V5 Hybrid Pipeline | SSOT לטרמינולוגיה ולסדר פייפליין | Scalable to all 18 zones  
 **Last Updated**: 2026-05-14 (Refactor: §III סולם 9-רמות קנוני, §IV סדר משפחות אדפטיבי, §VIII.1 pipeline ordering נפתר, §I.2 PDF ingestion, §I.5 Web sources)  
 **Last Sanitized**: 2026-05-27 (Toolkit back-references added)  
 **Governance**: CLAUDE.md (אינדקס אזורים + Phase H) + project REQUIREMENTS.md

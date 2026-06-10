@@ -356,8 +356,7 @@ def gate4_diagnosis(zone: str, diagnosis_path: Optional[Path] = None) -> QAResul
     if diagnosis_path is None:
         candidates = [
             REPO_ROOT / zone / "context_pack" / "04_diagnosis" / "zone_diagnosis.md",
-            REPO_ROOT / zone / "04_diagnosis" / "zone_diagnosis.md",
-            REPO_ROOT / zone / "rerun_v2_2026-05-28" / "context_pack" / "04_diagnosis" / "zone_diagnosis.md",
+            REPO_ROOT / zone / "04_diagnosis" / "zone_diagnosis.md",  # legacy fallback
         ]
         diagnosis_path = next((p for p in candidates if p.exists()), None)
 
@@ -680,15 +679,12 @@ def gate6_output(zone: str, html_path: Optional[Path] = None,
         html_path = _latest_report(zone, "html") or (
             REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V5.html")
 
-    # Locate DOCX
+    # Locate DOCX (auto-detect highest version via _latest_report glob)
     if docx_path is None:
-        docx_candidates = [
-            REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V6.docx",
-            REPO_ROOT / zone / "output" / "HOLON_REPORT_V6.docx",
-            REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V5.docx",
-            REPO_ROOT / zone / "output" / "HOLON_REPORT_V5.docx",
-        ]
-        docx_path = next((p for p in docx_candidates if p.exists()), docx_candidates[-1])
+        docx_path = _latest_report(zone, "docx")
+        if docx_path is None:
+            # Fallback: if no DOCX found, use dummy path for error reporting
+            docx_path = REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT.docx"
 
     # ── HTML checks ──
     if not html_path.exists():
@@ -878,6 +874,8 @@ def gate3_prompt_layer(zone: str) -> QAResult:
                 f"prompt מרונדר '{name}' מיושן: ה-template השתנה מאז הרינדור "
                 f"(stamp {stamp.group(1)} ≠ current {_sha12(tpath)}) — רנדר מחדש"
             )
+        # TODO: Add diagnosis_sha check to detect if zone_diagnosis.md changed since prompt render
+        # (Current limitation: diagnosis_sha not yet stamped in rendered prompts — placeholder for future enhancement)
         elif not hits and not leftover:
             result.info(f"prompt מרונדר '{name}': טרי, תואם template, ללא placeholders — תקין")
 
@@ -997,6 +995,8 @@ def main():
     parser.add_argument("--diagnosis", type=Path, help="Override path to zone_diagnosis.md")
     parser.add_argument("--continue-on-failure", action="store_true",
                         help="Run all gates even if an earlier gate fails")
+    parser.add_argument("--check-focus-order", action="store_true",
+                        help="Cross-check focus_order from zone_diagnosis.md vs §3 headers in report (experimental)")
     args = parser.parse_args()
 
     zone = args.zone

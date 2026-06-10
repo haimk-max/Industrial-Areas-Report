@@ -271,7 +271,7 @@ python scripts/generate_charts_v2.py --zone holon --style diagnostic
 python scripts/generate_holon_v5_html.py
 
 # Designed variant (summary visual)
-python scripts/generate_holon_v5_html_designed.py
+python scripts/generate_holon_designed.py
 ```
 
 ### Output Files

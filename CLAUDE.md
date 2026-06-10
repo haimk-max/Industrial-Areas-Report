@@ -46,10 +46,10 @@
 | אזור | מצב | תפקיד | מיקום |
 |------|-----|--------|--------|
 | **רעננה** | V2 מאושר | **תקדים סגנוני מאושר** (סגנון כתיבה, סדר משפחות, RTL, צבע גרפים) | `Raanana/` |
-| **חולון** | V4.2 ממתין לאישור הידרולוג | **stress-test מתודולוגי** (pipeline לאזור מורכב, PFAS gaps, monitoring gaps) — לא תבנית ל-16 אזורים | `Holon/` |
+| **חולון** | V8 ממתין לאישור הידרולוג | **stress-test מתודולוגי** (pipeline לאזור מורכב, PFAS gaps, monitoring gaps) — לא תבנית ל-16 אזורים | `Holon/` |
 | 16 אזורים נוספים | ⏳ Phase 2 (Q3 2026+) | יבנו ב-**V5 hybrid pipeline** (METHODOLOGY המחייבת לאזורים חדשים) | (לבנייה אחר אישור) |
 
-**SSOT לטרמינולוגיה וסדר פייפליין**: `ZONE_REPORT_PROCESS_GUIDE.md` (V4.2)
+**SSOT לטרמינולוגיה וסדר פייפליין**: `ZONE_REPORT_PROCESS_GUIDE.md` (Hybrid Pipeline V5)
 **Methodology סטטיסטית**: `docs/STATISTICAL_OVERVIEW_METHODOLOGY.md`
 **Scripts README**: `scripts/report_designed/README.md`
 
@@ -157,7 +157,7 @@ Before implementing data processing:
   - ✓ Two HTML generators: `_V4.html` (canonical, ~180KB) + `_DESIGNED.html` (visual summary, ~139KB); both rely on `boreholes_override` from V4.md (CVOC=6, METALS=4, FUEL=6 panel caps; sorted by family severity desc)
   - ✓ Safety net: HTML generator auto-injects `![]()` image markdown when Opus omits it (figure caption present but image markdown missing)
   - ✓ SSOT: `ZONE_REPORT_PROCESS_GUIDE.md` for terminology + pipeline; `STATISTICAL_OVERVIEW_METHODOLOGY.md` redirects to §III
-  - ✓ Generic Zone Prompt Template: `scripts/templates/zone_report_prompt_template.md` (Anthropic XML-tag structure, 30 placeholders, `<figure_rules>` enforcing image-before-caption)
+  - ✓ Generic Zone Prompt Template: `scripts/templates/zone_report_prompt_template_v5.md` (Anthropic XML-tag structure, 30 placeholders, `<figure_rules>` enforcing image-before-caption)
   - ✓ Focus-first ordering (§IV): §3 by geographic focus (severity descending); families secondary within focus; "פערי כיסוי" last
   - ✓ Web search & PDF ingestion documented in PROCESS_GUIDE §I.2 + §I.5 (External Data/{zone}/ structure, 6 channels)
 
@@ -171,7 +171,7 @@ Before implementing data processing:
   - ✅ DATA_PIPELINE_SPEC.md created (6 CSVs schema)
   - ✅ REPORT_V5_SCHEMA.md created (V5 skeleton + templates)
   - ✅ CLAUDE.md §8 Scaling updated (hybrid pipeline workflow)
-  - ✅ Holon V5 report generation (REQ #13.6): Opus → figures → HTML designed (164KB+177KB)
+  - ✅ Holon V5 report generation (REQ #13.6, 2026-05-28): Opus → figures → HTML designed (164KB+177KB)
   - ✅ Documentation sync: PROCESS.md (requirements tracking) + LESSONS.md (tech-debt roadmap)
   - ✅ Data pipeline scripts (REQ #13.1): generate_holon_data_pack.py → 7 CSVs (15,173 rows)
   - ✅ Reports Context Pack (REQ #13.2) + Source Candidates (REQ #13.3) + Zone Diagnosis (REQ #13.4) + Templates (REQ #13.5)
@@ -374,10 +374,10 @@ Each PDF sub-agent (hydrogeologist persona, model="sonnet") produces `_findings_
 
 ### Implementation Trigger
 - ✓ Methodology validated on Raanana (May 2026, hydrogeologist approval) — **style precedent**
-- ✓ V4.2 stress-tested on Holon — **methodological precedent, not a binding template**
+- ✓ Holon (V4.2→V8) stress-tested — **methodological precedent, validated end-to-end**
 - ✓ V5 hybrid pipeline documented (Phase H+, REQ #12 closed)
 - ✓ V5 hybrid pipeline implementation (Phase H+ Implementation, REQ #13 closed 2026-05-28 — PR #19 a19a917)
-- ⏳ Hydrogeologist review of Holon V5 → systematic application to remaining 16 zones
+- ⏳ Hydrogeologist review of Holon V8 → systematic application to remaining 16 zones
 - Requires Ministry of Environmental Protection coordination per zone
 
 ---
@@ -463,12 +463,12 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 
 **Phase H+ — V5 Hybrid Pipeline** ✅ COMPLETE (Documentation + Implementation):
 - ✓ Documentation refactor (REQ #12, closed 2026-05-17)
-- ✓ Implementation (REQ #13, closed 2026-05-28 via PR #19 / a19a917): data pipeline scripts (7 CSVs), context assembly, zone diagnosis prompt, V5 report prompt, Structured Anchors pilot (#13.5, PASS), Holon V5 generation (164KB+177KB MD/HTML)
+- ✓ Implementation (REQ #13, closed 2026-05-28 via PR #19 / a19a917): data pipeline scripts (7 CSVs), context assembly, zone diagnosis prompt, V5 report prompt, Structured Anchors pilot (#13.5, PASS), Holon V5→V8 generation pipeline (256KB MD, 239KB HTML, 493KB DOCX)
 - ✓ Executive summaries (REQ #15): INTERNAL + PUBLIC HTML
 - ✓ Report engine (REQ #16): 14-file generic architecture
 - ✓ Brief + Twin HTML generators (REQ #17, #18)
 - ✓ Toolkit system (REQ #19, sanitization sub-task complete): 3 tiers (skills + pylib + 5 playbooks)
-- ⏳ Hydrogeologist review of Holon V5 (next step)
+- ⏳ Hydrogeologist review of Holon V8 (next step)
 
 **Open framework items**:
 - ⏳ Basemap integration (REQ-G1) — pending environment resolution
