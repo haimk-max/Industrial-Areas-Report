@@ -116,8 +116,8 @@ Foci order for this zone (from zone_diagnosis.md "## סדר מוקדים" block)
 </document>
 
 <document index="5">
-<source>{ZONE}/lean_workspace/04_deterministic_anchors/anchors_pilot.yaml (Structured Anchors PILOT)</source>
-<purpose>Deterministic markers (statistical + forensic): 31 statistical anchors + 27 forensic anchors. Validated; use as ground truth for contamination foci and source attribution.</purpose>
+<source>{ZONE}/lean_workspace/04_deterministic_anchors/statistical_signals_PILOT.yaml + forensic_anchors_PILOT.yaml (Structured Anchors PILOT)</source>
+<purpose>Deterministic markers split across two files — statistical signals (S-series) + forensic anchors (F-series). Validated; use as ground truth for contamination foci and source attribution. The zone diagnosis already cites these by ID (e.g. S6_002, F1_001).</purpose>
 <notes>Format: YAML list with anchor_id, zone, family, well_id, marker_type (statistical|forensic), confidence (high|medium|low), evidence_key, narrative_snippet.</notes>
 </document>
 
@@ -335,7 +335,7 @@ Before submitting {ZONE}_REPORT_V5.md, verify (PROCESS_GUIDE §VII):
 3. Verify all paths exist before running Opus:
    - `{ZONE}/context_pack/03_context/` (reports_context.md, source_candidates_context.md)
    - `{ZONE}/context_pack/04_diagnosis/zone_diagnosis.md`
-   - `{ZONE}/lean_workspace/04_deterministic_anchors/anchors_pilot.yaml`
+   - `{ZONE}/lean_workspace/04_deterministic_anchors/statistical_signals_PILOT.yaml` + `forensic_anchors_PILOT.yaml`
    - `{ZONE}/02_data/` (all 6 CSVs)
 4. Run Opus with complete instantiated prompt
 5. Save output to `{ZONE}/output/{ZONE_NAME_EN}_REPORT_V5.md`
