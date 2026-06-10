@@ -17,20 +17,29 @@ import re
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-# Zone-generic: pass zone name to override (default "holon" for backwards compatibility)
+# Zone-generic: pass zone name to override (default "holon" for backwards compatibility).
+# The repo convention is a CAPITALIZED zone directory (holon -> Holon), so always
+# capitalize when building filesystem paths.
 DEFAULT_ZONE = "holon"
-LEAN_WORKSPACE = REPO_ROOT / DEFAULT_ZONE / "lean_workspace"
-REPORT_V4 = REPO_ROOT / DEFAULT_ZONE / "output" / "HOLON_REPORT_V4.md"
+
+
+def _zone_dir(zone: str = DEFAULT_ZONE) -> Path:
+    """Return the zone's directory (capitalized per repo convention: holon -> Holon)."""
+    return REPO_ROOT / zone.capitalize()
 
 
 def _workspace_for_zone(zone: str = DEFAULT_ZONE) -> Path:
     """Return workspace path for a given zone (V4 lean_workspace layout)."""
-    return REPO_ROOT / zone / "lean_workspace"
+    return _zone_dir(zone) / "lean_workspace"
 
 
 def _report_v4_path(zone: str = DEFAULT_ZONE) -> Path:
     """Return path to zone's V4 report (legacy, used for extraction fallback)."""
-    return REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V4.md"
+    return _zone_dir(zone) / "output" / f"{zone.upper()}_REPORT_V4.md"
+
+
+LEAN_WORKSPACE = _workspace_for_zone(DEFAULT_ZONE)
+REPORT_V4 = _report_v4_path(DEFAULT_ZONE)
 
 
 def _clarify_terms(text: str) -> str:

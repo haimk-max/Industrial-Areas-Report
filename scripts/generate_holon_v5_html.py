@@ -243,13 +243,14 @@ def build_figures(zone: str = "holon", report_path: Path = None) -> dict:
     classification = dl.load_borehole_classification(zone=zone)
 
     if report_path is None:
-        # Auto-detect latest report V5+
-        report_path = next(
-            (p for p in sorted((REPO_ROOT / zone / "output").glob("*_REPORT_V*.md"), reverse=True)),
-            None
-        )
-        if report_path is None:
-            report_path = REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V5.md"
+        # Auto-detect highest-version report (numeric); zone dir is capitalized.
+        out_dir = REPO_ROOT / zone.capitalize() / "output"
+        cands = []
+        for p in out_dir.glob(f"{zone.upper()}_REPORT_V*.md"):
+            m = re.search(r"_REPORT_V(\d+)", p.name)
+            if m:
+                cands.append((int(m.group(1)), p))
+        report_path = max(cands)[1] if cands else out_dir / f"{zone.upper()}_REPORT_V5.md"
 
     report_boreholes = dl.extract_report_boreholes(report_path, severity, zone=zone)
     print(f"  boreholes_override from {report_path.name}: {len(report_boreholes)} mentioned")
@@ -291,19 +292,22 @@ def main() -> None:
                         help="Override output path (auto-detected from --zone if not provided)")
     args = parser.parse_args()
 
-    # Auto-detect report/output paths if not provided
+    # Auto-detect report/output paths if not provided.
+    # zone (lowercase) drives data_loader; zone_dir (capitalized) is the filesystem dir.
     zone = args.zone.lower()
+    out_dir = REPO_ROOT / zone.capitalize() / "output"
     if args.report is None:
-        # Try latest version V5+ of report
-        args.report = next(
-            (p for p in sorted((REPO_ROOT / zone / "output").glob("*_REPORT_V*.md"), reverse=True)),
-            REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V5.md"
-        )
+        # Pick the highest-version report (V5+) — numeric, not lexicographic.
+        cands = []
+        for p in out_dir.glob(f"{zone.upper()}_REPORT_V*.md"):
+            m = re.search(r"_REPORT_V(\d+)", p.name)
+            if m:
+                cands.append((int(m.group(1)), p))
+        args.report = max(cands)[1] if cands else out_dir / f"{zone.upper()}_REPORT_V5.md"
     if args.output is None:
-        # Output name matches highest input version
-        version_match = __import__("re").search(r"_REPORT_V(\d+)", args.report.name)
+        version_match = re.search(r"_REPORT_V(\d+)", args.report.name)
         output_name = f"{zone.upper()}_REPORT_V{version_match.group(1)}" if version_match else f"{zone.upper()}_REPORT_V5"
-        args.output = REPO_ROOT / zone / "output" / f"{output_name}.html"
+        args.output = out_dir / f"{output_name}.html"
 
     print(f"Reading V5 report: {args.report.name}")
     report_md = args.report.read_text(encoding="utf-8")
@@ -352,21 +356,36 @@ def main() -> None:
             continue  # version sub-header → masthead meta
         rendered_sections.append(render_section(bstripped, figures))
 
-    # Extract metadata from report (dynamic)
-    boreholes_count = len(classification) if not classification.empty else "?"
-    measurements_count = len(measurements) if not measurements.empty else "?"
-    families_count = len(measurements["family"].unique()) if not measurements.empty else "?"
+    # Extract metadata for masthead (dynamic, from the data pack).
+    # Boreholes: classification rows. Measurements: TOTAL scoped count from the data
+    # pack (02_data/measurements_scoped.csv) — NOT the alert subset, which understates it.
+    _meta_class = dl.load_borehole_classification(zone=zone)
+    boreholes_count = len(_meta_class) if not _meta_class.empty else "?"
+    _scoped = REPO_ROOT / zone.capitalize() / "02_data" / "measurements_scoped.csv"
+    measurements_count = "?"
+    families_count = "?"
+    if _scoped.exists():
+        import csv as _csv
+        with _scoped.open(encoding="utf-8") as _fh:
+            _rows = list(_csv.DictReader(_fh))
+        measurements_count = len(_rows)
+        _fam_col = next((c for c in ("family", "parameter_family", "param_family") if _rows and c in _rows[0]), None)
+        if _fam_col:
+            families_count = len({r[_fam_col] for r in _rows if r.get(_fam_col)})
+    _meas_str = f"{measurements_count:,}" if isinstance(measurements_count, int) else "?"
+    version_label = re.search(r"_REPORT_(V\d+)", args.report.name)
+    version_label = version_label.group(1) if version_label else "V5"
 
     masthead = f'''<header class="masthead">
   <div class="top">
-    <span>{zone.upper()} / ZONE REPORT V5</span>
+    <span>{zone.upper()} / ZONE REPORT {version_label}</span>
     <span>גרסה מעוצבת · {datetime.now().strftime("%Y-%m-%d %H:%M")}</span>
   </div>
   <h1>{md_inline_to_html(report_title)}</h1>
   <p class="sub">{md_utils.wrap_bidi(md_inline_to_html(masthead_intro))}</p>
   <div class="meta">
     <span><b>{boreholes_count}</b> קידוחים</span>
-    <span><b>{measurements_count:,}</b> מדידות</span>
+    <span><b>{_meas_str}</b> מדידות</span>
     <span><b>2010–2026</b> טווח</span>
     <span><b>{families_count}</b> משפחות מזהמים</span>
   </div>

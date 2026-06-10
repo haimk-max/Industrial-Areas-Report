@@ -131,15 +131,17 @@ def main() -> None:
                         help="Override path to V4 report (auto-detected from --zone if not provided)")
     args = parser.parse_args()
 
+    # zone (lowercase) drives data_loader; zone dir is capitalized (holon -> Holon).
     zone = args.zone.lower()
+    out_dir = REPO_ROOT / zone.capitalize() / "output"
 
     # Auto-detect output path if not provided
     if args.output is None:
-        args.output = REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_DESIGNED.html"
+        args.output = out_dir / f"{zone.upper()}_REPORT_DESIGNED.html"
 
     # Auto-detect V4 report path if not provided
     if args.report_v4 is None:
-        args.report_v4 = REPO_ROOT / zone / "output" / f"{zone.upper()}_REPORT_V4.md"
+        args.report_v4 = out_dir / f"{zone.upper()}_REPORT_V4.md"
 
     print(f"Loading data from {zone}/lean_workspace/ ...")
     measurements = dl.load_measurements_alert(zone=zone)
