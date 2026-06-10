@@ -26,4 +26,4 @@
 ## עבודה בתהליך (In flight)
 
 - **REQ #27 Part C** (ממתין להרצת Opus): התבניות+פרומפטים מוכנים (Part A+B נדחפו). נותר: Opus Step 4 → zone_diagnosis.md חדש (עם ניתוח קידוחי הפקה) → render Step 5 → Opus Step 5 → HOLON_REPORT_V8.md → HTML+QA. ראה footgun ה-staleness לעיל לגבי סדר הרינדור.
-- **חוב אורקסטרציה מקצה-לקצה** (המשתמש העלה דאגה): אין דרַייבר יחיד ל-7 השלבים; תלויות בין-שלביות נאכפות במוסכמה. סוכן Explore הורץ למפות מצב אוטומציה/גנריות/נעיצת-חולון — תוצאותיו לא נצרכו עדיין. כשחוזרים: לשקול שכבת-דרַייבר דקה (לא refactor) שמתארת את הצינור כרצף מפורש עם עצירה בכל שער.
+- **חוב אורקסטרציה — REQ #28 שלב 1 הושלם** (f85dc35): `generate_zone_data_pack.py` גנרי (byte-identical על חולון), `run_pipeline.sh` דרַייבר, `ORCHESTRATION.md` מפה, Gate 5/6 גנרי-לגרסה (`_latest_report` glob → קולט V7/V8), 2 סקריפטי V4 deprecated. **שלב 2 נותר**: גנריזציית מחוללי-HTML חסומה ב-`report_designed/data_loader.py` (בסיס-ראיות V4 נעוץ-חולון ב-lean_workspace) — refactor גדול, **לא חוסם חולון**; איחוד מוסכמת `--zone`; ריצת אזור-2 e2e. ראה ORCHESTRATION.md.
