@@ -156,7 +156,8 @@ While diagnosing the zone, actively look for:
 - PFAS finding or PFAS coverage gap;
 - difference between historical maximum, recent maximum, and latest value;
 - difference between point-source contamination and regional plume behavior;
-- tension between chemical fit, spatial/hydrogeological fit, historical activity, and current facility status.
+- tension between chemical fit, spatial/hydrogeological fit, historical activity, and current facility status;
+- **production wells** (drinking water extraction): which are active/affected in-zone or downstream? Any suspended? Why? Risk to water supply? Basic forensic analysis: which monitoring wells are nearby, which industries impact each production well, confidence level (רמת ודאות: גבוהה/בינונית/נמוכה).
 
 ---
 
