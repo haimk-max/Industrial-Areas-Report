@@ -1,3 +1,10 @@
+> **⚠️ ARCHIVED / CLOSED (2026-06-10, REQ #29)**: תוכנית-מיזוג חד-פעמית מעידן V5.
+> ה-coordinate-system fix (REQ #22) **הושלם ומוזג** לענף העבודה הפעיל והתקדם דרך V6/V7/V8.
+> ענף המקור `rerun-verification-2026-05-28` והתיקיות `rerun_v2_*` נמחקו. קובץ זה נשמר כ-audit
+> trail היסטורי בלבד — **אינו מתאר מצב פעיל**.
+
+---
+
 # Merge Plan — 2026-05-31
 ## coordinate_system_fix (rerun-verification-2026-05-28 → claude/create-base-report-directory-5DqAR)
 

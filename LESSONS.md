@@ -162,6 +162,18 @@
 | **`discover-zone-data` skill** | Given coordinates/place name → discovers available data (Excel, PDFs, polygons) and stages them in zone directory structure | When the project pivots from "18 known zones" to "arbitrary input → report" |
 | **Dashboard generator** (script + skill) | Produces interactive zone dashboard alongside or instead of full markdown report | When dashboard format is specified by user |
 
+### 3.3a RAG / agent-rag — status (deferred, skeleton-only)
+
+`toolkit/skills/agent-rag/SKILL.md` is a **DRAFT skeleton**, not an implementation. It documents an intended
+context-assembly skill (`assemble` / `extract` / `augment`) but its own header says `Status: ⏳ IN PROGRESS
+(skeleton defined; Opus orchestration TBD)` and the "Kitchen / מימוש" section is pseudo-code. **There is no
+vector store, no embeddings, no semantic-search code anywhere in the repo** — despite the "RAG" name.
+
+- **Current reality**: context assembly in the V5 pipeline is done by *ad-hoc Opus sub-agents* writing
+  `_findings_*.json` (e.g., `Holon/data/external/`), plus manual NotebookLM-style curation. No retrieval system.
+- **Status**: Deferred (`PROCESS.md` REQ #14). When triggered → design doc + prototype. Not blocking any zone.
+- **Do not** treat `agent-rag` as a working tool; it is a placeholder for a future build decision.
+
 ### 3.4 Available skills referenced
 
 For convenience — skills available in this environment that are relevant here:
@@ -178,5 +190,9 @@ For convenience — skills available in this environment that are relevant here:
 
 ---
 
-**Last Update**: 2026-05-06 (initial creation during methodology hygiene phase)  
-**Next Review**: After Holon zone summary report is approved by expert hydrogeologist
+**Last Update**: 2026-06-10 (REQ #29 — stamp corrected; body actively updated through 2026-06-10, see §1.8)
+**Next Review**: After Holon V8 hydrogeologist sign-off → Phase 2 (16-zone activation)
+
+> **הערה (REQ #29)**: §2.3a (איחוד תיקיות Holon: `04_deterministic_anchors`→`context_pack/`) **עוקף חלקית** ע"י
+> REQ #28 — `02_data/` נמחקה ו-`lean_workspace/` נשמרה כבסיס-הראיות הפעיל. עדכון מלא של §2.3a נדחה
+> עד refactor ה-data_loader הבא (אם יוחלט). RAG: ראה §3 — `agent-rag` הוא skeleton-only (DRAFT), deferred רשמית (PROCESS.md #14).

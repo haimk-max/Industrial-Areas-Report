@@ -1,5 +1,11 @@
 # Skill: agent-rag
 
+> **⚠️ DRAFT / NOT IMPLEMENTED (status: deferred — PROCESS.md REQ #14)**
+> סקיל זה הוא **שלד עיצובי בלבד**. אין מאחוריו קוד: אין vector store, אין embeddings, אין semantic search.
+> ה"מימוש" למטה הוא pseudo-code. בפועל, איסוף ה-context בפייפליין V5 נעשה ע"י Opus sub-agents שכותבים
+> `_findings_*.json` + אצירה ידנית דמוית-NotebookLM (ראה PROCESS_GUIDE §I). **אל תתייחס לסקיל כאל כלי עובד.**
+> בנייה אמיתית (design doc + prototype) תופעל רק כשתתקבל החלטה מפורשת. ראה LESSONS.md §3.3a.
+
 ## מהו?
 
 **agent-rag** = יומן interactive לאיסוף ועיבוד context מרובה לניתוח ממוחשב.

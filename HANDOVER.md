@@ -22,9 +22,10 @@
 ## footguns חוזרים
 
 - **פער staleness דיאגנוזה→דוח** (זוהה 2026-06-10, תיקון נדחה): הפרומפט המרונדר של הדוח חותם **רק** `template_sha256` — לא את ה-sha של zone_diagnosis.md. לכן `{FOCUS_ORDER_LIST}` (snapshot שנצרב ב-render) יכול להיות מיושן מול הדיאגנוזה החיה, ו-Gate 3 לא יתפוס זאת. **המשמעת Step4→render→Step5 נאכפת במוסכמה בלבד.** אם מריצים Step 4 מחדש — חובה לרנדר מחדש את zone_report_prompt.md לפני Step 5, אחרת אופוס צורך סדר-מוקדים סותר (snapshot מנוון מול קובץ מלא). תיקון מוצע (טרם בוצע): לחתום diagnosis-sha + בדיקת Gate 3.
+- **פער staleness דוח→דוחות-ניהוליים** (זוהה 2026-06-10): הדוחות הניהוליים (INTERNAL+PUBLIC exec summaries) נוצרים מ-brief YAML שנגזר מהדוח הראשי, אך **אין חוזה טריות** שמקשר ביניהם. ה-brief נושא כעת `source_report_version` + `source_report_sha` (REQ #29); `run_pipeline.sh --stage exec-summary` מזהיר אם ה-sha לא תואם את הדוח הנוכחי. **אם מעדכנים את הדוח הראשי — חובה לחדש את הדוחות הניהוליים** (אחרת מפיצים תוכן ישן תחת גרסה חדשה).
 - **LibreOffice HTML→docx שבור ב-container** (זוהה 2026-06-10): `libreoffice --headless --convert-to docx` כושל על **כל** קלט (אפילו plain text) עם "source file could not be loaded". לא ניתן לתיקון בסביבה הנוכחית. **חלופות**: Python `markdown-to-docx` + `embed_holon_figures_v5.py` (עובד, ללא CSS); או המשתמש ממיר HTML→Word ידנית (browser copy-paste → Word — **האפשרות המומלצת** לאיכות גבוהה; גם Word File→Open HTML, Google Docs import, LibreOffice מקומי).
 
 ## עבודה בתהליך (In flight)
 
-- **REQ #27 COMPLETE** (88fcb11): V8 report (Opus Steps 4+5), HTML 225KB Gate 6 PASS, Word doc 505KB (4 figures scale=3 ~220 DPI). משתמש ימיר HTML→Word ידנית ויעביר לביקורת מומחה.
-- **REQ #28 שלב 2 נותר**: גנריזציית מחוללי-HTML חסומה ב-`report_designed/data_loader.py` (בסיס-ראיות V4 נעוץ-חולון ב-lean_workspace) — refactor גדול, **לא חוסם חולון**. ראה ORCHESTRATION.md לפירוט.
+- **REQ #28 COMPLETE** (ba51451): שני השלבים סגורים. גנריזציית מחוללי-HTML הושלמה — `data_loader.py` + 2 המחוללים מקבלים `--zone`; legacy archived; QA gates הוקשחו. הפייפליין זון-גנרי מקצה-לקצה.
+- **REQ #29 — שלמות לקראת אריזה** (בתהליך): תשתית דוחות-ניהוליים (de-hardcode V5→latest, חיווט לפייפליין, חוזה טריות) + RAG דחייה רשמית + סנכרון קבצי-מעקב. **תוכן V8 של הדוחות הניהוליים נדחה עד אישור הידרולוג.**

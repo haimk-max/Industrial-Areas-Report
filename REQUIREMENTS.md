@@ -2,7 +2,7 @@
 
 **Purpose**: Single source of truth for system requirements that must hold for **any** of the 18 industrial zones in the coastal aquifer monitoring system.
 
-**Status**: Framework validated on Raanana (reference implementation, expert-approved May 2026). Holon V4 + V5 reports drafted; Phase H+ V5 Hybrid Pipeline implementation complete (2026-05-28, PR #19 / a19a917). Pending: Holon V5 hydrogeologist sign-off, then 16-zone activation.
+**Status**: Framework validated on Raanana (reference implementation, expert-approved May 2026). Holon stress-tested end-to-end through **V8** (2026-06-10) — six expert-driven review rounds (REQ #25–28: terminology SSOT, focus-first ordering, hydrologist round-2, production-well focus, full pipeline genericization). V5 Hybrid Pipeline implementation complete (Phase H+, PR #19). Pipeline now zone-generic end-to-end (REQ #28). Pending: Holon **V8** hydrogeologist sign-off, then 16-zone activation.
 
 ---
 
@@ -201,9 +201,10 @@ These requirements apply when activating any new zone using the framework.
 | 2026-05-06 | v2.2: Added REQ-H10 (idempotent PDF extraction with `_pdf_index.json` state tracking), REQ-H11 (`--include-shared` flag for root Base-Report/ PDFs), REQ-H12 (parallel per-PDF AI extraction + merge step). Added `scripts/merge_extracted_findings.py` | User requirement: PDF extraction must be one-time per file; re-running pipeline next year should skip already-processed PDFs unless they change. Same applies to TAHAL 2008 and Water Authority 2021 base-layer reports |
 | 2026-05-17 | v3.0: Phase H+ V5 Hybrid Pipeline — Documentation refactor closed (REQ #12). PROCESS_GUIDE §I Zone Context Pack + §II V5 Schema + §II.5 Zone Diagnosis + §VIII 7-step pipeline. New SSOTs: DATA_PIPELINE_SPEC.md + REPORT_V5_SCHEMA.md | Methodology evolution: prompt-driven V4 → structured data + context + diagnosis V5 |
 | 2026-05-28 | v3.1: Phase H+ V5 Hybrid Pipeline — Implementation closed (REQ #13–19, PR #19 / a19a917). Deliverables: Holon V5 (data pack 7 CSVs / 15,173 rows; V5.md 310 lines; V5.html 177KB), Executive summaries (INTERNAL 64KB + PUBLIC 52KB), Report Engine (14 generic files), Brief/HTML generators, Toolkit system (3 tiers, 5/5 playbooks sanitized) | V5 hybrid pipeline now production-ready; binding methodology for all new zones (Phase 2 activation pending hydrogeologist sign-off) |
+| 2026-06-10 | v3.2: Holon V5→V8 via six review rounds (REQ #25–28): terminology SSOT (פירוק/הפסקת ניטור/רמת ודאות), focus-first ordering §IV, hydrologist round-2 figures, production-well focus, full pipeline genericization (all scripts `--zone`, legacy archived, QA gates version-generic). Packaging-readiness pass (REQ #29): exec-summary infra de-coupled from V5 hardcoding + staleness contract; RAG formally deferred; tracking files synced to V8 | Report content materially changed (terminology + production wells); exec summaries flagged stale (V5-era) pending V8 regeneration post-approval |
 
 ---
 
-**Status**: Framework ✅ complete (REQ-H1–H12 all done); Raanana reference implementation ✅ complete; Holon V4 + V5 reports ✅ drafted; Phase H+ V5 Hybrid Pipeline ✅ COMPLETE (2026-05-28); ⏳ Hydrogeologist sign-off of Holon V5; ⏳ 16-zone activation (Phase 2)  
-**Last Review**: 2026-05-06 (idempotent extraction + merge workflow)  
-**Next Review**: After Holon zone summary report complete + expert review
+**Status**: Framework ✅ complete (REQ-H1–H12 all done); Raanana reference implementation ✅ complete; Holon stress-tested through **V8** ✅ (2026-06-10); Phase H+ V5 Hybrid Pipeline ✅ COMPLETE; Pipeline zone-generic end-to-end ✅ (REQ #28); ⏳ Hydrogeologist sign-off of Holon **V8**; ⏳ exec-summary V8 regeneration (post-approval); ⏳ 16-zone activation (Phase 2)
+**Last Review**: 2026-06-10 (REQ #29 packaging-readiness audit — exec-summary infra, RAG deferral, tracking sync)
+**Next Review**: After Holon V8 hydrogeologist sign-off → Phase 2 (16-zone activation)
