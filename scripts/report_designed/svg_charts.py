@@ -501,7 +501,12 @@ def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
                      If None, uses order found in well_data.
     """
     well_data = well_data.copy()
-    well_data["year"] = pd.to_datetime(well_data["date"]).dt.year
+    _dt = pd.to_datetime(well_data["date"])
+    well_data["year"] = _dt.dt.year
+    # Fractional year (year + day-of-year fraction) is the X coordinate, so two
+    # samples in the SAME calendar year separate horizontally instead of stacking
+    # into a vertical line that looks like a connector between two parameters.
+    well_data["xpos"] = _dt.dt.year + (_dt.dt.dayofyear - 1) / 365.25
 
     # Determine params present in this well, respecting the requested order
     available = list(well_data.param_code.unique())
@@ -590,13 +595,13 @@ def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
     # Data: one series per param, ordered per param_order
     for i, param in enumerate(params):
         style = _PARAM_STYLES[i % len(_PARAM_STYLES)]
-        grp = well_data[well_data.param_code == param].sort_values("year")
+        grp = well_data[well_data.param_code == param].sort_values("xpos")
         pts = []
         last_xy = None
         for _, r in grp.iterrows():
             if r.concentration <= 0:
                 continue
-            x = linear_x(r.year, y_min_year, y_max_year, x_left, x_right)
+            x = linear_x(r.xpos, y_min_year, y_max_year, x_left, x_right)
             y = log_y(r.concentration, c_min, c_max, y_top, y_bot)
             pts.append(f"{x:.1f},{y:.1f}")
             last_xy = (x, y)

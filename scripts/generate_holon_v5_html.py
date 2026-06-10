@@ -153,13 +153,18 @@ def build_figure_html(fig_num: int, caption_text: str, svg: str) -> str:
     """Wrap an inline SVG in the design-language <figure> structure."""
     sublabel = FIGURE_SUBLABELS.get(fig_num, "")
     caption_html = md_utils.wrap_bidi(md_inline_to_html(caption_text))
+    # The SVG is embedded raw — NOT through wrap_bidi. wrap_bidi wraps Latin/numeric
+    # runs in <bdi>, which is an HTML element invalid inside SVG <text>; injecting it
+    # there silently breaks rendering of year ticks, DWS labels and contaminant
+    # labels. The chart engine already handles bidi internally (direction="ltr" root
+    # + rtl-title class). Caption text, being HTML, still goes through wrap_bidi.
     return (
         '<figure>\n'
         '  <div class="fig-h">\n'
         f'    <span class="ttl">איור {fig_num}</span>\n'
         f'    <span>{sublabel}</span>\n'
         '  </div>\n'
-        f'  <div class="frame">\n{md_utils.wrap_bidi(svg)}\n  </div>\n'
+        f'  <div class="frame">\n{svg}\n  </div>\n'
         f'  <figcaption><span class="lbl">איור {fig_num}</span><span>{caption_html}</span></figcaption>\n'
         '</figure>'
     )
@@ -223,17 +228,23 @@ def render_section(section_md: str, figures: dict) -> str:
     return f'<section>\n{header_html}\n{body_html}\n</section>'
 
 
-def build_figures() -> dict:
-    """Generate the 5 V5 figures via the shared chart engine."""
+def build_figures(report_path: Path = None) -> dict:
+    """Generate the 5 V5 figures via the shared chart engine.
+
+    report_path: the report whose borehole mentions drive panel selection. Must be
+    the SAME report being rendered (V7, V8, …) — otherwise the figures show a
+    different report's wells. Defaults to V5 only for backward compatibility.
+    """
     measurements = dl.load_measurements_alert()
     trends = dl.load_trends_alert()
     severity = dl.load_severity_index()
     data_avail = dl.load_data_availability()
     classification = dl.load_borehole_classification()
 
-    report_path = REPO_ROOT / "Holon" / "output" / "HOLON_REPORT_V5.md"
+    if report_path is None:
+        report_path = REPO_ROOT / "Holon" / "output" / "HOLON_REPORT_V5.md"
     report_boreholes = dl.extract_report_boreholes(report_path, severity)
-    print(f"  boreholes_override from V5.md: {len(report_boreholes)} mentioned")
+    print(f"  boreholes_override from {report_path.name}: {len(report_boreholes)} mentioned")
 
     alert_ids = set(measurements["canonical_id"].unique())
     severity_alert = severity[severity["borehole"].isin(alert_ids)].copy()
@@ -273,7 +284,7 @@ def main() -> None:
     report_md = args.report.read_text(encoding="utf-8")
 
     print("Building SVG figures (shared engine)...")
-    figures = build_figures()
+    figures = build_figures(report_path=args.report)
 
     print("Extracting CSS head from template...")
     template = args.template.read_text(encoding="utf-8")
