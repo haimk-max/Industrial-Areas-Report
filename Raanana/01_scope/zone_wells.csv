@@ -1,0 +1,8 @@
+canonical_well_id,name_he,well_type,itm_easting,itm_northing,depth_class,tier,monitoring_site,notes
+raanana_nt_1,נת רעננה 1,monitoring,188515,677986,unconfined,1,אזור תעשייה רעננה,קידוח ניטור תעשייה
+raanana_nt_2,נת רעננה 2,monitoring,188709,677884,unconfined,1,אזור תעשייה רעננה,קידוח ניטור תעשייה
+raanana_nt_3,נת רעננה 3,monitoring,188888,678207,unconfined,1,אזור תעשייה רעננה,קידוח ניטור תעשייה
+raanana_nd_paz_hanofer,נד פז הנופר,monitoring,189174,677924,unconfined,1,פז הנופר,קידוח ניטור דלק (point-source)
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,monitoring,189345,678575,confined,1,תחנת גז רעננה,"קידוח ניטור דלק; כלוא/עמוק — מגבלת פרשנות מגמה (RAANANA-SPECIFIC R-004)"
+raanana_p_18,פ רעננה 18,supply,188944,677740,confined,2,,"קידוח הפקה פרטי; כלוא/עמוק — מגבלת פרשנות מגמה (RAANANA-SPECIFIC R-005)"
+raanana_p_25,פ רעננה 25,supply,187951,677569,unconfined,2,,קידוח הפקה פרטי
