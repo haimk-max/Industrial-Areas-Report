@@ -209,7 +209,12 @@ def load_severity_index(zone: str = DEFAULT_ZONE, workspace: Path = None) -> pd.
     """Load pre-computed severity index (159 borehole × family pairs, bucket 0-8)."""
     if workspace is None:
         workspace = _workspace_for_zone(zone)
-    path = workspace / "04_deterministic_anchors" / "severity_index_2025_holon.csv"
+    anchors = workspace / "04_deterministic_anchors"
+    # Zone-specific filename first (e.g. severity_index_2025_raanana.csv);
+    # fall back to the legacy holon-named file so Holon behavior is unchanged.
+    path = anchors / f"severity_index_2025_{zone.lower()}.csv"
+    if not path.exists():
+        path = anchors / "severity_index_2025_holon.csv"
     if path.exists():
         return pd.read_csv(path)
     return pd.DataFrame()
