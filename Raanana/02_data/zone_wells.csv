@@ -1,0 +1,8 @@
+canonical_well_id,name_he,itm_easting,itm_northing,well_type,zone_scope_source,monitoring_site
+raanana_nd_paz_hanofer,נד פז הנופר,189174,677924,fuel_monitoring,Raanana_main_industrial,פז הנופר
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,189345,678575,fuel_monitoring,Raanana_main_industrial,תחנת גז רעננה
+raanana_nt_1,נת רעננה 1,188515,677986,industrial_monitoring,Raanana_main_industrial,אזור תעשייה רעננה
+raanana_nt_2,נת רעננה 2,188709,677884,industrial_monitoring,Raanana_main_industrial,אזור תעשייה רעננה
+raanana_nt_3,נת רעננה 3,188888,678207,industrial_monitoring,Raanana_main_industrial,אזור תעשייה רעננה
+raanana_p_18,פ רעננה 18,188944,677740,private_production,Raanana_main_industrial,
+raanana_p_25,פ רעננה 25,187951,677569,private_production,Raanana_main_industrial,

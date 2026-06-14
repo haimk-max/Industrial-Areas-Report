@@ -1,0 +1,35 @@
+canonical_well_id,parameter_canonical,mann_kendall_z,mann_kendall_p,snr,soft_trigger_met,trend_classification,n_measurements,time_span_years,notes
+raanana_nd_paz_hanofer,MTBE,-0.722315,0.470101,1.06595,0,STABLE,4,5.0,Low measurement count
+raanana_nd_turbine,MTBE,,,0.0,0,STABLE,1,5.0,Low measurement count
+raanana_nt_1,BA,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+raanana_nt_1,CR,,,0.0,0,NONE,3,5.0,Low measurement count
+raanana_nt_1,CU,-0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+raanana_nt_1,FE,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+raanana_nt_1,MN,0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+raanana_nt_1,MTBE,,,0.0,0,STABLE,2,5.0,Low measurement count
+raanana_nt_1,NI,,,0.0,0,NONE,3,5.0,Low measurement count
+raanana_nt_1,TCEY,,,0.0,0,NONE,2,5.0,Low measurement count
+raanana_nt_1,ZN,0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+raanana_nt_2,BA,1.04447,0.29627,0.0,0,NONE,3,5.0,Low measurement count
+raanana_nt_2,CHLF,,,0.0,0,INCREASING,2,5.0,Low measurement count
+raanana_nt_2,CR,,,0.0,0,NONE,3,5.0,Low measurement count
+raanana_nt_2,CU,-0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+raanana_nt_2,FE,-0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+raanana_nt_2,MN,-0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+raanana_nt_2,MTBE,,,0.0,0,NONE,2,5.0,Low measurement count
+raanana_nt_2,NI,,,0.0,0,NONE,3,5.0,Low measurement count
+raanana_nt_2,TCEY,,,0.0,0,NONE,2,5.0,Low measurement count
+raanana_nt_2,ZN,-1.04447,0.29627,0.0,0,NONE,3,5.0,Low measurement count
+raanana_nt_3,BA,,,0.0,0,INCREASING,2,5.0,Low measurement count
+raanana_nt_3,CHLF,,,0.0,0,INCREASING,2,5.0,Low measurement count
+raanana_nt_3,CR,,,0.0,0,NONE,2,5.0,Low measurement count
+raanana_nt_3,CU,,,0.0,0,NONE,2,5.0,Low measurement count
+raanana_nt_3,FE,,,0.0,0,STABLE,2,5.0,Low measurement count
+raanana_nt_3,MN,,,0.0,0,DECREASING,2,5.0,Low measurement count
+raanana_nt_3,MTBE,,,0.0,0,STABLE,2,5.0,Low measurement count
+raanana_nt_3,NI,,,0.0,0,STABLE,2,5.0,Low measurement count
+raanana_nt_3,TCEY,,,0.0,0,STABLE,2,5.0,Low measurement count
+raanana_nt_3,ZN,,,0.0,0,STABLE,2,5.0,Low measurement count
+raanana_p_25,BA,1.44463,0.148562,1.69611,0,STABLE,4,5.0,Low measurement count
+raanana_p_25,CHLF,2.38416,0.0171182,1.49786,0,INCREASING,8,5.0,
+raanana_p_25,TCEY,-0.895164,0.370699,0.797185,0,STABLE,15,5.0,
