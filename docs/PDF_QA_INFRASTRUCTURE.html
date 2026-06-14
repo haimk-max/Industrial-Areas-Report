@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תשתית שאילתות מבוססת-מסמכים</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            color: #1a73e8;
+            border-bottom: 3px solid #1a73e8;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 25px;
+            border-left: 4px solid #1a73e8;
+            padding-left: 10px;
+        }
+        h3 {
+            color: #34495e;
+            margin-top: 18px;
+        }
+        h4 {
+            color: #555;
+            margin-top: 14px;
+        }
+        .toc {
+            background: #f0f7ff;
+            border: 1px solid #cce5ff;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: #1a73e8;
+        }
+        .toc ul {
+            list-style-position: inside;
+            padding: 0;
+        }
+        .toc li {
+            margin: 5px 0;
+        }
+        .toc a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: right;
+            border: 1px solid #ddd;
+        }
+        th {
+            background: #f0f0f0;
+            font-weight: 600;
+            color: #333;
+        }
+        tr:nth-child(even) {
+            background: #fafafa;
+        }
+        pre {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            direction: ltr;
+        }
+        code {
+            font-family: 'Courier New', monospace;
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 13px;
+            direction: ltr;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        blockquote {
+            border-right: 4px solid #1a73e8;
+            padding: 0 15px;
+            margin: 15px 0;
+            background: #f0f7ff;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+        blockquote strong {
+            color: #1a73e8;
+        }
+        .decision {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 10px 12px;
+            border-radius: 3px;
+            margin: 5px 0;
+            font-size: 13px;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+        .box {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 12px;
+            border-radius: 4px;
+        }
+        ul, ol {
+            margin: 10px 0;
+            padding-right: 20px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .back-to-top {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 12px;
+            background: #1a73e8;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 13px;
+        }
+        .back-to-top:hover {
+            background: #1557b0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>תשתית שאילתות מבוססת-מסמכים (PDF Q&A Infrastructure)</h1>
+
+<blockquote>
+<p><strong>סוג המסמך</strong>: מסמך אדריכלות (design spec). מתאר תשתית גנרית לחלוטין למיצוי, אינדוקס ושאילתה של מסמכי דוחות סביבתיים — <strong>לא כבולה לארכיטקטורת RAG מסוימת ולא לספק ענן מסוים</strong>. כל בחירת מימוש (מאגר וקטורי, מודל embedding, אחסון, מנוע סינון) מסומנת <code>[החלטה מקומית]</code> ויש להשלימה בכל סביבה.</p>
+
+<p><strong>רקע</strong>: התשתית נגזרה מאפיון פיילוט אמיתי (אזה"ת חולון–בת ים, 13 מסמכים) שנועד להתרחב לכלל הארגון. הפרמטרים והמאפיינים הספציפיים שלהלן (שדות מטה-דאטה, היררכיית מיקום, זיהוי נספחים) נלקחו מאותו אפיון, אך נוסחו כאן באופן שאינו תלוי-מימוש.</p>
+</blockquote>
+
+<div class="toc">
+<h3>תוכן עניינים</h3>
+<ul>
+<li><a href="#section-0">יחס למסמכים אחרים</a></li>
+<li><a href="#section-1">1. עיקרון-העל: שני זמנים, שני טריגרים</a></li>
+<li><a href="#section-2">2. תהליך א׳: עיבוד מרוכז ואינדוקס</a></li>
+<li><a href="#section-3">3. תהליך ב׳: שליפה וסינתזה</a></li>
+<li><a href="#section-4">4. תרשים זרימה מלא</a></li>
+<li><a href="#section-5">5. עקרונות תכנון</a></li>
+<li><a href="#section-6">6. מדרגיות, הרשאות ונראות</a></li>
+<li><a href="#section-7">7. נקודות-החלטה מקומיות</a></li>
+<li><a href="#section-8">8. Checklist הפעלה</a></li>
+</ul>
+</div>
+
+<h2 id="section-0">יחס למסמכים אחרים</h2>
+
+<table>
+<tr>
+<th>מסמך</th>
+<th>מה הוא מתאר</th>
+<th>תחום</th>
+</tr>
+<tr>
+<td><code>docs/PDF_EXTRACTION_PROCEDURE.md</code></td>
+<td>התהליך <strong>הקיים בפועל</strong> בפרויקט זה</td>
+<td>ספציפי לפרויקט</td>
+</tr>
+<tr>
+<td><code>docs/GENERIC_PDF_EXTRACTION_AND_RETRIEVAL.md</code></td>
+<td>מדריך גנרי לאזור חדש (שלבים 0–3 + שליפה בסיסית)</td>
+<td>גנרי לאזור</td>
+</tr>
+<tr>
+<td><strong><code>docs/PDF_QA_INFRASTRUCTURE.md</code></strong> (מסמך זה)</td>
+<td><strong>תשתית שאילתות מלאה</strong> — אינדקס מרוכז + שליפה לפי-דרישה + סינתזה</td>
+<td>תשתית גנרית</td>
+</tr>
+</table>
+
+<p>מסמך זה מרחיב את שני הקודמים: הוא לוקח את המיצוי (שלבים 0–3) והופך אותו ל<strong>שכבת אינדקס רב-ממדי</strong> שמיועדת לענות על <strong>שאלות שלא ניתן לחזות מראש</strong>, ומוסיף את שכבת השליפה-והסינתזה שמופעלת בעת שאלה.</p>
+
+<hr>
+
+<h2 id="section-1">1. עיקרון-העל: שני זמנים, שני טריגרים</h2>
+
+<p>המערכת מורכבת משני תהליכים שנפרדים בזמן ובטריגר. <strong>ערבוב בין השניים הוא טעות התכנון הנפוצה ביותר.</strong></p>
+
+<pre>
+┌──────────────────────────────────────────────────────────────────┐
+│  תהליך א׳ — עיבוד מרוכז (BATCH)                                   │
+│  טריגר: מסמכים חדשים עולים למאגר המקור (object store)             │
+│  תדירות: פעם אחת לכל מסמך (אידמפוטנטי)                            │
+│  פלט: אינדקס עשיר, רב-ממדי, מוכן-לשאילתה                          │
+└──────────────────────────────────────────────────────────────────┘
+                    │ (האינדקס נשמר, ממתין)
+┌──────────────────────────────────────────────────────────────────┐
+│  תהליך ב׳ — שליפה וסינתזה (ON-DEMAND)                             │
+│  טריגר: שאלה מגיעה (טקסט חופשי / בחירה על מפה / סינון אזור)       │
+│  תדירות: פעם לכל שאלה                                             │
+│  פלט: תשובה מעמיקה, מצוטטת, בעברית                                │
+└──────────────────────────────────────────────────────────────────┘
+</pre>
+
+<h3>למה ההפרדה קריטית</h3>
+
+<ul>
+<li><strong>האינדקס לא יודע מה ישאלו אותו.</strong> לכן הוא חייב ללכוד <strong>כל ממד שאילתה אפשרי</strong> מראש (מיקום, זמן, מזהם, קידוח, אקוויפר, מתקן, גורם-עורך, גורם-נדון, סוג-מסמך).</li>
+<li><strong>השאלה מגיעה אחר כך</strong> ופוגשת אינדקס מוכן: (1) תשובה מהירה, (2) שאילתה צולבת בין מסמכים, (3) עומק.</li>
+</ul>
+
+<blockquote>
+<p><strong>אנלוגיית הספרייה</strong>: ספרנית מקטלגת כל ספר שמגיע לפי כל ממד שמישהו עשוי לחפש לפיו. הקורא מגיע אחר כך עם שאלה. <strong>הקטלוג חייב להיות עשיר בממדים.</strong></p>
+</blockquote>
+
+<hr>
+
+<h2 id="section-2">2. תהליך א׳: עיבוד מרוכז ואינדוקס</h2>
+
+<p>הקלט: אצוות PDF ממאגר-מקור. הפלט: אינדקס רב-ממדי.</p>
+
+<h3>2.0 קליטה ומניפסט</h3>
+
+<p>כל מסמך שנכנס נרשם בקטלוג מרכזי לפני עיבוד.</p>
+
+<h4>עקרונות קליטה:</h4>
+<ul>
+<li><strong>קליטה אוטומטית</strong>: העלאה מפעילה קליטה ללא התערבות ידנית</li>
+<li><strong>הפניית-מקור נשמרת</strong>: לכל מסמך נשמרת הפניה למיקום המקור</li>
+<li><strong>כשל-והמשך</strong>: קובץ פגום → נרשם ביומן, הקליטה ממשיכה</li>
+<li><strong>סנכרון על עדכון/הסרה</strong>: מסמך שעודכן/הוסר ממאגר → אינדקס מסונכרן</li>
+<li><strong>שימור עברית RTL</strong>: כל טקסט עברי נשמר בצורה תקינה</li>
+</ul>
+
+<h4>אידמפוטנטיות (קריטי)</h4>
+<p><code>doc_id</code> = SHA-256 של תוכן הקובץ. מסמך שכבר אונדקס (אותו hash) — מדולג. גרסה מעודכנת → hash חדש → רשומה חדשה, והישנה מסומנת <code>superseded_by</code>.</p>
+
+<h3>2.1 זיהוי סוג-תוכן וחילוץ טקסט (כולל OCR)</h3>
+
+<p>לפני חילוץ, המערכת מזהה לכל עמוד אם הוא דיגיטלי או סרוק.</p>
+
+<table>
+<tr>
+<th>מצב עמוד</th>
+<th>פעולה</th>
+<th>נימוק</th>
+</tr>
+<tr>
+<td><strong>דיגיטלי</strong></td>
+<td><code>pdftotext -layout</code> ישירות</td>
+<td>חוסך עלות וזמן OCR; שומר טבלאות</td>
+</tr>
+<tr>
+<td><strong>סרוק / איכות נמוכה</strong></td>
+<td>OCR תומך-עברית</td>
+<td>אחרת העמוד "ריק"</td>
+</tr>
+</table>
+
+<div class="decision">
+<strong>[החלטה מקומית]</strong> — בחירת OCR: Tesseract-heb / Google Vision / ABBYY
+</div>
+
+<h3>2.2 סינון תוכן וזיהוי נספחים לא-רלוונטיים</h3>
+
+<p><strong>דוחות מעבדה גולמיים</strong> ו<strong>יומני שדה</strong> הם נספחים שמיצויָם מבזבז עלות. המערכת מזהה אותם ו<strong>מדלגת על מיצויָם — אך שומרת רשומה על קיומם</strong>.</p>
+
+<h4>מבנה טיפוסי של מסמך (מאפיון אמיתי)</h4>
+
+<table>
+<tr>
+<th>חלק</th>
+<th>עמודים אופייניים</th>
+<th>למיצוי?</th>
+</tr>
+<tr>
+<td>עמוד שער (לוגו, שם, תאריך)</td>
+<td>1</td>
+<td>חלקי (מטה-דאטה)</td>
+</tr>
+<tr>
+<td><strong>תוכן עניינים</strong></td>
+<td>2</td>
+<td><strong>כן — אות-מפתח</strong> לזיהוי גבולות</td>
+</tr>
+<tr>
+<td>גוף: רקע, מיקום, טבלאות מעקב, סיכום</td>
+<td>3–14</td>
+<td><strong>כן</strong></td>
+</tr>
+<tr>
+<td><strong>נספחים — דוחות מעבדה</strong></td>
+<td>15+</td>
+<td><strong>לא — דלג</strong></td>
+</tr>
+</table>
+
+<h4>אותות זיהוי (משולבים)</h4>
+<ol>
+<li><strong>תוכן עניינים (אות עדיף)</strong>: זיהוי סעיף "דוחות מעבדה"/"נספח" וטווח העמודים</li>
+<li><strong>טבלה צפופה</strong>: >30 שורות עם <code>Method</code>, <code>Unit</code>, <code>Result</code>, <code>Laboratory sample ID</code></li>
+<li><strong>כותרות אופייניות</strong>: "Analytical Results", "תוצאות מעבדה", "דוח בדיקה", "נספח"</li>
+<li><strong>עיתוי במסמך</strong>: נספח החל מעמ' 15+ במסמך בן 15–25 עמ'</li>
+<li><strong>עמודים סרוקים בסוף</strong>: טפסים חוזרים / כתב-יד → יומני שדה</li>
+</ol>
+
+<h4>כללי הכרעה</h4>
+<ul>
+<li><strong>הבחנה קריטית</strong>: טבלאות מסכמות בגוף = רלוונטיות; טבלאות גולמיות בנספח = דילוג</li>
+<li><strong>מפות / גרפים</strong>: חלץ רק כותרת + מספר, לא תוכן התמונה</li>
+<li><strong>ביטחון נמוך</strong>: סמן לבדיקה ידנית, לא דילוג אוטומטי</li>
+<li><strong>שקיפות</strong>: כל מסמך תועד — אילו חלקים מוצו ואילו דולגו</li>
+</ul>
+
+<h3>2.3 נתוח (Chunking)</h3>
+
+<table>
+<tr>
+<th>פרמטר</th>
+<th>ערך מומלץ</th>
+<th>נימוק</th>
+</tr>
+<tr>
+<td>גודל chunk</td>
+<td>500–800 מילים</td>
+<td>מספיק קונטקסט, לא בזבזני</td>
+</tr>
+<tr>
+<td>חפיפה</td>
+<td>10–15%</td>
+<td>מונע חיתוך משפט באמצע</td>
+</tr>
+<tr>
+<td>גבול נתוח</td>
+<td>סוף פסקה / כותרת / שורת-טבלה</td>
+<td>לא לחתוך רעיון</td>
+</tr>
+<tr>
+<td>טבלה מסכמת</td>
+<td>chunk שלם</td>
+<td>טבלה חתוכה = נתונים אבודים</td>
+</tr>
+</table>
+
+<h3>2.5 שכבת המטה-דאטה — לב המערכת</h3>
+
+<p><strong>האינדקס חייב ללכוד כל ממד שאילתה אפשרי מראש.</strong></p>
+
+<h4>עקרון הנרמול הקנוני</h4>
+<p>לכל שדה רב-גרסתי נשמרים שני ערכים:</p>
+<ul>
+<li><code>*_canonical</code> — הערך הקנוני המנורמל (לסינון אחיד)</li>
+<li><code>*_original[]</code> — כל הגרסאות המקוריות (לחיפוש מילולי)</li>
+</ul>
+
+<p><strong>דוגמה</strong>: <code>PFAS</code> / <code>חומרים פלואורואלקיליים</code> / <code>PFOS,PFOA</code> → canonical=<code>PFAS</code></p>
+
+<h4>א. פרטי המסמך</h4>
+
+<table>
+<tr>
+<th>שדה</th>
+<th>הערה</th>
+</tr>
+<tr>
+<td><code>document_name</code></td>
+<td>שם המסמך</td>
+</tr>
+<tr>
+<td><code>report_date</code></td>
+<td>תאריך הדוח</td>
+</tr>
+<tr>
+<td><code>report_type</code></td>
+<td>ניטור / מעקב-שיקום / דיגום / שנתי / אחר</td>
+</tr>
+<tr>
+<td><code>author_names[]</code></td>
+<td>שמות המחברים</td>
+</tr>
+<tr>
+<td><code>preparing_org</code></td>
+<td><strong>הגוף שהמחברים מטעמו</strong> — חברת העריכה/הכנה</td>
+</tr>
+<tr>
+<td><code>subject_entity</code></td>
+<td><strong>הגורם שהדוח עוסק בו</strong> (למשל "דלק הצבי", "סונול")</td>
+</tr>
+</table>
+
+<blockquote>
+<p><strong>הבחנה קריטית</strong>: <code>preparing_org</code> (מי כתב) ≠ <code>subject_entity</code> (על מי/מה). שני שדות נפרדים.</p>
+</blockquote>
+
+<h4>ב. גיאוהידרולוגיה</h4>
+
+<table>
+<tr>
+<th>שדה</th>
+<th>דוגמה</th>
+</tr>
+<tr>
+<td><code>aquifer_names[]</code></td>
+<td>אקוויפר החוף</td>
+</tr>
+<tr>
+<td><code>sub_aquifers[]</code></td>
+<td>תת-אקוויפר A/B/C</td>
+</tr>
+<tr>
+<td><code>monitoring_wells[]</code></td>
+<td>שמות קידוחי ניטור</td>
+</tr>
+<tr>
+<td><code>production_wells[]</code></td>
+<td>שמות קידוחי הפקה</td>
+</tr>
+</table>
+
+<h4>ג. זיהום (עם נרמול קנוני)</h4>
+
+<table>
+<tr>
+<th>שדה</th>
+<th>דוגמה</th>
+<th>הערה</th>
+</tr>
+<tr>
+<td><code>contaminant_groups_canonical[]</code></td>
+<td>מזהמי דלק, ממסים מוכלרים, PFAS</td>
+<td>קבוצות מזהמים — מנורמל</td>
+</tr>
+<tr>
+<td><code>contaminants_canonical[]</code></td>
+<td>Benzene, Toluene, TCE, PCE</td>
+<td>מזהם ספציפי — מנורמל</td>
+</tr>
+<tr>
+<td><code>*_original[]</code></td>
+<td>"בנזן", "BTEX", "פחממנים"</td>
+<td>גרסאות מקור</td>
+</tr>
+</table>
+
+<h4>ד. מיקום + היררכיה (ממד שליפה מרכזי)</h4>
+
+<table>
+<tr>
+<th>שדה</th>
+<th>דוגמה</th>
+</tr>
+<tr>
+<td><code>area_canonical</code></td>
+<td>אזור תעשייה חולון</td>
+</tr>
+<tr>
+<td><code>city_canonical</code></td>
+<td>חולון</td>
+</tr>
+<tr>
+<td><code>street_or_site[]</code></td>
+<td>רחוב המלאכה / "תחנת דלק מרכבות האש"</td>
+</tr>
+<tr>
+<td><code>monitoring_points[]</code></td>
+<td>מזהי בארות/נקודות ניטור</td>
+</tr>
+<tr>
+<td><code>coordinates</code></td>
+<td>קווי אורך/רוחב או רשת ITM</td>
+</tr>
+<tr>
+<td><code>*_original[]</code></td>
+<td>גרסאות מקור (אזה"ת חולון…)</td>
+</tr>
+</table>
+
+<p><strong>כלל היררכיה</strong>: סינון ברמה גבוהה (אזור) כולל אוטומטית את כל הרמות שתחתיו (עיר→רחוב→נקודה).</p>
+
+<h4>מבנה האחסון — שלושה אינדקסים משלימים</h4>
+
+<pre dir="ltr">
+index/
+├── facts.jsonl          # (A) עובדות מובנות — סינון מטא-דאטה מדויק
+├── chunks.jsonl         # (B) chunks + טקסט — חיפוש מילולי (BM25)
+└── vectors/             # (C) embeddings — חיפוש סמנטי
+    ├── embeddings.bin
+    └── chunk_id_map.json
+</pre>
+
+<ul>
+<li><strong>(A)</strong> משרת שאילתות מדויקות</li>
+<li><strong>(B)</strong> תופס מונח מדויק — כולל <code>*_original</code> לתפיסת גרסאות-כתיבה</li>
+<li><strong>(C)</strong> תופס ניסוח חופשי בלא המילה המדויקת</li>
+</ul>
+
+<hr>
+
+<h2 id="section-3">3. תהליך ב׳: שליפה וסינתזה (לפי שאלה)</h2>
+
+<h3>3.1 נתוח כוונת השאלה</h3>
+
+<p>תרגום שאלה חופשית ל<strong>מסנני-ממד</strong> + <strong>מונחי-חיפוש</strong>, ממופה לממדי §2.5.</p>
+
+<h3>3.2 שליפה היברידית</h3>
+
+<pre>
+1. PRE-FILTER (מטא-דאטה)  → מצמצם לפי filters
+        ▼
+2. RANK (במקביל):
+   ├── BM25       על chunks.jsonl
+   ├── Semantic   על vectors/
+   └── Structured על facts.jsonl
+        ▼
+3. MERGE & RE-RANK (RRF) → הסרת כפילויות,
+   חיזוק לפי evidence_class (A>B>C>D>E), עדכניות, חומרה
+        ▼
+   top-K chunks (~10-20) + top-M facts (~30-50)
+</pre>
+
+<p><strong>עיקרון anti-tunnel-vision</strong>: תמיד לשלוף משלושת המקורות. שאלה "TCE" (מילה) עם תשובה "טריכלורואתילן" (סמנטי) — רק השילוב תופס.</p>
+
+<h3>3.2ב שליפה לפי מיקום ומפה</h3>
+
+<ul>
+<li><strong>בחירה על מפה / שם-אזור</strong> → החזרת כל המסמכים והקטעים המשויכים, כולל כל הרמות שתחתיו בהיררכיה</li>
+<li><strong>מאפיין-אזור טקסטואלי</strong> ("חולון") → התאמה לערך הקנוני</li>
+<li><strong>קואורדינטות</strong> נחשפות כסמני-מפה</li>
+<li><strong>אין מסמכים לאזור</strong> → הודעה מפורשת "אין מידע זמין"</li>
+</ul>
+
+<h3>3.3 הרכבת קונטקסט</h3>
+
+<p>chunks והעובדות מורכבים לפורמט LLM תחת <strong>תקציב-טוקנים</strong>:</p>
+
+<div class="box" dir="ltr">
+<pre>
+## עובדות מובנות רלוונטיות
+| מזהם | קידוח | ריכוז | % מתקן | תאריך | מקור | אמינות |
+|------|-------|-------|--------|-------|------|--------|
+| Benzene | נת חולון 7 | 320 µg/L | 3200% | 2023-04 | monitoring_2023 | B |
+
+## קטעי טקסט מקוריים
+### [מקור 1] monitoring_2023.pdf, עמ' 9 (אמינות B)
+"בקידוח נת חולון 7 נמדד בנזן בריכוז 320 מק"ג/ל..."
+</pre>
+</div>
+
+<p><strong>ניהול תקציב</strong>: ~70% קטעי-טקסט / ~20% עובדות / ~10% רזרבה. כל קטע נושא <strong>אטריבוציה מלאה</strong> (קובץ+עמוד+מיקום+אמינות).</p>
+
+<h3>3.4 סינתזה (LLM)</h3>
+
+<div class="decision">
+<strong>[החלטה מקומית]</strong> — בחירת מודל: Opus (עומק) / Sonnet (מהירות)
+</div>
+
+<p><strong>עקרונות ה-system prompt</strong>:</p>
+<ul>
+<li><strong>persona</strong>: הידרוגיאולוג מומחה; תשובה בעברית</li>
+<li><strong>ציטוט חובה</strong>: כל קביעה → מקור. אין מקור → לא נכתב</li>
+<li><strong>כיבוד אמינות</strong>: D/E כ"השערה"; A/B קביעה</li>
+<li><strong>אי-המצאה</strong>: "המידע אינו זמין במסמכים שנשלפו"</li>
+<li><strong>שיחה רב-תורית</strong>: שימור הקשר בין שאלות עוקבות</li>
+</ul>
+
+<hr>
+
+<h2 id="section-4">4. תרשים זרימה מלא</h2>
+
+<pre dir="ltr">
+═════════ תהליך א׳: עיבוד מרוכז (BATCH) ═════════
+  PDFs (object store)
+     │ 2.0 קליטה+מניפסט
+     │ 2.1 זיהוי-סוג+חילוץ
+     │ 2.2 סינון נספחים
+     │ 2.3 נתוח
+     │ 2.4 מיצוי ישויות
+     │ 2.5 אינדוקס רב-ממדי
+     ▼
+  (אינדקס נשמר)
+
+═════════ תהליך ב׳: שליפה (ON-DEMAND) ═════════
+  שאלה / בחירת-מפה / סינון-אזור
+     │ 3.1 נתוח-כוונה
+     │ 3.2 שליפה היברידית
+     │ 3.3 הרכבת-קונטקסט
+     │ 3.4 סינתזת-LLM
+     ▼
+  תשובה מעמיקה, מצוטטת, בעברית
+</pre>
+
+<hr>
+
+<h2 id="section-5">5. עקרונות תכנון (Design Invariants)</h2>
+
+<ol>
+<li>אינדוקס רחב מראש — כל ממד פוטנציאלי נכנס בקליטה</li>
+<li>אטריבוציה מקצה-לקצה — chunk→doc+עמוד; עובדה→chunk_id</li>
+<li>אידמפוטנטיות לפי hash — קליטה חוזרת לא משכפלת</li>
+<li>הפרדת batch/on-demand — עיבוד לעולם לא בזמן-שאלה</li>
+<li>שליפה היברידית תמיד — מטא-דאטה + מילולי + סמנטי</li>
+<li>נרמול קנוני + שימור-מקור — <code>*_canonical</code> לסינון, <code>*_original[]</code> לחיפוש</li>
+<li>הבחנת עורך/נדון — <code>preparing_org</code> ≠ <code>subject_entity</code></li>
+<li>מיקום היררכי — סינון-אזור כולל את כל הרמות שתחתיו</li>
+<li>כשל-והמשך — מסמך בעייתי נרשם ומדולג; האצווה לא נעצרת</li>
+<li>אמינות זורמת לתשובה — A–E משפיע על דירוג וניסוח</li>
+<li>אי-המצאה — מחוץ-לקונטקסט = "לא זמין"</li>
+<li>דלג-אך-רשום — נספח שדולג מתועד; ביטחון-נמוך→בדיקה-ידנית</li>
+</ol>
+
+<hr>
+
+<h2 id="section-6">6. מדרגיות, הרשאות ונראות</h2>
+
+<h3>מדרגיות (פיילוט → ארגון)</h3>
+<ul>
+<li>תוספת מסמכים = אותו תהליך קליטה, <strong>ללא שינוי ארכיטקטורה</strong></li>
+<li>סכמת המטה-דאטה והמיקום <strong>ניתנת להרחבה</strong></li>
+</ul>
+
+<h3>הרשאות</h3>
+<p><strong>[החלטה מקומית]</strong> — הפרדת הרשאות-גישה למסמכים לפי משתמש/קבוצה. מומלץ לשמור <code>access_group</code> כשדה מטה-דאטה.</p>
+
+<h3>נראות ובקרת איכות</h3>
+<ul>
+<li><strong>סיכום קליטה</strong>: בסיום אצווה — כמה נקלטו בהצלחה / כמה נכשלו</li>
+<li><strong>סקירת חילוץ</strong>: ניתן לסקור מטה-דאטה ומיקום לכל מסמך</li>
+<li><strong>דגלי איכות</strong>: <code>extraction_confidence</code> מתחת לסף → המסמך מסומן לבדיקה ידנית</li>
+</ul>
+
+<hr>
+
+<h2 id="section-7">7. נקודות-החלטה מקומיות</h2>
+
+<table>
+<tr>
+<th>#</th>
+<th>החלטה</th>
+<th>אפשרויות</th>
+<th>ברירת-מחדל</th>
+</tr>
+<tr>
+<td>1</td>
+<td>מאגר-מקור</td>
+<td>S3 / GCS / MinIO / תיקייה</td>
+<td>object store קיים</td>
+</tr>
+<tr>
+<td>2</td>
+<td>OCR עברית</td>
+<td>Tesseract-heb / Vision / ABBYY</td>
+<td>Tesseract-heb</td>
+</tr>
+<tr>
+<td>3</td>
+<td>אחסון עובדות</td>
+<td>JSONL / SQLite / DuckDB / Postgres</td>
+<td>JSONL → SQLite בצמיחה</td>
+</tr>
+<tr>
+<td>4</td>
+<td>מודל embedding</td>
+<td>Voyage / OpenAI / מקומי / מנוהל</td>
+<td>מקומי-קל בהתחלה</td>
+</tr>
+<tr>
+<td>5</td>
+<td>מאגר וקטורי</td>
+<td>FAISS / Chroma / pgvector / Qdrant</td>
+<td>cosine-בזיכרון → FAISS</td>
+</tr>
+<tr>
+<td>6</td>
+<td>מנוע BM25</td>
+<td>rank-bm25 / Tantivy / FTS / Elasticsearch</td>
+<td>rank-bm25</td>
+</tr>
+<tr>
+<td>7</td>
+<td>מיזוג דירוג</td>
+<td>RRF / משוקלל-ידני</td>
+<td>RRF</td>
+</tr>
+<tr>
+<td>8</td>
+<td>מודל סינתזה</td>
+<td>Opus / Sonnet</td>
+<td>Opus לדוחות, Sonnet לאד-הוק</td>
+</tr>
+<tr>
+<td>9</td>
+<td>הרשאות</td>
+<td>per-user / per-group / ACL</td>
+<td><code>access_group</code> במטה-דאטה</td>
+</tr>
+</table>
+
+<h4>מסלול-התחלה מינימלי</h4>
+<p>object-store קיים → <code>pdftotext</code>+OCR → סינון-נספחים → JSONL (facts+chunks) בזיכרון → BM25 <strong>בלי שכבה וקטורית</strong> → סינתזה ב-Opus. הוספת וקטור (4+5) כשחיפוש-מילולי מתחיל לפספס. <strong>ללא RAG מנוהל</strong> — זהו שדרוג אופציונלי.</p>
+
+<hr>
+
+<h2 id="section-8">8. Checklist הפעלה</h2>
+
+<h3>עיבוד (batch)</h3>
+<ul>
+<li>☐ קטלוג מאותחל; <code>doc_id</code>(hash) + <code>source_uri</code> + <code>doc_type</code> לכל מסמך</li>
+<li>☐ אידמפוטנטיות מאומתת</li>
+<li>☐ זיהוי דיגיטלי/סרוק עובד; OCR-עברית למסמכים סרוקים</li>
+<li>☐ <code>extraction_confidence</code> נשמר</li>
+<li>☐ סינון-נספחים: TOC + טבלאות-צפופות (>30) + כותרות + עיתוי</li>
+<li>☐ דלג-אך-רשום; ביטחון-נמוך→ידני</li>
+<li>☐ מפות/גרפים → כותרת-בלבד</li>
+<li>☐ טבלאות-מסכמות (גוף) נשמרות; גולמיות (נספח) מדולגות</li>
+<li>☐ נתוח שומר טבלאות-מסכמות שלמות</li>
+<li>☐ כל chunk נושא עמוד</li>
+<li>☐ מיצוי: עובדה→chunk_id; A–E; שדות-לא-נמצאו = <code>"unknown"</code></li>
+<li>☐ מטה-דאטה: <code>preparing_org</code>≠<code>subject_entity</code>; <code>*_canonical</code>+<code>*_original</code></li>
+<li>☐ היררכיית-מיקום; קואורדינטות</li>
+<li>☐ שלושת האינדקסים נכתבו</li>
+<li>☐ סנכרון על עדכון/הסרה</li>
+</ul>
+
+<h3>שליפה (on-demand)</h3>
+<ul>
+<li>☐ נתוח-כוונה ממפה שאלת-בדיקה למסננים נכונים</li>
+<li>☐ סינון-אזור מרחיב לכל הרמות בהיררכיה</li>
+<li>☐ בחירת-מפה / שם-אזור מחזירה מסמכים+קטעים</li>
+<li>☐ קואורדינטות חשופות לסמן</li>
+<li>☐ שליפה מחזירה משלושת המקורות</li>
+<li>☐ קונטקסט נושא אטריבוציה מלאה לכל קטע</li>
+<li>☐ תשובה בעברית, מצטטת מקור לכל קביעה</li>
+<li>☐ שיחה רב-תורית שומרת הקשר</li>
+<li>☐ שאלה ללא תשובה / אזור ריק → "לא זמין"</li>
+</ul>
+
+<hr>
+
+<a href="#" class="back-to-top">↑ חזור לתוכן עניינים</a>
+
+<footer style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; color: #666; font-size: 12px;">
+<p>מסמך זה: PDF_QA_INFRASTRUCTURE.md | נוצר: 2026-06-14</p>
+</footer>
+
+</body>
+</html>
