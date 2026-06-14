@@ -874,10 +874,32 @@ def gate3_prompt_layer(zone: str) -> QAResult:
                 f"prompt מרונדר '{name}' מיושן: ה-template השתנה מאז הרינדור "
                 f"(stamp {stamp.group(1)} ≠ current {_sha12(tpath)}) — רנדר מחדש"
             )
-        # TODO: Add diagnosis_sha check to detect if zone_diagnosis.md changed since prompt render
-        # (Current limitation: diagnosis_sha not yet stamped in rendered prompts — placeholder for future enhancement)
         elif not hits and not leftover:
             result.info(f"prompt מרונדר '{name}': טרי, תואם template, ללא placeholders — תקין")
+
+        # REQ #31.5 — the report prompt bakes a snapshot of the diagnosis focus_order;
+        # verify it is not stale vs the live zone_diagnosis.md (footgun: Step 4 re-run
+        # without re-rendering Step 5a → Opus consumes a stale focus order).
+        if name == "report":
+            diag = REPO_ROOT / zone / "context_pack" / "04_diagnosis" / "zone_diagnosis.md"
+            dstamp = re.search(r"diagnosis_sha256_12=([0-9a-f]{12})", rtext)
+            if not diag.exists():
+                result.warn(
+                    "prompt מרונדר 'report': zone_diagnosis.md חסר — לא ניתן לאמת טריות focus_order"
+                )
+            elif not dstamp:
+                result.warn(
+                    "prompt מרונדר 'report': חסרה חותמת diagnosis_sha256_12 — "
+                    "רנדר מחדש דרך render_zone_prompt.py (footgun staleness 4→5, REQ #31.5)"
+                )
+            elif dstamp.group(1) != _sha12(diag):
+                result.error(
+                    f"prompt מרונדר 'report' מיושן מול האבחון: zone_diagnosis.md השתנה "
+                    f"מאז הרינדור (stamp {dstamp.group(1)} ≠ current {_sha12(diag)}) — "
+                    f"רנדר מחדש לפני Step 5 (אחרת Opus צורך סדר-מוקדים מיושן)"
+                )
+            else:
+                result.info("prompt מרונדר 'report': diagnosis_sha תואם — focus_order טרי")
 
     # 3. Stale duplicate rendered prompts outside the canonical context_pack/05_prompt
     for dup in REPO_ROOT.glob(f"{zone}/**/05_prompt/zone_report_prompt.md"):
@@ -900,6 +922,111 @@ def gate3_prompt_layer(zone: str) -> QAResult:
                 "scripts/templates/zone_report_prompt_template.md (V4-era) ללא באנר "
                 "DEPRECATED — footgun: מכיל סדר family-first ונראה שמיש"
             )
+
+    return result
+
+
+# ── Gate 8: Executive summaries (post-approval, Step 8) ───────────────────────
+
+def _sha12_bytes(path: Path) -> str:
+    """First 12 hex of sha256 of a file's *bytes* — must match generate_zone_brief.py."""
+    import hashlib
+    return hashlib.sha256(path.read_bytes()).hexdigest()[:12]
+
+
+def gate8_exec_summary(zone: str, brief_path: Optional[Path] = None) -> QAResult:
+    """Validate the Step-8 executive summaries (INTERNAL + PUBLIC), post report-approval.
+
+    NOT part of the main 2→6 loop — exec summaries are generated only after the full
+    report (Step 5) is approved. Run standalone: `--gate 8`.
+
+    Checks:
+    - REQ #31.2 (brief↔report freshness): the brief carries a provenance header
+      `# source_report_sha256_12: <sha>` that MUST match the current latest report.
+      Missing or mismatched → FAIL (else exec summaries ship stale content under a
+      new version).
+    - REQ #31.3 (anonymization): the PUBLIC exec summary must contain ZERO real
+      facility names (sources[].name_internal) → FAIL. Real well names
+      (boreholes[].name_he) → WARN only: the approved reference legitimately names
+      a supply well in its exceedance-transparency narrative, so this is advisory,
+      not blocking. Blocklists are derived from the brief itself.
+    """
+    result = QAResult("8 (Exec Summaries)", zone)
+
+    brief = brief_path or (REPO_ROOT / "report-engine" / "briefs" / f"{zone.lower()}.yaml")
+    if not brief.exists():
+        result.error(f"brief לא נמצא: {brief.relative_to(REPO_ROOT)} — הרץ generate_zone_brief.py")
+        return result
+    btext = brief.read_text(encoding="utf-8")
+
+    # ── REQ #31.2: brief ↔ report provenance freshness ──
+    report_md = _latest_report(zone, "md")
+    old_sha = re.search(r"source_report_sha256_12:\s*([0-9a-f]{12})", btext)
+    old_ver = re.search(r"source_report_version:\s*(\S+)", btext)
+    if report_md is None:
+        result.warn("דוח מקור לא נמצא — לא ניתן לאמת טריות brief↔report")
+    elif not old_sha:
+        result.error(
+            f"brief ללא חותמת provenance (source_report_sha256_12) — "
+            f"חדש דרך: python scripts/generate_zone_brief.py finalize --zone {zone.lower()} "
+            f"(REQ #31.2; הדוח הנוכחי: {report_md.name})"
+        )
+    else:
+        cur_sha = _sha12_bytes(report_md)
+        if old_sha.group(1) != cur_sha:
+            result.error(
+                f"brief מיושן: נבנה מ-sha {old_sha.group(1)} "
+                f"({old_ver.group(1) if old_ver else '?'}) אך הדוח הנוכחי הוא {cur_sha} "
+                f"({report_md.name}) — חדש את הדוחות הניהוליים (REQ #31.2)"
+            )
+        else:
+            result.info(
+                f"brief↔report טרי: sha {cur_sha} "
+                f"({old_ver.group(1) if old_ver else '?'} = {report_md.name}) — תקין"
+            )
+
+    # ── REQ #31.3: PUBLIC anonymization ──
+    public_html = REPO_ROOT / zone / "output" / f"{zone.upper()}_EXECUTIVE_SUMMARY_PUBLIC.html"
+    if not public_html.exists():
+        result.warn(f"PUBLIC exec summary לא נמצא: {public_html.name} — דלג על בדיקת אנונימיזציה")
+    else:
+        ptext = public_html.read_text(encoding="utf-8")
+        facilities: set[str] = set()
+        wells: set[str] = set()
+        try:
+            import yaml
+            data = yaml.safe_load(btext) or {}
+            for s in data.get("sources", []) or []:
+                nm = (s.get("name_internal") or "").strip()
+                if nm:
+                    facilities.add(nm)
+            for b in data.get("boreholes", []) or []:
+                nm = (b.get("name_he") or "").strip()
+                if nm:
+                    wells.add(nm)
+        except ImportError:
+            result.warn("PyYAML לא מותקן — בדיקת אנונימיזציה מדולגת (התקן pyyaml לאכיפה מלאה)")
+
+        # FAIL: facility names must never appear in PUBLIC.
+        if facilities:
+            leaks = sorted(nm for nm in facilities if nm in ptext)
+            if leaks:
+                result.error(
+                    f"דליפת אנונימיזציה ב-PUBLIC: {len(leaks)} שמות-מתקנים אמיתיים — "
+                    f"{leaks[:5]} (REQ #31.3; השתמש ב-name_generic בלבד)"
+                )
+            else:
+                result.info(
+                    f"אנונימיזציה: PUBLIC נקי מ-{len(facilities)} שמות-מתקנים אמיתיים — תקין"
+                )
+        # WARN: real well names (codes B-NN preferred; reference names one supply well).
+        if wells:
+            wleaks = sorted(nm for nm in wells if nm in ptext)
+            if wleaks:
+                result.warn(
+                    f"שמות קידוחים אמיתיים ב-PUBLIC: {len(wleaks)} — {wleaks[:5]} "
+                    f"(מומלץ קודי B-NN; חריג מאושר: קידוח אספקה בסיפור החריגה)"
+                )
 
     return result
 
@@ -986,7 +1113,7 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="Example: python scripts/qa_pipeline.py --gate all --zone Holon",
     )
-    parser.add_argument("--gate", choices=["2", "3", "4", "5", "6", "all"], required=True)
+    parser.add_argument("--gate", choices=["2", "3", "4", "5", "6", "8", "all"], required=True)
     parser.add_argument("--zone", required=True, help="Zone directory name (e.g. Holon)")
     parser.add_argument("--report", type=Path, help="Override path to V5 report .md")
     parser.add_argument("--html", type=Path, help="Override path to HTML output")
@@ -1010,6 +1137,7 @@ def main():
         "4": lambda: gate4_diagnosis(zone, args.diagnosis),
         "5": lambda: gate5_report(zone, args.report),
         "6": lambda: gate6_output(zone, args.html, args.docx),
+        "8": lambda: gate8_exec_summary(zone),
     }
 
     result = gate_map[args.gate]()

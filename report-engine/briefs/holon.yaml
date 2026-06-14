@@ -1,6 +1,11 @@
 # ════════════════════════════════════════════════════════════════════
 # Holon Industrial Zone · Report Brief — V8
 # Source: HOLON_REPORT_V8.md (sha 9d789b15c55c, June 2026)
+# source_report_version: V8
+# source_report_sha256_12: 9d789b15c55c
+# source_report_path: Holon/output/HOLON_REPORT_V8.md
+# (machine-readable provenance — REQ #31.2 gate 8 + run_pipeline.sh staleness check.
+#  Regenerate via generate_zone_brief.py finalize whenever the source report changes.)
 # Conforms to: schemas/zone-brief.schema.json
 # This file is the SOLE input to the report engine for Holon.
 # Validates and reproduces output/holon/INTERNAL.html + PUBLIC.html
