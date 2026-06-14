@@ -547,7 +547,7 @@ FUEL אינו "תמיד אחרון" עוד — מוקד דלק חמור יכול
 
 ---
 
-## VIII. Scaling Pattern — 7-Step Hybrid Pipeline (For Zone N+1, N+2, …)
+## VIII. Scaling Pattern — 7-Step Hybrid Pipeline + Step 8 (Exec Summaries, post-approval) — For Zone N+1, N+2, …
 
 > **אכיפת QA**: לכל שלב שמייצר פלט — יש שער QA אוטומטי. הפקודה הרלוונטית מצוינת לכל שלב.
 > כלי: `python scripts/qa_pipeline.py --gate <N> --zone <ZONE>`
@@ -594,6 +594,21 @@ FUEL אינו "תמיד אחרון" עוד — מוקד דלק חמור יכול
    python scripts/qa_pipeline.py --gate all --zone {ZONE}
    ```
    פלט אוטומטי: `{ZONE}/output/QA_REPORT_{date}.md` — יש לצרף ל-commit.
+
+8. **(לאחר אישור הידרולוג בלבד) Generate executive summaries** → דוחות ניהוליים INTERNAL + PUBLIC.
+   **לא חלק מהלולאה הראשית** — רץ רק אחרי שהדוח המלא (שלב 5) אושר. ה-**brief YAML** (`report-engine/briefs/{zone}.yaml`) הוא ה-artifact הסטנדרטי של שלב זה: הוא נגזר מהדוח המלא ונושא `source_report_version` + `source_report_sha` (חוזה טריות).
+   ```bash
+   # 8a (דטרמיניסטי): גזירת brief-prompt מהדוח האחרון + provenance
+   python scripts/generate_zone_brief.py prepare --zone {zone}
+   # 8b (OPUS #3): הרצת הprompt → raw_brief.yaml (9 ממצאים, dual framing, מקורות)
+   # 8c (דטרמיניסטי): finalize + רינדור HTML צמודים
+   python scripts/generate_zone_brief.py finalize --zone {zone}
+   python scripts/generate_zone_html_from_brief.py --zone {zone}
+   ```
+   **חסימה על FAIL**:
+   - **Gate brief↔report sha** (REQ #31.2): `source_report_sha` ב-brief חייב לתאום את ה-sha של הדוח הנוכחי — אחרת מופצים דוחות ניהוליים מיושנים תחת גרסה חדשה.
+   - **Gate אנונימיזציה** (REQ #31.3): PUBLIC חייב להיות נקי משמות-מתקנים אמיתיים (סריקה מול רשימת שמות) — דליפה = FAIL.
+   > ⚠️ **מגבלה ידועה (REQ #31.1)**: `generate_zone_html_from_brief.py` ממלא כיום את כל סעיפי ה-brief (כולל `stats_public`, `means_summary`, `methodology`, `timeline`) — אזור חדש מקבל את נתוניו שלו ולא של חולון. (לפני התיקון: רק 5 סעיפים הוחלפו; השאר נשארו hardcoded מ-reference חולון.)
 
 **Precedent for Zone N+1**: Once Zone N passes expert validation, store as `[N+1]/lean_workspace/01_inputs/[N]_approved_precedent.md`.
 
