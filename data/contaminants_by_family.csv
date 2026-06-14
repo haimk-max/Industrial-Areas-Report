@@ -1,196 +1,196 @@
-﻿parameter_name,family,unit,drinking_water_standard,has_dws,excluded_from_analysis,zones_present,measurement_count_holon,measurement_count_raanana,max_severity_index_holon,trend_alerts_holon,trend_watches_holon,param_codes_raanana
-"1,1,1,2-tetrachloroethane",CVOC,µg/L,,N,N,Holon;Raanana,88,14,0,,,TEC12
-"1,1,2,2-tetrachloroethane",CVOC,µg/L,,N,N,Holon;Raanana,85,14,0,,,TEC22
-"1,1,2-trichloroethane",CVOC,µg/L,5.0,Y,N,Holon;Raanana,161,23,5,,,TCEN
-"1,1-dichloroethane",CVOC,µg/L,,N,N,Holon;Raanana,187,29,0,,,DCET1
-"1,1-Dichloropropane",CVOC,µg/L,,N,N,Holon;Raanana,9,1,0,,,DCP11
-"1,1-dichloropropene",CVOC,µg/L,,N,N,Holon;Raanana,12,2,0,,,DCHP1
-"1,2,3-trichlorobenzene",CVOC,µg/L,,N,N,Holon;Raanana,129,23,0,,,TRBN3
-"1,2,3-trichloropropane",CVOC,µg/L,,N,N,Holon;Raanana,113,17,0,,,TRPR3
-"1,2,4-trichlorobenzene",CVOC,µg/L,70.0,Y,N,Holon;Raanana,135,23,0,,,TRBN4
-"1,2-dichloropropane",CVOC,µg/L,5.0,Y,N,Holon;Raanana,138,26,4,,,DCPN
-"1,3-dichlorobenzene",CVOC,µg/L,,N,N,Holon;Raanana,128,23,0,,,DCB13
-"1,3-dichloropropane",CVOC,µg/L,,N,N,Holon;Raanana,53,10,0,,,DCP13
-"1,3-Dichloropropene (e) CIS",CVOC,µg/L,,N,N,Holon;Raanana,52,10,0,,,DP13E
-"1,3-Dichloropropene (z) TRANS",CVOC,µg/L,,N,N,Holon;Raanana,52,10,0,,,DP13T
-"1,4 DIOXANE",CVOC,µg/L,3.0,Y,N,Holon,43,,8,,,
-"2,2-dichloropropane",CVOC,µg/L,,N,N,Holon;Raanana,52,10,0,,,DCP22
-Bromo dichloromethane,CVOC,µg/L,,N,N,Holon;Raanana,61,10,0,,,BRDCM
-bromochloromethane,CVOC,µg/L,,N,N,Holon;Raanana,60,10,0,,,BRCM
-CARBON TETRACHLORIDE,CVOC,µg/L,4.0,Y,N,Holon;Raanana,219,29,3,,,CCL4
-Chloroethane,CVOC,µg/L,,N,N,Holon;Raanana,144,23,0,,,CHLET
-CHLOROFORM,CVOC,µg/L,80.0,Y,N,Holon;Raanana,249,40,6,,,CHLF
-Chloromethane,CVOC,µg/L,,N,N,Holon;Raanana,118,17,0,,,CHLMT
-"CIS 1,2 DICHLOROETHYLENE",CVOC,µg/L,50.0,Y,N,Holon;Raanana,239,35,6,,,CDCE
-"CIS+ TRANS 1,2 DICHLOROETHELYENE",CVOC,µg/L,,N,N,Holon,17,,0,,,
-dibromochloromethane,CVOC,µg/L,,N,N,Holon,11,,0,,,
-"DICHLOROBENZEN 1,4",CVOC,µg/L,75.0,Y,N,Holon;Raanana,127,23,0,,,PDCB
-DICHLOROBROMOMETHANE,CVOC,microgr/L,,N,N,Raanana,,1,,,,DCBM
-Dichlorodifluoromethane,CVOC,µg/L,,N,N,Holon;Raanana,119,19,0,,,DCDFM
-"DICHLOROETHANE1,2",CVOC,µg/L,4.0,Y,N,Holon;Raanana,214,29,8,,,DCET
-"DICHLOROETHYLENE 1,1",CVOC,µg/L,10.0,Y,N,Holon;Raanana,298,38,8,,,DCEY
-DICHLOROMETHANE,CVOC,µg/L,5.0,Y,N,Holon;Raanana,25,6,0,,,DCLM
-"DICHLOROPHENOXY ACETI2,4 C ACID",CVOC,µg/L,30.0,Y,N,Holon;Raanana,19,6,0,,,DCPA
-Methylene chloride,CVOC,µg/L,,N,N,Holon;Raanana,116,20,0,,,METCH
-MONOCHLOROBENZENE,CVOC,µg/L,100.0,Y,N,Holon;Raanana,130,26,0,,,MCBZ
-TETRACHLORO ETHYLENE,CVOC,µg/L,10.0,Y,N,Holon;Raanana,272,34,8,,,TECE
-"TRANS-1,2 DICHLOROETHYLENE",CVOC,µg/L,50.0,Y,N,Holon;Raanana,197,35,3,,,TDCE
-"TRICHLORO ETHANE 1,1,1",CVOC,µg/L,200.0,Y,N,Holon;Raanana,201,29,2,,,TCET
-TRICHLORO ETHYLENE,CVOC,µg/L,7.5,Y,N,Holon;Raanana,322,47,8,,,TCEY
-"TRICHLORO PHENOXY 2,4,5 PROPIO",CVOC,µg/L,10.0,Y,N,Holon;Raanana,8,3,0,,,TCPA
-Trichloroethane,CVOC,µg/L,,N,N,Holon,4,,0,,,
-Trichlorofluoromethane,CVOC,µg/L,,N,N,Holon;Raanana,134,19,0,,,TCFM
-VINYL CHLORIDE,CVOC,µg/L,0.5,Y,N,Holon;Raanana,217,35,8,,,VYCL
-1 METHYLNAPHTHALENE,FUEL,µg/L,,N,N,Holon,5,,0,,,
-"1,2,4 TRIMETHYLBENZENE",FUEL,µg/L,,N,N,Holon;Raanana,178,23,0,,,TRMB4
-"1,2-dibromo-3-chloropropane",FUEL,µg/L,0.3,Y,N,Holon;Raanana,120,20,0,,,DBR3C
-"1,2-Dibromomethane",FUEL,µg/L,,N,N,Holon;Raanana,19,1,0,,,DBR12
-"1,3,5 TRIMETHYLBENZENE",FUEL,µg/L,,N,N,Holon;Raanana,142,20,0,,,TRMB5
-"2,4 - DINITROTOLUENE",FUEL,microgr/L,,N,N,Raanana,,1,,,,24DNT
-"2,6- DINITROTOLUENE",FUEL,microgr/L,,N,N,Raanana,,1,,,,26DNT
-2-chlorotoluene,FUEL,µg/L,,N,N,Holon;Raanana,45,10,0,,,CTN2
-4-chlorotoluene,FUEL,µg/L,,N,N,Holon;Raanana,45,10,0,,,CTN4
-BENZENE,FUEL,µg/L,5.0,Y,N,Holon;Raanana,887,50,8,,,BENZ
-"DIBROMO-3-CHLOROPROPA1,2 NE",FUEL,µg/L,0.3,Y,N,Holon;Raanana,18,6,0,,,DBCP
-Dibromochloro methane,FUEL,µg/L,,N,N,Holon;Raanana,119,20,0,,,DBRMT
-dibromomethane,FUEL,µg/L,,N,N,Holon;Raanana,120,20,0,,,DBRM
-ETHYL BENZENE,FUEL,µg/L,300.0,Y,N,Holon;Raanana,840,47,6,,,ETBN
-ETHYLENE DI BROMIDE,FUEL,µg/L,0.05,Y,N,Holon;Raanana,145,29,0,,,ETDB
-isopropylbenzene,FUEL,µg/L,,N,N,Holon;Raanana,52,10,0,,,IPBNZ
-MTBE,FUEL,µg/L,40.0,Y,N,Holon;Raanana,889,47,8,,,MTBE
-n-Butyl benzene,FUEL,µg/L,,N,N,Holon;Raanana,59,13,0,,,NBTBZ
-n-propylbenzene,FUEL,µg/L,,N,N,Holon;Raanana,74,13,0,,,NPBNZ
-NAPTHALENE,FUEL,µg/L,10.0,Y,N,Holon;Raanana,192,26,3,,,NAPT
-o-Xylene,FUEL,µg/L,,N,N,Holon;Raanana,61,13,0,,,OXYL
-p-isopropyl toluene,FUEL,µg/L,,N,N,Holon;Raanana,50,10,0,,,PTOLU
-p-xylene,FUEL,µg/L,,N,N,Holon;Raanana,49,10,0,,,PXYL
-sec-butylbenzene,FUEL,µg/L,,N,N,Holon;Raanana,49,10,0,,,SBBNZ
-STYRENE,FUEL,µg/L,50.0,Y,N,Holon;Raanana,165,26,3,,,STYR
-tert-butylbenzene,FUEL,µg/L,,N,N,Holon;Raanana,49,10,0,,,TBBNZ
-TOLUENE,FUEL,µg/L,700.0,Y,N,Holon;Raanana,905,50,8,,,TOLU
-Tribromomethane,FUEL,µg/L,,N,N,Holon;Raanana,136,20,0,,,TRBRM
-XYLENE,FUEL,µg/L,500.0,Y,N,Holon;Raanana,890,50,7,,,XYLE
-ALKALINITY M AS CACO3 (B),METALS,µg/L,,N,N,Holon,6,,0,,,
-ALUMINIUM FILTERED AS AL,METALS,µg/L,,N,N,Holon,7,,0,,,
-AMMONIA AS NH4,METALS,µg/L,,N,N,Holon,4,,0,,,
-ARSENIC AS AS,METALS,µg/L,10.0,Y,N,Holon;Raanana,156,27,3,,,AS
-BARIUM AS BA,METALS,µg/L,1000.0,Y,N,Holon;Raanana,180,30,4,,,BA
-BICARBONATE AS HCO3,METALS,µg/L,,N,N,Holon;Raanana,79,18,0,,,HCO3
-BORON AS B,METALS,µg/L,1.0,Y,N,Holon;Raanana,144,31,5,,,B
-BROMIDE AS BR,METALS,µg/L,,N,N,Holon;Raanana,80,19,0,,,BR
-CADMIUM AS CD,METALS,µg/L,5.0,Y,N,Holon;Raanana,104,27,3,,,CD
-CALCIUM AS CA,METALS,µg/L,80.0,Y,N,Holon;Raanana,88,25,6,,,CA
-CHLORIDE AS CL,METALS,µg/L,400.0,Y,N,Holon;Raanana,164,37,6,,,CL
-CHROMIUM AS CR,METALS,µg/L,50.0,Y,N,Holon;Raanana,193,33,8,,,CR
-COBALT AS CO,METALS,µg/L,,N,N,Holon;Raanana,93,18,0,,,CO
-COPPER AS CU,METALS,µg/L,1400.0,Y,N,Holon;Raanana,173,30,1,,,CU
-CYANIDE AS CN,METALS,µg/L,50.0,Y,N,Holon;Raanana,9,3,0,,,CN
-DETERGENTS AS LAS,METALS,µg/L,0.5,Y,N,Holon;Raanana,10,3,0,,,MBAS
-DISSOLVED OXYGEN AS O2,METALS,µg/L,,N,N,Holon;Raanana,751,37,0,,,DO
-FERROUS IRON DISSOLVED AS FE,METALS,µg/L,,N,N,Holon;Raanana,20,4,0,,,FE++
-FLUORIDE AS F,METALS,µg/L,1.7,Y,N,Holon;Raanana,22,4,3,,,F
-HARDNESS AS CACO3,METALS,µg/L,200.0,Y,N,Holon;Raanana,9,6,6,,,HARD
-IRON TOTAL AS FE,METALS,µg/L,1000.0,Y,N,Holon;Raanana,111,30,5,,,FE
-LEAD AS PB,METALS,µg/L,10.0,Y,N,Holon;Raanana,183,27,4,,,PB
-MAGNESIUM AS MG,METALS,µg/L,150.0,Y,N,Holon;Raanana,89,27,5,,,Mg
-MANGANESE FILTERED AS MN,METALS,µg/L,,N,N,Holon,7,,0,,,
-MANGANESE TOTAL AS MN,METALS,µg/L,200.0,Y,N,Holon;Raanana,161,34,8,,,MN
-MERCURY AS HG,METALS,µg/L,1.0,Y,N,Holon;Raanana,19,3,0,,,HG
-NICKEL AS NI,METALS,µg/L,20.0,Y,N,Holon;Raanana,168,30,8,,,NI
-NITRATE AS NO3,METALS,µg/L,70.0,Y,N,Holon;Raanana,167,105,6,,,NO3
-NITRITE AS NO2,METALS,µg/L,3.0,Y,N,Holon,43,,0,,,
-PHENOLS AS C6H5OH,METALS,µg/L,2.0,Y,N,Holon,6,,0,,,
-PHOSPHATES AS PO4,METALS,µg/L,,N,N,Holon,9,,0,,,
-POTASSIUM AS K,METALS,µg/L,,N,N,Holon;Raanana,90,22,0,,,K
-POTASSIUM AS K FOR BETA CORREC,METALS,µg/L,,N,N,Holon,2,,0,,,
-SELENIUM AS SE,METALS,µg/L,10.0,Y,N,Holon;Raanana,121,15,3,,,SE
-SILICA AS SIO2,METALS,µg/L,,N,N,Holon;Raanana,4,1,0,,,SIO2
-SODIUM AS NA,METALS,µg/L,,N,N,Holon;Raanana,88,22,0,,,NA
-STRONTIUM AS SR,METALS,µg/L,,N,N,Holon;Raanana,62,20,0,,,SR
-SULFATE AS SO4,METALS,µg/L,250.0,Y,N,Holon;Raanana,92,22,4,,,SO4
-TIN AS SN,METALS,µg/L,,N,N,Holon,4,,0,,,
-TOTAL NITROGEN AS N,METALS,µg/L,,N,N,Holon,16,,0,,,
-TOTAL NITROGREN  AS N,METALS,µg/L,,N,N,Holon;Raanana,22,3,0,,,TN-N
-TOTAL PHOSPHOROUS AS P,METALS,MG/L,,N,N,Raanana,,1,,,,TP-P
-ZINC AS ZN,METALS,µg/L,5000.0,Y,N,Holon;Raanana,117,27,1,,,ZN
-Per-FluoroOctaneSulfonate,PFAS,µg/L,0.1,Y,N,Holon;Raanana,4,3,0,,,PFOS
-Per-FluoroOctanoic Acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,4,3,0,,,PFOA
-PERFLUORO PFEESA,PFAS,µg/L,,N,N,Holon;Raanana,2,1,0,,,PFESA
-Perfluorobutane Sulfonic Acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,3,3,0,,,PFBS
-Perfluorobytanoic acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,1,3,0,,,PFBA
-Perfluorodecanesulfonic acid,PFAS,microgr/L,0.1,Y,N,Raanana,,1,,,,PFDS
-Perfluorodecanoic acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,2,2,0,,,PFDA
-Perfluorododecanoic acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,2,2,0,,,PFDoA
-Perfluoroheptane sulfonic acid,PFAS,microgr/L,0.1,Y,N,Raanana,,1,,,,PFHpS
-Perfluoroheptanoic acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,3,3,0,,,PFHpA
-Perfluorohexanesulfonic acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,3,3,0,,,PFHxS
-Perfluorohexanoic acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,3,3,0,,,PFHxA
-Perfluorononanoic acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,3,3,0,,,PFNA
-Perfluorooctane sulfonamide,PFAS,microgr/L,,N,N,Raanana,,1,,,,FOSA
-Perfluoropentanoic acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,3,2,0,,,PFPeA
-Perfluoroundecanoic acid,PFAS,microgr/L,0.1,Y,N,Raanana,,1,,,,PFUnA
-total_pfas,PFAS,µg/L,0.1,Y,Y,Holon,6,,0,,,
-2-methy 4-chlorophenoxyacetic acid,OTHER,microgr/L,2.0,Y,N,Raanana,,3,,,,MCPA
-"4,4-DDD",OTHER,microgr/L,,N,N,Raanana,,3,,,,DDD
-"4,4-DDE",OTHER,microgr/L,,N,N,Raanana,,3,,,,DDE
-6:2-Fluortelomersulfonsaure,OTHER,microgr/L,,N,N,Raanana,,2,,,,6:2FT
-8:2 Fluorotelomer sulfonic acid,OTHER,microgr/L,,N,N,Raanana,,1,,,,82FTS
-Acetone,OTHER,microgr/L,,N,N,Raanana,,1,,,,ACET
-ALACHLOR,OTHER,microgr/L,4.0,Y,N,Raanana,,6,,,,ALAC
-Aldicarb sulfon,OTHER,microgr/L,,N,N,Raanana,,6,,,,ALDSU
-Aldicarb sulfoxide,OTHER,microgr/L,,N,N,Raanana,,6,,,,ALSD
-ALDICRAB,OTHER,microgr/L,,N,N,Raanana,,6,,,,ALCB
-Aldrin,OTHER,microgr/L,0.05,Y,N,Raanana,,3,,,,ADRN
-ALPHA RADIOACTIVITY,OTHER,BQ/L,0.1,Y,N,Raanana,,2,,,,ALFA
-ALUMINUM,OTHER,microgr/L,200.0,Y,N,Raanana,,10,,,,AL
-Ammonium trifluor propionate,OTHER,microgr/L,,N,N,Raanana,,1,,,,ADONA
-ANTIMONY,OTHER,microgr/L,6.0,Y,N,Raanana,,3,,,,Sb
-ATRAZINE,OTHER,microgr/L,2.0,Y,N,Raanana,,6,,,,ATRA
-BENZOPYRENE,OTHER,microgr/L,0.5,Y,N,Raanana,,6,,,,BNZP
-BERYLIUM,OTHER,microgr/L,4.0,Y,N,Raanana,,20,,,,BE
-BETA RADIOACTIVITY,OTHER,BQ/L,1.0,Y,N,Raanana,,2,,,,BETA
-BIS (2-ETHYLHEXYL) PHTALATE,OTHER,microgr/L,8.0,Y,N,Raanana,,6,,,,BEPT
-BROMACIL,OTHER,microgr/L,,N,N,Raanana,,3,,,,BRMC
-bromobenzene,OTHER,microgr/L,,N,N,Raanana,,17,,,,BRBNZ
-Bromomethane,OTHER,microgr/L,,N,N,Raanana,,11,,,,BRMET
-CARBOFURAN,OTHER,microgr/L,20.0,Y,N,Raanana,,3,,,,CARFN
-CARBOMAZEPIN,OTHER,microgr/L,,N,N,Raanana,,6,,,,CARBO
-CHLORDANE,OTHER,microgr/L,1.0,Y,N,Raanana,,6,,,,CLDN
-CHLORPYRIFOS,OTHER,microgr/L,,N,N,Raanana,,6,,,,CLPF
-COLOR  PLATINUM COBALT UNITS,OTHER,UNIT,15.0,Y,N,Raanana,,7,,,,COLR
-DDT,OTHER,microgr/L,1.0,Y,N,Raanana,,3,,,,DDT
-"DICHLOR BENZEN 1,2",OTHER,microgr/L,600.0,Y,N,Raanana,,23,,,,MDCB
-Dieldrin,OTHER,microgr/L,0.05,Y,N,Raanana,,3,,,,DADN
-DINOSEB,OTHER,microgr/L,7.0,Y,N,Raanana,,3,,,,DNSB
-DIQUAT,OTHER,microgr/L,20.0,Y,N,Raanana,,3,,,,DIQAT
-DISSOLVED MATTER AT 180C DEGR,OTHER,MG/L,,N,N,Raanana,,10,,,,TDS
-FIELD ELECTRICAL CONDUCTIVITY,OTHER,mS/cm,,N,N,Raanana,,17,,,,ECFD
-FORMALDEHYDE,OTHER,microgr/L,900.0,Y,N,Raanana,,1,,,,FORM
-HEPTACHLOR,OTHER,microgr/L,0.4,Y,N,Raanana,,6,,,,HEPT
-HEPTACHLOR EPOXIDE,OTHER,microgr/L,0.2,Y,N,Raanana,,6,,,,HEPE
-hexachlorobutadiene,OTHER,microgr/L,,N,N,Raanana,,10,,,,HXCB
-Lab EC comp to 25 C DEGR,OTHER,mS/cm,,N,N,Raanana,,26,,,,EC
-LINDANE,OTHER,microgr/L,1.0,Y,N,Raanana,,6,,,,LIND
-LITHIUM,OTHER,microgr/L,,N,N,Raanana,,4,,,,LI
-METOLACHLOR,OTHER,microgr/L,10.0,Y,N,Raanana,,3,,,,MTAL
-MINERAL OIL,OTHER,MG/L,,N,N,Raanana,,1,,,,MOL
-MOLYBDENUM,OTHER,microgr/L,70.0,Y,N,Raanana,,3,,,,MO
-OXAMYL,OTHER,microgr/L,200.0,Y,N,Raanana,,3,,,,OXAMY
-PENTACHLOROPHENOL,OTHER,microgr/L,3.0,Y,N,Raanana,,3,,,,PCP
-PH MEASURED  IN FIELD,OTHER,UNIT,,N,N,Raanana,,37,,,,PHFD
-PH MEASURED IN LABORATORY,OTHER,UNIT,,N,N,Raanana,,12,,,,PHLB
-POLYCHLORINATED BIPHENOL,OTHER,microgr/L,0.5,Y,N,Raanana,,3,,,,PCB
-REDOX,OTHER,mV,,N,N,Raanana,,35,,,,ORP
-SILVER,OTHER,microgr/L,100.0,Y,N,Raanana,,3,,,,AG
-SIMAZINE,OTHER,microgr/L,2.0,Y,N,Raanana,,6,,,,SIMZ
-"T-2,4,5",OTHER,microgr/L,9.0,Y,N,Raanana,,3,,,,TCAA
-TEMPERATURE CENTIGRADE,OTHER,Celsius,,N,N,Raanana,,45,,,,T
-THALLIUM,OTHER,microgr/L,2.0,Y,N,Raanana,,3,,,,TL
-TOTAL ORGANIC CARBON,OTHER,MG/L,,N,N,Raanana,,10,,,,TOC
-TOTAL PETROLEUM HYDROCARBONS,OTHER,MG/L,,N,N,Raanana,,3,,,,TPH
-TRIFLORILEN,OTHER,microgr/L,20.0,Y,N,Raanana,,6,,,,TRFL
-TURBIDITY IN FIELD,OTHER,NTU,1.0,Y,N,Raanana,,4,,,,TUF
-TURBIDITY NTU,OTHER,NTU,1.0,Y,N,Raanana,,19,,,,TURB
-URANIUM,OTHER,microgr/L,15.0,Y,N,Raanana,,3,,,,U
-UV ABSORB AT 254 NM,OTHER,1/CM,,N,N,Raanana,,4,,,,UV
-עומק עד פני המים,OTHER,M,,N,N,Raanana,,17,,,,WDEP
+﻿parameter_name,family_he,unit,drinking_water_standard,has_dws,excluded_from_analysis,zones_present,measurement_count_holon,measurement_count_raanana,max_severity_index_holon,trend_alerts_holon,trend_watches_holon,param_codes_all_zones,param_original_holon
+BENZENE,MBTEX,µg/L,5.0,Y,N,Holon;Raanana,887,50,8,,,BENZ;BENZENE,BENZENE
+ETHYL BENZENE,MBTEX,µg/L,300.0,Y,N,Holon;Raanana,840,47,6,,,ETBN,ETHYL BENZENE
+MTBE,MBTEX,µg/L,40.0,Y,N,Holon;Raanana,889,47,8,,,MTBE,MTBE
+n-Butyl benzene,MBTEX,µg/L,,N,N,Holon;Raanana,59,13,0,,,NBTBZ,n-Butyl benzene
+o-Xylene,MBTEX,µg/L,,N,N,Holon;Raanana,61,13,0,,,OXYL;o-Xylene,o-Xylene
+p-isopropyl toluene,MBTEX,µg/L,,N,N,Holon;Raanana,50,10,0,,,PTOLU,p-isopropyl toluene
+p-xylene,MBTEX,µg/L,,N,N,Holon;Raanana,49,10,0,,,PXYL;p-xylene,p-xylene
+STYRENE,MBTEX,µg/L,50.0,Y,N,Holon;Raanana,165,26,3,,,STYR;STYRENE,STYRENE
+TOLUENE,MBTEX,µg/L,700.0,Y,N,Holon;Raanana,905,50,8,,,TOLU;TOLUENE,TOLUENE
+XYLENE,MBTEX,µg/L,500.0,Y,N,Holon;Raanana,890,50,7,,,XYLE;XYLENE,XYLENE
+"1,1,1,2-tetrachloroethane",CVOC,µg/L,,N,N,Holon;Raanana,88,14,0,,,TEC12,"1,1,1,2-tetrachloroethane"
+"1,1,2,2-tetrachloroethane",CVOC,µg/L,,N,N,Holon;Raanana,85,14,0,,,TEC22,"1,1,2,2-tetrachloroethane"
+"1,1,2-trichloroethane",CVOC,µg/L,5.0,Y,N,Holon;Raanana,161,23,5,,,TCEN,"1,1,2-trichloroethane"
+"1,1-dichloroethane",CVOC,µg/L,,N,N,Holon;Raanana,187,29,0,,,DCET1,"1,1-dichloroethane"
+"1,1-Dichloropropane",CVOC,µg/L,,N,N,Holon;Raanana,9,1,0,,,DCP11,"1,1-Dichloropropane"
+"1,1-dichloropropene",CVOC,µg/L,,N,N,Holon;Raanana,12,2,0,,,DCHP1,"1,1-dichloropropene"
+"1,2,3-trichlorobenzene",CVOC,µg/L,,N,N,Holon;Raanana,129,23,0,,,TRBN3,"1,2,3-trichlorobenzene"
+"1,2,3-trichloropropane",CVOC,µg/L,,N,N,Holon;Raanana,113,17,0,,,TRPR3,"1,2,3-trichloropropane"
+"1,2,4-trichlorobenzene",CVOC,µg/L,70.0,Y,N,Holon;Raanana,135,23,0,,,TRBN4,"1,2,4-trichlorobenzene"
+"1,2-dichloropropane",CVOC,µg/L,5.0,Y,N,Holon;Raanana,138,26,4,,,DCPN,"1,2-dichloropropane"
+"1,3-dichlorobenzene",CVOC,µg/L,,N,N,Holon;Raanana,128,23,0,,,DCB13,"1,3-dichlorobenzene"
+"1,3-dichloropropane",CVOC,µg/L,,N,N,Holon;Raanana,53,10,0,,,DCP13,"1,3-dichloropropane"
+"1,3-Dichloropropene (e) CIS",CVOC,µg/L,,N,N,Holon;Raanana,52,10,0,,,DP13E,"1,3-Dichloropropene (e) CIS"
+"1,3-Dichloropropene (z) TRANS",CVOC,µg/L,,N,N,Holon;Raanana,52,10,0,,,DP13T,"1,3-Dichloropropene (z) TRANS"
+"1,4 DIOXANE",CVOC,µg/L,3.0,Y,N,Holon,43,,8,,,,"1,4 DIOXANE"
+"2,2-dichloropropane",CVOC,µg/L,,N,N,Holon;Raanana,52,10,0,,,DCP22,"2,2-dichloropropane"
+Bromo dichloromethane,CVOC,µg/L,,N,N,Holon;Raanana,61,10,0,,,BRDCM,Bromo dichloromethane
+CARBON TETRACHLORIDE,CVOC,µg/L,4.0,Y,N,Holon;Raanana,219,29,3,,,CCL4,CARBON TETRACHLORIDE
+Chloroethane,CVOC,µg/L,,N,N,Holon;Raanana,144,23,0,,,CHLET,Chloroethane
+CHLOROFORM,CVOC,µg/L,80.0,Y,N,Holon;Raanana,249,40,6,,,CHLF;CHLOROFORM,CHLOROFORM
+"CIS 1,2 DICHLOROETHYLENE",CVOC,µg/L,50.0,Y,N,Holon;Raanana,239,35,6,,,CDCE,"CIS 1,2 DICHLOROETHYLENE"
+"CIS+ TRANS 1,2 DICHLOROETHELYENE",CVOC,µg/L,,N,N,Holon,17,,0,,,,"CIS+ TRANS 1,2 DICHLOROETHELYENE"
+"DICHLOROBENZEN 1,4",CVOC,µg/L,75.0,Y,N,Holon;Raanana,127,23,0,,,PDCB,"DICHLOROBENZEN 1,4"
+DICHLOROBROMOMETHANE,CVOC,microgr/L,,N,N,Raanana,,1,,,,DCBM,
+Dichlorodifluoromethane,CVOC,µg/L,,N,N,Holon;Raanana,119,19,0,,,DCDFM,Dichlorodifluoromethane
+"DICHLOROETHANE1,2",CVOC,µg/L,4.0,Y,N,Holon;Raanana,214,29,8,,,DCET,"DICHLOROETHANE1,2"
+"DICHLOROETHYLENE 1,1",CVOC,µg/L,10.0,Y,N,Holon;Raanana,298,38,8,,,DCEY,"DICHLOROETHYLENE 1,1"
+DICHLOROMETHANE,CVOC,µg/L,5.0,Y,N,Holon;Raanana,25,6,0,,,DCLM,DICHLOROMETHANE
+"DICHLOROPHENOXY ACETI2,4 C ACID",CVOC,µg/L,30.0,Y,N,Holon;Raanana,19,6,0,,,DCPA,"DICHLOROPHENOXY ACETI2,4 C ACID"
+MONOCHLOROBENZENE,CVOC,µg/L,100.0,Y,N,Holon;Raanana,130,26,0,,,MCBZ,MONOCHLOROBENZENE
+TETRACHLORO ETHYLENE,CVOC,µg/L,10.0,Y,N,Holon;Raanana,272,34,8,,,TECE,TETRACHLORO ETHYLENE
+"TRANS-1,2 DICHLOROETHYLENE",CVOC,µg/L,50.0,Y,N,Holon;Raanana,197,35,3,,,TDCE,"TRANS-1,2 DICHLOROETHYLENE"
+"TRICHLORO ETHANE 1,1,1",CVOC,µg/L,200.0,Y,N,Holon;Raanana,201,29,2,,,TCET,"TRICHLORO ETHANE 1,1,1"
+TRICHLORO ETHYLENE,CVOC,µg/L,7.5,Y,N,Holon;Raanana,322,47,8,,,TCEY,TRICHLORO ETHYLENE
+"TRICHLORO PHENOXY 2,4,5 PROPIO",CVOC,µg/L,10.0,Y,N,Holon;Raanana,8,3,0,,,TCPA,"TRICHLORO PHENOXY 2,4,5 PROPIO"
+Trichloroethane,CVOC,µg/L,,N,N,Holon,4,,0,,,,Trichloroethane
+Trichlorofluoromethane,CVOC,µg/L,,N,N,Holon;Raanana,134,19,0,,,TCFM,Trichlorofluoromethane
+VINYL CHLORIDE,CVOC,µg/L,0.5,Y,N,Holon;Raanana,217,35,8,,,VYCL,VINYL CHLORIDE
+"1,2-dibromo-3-chloropropane",חומרי הדברה,µg/L,0.3,Y,N,Holon;Raanana,120,20,0,,,DBR3C,"1,2-dibromo-3-chloropropane"
+"1,2-Dibromomethane",חומרי הדברה,µg/L,,N,N,Holon;Raanana,19,1,0,,,DBR12,"1,2-Dibromomethane"
+2-methy 4-chlorophenoxyacetic acid,חומרי הדברה,microgr/L,2.0,Y,N,Raanana,,3,,,,MCPA,
+"4,4-DDD",חומרי הדברה,microgr/L,,N,N,Raanana,,3,,,,DDD,
+"4,4-DDE",חומרי הדברה,microgr/L,,N,N,Raanana,,3,,,,DDE,
+ALACHLOR,חומרי הדברה,microgr/L,4.0,Y,N,Raanana,,6,,,,ALAC,
+Aldicarb sulfon,חומרי הדברה,microgr/L,,N,N,Raanana,,6,,,,ALDSU,
+Aldicarb sulfoxide,חומרי הדברה,microgr/L,,N,N,Raanana,,6,,,,ALSD,
+Aldrin,חומרי הדברה,microgr/L,0.05,Y,N,Raanana,,3,,,,ADRN,
+ATRAZINE,חומרי הדברה,microgr/L,2.0,Y,N,Raanana,,6,,,,ATRA,
+BROMACIL,חומרי הדברה,microgr/L,,N,N,Raanana,,3,,,,BRMC,
+Bromomethane,חומרי הדברה,microgr/L,,N,N,Raanana,,11,,,,BRMET,
+CARBOFURAN,חומרי הדברה,microgr/L,20.0,Y,N,Raanana,,3,,,,CARFN,
+CHLORDANE,חומרי הדברה,microgr/L,1.0,Y,N,Raanana,,6,,,,CLDN,
+CHLORPYRIFOS,חומרי הדברה,microgr/L,,N,N,Raanana,,6,,,,CLPF,
+DDT,חומרי הדברה,microgr/L,1.0,Y,N,Raanana,,3,,,,DDT,
+dibromomethane,חומרי הדברה,µg/L,,N,N,Holon;Raanana,120,20,0,,,DBRM,dibromomethane
+"DICHLOR BENZEN 1,2",חומרי הדברה,microgr/L,600.0,Y,N,Raanana,,23,,,,MDCB,
+Dieldrin,חומרי הדברה,microgr/L,0.05,Y,N,Raanana,,3,,,,DADN,
+DINOSEB,חומרי הדברה,microgr/L,7.0,Y,N,Raanana,,3,,,,DNSB,
+DIQUAT,חומרי הדברה,microgr/L,20.0,Y,N,Raanana,,3,,,,DIQAT,
+HEPTACHLOR,חומרי הדברה,microgr/L,0.4,Y,N,Raanana,,6,,,,HEPT,
+HEPTACHLOR EPOXIDE,חומרי הדברה,microgr/L,0.2,Y,N,Raanana,,6,,,,HEPE,
+LINDANE,חומרי הדברה,microgr/L,1.0,Y,N,Raanana,,6,,,,LIND,
+METOLACHLOR,חומרי הדברה,microgr/L,10.0,Y,N,Raanana,,3,,,,MTAL,
+OXAMYL,חומרי הדברה,microgr/L,200.0,Y,N,Raanana,,3,,,,OXAMY,
+PENTACHLOROPHENOL,חומרי הדברה,microgr/L,3.0,Y,N,Raanana,,3,,,,PCP,
+SIMAZINE,חומרי הדברה,microgr/L,2.0,Y,N,Raanana,,6,,,,SIMZ,
+Tribromomethane,חומרי הדברה,µg/L,,N,N,Holon;Raanana,136,20,0,,,TRBRM,Tribromomethane
+TRIFLORILEN,חומרי הדברה,microgr/L,20.0,Y,N,Raanana,,6,,,,TRFL,
+"2,4 - DINITROTOLUENE",חומרי נפץ,microgr/L,,N,N,Raanana,,1,,,,24DNT,
+"2,6- DINITROTOLUENE",חומרי נפץ,microgr/L,,N,N,Raanana,,1,,,,26DNT,
+PERFLUORO PFEESA,PFAS,µg/L,,N,N,Holon;Raanana,2,1,0,,,PFESA,PERFLUORO PFEESA
+Perfluorobutane Sulfonic Acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,3,3,0,,,PFBS,Perfluorobutane Sulfonic Acid
+Perfluorobytanoic acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,1,3,0,,,PFBA,Perfluorobytanoic acid
+Perfluorodecanesulfonic acid,PFAS,microgr/L,0.1,Y,N,Raanana,,1,,,,PFDS,
+Perfluorodecanoic acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,2,2,0,,,PFDA,Perfluorodecanoic acid
+Perfluorododecanoic acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,2,2,0,,,PFDoA,Perfluorododecanoic acid
+Perfluoroheptane sulfonic acid,PFAS,microgr/L,0.1,Y,N,Raanana,,1,,,,PFHpS,
+Perfluoroheptanoic acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,3,3,0,,,PFHpA,Perfluoroheptanoic acid
+Perfluorohexanesulfonic acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,3,3,0,,,PFHxS,Perfluorohexanesulfonic acid
+Perfluorohexanoic acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,3,3,0,,,PFHxA,Perfluorohexanoic acid
+Perfluorononanoic acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,3,3,0,,,PFNA,Perfluorononanoic acid
+Perfluorooctane sulfonamide,PFAS,microgr/L,,N,N,Raanana,,1,,,,FOSA,
+Perfluoropentanoic acid,PFAS,µg/L,0.1,Y,N,Holon;Raanana,3,2,0,,,PFPeA,Perfluoropentanoic acid
+Perfluoroundecanoic acid,PFAS,microgr/L,0.1,Y,N,Raanana,,1,,,,PFUnA,
+total_pfas,PFAS,µg/L,0.1,Y,Y,Holon,6,,0,,,total_pfas,total_pfas
+ALUMINUM,מתכות,microgr/L,200.0,Y,N,Raanana,,10,,,,AL,
+ANTIMONY,מתכות,microgr/L,6.0,Y,N,Raanana,,3,,,,Sb,
+ARSENIC AS AS,מתכות,µg/L,10.0,Y,N,Holon;Raanana,156,27,3,,,AS,ARSENIC AS AS
+BARIUM AS BA,מתכות,µg/L,1000.0,Y,N,Holon;Raanana,180,30,4,,,BA,BARIUM AS BA
+CADMIUM AS CD,מתכות,µg/L,5.0,Y,N,Holon;Raanana,104,27,3,,,CD,CADMIUM AS CD
+CHROMIUM AS CR,מתכות,µg/L,50.0,Y,N,Holon;Raanana,193,33,8,,,CR,CHROMIUM AS CR
+COBALT AS CO,מתכות,µg/L,,N,N,Holon;Raanana,93,18,0,,,CO,COBALT AS CO
+COLOR  PLATINUM COBALT UNITS,מתכות,UNIT,15.0,Y,N,Raanana,,7,,,,COLR,
+COPPER AS CU,מתכות,µg/L,1400.0,Y,N,Holon;Raanana,173,30,1,,,CU,COPPER AS CU
+CYANIDE AS CN,מתכות,µg/L,50.0,Y,N,Holon;Raanana,9,3,0,,,CN,CYANIDE AS CN
+FERROUS IRON DISSOLVED AS FE,מתכות,µg/L,,N,N,Holon;Raanana,20,4,0,,,FE++,FERROUS IRON DISSOLVED AS FE
+IRON TOTAL AS FE,מתכות,µg/L,1000.0,Y,N,Holon;Raanana,111,30,5,,,FE,IRON TOTAL AS FE
+LEAD AS PB,מתכות,µg/L,10.0,Y,N,Holon;Raanana,183,27,4,,,LEAD AS PB;PB,LEAD AS PB
+LITHIUM,מתכות,microgr/L,,N,N,Raanana,,4,,,,LI,
+MANGANESE FILTERED AS MN,מתכות,µg/L,,N,N,Holon,7,,0,,,,MANGANESE FILTERED AS MN
+MANGANESE TOTAL AS MN,מתכות,µg/L,200.0,Y,N,Holon;Raanana,161,34,8,,,MN,MANGANESE TOTAL AS MN
+MERCURY AS HG,מתכות,µg/L,1.0,Y,N,Holon;Raanana,19,3,0,,,HG,MERCURY AS HG
+MOLYBDENUM,מתכות,microgr/L,70.0,Y,N,Raanana,,3,,,,MO,
+NICKEL AS NI,מתכות,µg/L,20.0,Y,N,Holon;Raanana,168,30,8,,,NI,NICKEL AS NI
+SELENIUM AS SE,מתכות,µg/L,10.0,Y,N,Holon;Raanana,121,15,3,,,SE,SELENIUM AS SE
+SILVER,מתכות,microgr/L,100.0,Y,N,Raanana,,3,,,,AG,
+THALLIUM,מתכות,microgr/L,2.0,Y,N,Raanana,,3,,,,TL,
+ZINC AS ZN,מתכות,µg/L,5000.0,Y,N,Holon;Raanana,117,27,1,,,ZINC AS ZN;ZN,ZINC AS ZN
+ALKALINITY M AS CACO3 (B),איאורגנים מעבדה,µg/L,,N,N,Holon,6,,0,,,,ALKALINITY M AS CACO3 (B)
+BICARBONATE AS HCO3,איאורגנים מעבדה,µg/L,,N,N,Holon;Raanana,79,18,0,,,HCO3,BICARBONATE AS HCO3
+BORON AS B,איאורגנים מעבדה,µg/L,1.0,Y,N,Holon;Raanana,144,31,5,,,B;BORON AS B,BORON AS B
+BROMIDE AS BR,איאורגנים מעבדה,µg/L,,N,N,Holon;Raanana,80,19,0,,,BR,BROMIDE AS BR
+CALCIUM AS CA,איאורגנים מעבדה,µg/L,80.0,Y,N,Holon;Raanana,88,25,6,,,CA,CALCIUM AS CA
+CHLORIDE AS CL,איאורגנים מעבדה,µg/L,400.0,Y,N,Holon;Raanana,164,37,6,,,CL,CHLORIDE AS CL
+DISSOLVED OXYGEN AS O2,איאורגנים מעבדה,µg/L,,N,N,Holon;Raanana,751,37,0,,,DO,DISSOLVED OXYGEN AS O2
+ETHYLENE DI BROMIDE,איאורגנים מעבדה,µg/L,0.05,Y,N,Holon;Raanana,145,29,0,,,ETDB,ETHYLENE DI BROMIDE
+FLUORIDE AS F,איאורגנים מעבדה,µg/L,1.7,Y,N,Holon;Raanana,22,4,3,,,F,FLUORIDE AS F
+HARDNESS AS CACO3,איאורגנים מעבדה,µg/L,200.0,Y,N,Holon;Raanana,9,6,6,,,HARD,HARDNESS AS CACO3
+MAGNESIUM AS MG,איאורגנים מעבדה,µg/L,150.0,Y,N,Holon;Raanana,89,27,5,,,Mg,MAGNESIUM AS MG
+Methylene chloride,איאורגנים מעבדה,µg/L,,N,N,Holon;Raanana,116,20,0,,,METCH,Methylene chloride
+NITRATE AS NO3,איאורגנים מעבדה,µg/L,70.0,Y,N,Holon;Raanana,167,105,6,,,NO3,NITRATE AS NO3
+NITRITE AS NO2,איאורגנים מעבדה,µg/L,3.0,Y,N,Holon,43,,0,,,,NITRITE AS NO2
+PHOSPHATES AS PO4,איאורגנים מעבדה,µg/L,,N,N,Holon,9,,0,,,,PHOSPHATES AS PO4
+POTASSIUM AS K,איאורגנים מעבדה,µg/L,,N,N,Holon;Raanana,90,22,0,,,K,POTASSIUM AS K
+POTASSIUM AS K FOR BETA CORREC,איאורגנים מעבדה,µg/L,,N,N,Holon,2,,0,,,,POTASSIUM AS K FOR BETA CORREC
+SILICA AS SIO2,איאורגנים מעבדה,µg/L,,N,N,Holon;Raanana,4,1,0,,,SIO2,SILICA AS SIO2
+SODIUM AS NA,איאורגנים מעבדה,µg/L,,N,N,Holon;Raanana,88,22,0,,,NA,SODIUM AS NA
+STRONTIUM AS SR,איאורגנים מעבדה,µg/L,,N,N,Holon;Raanana,62,20,0,,,SR,STRONTIUM AS SR
+SULFATE AS SO4,איאורגנים מעבדה,µg/L,250.0,Y,N,Holon;Raanana,92,22,4,,,SO4,SULFATE AS SO4
+TOTAL PHOSPHOROUS AS P,איאורגנים מעבדה,MG/L,,N,N,Raanana,,1,,,,TP-P,
+1 METHYLNAPHTHALENE,מזהמים תעשייתיים לא נדיפים,µg/L,,N,N,Holon,5,,0,,,,1 METHYLNAPHTHALENE
+BENZOPYRENE,מזהמים תעשייתיים לא נדיפים,microgr/L,0.5,Y,N,Raanana,,6,,,,BNZP,
+POLYCHLORINATED BIPHENOL,מזהמים תעשייתיים לא נדיפים,microgr/L,0.5,Y,N,Raanana,,3,,,,PCB,
+FORMALDEHYDE,אורגנים תעשייה,microgr/L,900.0,Y,N,Raanana,,1,,,,FORM,
+MINERAL OIL,אורגנים תעשייה,MG/L,,N,N,Raanana,,1,,,,MOL,
+TOTAL PETROLEUM HYDROCARBONS,אורגנים תעשייה,MG/L,,N,N,Raanana,,3,,,,TPH,
+ALPHA RADIOACTIVITY,ANALYTICAL,BQ/L,0.1,Y,N,Raanana,,2,,,,ALFA,
+BETA RADIOACTIVITY,ANALYTICAL,BQ/L,1.0,Y,N,Raanana,,2,,,,BETA,
+DISSOLVED MATTER AT 180C DEGR,ANALYTICAL,MG/L,,N,N,Raanana,,10,,,,TDS,
+FIELD ELECTRICAL CONDUCTIVITY,ANALYTICAL,mS/cm,,N,N,Raanana,,17,,,,ECFD,
+PH MEASURED  IN FIELD,ANALYTICAL,UNIT,,N,N,Raanana,,37,,,,PHFD,
+PH MEASURED IN LABORATORY,ANALYTICAL,UNIT,,N,N,Raanana,,12,,,,PHLB,
+REDOX,ANALYTICAL,mV,,N,N,Raanana,,35,,,,ORP,
+TEMPERATURE CENTIGRADE,ANALYTICAL,Celsius,,N,N,Raanana,,45,,,,T,
+TOTAL ORGANIC CARBON,ANALYTICAL,MG/L,,N,N,Raanana,,10,,,,TOC,
+TURBIDITY IN FIELD,ANALYTICAL,NTU,1.0,Y,N,Raanana,,4,,,,TUF,
+TURBIDITY NTU,ANALYTICAL,NTU,1.0,Y,N,Raanana,,19,,,,TURB,
+עומק עד פני המים,ANALYTICAL,M,,N,N,Raanana,,17,,,,WDEP,
+"1,2,4 TRIMETHYLBENZENE",OTHER,µg/L,,N,N,Holon;Raanana,178,23,0,,,TRMB4,"1,2,4 TRIMETHYLBENZENE"
+"1,3,5 TRIMETHYLBENZENE",OTHER,µg/L,,N,N,Holon;Raanana,142,20,0,,,TRMB5,"1,3,5 TRIMETHYLBENZENE"
+2-chlorotoluene,OTHER,µg/L,,N,N,Holon;Raanana,45,10,0,,,CTN2,2-chlorotoluene
+4-chlorotoluene,OTHER,µg/L,,N,N,Holon;Raanana,45,10,0,,,CTN4,4-chlorotoluene
+6:2-Fluortelomersulfonsaure,OTHER,microgr/L,,N,N,Raanana,,2,,,,6:2FT,
+8:2 Fluorotelomer sulfonic acid,OTHER,microgr/L,,N,N,Raanana,,1,,,,82FTS,
+Acetone,OTHER,microgr/L,,N,N,Raanana,,1,,,,ACET,
+ALDICRAB,OTHER,microgr/L,,N,N,Raanana,,6,,,,ALCB,
+ALUMINIUM FILTERED AS AL,OTHER,µg/L,,N,N,Holon,7,,0,,,,ALUMINIUM FILTERED AS AL
+AMMONIA AS NH4,OTHER,µg/L,,N,N,Holon,4,,0,,,,AMMONIA AS NH4
+Ammonium trifluor propionate,OTHER,microgr/L,,N,N,Raanana,,1,,,,ADONA,
+BERYLIUM,OTHER,microgr/L,4.0,Y,N,Raanana,,20,,,,BE,
+BIS (2-ETHYLHEXYL) PHTALATE,OTHER,microgr/L,8.0,Y,N,Raanana,,6,,,,BEPT,
+bromobenzene,OTHER,microgr/L,,N,N,Raanana,,17,,,,BRBNZ,
+bromochloromethane,OTHER,µg/L,,N,N,Holon;Raanana,60,10,0,,,BRCM,bromochloromethane
+CARBOMAZEPIN,OTHER,microgr/L,,N,N,Raanana,,6,,,,CARBO,
+Chloromethane,OTHER,µg/L,,N,N,Holon;Raanana,118,17,0,,,CHLMT,Chloromethane
+DETERGENTS AS LAS,OTHER,µg/L,0.5,Y,N,Holon;Raanana,10,3,0,,,MBAS,DETERGENTS AS LAS
+"DIBROMO-3-CHLOROPROPA1,2 NE",OTHER,µg/L,0.3,Y,N,Holon;Raanana,18,6,0,,,DBCP,"DIBROMO-3-CHLOROPROPA1,2 NE"
+Dibromochloro methane,OTHER,µg/L,,N,N,Holon;Raanana,119,20,0,,,DBRMT,Dibromochloro methane
+dibromochloromethane,OTHER,µg/L,,N,N,Holon,11,,0,,,,dibromochloromethane
+hexachlorobutadiene,OTHER,microgr/L,,N,N,Raanana,,10,,,,HXCB,
+isopropylbenzene,OTHER,µg/L,,N,N,Holon;Raanana,52,10,0,,,IPBNZ,isopropylbenzene
+Lab EC comp to 25 C DEGR,OTHER,mS/cm,,N,N,Raanana,,26,,,,EC,
+n-propylbenzene,OTHER,µg/L,,N,N,Holon;Raanana,74,13,0,,,NPBNZ,n-propylbenzene
+NAPTHALENE,OTHER,µg/L,10.0,Y,N,Holon;Raanana,192,26,3,,,NAPT;NAPTHALENE,NAPTHALENE
+Per-FluoroOctaneSulfonate,OTHER,µg/L,0.1,Y,N,Holon;Raanana,4,3,0,,,PFOS,Per-FluoroOctaneSulfonate
+Per-FluoroOctanoic Acid,OTHER,µg/L,0.1,Y,N,Holon;Raanana,4,3,0,,,PFOA,Per-FluoroOctanoic Acid
+PHENOLS AS C6H5OH,OTHER,µg/L,2.0,Y,N,Holon,6,,0,,,,PHENOLS AS C6H5OH
+sec-butylbenzene,OTHER,µg/L,,N,N,Holon;Raanana,49,10,0,,,SBBNZ,sec-butylbenzene
+"T-2,4,5",OTHER,microgr/L,9.0,Y,N,Raanana,,3,,,,TCAA,
+tert-butylbenzene,OTHER,µg/L,,N,N,Holon;Raanana,49,10,0,,,TBBNZ,tert-butylbenzene
+TIN AS SN,OTHER,µg/L,,N,N,Holon,4,,0,,,TIN AS SN,TIN AS SN
+TOTAL NITROGEN AS N,OTHER,µg/L,,N,N,Holon,16,,0,,,,TOTAL NITROGEN AS N
+TOTAL NITROGREN  AS N,OTHER,µg/L,,N,N,Holon;Raanana,22,3,0,,,TN-N,TOTAL NITROGREN  AS N
+URANIUM,OTHER,microgr/L,15.0,Y,N,Raanana,,3,,,,U,
+UV ABSORB AT 254 NM,OTHER,1/CM,,N,N,Raanana,,4,,,,UV,
