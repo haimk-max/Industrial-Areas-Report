@@ -1,5 +1,6 @@
 # ════════════════════════════════════════════════════════════════════
-# Holon Industrial Zone · Report Brief
+# Holon Industrial Zone · Report Brief — V8
+# Source: HOLON_REPORT_V8.md (sha 9d789b15c55c, June 2026)
 # Conforms to: schemas/zone-brief.schema.json
 # This file is the SOLE input to the report engine for Holon.
 # Validates and reproduces output/holon/INTERNAL.html + PUBLIC.html
@@ -9,12 +10,12 @@ zone:
   id: HOL
   name_he: "אזה״ת חולון"
   name_en: "Holon Industrial Zone"
-  period: "2020–2026"
-  edition: "2026-01"
-  edition_date: "2026-05"
-  doc_id_internal: "HOL/EXEC/INT/2026-01"
-  doc_id_public:   "HOL/EXEC/PUB/2026-01"
-  active_boreholes: "~58"           # placeholder accepted by schema
+  period: "2021–2026"
+  edition: "2026-02"
+  edition_date: "2026-06"
+  doc_id_internal: "HOL/EXEC/INT/2026-02"
+  doc_id_public:   "HOL/EXEC/PUB/2026-02"
+  active_boreholes: 111
   contaminant_families_count: 4
   monitoring_gaps_count: 7
   pfas_coverage_pct: 3.6
@@ -22,14 +23,14 @@ zone:
 
 # ─── INTERNAL §00 ───────────────────────────────────────────────────
 bottom_line:
-  - "מי-התהום באזה״ת חולון מציגים תמונה <strong>דו-קוטבית</strong>: רוב הקידוחים תקינים — אך באפריל <bdi>2025</bdi> חצה קידוח ההפקה <strong>מק חולון <bdi>14</bdi></strong> לראשונה זה עשור את תקן <bdi>TCE</bdi> (<span class=\"red\"><bdi>101%</bdi></span>), ומזהם חדש (<bdi>1,4-דיאוקסן</bdi>) מתפשט אל קידוח חקלאי במרחק כקילומטר."
-  - "במקביל, מערך הניטור מציג <strong>פערים שיטתיים</strong> — שבעה קידוחים ואשכולות שותקים <bdi>39–150+</bdi> חודשים, חלקם בריכוזי שיא; כיסוי <bdi>PFAS</bdi> עומד על <span class=\"red\"><bdi>~3.6%</bdi></span> בלבד, ולא במתקני הסיכון הגבוה."
+  - "אזה״ת חולון הוא <strong>המורכב שבמערך הניטור</strong>: שלוש משפחות מזהמים פעילות בו-זמנית — <bdi>CVOC</bdi>, דלק (<bdi>BTEX/MTBE</bdi>) ומתכות — בתוספת מזהם מתפתח (<bdi>1,4-dioxane</bdi>). מתוך <bdi>111</bdi> קידוחים ב-<bdi>7</bdi> מוקדים גיאו-כימיים, שלושה מגיעים לאינדקס חומרה מרבי (<bdi>8</bdi>): ליבת <bdi>CVOC</bdi> בעוצמת <bdi>DNAPL</bdi>, בנזן <span class=\"red\"><bdi>85,000%</bdi></span> מהתקן במחניון אגד, ושחרור-טרי פעיל בתחנות דלק דרומיות."
+  - "באפריל <bdi>2025</bdi> חצה קידוח ההפקה <strong>מק חולון <bdi>14</bdi></strong> לראשונה זה עשור את תקן <bdi>TCE</bdi> (<span class=\"red\"><bdi>101%</bdi></span>) — חמישה קידוחי הפקה כבר נפסלו היסטורית. במקביל, מערך הניטור מציג <strong>פערים שיטתיים</strong> — שבעה קידוחים שותקים <bdi>39–150+</bdi> חודשים; כיסוי <bdi>PFAS</bdi> עומד על <span class=\"red\"><bdi>~3.6%</bdi></span> בלבד."
   - "נדרשת פעולה מתואמת בארבעה צירים: <span class=\"teal\">עדכון תכנית הניטור</span>, <span class=\"teal\">קידוחים חדשים</span>, <span class=\"teal\">חקירת מקורות</span>, ו<span class=\"teal\">מדיניות הפקה</span> — כמפורט במטריקס ההחלטות בסעיף §<bdi>05</bdi>."
 
 # ─── PUBLIC §01 ────────────────────────────────────────────────────
 context_intro:
-  - "אזור התעשייה של חולון הוא מהוותיקים בארץ — פעיל מאז שנות ה-<bdi>60</bdi>, ומכיל היסטוריה תעשייתית מגוונת: מפעלי ציפוי מתכות, אלקטרוניקה, מתקני דלק, מחזור, טקסטיל וכימיקלים. חלק מהפעילויות הללו השאירו טביעה היסטורית בקרקע ובמי-התהום."
-  - "החל מסוף שנות ה-<bdi>90</bdi> אנחנו מפעילים מערך ניטור באזור — כיום <strong>כ-<bdi>58</bdi> קידוחי ליבה</strong> שנדגמים בתדירות משתנה. הדוח הזה מסכם את שש השנים האחרונות: רוב הקידוחים תקינים, אך באזורים מסוימים זוהו מוקדים היסטוריים שאנחנו עוקבים אחריהם בצמוד."
+  - "אזור התעשייה של חולון הוא מהוותיקים בארץ — פעיל מאז שנות ה-<bdi>40</bdi>, ומכיל היסטוריה תעשייתית מגוונת: מפעלי ציפוי מתכות, אלקטרוניקה, מתקני דלק, מחזור, טקסטיל וכימיקלים. רוב מקורות הזיהום הגדולים נסגרו לפני <bdi>20–40</bdi> שנים, אך טביעתם ההיסטורית עדיין מורגשת בקרקע ובמי-התהום."
+  - "כיום אנחנו מפעילים מערך ניטור של <strong><bdi>111</bdi> קידוחים</strong> — <bdi>46</bdi> לניטור כללי ו-<bdi>63</bdi> לניטור דלק — הרחב פי שבעה ממערך <bdi>2021</bdi>. הדוח הזה מסכם חמש שנות ניתוח (<bdi>2021–2026</bdi>): רוב הקידוחים תקינים, אך בשבעה מוקדים גיאוגרפיים זוהו ריכוזי מזהמים שאנחנו עוקבים אחריהם בצמוד."
   - "המסמך נכתב במחויבות לשקיפות: אנו מציגים את <strong>מה שמצאנו</strong>, את <strong>מה שעדיין לא יודעים</strong>, ואת <strong>מה שאנחנו עושים</strong> — ללא הסתרה."
 
 # ─── Both reports — selection bias caveat ───────────────────────────
@@ -48,11 +49,11 @@ kpis:
     note: "מק חולון 14 · TCE 7.59 µg/L"
 
   - id: active_boreholes
-    label: "קידוחי ליבה פעילה"
-    value: "~58"
+    label: "קידוחים פעילים"
+    value: "111"
     tier: teal
-    delta: "נדגמו 2021–2026 · מעבר לדלק"
-    note: "ליבה אנליטית של הדוח."
+    delta: "46 ניטור כללי + 63 דלק · 2021–2026"
+    note: "15,170 מדידות ב-7 מוקדים גיאו-כימיים."
 
   - id: monitoring_gaps
     label: "פערי ניטור"
@@ -73,9 +74,9 @@ kpis:
 # ─── PUBLIC §01 — Stat cards (lighter) ──────────────────────────────
 stats_public:
   - k: "קידוחים שנדגמו"
-    v: "~58"
+    v: "111"
     tier: teal
-    note: "מהווים את 'ליבת הניטור' — נדגמו לפחות פעם אחת ב-5 השנים האחרונות."
+    note: "46 לניטור כללי ו-63 לניטור דלק — מערך רחב פי שבעה מדוח 2021."
 
   - k: "חריגת תקן · קידוח אספקה"
     v: "1"
@@ -85,7 +86,7 @@ stats_public:
   - k: "שיקום מוצלח"
     v: "×57"
     tier: green
-    note: "ירידה בריכוז ניקל באתר רימטל לאחר התערבות שיקום — מודל הצלחה."
+    note: "ירידה של פי 57 בריכוז ניקל באתר מחזור מתכות משוקם — מודל הצלחה."
 
 # ─── INTERNAL §02 — Severity by contaminant family ──────────────────
 family_ledger:
@@ -109,11 +110,10 @@ family_ledger:
     dim: true
 
   - family: FUEL
-    desc: "פחמימני דלק · BTEX/MTBE"
-    narrative: "רקע ספציפי-לאתר. מוקדי MTBE סביב תחנות דלק ואגד, אך ללא חציית תקן ברורה בקידוחי הליבה."
-    count_value: "×2"
+    desc: "פחמימני דלק · BTEX/MTBE/TBA"
+    narrative: "שלושה מוקדי דלק פעילים: מחניון אגד (בנזן 85,000% — חתימת LNAPL), מוקד דרומי (שחרור-טרי פעיל 2025), ו'הר TBA' במרכבות האש (120,000 µg/L). שניים באינדקס 8."
+    count_value: "×16"
     count_label: "קידוחים בסף"
-    dim: true
 
 # ─── Both reports §03 — Seven findings ──────────────────────────────
 findings:
@@ -225,6 +225,41 @@ findings:
     certainty: high
 
   - id: F7
+    urgency: critical
+    title_internal: "מוצר חופשי פעיל · מחניון אגד"
+    title_public:   "מוקד דלק פעיל באזור מערבי"
+    body_internal: "נד אגד אזור 1 מציג בנזן <bdi>4,250 µg/L</bdi> (<bdi>02/2025</bdi>) — <bdi>85,000%</bdi> מהתקן, בנזן בכ-<bdi>30%</bdi> מהמסיסות הטהורה = חתימת <bdi>LNAPL</bdi> פעיל. פלומה משולבת עם <bdi>CVOC</bdi> (VC <bdi>25 µg/L</bdi>)."
+    body_public: "באזור מערבי של אזה״ת זוהו ריכוזים גבוהים מאוד של מזהמי דלק בקרבת מתחם תדלוק — <strong>פי <bdi>850</bdi> מהתקן</strong>. הזיהום מצביע על מוצר דלק עודף בקרקע שטרם נוקה."
+    action_internal: "חקירת LNAPL (מיפוי עובי מוצר חופשי); בדיקת אטימות UST; חידוש ניטור CVOC באשכול (אחרון 2019)."
+    public_what_it_means: "הזיהום ממוקד סביב מתחם התדלוק ואינו מגיע לקידוחי אספקה. הוא מצביע על הצורך בפעולת ניקוי ממוקדת."
+    public_what_we_do: "חקירת היקף הזיהום, בדיקת מתקני דלק, והפעלת מנגנון שיקום."
+    stat: { value: "×850", label: "פי תקן · בנזן", color: red }
+    metadata:
+      - { k: "קידוח", v: "נד אגד אזור 1" }
+      - { k: "מזהם", v: "בנזן" }
+      - { k: "ריכוז", v: "4,250 µg/L", color: red }
+      - { k: "% תקן", v: "85,000%", color: red }
+      - { k: "תאריך", v: "02/2025" }
+    certainty: high
+
+  - id: F8
+    urgency: high
+    title_internal: "שחרור-טרי · מוקד דלק דרומי"
+    title_public:   "אותות עלייה בתחנות דלק דרומיות"
+    body_internal: "בנד פז סיירים 3 בנזן עולה (<bdi>z=2.03</bdi>, <bdi>p=0.043</bdi>, <bdi>05/2025</bdi>) במקביל ל-<bdi>MTBE</bdi> עולה — חתימת שחרור-טרי פעיל. בנד פז צבר 1 בנזן <bdi>11,800%</bdi> מהתקן (<bdi>08/2024</bdi>) עם יחס <bdi>B:T:X</bdi> של גזולין לא-מבוגר."
+    body_public: "בשתי תחנות דלק באזור הדרומי זוהו מגמות עלייה בריכוזי מזהמי דלק. זהו אות להשלכה פעילה מתמשכת — לא רק זיהום היסטורי."
+    action_internal: "בדיקת אטימות מכלים (UST) בפז סיירים ופז צבר; ניטור רבעוני BTEX+MTBE; בחינת יחס TBA/MTBE לבחינת גיל השחרור."
+    public_what_it_means: "הממצא מצביע על כך שזרם חדש של דלק עשוי להיכנס למי-התהום — ולא רק שארית היסטורית."
+    public_what_we_do: "בדיקת אטימות מכלי הדלק, ניטור מוגבר, ודיווח לגורמי האכיפה."
+    stat: { value: "▲", label: "מגמת עלייה · 05/2025", color: red }
+    metadata:
+      - { k: "קידוח", v: "נד פז סיירים 3" }
+      - { k: "מזהם", v: "בנזן" }
+      - { k: "מגמה", v: "עולה z=2.03", color: red }
+      - { k: "מוקד", v: "מוקד דלק דרומי" }
+    certainty: high
+
+  - id: F9
     urgency: good
     title_internal: "הצלחת שיקום · רימטל"
     title_public:   "שיקום מוצלח — מודל לאתרים אחרים"
@@ -418,6 +453,86 @@ boreholes:
         - { k: "מזהם", v: "ניקל" }
         - { k: "סטטוס", v: "שיקום מוצלח", color: green }
 
+  - id: EGGED-1
+    name_he: "נד אגד אזור 1"
+    role: "ניטור · LNAPL"
+    tier: critical
+    coords: [32.01490, 34.77950]
+    on_severity_matrix: true
+    severity_by_family: { CVOC: 4, Dioxane: 0, VC: 4, METALS: 2, PFAS: 0, FUEL: 8 }
+    public:
+      code: "B-12"
+      desc: "קידוח ניטור"
+      tier: crit
+      popup_rows:
+        - { k: "חומרה", v: "גבוהה מאוד", color: red }
+        - { k: "מזהם", v: "מזהם דלק" }
+        - { k: "הקשר", v: "מוקד דלק מערבי" }
+
+  - id: PAZ-TZAVAR-1
+    name_he: "נד פז צבר 1"
+    role: "ניטור · שחרור-טרי"
+    tier: critical
+    coords: [32.00450, 34.78350]
+    on_severity_matrix: true
+    severity_by_family: { CVOC: 0, Dioxane: 0, VC: 0, METALS: 0, PFAS: 0, FUEL: 8 }
+    public:
+      code: "B-13"
+      desc: "קידוח ניטור"
+      tier: crit
+      popup_rows:
+        - { k: "חומרה", v: "גבוהה", color: red }
+        - { k: "מזהם", v: "מזהם דלק" }
+
+  - id: MRKBT-1
+    name_he: "נד דלק מרכבות האש 1"
+    role: "ניטור · TBA"
+    tier: high
+    coords: [32.00780, 34.78600]
+    on_severity_matrix: true
+    severity_by_family: { CVOC: 0, Dioxane: 0, VC: 0, METALS: 0, PFAS: 0, FUEL: 8 }
+    public:
+      code: "B-14"
+      desc: "קידוח ניטור"
+      tier: high
+      popup_rows:
+        - { k: "חומרה", v: "גבוהה", color: red }
+        - { k: "מזהם", v: "TBA/MTBE" }
+
+  - id: PAZ-SAYARIM-3
+    name_he: "נד פז סיירים 3"
+    role: "ניטור · מגמת עלייה"
+    tier: high
+    coords: [32.00350, 34.78250]
+    on_severity_matrix: true
+    severity_by_family: { CVOC: 0, Dioxane: 0, VC: 0, METALS: 0, PFAS: 0, FUEL: 3 }
+    public:
+      code: "B-15"
+      desc: "קידוח ניטור"
+      tier: high
+      popup_rows:
+        - { k: "מגמה", v: "עלייה", color: red }
+        - { k: "מזהם", v: "מזהם דלק" }
+
+  - id: MK-12
+    name_he: "מק חולון 12"
+    role: "קידוח הפקה"
+    tier: medium
+    coords: [32.01200, 34.77800]
+    on_severity_matrix: true
+    severity_by_family: { CVOC: 0, Dioxane: 0, VC: 0, METALS: 0, PFAS: 0, FUEL: 0 }
+    popup_rows_internal:
+      - { k: "מזהם", v: "כלוריד" }
+      - { k: "ריכוז", v: "247 mg/L" }
+      - { k: "מגמה", v: "עולה z=2.20", color: red }
+    public:
+      code: "B-16"
+      desc: "קידוח אספקה"
+      tier: med
+      popup_rows:
+        - { k: "סטטוס", v: "פעיל" }
+        - { k: "מגמה", v: "מעקב" }
+
 # ─── Sources (INTERNAL map only — never rendered in PUBLIC) ─────────
 sources:
   - id: TADIRAN
@@ -455,6 +570,33 @@ sources:
     contaminants: [Ni, Al, Cu, Pb, TPH]
     status: "משוקם"
     coords: [32.00710, 34.79180]
+
+  - id: EGGED-SRC
+    name_internal: "מחניון אגד"
+    name_generic:  "מתחם תדלוק ותפעול"
+    certainty: high
+    category: "תדלוק / חניון"
+    contaminants: [BTEX, MTBE, TBA]
+    status: "פעיל"
+    coords: [32.01490, 34.77950]
+
+  - id: PAZ-TZAVAR-SRC
+    name_internal: "פז צבר"
+    name_generic:  "תחנת תדלוק"
+    certainty: high
+    category: "תדלוק קמעוני"
+    contaminants: [BTEX, MTBE]
+    status: "פעיל"
+    coords: [32.00450, 34.78350]
+
+  - id: MRKBT-SRC
+    name_internal: "מרכבות האש"
+    name_generic:  "מתחם תדלוק כלי-כיבוי"
+    certainty: medium
+    category: "תדלוק / AFFF"
+    contaminants: [MTBE, TBA, BTEX]
+    status: "פעיל"
+    coords: [32.00780, 34.78600]
 
 # ─── Plume polylines ────────────────────────────────────────────────
 plume_paths:
@@ -504,6 +646,14 @@ decisions:
         need:   "חיפוש במרשם התעשייה אחר יצרני PVDC/דיאוקסן."
         notes:  "ראשון מסוגו | F·03"
         finding_refs: [F3]
+      - action: "חקירת LNAPL באגד"
+        need:   "מיפוי עובי מוצר חופשי ובדיקת UST במחניון אגד."
+        notes:  "LNAPL חי | F·07"
+        finding_refs: [F7]
+      - action: "בדיקת אטימות UST בדרום"
+        need:   "בדיקת אטימות מכלים בפז צבר ופז סיירים; ניטור BTEX רבעוני."
+        notes:  "שחרור-טרי | F·08"
+        finding_refs: [F8]
 
   - category: "מדיניות הפקה"
     actions:
@@ -580,12 +730,12 @@ timeline:
 # ─── PUBLIC §05 — What it means · what we do ────────────────────────
 means_summary:
   - label: "סיכום · א"
-    title: "הסיפור הגדול הוא לא דרמטי, אבל גם לא רגוע"
-    body: "<p>רוב המים באזה״ת חולון תקינים. אבל יש שני סוגי 'סיפורי-משנה' שאנחנו לוקחים ברצינות: <strong>מוקדים היסטוריים</strong> שעדיין משפיעים על איכות המים המקומית, ו<strong>איתות חדש</strong> של מזהם פוטנציאלי שמתפשט לעבר אזור חקלאי.</p><p>אנחנו לא מתעלמים מאף אחד מהם, וגם לא מגזימים בדרמה. הדוח הזה הוא הניסיון שלנו להציג את התמונה כפי שהיא.</p>"
+    title: "תמונה מורכבת, לא דרמטית — אבל גם לא רגועה"
+    body: "<p>רוב המים באזה״ת חולון תקינים. אבל בשבעה מוקדים גיאוגרפיים מובחנים זוהו ריכוזי מזהמים שדורשים מעקב צמוד: <strong>מוקדי ממסים תעשייתיים</strong> בעוצמה גבוהה, <strong>מוקדי דלק פעילים</strong> עם חתימת מוצר חופשי, ו<strong>מזהם חדש</strong> שמתפשט לעבר אזור חקלאי.</p><p>אנחנו לא מתעלמים מאף אחד מהם. הדוח הזה הוא הניסיון שלנו להציג את התמונה כפי שהיא — <bdi>111</bdi> קידוחים, שבעה מוקדים, כ-<bdi>15,000</bdi> מדידות.</p>"
 
   - label: "סיכום · ב"
     title: "מה אנחנו עושים מעכשיו"
-    body: "<ul><li>חידוש דיגום בכל הקידוחים שלא נדגמו לאחרונה — ביטול 'פערי השתיקה'.</li><li>קמפיין PFAS ממוקד באזורים שעדיין לא נדגמו.</li><li>הגברת ניטור בקידוח האספקה שחצה את התקן, ובחינת קידוחים סמוכים.</li><li>חקירת מקור פלאום ה-1,4-דיאוקסן ואיתורו במרשם התעשייה.</li><li>הוספת תוצרי פירוק נוספים לפאנל בדיקות הקבוע.</li><li>תיעוד מודל ההצלחה של רימטל והחלתו על אתרים דומים.</li></ul>"
+    body: "<ul><li>חידוש דיגום בכל הקידוחים שלא נדגמו לאחרונה — ביטול 'פערי השתיקה'.</li><li>קמפיין PFAS ממוקד באזורים שעדיין לא נדגמו.</li><li>הגברת ניטור בקידוח האספקה שחצה את התקן, ובחינת קידוחים סמוכים.</li><li>חקירת מקור פלאום ה-1,4-דיאוקסן ואיתורו במרשם התעשייה.</li><li>חקירת מוצר דלק חופשי במתחם התדלוק המערבי ובדיקת מכלים בדרום.</li><li>הוספת תוצרי פירוק נוספים לפאנל בדיקות הקבוע.</li><li>תיעוד מודל ההצלחה של אתר מחזור מתכות משוקם והחלתו על אתרים דומים.</li></ul>"
 
   - label: "סיכום · ג"
     title: "מה הדוח הזה לא אומר"
@@ -598,7 +748,7 @@ means_summary:
 # ─── PUBLIC §06 — Methodology ───────────────────────────────────────
 methodology:
   - title: "מקור הנתונים"
-    body:  "מסד נתוני הניטור של רשות המים, אגף מי-תהום. נתונים מתאריכי דיגום 01/2020 – 02/2026."
+    body:  "מסד נתוני הניטור של רשות המים, אגף מי-תהום. 111 קידוחים, כ-15,170 מדידות, חלון ניתוח 02/2021 – 02/2026."
   - title: "קריטריון השוואה"
     body:  "תקנות מי-שתייה (2013) לישראל. עבור מזהמים ללא תקן ישראלי, השוואה לתקני EPA אמריקאיים."
   - title: "חישוב חומרה"
