@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Groundwater Contamination Analysis System — Architecture</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true,theme:'neutral',fontFamily:'"Source Sans 3","Segoe UI",sans-serif',fontSize:13});</script>
+<style>
+  :root{
+    --paper:#fdfcf9;
+    --ink:#1a1a1a;
+    --ink-2:#3a3a3a;
+    --soft:#6b6b6b;
+    --rule:#1a1a1a;
+    --rule-light:#cfcfcf;
+    --rule-faint:#e6e3dd;
+    --red:#a82a1c;
+    --grey-1:#f0ede6;
+    --grey-2:#d8d3c8;
+    --grey-4:#5a564f;
+  }
+  *{box-sizing:border-box}
+  html,body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Frank Ruhl Libre","Georgia",serif;
+    -webkit-font-smoothing:antialiased;font-feature-settings:"kern","liga","tnum";
+  }
+  body{padding:0 0 80px;font-size:16px;line-height:1.7}
+  .doc{max-width:960px;margin:0 auto;padding:56px 48px 0}
+
+  /* ── masthead ── */
+  .masthead{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:44px}
+  .masthead .top{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--soft);
+    padding-bottom:14px;border-bottom:1px solid var(--rule-light);margin-bottom:22px;
+  }
+  .masthead h1{font-weight:900;font-size:30px;line-height:1.18;margin:0 0 6px}
+  .masthead .tagline{
+    font-family:"Source Sans 3",sans-serif;font-size:13px;
+    color:var(--soft);font-weight:600;margin-bottom:14px;
+  }
+  .masthead .note{
+    font-size:14.5px;color:var(--ink-2);line-height:1.6;
+    border-left:3px solid var(--rule-light);padding:4px 0 4px 14px;margin-top:14px;
+  }
+  .masthead .note strong{color:var(--ink)}
+
+  /* ── sections ── */
+  section{margin:46px 0}
+  .sec-h{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;
+    padding-bottom:8px;border-bottom:1px solid var(--ink)}
+  .sec-h .num{font-family:"IBM Plex Mono",monospace;font-size:13px;
+    letter-spacing:.04em;color:var(--soft);flex-shrink:0;font-weight:500}
+  .sec-h h2{font-weight:700;font-size:22px;letter-spacing:-0.005em;margin:0;flex:1}
+  h3{font-family:"Source Sans 3",sans-serif;font-weight:700;font-size:15.5px;
+    margin:28px 0 10px;color:var(--ink)}
+
+  /* ── prose ── */
+  p{line-height:1.72;color:var(--ink-2);margin:0 0 14px}
+  p strong{color:var(--ink);font-weight:700}
+  em{font-style:italic;color:var(--ink)}
+
+  /* ── code ── */
+  code{
+    font-family:"IBM Plex Mono",monospace;font-size:.86em;
+    background:var(--grey-1);padding:1px 5px;border:1px solid var(--rule-faint);
+    border-radius:2px;color:var(--ink);
+  }
+  pre{
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.6;
+    background:#1a1a1a;color:#f0ede6;
+    padding:18px 20px;margin:20px 0;overflow-x:auto;border-radius:3px;
+  }
+  pre code{background:none;border:none;padding:0;font-size:1em;color:inherit}
+  pre .c{color:#9aa0a6}
+  pre .k{color:#e6b450}
+
+  /* ── Mermaid container ── */
+  .mermaid-wrap{
+    margin:24px 0;padding:20px;
+    border:1px solid var(--rule-faint);background:var(--paper);
+    border-radius:3px;overflow-x:auto;
+  }
+  .mermaid-wrap .mermaid{text-align:center}
+
+  /* ── tables ── */
+  table.tbl{width:100%;border-collapse:collapse;font-size:13.5px;
+    font-family:"Frank Ruhl Libre","Georgia",serif;margin:18px 0 22px}
+  table.tbl thead th{
+    border-top:1.5px solid var(--ink);border-bottom:1px solid var(--ink);
+    font-family:"Source Sans 3",sans-serif;font-size:11px;letter-spacing:.05em;
+    text-transform:uppercase;color:var(--soft);font-weight:600;
+    padding:9px 11px 8px;text-align:left;background:var(--grey-1);
+  }
+  table.tbl tbody td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--rule-faint);
+    vertical-align:top;line-height:1.5;color:var(--ink-2)}
+  table.tbl tbody tr:last-child td{border-bottom:1.5px solid var(--ink)}
+  table.tbl strong{color:var(--ink);font-weight:700}
+  table.tbl td:first-child{font-weight:600;color:var(--ink)}
+  table.tbl td code,table.tbl th code{font-size:.88em}
+  .fail{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--red);font-weight:700}
+  .pass{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#2a6e2a;font-weight:700}
+
+  /* ── callouts ── */
+  blockquote.note{
+    border-left:3px solid var(--ink);background:var(--grey-1);
+    padding:14px 18px;margin:22px 0;color:var(--ink-2);font-size:14.5px;line-height:1.65;
+  }
+  blockquote.note strong{color:var(--ink)}
+  blockquote.summary{
+    border:1px solid var(--ink);padding:18px 22px;margin:30px 0 0;
+    color:var(--ink);font-size:15px;line-height:1.7;background:var(--grey-1);
+  }
+  blockquote.summary strong{font-weight:700}
+
+  /* ── ADR cards ── */
+  .adr{
+    border:1px solid var(--rule-light);margin:22px 0;
+    border-left:4px solid var(--ink);
+  }
+  .adr .adr-h{
+    background:var(--grey-1);padding:11px 16px;
+    font-family:"Source Sans 3",sans-serif;font-size:12.5px;
+    font-weight:700;letter-spacing:.03em;color:var(--ink);
+    border-bottom:1px solid var(--rule-light);
+  }
+  .adr .adr-body{padding:14px 18px}
+  .adr .adr-body h4{
+    font-family:"Source Sans 3",sans-serif;font-size:11.5px;
+    text-transform:uppercase;letter-spacing:.06em;color:var(--soft);
+    font-weight:600;margin:16px 0 6px;
+  }
+  .adr .adr-body h4:first-child{margin-top:0}
+  .adr .adr-body p{font-size:14px;margin:0 0 4px}
+  .adr .adr-body ul{margin:4px 0 0;padding-left:18px}
+  .adr .adr-body li{font-size:14px;color:var(--ink-2);margin-bottom:3px}
+  .adr .adr-body li strong{color:var(--ink)}
+
+  /* ── lists ── */
+  ul.tech{margin:14px 0 18px;padding-left:22px}
+  ul.tech li{margin-bottom:8px;line-height:1.6;color:var(--ink-2)}
+  ul.tech li strong{color:var(--ink)}
+  ol.tech{margin:14px 0 18px;padding-left:22px}
+  ol.tech li{margin-bottom:10px;line-height:1.6;color:var(--ink-2)}
+  ol.tech li strong{color:var(--ink)}
+
+  /* ── provenance stamp ── */
+  .stamp{
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.6;
+    background:#1a1a1a;color:#9aa0a6;
+    padding:14px 18px;margin:18px 0;border-radius:3px;
+  }
+  .stamp .hl{color:#e6b450}
+
+  footer{max-width:960px;margin:0 auto;padding:28px 48px 0;
+    border-top:1px solid var(--rule-light);font-size:11.5px;color:var(--soft);
+    font-family:"Source Sans 3",sans-serif;line-height:1.6}
+  footer b{color:var(--ink);font-weight:600}
+
+  @media(max-width:700px){
+    .doc{padding:32px 20px 0}
+    .masthead h1{font-size:23px}
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+<header class="masthead">
+  <div class="top">
+    <span>Hydrological Service · 2026</span>
+    <span>Technical Reference · IAR/TECH/2026-01</span>
+  </div>
+  <h1>Groundwater Contamination Analysis System — Architecture</h1>
+  <div class="tagline">For software engineers and systems architects</div>
+  <div class="note">
+    <strong>Scope:</strong> Architecture, data sources, deterministic/LLM split, and the automated QA and control layer.<br/>
+    <strong>Status:</strong> Infrastructure complete; validated on two zones (Raanana, Holon). Pipeline is zone-generic (<code>--zone</code>).
+  </div>
+</header>
+
+
+<!-- §1 -->
+<section>
+  <div class="sec-h"><span class="num">1</span><h2>Introduction and Goals</h2></div>
+  <p>The system produces <strong>structured expert reports on groundwater contamination</strong> for industrial monitoring zones along the Israeli coastal aquifer. It replaces a manual, weeks-long analysis workflow with a hybrid pipeline that runs in hours and produces a draft the domain expert <em>edits</em> rather than <em>writes from scratch</em>.</p>
+
+  <table class="tbl">
+    <thead><tr><th>Priority</th><th>Goal</th><th>Metric</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>Reproducible</strong> — same input always yields same deterministic output</td><td>byte-identical re-runs for all non-LLM steps</td></tr>
+      <tr><td>2</td><td><strong>Auditable</strong> — every data point traceable to source document</td><td><code>source_file + page/row</code> on every measurement row</td></tr>
+      <tr><td>3</td><td><strong>Scalable</strong> — one pipeline for all 18 zones</td><td><code>--zone &lt;id&gt;</code> flag; no hardcoded zone logic</td></tr>
+      <tr><td>4</td><td><strong>Controllable</strong> — LLM output blocked from publication unless QA passes</td><td>8 blocking gates in <code>qa_pipeline.py</code></td></tr>
+    </tbody>
+  </table>
+</section>
+
+
+<!-- §2 -->
+<section>
+  <div class="sec-h"><span class="num">2</span><h2>Architecture Constraints</h2></div>
+  <table class="tbl">
+    <thead><tr><th>Constraint</th><th>Rationale</th></tr></thead>
+    <tbody>
+      <tr><td>Statistical calculations are <strong>never delegated to the LLM</strong></td><td>Must be byte-identical, verifiable against the 2021 Water Quality Report methodology</td></tr>
+      <tr><td>Report language: <strong>Hebrew</strong> (RTL)</td><td>Regulatory requirement; Opus output in Hebrew</td></tr>
+      <tr><td><strong>Zone-generic codebase</strong> — no zone-specific logic in scripts</td><td>Same pipeline for Raanana (7 wells) and Holon (111 wells) without branching</td></tr>
+      <tr><td><strong>No interpolation of missing data</strong></td><td>Expert decision; gaps flagged explicitly</td></tr>
+      <tr><td><strong>Expert must approve before publication</strong></td><td>System produces a draft; human remains in the loop</td></tr>
+    </tbody>
+  </table>
+</section>
+
+
+<!-- §3 -->
+<section>
+  <div class="sec-h"><span class="num">3</span><h2>System Context</h2></div>
+  <div class="mermaid-wrap">
+    <pre class="mermaid">
+flowchart TB
+    subgraph EXT["External Inputs"]
+        E1[Excel monitoring files\nper zone]
+        E2[PDF reports\nTAHAL 2008 · 2021 Report]
+        E3[Web / regulatory sources]
+    end
+    subgraph SYS["Analysis Pipeline  —  IAR System"]
+        P[Hybrid Pipeline]
+    end
+    subgraph USR["Users"]
+        U1[Domain Expert\nHydrologist]
+        U2[Management]
+        U3[Public · Regulator]
+    end
+    E1 & E2 & E3 --> P
+    P -->|Draft report + figures| U1
+    U1 -->|Approval| P
+    P -->|INTERNAL.html| U2
+    P -->|PUBLIC.html — anonymised| U3
+    </pre>
+  </div>
+</section>
+
+
+<!-- §4 -->
+<section>
+  <div class="sec-h"><span class="num">4</span><h2>Solution Strategy</h2></div>
+  <p>Three layers, each doing what it does best, bound by an enforced contract:</p>
+  <table class="tbl">
+    <thead><tr><th>Layer</th><th>Responsibility</th><th>Why this layer</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Deterministic core</strong></td><td>Trend analysis, severity indexing, forensics, Data Pack CSV generation</td><td>Must be exact, repeatable, verifiable — LLM cannot guarantee this</td></tr>
+      <tr><td><strong>Controlled LLM</strong> (3 Opus calls)</td><td>Geographic clustering, mechanism linking, professional Hebrew narrative</td><td>Requires contextual judgment — deterministic code cannot do this</td></tr>
+      <tr><td><strong>QA gates</strong> (8 blocking checks)</td><td>Enforce the contract between layers; block on any violation</td><td>LLM output is "almost right" by nature; gates make it production-safe</td></tr>
+    </tbody>
+  </table>
+
+  <blockquote class="note">
+    <strong>Core design principle:</strong> every step is either fully deterministic or an explicit, documented LLM boundary. No grey areas.
+  </blockquote>
+
+  <div class="mermaid-wrap">
+    <pre class="mermaid">
+flowchart LR
+    subgraph IN["Input Layer"]
+        I1[Excel / CSV]
+        I2[PDF Reports]
+        I3[Web sources]
+    end
+    subgraph DET["Deterministic Core"]
+        D1[parse_excel]
+        D2[trend_analysis\nMann-Kendall]
+        D3[forensics_analyzer]
+        D4[(Data Pack\n6 CSVs)]
+        D1 --> D2 --> D3 --> D4
+    end
+    subgraph LLM["Controlled LLM"]
+        L1[Opus #1\nZone Diagnosis]
+        L2[Opus #2\nExpert Report]
+        L3[Opus #3\nMgmt Brief]
+        L1 --> L2 --> L3
+    end
+    subgraph OUT["Output"]
+        O1[Report Vn\nHTML · DOCX]
+        O2[INTERNAL.html\nPUBLIC.html]
+    end
+    IN --> DET --> LLM --> OUT
+    QA{{QA Gates\n2 – 8}} -. blocks .-> LLM
+    QA -. blocks .-> OUT
+    DET --> QA
+    </pre>
+  </div>
+</section>
+
+
+<!-- §5 -->
+<section>
+  <div class="sec-h"><span class="num">5</span><h2>Building Blocks</h2></div>
+
+  <h3>5.1 Input Layer</h3>
+  <table class="tbl">
+    <thead><tr><th>Source</th><th>Format</th><th>Role</th><th>Future path</th></tr></thead>
+    <tbody>
+      <tr><td>Monitoring measurements</td><td>Excel / CSV</td><td>Time-series of contaminant concentrations per well × parameter</td><td><strong>Direct DB connection</strong></td></tr>
+      <tr><td>Previous reports</td><td>PDF</td><td>Historical context, hydrogeology, prior findings</td><td>Tagged document store / RAG</td></tr>
+      <tr><td>Contamination sources</td><td>PDF / web</td><td>Facility identification, contaminant signatures</td><td>Structured candidates index</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Isolation principle:</strong> the input layer is isolated behind <code>parse_excel.py</code> + <code>extract_zone_pdfs.py</code>. Swapping the source (files → DB) affects only this layer; the rest of the pipeline consumes the standardised Data Pack and is source-agnostic.</p>
+
+  <h3>5.2 Deterministic Core — Structured Data Pack</h3>
+  <p>Produces <strong>6–7 standardised CSVs</strong> in <code>{Zone}/02_data/</code>. This is the <strong>contract</strong> between the deterministic layer and everything downstream (LLM + report generators). Full schema: <code>DATA_PIPELINE_SPEC.md</code>.</p>
+  <table class="tbl">
+    <thead><tr><th>CSV</th><th>Content</th><th>Key</th></tr></thead>
+    <tbody>
+      <tr><td><code>measurements_scoped</code></td><td>All measurements for zone wells + source (<code>source_file</code>, <code>page/row</code>)</td><td>well × parameter × date</td></tr>
+      <tr><td><code>latest_results</code></td><td>Most recent result per well × parameter + standard ratio + severity</td><td>well × parameter</td></tr>
+      <tr><td><code>severity_by_well_family</code></td><td>Severity index by <strong>C_max_5y</strong> (5-year window), not latest value</td><td>well × family</td></tr>
+      <tr><td><code>trends_by_well_parameter</code></td><td>Mann-Kendall results (Z, p, SNR, soft_trigger)</td><td>well × parameter</td></tr>
+      <tr><td><code>monitoring_gaps</code></td><td>Spatial / parametric coverage gaps</td><td>well / parameter</td></tr>
+      <tr><td><code>figure_ready_series</code></td><td>Plot-ready series (no calculation in the renderer)</td><td>well × parameter × date</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Statistical methodology</strong> (fixed — no changes without expert approval):</p>
+  <ul class="tech">
+    <li><strong>Trends:</strong> Mann-Kendall (tie-corrected variance, continuity-corrected Z), SNR gating ≥ 0.3, <code>soft_trigger</code> = 2 consecutive rising values in a 5-year window. Not linear regression. Not ML.</li>
+    <li><strong>Severity:</strong> <code>bucket(C_max_5y / DWS × 100)</code>, 0–8 scale.</li>
+    <li><strong>Forensics:</strong> decay chains, source signatures, co-occurrence pairs — probabilistic, with confidence level (HIGH / MEDIUM / LOW).</li>
+    <li><strong>Exclusions:</strong> TPFAS and BETK always excluded (calculated sums). Individual PFAS species (PFHxS, PFOA…) are the canonical representation.</li>
+  </ul>
+
+  <pre><code><span class="k">parse_excel.py</span> → <span class="k">trend_analysis.py</span> → <span class="k">forensics_analyzer.py</span> → <span class="k">generate_zone_data_pack.py</span>
+<span class="c"># all scripts accept --zone &lt;id&gt;</span></code></pre>
+
+  <h3>5.3 Controlled LLM Boundaries — Three Opus Calls</h3>
+  <table class="tbl">
+    <thead><tr><th>Call</th><th>Input</th><th>Output</th><th>Why LLM</th></tr></thead>
+    <tbody>
+      <tr><td><strong>#1 — Zone Diagnosis</strong></td><td>Data Pack + Context Pack</td><td><code>zone_diagnosis.md</code> (8 questions + Focus Order table)</td><td>Geographic clustering + mechanism linking are not deterministic from CSV</td></tr>
+      <tr><td><strong>#2 — Expert Report</strong></td><td>Data Pack + diagnosis + precedent</td><td><code>{ZONE}_REPORT_Vn.md</code> (6 chapters + appendices)</td><td>Synthesis of findings, professional narrative, RTL Hebrew</td></tr>
+      <tr><td><strong>#3 — Management Brief</strong></td><td>Approved report</td><td><code>raw_brief.yaml</code> → management reports</td><td>Distilling a rich report into a dual-audience summary</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Prompt derivation — critical design point</h3>
+  <p>The LLM never receives a free-form question. Every prompt is a <strong>derived artifact</strong> built by <code>render_zone_prompt.py</code> from the canonical template + live zone artifacts:</p>
+  <table class="tbl">
+    <thead><tr><th>Injection token</th><th>Source (SSOT)</th><th>What is injected</th></tr></thead>
+    <tbody>
+      <tr><td><code>{TOTAL_ACTIVE}</code> · <code>{N_MEASUREMENTS}</code> · <code>{YEAR_*}</code></td><td><code>02_data/measurements_scoped.csv</code></td><td>Well and measurement counts, year range — from Data Pack, never entered manually</td></tr>
+      <tr><td><code>{FOCUS_ORDER_LIST}</code></td><td><code>## סדר מוקדים</code> table in <code>zone_diagnosis.md</code></td><td>Sorted geographic foci — the inter-stage contract between diagnosis and report</td></tr>
+      <tr><td><code>{TERMINOLOGY_BLOCK}</code></td><td><code>docs/STYLE_GUIDE.md §B.5</code></td><td>Mandatory term substitutions — the same SSOT that Gate 5 enforces</td></tr>
+      <tr><td><code>{ZONE}</code> · <code>{PRECEDENT_ZONE}</code></td><td>CLI args</td><td>Zone name, style-precedent zone</td></tr>
+    </tbody>
+  </table>
+  <p>The rendered prompt carries a provenance stamp that Gate 3 verifies:</p>
+  <div class="stamp">
+&lt;!-- RENDERED ARTIFACT — DO NOT EDIT BY HAND.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generated by scripts/render_zone_prompt.py --step report …<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;template=zone_report_prompt_template_v5.md<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl">template_sha256_12=a1b2c3d4e5f6</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl">diagnosis_sha256_12=9f8e7d6c5b4a</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;total_active=111&nbsp;&nbsp;measurements=15173&nbsp;&nbsp;years=2008-2025<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Re-run after ANY change to the template or the zone diagnosis. --&gt;
+  </div>
+
+  <h3>5.4 QA Gates Layer</h3>
+  <p><code>scripts/qa_pipeline.py</code> runs automated gates that <strong>block</strong> (not warn) if any contract is violated.</p>
+  <table class="tbl">
+    <thead><tr><th>Gate</th><th>Stage checked</th><th>What is enforced</th><th>On violation</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Gate 2</strong></td><td>Data Pack</td><td>6 CSVs present, schema valid, every row has a source, no silent gaps</td><td class="fail">FAIL</td></tr>
+      <tr><td><strong>Gate 3</strong></td><td>Prompt layer</td><td><code>template_sha</code> + <code>diagnosis_sha</code> match live SSOT (freshness)</td><td class="fail">FAIL</td></tr>
+      <tr><td><strong>Gate 4</strong></td><td>Diagnosis</td><td>Focus Order block present, parseable, sorted by focus severity descending</td><td class="fail">FAIL</td></tr>
+      <tr><td><strong>Gate 5</strong></td><td>Expert report</td><td>6-chapter structure, well count consistent, terminology, focus-first order, PFAS in coverage-gaps section</td><td class="fail">FAIL</td></tr>
+      <tr><td><strong>Gate 6</strong></td><td>HTML / Word</td><td>≥ 80% of in-scope wells have map markers; bounds computed dynamically from data</td><td class="fail">FAIL</td></tr>
+      <tr><td><strong>Gate 8</strong></td><td>Management reports</td><td>brief↔report sha match (freshness); facility names absent from PUBLIC version</td><td class="fail">FAIL</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:13px;color:var(--soft)">(Gate 7 = <code>--gate all</code> = runs all gates.)</p>
+</section>
+
+
+<!-- §6 -->
+<section>
+  <div class="sec-h"><span class="num">6</span><h2>Runtime View</h2></div>
+
+  <h3>6.1 Full Execution Sequence</h3>
+  <div class="mermaid-wrap">
+    <pre class="mermaid">
+sequenceDiagram
+    participant Ops as Operator
+    participant Det as Deterministic Core
+    participant G2 as Gate 2
+    participant G3 as Gate 3
+    participant O1 as Opus #1
+    participant G4 as Gate 4
+    participant O2 as Opus #2
+    participant G5 as Gate 5
+    participant Exp as Domain Expert
+    participant O3 as Opus #3
+    participant G8 as Gate 8
+
+    Ops->>Det: run_pipeline.sh data
+    Det->>G2: validate Data Pack
+    G2-->>Ops: ✅ PASS
+    Note over Ops: assemble Context Pack (manual step)
+    Ops->>G3: render-diagnosis
+    G3-->>Ops: ✅ template sha OK
+    Ops->>O1: zone diagnosis prompt
+    O1-->>Ops: zone_diagnosis.md
+    Ops->>G4: validate focus_order block
+    G4-->>Ops: ✅ PASS
+    Ops->>G3: render-report
+    G3-->>Ops: ✅ diagnosis sha OK
+    Ops->>O2: expert report prompt
+    O2-->>Ops: ZONE_REPORT_Vn.md
+    Ops->>G5: validate report structure
+    G5-->>Ops: ✅ PASS
+    Ops->>Exp: submit draft for review
+    Exp-->>Ops: approved
+    Ops->>O3: exec-summary
+    O3-->>Ops: raw_brief.yaml
+    Ops->>G8: validate freshness + anonymisation
+    G8-->>Ops: ✅ PASS
+    </pre>
+  </div>
+
+  <h3>6.2 Shell Commands (Holon example)</h3>
+  <pre><code><span class="k">ZONE_NAME_HE='אזה״ת חולון' scripts/run_pipeline.sh Holon data</span>
+<span class="c">#   parse_excel → trend_analysis → forensics → data_pack → Gate 2</span>
+<span class="c"># … assemble 03_context/ (manual, NotebookLM-like) …</span>
+
+<span class="k">scripts/run_pipeline.sh Holon render-diagnosis</span>   <span class="c"># Gate 3 freshness check</span>
+<span class="c"># … OPUS #1 → zone_diagnosis.md … ; qa_pipeline --gate 4</span>
+
+<span class="k">scripts/run_pipeline.sh Holon render-report</span>      <span class="c"># Gate 3 freshness check</span>
+<span class="c"># … OPUS #2 → HOLON_REPORT_Vn.md … ; qa_pipeline --gate 5</span>
+
+<span class="k">scripts/run_pipeline.sh Holon html</span>               <span class="c"># auto-detect Vn ; Gate 6</span>
+<span class="k">scripts/run_pipeline.sh Holon validate</span>           <span class="c"># Gate all</span>
+
+<span class="c"># … after expert approval only: …</span>
+<span class="k">scripts/run_pipeline.sh Holon exec-summary</span>       <span class="c"># prepare → OPUS #3 → finalize → Gate 8</span></code></pre>
+  <p><strong>Opus boundaries</strong> (cannot be automated): <code>render-diagnosis</code> → #1, <code>render-report</code> → #2, <code>exec-summary</code> → #3. The driver halts at each boundary and waits for the human-in-the-loop Opus invocation.</p>
+</section>
+
+
+<!-- §7 -->
+<section>
+  <div class="sec-h"><span class="num">7</span><h2>Crosscutting Concepts</h2></div>
+
+  <h3>7.1 Staleness Contracts — Two Documented Footguns</h3>
+  <div class="mermaid-wrap">
+    <pre class="mermaid">
+flowchart LR
+    TM[Template SSOT\nzone_report_prompt_template_v5.md] -->|template_sha| RP
+    DG[zone_diagnosis.md] -->|diagnosis_sha| RP[render_zone_prompt.py]
+    RP -->|rendered prompt| PRO[05_prompt/\nzone_report_prompt.md]
+    G3{{Gate 3}} -->|compare live sha\nvs stamped sha| PRO
+    G3 -->|FAIL if mismatch| STOP[Opus #2 blocked ❌]
+    G3 -->|PASS if match| O2[Opus #2 proceeds ✅]
+    </pre>
+  </div>
+
+  <ol class="tech">
+    <li><strong>diagnosis → prompt (Gate 3):</strong> Re-running Step 4 (zone diagnosis) without re-rendering the report prompt causes Opus to consume a stale <code>focus_order</code> snapshot. <strong>Enforced:</strong> the prompt stamps <code>diagnosis_sha256_12</code>; Gate 3 compares against the live diagnosis file.</li>
+    <li><strong>report → brief (Gate 8):</strong> Modifying the source report without refreshing the brief causes stale management outputs to circulate. <strong>Enforced:</strong> the brief carries <code>source_report_sha256_12</code>; Gate 8 compares against the latest report.</li>
+  </ol>
+
+  <h3>7.2 Anonymisation Enforcement (Gate 8)</h3>
+  <p>The PUBLIC version is scanned against a blocklist (<code>sources[].name_internal</code>):</p>
+  <table class="tbl">
+    <thead><tr><th>Finding</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Facility name</strong> in PUBLIC</td><td><span class="fail">FAIL</span> — blocks publication</td></tr>
+      <tr><td><strong>Real borehole name</strong> in PUBLIC</td><td><span style="color:var(--grey-4);font-weight:700;font-family:'IBM Plex Mono',monospace;font-size:11.5px">WARN</span> — recommend code B-NN; approved exceptions permitted</td></tr>
+    </tbody>
+  </table>
+  <p>This eliminates reliance on human memory for information security — a failure mode documented in the post-mortem.</p>
+
+  <h3>7.3 Audit Trail</h3>
+  <table class="tbl">
+    <thead><tr><th>Artifact</th><th>Provenance stamp</th></tr></thead>
+    <tbody>
+      <tr><td>Every measurement row</td><td><code>source_file + page/row</code></td></tr>
+      <tr><td>Every rendered prompt</td><td><code>template_sha256_12</code> + <code>diagnosis_sha256_12</code></td></tr>
+      <tr><td>Every report version</td><td><code>V-number</code></td></tr>
+      <tr><td>Every generated file</td><td><code>DO NOT EDIT BY HAND</code> header</td></tr>
+    </tbody>
+  </table>
+
+  <h3>7.4 Zone-Genericity</h3>
+  <p>All scripts accept <code>--zone &lt;id&gt;</code> and derive all paths from the zone name. Validated on Raanana (7 wells) and Holon (111 wells). Gate 6 threshold is zone-relative (≥ 80% of in-scope wells). Map bounds are computed dynamically from ITM coordinates — no hardcoded extents.</p>
+  <blockquote class="note">
+    <strong>Known casing convention debt (REQ #28):</strong> core scripts accept lowercase (<code>--zone holon</code>); V5 tools accept title-case (<code>--zone Holon</code>). Documented in <code>ORCHESTRATION.md</code> pending unification.
+  </blockquote>
+</section>
+
+
+<!-- §8 -->
+<section>
+  <div class="sec-h"><span class="num">8</span><h2>Architecture Decisions</h2></div>
+
+  <div class="adr">
+    <div class="adr-h">ADR-001 · Hybrid approach — not all-deterministic, not all-LLM</div>
+    <div class="adr-body">
+      <h4>Context</h4>
+      <p>Producing a professional contamination analysis report requires both exact numerical computation (trend statistics, severity indices) and contextual judgment (geographic clustering, narrative synthesis). Neither pure-deterministic nor pure-LLM approaches can satisfy both requirements.</p>
+      <h4>Decision</h4>
+      <p>Strict separation. The deterministic core handles everything that must be reproducible; the LLM handles everything that requires judgment. No mixing — every step is either fully deterministic or an explicit, documented LLM boundary.</p>
+      <h4>Consequences</h4>
+      <ul>
+        <li><strong>✅</strong> Full audit trail possible for every number</li>
+        <li><strong>✅</strong> LLM output is bounded and constrained by deterministic inputs</li>
+        <li><strong>✅</strong> LLM failures are localised to documented boundaries</li>
+        <li><strong>⚠</strong> More complex architecture than a pure-LLM approach</li>
+        <li><strong>⚠</strong> Requires maintained templates, gate logic, and rendering scripts</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="adr">
+    <div class="adr-h">ADR-002 · Prompt as derived artifact, not hand-edited file</div>
+    <div class="adr-body">
+      <h4>Context</h4>
+      <p>A rendered prompt is a <em>materialized copy</em> of a template. It drifts silently from the SSOT unless actively managed. A stale prompt causes the LLM to produce a report that does not reflect the current zone diagnosis — without any visible error.</p>
+      <h4>Decision</h4>
+      <p>Prompts are never hand-edited. They are generated by <code>render_zone_prompt.py</code> from the canonical template + live zone artifacts. Staleness is detected at Gate 3 via SHA comparison.</p>
+      <h4>Consequences</h4>
+      <ul>
+        <li><strong>✅</strong> Prompt drift is structurally impossible</li>
+        <li><strong>✅</strong> Template changes propagate automatically on next render</li>
+        <li><strong>✅</strong> Provenance is machine-verifiable</li>
+        <li><strong>⚠</strong> Adds a mandatory rendering step before each Opus call</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="adr">
+    <div class="adr-h">ADR-003 · Blocking gates, not advisory warnings</div>
+    <div class="adr-body">
+      <h4>Context</h4>
+      <p>LLM output is "almost right" by nature. Advisory warnings are routinely ignored under time pressure. A report with a subtle structural defect or a stale prompt can pass human review and reach publication.</p>
+      <h4>Decision</h4>
+      <p>Gate violations are blocking FAILs that halt the pipeline. The operator cannot proceed to the next step until the contract is satisfied.</p>
+      <h4>Consequences</h4>
+      <ul>
+        <li><strong>✅</strong> "Almost right" cannot reach publication</li>
+        <li><strong>✅</strong> Forces explicit acknowledgement of every quality issue</li>
+        <li><strong>✅</strong> Provides a clear, auditable go/no-go record</li>
+        <li><strong>⚠</strong> Requires disciplined gate implementation to avoid false positives</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- §9 -->
+<section>
+  <div class="sec-h"><span class="num">9</span><h2>Risks and Technical Debt</h2></div>
+  <table class="tbl">
+    <thead><tr><th>Item</th><th>Status</th><th>Component</th></tr></thead>
+    <tbody>
+      <tr><td>Direct DB connection</td><td>Planned</td><td>Input layer (§5.1)</td></tr>
+      <tr><td>RAG over document store</td><td>Deferred (documented)</td><td>Context Pack assembly</td></tr>
+      <tr><td>OCR for scanned PDFs</td><td>Blocking data gap (TAHAL 2008)</td><td><code>extract_zone_pdfs.py</code></td></tr>
+      <tr><td><code>--zone</code> casing unification</td><td>REQ #28 debt</td><td><code>cli_common.py</code> + core scripts</td></tr>
+      <tr><td>Basemap tile integration</td><td>Deferred (environment blocked)</td><td><code>svg_charts.py</code></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Reusable Components</h3>
+  <p>The architecture is decomposable. Each component can be extracted and applied to a different domain:</p>
+  <table class="tbl">
+    <thead><tr><th>Component</th><th>Reuse beyond groundwater monitoring</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Deterministic analysis engine</strong> (trend / severity)</td><td>Any environmental time-series with a regulatory standard</td></tr>
+      <tr><td><strong>Controlled-LLM pattern</strong> (structured prompt + blocking gates)</td><td>Any repeatable classification, summarisation, or professional drafting task</td></tr>
+      <tr><td><strong>Dual-audience generator</strong> (INTERNAL + PUBLIC from one source)</td><td>Any regulated output requiring a published version with anonymisation</td></tr>
+      <tr><td><strong>QA layer</strong> (audit trail, anonymisation, staleness detection)</td><td>Any regulatory workflow where "almost right" is not acceptable</td></tr>
+    </tbody>
+  </table>
+
+  <blockquote class="summary">
+    <strong>Engineering summary:</strong> the value is not in the one-off report generator but in the <strong>architecture</strong> — a clean separation between determinism and LLM, enforced inter-stage contracts, and a control layer that prevents drift, staleness, and information leakage. This is what turns a proof-of-concept into a maintainable, 18-zone-scalable infrastructure component.
+  </blockquote>
+</section>
+
+
+<!-- §10 -->
+<section>
+  <div class="sec-h"><span class="num">10</span><h2>Glossary</h2></div>
+  <table class="tbl">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Data Pack</strong></td><td>The 6–7 standardised CSVs in <code>{Zone}/02_data/</code> — the deterministic-to-LLM contract</td></tr>
+      <tr><td><strong>Context Pack</strong></td><td>Manually assembled documents in <code>{Zone}/context_pack/03_context/</code> — previous reports, hydrogeology, source candidates</td></tr>
+      <tr><td><strong>Zone Diagnosis</strong></td><td>Opus call #1 output: answers to 8 structured professional questions + Focus Order table</td></tr>
+      <tr><td><strong>Focus Order</strong></td><td>Sorted list of geographic contamination foci (by focus severity, descending) — inter-stage contract between diagnosis and report</td></tr>
+      <tr><td><strong>C_max_5y</strong></td><td>Maximum concentration over the most recent 5-year window; basis for severity indexing</td></tr>
+      <tr><td><strong>DWS</strong></td><td>Drinking Water Standard — Israeli regulatory threshold per parameter</td></tr>
+      <tr><td><strong>Mann-Kendall</strong></td><td>Non-parametric monotonic trend test; tie-corrected variance, continuity-corrected Z</td></tr>
+      <tr><td><strong>SNR gating</strong></td><td>Signal-to-noise ratio threshold (≥ 0.3) applied before Mann-Kendall to suppress low-quality series</td></tr>
+      <tr><td><strong>soft_trigger</strong></td><td>2 consecutive rising values in the 5-year window; supplementary trend signal (not a substitute for MK)</td></tr>
+      <tr><td><strong>SSOT</strong></td><td>Single Source of Truth — the authoritative location for a given piece of information</td></tr>
+      <tr><td><strong>Staleness contract</strong></td><td>SHA-based enforcement that a derived artifact matches the current version of its source</td></tr>
+      <tr><td><strong>PFAS</strong></td><td>Per- and polyfluoroalkyl substances — coverage gap in most zones (&lt; 5% of wells monitored)</td></tr>
+      <tr><td><strong>CVOC</strong></td><td>Chlorinated Volatile Organic Compounds — dominant contaminant family in the coastal aquifer</td></tr>
+      <tr><td><strong>ADR</strong></td><td>Architecture Decision Record — captures context, decision, and consequences of a significant architectural choice</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div><!-- /.doc -->
+
+<footer>
+  <b>Hydrological Service</b> ·
+  System Architecture — Technical Reference ·
+  <span>Draft · 06/2026 · IAR/TECH/2026-01</span>
+  <br/>
+  Canonical template: <code>scripts/templates/zone_report_prompt_template_v5.md</code> ·
+  Pipeline SSOT: <code>ZONE_REPORT_PROCESS_GUIDE.md §VIII</code> ·
+  Execution map: <code>ORCHESTRATION.md</code>
+</footer>
+</body>
+</html>
