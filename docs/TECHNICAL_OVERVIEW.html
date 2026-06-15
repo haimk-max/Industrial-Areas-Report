@@ -261,7 +261,7 @@
     <tbody>
       <tr><td><strong>#1 — אבחון אזורי</strong></td><td><bdi>Data Pack</bdi> + <bdi>Context Pack</bdi></td><td><code>zone_diagnosis.md</code> (8 שאלות + טבלת <bdi>סדר מוקדים</bdi>)</td><td>אשכול גיאוגרפי + קישור מנגנוני אינם דטרמיניסטיים מ-<bdi>CSV</bdi></td></tr>
       <tr><td><strong>#2 — דו"ח מומחה</strong></td><td><bdi>Data Pack</bdi> + diagnosis + precedent</td><td><code>{ZONE}_REPORT_Vn.md</code> (6 פרקים + נספחים)</td><td>חיבור בין ממצאים, ניסוח מקצועי, נרטיב</td></tr>
-      <tr><td><strong>#3 — brief ניהולי</strong></td><td>הדו"ח המאושר</td><td><code>raw_brief.yaml</code> → דו"חות ניהוליים</td><td>המרת דו"ח עשיר לתקציר דו-קהלי</td></tr>
+      <tr><td><strong>#3 — brief ניהולי</strong></td><td>הדו"ח המאושר</td><td><code>raw_brief.yaml</code> — דו"חות ניהוליים</td><td>המרת דו"ח עשיר לתקציר דו-קהלי</td></tr>
     </tbody>
   </table>
 
@@ -320,15 +320,15 @@
 
   <h3>שני חוזי-staleness קריטיים (footguns שתועדו ונאכפו)</h3>
   <ol class="tech">
-    <li><strong>diagnosis → prompt</strong> (<bdi>Gate 3</bdi>): הרצה חוזרת של שלב 4 (אבחון) ללא רינדור-מחדש של <code>prompt</code> הדו"ח → <bdi>Opus</bdi> צורך snapshot מיושן של <code>focus_order</code>. <strong>נאכף:</strong> ה-<code>prompt</code> חותם <code>diagnosis_sha256_12</code>; <bdi>Gate 3</bdi> משווה לקובץ האבחון החי.</li>
-    <li><strong>report → brief</strong> (<bdi>Gate 8</bdi>): שינוי בדו"ח-המקור ללא רענון ה-<bdi>brief</bdi> → דו"חות ניהוליים מיושנים. <strong>נאכף:</strong> ה-<bdi>brief</bdi> נושא <code>source_report_sha256_12</code>; <bdi>Gate 8</bdi> משווה לדו"ח האחרון.</li>
+    <li><bdi><strong>diagnosis → prompt</strong></bdi> (<bdi>Gate 3</bdi>): הרצה חוזרת של שלב 4 (אבחון) ללא רינדור-מחדש של <code>prompt</code> הדו"ח — תוצאה: <bdi>Opus</bdi> צורך snapshot מיושן של <code>focus_order</code>. <strong>נאכף:</strong> ה-<code>prompt</code> חותם <code>diagnosis_sha256_12</code>; <bdi>Gate 3</bdi> משווה לקובץ האבחון החי.</li>
+    <li><bdi><strong>report → brief</strong></bdi> (<bdi>Gate 8</bdi>): שינוי בדו"ח-המקור ללא רענון ה-<bdi>brief</bdi> — תוצאה: דו"חות ניהוליים מיושנים. <strong>נאכף:</strong> ה-<bdi>brief</bdi> נושא <code>source_report_sha256_12</code>; <bdi>Gate 8</bdi> משווה לדו"ח האחרון.</li>
   </ol>
 
   <h3>אכיפת אנונימיזציה (Gate 8)</h3>
   <p>הגרסה הציבורית נסרקת מול <bdi>blocklist</bdi> (<code>sources[].name_internal</code>):</p>
   <ul class="tech">
-    <li><strong>שם מתקן</strong> ב-<bdi>PUBLIC</bdi> → <span class="fail">FAIL</span> (חוסם פרסום)</li>
-    <li><strong>שם קידוח אמיתי</strong> ב-<bdi>PUBLIC</bdi> → <span style="color:var(--grey-4);font-weight:600;font-family:'IBM Plex Mono',monospace;font-size:11.5px">WARN</span> (מומלץ קוד <bdi>B-NN</bdi>; חריגים מאושרים אפשריים)</li>
+    <li><strong>שם מתקן</strong> ב-<bdi>PUBLIC</bdi> ← <span class="fail">FAIL</span> (חוסם פרסום)</li>
+    <li><strong>שם קידוח אמיתי</strong> ב-<bdi>PUBLIC</bdi> ← <span style="color:var(--grey-4);font-weight:600;font-family:'IBM Plex Mono',monospace;font-size:11.5px">WARN</span> (מומלץ קוד <bdi>B-NN</bdi>; חריגים מאושרים אפשריים)</li>
   </ul>
   <p>זה מונע הישנות של דליפת מידע — לא הסתמכות על זיכרון אנושי.</p>
 </section>
@@ -358,7 +358,7 @@
     <li><strong>גנריות (<code>--zone</code>):</strong> הפייפליין אינו נעוץ-בחולון. כל הסקריפטים מקבלים <code>--zone</code> וגוזרים נתיבים מהשם. אומת על רעננה (7 קידוחים) וחולון (111 קידוחים) — סף <bdi>Gate 6</bdi> הוא <bdi>zone-relative</bdi> (≥80% מהקידוחים), לא קבוע.</li>
     <li><strong>מוסכמת <bdi>casing</bdi></strong> (חוב מתועד, <bdi>REQ #28</bdi>): סקריפטי-ליבה מקבלים <code>--zone holon</code> (אות קטנה); כלי-<bdi>V5</bdi> מקבלים <code>--zone Holon</code> (שם-ספרייה). מתועד ב-<code>ORCHESTRATION.md</code>.</li>
     <li><strong>בדיקות:</strong> <code>tests/</code> כולל בדיקות יחידה + 3 <bdi>validators</bdi> לדו"ח (<bdi>chart_refs, tone, attribution</bdi>) + 13 בדיקות למחולל ה-<bdi>brief</bdi>. כל שינוי במחולל מאומת מול <bdi>reference frozen</bdi> (רגנרציה <bdi>byte-identical</bdi>).</li>
-    <li><strong>Audit trail:</strong> כל נתון → מקור (<bdi>source_file + page/row</bdi>); כל <code>prompt</code> → חותמת <bdi>sha</bdi>; כל גרסת דו"ח → <bdi>V-number</bdi>; כל ארטיפקט נגזר מסומן <code>DO NOT EDIT BY HAND</code>.</li>
+    <li><strong>Audit trail:</strong> כל נתון — מקור (<bdi>source_file + page/row</bdi>); כל <code>prompt</code> — חותמת <bdi>sha</bdi>; כל גרסת דו"ח — <bdi>V-number</bdi>; כל ארטיפקט נגזר מסומן <code>DO NOT EDIT BY HAND</code>.</li>
     <li><strong>מצב גנריות הסקריפטים</strong> (חוב 18-האזורים) מתועד בטבלה ב-<code>ORCHESTRATION.md</code>. סקריפטי <bdi>legacy</bdi> (<bdi>V4-era</bdi>) ב-<code>scripts/legacy/</code> — <bdi>ARCHIVED</bdi>.</li>
   </ul>
 </section>
@@ -382,7 +382,7 @@
 
 <span class="c"># … רק אחרי אישור מומחה: …</span>
 <span class="k">scripts/run_pipeline.sh Holon exec-summary</span> <span class="c"># 8a prepare → OPUS #3 → finalize → Gate 8</span></code></pre>
-  <p><strong>גבולות <bdi>Opus</bdi></strong> (לא ניתן לאטמט): <code>render-diagnosis</code>→#1, <code>render-report</code>→#2, <code>exec-summary</code>→#3. הדרייבר עוצר שם.</p>
+  <p><strong>גבולות <bdi>Opus</bdi></strong> (לא ניתן לאטמט): <bdi><code>render-diagnosis</code>→#1</bdi>, <bdi><code>render-report</code>→#2</bdi>, <bdi><code>exec-summary</code>→#3</bdi>. הדרייבר עוצר שם.</p>
 </section>
 
 
@@ -401,10 +401,10 @@
   </table>
   <h3>הרכיבים הניתנים לשימוש-חוזר (מחוץ לתחום זיהום מי תהום)</h3>
   <ul class="tech">
-    <li>מנוע ניתוח דטרמיניסטי (מגמות/חומרה) → כל סדרת-זמן סביבתית</li>
-    <li>דפוס <bdi>LLM</bdi> מבוקר (<code>prompt</code> בנוי + שערים) → כל משימת ניסוח/סיווג עקבית</li>
-    <li>מחולל דו-קהלי (פנימי+ציבורי מאותו מקור) → כל תוצר עם גרסת-פרסום</li>
-    <li>שכבת <bdi>QA</bdi> (<bdi>audit trail</bdi>, אנונימיזציה, <bdi>staleness</bdi>) → כל זרימה רגולטורית</li>
+    <li>מנוע ניתוח דטרמיניסטי (מגמות/חומרה) — לכל סדרת-זמן סביבתית</li>
+    <li>דפוס <bdi>LLM</bdi> מבוקר (<code>prompt</code> בנוי + שערים) — לכל משימת ניסוח/סיווג עקבית</li>
+    <li>מחולל דו-קהלי (פנימי+ציבורי מאותו מקור) — לכל תוצר עם גרסת-פרסום</li>
+    <li>שכבת <bdi>QA</bdi> (<bdi>audit trail</bdi>, אנונימיזציה, <bdi>staleness</bdi>) — לכל זרימה רגולטורית</li>
   </ul>
 
   <blockquote class="summary">
