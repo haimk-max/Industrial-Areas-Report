@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ניתוח ממצאי זיהום מי תהום באזורי תעשייה — שיטה וחזון</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#fdfcf9;
+    --ink:#1a1a1a;
+    --ink-2:#3a3a3a;
+    --soft:#6b6b6b;
+    --rule:#1a1a1a;
+    --rule-light:#cfcfcf;
+    --rule-faint:#e6e3dd;
+    --red:#a82a1c;
+    --grey-1:#f0ede6;
+    --grey-2:#d8d3c8;
+    --grey-4:#5a564f;
+  }
+  *{box-sizing:border-box}
+  html,body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Frank Ruhl Libre","Times New Roman",serif;
+    -webkit-font-smoothing:antialiased;
+    font-feature-settings:"kern","liga","tnum";
+  }
+  body{padding:0 0 80px;font-size:16px;line-height:1.7}
+  bdi{unicode-bidi:isolate}
+  p,li,td,th,h1,h2,h3,h4,figcaption{unicode-bidi:isolate}
+  .doc{max-width:920px;margin:0 auto;padding:56px 48px 0}
+  .mono{font-family:"IBM Plex Mono",monospace;font-feature-settings:"tnum"}
+
+  /* ── כותרת ראשית ── */
+  .masthead{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:48px}
+  .masthead .top{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--soft);
+    padding-bottom:14px;border-bottom:1px solid var(--rule-light);
+    margin-bottom:22px;
+  }
+  .masthead h1{
+    font-weight:900;font-size:34px;line-height:1.15;
+    margin:0 0 12px;letter-spacing:-0.005em;
+  }
+  .masthead .sub{
+    font-size:17px;color:var(--ink-2);font-weight:400;
+    line-height:1.6;margin-bottom:18px;
+    text-align:justify;text-justify:inter-word;
+  }
+  .masthead .meta{
+    display:flex;gap:32px;
+    font-family:"Source Sans 3",sans-serif;
+    font-size:12.5px;color:var(--soft);
+    padding-top:14px;border-top:1px solid var(--rule-light);
+  }
+  .masthead .meta b{color:var(--ink);font-weight:600}
+
+  /* ── פרק ── */
+  section{margin:52px 0}
+  .sec-h{
+    display:flex;align-items:baseline;gap:14px;
+    margin-bottom:18px;padding-bottom:8px;
+    border-bottom:1px solid var(--ink);
+  }
+  .sec-h .num{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;
+    letter-spacing:.06em;color:var(--soft);text-transform:uppercase;flex-shrink:0;
+  }
+  .sec-h h2{font-weight:700;font-size:23px;letter-spacing:-0.005em;margin:0;flex:1}
+
+  /* ── פרוזה ── */
+  .lede{
+    font-size:17px;color:var(--ink-2);line-height:1.7;
+    margin:0 0 22px;text-align:justify;text-justify:inter-word;
+  }
+  p{
+    line-height:1.78;color:var(--ink-2);margin:0 0 15px;
+    text-align:justify;text-justify:inter-word;
+  }
+  p strong{color:var(--ink);font-weight:700}
+  em{font-style:italic;color:var(--ink)}
+  h3{
+    font-family:"Source Sans 3",sans-serif;
+    font-weight:700;font-size:16.5px;
+    margin:32px 0 10px;color:var(--ink);
+  }
+
+  /* ── הדגשה ── */
+  blockquote.rule{
+    border-right:3px solid var(--ink);
+    padding:14px 18px;margin:26px 0;
+    color:var(--ink);font-size:16.5px;line-height:1.65;
+    font-weight:500;
+  }
+  blockquote.rule strong{font-weight:700}
+
+  /* ── רשימה מודגשת ── */
+  ul.clean{list-style:none;padding:0;margin:18px 0 22px;border-top:1px solid var(--rule-faint)}
+  ul.clean li{
+    font-size:15.5px;line-height:1.6;color:var(--ink-2);
+    padding:13px 0 13px 0;border-bottom:1px solid var(--rule-faint);
+    position:relative;padding-right:26px;
+  }
+  ul.clean li::before{
+    content:"—";position:absolute;right:0;top:13px;
+    color:var(--soft);font-weight:400;
+  }
+  ul.clean li strong{color:var(--ink);font-weight:700}
+
+  /* ── השוואה (לפני/אחרי) ── */
+  .compare{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:0;margin:24px 0 28px;
+    border:1px solid var(--ink);
+  }
+  .compare .col{padding:22px 24px}
+  .compare .col + .col{border-right:1px solid var(--rule-light)}
+  .compare .col .hd{
+    font-family:"Source Sans 3",sans-serif;
+    font-size:12px;letter-spacing:.06em;
+    color:var(--soft);font-weight:600;
+    margin-bottom:14px;padding-bottom:8px;
+    border-bottom:1px solid var(--rule-faint);
+  }
+  .compare .col ul{list-style:none;padding:0;margin:0}
+  .compare .col li{
+    font-size:14.5px;line-height:1.55;color:var(--ink-2);
+    padding:7px 0;border-bottom:1px solid var(--rule-faint);
+  }
+  .compare .col li:last-child{border-bottom:none}
+  .compare .col li strong{color:var(--ink)}
+
+  /* ── רכיבים לשימוש חוזר ── */
+  .reuse-row{
+    display:grid;grid-template-columns:215px 1fr;
+    gap:26px;padding:18px 0;
+    border-bottom:1px solid var(--rule-faint);
+    align-items:start;
+  }
+  .reuse-row:first-of-type{border-top:1px solid var(--ink)}
+  .reuse-row:last-of-type{border-bottom:1px solid var(--ink)}
+  .reuse-row .k{
+    font-family:"Source Sans 3",sans-serif;
+    font-weight:700;font-size:14px;color:var(--ink);
+    line-height:1.45;
+  }
+  .reuse-row .v{font-size:14.5px;color:var(--ink-2);line-height:1.62}
+
+  /* ── כותרת תחתונה ── */
+  footer{
+    max-width:920px;margin:0 auto;
+    padding:28px 48px 0;
+    border-top:1px solid var(--rule-light);
+    font-size:11.5px;color:var(--soft);
+    font-family:"Source Sans 3",sans-serif;
+    line-height:1.6;
+  }
+  footer b{color:var(--ink);font-weight:600}
+
+  @media(max-width:700px){
+    .doc{padding:32px 20px 0}
+    .masthead h1{font-size:26px}
+    .compare{grid-template-columns:1fr}
+    .compare .col+.col{border-right:none;border-top:1px solid var(--rule-light)}
+    .reuse-row{grid-template-columns:1fr;gap:6px}
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+<!-- ═══════════════════════════ כותרת ═══════════════════════════ -->
+<header class="masthead">
+  <div class="top">
+    <span>השירות ההידרולוגי · <bdi>2026</bdi></span>
+    <span>טיוטה להצגה</span>
+  </div>
+  <h1>ניתוח ממצאי זיהום מי תהום באזורי תעשייה</h1>
+  <p class="sub">מערכת לכינוס, עיבוד וניתוח של ממצאי ניטור — סקירת מקורות זיהום, ניתוח לזיהוי מקור הזיהום ומגמותיו, וגיבוש מסקנות והמלצות. מסמך זה מתאר את השיטה שמאחורי המערכת, את קפיצת-המדרגה שהיא מאפשרת, ואת הדרך שבה אותו עיקרון ניתן להרחבה הרבה מעבר לאזורי התעשייה.</p>
+  <div class="meta">
+    <span>הודגם על <b>2 מתוך 18</b> אזורי ניטור</span>
+    <span>שיטה: <b>שילוב כלים</b></span>
+    <span>מצב: <b>בשל להרחבה</b></span>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════ §1 ═══════════════════════════ -->
+<section>
+  <div class="sec-h"><span class="num">§1</span><h2>הפער בין הנתונים לבין התובנות</h2></div>
+  <p class="lede">מערך הניטור של השירות ההידרולוגי מכסה שמונה־עשר אזורי תעשייה לאורך החוף — עשרות שנות מדידות, מאות קידוחי ניטור, ומסה גדולה של נתונים השמורים בגיליונות, בדו"חות סרוקים וברישומי שדה. הפוטנציאל הטמון בהם לאיתור מוקדי זיהום, למעקב אחר מגמות ולגיבוש מסקנות מבוססות־ראיות גדול. קצב מימושו אינו.</p>
+  <p>דו"ח ניתוח מלא לאזור תעשייה אינו מתעכב בשל מחסור בנתונים. הוא דורש עיבוד כמותי של מאות ריכוזים, ניתוח של עשרות סדרות־זמן, הצלבה עם ידע הידרוגאולוגי, ניסוח מקצועי — ורק לאחר כל אלה, שיקול דעת של מומחה. <strong>השעות שהדבר תובע הן צוואר הבקבוק, לא הנתונים.</strong> מכאן נובע מצב שבו דו"חות מופקים בתדירות נמוכה ובכיסוי חלקי, עקביות השיטה בין אזורים תלויה במי שכתב, ועדכון כשמגיעים נתונים חדשים שקול לכתיבה מחדש.</p>
+</section>
+
+
+<!-- ═══════════════════════════ §2 ═══════════════════════════ -->
+<section>
+  <div class="sec-h"><span class="num">§2</span><h2>השיטה: שלוש יכולות, חוזה אחד</h2></div>
+  <p class="lede">המערכת אינה כלי בודד אלא שילוב מתואם של שלוש יכולות, שכל אחת מהן עושה את מה שהיא טובה בו — וחוזה אכוף שמחבר ביניהן.</p>
+
+  <p>היכולת הראשונה היא <strong>עיבוד חישובי קבוע</strong>: כל המשימות שחייבות להיות מדויקות ושחזירות — חישוב מגמות, אינדקס חומרה, קישור כל מדידה למקורה — מבוצעות בקוד. אותו קלט מפיק תמיד אותו פלט, וניתן לאמת כל מספר מול שיטת המקור. כאן אין מקום לפרשנות.</p>
+
+  <p>היכולת השנייה היא <strong>שיפוט של מודל שפה</strong>: המשימות שדורשות הקשר והכרעה — אשכול הזיהום למוקדים גיאוגרפיים, זיהוי הקשרים בין מזהמים שונים, וניסוח מקצועי של הממצאים — נמסרות למודל שפה. נקודה מכרעת: המודל אינו מקבל "שאלה פתוחה", אלא הנחיה מובנית שכוללת את הנתונים שכבר עובדו, את ההקשר ואת כללי המבנה. כך התוצר ניתן לאפיון מראש ולשחזור.</p>
+
+  <p>היכולת השלישית היא <strong>שכבת בקרה אוטומטית</strong>: בין השלבים ניצבת סדרת בדיקות שאוכפות את החוזה — האם כל נתון מקושר למקורו? האם מבנה הדו"ח עומד בתקן? האם הגרסה לפרסום נקייה משמות מתקנים? בדיקה שנכשלת עוצרת את התהליך לפני שתוצר פגום מגיע הלאה. זה מה שהופך תוצר של מודל שפה — שמטבעו יכול להיות "כמעט נכון" — לתוצר שאפשר לבסס עליו החלטות.</p>
+
+  <blockquote class="rule">
+    מומחה התוכן נשאר במרכז. המערכת מכינה טיוטה מלאה ומגישה אותה לעיונו; הוא מעיר, מתקן, מוסיף ומכריע. רק לאחר אישורו נגזרים ממנה אוטומטית הדו"חות הניהוליים — לשימוש פנימי ולפרסום לציבור.
+  </blockquote>
+</section>
+
+
+<!-- ═══════════════════════════ §3 ═══════════════════════════ -->
+<section>
+  <div class="sec-h"><span class="num">§3</span><h2>קפיצת המדרגה שבשילוב</h2></div>
+  <p class="lede">כל אחת משלוש היכולות, לבדה, מוגבלת. דווקא צירופן — עם חוזה הדוק ביניהן — הוא קפיצת המדרגה.</p>
+
+  <p>מנוע חישובי מחשב במדויק אך אינו כותב דו"ח. מודל שפה מסכם ומנסח להפליא, אך אי־אפשר לסמוך עליו שישחזר אותו מספר פעמיים, וקשה לבקר את תוצריו. בקרה ידנית אמינה אך אינה מדרגית. הבחירה המקובלת הייתה בין <em>מהיר אך בלתי־אמין</em> לבין <em>אמין אך איטי</em>.</p>
+
+  <p>הצירוף מבטל את ההתנגשות הזו. כשהחוזה בין הרכיבים נאכף, מתקבלות שלוש התכונות בו־זמנית: <strong>הדיוק של החישוב, ההכרעה של הסינתזה, והאמינות של הבקרה</strong>. התוצאה היא טיוטה שנקראת כאילו נכתבה בידי מומחה — ובה־בעת שחזירה, ניתנת לביקורת, ועקיבה עד למקורותיה. צירוף כזה לא היה קיים קודם; אין זה שיפור מצטבר של כלי בודד, אלא תוצר מסוג אחר.</p>
+
+  <p>ההשלכה המעשית מיידית. עבודה שצרכה שבועות הופכת לתהליך הרץ בשעות ומפיק טיוטה שהמומחה <em>עורך</em> במקום <em>כותב מאפס</em>. כיסוי כלל מערך הניטור הופך ליעד בר־השגה. עדכון הופך להרצה חוזרת. והאיכות אינה נשחקת בדרך — היא נאכפת.</p>
+
+  <div class="compare">
+    <div class="col">
+      <div class="hd">קודם</div>
+      <ul>
+        <li>ניתוח אזור = פרויקט ידני של שבועות</li>
+        <li>עדכון = כתיבה מחדש</li>
+        <li>תוצר מודל שפה = בלתי ניתן לאימות</li>
+        <li>הכלי = הידע של מי שכתב אותו</li>
+        <li>בחירה בין מהיר לבין אמין</li>
+      </ul>
+    </div>
+    <div class="col">
+      <div class="hd">כעת</div>
+      <ul>
+        <li>ניתוח אזור = <strong>הרצה + עריכת מומחה</strong></li>
+        <li>עדכון = <strong>הרצה חוזרת</strong></li>
+        <li>תוצר מודל שפה = <strong>שחזיר ובדוק</strong></li>
+        <li>הכלי = <strong>כללי, מתועד, נבדק אוטומטית</strong></li>
+        <li><strong>מהיר ואמין כאחד</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════ §4 ═══════════════════════════ -->
+<section>
+  <div class="sec-h"><span class="num">§4</span><h2>נתחים לשימוש חוזר</h2></div>
+  <p class="lede">הארכיטקטורה אינה גוש אחד. כל רכיב עומד בפני עצמו, וניתן להוציאו וליישמו ביישום אחר לחלוטין — גם כזה שאין לו דבר עם זיהום מי תהום.</p>
+
+  <div class="reuse-row">
+    <div class="k">מנוע הניתוח החישובי</div>
+    <div class="v">חישוב מגמות וחומרה מתאים לכל סדרת־זמן של מדידות סביבתיות; הלוגיקה אינה תלויה בסוג המזהם.</div>
+  </div>
+  <div class="reuse-row">
+    <div class="k">דפוס מודל־השפה המבוקר</div>
+    <div class="v">הנחיה מובנית בליווי שערי בקרה — לכל משימת ניסוח, סיווג או סיכום מקצועי שצריכה להיות שחזירה.</div>
+  </div>
+  <div class="reuse-row">
+    <div class="k">מחולל דו־קהלי</div>
+    <div class="v">הפקת גרסה מפורטת וגרסה לפרסום ממקור אחד, עם הסרת מזהים מובנית — לכל תוצר שצריך שני פנים.</div>
+  </div>
+  <div class="reuse-row">
+    <div class="k">שכבת הבקרה</div>
+    <div class="v">עקיבוּת מלאה, בדיקות עקביות והסרת מזהים — לכל זרימת עבודה רגולטורית שבה "כמעט נכון" אינו מספיק.</div>
+  </div>
+
+  <p style="margin-top:22px">היתרון בהפרדה לרכיבים ברור: צוות שמתמודד עם בעיה אחרת לגמרי אינו מתחיל מאפס — הוא נוטל את הנתח הרלוונטי ומתאים אותו. הידע ההנדסי שנצבר כאן הוא נכס משותף, לא פתרון נקודתי.</p>
+</section>
+
+
+<!-- ═══════════════════════════ §5 ═══════════════════════════ -->
+<section>
+  <div class="sec-h"><span class="num">§5</span><h2>כשכל המידע יהיה נגיש</h2></div>
+  <p class="lede">היישום שהודגם כאן עובד על נתוני אזור בודד. קפיצת המדרגה האמיתית בהיקף תבוא כשכלל המידע יחובר אל אותה שיטה.</p>
+
+  <p>בידי השירות ההידרולוגי נצבר אוצר עצום: בסיס נתוני הניטור כולו, ולצדו עשרות שנות דו"חות, מחקרים, חוות־דעת ועבודות שדה — שרובם כיום קבורים בקבצים ובמגירות, נגישים רק למי שיודע היכן לחפש ומוכן להשקיע את הזמן. כאשר כלי אוטומציה ובינה מלאכותית יוצרת יקבלו גישה אל כל זה, אותה ארכיטקטורה בדיוק — כינוס, עיבוד, סינתזה מבוקרת, ובקרה — תפיק ערך בסדר־גודל אחר:</p>
+
+  <ul class="clean">
+    <li><strong>מענה לשאלות חוצות־אזורים</strong> שאדם בודד אינו יכול לשאול ממסה כזו של מידע.</li>
+    <li><strong>זיהוי דפוסים שקטים</strong> שאינם נראים ברמת האזור הבודד אך מתגלים על פני המכלול.</li>
+    <li><strong>הנגשת ידע קיים</strong> שכבר נכתב ושולם עליו, אך אבד בין הקבצים.</li>
+    <li><strong>חיסכון בזמן לכל אחד מאיתנו</strong> — גישה מהירה לידע המקצועי המצטבר של השירות, במקום חיפוש ידני ממושך.</li>
+  </ul>
+
+  <p>אין זה חזון רחוק אלא הרחבה ישירה של ארכיטקטורה שכבר עובדת. אזור התעשייה הוכיח שהשיטה עומדת; השאר הוא עניין של חיבור המידע והרחבת היישום.</p>
+</section>
+
+
+<!-- ═══════════════════════════ §6 ═══════════════════════════ -->
+<section>
+  <div class="sec-h"><span class="num">§6</span><h2>היכן הדברים עומדים</h2></div>
+  <p>המערכת הדגימה תוצרים ברמה גבוהה מאוד עבור שני אזורי תעשייה, מתוך שמונה־עשר אזורים שלהם מערך ניטור איכות מי תהום. האחד שימש כתקדים מקצועי ואושר בידי הידרולוג מומחה; השני שימש כמבחן־עומס לאזור מורכב במיוחד, ועבר את כלל בדיקות הבקרה האוטומטיות. השאלה השיטתית — האם הגישה עובדת — הוכרעה. יתר האזורים ממתינים לאישור מקצועי ולתיאום בין הגורמים, לא לפיתוח נוסף.</p>
+
+  <blockquote class="rule">
+    הרעיון נולד מאנשי המקצוע; הכלי היציב נולד מהחיבור בינם לבין אנשי הפיתוח. הצעד שמכריע אם זו תישאר הדגמה או תהפוך לרכיב תשתית של הרשות הוא הייצוב וההטמעה — והוא בהישג יד.
+  </blockquote>
+</section>
+
+</div><!-- /.doc -->
+
+<footer>
+  <b>השירות ההידרולוגי</b> ·
+  ניתוח ממצאי זיהום מי תהום באזורי תעשייה ·
+  <span>טיוטה להצגה · <bdi>06/2026</bdi></span>
+</footer>
+</body>
+</html>
