@@ -28,6 +28,7 @@
 - **`generate_zone_html_from_brief.py` מחליף רק חלק מהסעיפים** (זוהה 2026-06-14, **תוקן — REQ #31.1**): שוכתב עם `replace_container_inner()` (depth-counting של divs מקוננים) — כל סעיפי ה-brief נצרכים כעת (כולל `stats_public`/`means_summary`/`methodology`/`timeline`). אזור שני כבר לא חסום. design-system/reference נשאר קפוא (לא נגע). 13 טסטים ב-`tests/test_brief_html_generator.py`.
 - **דליפת שמות מתקנים ב-PUBLIC** (זוהה ותוקן 2026-06-14, **כעת נאכף — REQ #31.3**): "רימטל" הוחלף ב-"אתר מחזור מתכות משוקם". **Gate 8** (`qa_pipeline.py --gate 8`) סורק כעת את PUBLIC מול `sources[].name_internal` — דליפת שם-מתקן = FAIL; שם-קידוח אמיתי = WARN. מריצים אחרי כל יצירת dוחות ניהוליים.
 - **חוזה brief↔report** (**REQ #31.2**): ה-brief חייב לשאת `# source_report_sha256_12:` machine-readable (לא רק בפרוזה). Gate 8 = FAIL אם חסר/לא תואם דוח אחרון. holon.yaml תוקן (היה רק בפרוזה).
+- **חצים בקובצי HTML עבריים (RTL) מתהפכים** (זוהה 2026-06-15): `→` בתוך טקסט עברי RTL מוצג הפוך חזותית. תיקון משולש: (1) כינויים טכניים כולם-אנגלי (`diagnosis → prompt`) — עטוף ב-`<bdi>` לאלץ LTR; (2) `<pre>` — חובה `direction:ltr; unicode-bidi:isolate`; (3) חצי-תוצאה בפסקה עברית — `←` או em-dash (—) במקום `→`. כל HTML עברי עתידי: בדוק `grep -n "→"` ואמת שאין `→` חשוף מחוץ ל-`<bdi>`/`<pre>`.
 
 ## עבודה בתהליך (In flight)
 
