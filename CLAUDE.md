@@ -294,6 +294,11 @@ Before committing code or reports:
 - [ ] Comparison with zone baseline (other 17 zones) included
 - [ ] Markdown formatting clean (no orphaned links, proper heading hierarchy)
 
+### Documentation Sync (קבצי תיעוד מקבילים)
+- [ ] **`docs/TECHNICAL_OVERVIEW.md` עודכן** → עדכן גם `docs/TECHNICAL_OVERVIEW.en.md` (גרסת arc42 באנגלית). שני הקבצים חייבים לשקף את אותו מצב ארכיטקטורה. הגרסה האנגלית היא ה-canonical לקהל טכני חיצוני; העברית — לקהל הרשות.
+- [ ] **Mermaid diagrams ב-`.en.md`** תואמים את הארכיטקטורה בפועל (pipeline stages, gate numbers, Opus call count).
+- [ ] **ADRs ב-§8** עדכניים — כל החלטה ארכיטקטורית חדשה שנסגרה מתועדת (context / decision / consequences).
+
 ---
 
 ## 7. Incident Response
