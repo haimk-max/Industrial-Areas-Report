@@ -17,7 +17,7 @@
 | מסמך | מה הוא מתאר | תחום |
 |------|-------------|------|
 | `docs/PDF_EXTRACTION_PROCEDURE.md` | התהליך **הקיים בפועל** בפרויקט זה | ספציפי לפרויקט |
-| `docs/GENERIC_PDF_EXTRACTION_AND_RETRIEVAL.md` | מדריך גנרי לאזור חדש (שלבים 0–3 + שליפה בסיסית) | גנרי לאזור |
+| `toolkit/playbooks/generic_pdf_extraction_and_retrieval.md` | מדריך גנרי לאזור חדש (שלבים 0–3 + שליפה בסיסית) | גנרי לאזור |
 | **`docs/PDF_QA_INFRASTRUCTURE.md`** (מסמך זה) | **תשתית שאילתות מלאה** — אינדוקס מרוכז + שליפה לפי-דרישה + סינתזה | תשתית גנרית |
 
 מסמך זה מרחיב את שני הקודמים: הוא לוקח את המיצוי (שלבים 0–3) והופך אותו ל**שכבת אינדקס רב-ממדי** שמיועדת לענות על **שאלות שלא ניתן לחזות מראש**, ומוסיף את שכבת השליפה-והסינתזה שמופעלת בעת שאלה.
@@ -378,7 +378,7 @@ parsed_output = json.loads(response["body"].read())
 ```
 
 #### אפשרות ב׳: Parallel Extraction Pipeline (Recommended)
-מקביל לBedrock knowledge base, הרץ extraction diagrammatic עם Claude Opus — כמפורט ב-`GENERIC_PDF_EXTRACTION_AND_RETRIEVAL.md §2`:
+מקביל לBedrock knowledge base, הרץ extraction diagrammatic עם Claude Opus — כמפורט ב-`toolkit/playbooks/generic_pdf_extraction_and_retrieval.md §2`:
 
 ```python
 # שלב ב-parallel למעלה ל-Bedrock:
