@@ -11,6 +11,7 @@
 - המשתמש עובד **אך ורק** דרך Claude Code on the web (GitHub integration) — **אין גישה לטרמינל**.
 - `~/.claude/` לא שורד בין סשנים (container חולף). כל דבר שצריך להישמר חייב להיות committed לריפו.
 - הסקיל `/handover` מותקן ב-`.claude/skills/handover/SKILL.md` (בריפו, לא גלובלי) — זה מה שגורם לו לשרוד.
+- קובץ זה (`HANDOVER.md`) הוא תחליף ל-`~/.claude/CLAUDE.md` שאינו שורד.
 
 ---
 
