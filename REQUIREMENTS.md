@@ -2,7 +2,7 @@
 
 **Purpose**: Single source of truth for system requirements that must hold for **any** of the 18 industrial zones in the coastal aquifer monitoring system.
 
-**Status**: Framework validated on Raanana (reference implementation, expert-approved May 2026). Holon stress-tested end-to-end through **V8** (2026-06-10) — six expert-driven review rounds (REQ #25–28: terminology SSOT, focus-first ordering, hydrologist round-2, production-well focus, full pipeline genericization). V5 Hybrid Pipeline implementation complete (Phase H+, PR #19). Pipeline now zone-generic end-to-end (REQ #28). Pending: Holon **V8** hydrogeologist sign-off, then 16-zone activation.
+**Status**: Framework validated on Raanana (reference implementation, expert-approved May 2026). Holon stress-tested end-to-end through **V8** (2026-06-10) — six expert-driven review rounds (REQ #25–28: terminology SSOT, focus-first ordering, hydrologist round-2, production-well focus, full pipeline genericization). V5 Hybrid Pipeline implementation complete (Phase H+, PR #19). Pipeline now zone-generic end-to-end (REQ #28). **Raanana re-run through the V5 hybrid pipeline (REQ #33, 2026-06-16) — 2nd zone validated end-to-end, RAANANA_REPORT_V5 awaiting hydrogeologist review.** Pending: Holon **V8** + Raanana **V5** hydrogeologist sign-off, then 16-zone activation.
 
 ---
 

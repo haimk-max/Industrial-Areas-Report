@@ -45,7 +45,7 @@
 
 | אזור | מצב | תפקיד | מיקום |
 |------|-----|--------|--------|
-| **רעננה** | V2 מאושר | **תקדים סגנוני מאושר** (סגנון כתיבה, סדר משפחות, RTL, צבע גרפים) | `Raanana/` |
+| **רעננה** | V2 מאושר + V5 pipeline | **תקדים סגנוני מאושר** (V2: סגנון כתיבה, סדר משפחות, RTL, צבע גרפים). **אזור ה-2 שעבר V5 hybrid pipeline end-to-end** (RAANANA_REPORT_V5 — ממתין לאישור הידרולוג) | `Raanana/` |
 | **חולון** | V8 ממתין לאישור הידרולוג | **stress-test מתודולוגי** (pipeline לאזור מורכב, PFAS gaps, monitoring gaps) — לא תבנית ל-16 אזורים | `Holon/` |
 | 16 אזורים נוספים | ⏳ Phase 2 (Q3 2026+) | יבנו ב-**V5 hybrid pipeline** (METHODOLOGY המחייבת לאזורים חדשים) | (לבנייה אחר אישור) |
 
@@ -519,7 +519,8 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 - Phase 5 (Zone Application Framework): ✓ Complete on framework side; Holon V4.2 as stress-test (awaiting hydrogeologist)
 - Phase H+ (V5 Hybrid Pipeline): ✅ COMPLETE — Documentation (REQ #12) + Implementation (REQ #13, PR #19 merged 2026-05-28 / a19a917)
 - Phase H+ QA Automation: ✅ COMPLETE (REQ #23, 2026-06-07 — `scripts/qa_pipeline.py` with 4 gates, all passing for Holon V5)
-- Phase 2 (full 18-zone activation): ⏳ Pending Holon V8 hydrogeologist sign-off + Ministry coordination; blocked also by REQ #31.1 (generator section coverage)
+- Raanana V5 (REQ #33): ✅ 2nd zone run end-to-end through V5 hybrid pipeline (2026-06-16, merged) — RAANANA_REPORT_V5 awaiting hydrogeologist review
+- Phase 2 (full 18-zone activation): ⏳ Pending Holon V8 + Raanana V5 hydrogeologist sign-off + Ministry coordination
 
-**Last Updated**: 2026-06-14 (REQ #24–30 COMPLETE — focus-first SSOT, prompt-layer Gate 3, V7→V8 report, V8 exec-summaries; REQ #31 OPEN — Deep Infrastructure Fixes: generator coverage, brief/anonymization gates, diagnosis_sha footgun)  
+**Last Updated**: 2026-06-16 (REQ #31 CLOSED; REQ #32 — figure-caption 5-fig alignment + RTL fix scoped to report deliverables; REQ #33 — Raanana V5 pipeline merge + branch consolidation + toolkit move + qa Gate 6 zone-relative)  
 **Historical phases**: see `docs/HISTORY.md`

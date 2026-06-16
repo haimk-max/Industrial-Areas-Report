@@ -35,6 +35,11 @@
 - **REQ #28 COMPLETE** (ba51451): גנריזציית מחוללי-HTML הושלמה.
 - **REQ #29 COMPLETE** (63b3ad2): תשתית דוחות ניהוליים + RAG דחייה + סנכרון.
 - **REQ #30 — V8 exec-summaries COMPLETE** (2026-06-14): brief עודכן מ-V5-era ל-V8 (9 ממצאים כולל 3 מוקדי דלק, 16 קידוחים, 7 מקורות); INTERNAL+PUBLIC HTMLs נוצרו (65KB+52KB); דליפת "רימטל" ב-PUBLIC reference תוקנה; generator limitation documented.
-- **REQ #32 — Figure Alignment + RTL COMPLETE** (233f2d0, 3bbfd9f, 2026-06-16):
+- **REQ #32 — Figure Alignment + RTL COMPLETE** (233f2d0, 168218a, 2026-06-16):
   - **Figure captions aligned**: Updated V5 prompt template to mandate 5 figures (not 6); rewrote V8.md captions (איור 2–5) to match rendered output; V8.html regenerated with injected figures.
-  - **RTL arrow fixes systematic**: Created `scripts/fix_rtl_arrows.py` (reusable for all zones); applied 581 fixes across 88 files (technical identifiers wrapped in `<bdi>`, prose arrows replaced with em-dash). Next zones can run `python scripts/fix_rtl_arrows.py --apply` post-generation.
+  - **RTL arrow fixes — scoped to report deliverables**: Created `scripts/fix_rtl_arrows.py` (reusable). Initially applied to 88 files (3bbfd9f) but **narrowed** (168218a) to report deliverables only (Holon V4–V8 + exec summaries, Raanana reports + drilling cards, report-engine outputs) — em-dash degrades clarity in spec files ("ND → NULL" = "maps to"). **Footgun**: tool default still scans whole repo; future runs should target `*/output/*` only.
+- **REQ #33 — Branch consolidation COMPLETE** (d69d9e4, 0341772, 2026-06-16):
+  - **Toolkit move**: `docs/GENERIC_PDF_EXTRACTION_AND_RETRIEVAL.md` → `toolkit/playbooks/generic_pdf_extraction_and_retrieval.md` (refs updated in PDF_QA_INFRASTRUCTURE.md/.html).
+  - **Merged `claude/raanana-v5-pipeline`** into the main working branch (42 files, +9,580 lines): **Raanana is now the 2nd zone through V5 end-to-end** (RAANANA_REPORT_V5.md/.html + full context_pack + 6 CSVs + build_zone_lean_workspace.py). RAANANA_REPORT_V5 awaits hydrogeologist review.
+  - **qa_pipeline.py Gate 6** is now **zone-relative** (map circle threshold = wells×0.8, min 3) — critical for small zones (Raanana 7 wells); merged cleanly alongside Gate 8.
+  - **Single branch now**: `claude/raanana-v5-pipeline` local+worktree deleted; **remote still stale** (git proxy rejects branch deletion — delete via GitHub UI).
