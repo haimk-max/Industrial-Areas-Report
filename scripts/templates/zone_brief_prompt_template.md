@@ -98,7 +98,7 @@ expected YAML shape and field nesting. Do NOT copy its content, names, or number
   The build script replaces `[0, 0]` with exact WGS-84 coords matched by that name.
 - Never guess latitude/longitude. Guessed coordinates have been observed off by ~1 km.
 
-## Field → report mapping
+## <bdi>Field → report</bdi> mapping
 - `zone.*`            ← report masthead / header (id, name, period, edition, counts).
 - `bottom_line`       ← the report's executive synthesis (2–4 short Hebrew paragraphs).
 - `context_intro`     ← public-facing framing of the zone's history + monitoring scope.
@@ -117,7 +117,7 @@ expected YAML shape and field nesting. Do NOT copy its content, names, or number
 - `decisions[]`       ← the report's recommendations, grouped under the 4 decision
                         categories (monitoring-plan / new-wells / source-investigation /
                         production-policy). One entry per category; actions inside.
-- `timeline[]`        ← the public narrative arc (historical → remediation → today).
+- `timeline[]`        ← the public narrative arc (<bdi>historical → remediatio</bdi><bdi>n → today</bdi>).
 - `means_summary[]`   ← public "what it means · what we do" cards.
 - `methodology[]`     ← public methodology disclosure (data source, comparison standard,
                         severity computation).

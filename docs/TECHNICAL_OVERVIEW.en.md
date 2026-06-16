@@ -112,7 +112,7 @@ flowchart LR
 | Previous reports | PDF | Historical context, hydrogeology, prior findings | Tagged document store / RAG |
 | Contamination sources | PDF / web | Facility identification, contaminant signatures | Structured candidates index |
 
-**Isolation principle:** the input layer is isolated behind `parse_excel.py` + `extract_zone_pdfs.py`. Swapping the source (files → DB) affects only this layer; the rest of the pipeline consumes the standardised Data Pack and is source-agnostic.
+**Isolation principle:** the input layer is isolated behind `parse_excel.py` + `extract_zone_pdfs.py`. Swapping the source (<bdi>files → DB</bdi>) affects only this layer; the rest of the pipeline consumes the standardised Data Pack and is source-agnostic.
 
 **PDF idempotency:** each file is registered in `_pdf_index.json` with `extraction_ok` + timestamp. Re-runs skip already-extracted files unless `--force`.
 
@@ -137,7 +137,7 @@ Produces **6–7 standardised CSVs** in `{Zone}/02_data/`. This is the **contrac
 - **Exclusions:** TPFAS and BETK always excluded (calculated sums). Individual PFAS species (PFHxS, PFOA…) are the canonical representation.
 
 ```bash
-parse_excel.py → trend_analysis.py → forensics_analyzer.py → generate_zone_data_pack.py
+parse_excel.<bdi>py → trend_analysis</bdi>.py → forensics_analyzer.py → generate_zone_data_pack.py
 # all scripts accept --zone <id>
 ```
 
@@ -237,7 +237,7 @@ sequenceDiagram
 
 ```bash
 ZONE_NAME_HE='אזה״ת חולון' scripts/run_pipeline.sh Holon data
-#   parse_excel → trend_analysis → forensics → data_pack → Gate 2
+#   <bdi>parse_excel → trend_analysis</bdi> → forensics → data_pack → Gate 2
 # … assemble 03_context/ (manual, NotebookLM-like) …
 
 scripts/run_pipeline.sh Holon render-diagnosis   # Gate 3 freshness check
@@ -250,7 +250,7 @@ scripts/run_pipeline.sh Holon html               # auto-detect Vn ; Gate 6
 scripts/run_pipeline.sh Holon validate           # Gate all
 
 # … after expert approval only: …
-scripts/run_pipeline.sh Holon exec-summary       # prepare → OPUS #3 → finalize → Gate 8
+scripts/run_pipeline.sh Holon exec-summary       # <bdi>prepare → OPUS</bdi> #3 → finalize → Gate 8
 ```
 
 **Opus boundaries** (cannot be automated): `render-diagnosis` → #1, `render-report` → #2, `exec-summary` → #3. The driver halts at each and waits for the human-in-the-loop Opus invocation.
@@ -271,9 +271,9 @@ flowchart LR
     G3 -->|PASS if match| O2[Opus #2 proceeds ✅]
 ```
 
-1. **`diagnosis → prompt` (Gate 3):** Re-running Step 4 (zone diagnosis) without re-rendering the report prompt causes Opus to consume a stale `focus_order` snapshot. **Enforced:** the prompt stamps `diagnosis_sha256_12`; Gate 3 compares against the live diagnosis file.
+1. **`<bdi>diagnosis → prompt</bdi>` (Gate 3):** Re-running Step 4 (zone diagnosis) without re-rendering the report prompt causes Opus to consume a stale `focus_order` snapshot. **Enforced:** the prompt stamps `diagnosis_sha256_12`; Gate 3 compares against the live diagnosis file.
 
-2. **`report → brief` (Gate 8):** Modifying the source report without refreshing the brief causes stale management outputs to circulate. **Enforced:** the brief carries `source_report_sha256_12`; Gate 8 compares against the latest report.
+2. **`<bdi>report → brief</bdi>` (Gate 8):** Modifying the source report without refreshing the brief causes stale management outputs to circulate. **Enforced:** the brief carries `source_report_sha256_12`; Gate 8 compares against the latest report.
 
 ### 7.2 Anonymisation Enforcement (Gate 8)
 

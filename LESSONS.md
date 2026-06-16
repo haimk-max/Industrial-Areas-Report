@@ -14,14 +14,14 @@
 ## 1. Open Patterns (1-Case, Awaiting 2nd-Case Validation)
 
 ### 1.1 Cross-zone parameter naming variance
-- **Observation (Raanana → Holon)**: Raanana Excel uses short codes (`TCEY`, `PCE`); Holon uses full English names (`TRICHLORO ETHYLENE`).
+- **Observation (<bdi>Raanana → Holon</bdi>)**: Raanana Excel uses short codes (`TCEY`, `PCE`); Holon uses full English names (`TRICHLORO ETHYLENE`).
 - **Solution applied**: `scripts/param_families.py` regex-based classifier returns `CVOC | METALS | PFAS | FUEL | OTHER` for either format (METALS + FUEL added 2026-05-25 — see §1.6; FUEL replaces the earlier BTEX label to match `DATA_PIPELINE_SPEC.md` §3 family enum).
 - **2nd-case test**: When zone #3 arrives — does its naming convention also fit one of the two patterns, or does it surface a 3rd? If 3rd, the regex approach may need rethinking (config-table?).
 - **Status**: ⏳ Awaiting zone #3.
 
 ### 1.6 Hardcoded family map silently dropped contamination families (2026-05-25)
 - **Observation (Holon V5)**: `generate_holon_data_pack.py` carried a hardcoded `family_map` dict (commented "simplified; real implementation would use param_families.py") that listed only a handful of exact parameter strings. Real Holon parameter names (`CHROMIUM AS CR`, `NICKEL AS NI`, `MANGANESE TOTAL AS MN`) never matched, so `severity_by_well_family.csv` silently emitted **only CVOC + FUEL** (107 rows) — METALS and PFAS families were entirely absent. The Opus report agent caught it; the pipeline never errored.
-- **Root cause**: a "temporary simplified" lookup that was never replaced by the canonical classifier. Exact-string matching against an incomplete dict fails *silently* (unmatched → OTHER → skipped) rather than loudly.
+- **Root cause**: a "temporary simplified" lookup that was never replaced by the canonical classifier. Exact-string matching against an incomplete dict fails *silently* (<bdi>unmatched → OTHER</bdi> → skipped) rather than loudly.
 - **Solution applied**: routed the data pack through `param_families.classify_family()` (regex, the SSOT) + extended that module with METALS + FUEL patterns. Regenerated: 191 rows (CVOC 30, METALS 80, PFAS 4, FUEL 77).
 - **Lesson**: When a comment says "real implementation would use X", treat it as a live bug, not a note. A deterministic data file feeding a report must be validated for **family/category completeness**, not just row count — a missing category is invisible in a row count but fatal to a report.
 - **2nd-case test**: Zone #3 data pack generation — confirm all expected families appear in `severity_by_well_family.csv` before report generation (add to §VII validation?).
@@ -35,7 +35,7 @@
 
 ### 1.3 PDF extraction parallelism heuristic
 - **Observation (Holon)**: Single AI agent on 692K Hebrew chars (4 PDFs) hit stream idle timeout. Splitting to 4 parallel sub-agents (Sonnet) succeeded.
-- **Heuristic applied**: > ~150K characters → parallel; < 150K → single agent acceptable.
+- **Heuristic applied**: > ~150K <bdi>characters → parallel</bdi>; < 150K → single agent acceptable.
 - **2nd-case test**: Validate threshold on next zone. If a single 200K PDF runs fine, threshold is too conservative; if 100K times out, too liberal.
 - **Status**: ⏳ Awaiting zone #3 with different PDF sizes. Heuristic codified in `~/.claude/CLAUDE.md` (#6) as tentative.
 
@@ -48,12 +48,12 @@
 ### 1.5 Facility discovery via AI agent — TWO timeout cases, ready for promotion
 - **Observation (Raanana)**: Opus agent + sector-based search produced 9 candidates with confidence levels (worked; Raanana's PDF extraction was sparse — ~0 facilities — so web discovery was the source of truth).
 - **Observation (Holon attempt 1, 2026-05-06 morning)**: Opus agent for facility discovery timed out at ~7+ minutes / 27 tool calls; no output written.
-- **Observation (Holon attempt 2, 2026-05-06 afternoon)**: Sonnet agent with explicit `max 30 web searches` cap **also timed out** at 12.5 minutes / 65 tool uses; no output written. Cap on search count alone does not prevent stream-idle timeout — the bottleneck is the dialogue overhead (read context → iterate searches → construct large JSON output).
+- **Observation (Holon attempt 2, 2026-05-06 afternoon)**: Sonnet agent with explicit `max 30 web searches` cap **also timed out** at 12.5 minutes / 65 tool uses; no output written. Cap on search count alone does not prevent stream-idle timeout — the bottleneck is the dialogue overhead (read <bdi>context → iterate</bdi> searches → construct large JSON output).
 - **Validated rule (2-case rule satisfied)**: Branch facility discovery methodology by PDF-extraction richness:
   - **Sparse extraction** (≤10 facilities, like Raanana): web-discovery agent is the primary source. Use Opus or Sonnet with capped scope.
   - **Rich extraction** (≥30 facilities with addresses + evidence + confidence, like Holon): **skip web discovery entirely**. Direct consolidation + post-hoc characterization is sufficient and avoids the timeout. Web discovery's marginal value does not justify the cost.
-- **Heuristic threshold**: ~30 PDF-extracted facilities with structured evidence is the inflection point. Below → do web discovery; above → skip and consolidate.
-- **Status**: 🟢 Ready to promote to REQUIREMENTS.md (2-case rule satisfied: Raanana sparse → web works; Holon rich → web times out twice).
+- **Heuristic threshold**: ~30 PDF-extracted facilities with structured evidence is the inflection point. <bdi>Below → do</bdi> web discovery; above → skip and consolidate.
+- **Status**: 🟢 Ready to promote to REQUIREMENTS.md (2-case rule satisfied: Raanana <bdi>sparse → web</bdi> works; Holon rich → web times out twice).
 - **What changes in STYLE_GUIDE.md § H**: methodology should branch on extraction richness check (Step 0d count of `facilities_suspected[]`).
 
 ### 1.7 Coordinate system SSOT violation (hardcoded bounds) — Fixed 2026-05-31

@@ -39,13 +39,13 @@ These three substitutions are **absolute** in report prose. The QA pipeline (Gat
 
 ```
 ✗ "ריקבון" / "ריקבון ביולוגי" / "ריקבון ביוטי"
-                         → "פירוק" (שרשרת פירוק / פירוק מיקרוביאלי / פירוק מיקרוביאלי אירובי / אנ-אירובי / תוצרי פירוק)
+                          — "פירוק" (שרשרת פירוק / פירוק מיקרוביאלי / פירוק מיקרוביאלי אירובי / אנ-אירובי / תוצרי פירוק)
 ✗ "שתיקה" / "שתיקה מתואמת" / "קידוח שקט"
-                         → "הפסקת ניטור" (+ הטיות: הופסק הניטור / תקופת הפסקת ניטור / ניטור שהופסק)
+                          — "הפסקת ניטור" (+ הטיות: הופסק הניטור / תקופת הפסקת ניטור / ניטור שהופסק)
 ✗ "קיצוני" / "כמעט מוחלט" / "extreme"
-                         → severity index + % of standard ("אינדקס 8, >2,500% מהתקן"); labels: גבוה / גבוה מאוד
+                          — severity index + % of standard ("אינדקס 8, >2,500% מהתקן"); labels: גבוה / גבוה מאוד
 ✗ "HIGH" / "MEDIUM" / "LOW" (in Hebrew prose)
-                         → "רמת ודאות: גבוהה / בינונית / נמוכה"
+                          — "רמת ודאות: גבוהה / בינונית / נמוכה"
 ```
 
 **Note**: The English codes `HIGH|MEDIUM|LOW` remain valid **only** inside data artifacts (`facility_attribution.json` `confidence` field — see §H.3) and code. In any Hebrew sentence of the report they must read **גבוהה / בינונית / נמוכה**.
@@ -163,7 +163,7 @@ A separate contaminant-family analysis may be added **only if it adds value** (e
 While diagnosing the zone, actively look for:
 
 - persistent or extreme CVOC contamination;
-- PCE → TCE → DCE → VC degradation chains;
+- <bdi>PCE → TCE</bdi> → DCE → VC degradation chains;
 - unusual DCE patterns, especially 1,1-DCE dominance or unusual cis/trans-DCE behavior;
 - rebound after remediation or after apparent decline;
 - monitoring stopped after a peak or during an increasing trend;

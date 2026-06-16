@@ -23,10 +23,10 @@
 ### Pipeline order
 
 ```
-1. Opus → writes V4.md (narrative + בחירת קידוחים למוקדים)
+1. <bdi>Opus → writes</bdi> V4.md (narrative + בחירת קידוחים למוקדים)
 2. data_loader.extract_report_boreholes(V4.md, severity) → list of canonical_ids
 3. svg_charts.svg_*_panels(measurements, boreholes_override=list) → SVG figures
-4. Both generators run in parallel → V4.html + DESIGNED.html
+4. Both generators run in <bdi>parallel → V4</bdi>.html + DESIGNED.html
 ```
 
 ראה `ZONE_REPORT_PROCESS_GUIDE.md` §VIII.1 לתיאור מלא של ה-pipeline.
@@ -71,8 +71,8 @@ fuel_svg = sc.svg_btex_panels(measurements, boreholes_override=boreholes)
 
 ראה `ZONE_REPORT_PROCESS_GUIDE.md` §VI ו-§IX:
 
-- כל `<text>` ב-SVG עם תוכן עברי → `direction="rtl"` + `text-anchor="end"`
-- מספרים+יחידות בטקסט מעורב → `<tspan direction="ltr" unicode-bidi="isolate">` או `<bdi>`
+- כל `<text>` ב-SVG עם תוכן עברי  — `direction="rtl"` + `text-anchor="end"`
+- מספרים+יחידות בטקסט מעורב  — `<tspan direction="ltr" unicode-bidi="isolate">` או `<bdi>`
 - ב-HTML output → CSS `unicode-bidi: isolate` על containers; `<bdi>` סביב מספרים/יחידות/שמות מזהמים באנגלית
 
 ---

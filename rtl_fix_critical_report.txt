@@ -1,0 +1,383 @@
+
+======================================================================
+RTL ARROW FIX REPORT (target: main)
+======================================================================
+
+
+/home/user/Industrial-Areas-Report/CLAUDE.md
+  Changes: 19
+
+  [1] Technical identifier: wrap in <bdi> to force LTR
+      Original: V7→V8
+      Fixed:    <bdi>V7→V8</bdi>
+
+  [2] Technical identifier: wrap in <bdi> to force LTR
+      Original: validation → systematic
+      Fixed:    <bdi>validation → systematic</bdi>
+
+  [3] Technical identifier: wrap in <bdi> to force LTR
+      Original: V5→V8
+      Fixed:    <bdi>V5→V8</bdi>
+
+  ... and 16 more changes
+
+/home/user/Industrial-Areas-Report/DATA_DICTIONARY.md
+  Changes: 5
+
+  [1] Technical identifier: wrap in <bdi> to force LTR
+      Original: sum → double-counting
+      Fixed:    <bdi>sum → double-counting</bdi>
+
+  [2] Technical identifier: wrap in <bdi> to force LTR
+      Original: PCE→TCE
+      Fixed:    <bdi>PCE→TCE</bdi>
+
+  [3] Technical identifier: wrap in <bdi> to force LTR
+      Original: PDF→text
+      Fixed:    <bdi>PDF→text</bdi>
+
+  ... and 2 more changes
+
+/home/user/Industrial-Areas-Report/DATA_PIPELINE_SPEC.md
+  Changes: 1
+
+  [1] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: result_value` | float | ערך המדידה (numeric; "ND" → NULL) | 
+      Fixed:    result_value` | float | ערך המדידה (numeric; "ND"  — NULL) |
+
+/home/user/Industrial-Areas-Report/Holon/output/HOLON_EXECUTIVE_SUMMARY_INTERNAL.html
+  Changes: 1
+
+  [1] Technical identifier: wrap in <bdi> to force LTR
+      Original: CVOC → agricultural
+      Fixed:    <bdi>CVOC → agricultural</bdi>
+
+/home/user/Industrial-Areas-Report/Holon/output/HOLON_EXECUTIVE_SUMMARY_PUBLIC.html
+  Changes: 1
+
+  [1] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original:             <span class="lbl">ירידה<br/>2.0 mg/L → 13.8 µg/L
+      Fixed:                <span class="lbl">ירידה<br/>2.0 mg/L  — 13.8 µg/
+
+/home/user/Industrial-Areas-Report/Holon/output/HOLON_REPORT_V4.html
+  Changes: 10
+
+  [1] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: מאי <bdi>2026</bdi>) — סדר משפחות <bdi>CVOC</bdi> → METALS →
+      Fixed:    מאי <bdi>2026</bdi>) — סדר משפחות <bdi>CVOC</bdi>  — METALS 
+
+  [2] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: גד (נד אגד אזור 1, 6, 9)</strong>: <bdi>TCE</bdi> → <bdi>cis
+      Fixed:    גד (נד אגד אזור 1, 6, 9)</strong>: <bdi>TCE</bdi>  — <bdi>ci
+
+  [3] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: <bdi>cis-1,2-<bdi>DCE</bdi></bdi> → <bdi>VC</bdi>. הפעילות ה
+      Fixed:    <bdi>cis-1,2-<bdi>DCE</bdi></bdi>  — <bdi>VC</bdi>. הפעילות 
+
+  ... and 7 more changes
+
+/home/user/Industrial-Areas-Report/Holon/output/HOLON_REPORT_V4.md
+  Changes: 8
+
+  [1] Technical identifier: wrap in <bdi> to force LTR
+      Original: CVOC → METALS
+      Fixed:    <bdi>CVOC → METALS</bdi>
+
+  [2] Technical identifier: wrap in <bdi> to force LTR
+      Original: TCE → cis-1
+      Fixed:    <bdi>TCE → cis-1</bdi>
+
+  [3] Technical identifier: wrap in <bdi> to force LTR
+      Original: PCE → TCE
+      Fixed:    <bdi>PCE → TCE</bdi>
+
+  ... and 5 more changes
+
+/home/user/Industrial-Areas-Report/Holon/output/HOLON_REPORT_V5.html
+  Changes: 5
+
+  [1] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: ציה/chromating קרוב) ובירור ציר הכרום נת חולון 14 → 26.</li>
+      Fixed:    ציה/chromating קרוב) ובירור ציר הכרום נת חולון 14  — 26.</li
+
+  [2] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: כמודל. עם זאת, סטרונציום באותם קידוחים עלה (כ-311 → <bdi>625
+      Fixed:    כמודל. עם זאת, סטרונציום באותם קידוחים עלה (כ-311  — <bdi>62
+
+  [3] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: ור הכרום — ייתכן ציר כרום פעיל בכיוון נת חולון 14 → 26.</p>
+      Fixed:    ור הכרום — ייתכן ציר כרום פעיל בכיוון נת חולון 14  — 26.</p>
+
+  ... and 2 more changes
+
+/home/user/Industrial-Areas-Report/Holon/output/HOLON_REPORT_V5.md
+  Changes: 6
+
+  [1] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: ולוג 2009** — דוח אתר רימטל: תיעוד עליית ניקל (0.6→2.0 mg/L,
+      Fixed:    ולוג 2009** — דוח אתר רימטל: תיעוד עליית ניקל (0.6 —2.0 mg/L
+
+  [2] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: ציה/chromating קרוב) ובירור ציר הכרום נת חולון 14 → 26.
+      Fixed:    ציה/chromating קרוב) ובירור ציר הכרום נת חולון 14  — 26.
+
+  [3] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: כמודל. עם זאת, סטרונציום באותם קידוחים עלה (כ-311 → 625 µg/L
+      Fixed:    כמודל. עם זאת, סטרונציום באותם קידוחים עלה (כ-311  — 625 µg/
+
+  ... and 3 more changes
+
+/home/user/Industrial-Areas-Report/Holon/output/HOLON_REPORT_V6.html
+  Changes: 4
+
+  [1] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: ו-CSIA</td><td>חישוב מאזן-מסה <bdi>1,1,1-TCA</bdi>→<bdi>1,1-
+      Fixed:    ו-CSIA</td><td>חישוב מאזן-מסה <bdi>1,1,1-TCA</bdi> —<bdi>1,1
+
+  [2] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: >VC</bdi> מצטבר (ריקבון ביוטי מתקדם <bdi>TCE</bdi>→cis-<bdi>
+      Fixed:    >VC</bdi> מצטבר (ריקבון ביוטי מתקדם <bdi>TCE</bdi> —cis-<bdi
+
+  [3] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: יאציית כרום ב-26; מקור יחיד מול שני-מקורות בציר 14→26; אמיתו
+      Fixed:    יאציית כרום ב-26; מקור יחיד מול שני-מקורות בציר 14 —26; אמית
+
+  ... and 1 more changes
+
+/home/user/Industrial-Areas-Report/Holon/output/HOLON_REPORT_V6.md
+  Changes: 4
+
+  [1] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: 3.2 מאזן-מסה TCA ו-CSIA | חישוב מאזן-מסה 1,1,1-TCA→1,1-DCE ו
+      Fixed:    3.2 מאזן-מסה TCA ו-CSIA | חישוב מאזן-מסה 1,1,1-TCA —1,1-DCE 
+
+  [2] Technical identifier: wrap in <bdi> to force LTR
+      Original: TCE→cis-DCE
+      Fixed:    <bdi>TCE→cis-DCE</bdi>
+
+  [3] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: יאציית כרום ב-26; מקור יחיד מול שני-מקורות בציר 14→26; אמיתו
+      Fixed:    יאציית כרום ב-26; מקור יחיד מול שני-מקורות בציר 14 —26; אמית
+
+  ... and 1 more changes
+
+/home/user/Industrial-Areas-Report/Holon/output/HOLON_REPORT_V7.html
+  Changes: 4
+
+  [1] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: <tr><td></td><td>2.2 קידוח-זקיף בציר 14→26</td><td>קידוח בינ
+      Fixed:    <tr><td></td><td>2.2 קידוח-זקיף בציר 14 —26</td><td>קידוח בי
+
+  [2] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: ng> (רמת ודאות: גבוהה): מסלול ניקל מתועד עולה (0.6→2.0 מ"ג/ל
+      Fixed:    ng> (רמת ודאות: גבוהה): מסלול ניקל מתועד עולה (0.6 —2.0 מ"ג/
+
+  [3] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: ת</strong>. הסקר ההיסטורי תיעד מסלול ניקל עולה 0.6→2.0 מ"ג/ל
+      Fixed:    ת</strong>. הסקר ההיסטורי תיעד מסלול ניקל עולה 0.6 —2.0 מ"ג/
+
+  ... and 1 more changes
+
+/home/user/Industrial-Areas-Report/Holon/output/HOLON_REPORT_V7.md
+  Changes: 5
+
+  [1] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: ות CVOC | ניתוח איזוטופי (CSIA δ¹³C) ומאזן-מסה TCA→1,1-DCE ל
+      Fixed:    ות CVOC | ניתוח איזוטופי (CSIA δ¹³C) ומאזן-מסה TCA —1,1-DCE 
+
+  [2] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: | | 2.2 קידוח-זקיף בציר 14→26 | קידוח ביניים בין נת חולון 14
+      Fixed:    | | 2.2 קידוח-זקיף בציר 14 —26 | קידוח ביניים בין נת חולון 1
+
+  [3] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: ל** (רמת ודאות: גבוהה): מסלול ניקל מתועד עולה (0.6→2.0 מ"ג/ל
+      Fixed:    ל** (רמת ודאות: גבוהה): מסלול ניקל מתועד עולה (0.6 —2.0 מ"ג/
+
+  ... and 2 more changes
+
+/home/user/Industrial-Areas-Report/Holon/output/HOLON_REPORT_V8.html
+  Changes: 7
+
+  [1] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: מיפוי <bdi>1,1,1-TCA</bdi> per-well + מאזן-מסה TCA→<bdi>1,1-
+      Fixed:    מיפוי <bdi>1,1,1-TCA</bdi> per-well + מאזן-מסה TCA —<bdi>1,1
+
+  [2] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: מתכות נפרד מפלומת ה-<bdi>CVOC</bdi>. *מחניון אגד* → אשכול אג
+      Fixed:    מתכות נפרד מפלומת ה-<bdi>CVOC</bdi>. *מחניון אגד*  — אשכול א
+
+  [3] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: יש (דוח <bdi>2021</bdi>, עמ' 31). *רימטל/ארן-מטל* → ניקל מתו
+      Fixed:    יש (דוח <bdi>2021</bdi>, עמ' 31). *רימטל/ארן-מטל*  — ניקל מת
+
+  ... and 4 more changes
+
+/home/user/Industrial-Areas-Report/Holon/output/HOLON_REPORT_V8.md
+  Changes: 7
+
+  [1] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: IA לליבה | מיפוי 1,1,1-TCA per-well + מאזן-מסה TCA→1,1-DCE; 
+      Fixed:    IA לליבה | מיפוי 1,1,1-TCA per-well + מאזן-מסה TCA —1,1-DCE;
+
+  [2] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original:  מתכות נפרד מפלומת ה-CVOC. *מחניון אגד* → אשכול אגד: BTEX בע
+      Fixed:     מתכות נפרד מפלומת ה-CVOC. *מחניון אגד*  — אשכול אגד: BTEX ב
+
+  [3] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: מפעלי התרשיש (דוח 2021, עמ' 31). *רימטל/ארן-מטל* → ניקל מתוע
+      Fixed:    מפעלי התרשיש (דוח 2021, עמ' 31). *רימטל/ארן-מטל*  — ניקל מתו
+
+  ... and 4 more changes
+
+/home/user/Industrial-Areas-Report/PROCESS.md
+  Changes: 26
+
+  [1] Technical identifier: wrap in <bdi> to force LTR
+      Original: hybrid-v5-implementation → main
+      Fixed:    <bdi>hybrid-v5-implementation → main</bdi>
+
+  [2] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: rehole | 2026-05-14 | pending | Opus agent: §4.1 9→0 bullets
+      Fixed:    rehole | 2026-05-14 | pending | Opus agent: §4.1 9 —0 bullet
+
+  [3] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original:  identical ITM coords); CVOC bucket-8 corrected 30→18; PFAS 
+      Fixed:     identical ITM coords); CVOC bucket-8 corrected 30 —18; PFAS
+
+  ... and 23 more changes
+
+/home/user/Industrial-Areas-Report/REPORT_V5_SCHEMA.md
+  Changes: 3
+
+  [1] Technical identifier: wrap in <bdi> to force LTR
+      Original: TCE → DCE
+      Fixed:    <bdi>TCE → DCE</bdi>
+
+  [2] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: - PCE בקידוח nt_3: Z=1.8, p=0.07, SNR=4.2 → **עלייה חלשה**
+      Fixed:    - PCE בקידוח nt_3: Z=1.8, p=0.07, SNR=4.2  — **עלייה חלשה**
+
+  [3] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: ח nt_1: Z=2.3, p=0.02, SNR=6.1, soft_trigger=true → **עלייה 
+      Fixed:    ח nt_1: Z=2.3, p=0.02, SNR=6.1, soft_trigger=true  — **עלייה
+
+/home/user/Industrial-Areas-Report/Raanana/output/RAANANA_REPORT_V2.md
+  Changes: 2
+
+  [1] Technical identifier: wrap in <bdi> to force LTR
+      Original: PCE→TCE
+      Fixed:    <bdi>PCE→TCE</bdi>
+
+  [2] Technical identifier: wrap in <bdi> to force LTR
+      Original: PCE→TCE
+      Fixed:    <bdi>PCE→TCE</bdi>
+
+/home/user/Industrial-Areas-Report/Raanana/output/drilling_card_nt1_v2.md
+  Changes: 1
+
+  [1] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: המסקנה המעשית: הירידה הנצפית בעיניים (817 → 148 → 95) קיימת,
+      Fixed:    המסקנה המעשית: הירידה הנצפית בעיניים (817  — 148  — 95) קיימ
+
+/home/user/Industrial-Areas-Report/Raanana/output/drilling_card_nt3_v2.md
+  Changes: 1
+
+  [1] Technical identifier: wrap in <bdi> to force LTR
+      Original: PCE → TCE
+      Fixed:    <bdi>PCE → TCE</bdi>
+
+/home/user/Industrial-Areas-Report/Raanana/output/drilling_card_p25_v2.md
+  Changes: 1
+
+  [1] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: ## 3. ממצאי זיהום: קפיצה דרמטית 2019 → 2023
+      Fixed:    ## 3. ממצאי זיהום: קפיצה דרמטית 2019  — 2023
+
+/home/user/Industrial-Areas-Report/ZONE_REPORT_PROCESS_GUIDE.md
+  Changes: 12
+
+  [1] Technical identifier: wrap in <bdi> to force LTR
+      Original: SVG → PNG
+      Fixed:    <bdi>SVG → PNG</bdi>
+
+  [2] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: - Document: "חיפוש Web [YEAR]: [X queries] → [results summar
+      Fixed:    - Document: "חיפוש Web [YEAR]: [X queries]  — [results summa
+
+  [3] Technical identifier: wrap in <bdi> to force LTR
+      Original: FUEL→CVOC
+      Fixed:    <bdi>FUEL→CVOC</bdi>
+
+  ... and 9 more changes
+
+/home/user/Industrial-Areas-Report/docs/TECHNICAL_OVERVIEW.en.html
+  Changes: 6
+
+  [1] Technical identifier: wrap in <bdi> to force LTR
+      Original: report → brief
+      Fixed:    <bdi>report → brief</bdi>
+
+  [2] Technical identifier: wrap in <bdi> to force LTR
+      Original: diagnosis → prompt
+      Fixed:    <bdi>diagnosis → prompt</bdi>
+
+  [3] Code reference with arrow: wrap in <bdi> to force LTR
+      Original: <code>render-diagnosis</code> → #1
+      Fixed:    <bdi><code>render-diagnosis</code> → #1</bdi>
+
+  ... and 3 more changes
+
+/home/user/Industrial-Areas-Report/docs/TECHNICAL_OVERVIEW.en.md
+  Changes: 6
+
+  [1] Technical identifier: wrap in <bdi> to force LTR
+      Original: report → brief
+      Fixed:    <bdi>report → brief</bdi>
+
+  [2] Technical identifier: wrap in <bdi> to force LTR
+      Original: diagnosis → prompt
+      Fixed:    <bdi>diagnosis → prompt</bdi>
+
+  [3] Technical identifier: wrap in <bdi> to force LTR
+      Original: prepare → OPUS
+      Fixed:    <bdi>prepare → OPUS</bdi>
+
+  ... and 3 more changes
+
+/home/user/Industrial-Areas-Report/docs/TECHNICAL_OVERVIEW.html
+  Changes: 9
+
+  [1] Code reference with arrow: wrap in <bdi> to force LTR
+      Original: <code>exec-summary</code>→#3
+      Fixed:    <bdi><code>exec-summary</code>→#3</bdi>
+
+  [2] Code reference with arrow: wrap in <bdi> to force LTR
+      Original: <code>render-diagnosis</code>→#1
+      Fixed:    <bdi><code>render-diagnosis</code>→#1</bdi>
+
+  [3] Prose arrow in Hebrew: replace ← with em-dash (—)
+      Original: trong>שם קידוח אמיתי</strong> ב-<bdi>PUBLIC</bdi> ← <span st
+      Fixed:    trong>שם קידוח אמיתי</strong> ב-<bdi>PUBLIC</bdi> — <span st
+
+  ... and 6 more changes
+
+/home/user/Industrial-Areas-Report/docs/TECHNICAL_OVERVIEW.md
+  Changes: 19
+
+  [1] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: - שכבת QA (audit trail, אנונימיזציה, staleness) → כל זרימה ר
+      Fixed:    - שכבת QA (audit trail, אנונימיזציה, staleness)  — כל זרימה 
+
+  [2] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: - מחולל דו-קהלי (פנימי+ציבורי מאותו מקור) → כל תוצר עם גרסת-
+      Fixed:    - מחולל דו-קהלי (פנימי+ציבורי מאותו מקור)  — כל תוצר עם גרסת
+
+  [3] Prose arrow in Hebrew: replace → with em-dash (—)
+      Original: - דפוס LLM מבוקר (prompt בנוי + שערים) → כל משימת ניסוח/סיוו
+      Fixed:    - דפוס LLM מבוקר (prompt בנוי + שערים)  — כל משימת ניסוח/סיו
+
+  ... and 16 more changes
+
+======================================================================
+TOTAL CHANGES: 173
+======================================================================

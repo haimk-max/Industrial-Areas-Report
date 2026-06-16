@@ -60,10 +60,10 @@ Arguments:
 ├── 02_data/
 │   └── measurements.csv         (all measurements, normalized)
 ├── 03_context/
-│   ├── reports_context.md       ← Key excerpts from PDFs
-│   ├── facility_attribution.md  ← HIGH/MEDIUM/LOW confidence
-│   ├── web_findings.md          ← Current facility operations
-│   └── hydrogeology.md          ← Aquifer flow, geology
+│   ├── reports_context.<bdi>md       ← Key</bdi> excerpts from PDFs
+│   ├── facility_attribution.<bdi>md  ← HIGH</bdi>/MEDIUM/LOW confidence
+│   ├── web_findings.<bdi>md          ← Current</bdi> facility operations
+│   └── hydrogeology.<bdi>md          ← Aquifer</bdi> flow, geology
 └── 04_diagnosis/
     └── zone_diagnosis.md        ← 8 key questions for manual review
 ```

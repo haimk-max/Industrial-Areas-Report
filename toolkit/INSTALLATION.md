@@ -56,15 +56,15 @@ cat playbooks/data_pipeline_spec.md
 
 ```
 toolkit/
-├── README.md                           ← קטלוג ראשי (התחל כאן)
-├── INSTALLATION.md                     ← קובץ זה
-├── DISTRIBUTION.md                     ← איך לשתף עם צוות
+├── README.md                           — קטלוג ראשי (התחל כאן)
+├── INSTALLATION.md                     — קובץ זה
+├── DISTRIBUTION.md                     — איך לשתף עם צוות
 │
 ├── pylib/
-│   ├── setup.py                        ← pip metadata
-│   ├── pyproject.toml                  ← modern packaging
-│   ├── README.md                       ← API docs + quick-start
-│   └── signalkit/                      ← 4 מודולים
+│   ├── setup.<bdi>py                        ← pip</bdi> metadata
+│   ├── pyproject.<bdi>toml                  ← modern</bdi> packaging
+│   ├── README.<bdi>md                       ← API</bdi> docs + quick-start
+│   └── signalkit/                      — 4 מודולים
 │       ├── trend_analysis.py           (Mann-Kendall)
 │       ├── severity_calculator.py      (Bucket 0–8)
 │       ├── forensics_engine.py         (Decay chains)
@@ -165,7 +165,7 @@ A: כן! זה Python library עם pip. רק `pip install -e ./pylib` (developmen
 A: כן. severity-calculator + trend-detective לא צריכים internet. agent-rag צריך web-search לחלק מהטסקים.
 
 **Q: איך מעדכנים את pylib בחלוף הזמן?**  
-A: Clone את הrepo → `git pull origin` → שינויים אוטומטיים (editable install).
+A: Clone את הrepo  — `git pull origin`  — שינויים אוטומטיים (editable install).
 
 **Q: איפה אני משתמש בplaybooks?**  
 A: הם markdown templates לתיעוד תהליך. קרא + עקוב אחרי הצעדים כשמתחילים אזור חדש.

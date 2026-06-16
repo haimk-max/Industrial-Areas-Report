@@ -7,13 +7,13 @@
 ```
 7 שלבים (7 steps):
 
-1️⃣  Define Scope       → zone/01_scope/zone_wells.csv
-2️⃣  Data Pipeline      → zone/02_data/ (6 CSVs, deterministic)
-3️⃣  Assemble Context   → zone/03_context/ (NotebookLM-style)
-4️⃣  Zone Diagnosis     → zone/04_diagnosis/zone_diagnosis.md
-5️⃣  V5 Report          → zone/output/ZONE_REPORT_V5.md (Opus call)
-6️⃣  Render Figures     → Inline SVG, HTML designed
-7️⃣  Validate           → Checklist (7 criteria)
+1️⃣  Define <bdi>Scope       → zone</bdi>/01_scope/zone_wells.csv
+2️⃣  Data <bdi>Pipeline      → zone</bdi>/02_data/ (6 CSVs, deterministic)
+3️⃣  Assemble <bdi>Context   → zone</bdi>/03_context/ (NotebookLM-style)
+4️⃣  Zone <bdi>Diagnosis     → zone</bdi>/04_diagnosis/zone_diagnosis.md
+5️⃣  V5 <bdi>Report          → zone</bdi>/output/ZONE_REPORT_V5.md (Opus call)
+6️⃣  Render <bdi>Figures     → Inline</bdi> SVG, HTML designed
+7️⃣  <bdi>Validate           → Checklist</bdi> (7 criteria)
 ```
 
 ---
@@ -87,7 +87,7 @@ holon_p_25,מק חולון 25,172100,557500,55,unconfined,2
 ### Scripts to Run
 
 ```bash
-# Parse Excel → raw measurements
+# Parse <bdi>Excel → raw</bdi> measurements
 python scripts/parse_excel.py --zone holon --output 02_data/
 
 # Preprocess + normalize units
@@ -267,7 +267,7 @@ Includes XML tags:
 # Generate diagnostic figures (pre-report)
 python scripts/generate_charts_v2.py --zone holon --style diagnostic
 
-# Generate V5 HTML (Opus report → structured HTML)
+# Generate V5 HTML (Opus <bdi>report → structured</bdi> HTML)
 python scripts/generate_holon_v5_html.py
 
 # Designed variant (summary visual)

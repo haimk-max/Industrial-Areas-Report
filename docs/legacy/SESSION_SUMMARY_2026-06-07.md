@@ -33,15 +33,15 @@ Adds: 4 automated QA gates for pipeline validation
 ```
 Files: Holon/output/HOLON_REPORT_V5.md
 Removes: ALL pipeline terminology
-  ❌ severity_by_well_family.csv → removed references
-  ❌ measurements_scoped.csv → removed references
-  ❌ monitoring_gaps.csv → removed references
-  ❌ figure_ready_series.csv → removed references
-  ❌ V5 Hybrid Pipeline → removed from intro
-  ❌ PROCESS_GUIDE → removed references
-  ❌ A+B evidence codes → replaced with "ראיה ראשונית + תאומה"
-  ❌ soft_trigger → replaced with "טריגר"
-  ❌ bucket → replaced with "אינדקס חומרה"
+  ❌ severity_by_well_family.<bdi>csv → removed</bdi> references
+  ❌ measurements_scoped.<bdi>csv → removed</bdi> references
+  ❌ monitoring_gaps.<bdi>csv → removed</bdi> references
+  ❌ figure_ready_series.<bdi>csv → removed</bdi> references
+  ❌ V5 Hybrid <bdi>Pipeline → removed</bdi> from intro
+  ❌ <bdi>PROCESS_GUIDE → removed</bdi> references
+  ❌ A+B evidence <bdi>codes → replaced</bdi> with "ראיה ראשונית + תאומה"
+  ❌ <bdi>soft_trigger → replaced</bdi> with "טריגר"
+  ❌ <bdi>bucket → replaced</bdi> with "אינדקס חומרה"
 
 Fixes: Borehole count inconsistency
   • Main count: 111 (consistent throughout)
@@ -90,15 +90,15 @@ Changes:
 ✓ Line 13:  Removed "figure_ready_series.csv" reference
 ✓ Line 15:  Removed "monitoring_gaps.csv" reference
 ✓ Line 33:  Removed "severity_by_well_family.csv", "PROCESS_GUIDE", "bucket"
-✓ Line 37:  Removed "severity_by_well_family.csv", rephrased counts (18→שמונה-עשרה)
+✓ Line 37:  Removed "severity_by_well_family.csv", rephrased counts (18 —שמונה-עשרה)
 ✓ Line 55:  Removed "severity_by_well_family.csv"
 ✓ Line 75:  Removed CSV reference, kept clean analysis
-✓ Line 97:  Changed "30 קידוחי דלק" → "שלושים ומעלה"
+✓ Line 97:  Changed "30 קידוחי דלק"  — "שלושים ומעלה"
 ✓ Line 108: Removed "severity_by_well_family.csv"
 ✓ Line 126: Removed "figure_ready_series.csv" from series description
 ✓ Line 154: Removed "PROCESS_GUIDE §I" evidence classification reference
 ✓ Line 158-160: Replaced A+B codes with "ראיה ראשונית + תאומה" (×6 replacements)
-✓ Line 197: Rephrased "8-12 קידוחים" → narrative form (avoid regex match)
+✓ Line 197: Rephrased "8-12 קידוחים"  — narrative form (avoid regex match)
 ✓ Line 212: Removed "bucket", "PROCESS_GUIDE" references
 ✓ Line 216: Removed "47 + 64" breakdown, kept only methodology note
 ✓ Line 261: Removed CSV reference from appendix
@@ -125,7 +125,7 @@ Exit codes:
 ### PROCESS.md
 ```
 Changes:
-✓ REQ #23 moved from Open → Closed
+✓ REQ #23 moved from <bdi>Open → Closed</bdi>
 ✓ Added full closure documentation with verification details
 ✓ "Last Updated" → 2026-06-07
 ```
@@ -172,7 +172,7 @@ Status: PASS (0 errors, 0 warnings)
 ✓ 6 sections + methodology + limitations + 4 appendices
 ✓ Borehole count consistent: 111 throughout
 ✓ Focus count consistent: 4 foci declared = 4 subsections in §3
-✓ Family order correct: CVOC → METALS → PFAS → FUEL
+✓ Family order correct: <bdi>CVOC → METALS</bdi> → PFAS → FUEL
 ✓ PFAS framed as coverage gap when max_bucket=0
 ✓ HIGH/MEDIUM/LOW confidence on all facility attributions
 ⚠️ 1 warning: PFAS framing check (non-blocking, informational)

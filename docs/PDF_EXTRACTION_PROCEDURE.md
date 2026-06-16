@@ -80,7 +80,7 @@ python scripts/extract_zone_pdfs.py --zone <zone> --include-shared # כולל Ba
 │   ├── water-sources-status_tehom_holon-part1.txt        (extracted text)
 │   ├── water-sources-status_tehom_holon-part2.txt
 │   ├── water-sources-status_tehom_FinalReport-Holon.txt
-│   └── ... (כל PDF → .txt)
+│   └── ... (כל PDF  — .txt)
 └── _pdf_index.json                                        (manifest)
 ```
 
@@ -105,8 +105,8 @@ python scripts/extract_zone_pdfs.py --zone <zone> --include-shared # כולל Ba
 
 **עמידות (Idempotency)**:
 - אם `_raw_text/<name>.txt` כבר קיים ויש רשומה בהצלחה ב-`_pdf_index.json` — דלוג (SKIP)
-- אם `--force` → חילוץ מחדש לכל PDF
-- אם הקודם כשל (`extraction_ok: false`) → נסיון חוזר
+- אם `--force`  — חילוץ מחדש לכל PDF
+- אם הקודם כשל (`extraction_ok: false`)  — נסיון חוזר
 
 ---
 
@@ -285,9 +285,9 @@ python scripts/merge_extracted_findings.py --zone holon
 | **E** | אדום | `weak_or_mention_only` | אזכור חלוש בהערה שולית |
 
 **כללים**:
-- A+B → strong evidence; use in main narrative
-- C → status update; background only (no contamination proof)
-- D/E → appendix / context, unless corroborated by measurements
+- A+<bdi>B → strong</bdi> evidence; use in main narrative
+- <bdi>C → status</bdi> update; background only (no contamination proof)
+- D/<bdi>E → appendix</bdi> / context, unless corroborated by measurements
 
 ---
 
@@ -306,8 +306,8 @@ python scripts/merge_extracted_findings.py --zone holon
 ### Known Limitations
 
 - **OCR Text Quality**: טקסט מחולץ מ-PDF סרוק (scanned) עשוי להשחת Hebrew — בדוק ידנית עמוד חשוב
-- **Coordinate System**: PDFs עתיקות יכולות להשתמש ב-WGS84 בלבד → transformation דרוש ל-ITM
-- **Table Complexity**: טבלאות מורכבות עם merge-cells → ניתוח ידני (pdftotext לא טוב בטבלאות מורכבות)
+- **Coordinate System**: PDFs עתיקות יכולות להשתמש ב-WGS84 בלבד  — transformation דרוש ל-ITM
+- **Table Complexity**: טבלאות מורכבות עם merge-cells  — ניתוח ידני (pdftotext לא טוב בטבלאות מורכבות)
 
 ---
 

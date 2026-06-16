@@ -27,7 +27,7 @@
 | **monitoring_gaps.csv** | קידוחים שקטים ≥12 חודשים | 10–50 | borehole |
 | **figure_ready_series.csv** | סדרות זמן לגרפים | 2,000–5,000 | measurement |
 
-**Bucket scale**: 0–8 (clean → extreme), עפ"י `C_max_5y / DWS × 100`.
+**Bucket scale**: 0–8 (<bdi>clean → extreme</bdi>), עפ"י `C_max_5y / DWS × 100`.
 
 ---
 

@@ -310,7 +310,7 @@ flowchart LR
       <tr><td>Contamination sources</td><td>PDF / web</td><td>Facility identification, contaminant signatures</td><td>Structured candidates index</td></tr>
     </tbody>
   </table>
-  <p><strong>Isolation principle:</strong> the input layer is isolated behind <code>parse_excel.py</code> + <code>extract_zone_pdfs.py</code>. Swapping the source (files → DB) affects only this layer; the rest of the pipeline consumes the standardised Data Pack and is source-agnostic.</p>
+  <p><strong>Isolation principle:</strong> the input layer is isolated behind <code>parse_excel.py</code> + <code>extract_zone_pdfs.py</code>. Swapping the source (<bdi>files → DB</bdi>) affects only this layer; the rest of the pipeline consumes the standardised Data Pack and is source-agnostic.</p>
 
   <h3>5.2 Deterministic Core — Structured Data Pack</h3>
   <p>Produces <strong>6–7 standardised CSVs</strong> in <code>{Zone}/02_data/</code>. This is the <strong>contract</strong> between the deterministic layer and everything downstream (LLM + report generators). Full schema: <code>DATA_PIPELINE_SPEC.md</code>.</p>
@@ -433,7 +433,7 @@ sequenceDiagram
 
   <h3>6.2 Shell Commands (Holon example)</h3>
   <pre><code><span class="k">ZONE_NAME_HE='אזה״ת חולון' scripts/run_pipeline.sh Holon data</span>
-<span class="c">#   parse_excel → trend_analysis → forensics → data_pack → Gate 2</span>
+<span class="c">#   <bdi>parse_excel → trend_analysis</bdi> → forensics → data_pack → Gate 2</span>
 <span class="c"># … assemble 03_context/ (manual, NotebookLM-like) …</span>
 
 <span class="k">scripts/run_pipeline.sh Holon render-diagnosis</span>   <span class="c"># Gate 3 freshness check</span>
@@ -446,8 +446,8 @@ sequenceDiagram
 <span class="k">scripts/run_pipeline.sh Holon validate</span>           <span class="c"># Gate all</span>
 
 <span class="c"># … after expert approval only: …</span>
-<span class="k">scripts/run_pipeline.sh Holon exec-summary</span>       <span class="c"># prepare → OPUS #3 → finalize → Gate 8</span></code></pre>
-  <p><strong>Opus boundaries</strong> (cannot be automated): <code>render-diagnosis</code> → #1, <code>render-report</code> → #2, <code>exec-summary</code> → #3. The driver halts at each boundary and waits for the human-in-the-loop Opus invocation.</p>
+<span class="k">scripts/run_pipeline.sh Holon exec-summary</span>       <span class="c"># <bdi>prepare → OPUS</bdi> #3 → finalize → Gate 8</span></code></pre>
+  <p><strong>Opus boundaries</strong> (cannot be automated): <bdi><code>render-diagnosis</code> → #1</bdi>, <code>render-report</code> → #2, <code>exec-summary</code> → #3. The driver halts at each boundary and waits for the human-in-the-loop Opus invocation.</p>
 </section>
 
 
@@ -469,8 +469,8 @@ flowchart LR
   </div>
 
   <ol class="tech">
-    <li><strong>diagnosis → prompt (Gate 3):</strong> Re-running Step 4 (zone diagnosis) without re-rendering the report prompt causes Opus to consume a stale <code>focus_order</code> snapshot. <strong>Enforced:</strong> the prompt stamps <code>diagnosis_sha256_12</code>; Gate 3 compares against the live diagnosis file.</li>
-    <li><strong>report → brief (Gate 8):</strong> Modifying the source report without refreshing the brief causes stale management outputs to circulate. <strong>Enforced:</strong> the brief carries <code>source_report_sha256_12</code>; Gate 8 compares against the latest report.</li>
+    <li><strong><bdi>diagnosis → prompt</bdi> (Gate 3):</strong> Re-running Step 4 (zone diagnosis) without re-rendering the report prompt causes Opus to consume a stale <code>focus_order</code> snapshot. <strong>Enforced:</strong> the prompt stamps <code>diagnosis_sha256_12</code>; Gate 3 compares against the live diagnosis file.</li>
+    <li><strong><bdi>report → brief</bdi> (Gate 8):</strong> Modifying the source report without refreshing the brief causes stale management outputs to circulate. <strong>Enforced:</strong> the brief carries <code>source_report_sha256_12</code>; Gate 8 compares against the latest report.</li>
   </ol>
 
   <h3>7.2 Anonymisation Enforcement (Gate 8)</h3>

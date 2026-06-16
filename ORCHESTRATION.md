@@ -12,17 +12,17 @@
 | שלב | מה | סוג | סקריפט / כלי | שער QA |
 |-----|-----|------|---------------|---------|
 | 1 | הגדרת scope | חצי-ידני | `select_boreholes.py --zone <lc>` | — |
-| 2 | Data Pack (6–7 CSVs) | **דטרמיניסטי** | `parse_excel` → `trend_analysis` → `forensics_analyzer` → **`generate_zone_data_pack.py --zone <Dir>`** | **Gate 2** |
+| 2 | Data Pack (6–7 CSVs) | **דטרמיניסטי** | `parse_excel`  — `trend_analysis`  — `forensics_analyzer`  — **`generate_zone_data_pack.py --zone <Dir>`** | **Gate 2** |
 | 3 | Context Pack | **ידני** (NotebookLM-like) | הרכבת `03_context/` (reports/sources/web) | — |
 | 4a | רינדור prompt אבחון | **דטרמיניסטי** | `render_zone_prompt.py --step diagnosis` | Gate 3 |
-| 4b | אבחון אזורי | **OPUS #1** | הרצת הprompt → `04_diagnosis/zone_diagnosis.md` | **Gate 4** |
+| 4b | אבחון אזורי | **OPUS #1** | הרצת הprompt  — `04_diagnosis/zone_diagnosis.md` | **Gate 4** |
 | 5a | רינדור prompt דוח | **דטרמיניסטי** | `render_zone_prompt.py --step report` | **Gate 3** |
-| 5b | דוח Vn | **OPUS #2** | הרצת הprompt → `output/{ZONE}_REPORT_Vn.md` | **Gate 5** |
+| 5b | דוח Vn | **OPUS #2** | הרצת הprompt  — `output/{ZONE}_REPORT_Vn.md` | **Gate 5** |
 | 6 | איורים + HTML | **דטרמיניסטי** | `generate_holon_v5_html.py --zone <lc>` *(✅ גנרי מ-REQ #28)* | **Gate 6** |
 | 7 | אימות | **דטרמיניסטי** | `qa_pipeline.py --gate all` | את כולם |
 | 8a | רינדור prompt brief | **דטרמיניסטי** | `generate_zone_brief.py prepare` *(גוזר מהדוח האחרון + provenance)* | — |
-| 8b | brief ניהולי | **OPUS #3** | הרצת הprompt → `raw_brief.yaml` | validate (ב-finalize) |
-| 8c | דוחות ניהוליים | **דטרמיניסטי** | `generate_zone_brief.py finalize` → `generate_zone_html_from_brief.py` | חוזה staleness + Gate 31.2/31.3 |
+| 8b | brief ניהולי | **OPUS #3** | הרצת הprompt  — `raw_brief.yaml` | validate (ב-finalize) |
+| 8c | דוחות ניהוליים | **דטרמיניסטי** | `generate_zone_brief.py finalize`  — `generate_zone_html_from_brief.py` | חוזה staleness + Gate 31.2/31.3 |
 
 **גבולות Opus** (אי-אפשר לאטמט): 4b, 5b, 8b. הדרַייבר עוצר שם עם הוראת-המשך.
 
@@ -30,7 +30,7 @@
 
 > ⚠️ **מגבלת generator נוכחית (REQ #31.1 — חוסם אזור שני)**: `generate_zone_html_from_brief.py` מחליף כיום רק 5 סעיפים מה-brief (`context_intro`, `findings`, `framing_warning`, `zone_name`, `doc_id`). סעיפי `stats_public`, `means_summary`, `methodology`, `timeline` נשארים **hardcoded מה-reference template** (חולון). לחולון זה תקין (reference=חולון), אך **אזור שני יקבל נתוני-חולון שגויים** עד שתתווסף replacement logic לכל הסעיפים. **חוזה האנונימיזציה** (PUBLIC ללא שמות-מתקנים) ייאכף ע"י Gate 31.3; **חוזה הטריות** (brief↔report sha) ע"י Gate 31.2.
 
-**חוזה בין-שלבי קריטי (4→5)**: `zone_diagnosis.md` מכיל בלוק `## סדר מוקדים`. שלב 5a גוזר ממנו את `{FOCUS_ORDER_LIST}` בזמן רינדור. **כל הרצה חוזרת של שלב 4 מחייבת רינדור-מחדש של שלב 5a** לפני Opus #2 — אחרת ה-snapshot מיושן (footgun ה-staleness, REQ #27 / HANDOVER). **כיום נאכף במוסכמה בלבד**: הפרומפט חותם רק `template_sha256`, לא את ה-sha של zone_diagnosis.md, כך ש-Gate 3 לא תופס snapshot מיושן. **REQ #31.5** מוסיף חתימת `diagnosis_sha` + אכיפת Gate 3.
+**חוזה בין-שלבי קריטי (4 —5)**: `zone_diagnosis.md` מכיל בלוק `## סדר מוקדים`. שלב 5a גוזר ממנו את `{FOCUS_ORDER_LIST}` בזמן רינדור. **כל הרצה חוזרת של שלב 4 מחייבת רינדור-מחדש של שלב 5a** לפני Opus #2 — אחרת ה-snapshot מיושן (footgun ה-staleness, REQ #27 / HANDOVER). **כיום נאכף במוסכמה בלבד**: הפרומפט חותם רק `template_sha256`, לא את ה-sha של zone_diagnosis.md, כך ש-Gate 3 לא תופס snapshot מיושן. **REQ #31.5** מוסיף חתימת `diagnosis_sha` + אכיפת Gate 3.
 
 ---
 
@@ -71,7 +71,7 @@ ZONE_NAME_HE='אזה״ת חולון'  scripts/run_pipeline.sh Holon render-repor
 scripts/run_pipeline.sh Holon html       # generate_holon_v5_html.py --zone holon (auto-detect Vn)
 scripts/run_pipeline.sh Holon validate   # Gate all
 # … אחרי אישור הדוח בלבד: …
-scripts/run_pipeline.sh Holon exec-summary  # Step 8: brief prompt → OPUS #3 → finalize → exec HTML
+scripts/run_pipeline.sh Holon exec-summary  # Step 8: brief <bdi>prompt → OPUS</bdi> #3 → finalize → exec HTML
 ```
 
 **עודכן**: 2026-06-14 (REQ #30 — V8 exec-summaries; REQ #31 — מגבלת generator בשלב 8c + footgun diagnosis_sha תועדו). קודם: 2026-06-10 (REQ #28 גנריזציה מלאה; REQ #29 שלב 8 + חוזה staleness).

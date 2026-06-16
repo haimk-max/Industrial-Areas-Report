@@ -202,7 +202,7 @@
     </div>
   </div>
 
-  <p><strong>עקרון-העל:</strong> כל שלב הוא או <strong>דטרמיניסטי לחלוטין</strong> (אותו קלט ← אותו פלט, ניתן לבדיקה ב-<bdi>CI</bdi>) או <strong>גבול-<bdi>LLM</bdi> מפורש</strong> (<bdi>Opus call</bdi>). אין "אזורים אפורים". כל גבול-<bdi>LLM</bdi> ניזון מ-<code>prompt</code> בנוי שנגזר אוטומטית מהשלב הקודם, ומאומת בשער <bdi>QA</bdi> לפני ואחרי.</p>
+  <p><strong>עקרון-העל:</strong> כל שלב הוא או <strong>דטרמיניסטי לחלוטין</strong> (אותו קלט — אותו פלט, ניתן לבדיקה ב-<bdi>CI</bdi>) או <strong>גבול-<bdi>LLM</bdi> מפורש</strong> (<bdi>Opus call</bdi>). אין "אזורים אפורים". כל גבול-<bdi>LLM</bdi> ניזון מ-<code>prompt</code> בנוי שנגזר אוטומטית מהשלב הקודם, ומאומת בשער <bdi>QA</bdi> לפני ואחרי.</p>
   <p><strong>Driver:</strong> <code>scripts/run_pipeline.sh &lt;ZONE&gt; &lt;stage&gt;</code> מריץ את השלבים הדטרמיניסטיים ועוצר בכל גבול-<bdi>LLM</bdi> עם הוראת-המשך. ה-<bdi>SSOT</bdi> לתהליך: <code>ZONE_REPORT_PROCESS_GUIDE.md §VIII</code>; מפת ההרצה: <code>ORCHESTRATION.md</code>.</p>
 </section>
 
@@ -218,7 +218,7 @@
       <tr><td>מידע על מקורות זיהום</td><td><bdi>PDF / web</bdi></td><td>זיהוי מתקנים חשודים, חתימות מזהמים</td><td>מאגר מקורות + חיפוש מובנה</td></tr>
     </tbody>
   </table>
-  <p><strong>הערה ארכיטקטונית:</strong> שכבת הקלט מבודדת מאחורי <code>parse_excel.py</code> + <code>extract_zone_pdfs.py</code>. החלפת מקור הקלט (קבצים ← חיבור ישיר) משפיעה <strong>רק על שכבה זו</strong>; שאר הפייפליין צורך את ה-<bdi>Data Pack</bdi> המתוקנן (סעיף 3) ואינו מודע למקור.</p>
+  <p><strong>הערה ארכיטקטונית:</strong> שכבת הקלט מבודדת מאחורי <code>parse_excel.py</code> + <code>extract_zone_pdfs.py</code>. החלפת מקור הקלט (קבצים — חיבור ישיר) משפיעה <strong>רק על שכבה זו</strong>; שאר הפייפליין צורך את ה-<bdi>Data Pack</bdi> המתוקנן (סעיף 3) ואינו מודע למקור.</p>
   <p><strong>אידמפוטנטיות חילוץ <bdi>PDF</bdi>:</strong> כל קובץ נרשם ב-<code>_pdf_index.json</code> עם <code>extraction_ok</code> + timestamp. הרצה חוזרת מדלגת על קבצים שכבר חולצו אלא אם <code>--force</code>.</p>
 </section>
 
@@ -284,7 +284,7 @@
     <thead><tr><th>אסימון בתבנית</th><th>מקור (<bdi>SSOT</bdi>)</th><th>תוכן מוזרק</th></tr></thead>
     <tbody>
       <tr><td><code>{TOTAL_ACTIVE}</code> <code>{N_MEASUREMENTS}</code> <code>{YEAR_START/END}</code></td><td><code>02_data/measurements_scoped.csv</code></td><td>ספירת קידוחים מנותחים, מדידות, טווח שנים — נשאב מה-<bdi>Data Pack</bdi> (לא ידני)</td></tr>
-      <tr><td><code>{FOCUS_ORDER_LIST}</code></td><td>טבלת <bdi>סדר מוקדים</bdi> ב-<code>zone_diagnosis.md</code></td><td>סדר המוקדים הגיאוגרפיים (החוזה הבין-שלבי אבחון←דו"ח)</td></tr>
+      <tr><td><code>{FOCUS_ORDER_LIST}</code></td><td>טבלת <bdi>סדר מוקדים</bdi> ב-<code>zone_diagnosis.md</code></td><td>סדר המוקדים הגיאוגרפיים (החוזה הבין-שלבי אבחון—דו"ח)</td></tr>
       <tr><td><code>{TERMINOLOGY_BLOCK}</code></td><td><code>docs/STYLE_GUIDE.md §B.5</code></td><td>בלוק ההחלפות הקנוני — אותו <bdi>SSOT</bdi> ש-<bdi>Gate 5</bdi> אוכף</td></tr>
       <tr><td><code>{ZONE}</code> <code>{ZONE_NAME_HE}</code> <code>{PRECEDENT_ZONE}</code></td><td><bdi>CLI args</bdi></td><td>שם האזור, שם עברי, אזור-תקדים סגנוני</td></tr>
     </tbody>
@@ -320,15 +320,15 @@
 
   <h3>שני חוזי-staleness קריטיים (footguns שתועדו ונאכפו)</h3>
   <ol class="tech">
-    <li><bdi><strong>diagnosis → prompt</strong></bdi> (<bdi>Gate 3</bdi>): הרצה חוזרת של שלב 4 (אבחון) ללא רינדור-מחדש של <code>prompt</code> הדו"ח — תוצאה: <bdi>Opus</bdi> צורך snapshot מיושן של <code>focus_order</code>. <strong>נאכף:</strong> ה-<code>prompt</code> חותם <code>diagnosis_sha256_12</code>; <bdi>Gate 3</bdi> משווה לקובץ האבחון החי.</li>
-    <li><bdi><strong>report → brief</strong></bdi> (<bdi>Gate 8</bdi>): שינוי בדו"ח-המקור ללא רענון ה-<bdi>brief</bdi> — תוצאה: דו"חות ניהוליים מיושנים. <strong>נאכף:</strong> ה-<bdi>brief</bdi> נושא <code>source_report_sha256_12</code>; <bdi>Gate 8</bdi> משווה לדו"ח האחרון.</li>
+    <li><bdi><strong>diagnosis  — prompt</strong></bdi> (<bdi>Gate 3</bdi>): הרצה חוזרת של שלב 4 (אבחון) ללא רינדור-מחדש של <code>prompt</code> הדו"ח — תוצאה: <bdi>Opus</bdi> צורך snapshot מיושן של <code>focus_order</code>. <strong>נאכף:</strong> ה-<code>prompt</code> חותם <code>diagnosis_sha256_12</code>; <bdi>Gate 3</bdi> משווה לקובץ האבחון החי.</li>
+    <li><bdi><strong>report  — brief</strong></bdi> (<bdi>Gate 8</bdi>): שינוי בדו"ח-המקור ללא רענון ה-<bdi>brief</bdi> — תוצאה: דו"חות ניהוליים מיושנים. <strong>נאכף:</strong> ה-<bdi>brief</bdi> נושא <code>source_report_sha256_12</code>; <bdi>Gate 8</bdi> משווה לדו"ח האחרון.</li>
   </ol>
 
   <h3>אכיפת אנונימיזציה (Gate 8)</h3>
   <p>הגרסה הציבורית נסרקת מול <bdi>blocklist</bdi> (<code>sources[].name_internal</code>):</p>
   <ul class="tech">
-    <li><strong>שם מתקן</strong> ב-<bdi>PUBLIC</bdi> ← <span class="fail">FAIL</span> (חוסם פרסום)</li>
-    <li><strong>שם קידוח אמיתי</strong> ב-<bdi>PUBLIC</bdi> ← <span style="color:var(--grey-4);font-weight:600;font-family:'IBM Plex Mono',monospace;font-size:11.5px">WARN</span> (מומלץ קוד <bdi>B-NN</bdi>; חריגים מאושרים אפשריים)</li>
+    <li><strong>שם מתקן</strong> ב-<bdi>PUBLIC</bdi> — <span class="fail">FAIL</span> (חוסם פרסום)</li>
+    <li><strong>שם קידוח אמיתי</strong> ב-<bdi>PUBLIC</bdi> — <span style="color:var(--grey-4);font-weight:600;font-family:'IBM Plex Mono',monospace;font-size:11.5px">WARN</span> (מומלץ קוד <bdi>B-NN</bdi>; חריגים מאושרים אפשריים)</li>
   </ul>
   <p>זה מונע הישנות של דליפת מידע — לא הסתמכות על זיכרון אנושי.</p>
 </section>
@@ -382,7 +382,7 @@
 
 <span class="c"># … רק אחרי אישור מומחה: …</span>
 <span class="k">scripts/run_pipeline.sh Holon exec-summary</span> <span class="c"># 8a prepare → OPUS #3 → finalize → Gate 8</span></code></pre>
-  <p><strong>גבולות <bdi>Opus</bdi></strong> (לא ניתן לאטמט): <bdi><code>render-diagnosis</code>→#1</bdi>, <bdi><code>render-report</code>→#2</bdi>, <bdi><code>exec-summary</code>→#3</bdi>. הדרייבר עוצר שם.</p>
+  <p><strong>גבולות <bdi>Opus</bdi></strong> (לא ניתן לאטמט): <bdi><bdi><code>render-diagnosis</code>→#1</bdi></bdi>, <bdi><code>render-report</code>→#2</bdi>, <bdi><bdi><code>exec-summary</code>→#3</bdi></bdi>. הדרייבר עוצר שם.</p>
 </section>
 
 

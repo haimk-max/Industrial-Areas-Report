@@ -96,8 +96,8 @@
 | ... | ... | ... | ... | ... |
 
 **מגמות**: [Z, p, SNR, soft_trigger; קטגוריה]
-- TCE בקידוח nt_1: Z=2.3, p=0.02, SNR=6.1, soft_trigger=true → **עלייה מובהקת**
-- PCE בקידוח nt_3: Z=1.8, p=0.07, SNR=4.2 → **עלייה חלשה**
+- TCE בקידוח nt_1: Z=2.3, p=0.02, SNR=6.1, soft_trigger=true  — **עלייה מובהקת**
+- PCE בקידוח nt_3: Z=1.8, p=0.07, SNR=4.2  — **עלייה חלשה**
 
 **קשר לדוח 2021**: [מה השתנה מ-2021? חומרה עלתה? קידוח חדש?]
 
@@ -211,7 +211,7 @@
 - ממצאים בתאריכים חדישים
 
 ### Appendix B: פורנזיקה כימית (Forensics)
-- Decay chains (TCE → DCE → VC)
+- Decay chains (<bdi>TCE → DCE</bdi> → VC)
 - Co-occurrence patterns (Cr+Ni, CVOC+MTBE)
 - Source signatures (BTEX ratios, DNAPL reasoning)
 - Temporal evolution (2008 vs 2021 vs 2024)

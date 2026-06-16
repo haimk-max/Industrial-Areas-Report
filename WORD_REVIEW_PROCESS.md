@@ -11,16 +11,16 @@
 
 ---
 
-## ⚠️ הערה קריטית — המרת HTML→Word בסביבה זו
+## ⚠️ הערה קריטית — המרת <bdi>HTML→Word</bdi> בסביבה זו
 
 `libreoffice --headless --convert-to docx` **שבור ב-container** (כושל על כל קלט, "source file could not be loaded"). לכן:
 
 | מסלול | כלי | איכות | מתי |
 |-------|-----|--------|-----|
-| **המרה ידנית** (מומלץ) | דפדפן → העתק HTML → הדבק ל-Word | גבוהה (CSS+RTL נשמרים) | להפצה למומחים |
+| **המרה ידנית** (מומלץ) | דפדפן  — העתק HTML  — הדבק ל-Word | גבוהה (CSS+RTL נשמרים) | להפצה למומחים |
 | Python (אוטומטי) | `markdown_to_docx.py` + `embed_holon_figures_v5.py` | בסיסי (ללא CSS) | טיוטות פנימיות |
 
-**להפצה למומחה — העדף את המסלול הידני** (browser copy-paste → Word, או Word File→Open על ה-HTML).
+**להפצה למומחה — העדף את המסלול הידני** (browser <bdi>copy-paste → Word</bdi>, או Word File→Open על ה-HTML).
 
 ---
 
@@ -38,7 +38,7 @@ python scripts/embed_holon_figures_v5.py \
   Holon/output/HOLON_REPORT_V8.html
 ```
 
-**מסלול ידני (מומלץ להפצה):** פתח את `Holon/output/HOLON_REPORT_V8.html` בדפדפן → בחר הכול → העתק → הדבק ל-Word → שמור כ-`.docx`.
+**מסלול ידני (מומלץ להפצה):** פתח את `Holon/output/HOLON_REPORT_V8.html` בדפדפן  — בחר הכול  — העתק  — הדבק ל-Word  — שמור כ-`.docx`.
 
 **תוצאה**: קובץ Word עם RTL מלא, יישור justified, Track Changes זמין, שפה he-IL.
 
@@ -109,8 +109,8 @@ python scripts/apply_markdown_comments.py \
 
 | סוג | דוגמה | פעולה ב-Word |
 |-----|-------|---------------|
-| **נקודתית** | "שנה 'זיהום' ל-'מהילה' בפסקה זו" | בחר טקסט → Track Changes → ערוך |
-| **כללית** | "סדר הפרקים: מקורות → מוקדים → מגמות" | New Comment על המבנה הכללי |
+| **נקודתית** | "שנה 'זיהום' ל-'מהילה' בפסקה זו" | בחר טקסט  — Track Changes  — ערוך |
+| **כללית** | "סדר הפרקים: מקורות  — מוקדים  — מגמות" | New Comment על המבנה הכללי |
 
 **פורמט שדות הערה (JSON)**:
 ```json
@@ -143,7 +143,7 @@ cat Holon/reviews/comments_*.md > Holon/reviews/ALL_FEEDBACK.md
 ```
 
 ## עדכון חוזר (Iteration)
-הערות כלליות מהותיות → ריצת Opus מחדש (Step 4+5) דרך `scripts/run_pipeline.sh`, לא תיקון ידני של ה-HTML. הערות נקודתיות בלבד → `apply_markdown_comments.py` → גרסה הבאה (V9).
+הערות כלליות מהותיות  — ריצת Opus מחדש (Step 4+5) דרך `scripts/run_pipeline.sh`, לא תיקון ידני של ה-HTML. הערות נקודתיות בלבד  — `apply_markdown_comments.py`  — גרסה הבאה (V9).
 
 ---
 

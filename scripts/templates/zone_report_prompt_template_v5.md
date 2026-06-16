@@ -84,7 +84,7 @@ Foci order for this zone (from zone_diagnosis.md "## סדר מוקדים" block)
 # Mechanical link rule: if family B is physicochemically linked to dominant family A within same focus
 # (VC from TCE decay, 1,4-dioxane as TCA stabilizer, LNAPL as electron donor for CVOC reductive dechlorination)
 # → present B immediately after A, before any unlinked family with higher severity.
-# Cross-focus links → treat as "signal crossing" with competing hypotheses.
+# Cross-focus <bdi>links → treat</bdi> as "signal crossing" with competing hypotheses.
 # Last section = "פערי כיסוי" (coverage gaps): PFAS without geographic data + spatial/parametric gaps.
 </focus_order>
 
@@ -106,7 +106,7 @@ Foci order for this zone (from zone_diagnosis.md "## סדר מוקדים" block)
 <document index="3">
 <source>{ZONE}/context_pack/03_context/source_candidates_context.md (Source Candidates Pack)</source>
 <purpose>Industrial facilities, evidence classification (A–E per PROCESS_GUIDE §I), suspected contaminants, confidence levels (HIGH/MEDIUM/LOW).</purpose>
-<notes>Classification: A=report_verified; B=ai_extracted_with_citation; C=web_verified_active; D=inferred_candidate; E=weak_mention. A+B → strong candidates; C→status_only.</notes>
+<notes>Classification: A=report_verified; B=ai_extracted_with_citation; C=web_verified_active; D=inferred_candidate; E=weak_mention. A+<bdi>B → strong</bdi> candidates; C→status_only.</notes>
 </document>
 
 <document index="4">
@@ -284,12 +284,12 @@ Write this section in Hebrew prose, ≤10 lines, using the report-prose terminol
 
 - **Language**: Professional Hebrew. Technical terms in English only when standard (TCE, Mann-Kendall, etc.)
 - **Numbers**: Always % of standard (not absolute concentration alone). Example: "TCE 1,200 µg/L (2,400% of standard)"
-- **Citations**: Every claim → source. For historical claims cite the report + page: "(דוח 2021, עמ' 23)". For monitoring data, cite the well + parameter in prose ("נמדד ב-נת חולון 11"); **NEVER cite raw pipeline filenames** (no `*.csv` / `*.json` / `*.yaml`) in the report — those are internal artifacts.
-- **Report-prose terminology (HARD — a QA gate FAILs on raw tokens)**: in the report PROSE, translate every internal token to Hebrew/standard wording, never the raw token. See the binding `<terminology>` block above (SSOT: STYLE_GUIDE §B.5) for the three mandatory substitutions (ריקבון→פירוק, שתיקה→הפסקת ניטור, קיצוני→אינדקס). In addition:
-  - `bucket` / `bucket(...)` → "אינדקס חומרה"
-  - `SNR gating` → "סינון יחס אות/רעש"; `soft_trigger` → "טריגר רך (שני ערכים עולים רצופים)"
-  - evidence codes `A+B` / `C-class` → **רמת ודאות גבוהה / בינונית / נמוכה** + Hebrew evidence description (NOT the English words HIGH/MEDIUM/LOW in Hebrew prose)
-  - English ops labels `ALERT / WATCH / ELEVATED / STABLE / NONE` → Hebrew ("מצב חירום", "מגמה יציבה", "אין מגמה")
+- **Citations**: Every <bdi>claim → source</bdi>. For historical claims cite the report + page: "(דוח 2021, עמ' 23)". For monitoring data, cite the well + parameter in prose ("נמדד ב-נת חולון 11"); **NEVER cite raw pipeline filenames** (no `*.csv` / `*.json` / `*.yaml`) in the report — those are internal artifacts.
+- **Report-prose terminology (HARD — a QA gate FAILs on raw tokens)**: in the report PROSE, translate every internal token to Hebrew/standard wording, never the raw token. See the binding `<terminology>` block above (SSOT: STYLE_GUIDE §B.5) for the three mandatory substitutions (ריקבון —פירוק, שתיקה —הפסקת ניטור, קיצוני —אינדקס). In addition:
+  - `bucket` / `bucket(...)`  — "אינדקס חומרה"
+  - `SNR gating`  — "סינון יחס אות/רעש"; `soft_trigger`  — "טריגר רך (שני ערכים עולים רצופים)"
+  - evidence codes `A+B` / `C-class`  — **רמת ודאות גבוהה / בינונית / נמוכה** + Hebrew evidence description (NOT the English words HIGH/MEDIUM/LOW in Hebrew prose)
+  - English ops labels `ALERT / WATCH / ELEVATED / STABLE / NONE`  — Hebrew ("מצב חירום", "מגמה יציבה", "אין מגמה")
   - never write `Step N`, `Opus call`, `PROCESS_GUIDE`, `REPORT_V5_SCHEMA` in the report
   - Allowed in prose: chemical names only (TCE, PFAS, MTBE, VC…). Confidence is Hebrew (גבוהה/בינונית/נמוכה), never HIGH/MEDIUM/LOW.
 - **Tone**: Neutral, professional. Avoid narrative arcs ("crisis", "alarming"). Describe findings, don't dramatize.

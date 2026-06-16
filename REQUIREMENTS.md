@@ -38,7 +38,7 @@
 | REQ-A5 | Contamination attribution presented with confidence levels (HIGH/MEDIUM/LOW), not overstated | ✅ | CLAUDE.md § Incident Response | Attributions include "כל הנראה" or "ברמת ביטחון בינונית" |
 | REQ-A6 | Excluded: TPFAS (total PFAS) and BETK (calculated sums) — use individual species only | ✅ | CLAUDE.md § Trend Methodology | Only PFHxS, PFOA, PFHxA, etc. in analysis |
 | REQ-A7 | `crossed_standard` flag set BEFORE entry criteria check (single-measurement exceedances captured) | ✅ | CLAUDE.md § Trend Methodology | Code logic verified in preprocess.py |
-| REQ-A8 | Industrial facility discovery performed by AI agent with expert prompt; sector-based search (CVOC sources + PFAS sources); output JSON → facility_attribution.json | ✅ | User request (2026-05-06) | Agent methodology documented in STYLE_GUIDE.md § H; 2 new candidates (F-008, F-009) added; web_findings.md logged |
+| REQ-A8 | Industrial facility discovery performed by AI agent with expert prompt; sector-based search (CVOC sources + PFAS sources); output <bdi>JSON → facility_attribution</bdi>.json | ✅ | User request (2026-05-06) | Agent methodology documented in STYLE_GUIDE.md § H; 2 new candidates (F-008, F-009) added; web_findings.md logged |
 
 ### B. Report Structure (Word-Level)
 
@@ -111,7 +111,7 @@
 ## Potential Contradictions Found
 
 **None identified.** All user requests are consistent:
-- Style req's (narrative → professional + 2021 patterns) are compatible
+- Style req's (<bdi>narrative → professional</bdi> + 2021 patterns) are compatible
 - Chart reqs (curves for dynamics, bars for peaks) are distinct and non-overlapping
 - Data req's (integrity, attribution, methodology) are aligned with CLAUDE.md
 
@@ -167,9 +167,9 @@ These requirements apply when activating any new zone using the framework.
 | REQ-H2 | Per-zone Excel format variations handled via `config/zone_overrides/{zone}.yaml` (column index overrides) | ✅ | Holon Excel has 15 cols vs Raanana 18 | `config/zone_overrides/holon.yaml` overrides 6 column indices |
 | REQ-H3 | Param-code mapping for cross-zone consistency (CVOC, BTEX, PFAS detection regardless of source code naming) | ✅ | Holon Excel uses full English names (TRICHLORO ETHYLENE) vs Raanana short codes (TCEY); needed crosswalk | `scripts/param_families.py` — regex-based `classify_family(code, name)` returns CVOC/BTEX/PFAS/OTHER. Holon CVOC chart now generates (4,915 measurements detected, was 0). 9 new tests. |
 | REQ-H4 | Zone polygon (ITM) drives Tier 2 borehole selection via point-in-polygon | ✅ | `select_boreholes.py` | Holon: 111/112 boreholes inside polygon (with 500m buffer) |
-| REQ-H5 | Generic data-driven charts (no hardcoded borehole IDs) work for any zone | ✅ | `generate_charts_v2.py` main() routes raanana → specific; other → generic | Holon charts: site_map, cvoc_trends, btex_trends, pfas_trends, exceedances_bar, severity_panel |
+| REQ-H5 | Generic data-driven charts (no hardcoded borehole IDs) work for any zone | ✅ | `generate_charts_v2.py` main() routes <bdi>raanana → specific</bdi>; other → generic | Holon charts: site_map, cvoc_trends, btex_trends, pfas_trends, exceedances_bar, severity_panel |
 | REQ-H6 | Zone site map computes extent + severity from data; supports zone polygon from `zone_polygons.json` | ✅ | `chart_zone_site_map(zone_id=...)` | Holon site map produced |
-| REQ-H7 | KMZ → ITM polygon conversion (WGS84 → EPSG:2039 via pyproj) | ✅ | One-off task per zone | Holon polygon converted from uploaded KMZ |
+| REQ-H7 | <bdi>KMZ → ITM</bdi> polygon conversion (WGS84 → EPSG:2039 via pyproj) | ✅ | One-off task per zone | Holon polygon converted from uploaded KMZ |
 | REQ-H8 | Documentation describes "Adding a new zone" as standard workflow (not "pilot") | ✅ | CLAUDE.md § 8 rewrite | Section is now zone-agnostic procedure |
 | REQ-H9 | Borehole selection persistence: `select_boreholes.py` writes `<Zone>/data/selected_boreholes.json`; downstream scripts (trend_analysis, forensics, charts) filter by this list | ✅ | Excel may contain more boreholes than relevant for a zone (Holon: 112 in Excel, 111 selected by polygon) | `scripts/borehole_filter.py::load_selected_ids()` returns set or None (None = use all, backwards compatible). Holon trend pairs: 4,869 → 4,762; chart rows: 20,613 → 20,506 |
 | REQ-H10 | Idempotent PDF extraction: each PDF processed once; `<Zone>/data/external/_pdf_index.json` tracks `extraction_ok` + `extraction_date_utc` per file; re-runs SKIP cached entries unless `--force`; new files trigger fresh extraction automatically | ✅ | User request (2026-05-06) — re-running pipeline next year should not re-extract already-processed PDFs | `scripts/extract_zone_pdfs.py` + `_load_existing_manifest()` + `_pdf_needs_extraction()`. Verified: Run 1 → 4 processed; Run 2 → 4 cached (0 processed); `--force` → re-extract all |
@@ -199,12 +199,12 @@ These requirements apply when activating any new zone using the framework.
 | 2026-05-06 | v2.0: Reframed as **framework requirements** for any of the 18 zones (not Raanana-specific). Added Phase 5 (REQ-H1 through REQ-H8) for cross-zone framework requirements. Raanana = reference implementation; Holon = first application | Methodology proven on Raanana, generalised to support any zone via `--zone <id>` |
 | 2026-05-06 | v2.1: REQ-H3 ✅ resolved (`scripts/param_families.py` cross-zone CVOC/BTEX/PFAS classifier). Added REQ-H9 (borehole selection persistence: `select_boreholes.py` writes JSON, downstream scripts filter). 9 new tests | Holon CVOC chart returned no data (different naming); pipeline ran on all boreholes instead of selected only |
 | 2026-05-06 | v2.2: Added REQ-H10 (idempotent PDF extraction with `_pdf_index.json` state tracking), REQ-H11 (`--include-shared` flag for root Base-Report/ PDFs), REQ-H12 (parallel per-PDF AI extraction + merge step). Added `scripts/merge_extracted_findings.py` | User requirement: PDF extraction must be one-time per file; re-running pipeline next year should skip already-processed PDFs unless they change. Same applies to TAHAL 2008 and Water Authority 2021 base-layer reports |
-| 2026-05-17 | v3.0: Phase H+ V5 Hybrid Pipeline — Documentation refactor closed (REQ #12). PROCESS_GUIDE §I Zone Context Pack + §II V5 Schema + §II.5 Zone Diagnosis + §VIII 7-step pipeline. New SSOTs: DATA_PIPELINE_SPEC.md + REPORT_V5_SCHEMA.md | Methodology evolution: prompt-driven V4 → structured data + context + diagnosis V5 |
+| 2026-05-17 | v3.0: Phase H+ V5 Hybrid Pipeline — Documentation refactor closed (REQ #12). PROCESS_GUIDE §I Zone Context Pack + §II V5 Schema + §II.5 Zone Diagnosis + §VIII 7-step pipeline. New SSOTs: DATA_PIPELINE_SPEC.md + REPORT_V5_SCHEMA.md | Methodology evolution: prompt-driven <bdi>V4 → structured</bdi> data + context + diagnosis V5 |
 | 2026-05-28 | v3.1: Phase H+ V5 Hybrid Pipeline — Implementation closed (REQ #13–19, PR #19 / a19a917). Deliverables: Holon V5 (data pack 7 CSVs / 15,173 rows; V5.md 310 lines; V5.html 177KB), Executive summaries (INTERNAL 64KB + PUBLIC 52KB), Report Engine (14 generic files), Brief/HTML generators, Toolkit system (3 tiers, 5/5 playbooks sanitized) | V5 hybrid pipeline now production-ready; binding methodology for all new zones (Phase 2 activation pending hydrogeologist sign-off) |
-| 2026-06-10 | v3.2: Holon V5→V8 via six review rounds (REQ #25–28): terminology SSOT (פירוק/הפסקת ניטור/רמת ודאות), focus-first ordering §IV, hydrologist round-2 figures, production-well focus, full pipeline genericization (all scripts `--zone`, legacy archived, QA gates version-generic). Packaging-readiness pass (REQ #29): exec-summary infra de-coupled from V5 hardcoding + staleness contract; RAG formally deferred; tracking files synced to V8 | Report content materially changed (terminology + production wells); exec summaries flagged stale (V5-era) pending V8 regeneration post-approval |
+| 2026-06-10 | v3.2: Holon <bdi>V5→V8</bdi> via six review rounds (REQ #25–28): terminology SSOT (פירוק/הפסקת ניטור/רמת ודאות), focus-first ordering §IV, hydrologist round-2 figures, production-well focus, full pipeline genericization (all scripts `--zone`, legacy archived, QA gates version-generic). Packaging-readiness pass (REQ #29): exec-summary infra de-coupled from V5 hardcoding + staleness contract; RAG formally deferred; tracking files synced to V8 | Report content materially changed (terminology + production wells); exec summaries flagged stale (V5-era) pending V8 regeneration post-approval |
 
 ---
 
 **Status**: Framework ✅ complete (REQ-H1–H12 all done); Raanana reference implementation ✅ complete; Holon stress-tested through **V8** ✅ (2026-06-10); Phase H+ V5 Hybrid Pipeline ✅ COMPLETE; Pipeline zone-generic end-to-end ✅ (REQ #28); ⏳ Hydrogeologist sign-off of Holon **V8**; ⏳ exec-summary V8 regeneration (post-approval); ⏳ 16-zone activation (Phase 2)
 **Last Review**: 2026-06-10 (REQ #29 packaging-readiness audit — exec-summary infra, RAG deferral, tracking sync)
-**Next Review**: After Holon V8 hydrogeologist sign-off → Phase 2 (16-zone activation)
+**Next Review**: After Holon V8 hydrogeologist <bdi>sign-off → Phase</bdi> 2 (16-zone activation)

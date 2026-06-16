@@ -27,9 +27,9 @@
 | **E** | `weak / mention_only` | אזכור בודד; ללא קישור לקידוח/מזהם | **נספח בלבד** |
 
 **מדיניות שימוש**:
-- **A + B** → מועמדים חזקים; ייכנסו לגוף הדוח (סעיף שיוך מקורות)
-- **C** → משלים מצב נוכחי; **אסור** להציג כראיית זיהום בעצמו
-- **D / E** → רקע/נספח. נכנסים לגוף הדוח **רק אם** נתוני הניטור (severity, trends, חתימות כימיות) מחזקים אותם עצמאית
+- **A + B**  — מועמדים חזקים; ייכנסו לגוף הדוח (סעיף שיוך מקורות)
+- **C**  — משלים מצב נוכחי; **אסור** להציג כראיית זיהום בעצמו
+- **D / E**  — רקע/נספח. נכנסים לגוף הדוח **רק אם** נתוני הניטור (severity, trends, חתימות כימיות) מחזקים אותם עצמאית
 
 ### 2. Attribution Confidence (HIGH/MEDIUM/LOW) — חוזק הקישור קידוח↔מקור
 
@@ -98,11 +98,11 @@ families = classify_contamination_family(["PCE", "TCE", "Benzene", "Cr"])
 
 נוכחות תוצרי-פירוק היא ראיה חזקה למקור CVOC ולתהליך ריקבון פעיל.
 
-| שרשרת | Parent → Children | מסלול | משמעות פורנזית |
+| שרשרת | <bdi>Parent → Children</bdi> | מסלול | משמעות פורנזית |
 |-------|-------------------|--------|----------------|
-| `PCE_to_TCE` | PCE → TCE → DCE → VC | reductive dechlorination | VC (מסרטן) = ריקבון מתקדם; מקור ישן |
-| `TCA_to_DCA` | 1,1,1-TCA → 1,1-DCA → chloroethane | hydrolysis + reduction | מבחין מקור TCA ממקור PCE |
-| `TCM_series` | TCM → DCM → CM | reductive dehalogenation | מקור chloroform |
+| `PCE_to_TCE` | <bdi>PCE → TCE</bdi> → DCE → VC | reductive dechlorination | VC (מסרטן) = ריקבון מתקדם; מקור ישן |
+| `TCA_to_DCA` | 1,1,1-TCA → 1,1-<bdi>DCA → chloroethane</bdi> | hydrolysis + reduction | מבחין מקור TCA ממקור PCE |
+| `TCM_series` | <bdi>TCM → DCM</bdi> → CM | reductive dehalogenation | מקור chloroform |
 
 ```python
 from signalkit.forensics_engine import build_decay_chains
@@ -112,10 +112,10 @@ chains = build_decay_chains(["PCE", "TCE", "DCE", "VC"])
 ```
 
 **אינדיקטורים לבדוק**:
-- **completeness גבוה** (כל חברי השרשרת נוכחים) → מקור ותיק, ריקבון מתקדם
-- **VC נוכח** → תוצר סופי מסרטן; דה-הלוגנציה פעילה; הוסף VC + ethene לפאנל
-- **יחס DCE:TCE עולה לאורך זמן** → האצת ריקבון ביולוגי
-- **דומיננטיות 1,1-DCE** → עשוי לרמז על מקור TCA ולא PCE
+- **completeness גבוה** (כל חברי השרשרת נוכחים)  — מקור ותיק, ריקבון מתקדם
+- **VC נוכח**  — תוצר סופי מסרטן; דה-הלוגנציה פעילה; הוסף VC + ethene לפאנל
+- **יחס DCE:TCE עולה לאורך זמן**  — האצת ריקבון ביולוגי
+- **דומיננטיות 1,1-DCE**  — עשוי לרמז על מקור TCA ולא PCE
 
 ---
 
@@ -158,11 +158,11 @@ chains = build_decay_chains(["PCE", "TCE", "DCE", "VC"])
       ↓
 2. חלץ חתימת מזהמים מהקידוח (אילו משפחות? אילו תרכובות מפתח?)
       ↓
-3. match_source_signatures() → סוג מתקן מרומז
+3. match_source_signatures()  — סוג מתקן מרומז
       ↓
 4. חפש ב-facility_attribution.json מתקנים ב-<500m עם contamination_family תואם
       ↓
-5. לכל מועמד — בדוק 3 קריטריונים → HIGH/MEDIUM/LOW
+5. לכל מועמד — בדוק 3 קריטריונים  — HIGH/MEDIUM/LOW
       ↓
 6. בדוק Evidence Class של מקור המידע (A–E)
       ↓
@@ -189,7 +189,7 @@ chains = build_decay_chains(["PCE", "TCE", "DCE", "VC"])
 ## חלק ז — Checklist לשיוך מקור (לכל מוקד)
 
 - [ ] חתימת מזהמים חולצה מהקידוח (משפחות + תרכובות מפתח)
-- [ ] `match_source_signatures()` הורץ → סוג מתקן מרומז
+- [ ] `match_source_signatures()` הורץ  — סוג מתקן מרומז
 - [ ] מועמדים ב-<500m זוהו מ-facility JSON
 - [ ] כל מועמד דורג HIGH/MEDIUM/LOW (3 קריטריונים)
 - [ ] Evidence Class (A–E) צוין לכל מועמד

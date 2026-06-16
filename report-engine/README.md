@@ -11,23 +11,23 @@ is the YAML brief — the design system, schema, and reference outputs are froze
 
 ```
 report-engine/
-├── CLAUDE.md                          ← operating manual for the build agent (read first)
-├── README.md                          ← this file
+├── CLAUDE.<bdi>md                          ← operating</bdi> manual for the build agent (read first)
+├── README.<bdi>md                          ← this</bdi> file
 ├── design-system/                     ← FROZEN visual + voice contract
-│   ├── README.md                      ← design-system overview
+│   ├── README.<bdi>md                      ← design-system</bdi> overview
 │   ├── architecture.md                ← "twins, not identical" philosophy
-│   ├── tokens.css                     ← single source of truth for CSS variables
-│   ├── typography.md                  ← font system + RTL discipline
-│   ├── color.md                       ← semantic palette rules
-│   ├── voice.md                       ← copy/tone rules (internal vs. public)
+│   ├── tokens.<bdi>css                     ← single</bdi> source of truth for CSS variables
+│   ├── typography.<bdi>md                  ← font</bdi> system + RTL discipline
+│   ├── color.<bdi>md                       ← semantic</bdi> palette rules
+│   ├── voice.<bdi>md                       ← copy</bdi>/tone rules (internal vs. public)
 │   └── reference/                     ← gold-standard outputs (Holon)
 │       ├── HOLON_INTERNAL.html
 │       ├── HOLON_PUBLIC.html
 │       └── index.html
 ├── schemas/
-│   └── zone-brief.schema.json         ← JSON Schema validating each brief
+│   └── zone-brief.schema.<bdi>json         ← JSON</bdi> Schema validating each brief
 ├── briefs/
-│   └── holon.yaml                     ← per-zone input (the only thing that varies)
+│   └── holon.<bdi>yaml                     ← per-zone</bdi> input (the only thing that varies)
 └── output/
     └── holon/                         ← generated reports per zone
         ├── INTERNAL.html
@@ -43,7 +43,7 @@ report-engine/
    →  scripts/generate_zone_brief.py finalize   (validates + injects coords + stamps source_report sha)
    →  briefs/<zone>.yaml
    →  scripts/generate_zone_html_from_brief.py   (data-replace into frozen reference)
-   →  {zone}/output/{ZONE}_EXECUTIVE_SUMMARY_{INTERNAL,PUBLIC}.html   →  publish
+   →  {zone}/output/{ZONE}_EXECUTIVE_SUMMARY_{INTERNAL,PUBLIC}.<bdi>html   →  publish</bdi>
 ```
 
 Driven end-to-end by `scripts/run_pipeline.sh <ZONE> exec-summary` (Step 8). See ORCHESTRATION.md.
@@ -56,7 +56,7 @@ For Holon these are the same lineage (Holon was the design source).
 
 ### Staleness contract (important)
 The brief is built from a **specific report version + sha**, stamped in the brief header
-(`source_report_sha256_12`). **Whenever the main report changes version (e.g. V5→V8), the brief AND
+(`source_report_sha256_12`). **Whenever the main report changes version (e.g. <bdi>V5→V8</bdi>), the brief AND
 the exec summaries are stale and must be regenerated.** `run_pipeline.sh ... exec-summary` warns if the
 brief's stamped sha differs from the current report. As of REQ #29, the on-disk Holon exec summaries are
 V5-era (carry a visible "מיושן" banner) pending V8 regeneration after hydrogeologist approval.

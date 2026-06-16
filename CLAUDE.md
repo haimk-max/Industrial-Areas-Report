@@ -67,7 +67,7 @@
 ### State Assumptions Explicitly
 - **Data Quality**: All input data sourced from official reports (TAHAL 2008, 2021 Report). Verification: Compare extractions against source document page numbers.
 - **Methodology**: Severity index calculation and trend analysis follow 2021 Report methodology exactly. No modifications without expert validation.
-- **Scope**: The framework targets generalised reports (any geographic area, any facility) — the 18-zone batch is the first application, not the ceiling. Build abstractions from concrete patterns observed in ≥2 zones; do not pre-design for hypothetical zone variations. Raanana is the reference implementation; Holon is the first generalisation test. Long-term horizons include: arbitrary geographic input → automated data discovery → report; and zone dashboards alongside (or in place of) full reports.
+- **Scope**: The framework targets generalised reports (any geographic area, any facility) — the 18-zone batch is the first application, not the ceiling. Build abstractions from concrete patterns observed in ≥2 zones; do not pre-design for hypothetical zone variations. Raanana is the reference implementation; Holon is the first generalisation test. Long-term horizons include: arbitrary geographic <bdi>input → automated</bdi> data discovery → report; and zone dashboards alongside (or in place of) full reports.
 - **Regulatory Context**: Assume Ministry of Environmental Protection standards apply; coordinate with authorities before recommendations.
 
 ### Surface Ambiguities & Tradeoffs
@@ -162,16 +162,16 @@ Before implementing data processing:
   - ✓ Web search & PDF ingestion documented in PROCESS_GUIDE §I.2 + §I.5 (External Data/{zone}/ structure, 6 channels)
 
 - **Phase H+ Implementation** ✅ COMPLETE (2026-05-28, PR #19 merged via a19a917):
-  - ✅ PROCESS_GUIDE refactored: §I → Zone Context Pack (5 folders: scope/data/context/diagnosis/prompt)
-  - ✅ §II → V5 Schema (6 sections, generic for all zones)
+  - ✅ PROCESS_GUIDE refactored: §<bdi>I → Zone</bdi> Context Pack (5 folders: scope/data/context/diagnosis/prompt)
+  - ✅ §<bdi>II → V5</bdi> Schema (6 sections, generic for all zones)
   - ✅ §II.5 → Zone Diagnosis (8 questions, pre-report step)
-  - ✅ §VI → diagnostic + final figures (pre-Opus + post-Opus)
-  - ✅ §VII → validation checklist (6 new checks: Context Pack, Data Pack, Diagnosis, PFAS, gaps, C_max_5y separation)
+  - ✅ §<bdi>VI → diagnostic</bdi> + final figures (pre-Opus + post-Opus)
+  - ✅ §<bdi>VII → validation</bdi> checklist (6 new checks: Context Pack, Data Pack, Diagnosis, PFAS, gaps, C_max_5y separation)
   - ✅ §VIII → 7-step hybrid pipeline
   - ✅ DATA_PIPELINE_SPEC.md created (6 CSVs schema)
   - ✅ REPORT_V5_SCHEMA.md created (V5 skeleton + templates)
   - ✅ CLAUDE.md §8 Scaling updated (hybrid pipeline workflow)
-  - ✅ Holon V5 report generation (REQ #13.6, 2026-05-28): Opus → figures → HTML designed (164KB+177KB)
+  - ✅ Holon V5 report generation (REQ #13.6, 2026-05-28): <bdi>Opus → figures</bdi> → HTML designed (164KB+177KB)
   - ✅ Documentation sync: PROCESS.md (requirements tracking) + LESSONS.md (tech-debt roadmap)
   - ✅ Data pipeline scripts (REQ #13.1): generate_holon_data_pack.py → 7 CSVs (15,173 rows)
   - ✅ Reports Context Pack (REQ #13.2) + Source Candidates (REQ #13.3) + Zone Diagnosis (REQ #13.4) + Templates (REQ #13.5)
@@ -190,7 +190,7 @@ Before implementing data processing:
   - ✓ Risk scores calculated per methodology
 
 **Phase A–C: Real Data Pipeline** ✓ COMPLETE (May 2026)
-- Goal: Excel ingestion → trend engine → charts. Generalised: every script accepts `--zone <id>`.
+- Goal: Excel <bdi>ingestion → trend</bdi> engine → charts. Generalised: every script accepts `--zone <id>`.
 - Reference results (Raanana):
   - ✓ 7 real boreholes from Excel (raanana_nt_1 through raanana_p_25)
   - ✓ 2,613 measurements (TPFAS excluded); 179 parameters
@@ -248,7 +248,7 @@ Before implementing data processing:
 5. **Cross-Reference Validation**: When integrating TAHAL 2008 and 2021 data, flag discrepancies for expert review
 
 ### Reporting Standards
-1. **Drilling Card Format**: Header (ID, coordinates, depth, classification) → Contamination findings → Trend analysis → Forensics → Limitations → Recommendations
+1. **Drilling Card Format**: Header (ID, coordinates, depth, classification) → Contamination <bdi>findings → Trend</bdi> analysis → Forensi<bdi>cs → Limitations</bdi> → Recommendations
 2. **Trend Interpretation**: State trend classification (ALERT/WATCH/STABLE/DECREASING/NONE), MK z and p values, SNR, soft_trigger; interpret in context of facility operations. Do NOT use "linear regression" — the engine is Mann-Kendall.
 3. **Trend Methodology**: Mann-Kendall (tie-corrected variance, continuity-corrected Z) with SNR gating. Soft trigger = 2 consecutive rising values in 5y window (NOT 3). Config in `config/analysis_config.yaml`.
 4. **TPFAS Exclusion**: Always exclude TPFAS (total PFAS) and BETK from analysis — they are calculated sums. Individual species (PFHxS, PFOA, etc.) are the canonical representation.
@@ -295,7 +295,7 @@ Before committing code or reports:
 - [ ] Markdown formatting clean (no orphaned links, proper heading hierarchy)
 
 ### Documentation Sync (קבצי תיעוד מקבילים)
-- [ ] **`docs/TECHNICAL_OVERVIEW.md` עודכן** → עדכן גם `docs/TECHNICAL_OVERVIEW.en.md` (גרסת arc42 באנגלית). שני הקבצים חייבים לשקף את אותו מצב ארכיטקטורה. הגרסה האנגלית היא ה-canonical לקהל טכני חיצוני; העברית — לקהל הרשות.
+- [ ] **`docs/TECHNICAL_OVERVIEW.md` עודכן**  — עדכן גם `docs/TECHNICAL_OVERVIEW.en.md` (גרסת arc42 באנגלית). שני הקבצים חייבים לשקף את אותו מצב ארכיטקטורה. הגרסה האנגלית היא ה-canonical לקהל טכני חיצוני; העברית — לקהל הרשות.
 - [ ] **Mermaid diagrams ב-`.en.md`** תואמים את הארכיטקטורה בפועל (pipeline stages, gate numbers, Opus call count).
 - [ ] **ADRs ב-§8** עדכניים — כל החלטה ארכיטקטורית חדשה שנסגרה מתועדת (context / decision / consequences).
 
@@ -344,7 +344,7 @@ The framework supports any of the 18 industrial zones in the coastal aquifer mon
    - **Source Candidates Pack**: `source_candidates_context.md`, `web_findings_context.md`, `source_candidates_index.csv` — built **from scratch** for new zones. Do NOT assume any pre-existing facility JSON exists. For Holon/Raanana (legacy zones), pre-existing artifacts (`_findings_*.json`, `web_findings.md`) may be used as AI-derived index; `facility_attribution.json` is a derived artifact (multi-step transformation) and is NOT a primary evidence source.
    - **Evidence Classification (A–E)** is a generic rule for all zones — see PROCESS_GUIDE §I "Evidence Classification System":
      - A = raw_report_verified | B = ai_extracted_with_page_ref | C = web_verified_current_activity | D = inferred_candidate | E = weak/mention_only
-     - In Zone Diagnosis & V5: A+B → strong candidates; C → status only (no contamination proof); D/E → background/appendix unless monitoring data corroborates
+     - In Zone Diagnosis & V5: A+<bdi>B → strong</bdi> candidates; C → status only (no contamination proof); D/<bdi>E → background</bdi>/appendix unless monitoring data corroborates
    - Additional: previous_reports_excerpts, hydrogeology_context, approved_precedent_excerpt
 4. **Generate zone diagnosis** (Opus call #1) → `{zone}/04_diagnosis/zone_diagnosis.md` (8 professional questions)
 5. **Generate V5 expert report** (Opus call #2) → `{zone}/output/{ZONE}_REPORT_V5.md` (6 sections + appendices, per `REPORT_V5_SCHEMA.md`)
@@ -357,8 +357,8 @@ The Phase 5 framework provides the deterministic data layer. These scripts feed 
 
 ```bash
 python scripts/parse_excel.py        --zone <X>   # Step 2a: extract Excel measurements
-python scripts/select_boreholes.py   --zone <X> --list-tiers   # Tier 1/2/3 selection → selected_boreholes.json
-python scripts/extract_zone_pdfs.py  --zone <X> --include-shared   # idempotent PDF→text
+python scripts/select_boreholes.py   --zone <X> --list-tiers   # Tier 1/2/3 <bdi>selection → selected_boreholes</bdi>.json
+python scripts/extract_zone_pdfs.py  --zone <X> --include-shared   # idempotent <bdi>PDF→text</bdi>
 # (AI sub-agents per PDF → <X>/data/external/_findings_<tag>.json)
 python scripts/merge_extracted_findings.py --zone <X>   # consolidate per-PDF findings
 python scripts/trend_analysis.py     --zone <X>   # Mann-Kendall + SNR
@@ -382,7 +382,7 @@ Each PDF sub-agent (hydrogeologist persona, model="sonnet") produces `_findings_
 - ✓ Holon (V4.2→V8) stress-tested — **methodological precedent, validated end-to-end**
 - ✓ V5 hybrid pipeline documented (Phase H+, REQ #12 closed)
 - ✓ V5 hybrid pipeline implementation (Phase H+ Implementation, REQ #13 closed 2026-05-28 — PR #19 a19a917)
-- ⏳ Hydrogeologist review of Holon V8 → systematic application to remaining 16 zones
+- ⏳ Hydrogeologist review of Holon <bdi>V8 → systematic</bdi> application to remaining 16 zones
 - Requires Ministry of Environmental Protection coordination per zone
 
 ---
@@ -460,7 +460,7 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 5. ✓ Expert hydrogeologist review — approved (May 2026)
 
 **Methodological Stress-Test — Holon V4.2** (awaiting hydrogeologist approval):
-1. ✓ Pipeline ran end-to-end (parse → trend → forensics → charts)
+1. ✓ Pipeline ran end-to-end (<bdi>parse → trend</bdi> → forensics → charts)
 2. ✓ 112 boreholes parsed → 111 selected; 4,915 CVOC measurements
 3. ✓ HOLON_REPORT_V4.md drafted; charts produced
 4. ⏳ Hydrogeologist approval
@@ -468,7 +468,7 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 
 **Phase H+ — V5 Hybrid Pipeline** ✅ COMPLETE (Documentation + Implementation):
 - ✓ Documentation refactor (REQ #12, closed 2026-05-17)
-- ✓ Implementation (REQ #13, closed 2026-05-28 via PR #19 / a19a917): data pipeline scripts (7 CSVs), context assembly, zone diagnosis prompt, V5 report prompt, Structured Anchors pilot (#13.5, PASS), Holon V5→V8 generation pipeline (256KB MD, 239KB HTML, 493KB DOCX)
+- ✓ Implementation (REQ #13, closed 2026-05-28 via PR #19 / a19a917): data pipeline scripts (7 CSVs), context assembly, zone diagnosis prompt, V5 report prompt, Structured Anchors pilot (#13.5, PASS), Holon <bdi>V5→V8</bdi> generation pipeline (256KB MD, 239KB HTML, 493KB DOCX)
 - ✓ Executive summaries (REQ #15): INTERNAL + PUBLIC HTML
 - ✓ Report engine (REQ #16): 14-file generic architecture
 - ✓ Brief + Twin HTML generators (REQ #17, #18)
@@ -478,7 +478,7 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 **Open framework items**:
 - ⏳ Basemap integration (REQ-G1) — pending environment resolution
 - ⏳ Holon V5 generation (after REQ #13)
-- ⏳ After Holon V5 validation → systematic activation of remaining 16 zones
+- ⏳ After Holon V5 <bdi>validation → systematic</bdi> activation of remaining 16 zones
 
 ---
 
@@ -521,5 +521,5 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 - Phase H+ QA Automation: ✅ COMPLETE (REQ #23, 2026-06-07 — `scripts/qa_pipeline.py` with 4 gates, all passing for Holon V5)
 - Phase 2 (full 18-zone activation): ⏳ Pending Holon V8 hydrogeologist sign-off + Ministry coordination; blocked also by REQ #31.1 (generator section coverage)
 
-**Last Updated**: 2026-06-14 (REQ #24–30 COMPLETE — focus-first SSOT, prompt-layer Gate 3, V7→V8 report, V8 exec-summaries; REQ #31 OPEN — Deep Infrastructure Fixes: generator coverage, brief/anonymization gates, diagnosis_sha footgun)  
+**Last Updated**: 2026-06-14 (REQ #24–30 COMPLETE — focus-first SSOT, prompt-layer Gate 3, <bdi>V7→V8</bdi> report, V8 exec-summaries; REQ #31 OPEN — Deep Infrastructure Fixes: generator coverage, brief/anonymization gates, diagnosis_sha footgun)  
 **Historical phases**: see `docs/HISTORY.md`

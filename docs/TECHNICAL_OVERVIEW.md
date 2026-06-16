@@ -24,7 +24,7 @@
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-**עקרון-העל**: כל שלב הוא או **דטרמיניסטי לחלוטין** (אותו קלט → אותו פלט, ניתן לבדיקה ב-CI) או **גבול-LLM מפורש** (Opus call). אין "אזורים אפורים". כל גבול-LLM ניזון מ-prompt בנוי שנגזר אוטומטית מהשלב הקודם, ומאומת בשער QA לפני ואחרי.
+**עקרון-העל**: כל שלב הוא או **דטרמיניסטי לחלוטין** (אותו קלט  — אותו פלט, ניתן לבדיקה ב-CI) או **גבול-LLM מפורש** (Opus call). אין "אזורים אפורים". כל גבול-LLM ניזון מ-prompt בנוי שנגזר אוטומטית מהשלב הקודם, ומאומת בשער QA לפני ואחרי.
 
 **Driver**: `scripts/run_pipeline.sh <ZONE> <stage>` מריץ את השלבים הדטרמיניסטיים ועוצר בכל גבול-LLM עם הוראת-המשך. ה-SSOT לתהליך: `ZONE_REPORT_PROCESS_GUIDE.md` §VIII; מפת ההרצה: `ORCHESTRATION.md`.
 
@@ -38,7 +38,7 @@
 | דו"חות קודמים | PDF | הקשר היסטורי, מסקנות קודמות, הידרוגאולוגיה | מאגר מסמכים מתויג / RAG |
 | מידע על מקורות זיהום | PDF / web | זיהוי מתקנים חשודים, חתימות מזהמים | מאגר מקורות + חיפוש מובנה |
 
-**הערה ארכיטקטונית**: שכבת הקלט מבודדת מאחורי `parse_excel.py` + `extract_zone_pdfs.py`. החלפת מקור הקלט (קבצים → חיבור ישיר) משפיעה **רק על שכבה זו**; שאר הפייפליין צורך את ה-Data Pack המתוקנן (סעיף 3) ואינו מודע למקור.
+**הערה ארכיטקטונית**: שכבת הקלט מבודדת מאחורי `parse_excel.py` + `extract_zone_pdfs.py`. החלפת מקור הקלט (קבצים  — חיבור ישיר) משפיעה **רק על שכבה זו**; שאר הפייפליין צורך את ה-Data Pack המתוקנן (סעיף 3) ואינו מודע למקור.
 
 **אידמפוטנטיות חילוץ PDF**: כל קובץ נרשם ב-`_pdf_index.json` עם `extraction_ok` + timestamp. הרצה חוזרת מדלגת על קבצים שכבר חולצו אלא אם `--force`.
 
@@ -68,7 +68,7 @@
 
 **סקריפטים** (כולם `--zone`):
 ```bash
-parse_excel.py → trend_analysis.py → forensics_analyzer.py → generate_zone_data_pack.py
+parse_excel.<bdi>py → trend_analysis</bdi>.py → forensics_analyzer.py → generate_zone_data_pack.py
 ```
 
 ---
@@ -81,7 +81,7 @@ parse_excel.py → trend_analysis.py → forensics_analyzer.py → generate_zone
 |-----------|-----|------|----------|
 | **#1 — אבחון אזורי** | Data Pack + Context Pack | `04_diagnosis/zone_diagnosis.md` (8 שאלות + טבלת `סדר מוקדים`) | אשכול גיאוגרפי של מוקדי זיהום + קישור מנגנוני אינם דטרמיניסטיים מ-CSV |
 | **#2 — דו"ח מומחה** | Data Pack + diagnosis + precedent | `output/{ZONE}_REPORT_Vn.md` (6 פרקים + נספחים) | חיבור בין ממצאים, ניסוח מקצועי, נרטיב |
-| **#3 — brief ניהולי** | הדו"ח המאושר | `raw_brief.yaml` → דו"חות ניהוליים | המרת דו"ח עשיר לתקציר דו-קהלי |
+| **#3 — brief ניהולי** | הדו"ח המאושר | `raw_brief.yaml`  — דו"חות ניהוליים | המרת דו"ח עשיר לתקציר דו-קהלי |
 
 ### העיקרון הקריטי: prompt בנוי, לא שאלה פתוחה
 
@@ -114,15 +114,15 @@ parse_excel.py → trend_analysis.py → forensics_analyzer.py → generate_zone
 
 ### שני חוזי-staleness קריטיים (footguns שתועדו ונאכפו)
 
-1. **diagnosis → prompt** (Gate 3): הרצה חוזרת של שלב 4 (אבחון) ללא רינדור-מחדש של prompt הדו"ח → Opus צורך snapshot מיושן של `focus_order`. **נאכף**: ה-prompt חותם `diagnosis_sha256_12`; Gate 3 משווה לקובץ האבחון החי.
+1. **<bdi>diagnosis → prompt</bdi>** (Gate 3): הרצה חוזרת של שלב 4 (אבחון) ללא רינדור-מחדש של prompt הדו"ח  — Opus צורך snapshot מיושן של `focus_order`. **נאכף**: ה-prompt חותם `diagnosis_sha256_12`; Gate 3 משווה לקובץ האבחון החי.
 
-2. **report → brief** (Gate 8): שינוי בדו"ח-המקור ללא רענון ה-brief → דו"חות ניהוליים מיושנים. **נאכף**: ה-brief נושא `source_report_sha256_12`; Gate 8 משווה לדו"ח האחרון.
+2. **<bdi>report → brief</bdi>** (Gate 8): שינוי בדו"ח-המקור ללא רענון ה-brief  — דו"חות ניהוליים מיושנים. **נאכף**: ה-brief נושא `source_report_sha256_12`; Gate 8 משווה לדו"ח האחרון.
 
 ### אכיפת אנונימיזציה (Gate 8)
 
 הגרסה הציבורית נסרקת מול blocklist (`sources[].name_internal`):
-- **שם מתקן** ב-PUBLIC → **FAIL** (חוסם פרסום)
-- **שם קידוח אמיתי** ב-PUBLIC → **WARN** (מומלץ קוד B-NN; חריגים מאושרים אפשריים)
+- **שם מתקן** ב-PUBLIC  — **FAIL** (חוסם פרסום)
+- **שם קידוח אמיתי** ב-PUBLIC  — **WARN** (מומלץ קוד B-NN; חריגים מאושרים אפשריים)
 
 זה מונע הישנות של דליפת מידע — לא הסתמכות על זיכרון אנושי.
 
@@ -148,7 +148,7 @@ parse_excel.py → trend_analysis.py → forensics_analyzer.py → generate_zone
 
 **בדיקות**: `tests/` כולל בדיקות יחידה + 3 validators לדו"ח (chart_refs, tone, attribution) + 13 בדיקות למחולל ה-brief. כל שינוי במחולל מאומת מול reference frozen (רגנרציה byte-identical).
 
-**Audit trail**: כל נתון → מקור (source_file + page/row); כל prompt → חותמת sha; כל גרסת דו"ח → V-number; כל ארטיפקט נגזר מסומן `DO NOT EDIT BY HAND`.
+**Audit trail**: כל נתון  — מקור (source_file + page/row); כל prompt  — חותמת sha; כל גרסת דו"ח  — V-number; כל ארטיפקט נגזר מסומן `DO NOT EDIT BY HAND`.
 
 **מצב גנריות הסקריפטים** (חוב 18-האזורים) מתועד בטבלה ב-`ORCHESTRATION.md`. סקריפטי legacy (V4-era) ב-`scripts/legacy/` — ARCHIVED.
 
@@ -158,7 +158,7 @@ parse_excel.py → trend_analysis.py → forensics_analyzer.py → generate_zone
 
 ```bash
 ZONE_NAME_HE='אזה״ת חולון' scripts/run_pipeline.sh Holon data
-#   parse_excel → trend → forensics → data_pack → Gate 2
+#   <bdi>parse_excel → trend</bdi> → forensics → data_pack → Gate 2
 # … הרכבת 03_context/ ידנית (NotebookLM-like) …
 
 ZONE_NAME_HE='אזה״ת חולון' scripts/run_pipeline.sh Holon render-diagnosis  # Gate 3
@@ -171,10 +171,10 @@ scripts/run_pipeline.sh Holon html        # generate_holon_v5_html.py (auto-dete
 scripts/run_pipeline.sh Holon validate     # Gate all
 
 # … רק אחרי אישור מומחה: …
-scripts/run_pipeline.sh Holon exec-summary # 8a prepare → OPUS #3 → finalize → html-from-brief ; Gate 8
+scripts/run_pipeline.sh Holon exec-summary # 8a <bdi>prepare → OPUS</bdi> #3 → finalize → html-from-brief ; Gate 8
 ```
 
-**גבולות Opus** (לא ניתן לאטמט): render-diagnosis→#1, render-report→#2, exec-summary→#3. הדרייבר עוצר שם.
+**גבולות Opus** (לא ניתן לאטמט): render-diagnosis —#1, render-report —#2, exec-summary —#3. הדרייבר עוצר שם.
 
 ---
 
@@ -189,10 +189,10 @@ scripts/run_pipeline.sh Holon exec-summary # 8a prepare → OPUS #3 → finalize
 | basemap לאריחי-מפה | נדחה (סביבה) | `svg_charts.py` |
 
 **הרכיבים הניתנים לשימוש-חוזר** (מחוץ לתחום זיהום מי תהום):
-- מנוע ניתוח דטרמיניסטי (מגמות/חומרה) → כל סדרת-זמן סביבתית
-- דפוס LLM מבוקר (prompt בנוי + שערים) → כל משימת ניסוח/סיווג עקבית
-- מחולל דו-קהלי (פנימי+ציבורי מאותו מקור) → כל תוצר עם גרסת-פרסום
-- שכבת QA (audit trail, אנונימיזציה, staleness) → כל זרימה רגולטורית
+- מנוע ניתוח דטרמיניסטי (מגמות/חומרה)  — כל סדרת-זמן סביבתית
+- דפוס LLM מבוקר (prompt בנוי + שערים)  — כל משימת ניסוח/סיווג עקבית
+- מחולל דו-קהלי (פנימי+ציבורי מאותו מקור)  — כל תוצר עם גרסת-פרסום
+- שכבת QA (audit trail, אנונימיזציה, staleness)  — כל זרימה רגולטורית
 
 ---
 

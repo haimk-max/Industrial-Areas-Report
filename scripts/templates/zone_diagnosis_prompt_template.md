@@ -146,7 +146,7 @@ A separate contaminant-family analysis may be added **only if it adds value** (e
 While diagnosing the zone, actively look for:
 
 - persistent or extreme CVOC contamination;
-- PCE → TCE → DCE → VC degradation chains;
+- <bdi>PCE → TCE</bdi> → DCE → VC degradation chains;
 - unusual DCE patterns, especially 1,1-DCE dominance or unusual cis/trans-DCE behavior;
 - rebound after remediation or after apparent decline;
 - monitoring stopped after a peak or during an increasing trend;
