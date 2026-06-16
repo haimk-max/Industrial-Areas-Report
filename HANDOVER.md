@@ -35,3 +35,6 @@
 - **REQ #28 COMPLETE** (ba51451): גנריזציית מחוללי-HTML הושלמה.
 - **REQ #29 COMPLETE** (63b3ad2): תשתית דוחות ניהוליים + RAG דחייה + סנכרון.
 - **REQ #30 — V8 exec-summaries COMPLETE** (2026-06-14): brief עודכן מ-V5-era ל-V8 (9 ממצאים כולל 3 מוקדי דלק, 16 קידוחים, 7 מקורות); INTERNAL+PUBLIC HTMLs נוצרו (65KB+52KB); דליפת "רימטל" ב-PUBLIC reference תוקנה; generator limitation documented.
+- **REQ #32 — Figure Alignment + RTL COMPLETE** (233f2d0, 3bbfd9f, 2026-06-16):
+  - **Figure captions aligned**: Updated V5 prompt template to mandate 5 figures (not 6); rewrote V8.md captions (איור 2–5) to match rendered output; V8.html regenerated with injected figures.
+  - **RTL arrow fixes systematic**: Created `scripts/fix_rtl_arrows.py` (reusable for all zones); applied 581 fixes across 88 files (technical identifiers wrapped in `<bdi>`, prose arrows replaced with em-dash). Next zones can run `python scripts/fix_rtl_arrows.py --apply` post-generation.
