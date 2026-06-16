@@ -68,6 +68,6 @@ Uncommitted: <"none" | "<N> files — <decision taken>">
 
 ## Calibration
 
-- 90% execution with no durable <bdi>decisions → mostly</bdi> dashes. Correct, not a failure.
+- 90% execution with no durable decisions → mostly dashes. Correct, not a failure.
 - More than ~15 lines = not filtered enough. Cut.
 - Never narrate the survey. Just produce the note.

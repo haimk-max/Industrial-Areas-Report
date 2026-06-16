@@ -101,7 +101,7 @@ Industrial facilities and gas stations marked per 2021 report symbology:
 Bottom-right corner with all symbology:
 ```
 ■ אזור תעשייה
-● קידוח ניטור (לפי רמת זיהום: ירוק —אדום)
+● קידוח ניטור (לפי רמת זיהום: ירוק→אדום)
 ▲ מפעל תעשייתי
 ■ תחנת דלק
 ↗ כיוון זרימת מי התהום
@@ -180,7 +180,7 @@ PFAS_A_COLORS = {
 - **Failure Mode**: Text renders LTR (backwards) if missing
 
 ### PFAS S/A Ordering (Charts 2, 7)
-- **Invariant**: S-group columns appear BEFORE A-group in data stack (<bdi>bottom → top</bdi>)
+- **Invariant**: S-group columns appear BEFORE A-group in data stack (bottom → top)
 - **Code**: `PFAS_ALL_ORDER = PFAS_S_ORDER + PFAS_A_ORDER`
 - **Verification**: Visual inspection — blue at bottom, orange at top
 - **Failure Mode**: Wrong stack order = confusing forensics

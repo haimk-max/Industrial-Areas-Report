@@ -20,7 +20,7 @@ You have **deep professional judgment** about what matters in a contamination re
 **חובה לקרוא לפני הניתוח**: `ZONE_REPORT_PROCESS_GUIDE.md` ב-repo root. הוא ה-SSOT ל:
 - 5 קלטים (§I)
 - מבנה output (§II)
-- סולם חומרה 9-רמות  — 5 תוויות (§III) — `bucket(C_max_5y / DWS × 100)`
+- סולם חומרה 9-רמות → 5 תוויות (§III) — `bucket(C_max_5y / DWS × 100)`
 - סדר משפחות אדפטיבי (§IV) — FUEL אחרון; אחרים לפי max_bucket יורד באזור
 - Web search (§V), figures (§VI), validation (§VII), pipeline (§VIII)
 
@@ -43,7 +43,7 @@ Precedent zone (style reference): {PRECEDENT_ZONE}
 
 <family_order>
 על פי §IV: דלק תמיד אחרון. הסדר המחושב לאזור זה:
-{FAMILY_ORDER_LIST}  # למשל: <bdi>CVOC → METALS</bdi> → PFAS → FUEL (חולון) או METALS → CVOC → PFAS → FUEL (אזור אחר)
+{FAMILY_ORDER_LIST}  # למשל: CVOC → METALS → PFAS → FUEL (חולון) או METALS → CVOC → PFAS → FUEL (אזור אחר)
 </family_order>
 
 ---
@@ -161,7 +161,7 @@ Precedent zone (style reference): {PRECEDENT_ZONE}
 - **מקורות**: כל טענה צריכה citation לקובץ + שורה/עמוד. דוגמה: "(severity_index_2025_{zone}.csv שורה 47)" או "(תה"ל 2007 עמ' 23)".
 - **טון**: ניטרלי, מקצועי. הימנע מ-narrative arcs ("crisis", "drama"). תאר ממצאים, אל תפרש דרמטית.
 - **selection bias**: כל סעיף סטטיסטי חייב לציין שהקידוחים אינם מייצגים את האזור כולו.
-- **PFAS**: אם max_bucket=0  — סעיף קצר על coverage gap (AFFF, mist suppressants). "היעדר נתון" הוא ממצא.
+- **PFAS**: אם max_bucket=0 → סעיף קצר על coverage gap (AFFF, mist suppressants). "היעדר נתון" הוא ממצא.
 - **תמציתיות**: דוח מצוין מסכם, לא ממנה. השתמש בטבלאות לרשימות; השתמש בפסקאות לסיכום וניתוח. **אל תמנה את כל הקידוחים בטקסט** — רק את הבולטים.
 
 </style_guide>
@@ -229,4 +229,4 @@ Precedent zone (style reference): {PRECEDENT_ZONE}
 
 **מקור**: ZONE_REPORT_PROCESS_GUIDE.md = SSOT לתהליך
 **Last Updated**: 2026-05-14
-**Generated From**: Holon V4.1 <bdi>prompt → generalized</bdi> template
+**Generated From**: Holon V4.1 prompt → generalized template

@@ -23,7 +23,7 @@
 | `unit_original` | string | יחידות בדוח מקורי | `µg/L`, `ppb`, `mg/L` |
 | `unit_standardized` | string | יחידות סטנדרטיות (כל קודים: µg/L) | `µg/L` |
 | `dws_value` | float | Drinking Water Standard (מי שתייה תקן) | `5.0`, `70.0`, `100.0` |
-| `result_value` | float | ערך המדידה (numeric; "ND"  — NULL) | `5000.0`, `15.5`, `<1.0` |
+| `result_value` | float | ערך המדידה (numeric; "ND" → NULL) | `5000.0`, `15.5`, `<1.0` |
 | `result_date` | date | תאריך המדידה (YYYY-MM-DD) | `2024-06-15` |
 | `result_qualifier` | enum | איכות התוצאה: =, <, >, ≤, ≥, ND | `=`, `<`, `ND` |
 | `source_file` | string | שם הדוח / הקובץ | `TAHAL_2008_PartB`, `2021_Report_page_52`, `current_monitoring_2024` |

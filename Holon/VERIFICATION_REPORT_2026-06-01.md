@@ -94,7 +94,7 @@ Core CSV outputs verified in isolation directory context_pack:
 ### Word Document Output
 **HOLON_REPORT_V5.docx** (167 KB):
 - ✅ 140 paragraphs, 132 with RTL (Hebrew content)
-- ✅ 4 embedded PNG figures (<bdi>SVG→PNG</bdi> via cairosvg)
+- ✅ 4 embedded PNG figures (SVG→PNG via cairosvg)
 - ✅ Document-level RTL: w:bidi enabled
 - ✅ Paragraph-level formatting: justified (w:jc=both) + RTL (w:bidi)
 - ✅ Run-level formatting: w:rtl enabled on all text runs
@@ -105,7 +105,7 @@ Core CSV outputs verified in isolation directory context_pack:
 ### Isolation Output Variants (rerun_v2_2026-05-28/output/)
 - HOLON_REPORT_V5.md (70 KB) — V5 markdown intermediate
 - HOLON_REPORT_V5.html (238 KB) — older/different generation
-- HOLON_REPORT_V5.docx (69 KB) — base <bdi>markdown→docx</bdi> conversion
+- HOLON_REPORT_V5.docx (69 KB) — base markdown→docx conversion
 - HOLON_REPORT_V5_from_html.docx (65 KB) — LibreOffice conversion variant
 - HOLON_REPORT_V5_with_figures.docx (137 KB) — embedded figures version
 - **Note**: Isolation directory retained for audit trail; main outputs in Holon/output/ are canonical

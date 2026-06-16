@@ -6,7 +6,7 @@
 ---
 
 # Merge Plan — 2026-05-31
-## coordinate_system_fix (<bdi>rerun-verification-2026-05-28 → claude</bdi>/create-base-report-directory-5DqAR)
+## coordinate_system_fix (rerun-verification-2026-05-28 → claude/create-base-report-directory-5DqAR)
 
 **Branch Status**: rerun-verification-2026-05-28 is **21 commits ahead** of target branch.
 
@@ -47,10 +47,10 @@ This plan documents the systematic transfer of the coordinate system SSOT fix (S
 #### Word Document Support (4 commits)
 | # | Commit | Message | Rationale for Target | Status |
 |---|--------|---------|-------|--------|
-| 10 | dcd10aa | Add <bdi>HTML→DOCX</bdi> conversion via LibreOffice | Word workflow | ⚠️ OPTIONAL |
+| 10 | dcd10aa | Add HTML→DOCX conversion via LibreOffice | Word workflow | ⚠️ OPTIONAL |
 | 11 | 37a12e3 | Add Word document review workflow infrastructure | Review infrastructure | ⚠️ OPTIONAL |
 | 12 | 748f26a | Enhance Word RTL settings, track changes | RTL support | ⚠️ OPTIONAL |
-| 13 | aba099b | Add markdown_to_docx; remove superseded variants | <bdi>Markdown→DOCX</bdi> | ⚠️ OPTIONAL |
+| 13 | aba099b | Add markdown_to_docx; remove superseded variants | Markdown→DOCX | ⚠️ OPTIONAL |
 
 **Note**: Word-related commits can be deferred if target branch scope is HTML-only. Check user intent.
 

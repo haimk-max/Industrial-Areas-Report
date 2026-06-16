@@ -35,7 +35,7 @@
 │  תדירות: פעם אחת לכל מסמך (אידמפוטנטי)                            │
 │  פלט: אינדקס עשיר, רב-ממדי, מוכן-לשאילתה                          │
 │                                                                    │
-│   PDFs  — זיהוי-סוג  — חילוץ  — סינון-נספחים  — נתוח  — מיצוי  — אינדוקס│
+│   PDFs → זיהוי-סוג → חילוץ → סינון-נספחים → נתוח → מיצוי → אינדוקס│
 └──────────────────────────────────────────────────────────────────┘
                               │
                   (האינדקס נשמר, ממתין)
@@ -46,7 +46,7 @@
 │  תדירות: פעם לכל שאלה                                             │
 │  פלט: תשובה מעמיקה, מצוטטת, בעברית                                │
 │                                                                    │
-│   שאלה  — נתוח-כוונה  — שליפה  — הרכבת-קונטקסט  — סינתזת-LLM  — תשובה │
+│   שאלה → נתוח-כוונה → שליפה → הרכבת-קונטקסט → סינתזת-LLM → תשובה │
 └──────────────────────────────────────────────────────────────────┘
 ```
 
@@ -135,10 +135,10 @@ catalog/
 ```
 
 **עקרונות קליטה**:
-- **קליטה אוטומטית**: העלאת PDF למאגר-המקור מפעילה קליטה (זיהוי-סוג  — חילוץ  — סינון  — נתוח  — מיצוי  — אינדוקס) **ללא התערבות ידנית**.
+- **קליטה אוטומטית**: העלאת PDF למאגר-המקור מפעילה קליטה (זיהוי-סוג → חילוץ → סינון → נתוח → מיצוי → אינדוקס) **ללא התערבות ידנית**.
 - **הפניית-מקור נשמרת**: לכל מסמך נשמרת הפניה למיקום המקור (נתיב במאגר + שם קובץ) — תנאי לייחוס מקור בתשובות.
-- **כשל-והמשך (fail-and-continue)**: קובץ פגום / מוגן-סיסמה / ללא טקסט-בר-חילוץ  — נרשם ביומן עם סיבה, והקליטה **ממשיכה** לשאר הקבצים. אצווה לא נעצרת בגלל מסמך אחד.
-- **סנכרון על עדכון/הסרה**: מסמך שעודכן או הוסר ממאגר-המקור  — האינדקס מסונכרן כך שישקף את המצב העדכני (ראה אידמפוטנטיות ו-`superseded_by`).
+- **כשל-והמשך (fail-and-continue)**: קובץ פגום / מוגן-סיסמה / ללא טקסט-בר-חילוץ → נרשם ביומן עם סיבה, והקליטה **ממשיכה** לשאר הקבצים. אצווה לא נעצרת בגלל מסמך אחד.
+- **סנכרון על עדכון/הסרה**: מסמך שעודכן או הוסר ממאגר-המקור → האינדקס מסונכרן כך שישקף את המצב העדכני (ראה אידמפוטנטיות ו-`superseded_by`).
 - **שימור עברית RTL**: כל שרשרת העיבוד שומרת על טקסט עברי תקין (כיווניות RTL, תווים מיוחדים).
 
 **רשומת מסמך ב-`documents_manifest.jsonl`**:
@@ -172,7 +172,7 @@ catalog/
 }
 ```
 
-**אידמפוטנטיות (קריטי)**: `doc_id` = SHA-256 של תוכן הקובץ. מסמך שכבר אונדקס (אותו hash) — **מדולג**. גרסה מעודכנת (תוכן שונה)  — hash חדש  — רשומה חדשה, והישנה מסומנת `superseded_by`.
+**אידמפוטנטיות (קריטי)**: `doc_id` = SHA-256 של תוכן הקובץ. מסמך שכבר אונדקס (אותו hash) — **מדולג**. גרסה מעודכנת (תוכן שונה) → hash חדש → רשומה חדשה, והישנה מסומנת `superseded_by`.
 
 **סוגי מסמכים (`doc_type`)** — אנומרציה סגורה הניתנת להרחבה:
 `monitoring` (ניטור) | `remediation_followup` (מעקב שיקום) | `sampling` (דיגום) | `annual` (דוח שנתי) | `historical_survey` | `permit_license` | `enforcement` | `other`
@@ -303,14 +303,14 @@ done
 1. **תוכן עניינים (אות עדיף)**: אם קיים — מזהים בו את הסעיף "דוחות מעבדה"/"נספח" וקובעים את **טווח העמודים** שלו. אלו העמודים לדילוג.
 2. **טבלה צפופה ללא הקשר**: עמוד עם טבלה של **>30 שורות** ושמות-עמודות כמו `Method`, `Unit`, `Result`, `Laboratory sample ID` — סבירות גבוהה לדוח-מעבדה גולמי.
 3. **כותרות אופייניות (התאמה גמישה)**: "Analytical Results", "Test Report", "Certificate of Analysis" / "תוצאות מעבדה", "תעודת בדיקה", "דוח בדיקה", "נספח", "יומן שדה" — כולל וריאציות.
-4. **עיתוי במסמך**: נספח החל מעמ' 15+ במסמך בן 15–25 עמ' + עמידה באותות 2–3  — סביר דוח-מעבדה.
-5. **עמודים סרוקים בסוף מסמך דיגיטלי**: טפסים חוזרים / כתב-יד  — מועמדים ל**יומני שדה**.
+4. **עיתוי במסמך**: נספח החל מעמ' 15+ במסמך בן 15–25 עמ' + עמידה באותות 2–3 → סביר דוח-מעבדה.
+5. **עמודים סרוקים בסוף מסמך דיגיטלי**: טפסים חוזרים / כתב-יד → מועמדים ל**יומני שדה**.
 
 #### כללי הכרעה
 
 - **הבחנה קריטית**: טבלאות מסכמות **בגוף** (ערכי מזהמים לאורך זמן) = רלוונטיות למיצוי; טבלאות גולמיות **בנספח** = לדילוג. אל תבלבל ביניהן.
 - **מפות / גרפים / איורים**: לחלץ **רק את הכותרת/כיתוב + מספר** (למשל "מפה 1 — מיקום תחנת דלק X"), **לא** את תוכן התמונה. לשמור רשומה (סוג, מספר, עמוד) כמטה-דאטה.
-- **ביטחון נמוך  — בדיקה ידנית**: אם גבול-נספח אינו ודאי — **לסמן לבדיקה ידנית, לא לדלג אוטומטית**. עדיף לבזבז מיצוי מאשר לאבד מידע רלוונטי.
+- **ביטחון נמוך → בדיקה ידנית**: אם גבול-נספח אינו ודאי — **לסמן לבדיקה ידנית, לא לדלג אוטומטית**. עדיף לבזבז מיצוי מאשר לאבד מידע רלוונטי.
 - **שקיפות**: לכל מסמך נשמר אילו חלקים מוצו ואילו דולגו (סוג-נספח + טווח-עמודים) — ב-`documents_manifest.jsonl`.
 
 > **הערת אפיון**: בפיילוט שנבדק לא נמצאו יומני-שדה סרוקים (כל התוכן דיגיטלי); הנספח הלא-רלוונטי הדומיננטי היה דוחות-מעבדה. הכלל ליומני-שדה נשמר בכל זאת — אזורים/ארגונים אחרים עשויים לכלול אותם.
@@ -382,7 +382,7 @@ parsed_output = json.loads(response["body"].read())
 
 ```python
 # שלב ב-parallel למעלה ל-Bedrock:
-# <bdi>PDF → Claude</bdi> Opus sub-agent → facts JSON
+# PDF → Claude Opus sub-agent → facts JSON
 # facts: קידוחים, ממצאי-זיהום, מתקנים, מגמות, ציטוטים (A–E אמינות)
 
 extracted_facts = claude_extract_entities(pdf_text, persona="hydrogeologist")
@@ -391,7 +391,7 @@ extracted_facts = claude_extract_entities(pdf_text, persona="hydrogeologist")
 
 **עקרון**: Bedrock משמש למיצוי text + vector retrieval. Structured facts (קידוחים, מזהמים) נשמרו ב-**SQLite / DuckDB sidebar** לסינון מדויק בphase שליפה (§3.2).
 
-**כלל אי-המצאה**: שדה שאינו ניתן לחילוץ  — `"unknown"`, **לא ממציאים**.
+**כלל אי-המצאה**: שדה שאינו ניתן לחילוץ → `"unknown"`, **לא ממציאים**.
 
 ---
 
@@ -405,7 +405,7 @@ extracted_facts = claude_extract_entities(pdf_text, persona="hydrogeologist")
 - `*_canonical` — הערך הקנוני המנורמל (לסינון אחיד)
 - `*_original[]` — כל הגרסאות המקוריות כפי שהופיעו (לחיפוש מילולי)
 
-דוגמאות: `PFAS` / `חומרים פלואורואלקיליים` / `PFOS,PFOA`  — canonical=`PFAS`. `אזה"ת חולון` / `אזור תעשייה חולון`  — canonical=`אזור תעשייה חולון`. `TCE` / `טריכלורואתילן` / `Trichloroethylene`  — canonical=`Trichloroethylene`.
+דוגמאות: `PFAS` / `חומרים פלואורואלקיליים` / `PFOS,PFOA` → canonical=`PFAS`. `אזה"ת חולון` / `אזור תעשייה חולון` → canonical=`אזור תעשייה חולון`. `TCE` / `טריכלורואתילן` / `Trichloroethylene` → canonical=`Trichloroethylene`.
 
 #### א. פרטי המסמך
 
@@ -443,7 +443,7 @@ extracted_facts = claude_extract_entities(pdf_text, persona="hydrogeologist")
 מאפיין המיקום הוא **דרך השליפה המרכזית** (בחירה על מפה / שם-אזור). נשמרת **היררכיה**:
 
 ```
-אזור / אזור-תעשייה  —  עיר/יישוב  —  רחוב / שם-אתר  —  נקודת-ניטור / קידוח
+אזור / אזור-תעשייה  ←  עיר/יישוב  ←  רחוב / שם-אתר  ←  נקודת-ניטור / קידוח
 ```
 
 | שדה | דוגמה |
@@ -455,7 +455,7 @@ extracted_facts = claude_extract_entities(pdf_text, persona="hydrogeologist")
 | `coordinates` | קווי אורך/רוחב או **רשת ישראל ITM**, אם קיימים |
 | `*_original[]` | גרסאות מקור (אזה"ת חולון…) |
 
-**כלל היררכיה**: סינון ברמה גבוהה (אזור) **כולל אוטומטית** את כל הרמות שתחתיו (עיר —רחוב —נקודה). מיקום שלא זוהה  — מסומן מפורשות, **לא משויך מיקום שגוי**. קואורדינטות נחשפות כך שניתן להציגן כסמן על מפה.
+**כלל היררכיה**: סינון ברמה גבוהה (אזור) **כולל אוטומטית** את כל הרמות שתחתיו (עיר→רחוב→נקודה). מיקום שלא זוהה → מסומן מפורשות, **לא משויך מיקום שגוי**. קואורדינטות נחשפות כך שניתן להציגן כסמן על מפה.
 
 #### ה. ממדים נגזרים (מהעובדות)
 
@@ -502,9 +502,9 @@ CREATE INDEX idx_parameter ON contamination_findings(parameter_canonical);
 ```
 
 **שלוש שכבות retrieval** (Bedrock + Sidebar):
-1. **Vector Search** (Bedrock native): "מה קרה בקידוח X?"  — relevant chunks
+1. **Vector Search** (Bedrock native): "מה קרה בקידוח X?" → relevant chunks
 2. **Metadata Filter** (Bedrock native): "רק בחולון" + "report_type=monitoring"
-3. **Structured Query** (SQLite sidebar, optional): "כל הממצאים עם `percent_of_standard>100` בTCE"  — facts table
+3. **Structured Query** (SQLite sidebar, optional): "כל הממצאים עם `percent_of_standard>100` בTCE" → facts table
 
 **Sync Bedrock ↔ Sidebar**:
 ```python
@@ -525,7 +525,7 @@ def sync_sidebar_on_kb_sync(kb_id):
 ## 3. תהליך ב׳: שליפה וסינתזה (Bedrock Retrieve + Opus Synthesis)
 
 ```
-שאלה  — [3.1 נתוח-כוונה]  — [3.2 Bedrock Retrieve + Sidebar Query]  — [3.3 הרכבת-קונטקסט]  — [3.4 Claude Opus]  — תשובה
+שאלה → [3.1 נתוח-כוונה] → [3.2 Bedrock Retrieve + Sidebar Query] → [3.3 הרכבת-קונטקסט] → [3.4 Claude Opus] → תשובה
 ```
 
 ### 3.1 נתוח כוונת השאלה
@@ -622,11 +622,11 @@ filters = {
 
 ```python
 def location_based_retrieve(kb_id, area_name):
-    """בחר אזור  — החזר כל המסמכים בהיררכיה."""
+    """בחר אזור → החזר כל המסמכים בהיררכיה."""
     
     bedrock_agent = boto3.client("bedrock-agent-runtime")
     
-    # normalize area_name (אזה"ת חולון  — אזור תעשייה חולון)
+    # normalize area_name (אזה"ת חולון → אזור תעשייה חולון)
     area_canonical = normalize_location(area_name)
     
     # Bedrock filter עם היררכיה
@@ -727,7 +727,7 @@ def manual_synthesis(question, context, model="claude-opus-4-8"):
 
 **System Prompt קריטי**:
 - ✓ Persona: הידרוגיאולוג מומחה
-- ✓ ציטוט חובה: כל קביעה  — document_name + עמוד
+- ✓ ציטוט חובה: כל קביעה → document_name + עמוד
 - ✓ אי-המצאה: "לא זמין" לא "לא ידוע"
 - ✓ Confidence levels: HIGH/MEDIUM/LOW
 - ✓ שפה: עברית בלבד
@@ -744,11 +744,11 @@ def manual_synthesis(question, context, model="claude-opus-4-8"):
      │   └─ סרוק: Tesseract-heb + extraction_confidence
      │ 2.2 filter_appendices.py
      │   ├─ חלץ TOC
-     │   └─ סנן דוחות-מעבדה  — _filtered.pdf
+     │   └─ סנן דוחות-מעבדה → _filtered.pdf
      │ 2.0 metadata extraction
      │   └─ document_name, report_date, preparing_org, subject_entity, וכו׳
      ▼
-  Filtered PDFs + <bdi>metadata → S3</bdi> bucket
+  Filtered PDFs + metadata → S3 bucket
 
 ═════════ שלב 1: Bedrock Knowledge Base (Managed) ═════════
   S3 bucket (s3://holon-documents/documents/incoming/)
@@ -764,7 +764,7 @@ def manual_synthesis(question, context, model="claude-opus-4-8"):
 
 ═════════ שלב 2: Sidebar SQLite (Optional) ═════════
   (In parallel with Bedrock sync)
-  Chunks from <bdi>Bedrock → Claude</bdi> extraction → sidebar.db
+  Chunks from Bedrock → Claude extraction → sidebar.db
   ├─ contamination_findings table
   ├─ boreholes table
   └─ facilities_suspected table
@@ -791,29 +791,29 @@ def manual_synthesis(question, context, model="claude-opus-4-8"):
 ### Core Principles
 
 1. **אינדוקס רחב מראש** — כל ממד פוטנציאלי בmetadata. הוספת ממד = re-sync בBedrock (מתוקתק).
-2. **אטריבוציה מקצה-לקצה** — <bdi>chunk→source_document_name</bdi>+source_page; Bedrock משמר זאת automatic.
+2. **אטריבוציה מקצה-לקצה** — chunk→source_document_name+source_page; Bedrock משמר זאת automatic.
 3. **Idempotence בpreprocessing** — קובץ מסונן = deterministic filename; S3 upload עם versioning.
 4. **הפרדת batch/on-demand** — preprocessing local, Bedrock sync scheduled/event-triggered (לא בזמן-שאלה).
 5. **Hybrid retrieval** — Bedrock vector search + metadata filters משולבים.
 6. **Canonical + Original** — כל שדה רב-גרסתי (`area_canonical` + `area_original[]`).
 7. **Preparing Org ≠ Subject** — `preparing_org` (יועץ) ≠ `subject_entity` (תחנה דלק).
-8. **Location Hierarchy** — <bdi>area→city</bdi>→street→point; סינון-אזור כולל תת-רמות.
-9. **Graceful Failure** — סרוק ללא OCR זמין  — `status: "needs_ocr"` (לא דלג שקט).
-10. **Evidence flowing** — אם יש sidebar facts עם evidence_class A/B  — דירוג גבוה בretrieval.
+8. **Location Hierarchy** — area→city→street→point; סינון-אזור כולל תת-רמות.
+9. **Graceful Failure** — סרוק ללא OCR זמין → `status: "needs_ocr"` (לא דלג שקט).
+10. **Evidence flowing** — אם יש sidebar facts עם evidence_class A/B → דירוג גבוה בretrieval.
 11. **Non-hallucination** — "לא זמין במידע שנשלף" בלבד (לא creative answers).
 12. **Document Filtering** — דוחות-מעבדה + יומני-שדה מסוננים קודם ל-upload.
 
 ### Bedrock-Specific Invariants
 
 13. **S3 as Source of Truth** — preprocessed PDFs בS3 הם primary; Bedrock syncs לא כוללות logic
-14. **Metadata immutable after indexing** — לא ניתן לשנות metadata של chunk אחרי sync; כדי לתקן  — delete + re-upload PDF
+14. **Metadata immutable after indexing** — לא ניתן לשנות metadata של chunk אחרי sync; כדי לתקן → delete + re-upload PDF
 15. **Vector search + filters always both** — Bedrock doesn't support "vector-only" retrieval (filter-less queries are possible but not recommended for this use case)
 
 ---
 
 ## 6. מדרגיות, הרשאות ונראות (Bedrock)
 
-### מדרגיות (פיילוט חולון  — 18 אזורים)
+### מדרגיות (פיילוט חולון → 18 אזורים)
 
 Bedrock Knowledge Bases נועדו לקנה-מידה:
 - **אזור חדש** = Data Source חדש (S3 prefix) + אותה metadata schema
@@ -824,7 +824,7 @@ Bedrock Knowledge Bases נועדו לקנה-מידה:
       dataSourceConfiguration={"s3Configuration": {"bucketArn": "...", "inclusionPrefixes": ["raanana/incoming/"]}}
   )
   ```
-- **תוספת מסמכים** = upload ל-<bdi>S3 → Bedrock</bdi> sync **אוטומטי** (webhook-based or scheduled)
+- **תוספת מסמכים** = upload ל-S3 → Bedrock sync **אוטומטי** (webhook-based or scheduled)
 - **סכמת metadata** זהה לכל אזור — אנומרציות `area_canonical` רק מתרחבות
 
 ### הרשאות Bedrock
@@ -964,25 +964,25 @@ python create_knowledge_base.py
 
 **שלב 3: Sidebar SQLite (Optional)**:
 - [ ] `sidebar.db` created עם tables: contamination_findings, boreholes, facilities
-- [ ] Sync script בעבודה: קבל chunks מ-<bdi>Bedrock → extract</bdi> facts → insert to SQLite
+- [ ] Sync script בעבודה: קבל chunks מ-Bedrock → extract facts → insert to SQLite
 - [ ] Test query: `SELECT * FROM contamination_findings WHERE area_canonical = 'חולון' AND percent_of_standard > 100`
 
 **שלב 4: Retrieval API**:
 - [ ] `parse_query()` function כתובה (Claude aux, §3.1)
 - [ ] `hybrid_retrieve()` function כתובה (Bedrock retrieve + SQL, §3.2)
 - [ ] `assemble_context()` function כתובה (context assembly, §3.3)
-- [ ] Test query: "מה מצב בנזן בחולון?"  — הוחזרו chunks + facts
+- [ ] Test query: "מה מצב בנזן בחולון?" → הוחזרו chunks + facts
 
 **שלב 5: Synthesis**:
 - [ ] Claude Opus API key configured
 - [ ] `manual_synthesis()` function כתובה (§3.4)
 - [ ] System prompt tested (עברית, ציטוט חובה, אי-המצאה)
-- [ ] End-to-end test: <bdi>question → Bedrock</bdi> retrieve → context → Opus → Hebrew answer
+- [ ] End-to-end test: question → Bedrock retrieve → context → Opus → Hebrew answer
 
 **שלב 6: QA Validation**:
 - [ ] Spot-check: 3–5 queries עם expected citations
 - [ ] Verify: ציטוטים מכילים document_name + source_page
-- [ ] Verify: אם אין תשובה  — "המידע אינו זמין" (לא hallucination)
+- [ ] Verify: אם אין תשובה → "המידע אינו זמין" (לא hallucination)
 - [ ] Verify: location filtering עובד (חולון ≠ תל אביב)
 - [ ] Performance: latency < 10 seconds per query
 ```
@@ -1008,7 +1008,7 @@ KB_ID = "your-kb-id"
 MODEL_ID = "claude-opus-4-8"
 
 def retrieve_and_synthesize(question):
-    """End-to-end: <bdi>query → Bedrock</bdi> → Claude → answer."""
+    """End-to-end: query → Bedrock → Claude → answer."""
     
     # 1. Parse question
     parsed = parse_query_with_claude(question)

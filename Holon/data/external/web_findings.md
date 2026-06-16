@@ -42,7 +42,7 @@
 
 2. **מפעל נירוסטה** — בדרך להיסגור
    - Location: פינת פרופ' שור + הפלד (5 דונם)
-   - Closure: תכנית להפקדה יוני 2023 — urban renewal  — דיור + תעסוקה
+   - Closure: תכנית להפקדה יוני 2023 — urban renewal → דיור + תעסוקה
    - Impact: **זיהום מתקן סגור** — כנראה שם מתקן מ-baseline שנסגר
 
 ### מתקנים חדשים שנגילו
@@ -53,7 +53,7 @@
 
 ## הסברה: למה web discovery לא הביא תוצאות
 
-1. **Trend**: אזור התעשייה חולון עובר **מהפך <bdi>urban → mixed-use</bdi>** (residential + tech offices). לא צמיחה תעשיית כימיה/מתכות/אלקטרוניקה.
+1. **Trend**: אזור התעשייה חולון עובר **מהפך urban → mixed-use** (residential + tech offices). לא צמיחה תעשיית כימיה/מתכות/אלקטרוניקה.
 
 2. **PRTR threshold**: רישום חוקי דורש 1,000 kg/year עיבוד זיהום. רובם של מתקנים הקטנים לא מדווחים.
 
@@ -73,4 +73,4 @@
 
 **Conclusion**: Baseline של 60 מתקנים מ-extracted_findings.json + borehole-naming כaffordance מלא עבור Holon 2022-2026. Web augmentation = 0 מתקנים חדשים; policy = review עם דוח Water Authority הבא.
 
-**Methodology validation**: branch H.1.1 (RICH <bdi>extraction → skip</bdi> web) proven correct. Two timeout cases (Opus + Sonnet) + zero new findings (7 searches) = pattern confirmed.
+**Methodology validation**: branch H.1.1 (RICH extraction → skip web) proven correct. Two timeout cases (Opus + Sonnet) + zero new findings (7 searches) = pattern confirmed.

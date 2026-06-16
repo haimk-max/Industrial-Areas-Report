@@ -90,41 +90,41 @@
 
 ### B.1 Narrative/Storytelling Words (DO NOT USE)
 ```
-✗ "עדויות שנחשפו"         — USE: "ממצאים שהעלו" / "נתונים המציגים"
-✗ "שקט מדומה"            — USE: "ריכוזים נמוכים" / "תקופת יציבות"
-✗ "לפתע"                  — USE: "בשנת [X]" / "ב-[תאריך]"
-✗ "הדממה הייתה זמנית"    — USE: factual narrative of measurements
-✗ "נעצרה הדממה"          — USE: "ריכוזים התחילו לעלות"
-✗ "הפלום הגיע למים שעשויים לשתות אותם"   — USE: "TCE זוהה בקידוח ייצור פ רעננה 25"
-✗ "שום ממצא קודם לא רמז על כך"   — USE: cite source + methodology
-✗ "בדיעבד", "התברר", "טעיתי", "מעניין"   — factual statements
-✗ "אבן דרך"              — USE: "ב-YYYY נמדד..."
-✗ "מאחורי הקלעים"        — USE: factual cause description
+✗ "עדויות שנחשפו"        → USE: "ממצאים שהעלו" / "נתונים המציגים"
+✗ "שקט מדומה"           → USE: "ריכוזים נמוכים" / "תקופת יציבות"
+✗ "לפתע"                 → USE: "בשנת [X]" / "ב-[תאריך]"
+✗ "הדממה הייתה זמנית"   → USE: factual narrative of measurements
+✗ "נעצרה הדממה"         → USE: "ריכוזים התחילו לעלות"
+✗ "הפלום הגיע למים שעשויים לשתות אותם"  → USE: "TCE זוהה בקידוח ייצור פ רעננה 25"
+✗ "שום ממצא קודם לא רמז על כך"  → USE: cite source + methodology
+✗ "בדיעבד", "התברר", "טעיתי", "מעניין"  → factual statements
+✗ "אבן דרך"             → USE: "ב-YYYY נמדד..."
+✗ "מאחורי הקלעים"       → USE: factual cause description
 ```
 
 ### B.2 Emotionally-Loaded Words (AVOID)
 ```
-✗ דרמטי / מדהים / נדהמנו   — factual description with units
-✗ חושכת / מאיים             — "אינדקס N" / "% מהתקן"
-✗ חירום                     — "דיווח לרשות המים" (specific action)
-✗ אסון / קטסטרופה           — factual severity classification
-✗ זעקה                      — "ממצא המחייב..." (specific obligation)
+✗ דרמטי / מדהים / נדהמנו  → factual description with units
+✗ חושכת / מאיים            → "אינדקס N" / "% מהתקן"
+✗ חירום                    → "דיווח לרשות המים" (specific action)
+✗ אסון / קטסטרופה          → factual severity classification
+✗ זעקה                     → "ממצא המחייב..." (specific obligation)
 ```
 
 ### B.4 Regulatory Reporting Language (DO NOT USE)
 ```
-✗ "דיווח לרשות המים ולמשרד הגנת הסביבה"   — This report IS BY Water Authority, not TO them
-✗ "דיווח לרגולטור"                         — Replace with specific sampling requirement
-✗ "חובה דיווח"                             — Use only for technical obligations (lab analysis, sample integrity)
-✗ "דיווח תוך 30 יום"                       — Replace with "דיגום אישוש" + timeframe
+✗ "דיווח לרשות המים ולמשרד הגנת הסביבה"  → This report IS BY Water Authority, not TO them
+✗ "דיווח לרגולטור"                        → Replace with specific sampling requirement
+✗ "חובה דיווח"                            → Use only for technical obligations (lab analysis, sample integrity)
+✗ "דיווח תוך 30 יום"                      → Replace with "דיגום אישוש" + timeframe
 ```
 
 ### B.3 Hedging / Soft Language (REPLACE WITH SPECIFIC METRIC)
 ```
-✗ "יתכן" (maybe)         — "Mann-Kendall p=0.055" (explicit uncertainty)
-✗ "כנראה"                 — "תואם חתימת [signature]" + cite forensic evidence
-✗ "אולי הוא מקור"        — "כל הנראה מקור הזיהום הוא [X]" (2021 phrasing)
-✗ "די מסוכן"              — "ריכוז של X µg/L (Y% מהתקן)"
+✗ "יתכן" (maybe)        → "Mann-Kendall p=0.055" (explicit uncertainty)
+✗ "כנראה"                → "תואם חתימת [signature]" + cite forensic evidence
+✗ "אולי הוא מקור"       → "כל הנראה מקור הזיהום הוא [X]" (2021 phrasing)
+✗ "די מסוכן"             → "ריכוז של X µg/L (Y% מהתקן)"
 ```
 
 ### B.5 Mandatory Terminology Substitutions (CRITICAL — Hebrew prose only)
@@ -133,13 +133,13 @@ These three substitutions are **absolute** in report prose. The QA pipeline (Gat
 
 ```
 ✗ "ריקבון" / "ריקבון ביולוגי" / "ריקבון ביוטי"
-                          — "פירוק" (שרשרת פירוק / פירוק מיקרוביאלי / פירוק מיקרוביאלי אירובי / אנ-אירובי / תוצרי פירוק)
+                         → "פירוק" (שרשרת פירוק / פירוק מיקרוביאלי / פירוק מיקרוביאלי אירובי / אנ-אירובי / תוצרי פירוק)
 ✗ "שתיקה" / "שתיקה מתואמת" / "קידוח שקט"
-                          — "הפסקת ניטור" (+ הטיות: הופסק הניטור / תקופת הפסקת ניטור / ניטור שהופסק)
+                         → "הפסקת ניטור" (+ הטיות: הופסק הניטור / תקופת הפסקת ניטור / ניטור שהופסק)
 ✗ "קיצוני" / "כמעט מוחלט" / "extreme"
-                          — severity index + % of standard ("אינדקס 8, >2,500% מהתקן"); labels: גבוה / גבוה מאוד
+                         → severity index + % of standard ("אינדקס 8, >2,500% מהתקן"); labels: גבוה / גבוה מאוד
 ✗ "HIGH" / "MEDIUM" / "LOW" (in Hebrew prose)
-                          — "רמת ודאות: גבוהה / בינונית / נמוכה"
+                         → "רמת ודאות: גבוהה / בינונית / נמוכה"
 ```
 
 **Note**: The English codes `HIGH|MEDIUM|LOW` remain valid **only** inside data artifacts (`facility_attribution.json` `confidence` field — see §H.3) and code. In any Hebrew sentence of the report they must read **גבוהה / בינונית / נמוכה**.
@@ -479,7 +479,7 @@ The agent receives a `discovery context` package assembled from four independent
   5. Manual list from municipal sources, if (1)–(4) unavailable
   - Output: `street_list[]` — comprehensive enumeration, NOT filtered by what boreholes happen to mention. Boreholes are sparse spatial samples; streets enumerated from polygon are the actual search frame.
 
-0c. **Entities monitored by sampling network** — read `<zone>/data/boreholes.csv` → extract distinct entity names from `name_he` (strip prefixes `נד|נת|מק|יו|פ` and trailing borehole numbers). These reveal monitored facilities (often the suspect itself; e.g., `נת_אלביט_חולון_1`  — entity `אלביט`).
+0c. **Entities monitored by sampling network** — read `<zone>/data/boreholes.csv` → extract distinct entity names from `name_he` (strip prefixes `נד|נת|מק|יו|פ` and trailing borehole numbers). These reveal monitored facilities (often the suspect itself; e.g., `נת_אלביט_חולון_1` → entity `אלביט`).
 
 0d. **Facilities already extracted from PDFs** — read `<zone>/data/external/extracted_findings.json` → list of `facilities_suspected[].name_he` (avoid re-discovering; agent's task is to validate + augment).
 
@@ -504,7 +504,7 @@ The four anchors (geometry, streets, monitored entities, PDF facilities) are all
 - Merge new web-discovered candidates with existing PDF-extracted facilities
 - Deduplicate by approximate name match (e.g., `תדיראן` ≈ `תדירגן` ≈ `תדיראן קשר` may be related)
 - Preserve `source` attribution: `pdf_extraction` / `web_discovery` / `borehole_naming`
-- For each facility, attempt to attach ITM coordinates (street <bdi>address → ITM</bdi> via Israeli geocoder if available, else estimate from street centroid)
+- For each facility, attempt to attach ITM coordinates (street address → ITM via Israeli geocoder if available, else estimate from street centroid)
 
 **Step 4 — Output**:
 - `<zone>/data/facility_attribution.json` — final consolidated list (F-001+)

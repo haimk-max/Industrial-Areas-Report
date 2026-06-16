@@ -102,9 +102,9 @@
 | **E** | `weak / mention_only` | אזכור בודד במסמך אחד; ללא קישור לקידוח/מזהם |
 
 **מדיניות שימוש ב-Zone Diagnosis ובדוח V5**:
-- **A + B**  — מועמדים חזקים; ייכנסו לגוף ה-Zone Diagnosis ולסעיף 5 בדוח V5
-- **C**  — משלים מצב נוכחי; אסור להציג כראיית זיהום בעצמו
-- **D / E**  — רקע או נספח. ייכנסו לסעיף 5 רק אם נתוני הניטור (severity, trends, חתימות כימיות) מחזקים אותם עצמאית
+- **A + B** → מועמדים חזקים; ייכנסו לגוף ה-Zone Diagnosis ולסעיף 5 בדוח V5
+- **C** → משלים מצב נוכחי; אסור להציג כראיית זיהום בעצמו
+- **D / E** → רקע או נספח. ייכנסו לסעיף 5 רק אם נתוני הניטור (severity, trends, חתימות כימיות) מחזקים אותם עצמאית
 
 #### approved_precedent_excerpt.md
 - קטע מדוח רעננה V2 (סגנון, טון, מבנה) או חולון V4–V8 validated
@@ -181,7 +181,7 @@ Prompt filled instance שמנחה את Opus לכתוב V5 Report (ראה §II.5 
 ### (Legacy) קלט 4: Forensics Brief (Optional, As-Needed)
 - **מה**: Decay chains, co-occurrence patterns, source signatures — ברמת overview בלבד
 - **למה**: Only if meaningful patterns exist (not per-finding, not mandatory)
-- **דוגמה**: "<bdi>PCE→TCE</bdi>→cis-DCE chain active (3 wells, p<0.01); Cr+Ni co-occurrence suggests plating facility (5 wells)"
+- **דוגמה**: "PCE→TCE→cis-DCE chain active (3 wells, p<0.01); Cr+Ni co-occurrence suggests plating facility (5 wells)"
 - **שימוש חדש**: Opus יחשב זאת מתוך Context Pack + Diagnosis
 
 ### (Legacy) קלט 5: Facility Candidates (Updated from Web Search)
@@ -309,7 +309,7 @@ Gate 4 מאמת: בלוק קיים + ממוין + מספר מוקדים סביר
 - פעולה נדרשת (בדיקה? סגירה? ניטור משופר?)
 ```
 
-**חשוב**: PFAS ללא נתונים מאמתים  — נכנס לסעיף "פערי כיסוי" אחרון (ראה §IV).
+**חשוב**: PFAS ללא נתונים מאמתים → נכנס לסעיף "פערי כיסוי" אחרון (ראה §IV).
 
 #### פרק 4: מגמות, החמרה ופערי ניטור
 - מגמות בולטות (MK results, only p<0.05 + SNR>5 + soft_trigger)
@@ -401,20 +401,20 @@ def families_within_focus(focus_max_buckets: Dict[str, int]) -> List[str]:
 
 **דוגמא — מוקד A (CVOC דומיננטי)**:
 - max_bucket במוקד: CVOC=8, FUEL=6, METALS=3
-- סדר תצוגה בתוך המוקד: **<bdi>CVOC → FUEL</bdi> → METALS**
+- סדר תצוגה בתוך המוקד: **CVOC → FUEL → METALS**
 
 **דוגמא — מוקד B (METALS דומיננטי)**:
 - max_bucket במוקד: METALS=8, CVOC=2
-- סדר תצוגה: **<bdi>METALS → CVOC</bdi>**
+- סדר תצוגה: **METALS → CVOC**
 
 ### חריג — כלל קישור מנגנוני (תוך-מוקד בלבד)
 
 כאשר קיים קשר פיזיקו-כימי בין שתי משפחות **באותו מוקד** — המשפחה הקשורה מוצגת מיד אחרי המשפחה הדומיננטית, לפני משפחה חמורה-יותר שאינה קשורה. יש לנמק את הקישור במפורש בטקסט.
 
 **שלוש הדוגמאות הקנוניות**:
-1. **VC כתוצר-פירוק TCE** (<bdi>CVOC→CVOC</bdi>): VC מוצג מיד אחרי TCE/PCE, גם אם BTEX חמור יותר.
-2. **1,4-dioxane כמייצב TCA** (<bdi>CVOC→CVOC</bdi>): dioxane מוצג מיד אחרי TCA.
-3. **LNAPL כתורם-אלקטרונים לפירוק רדוקטיבי של CVOC** (<bdi>FUEL→CVOC</bdi>): אם LNAPL מניע פירוק CVOC, FUEL מוצג מיד אחרי CVOC כהקשר מסביר.
+1. **VC כתוצר-פירוק TCE** (CVOC→CVOC): VC מוצג מיד אחרי TCE/PCE, גם אם BTEX חמור יותר.
+2. **1,4-dioxane כמייצב TCA** (CVOC→CVOC): dioxane מוצג מיד אחרי TCA.
+3. **LNAPL כתורם-אלקטרונים לפירוק רדוקטיבי של CVOC** (FUEL→CVOC): אם LNAPL מניע פירוק CVOC, FUEL מוצג מיד אחרי CVOC כהקשר מסביר.
 
 **הגבלה**: הקישור תקף **תוך-מוקד בלבד**. קשר חוצה-מוקדים (לדוג' LNAPL בצפון שעשוי להשפיע על CVOC בדרום) מטופל כ"חציית סיגנל" עם השערות מתחרות — לא כקישור מנגנוני.
 
@@ -462,7 +462,7 @@ FUEL אינו "תמיד אחרון" עוד — מוקד דלק חמור יכול
 
 ### Step 3: Web Search (3-6 targeted queries)
 - Example searches: "[Zone name] industrial facilities", "[suspected contaminant] manufacturer [region]", "[בעברית] ציפוי מתכת [אזור]"
-- Document: "חיפוש Web [YEAR]: [X queries]  — [results summary]"
+- Document: "חיפוש Web [YEAR]: [X queries] → [results summary]"
 - Verify facility status (active/inactive/relocated)
 
 ### Output
@@ -488,7 +488,7 @@ FUEL אינו "תמיד אחרון" עוד — מוקד דלק חמור יכול
 
 ### §VI.1: Final Figures (Post-Opus, per Boreholes Selection)
 
-**Process**: `emit_figures.py` (<bdi>SVG → PNG</bdi> via cairosvg) after Opus call + boreholes_override.
+**Process**: `emit_figures.py` (SVG → PNG via cairosvg) after Opus call + boreholes_override.
 
 **Figures** (from `scripts/report_designed/svg_charts.py`):
 1. `fig_01_severity_ledger.png` — Top contaminants per family

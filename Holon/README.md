@@ -5,7 +5,7 @@
 
 **סטטוס**:
 - ✅ נתונים הועלו (Excel + 4 PDFs + KMZ polygon)
-- ✅ Pipeline רץ end-to-end (<bdi>parse → trend</bdi> → forensics → charts)
+- ✅ Pipeline רץ end-to-end (parse → trend → forensics → charts)
 - ⏳ דוח סיכום אזור בעברית — לכתיבה
 - ⏳ Facility discovery — לביצוע
 
@@ -21,10 +21,10 @@ Holon/
 │   ├── parameters.csv              (יווצר ע"י parse_excel)
 │   ├── trends.csv                  (יווצר ע"י trend_analysis)
 │   ├── facility_attribution.json   (יווצר ע"י AI agent — pending)
-│   └── external/                   — דוחות חולון-ספציפיים (4 PDFs)
+│   └── external/                   ← דוחות חולון-ספציפיים (4 PDFs)
 ├── charts_v2/                      (יווצר ע"י generate_charts_v2)
 ├── forensics/                      (יווצר ע"י forensics_analyzer)
-└── output/                         — דוח סיכום (לכתיבה)
+└── output/                         ← דוח סיכום (לכתיבה)
 ```
 
 ---
@@ -38,7 +38,7 @@ Holon/
 ### חולון-ספציפיים
 - `Water Quality Data/היסטורית איכות מים לקידוחים - חולון.xlsx` (1.5MB, 20,613 מדידות)
 - `Holon/data/external/` — 4 דוחות PDF של רשות המים על חולון
-- `zone_definitions/zone_polygons.json`  — `holon` — polygon ITM (הומר מ-KMZ)
+- `zone_definitions/zone_polygons.json` → `holon` — polygon ITM (הומר מ-KMZ)
 - `config/zone_overrides/holon.yaml` — מיפוי עמודות Excel (15 עמודות במקום 18 ברעננה)
 
 ---

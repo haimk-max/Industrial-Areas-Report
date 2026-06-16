@@ -197,7 +197,7 @@ toolkit/playbooks/
 ## 📁 File Structure (Current)
 ```
 toolkit/
-├── README.md                        — אתה כאן
+├── README.md                        ← אתה כאן
 ├── pylib/
 │   ├── setup.py
 │   ├── pyproject.toml

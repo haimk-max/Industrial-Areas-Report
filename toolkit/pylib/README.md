@@ -146,7 +146,7 @@ print(f"Parsed {len(measurements)} records; {len(valid)} valid")
 
 **Functions**:
 - `build_decay_chains(detected_vocs)` → dict
-  - Identify VOC dechlorination pathways (<bdi>PCE→TCE</bdi>→DCE→VC, etc.)
+  - Identify VOC dechlorination pathways (PCE→TCE→DCE→VC, etc.)
   
 - `match_source_signatures(detected_contaminants)` → dict
   - Match patterns to facility types (electroplating, AFFF, petroleum, etc.)
@@ -186,7 +186,7 @@ Edit `signalkit/__init__.py` or pass as function arguments:
 | Parameter | Default | Description |
 |-----------|---------|-------------|
 | `snr_threshold` | 0.3 | Minimum SNR for trend to be "real" |
-| `soft_trigger` | 2 | Consecutive rising <bdi>measurements → WATCH</bdi> |
+| `soft_trigger` | 2 | Consecutive rising measurements → WATCH |
 | `p_value_threshold` | 0.05 | Statistical significance |
 
 ---

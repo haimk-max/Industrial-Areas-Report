@@ -5,10 +5,10 @@
 
 | שיטה | מקור | יתרונות | חסרונות |
 |------|------|---------|---------|
-| **<bdi>Markdown→DOCX</bdi>** | `markdown_to_docx.py` | קל, מהיר, ללא dependencies | עיצוב בסיסי בלבד, ללא תמונות |
-| **<bdi>HTML→DOCX</bdi>** | `html_to_docx.py` | עיצוב מלא, SVG maps מובנע, סגנונות | דורש LibreOffice, איטי יותר |
+| **Markdown→DOCX** | `markdown_to_docx.py` | קל, מהיר, ללא dependencies | עיצוב בסיסי בלבד, ללא תמונות |
+| **HTML→DOCX** | `html_to_docx.py` | עיצוב מלא, SVG maps מובנע, סגנונות | דורש LibreOffice, איטי יותר |
 
-## שיטה 1: <bdi>Markdown→DOCX</bdi> (קל, מהיר)
+## שיטה 1: Markdown→DOCX (קל, מהיר)
 
 ### שימוש
 ```bash
@@ -30,7 +30,7 @@ python scripts/markdown_to_docx.py \
 ✓ כאשר אין LibreOffice זמין  
 ✓ כאשר גודל קובץ קריטי  
 
-## שיטה 2: <bdi>HTML→DOCX</bdi> (מלא, styled)
+## שיטה 2: HTML→DOCX (מלא, styled)
 
 ### שימוש
 ```bash
@@ -52,14 +52,14 @@ python scripts/html_to_docx.py \
 ✓ הצגות רשמיות  
 ✓ כאשר עיצוב חיוני  
 
-## תיאור טכני: <bdi>HTML→DOCX</bdi> Pipeline
+## תיאור טכני: HTML→DOCX Pipeline
 
 ### שלב 1: המרה LibreOffice
 ```bash
 libreoffice --headless --convert-to docx --outdir [dir] [input.html]
 ```
 - LibreOffice פותח את ה-HTML
-- ממיר CSS —עיצוב Word
+- ממיר CSS→עיצוב Word
 - שומר SVG כתוכן מובנע
 - מחזיר DOCX
 
@@ -144,8 +144,8 @@ python scripts/html_to_docx.py \
   Holon/reviews/HOLON_REPORT_V5_for_expert_review.docx
 
 # שלח למומחה:
-# הערות  — Track Changes
-# שיפורים  — Comments
+# הערות → Track Changes
+# שיפורים → Comments
 ```
 
 ### לביקורת פנימית מהירה
@@ -239,7 +239,7 @@ pkill -9 soffice
 
 ### SVG not appearing
 ```bash
-# <bdi>HTML→DOCX</bdi>: SVG יהיה embedded כ-raster
+# HTML→DOCX: SVG יהיה embedded כ-raster
 # אם דרוש SVG ממוטי: שמור HTML במקום
 ```
 
@@ -253,8 +253,8 @@ pkill -9 soffice
 
 | פעולה | זמן | הערות |
 |------|------|--------|
-| <bdi>Markdown→DOCX</bdi> | ~1 שנייה | Python בלבד |
-| <bdi>HTML→DOCX</bdi> | ~5-10 שניות | LibreOffice startup |
+| Markdown→DOCX | ~1 שנייה | Python בלבד |
+| HTML→DOCX | ~5-10 שניות | LibreOffice startup |
 | Batch (10 files) | ~2 דקות | LibreOffice reuse |
 
 ## תוכנית עתידית

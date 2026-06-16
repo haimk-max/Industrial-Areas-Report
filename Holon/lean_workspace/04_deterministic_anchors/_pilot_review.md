@@ -97,12 +97,12 @@ All families with data are represented. EMERGING and PFAS — categories absent 
 | נת_חולון_7 / CHLOROFORM (p=0.049) | S3_003 | ✓ |
 
 **V4.2 Forensic findings — captured in Forensic Anchors**:
-- ✓ נת חולון 11 — TCE/1,1-DCE/cis-DCE/VC <bdi>chain → F1_001</bdi> with anomalous 1,1-DCE ratio diagnostic
-- ✓ נת חולון 5 — 1,1-DCE > TCE <bdi>pattern → F1_002</bdi> with "abiotic from TCA or direct source" multi-hypothesis
-- ✓ נד אגד אזור 6/9 — anaerobic dechlorination <bdi>signature → F1_003</bdi>
-- ✓ Cr/Ni galvanic <bdi>signature → F6</bdi> anchors
-- ✓ MTBE >> BTEX aged <bdi>signature → F7</bdi>
-- ✓ PFAS coverage <bdi>gap → F10</bdi>
+- ✓ נת חולון 11 — TCE/1,1-DCE/cis-DCE/VC chain → F1_001 with anomalous 1,1-DCE ratio diagnostic
+- ✓ נת חולון 5 — 1,1-DCE > TCE pattern → F1_002 with "abiotic from TCA or direct source" multi-hypothesis
+- ✓ נד אגד אזור 6/9 — anaerobic dechlorination signature → F1_003
+- ✓ Cr/Ni galvanic signature → F6 anchors
+- ✓ MTBE >> BTEX aged signature → F7
+- ✓ PFAS coverage gap → F10
 
 **Findings BEYOND V4.2** — Forensic Anchors surfaced material V4.2 narrative understated or missed:
 - **Arsenic 400-550 µg/L at 3 wells** (40-55× DWS) — major hot-spot flagged as F6 with multi-hypothesis (pesticide formulator / CCA wood treatment / geogenic redox mobilisation)
@@ -152,7 +152,7 @@ All 27 anchors carry `forensic_framework_applied` self-documentation. Distinct f
 - Monitoring-governance forensics
 - Missing-intermediate analysis (ethene, acetone)
 
-Different <bdi>families → different</bdi> frameworks → **catalog effective** at directing the LLM to apply diverse domain knowledge per anchor type.
+Different families → different frameworks → **catalog effective** at directing the LLM to apply diverse domain knowledge per anchor type.
 
 **Result**: PASS
 

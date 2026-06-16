@@ -24,18 +24,18 @@ Both files are **self-contained** — no build step, no bundler, open in any mod
 ## 2 · What you read
 
 ```
-briefs/<zone-id>.<bdi>yaml              ← per-zone</bdi> data (the only thing that varies)
+briefs/<zone-id>.yaml              ← per-zone data (the only thing that varies)
 design-system/                     ← FROZEN. do not modify.
-  ├── tokens.<bdi>css                   ← CSS</bdi> variables — copy into <style> of every output
-  ├── architecture.<bdi>md              ← the</bdi> "twins, not identical" philosophy
-  ├── typography.<bdi>md                ← font</bdi> system + RTL rules
-  ├── color.<bdi>md                     ← semantic</bdi> color rules
-  ├── voice.<bdi>md                     ← copy</bdi>/tone rules for both audiences
+  ├── tokens.css                   ← CSS variables — copy into <style> of every output
+  ├── architecture.md              ← the "twins, not identical" philosophy
+  ├── typography.md                ← font system + RTL rules
+  ├── color.md                     ← semantic color rules
+  ├── voice.md                     ← copy/tone rules for both audiences
   └── reference/
-      ├── HOLON_INTERNAL.<bdi>html      ← gold</bdi> standard — match its quality
-      ├── HOLON_PUBLIC.<bdi>html        ← gold</bdi> standard — match its quality
+      ├── HOLON_INTERNAL.html      ← gold standard — match its quality
+      ├── HOLON_PUBLIC.html        ← gold standard — match its quality
       └── index.html
-schemas/zone-brief.schema.<bdi>json     ← validate</bdi> brief before building
+schemas/zone-brief.schema.json     ← validate brief before building
 ```
 
 ---
@@ -60,14 +60,14 @@ Open `design-system/reference/HOLON_INTERNAL.html` (or `PUBLIC.html`) and use it
 Walk the file from `<head>` to `</body>`, swapping Holon-specific strings with the new zone's data per the field-mapping table below.
 
 ### Step 3 — Generate narrative where needed
-For prose fields (`bottom_line`, `context_intro`, finding bodies, panel text), the brief may provide explicit text OR leave them as structured data for you to write. If the brief provides <bdi>text → use</bdi> as-is. If only data → write per voice rules.
+For prose fields (`bottom_line`, `context_intro`, finding bodies, panel text), the brief may provide explicit text OR leave them as structured data for you to write. If the brief provides text → use as-is. If only data → write per voice rules.
 
 ### Step 4 — Verify before declaring done
 Check the quality bar in §8 below. If any item fails, fix before output.
 
 ---
 
-## 5 · <bdi>Field → Section</bdi> Mapping
+## 5 · Field → Section Mapping
 
 ### INTERNAL.html
 

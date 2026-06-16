@@ -67,7 +67,7 @@ python -c "from signalkit import *; print('✓ pylib')"
 ls -la ~/.claude/skills/severity-calculator/
 
 # 3. Claude Code (אם אתה משתמש בClaude Code)
-# Open Claude Code  — עברי ל-editor  — סוג "/"
+# Open Claude Code → עברי ל-editor → סוג "/"
 # אתה צריך לראות: /<severity-calculator>, /<trend-detective>, /<agent-rag>
 ```
 
