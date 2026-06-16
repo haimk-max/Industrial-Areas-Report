@@ -266,13 +266,12 @@ Write this section in Hebrew prose, ≤10 lines, using the report-prose terminol
 **איור N**: Caption in Hebrew...
 ```
 
-**Standard figures** (6 minimum, per PROCESS_GUIDE §VI):
-1. `fig_01_severity_ledger.png` — Top contaminants per family
-2. `fig_02_severity_matrix.png` — Distribution across 5-level scale (0–8 buckets)
-3. `fig_03_[family1]_panels.png` — Time series for most contaminated family (e.g., CVOC)
-4. `fig_04_[family2]_panels.png` — Second family (e.g., METALS or FUEL)
-5. `fig_05_[family3]_panels.png` — Third family (or FUEL if not yet shown)
-6. `fig_06_monitoring_gaps.png` — Sampling timeline (closed wells, parameter coverage)
+**Standard figures** (5 minimum, per PROCESS_GUIDE §VI; generated dynamically by zone):
+1. `fig_01_severity_ledger.png` — Zone site map with severity by borehole + cleanup basemap context
+2. `fig_02_[family1]_time_series.png` — Time series for primary contamination family (e.g., CVOC panels)
+3. `fig_03_[family2]_time_series.png` — Second family (e.g., METALS or FUEL)
+4. `fig_04_[family3]_time_series.png` — Third family (or FUEL if primary + secondary are CVOC and METALS)
+5. `fig_05_monitoring_gaps.png` — Sampling timeline & coverage gaps (closed wells, parameter drops, PFAS gaps)
 
 **If a family is absent** (e.g., PFAS=0 boreholes): omit its figure AND omit the caption.
 **Anti-pattern**: Writing `**איור 3**:` without preceding `![]()`.
