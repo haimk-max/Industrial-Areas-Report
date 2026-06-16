@@ -1,6 +1,6 @@
 # מדריך עקרונות — דוחות אזורי תעשייה (Zone Reports Framework)
 
-**מטרה**: עקרונות מפנה (compass points) לכל דוח אזורי תעשייה, מבוסס על Holon V4 iterations. לא טוקסונומיה — טו־דלת־טו־שלוש משפטים לכל עקרון.
+**מטרה**: עקרונות מפנה (compass points) לכל דוח אזורי תעשייה, מבוסס על Holon V5 hybrid pipeline. לא טוקסונומיה — שניים-שלוש משפטים לכל עקרון.
 
 **Scope**: Holon + מעבר ל-18 אזורים (אם יתקבל אישור מומחה).
 
@@ -107,7 +107,7 @@
 - **D / E** → רקע או נספח. ייכנסו לסעיף 5 רק אם נתוני הניטור (severity, trends, חתימות כימיות) מחזקים אותם עצמאית
 
 #### approved_precedent_excerpt.md
-- קטע מדוח רעננה V2 או חולון V4.2 מאושר (סגנון, טון, מבנה)
+- קטע מדוח רעננה V2 (סגנון, טון, מבנה) או חולון V4–V8 validated
 - **לא תוכני** — רק דוגמה לאיך לכתוב
 
 #### 01_scope / 02_data / 03_context
@@ -238,6 +238,22 @@ Prompt filled instance שמנחה את Opus לכתוב V5 Report (ראה §II.5 
 
 **פלטים**: `04_diagnosis/zone_diagnosis.md` (1-2 עמודים בעברית).
 
+**פלט חובה — בלוק "## סדר מוקדים"** (focus_order):
+בסוף ה-zone_diagnosis.md, Opus **חייב** לכלול בלוק בפורמט הקבוע הבא (פַּרסְבִיל ל-Gate 4):
+
+```
+## סדר מוקדים
+
+| # | שם המוקד | מיקום / רחוב | משפחה מובילה | max_bucket | משפחות נוספות | קישור מנגנוני |
+|---|----------|--------------|--------------|------------|----------------|----------------|
+| 1 | [שם]     | [מיקום]      | [CVOC/METALS/FUEL/PFAS] | [0-8] | [רשימה] | [תיאור / —] |
+| 2 | ...      | ...          | ...          | ...        | ...            | ...            |
+| N | פערי כיסוי | — | PFAS (ואחרים) | — | — | — |
+```
+
+הבלוק ממוין לפי **max_bucket יורד**. שורת "פערי כיסוי" תמיד אחרונה.
+Gate 4 מאמת: בלוק קיים + ממוין + מספר מוקדים סביר (≥1).
+
 **שאלות ש-Opus עונה**:
 1. מהם מוקדי הזיהום המרכזיים בנתונים? (גיאוגרפיה + מזהמים)
 2. אילו קידוחים מובילים כל מוקד?
@@ -257,7 +273,7 @@ Prompt filled instance שמנחה את Opus לכתוב V5 Report (ראה §II.5 
 ```
 1. תקציר מקצועי
 2. תמונת מצב אזורית ומערך הניטור
-3. מוקדי זיהום עיקריים / משפחות מזהמים דומיננטיות
+3. מוקדי זיהום עיקריים
 4. מגמות, החמרה ופערי ניטור
 5. מקורות זיהום אפשריים ורמות ביטחון
 6. המלצות
@@ -275,9 +291,9 @@ Prompt filled instance שמנחה את Opus לכתוב V5 Report (ראה §II.5 
 - מערך קידוחים: מספר, סוגים, מיקום, סטטוס (פעיל/סגור)
 - מפת קידוחים + מוקדים (איור 1)
 
-#### פרק 3: מוקדי זיהום עיקריים / משפחות מזהמים דומיננטיות
+#### פרק 3: מוקדי זיהום עיקריים
 
-**סדר**: לפי max_bucket יורד (FUEL תמיד אחרון).
+**סדר**: לפי מוקד גיאוגרפי — ראה §IV.
 
 **תבנית לכל מוקד זיהום** (נשמרת זהה בכל אזור):
 ```
@@ -293,7 +309,7 @@ Prompt filled instance שמנחה את Opus לכתוב V5 Report (ראה §II.5 
 - פעולה נדרשת (בדיקה? סגירה? ניטור משופר?)
 ```
 
-**חשוב**: PFAS תמיד בפרק זה (גם אם max_bucket=0 → "פער כיסוי וניטור").
+**חשוב**: PFAS ללא נתונים מאמתים → נכנס לסעיף "פערי כיסוי" אחרון (ראה §IV).
 
 #### פרק 4: מגמות, החמרה ופערי ניטור
 - מגמות בולטות (MK results, only p<0.05 + SNR>5 + soft_trigger)
@@ -357,30 +373,63 @@ Prompt filled instance שמנחה את Opus לכתוב V5 Report (ראה §II.5 
 
 ---
 
-## IV. Family Ordering (Zone-Adaptive)
+## IV. Focus Ordering — מוקד גיאוגרפי ראשי, משפחות משניות (Zone-Adaptive)
 
-**עיקרון** (החלטה 2026-05-14):
-- **FUEL תמיד אחרון** (point-source, selection bias; לא להוביל את הדו"ח)
-- **שאר המשפחות** (CVOC, METALS, PFAS) — בסדר **חומרה יורד לפי ממצאי האזור הנסקר** (max_bucket באזור)
+> **SSOT**: כלל הסדר מוגדר **פעם אחת** כאן. כל סעיף אחר בפייפליין שמזכיר סדר — מפנה ל-§IV זה.
 
-**אלגוריתם**:
+### כלל ראשי — סדר מוקדים גיאוגרפיים
+
+**§3 בדוח = רצף מוקדים גיאוגרפיים**, ממוין לפי **חומרת-המוקד יורדת** (max_bucket של הקידוח הכי חמור במוקד).
+
+סדר-המוקדים הוא **ארטיפקט-שיפוט** שמיוצר ב-Step 4 (Zone Diagnosis) — הוא אינו דטרמיניסטי מ-CSV בלבד, כי אשכול גיאוגרפי ומיון מוקדים דורשים שיפוט מקצועי (Opus). הארטיפקט מוצהר כבלוק "## סדר מוקדים" ב-zone_diagnosis.md ונאכף ב-Gate 5 (ראה §VIII).
+
+מספר המוקדים הוא **data-driven** — לא מספר קבוע. אזור עם מקור בודד יכול לקבל מוקד אחד; אזור מורכב — שמונה מוקדים. מה שחייב להיות עקבי: מספר `### 3.N` בפרק 3 **חייב להיות שווה** למספר המוקדים שמוצהר בפרק 1.
+
+### כלל משני — סדר משפחות בתוך מוקד
+
+בתוך כל מוקד, המשפחות מסודרות לפי max_bucket יורד **בנתוני אותו מוקד בלבד**:
+
 ```python
-def family_order(zone_max_buckets: Dict[str, int]) -> List[str]:
-    non_fuel = sorted(
-        ['CVOC', 'METALS', 'PFAS'],
-        key=lambda f: zone_max_buckets.get(f, 0),
-        reverse=True  # descending
+def families_within_focus(focus_max_buckets: Dict[str, int]) -> List[str]:
+    """סדר משפחות בתוך מוקד אחד — חומרה יורדת. PFAS נכלל אם יש לו נתונים במוקד."""
+    return sorted(
+        [f for f in focus_max_buckets if focus_max_buckets[f] > 0],
+        key=lambda f: focus_max_buckets[f],
+        reverse=True
     )
-    return non_fuel + ['FUEL']
 ```
 
-**דוגמא — חולון 2026**:
-- max_bucket: CVOC=8, METALS=7, PFAS=4, FUEL=8 (קידוחי דלק נפרדים)
-- סדר תצוגה: **CVOC → METALS → PFAS → FUEL**
+**דוגמא — מוקד A (CVOC דומיננטי)**:
+- max_bucket במוקד: CVOC=8, FUEL=6, METALS=3
+- סדר תצוגה בתוך המוקד: **CVOC → FUEL → METALS**
 
-**דוגמא — אזור היפותטי עם METALS דומיננטי**:
-- max_bucket: METALS=8, CVOC=5, PFAS=2, FUEL=6
-- סדר תצוגה: **METALS → CVOC → PFAS → FUEL**
+**דוגמא — מוקד B (METALS דומיננטי)**:
+- max_bucket במוקד: METALS=8, CVOC=2
+- סדר תצוגה: **METALS → CVOC**
+
+### חריג — כלל קישור מנגנוני (תוך-מוקד בלבד)
+
+כאשר קיים קשר פיזיקו-כימי בין שתי משפחות **באותו מוקד** — המשפחה הקשורה מוצגת מיד אחרי המשפחה הדומיננטית, לפני משפחה חמורה-יותר שאינה קשורה. יש לנמק את הקישור במפורש בטקסט.
+
+**שלוש הדוגמאות הקנוניות**:
+1. **VC כתוצר-פירוק TCE** (CVOC→CVOC): VC מוצג מיד אחרי TCE/PCE, גם אם BTEX חמור יותר.
+2. **1,4-dioxane כמייצב TCA** (CVOC→CVOC): dioxane מוצג מיד אחרי TCA.
+3. **LNAPL כתורם-אלקטרונים לפירוק רדוקטיבי של CVOC** (FUEL→CVOC): אם LNAPL מניע פירוק CVOC, FUEL מוצג מיד אחרי CVOC כהקשר מסביר.
+
+**הגבלה**: הקישור תקף **תוך-מוקד בלבד**. קשר חוצה-מוקדים (לדוג' LNAPL בצפון שעשוי להשפיע על CVOC בדרום) מטופל כ"חציית סיגנל" עם השערות מתחרות — לא כקישור מנגנוני.
+
+### סעיף "פערי כיסוי" — סיום גנרי
+
+כאשר משפחה (בעיקר PFAS) **אין לה מוקד גיאוגרפי עם נתונים מאמתים** — היא נכנסת לסעיף **"פערי כיסוי"** אחרון (לא סעיף PFAS-ייעודי). הסעיף גנרי ויכול לכלול גם:
+- פערים מרחביים (אזורים ללא קידוחים)
+- פערים פרמטריים (פרמטרים שלא נדגמו)
+- PFAS הוא המופע המרכזי, בשל חשש עולה גלובלית (קצף כיבוי AFFF, mist suppressants) — "היעדר נתון" הוא ממצא בעצמו
+
+**PFAS עם נתונים** (>10 דגימות אזוריות ו-max_bucket ≥1): סעיף מלא כמוקד רגיל, ממוין לפי חומרה.
+
+### הערת FUEL — selection bias
+
+FUEL אינו "תמיד אחרון" עוד — מוקד דלק חמור יכול להוביל (3.1) אם max_bucket שלו הוא הגבוה ביותר. אולם, **חובה למסגר** קידוחי-דלק כ"קידוחי דלק ייעודיים" כדי לסמן selection bias: קידוחים אלה הותקנו ב-point-source ידוע ואינם נציגים של תפוצה אזורית.
 
 ### תיאור משפחות
 
@@ -392,14 +441,11 @@ def family_order(zone_max_buckets: Dict[str, int]) -> List[str]:
 
 3. **PFAS** — חומרים פר/פולי-פלואורואלקיליים
    - מחלקת תרכובות חדשה (פוסט-2021), חשש עולה גלובלית
-   - **לכלול תמיד**: גם כאשר אין חריגות, יש לכלול סעיף קצר על פער כיסוי (coverage gap). "היעדר נתון" הוא ממצא בעצמו כשהקבוצה מציינת סיכון תעשייתי-היסטורי (קצף כיבוי AFFF, mist suppressants בציפוי).
-   - אם יש >10 דגימות אזוריות ו-max_bucket ≥1 — סעיף מלא; אם פחות — תת-סעיף שמתאר את הפער ומקור החשד
+   - ראה כלל "פערי כיסוי" לעיל
 
 4. **FUEL** — BTEX, MTBE, Benzene
    - מקומי (point-source), דעיכה מהירה יחסית, צפוי סביב תחנות דלק
-   - **אחרון ומופרד** — קטע משלים, **לא כותרת הדו"ח**
-   - יש למסגר כ"קידוחי דלק ייעודיים" כדי לסמן selection bias
-   - שיא דלק לא ידחק מקדם CVOC/METALS גם אם הריכוז המוחלט גבוה יותר — זה point-source בעוד CVOC הוא איום אזורי
+   - ראה הערת selection bias לעיל
 
 ---
 
@@ -469,8 +515,8 @@ def family_order(zone_max_buckets: Dict[str, int]) -> List[str]:
 ### Structural Checks
 - [ ] No narrative arc ("crisis in 20XX")
 - [ ] All numbers tied to source (CSV row, page number, Z/p/SNR, source file)
-- [ ] **Family order: FUEL last; CVOC/METALS/PFAS לפי max_bucket יורד באזור** (ראה §IV)
-- [ ] PFAS section present (full if max_bucket≥1; coverage-gap analysis if not)
+- [ ] **Focus order: §3 לפי מוקד גיאוגרפי (חומרה יורדת); משפחות-בתוך לפי §IV; PFAS בסעיף "פערי כיסוי" אחרון** (ראה §IV)
+- [ ] PFAS section present (סעיף מלא אם max_bucket≥1 ו->10 דגימות; "פערי כיסוי" אחרון אחרת)
 - [ ] Severity scale = 5-level only (נקי/נמוך/בינוני/גבוה/גבוה מאוד)
 - [ ] **אין טרמינולוגיה אנגלית** (ALERT/WATCH/ELEVATED/STABLE/NONE) — רק labels עבריים או ניסוחים תיאוריים מתועדים
 
@@ -501,19 +547,72 @@ def family_order(zone_max_buckets: Dict[str, int]) -> List[str]:
 
 ---
 
-## VIII. Scaling Pattern — 7-Step Hybrid Pipeline (For Zone N+1, N+2, …)
+## VIII. Scaling Pattern — 7-Step Hybrid Pipeline + Step 8 (Exec Summaries, post-approval) — For Zone N+1, N+2, …
+
+> **אכיפת QA**: לכל שלב שמייצר פלט — יש שער QA אוטומטי. הפקודה הרלוונטית מצוינת לכל שלב.
+> כלי: `python scripts/qa_pipeline.py --gate <N> --zone <ZONE>`
+> פלט: PASS / WARN (ממשיכים) / FAIL (חסימה — אסור להמשיך לשלב הבא).
 
 1. **Define zone scope** → 01_scope/ (zone_wells.csv, zone_boundary_or_selection_notes.md)
+
 2. **Run deterministic data pipeline** → 02_data/ (6 CSVs: measurements_scoped, latest_results, severity_by_well_family, trends_by_well_parameter, monitoring_gaps, figure_ready_series)
+   ```bash
+   python scripts/qa_pipeline.py --gate 2 --zone {ZONE}
+   ```
+   **חסימה על FAIL**: עמודות חסרות, CSVs חסרים, מנין קידוחים לא עקבי ב-CSVs ראשיים, TPFAS/BETK בניתוח.
+
 3. **Assemble scoped NotebookLM-like context** → 03_context/ (previous_reports_excerpts, hydrogeology_context, source_candidates_context, web_findings_context, approved_precedent_excerpt)
+
 4. **Generate zone diagnosis** → Opus call #1 (קלט: 01–03) → 04_diagnosis/zone_diagnosis.md (עונה על 8 שאלות)
+   ```bash
+   python scripts/qa_pipeline.py --gate 4 --zone {ZONE}
+   ```
+   **חסימה על FAIL**: zone_diagnosis.md חסר, נושאים קריטיים לא מכוסים.
+   **אזהרה על WARN**: מבנה גיאוגרפי חלש, PFAS לא מוסגר כפער, תאריכי סגירה חסרים.
+   **כלל גישור שלב 4→5 (חוזה בין-שלבי)**: בלוק "## סדר מוקדים" מ-zone_diagnosis.md (ראה §II.5) **חייב** לעצב את כותרות פרק 3 בדוח — כל `### 3.N` = שם מוקד גיאוגרפי מהבלוק, בסדרו. PFAS שמוסגר כ"פערי כיסוי" באבחון **חייב** להישמר כ"פערי כיסוי" בדוח — לא לעלות לרמת מוקד שווה.
+
 5. **Generate V5 expert report** → Opus call #2 (קלט: 01–04 + zone_report_prompt.md) → output/{ZONE}_REPORT_V5.md (לפי §II V5 schema)
+   ```bash
+   python scripts/qa_pipeline.py --gate 5 --zone {ZONE}
+   ```
+   **חסימה על FAIL**: טרמינולוגיית pipeline בגוף הדוח, סעיפים חסרים, חוסר עקביות במנין קידוחים, כותרות פרק 3 אינן מוקדים גיאוגרפיים, PFAS חסר לחלוטין, רמות ביטחון חסרות בפרק 5.
+   **אזהרה על WARN**: קביעות נחרצות יתר (דורשות ריכוך), PFAS ללא ניסוח "פער כיסוי", מתודולוגיה ארוכה מ-15 שורות.
+
+   **איסור טרמינולוגיית pipeline בגוף הדוח** (חדש — §VIII.5):
+   - אסור: שמות קבצים (`severity_by_well_family.csv`), שלבים (`Step 5`, `Opus Call #2`), שמות pipeline (`V5 Hybrid Pipeline`, `PROCESS_GUIDE`), קודי סיווג (`A+B`, `C-class`, `D-class`), מונחים סטטיסטיים פנימיים (`soft_trigger`, `SNR gating`, `bucket`)
+   - מותר: מונחים מקצועיים סטנדרטיים בתחום (TCE, Mann-Kendall, CVOC, PFAS, ISCO, DNAPL)
+   - הכלל: אם הקורא הוא הידרוגיאולוג מרשות המים — האם יבין את המונח ללא הכשרה בפייפליין הפנימי? לא → החלף.
+
 6. **Generate final figures + HTML** → `emit_figures.py` (boreholes_override path) → `generate_{zone}_full_html.py` + `generate_{zone}_designed.py`
-7. **Validate** → §VII: Checklist
+   ```bash
+   python scripts/qa_pipeline.py --gate 6 --zone {ZONE}
+   ```
+   **חסימה על FAIL**: SVG מפה עם פחות מ-50 עיגולים, RTL חסר ב-HTML, Word ללא איורים מוטבעים, RTL פסקאות מתחת ל-85%.
+
+7. **Validate** → §VII: Checklist ידני + הרצת כל השערים:
+   ```bash
+   python scripts/qa_pipeline.py --gate all --zone {ZONE}
+   ```
+   פלט אוטומטי: `{ZONE}/output/QA_REPORT_{date}.md` — יש לצרף ל-commit.
+
+8. **(לאחר אישור הידרולוג בלבד) Generate executive summaries** → דוחות ניהוליים INTERNAL + PUBLIC.
+   **לא חלק מהלולאה הראשית** — רץ רק אחרי שהדוח המלא (שלב 5) אושר. ה-**brief YAML** (`report-engine/briefs/{zone}.yaml`) הוא ה-artifact הסטנדרטי של שלב זה: הוא נגזר מהדוח המלא ונושא `source_report_version` + `source_report_sha` (חוזה טריות).
+   ```bash
+   # 8a (דטרמיניסטי): גזירת brief-prompt מהדוח האחרון + provenance
+   python scripts/generate_zone_brief.py prepare --zone {zone}
+   # 8b (OPUS #3): הרצת הprompt → raw_brief.yaml (9 ממצאים, dual framing, מקורות)
+   # 8c (דטרמיניסטי): finalize + רינדור HTML צמודים
+   python scripts/generate_zone_brief.py finalize --zone {zone}
+   python scripts/generate_zone_html_from_brief.py --zone {zone}
+   ```
+   **חסימה על FAIL**:
+   - **Gate brief↔report sha** (REQ #31.2): `source_report_sha` ב-brief חייב לתאום את ה-sha של הדוח הנוכחי — אחרת מופצים דוחות ניהוליים מיושנים תחת גרסה חדשה.
+   - **Gate אנונימיזציה** (REQ #31.3): PUBLIC חייב להיות נקי משמות-מתקנים אמיתיים (סריקה מול רשימת שמות) — דליפה = FAIL.
+   > ⚠️ **מגבלה ידועה (REQ #31.1)**: `generate_zone_html_from_brief.py` ממלא כיום את כל סעיפי ה-brief (כולל `stats_public`, `means_summary`, `methodology`, `timeline`) — אזור חדש מקבל את נתוניו שלו ולא של חולון. (לפני התיקון: רק 5 סעיפים הוחלפו; השאר נשארו hardcoded מ-reference חולון.)
 
 **Precedent for Zone N+1**: Once Zone N passes expert validation, store as `[N+1]/lean_workspace/01_inputs/[N]_approved_precedent.md`.
 
-### VIII.1 Pipeline Ordering — תקין (V4.2+)
+### VIII.1 Pipeline Ordering — תקין (V5+)
 
 **עיקרון מרכזי**: **Opus בוחר אילו קידוחים** לאייר; **הסקריפט מחליט איך** לאייר (גודל, צבעים, סדר, סוג גרף) על בסיס סגנון מוסכם.
 
@@ -591,7 +690,7 @@ body, p, li, td, th, h1, h2, h3, h4 { unicode-bidi: isolate; }
 
 ---
 
-**Status**: V4.2 framework | SSOT לטרמינולוגיה ולסדר פייפליין | Scalable to all 18 zones  
+**Status**: V5 Hybrid Pipeline | SSOT לטרמינולוגיה ולסדר פייפליין | Scalable to all 18 zones  
 **Last Updated**: 2026-05-14 (Refactor: §III סולם 9-רמות קנוני, §IV סדר משפחות אדפטיבי, §VIII.1 pipeline ordering נפתר, §I.2 PDF ingestion, §I.5 Web sources)  
 **Last Sanitized**: 2026-05-27 (Toolkit back-references added)  
 **Governance**: CLAUDE.md (אינדקס אזורים + Phase H) + project REQUIREMENTS.md

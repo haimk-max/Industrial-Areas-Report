@@ -120,22 +120,36 @@ def md_to_html(md: str) -> str:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Generate Holon designed report variant")
+    parser = argparse.ArgumentParser(description="Generate zone designed report variant")
+    parser.add_argument("--zone", type=str, default="holon",
+                        help="Zone name (e.g., holon, raanana)")
     parser.add_argument("--output", type=Path,
-                        default=REPO_ROOT / "Holon" / "output" / "HOLON_REPORT_DESIGNED.html")
+                        help="Override output path (auto-detected from --zone if not provided)")
     parser.add_argument("--template", type=Path,
                         default=REPO_ROOT / "scripts" / "report_designed" / "template.html")
     parser.add_argument("--report-v4", type=Path,
-                        default=REPO_ROOT / "Holon" / "output" / "HOLON_REPORT_V4.md")
+                        help="Override path to V4 report (auto-detected from --zone if not provided)")
     args = parser.parse_args()
 
-    print("Loading data from Holon/lean_workspace/ ...")
-    measurements = dl.load_measurements_alert()
-    trends = dl.load_trends_alert()
-    severity = dl.load_severity_index()
-    data_avail = dl.load_data_availability()
-    alert = dl.load_alert_boreholes()
-    classification = dl.load_borehole_classification()
+    # zone (lowercase) drives data_loader; zone dir is capitalized (holon -> Holon).
+    zone = args.zone.lower()
+    out_dir = REPO_ROOT / zone.capitalize() / "output"
+
+    # Auto-detect output path if not provided
+    if args.output is None:
+        args.output = out_dir / f"{zone.upper()}_REPORT_DESIGNED.html"
+
+    # Auto-detect V4 report path if not provided
+    if args.report_v4 is None:
+        args.report_v4 = out_dir / f"{zone.upper()}_REPORT_V4.md"
+
+    print(f"Loading data from {zone}/lean_workspace/ ...")
+    measurements = dl.load_measurements_alert(zone=zone)
+    trends = dl.load_trends_alert(zone=zone)
+    severity = dl.load_severity_index(zone=zone)
+    data_avail = dl.load_data_availability(zone=zone)
+    alert = dl.load_alert_boreholes(zone=zone)
+    classification = dl.load_borehole_classification(zone=zone)
 
     print(f"  measurements_alert: {len(measurements):,} rows")
     print(f"  trends_alert: {len(trends)} rows")
@@ -144,7 +158,7 @@ def main() -> None:
     print(f"  borehole_classification: {len(classification)} boreholes")
 
     print(f"Extracting narrative from {args.report_v4.name} ...")
-    narrative = dl.extract_narrative_sections(args.report_v4)
+    narrative = dl.extract_narrative_sections(args.report_v4, zone=zone)
     print(f"  extracted sections: {list(narrative.keys())}")
 
     print("Building SVG figures ...")
@@ -153,7 +167,7 @@ def main() -> None:
     severity_alert = severity[severity['borehole'].isin(alert_borehole_ids)].copy()
 
     # PROCESS_GUIDE §VIII.1: Opus picks boreholes via V4.md; chart engine renders them per style guide.
-    report_boreholes = dl.extract_report_boreholes(args.report_v4, severity)
+    report_boreholes = dl.extract_report_boreholes(args.report_v4, severity, zone=zone)
     print(f"  V4.md boreholes_override: {len(report_boreholes)} mentioned")
 
     ledger_f1 = sc.svg_severity_ledger(severity_alert)
@@ -168,7 +182,17 @@ def main() -> None:
     # Include classification definitions extracted from V4
     class_intro = narrative.get("classification_intro", "")
     class_table_f8 = sc.svg_borehole_classification_table(classification, class_intro)
-    class_map_f9 = sc.svg_borehole_map_html(classification)
+    # Load zone polygon for map background
+    import json as _json
+    _poly_path = REPO_ROOT / "zone_definitions" / "zone_polygons.json"
+    _zone_polygon = None
+    try:
+        with open(_poly_path, encoding="utf-8") as _pf:
+            _pd = _json.load(_pf)
+        _zone_polygon = _pd.get("holon", _pd.get("Holon", {})).get("polygon")
+    except Exception:
+        pass
+    class_map_f9 = sc.svg_borehole_map_html(classification, zone_polygon=_zone_polygon)
 
     print("Filling template ...")
     template = args.template.read_text(encoding="utf-8")

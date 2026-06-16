@@ -62,6 +62,28 @@ def _norm(name: str) -> str:
     return re.sub(r"\s+", " ", (name or "").strip())
 
 
+def _latest_report_md(zdir: Path, zone: str) -> Path:
+    """Highest-version {ZONE}_REPORT_V<n>.md in {zone}/output/.
+
+    Version-generic: the exec-summary brief must be built from the CURRENT canonical
+    report, not a pinned V5. Globs for any V<n> and returns the highest. Falls back to
+    a V5 path (for the error message) if none exist."""
+    out_dir = zdir / "output"
+    best, best_v = None, -1
+    if out_dir.exists():
+        for cand in out_dir.glob(f"{zone.upper()}_REPORT_V*.md"):
+            m = re.search(r"_REPORT_V(\d+)", cand.name)
+            if m and int(m.group(1)) > best_v:
+                best, best_v = cand, int(m.group(1))
+    return best or (out_dir / f"{zone.upper()}_REPORT_V5.md")
+
+
+def _sha12(path: Path) -> str:
+    """First 12 hex of sha256 of a file's bytes — provenance stamp for staleness checks."""
+    import hashlib
+    return hashlib.sha256(path.read_bytes()).hexdigest()[:12]
+
+
 def zone_paths(zone: str) -> dict[str, Path]:
     """Derive all per-zone paths from the zone id. Zone dir is capitalized
     (holon -> Holon), matching the repo convention."""
@@ -69,7 +91,7 @@ def zone_paths(zone: str) -> dict[str, Path]:
     return {
         "zone_dir": zdir,
         "wells_csv": zdir / "02_data" / "zone_wells.csv",
-        "report_v5": zdir / "output" / f"{zone.upper()}_REPORT_V5.md",
+        "report_md": _latest_report_md(zdir, zone),  # latest V<n>, NOT pinned to V5
         "build_dir": zdir / "05_brief_build",
         "out_brief": ENGINE / "briefs" / f"{zone}.yaml",
     }
@@ -105,7 +127,7 @@ def build_well_inventory(wells_csv: Path) -> str:
 
 def cmd_prepare(zone: str) -> None:
     p = zone_paths(zone)
-    for key in ("wells_csv", "report_v5"):
+    for key in ("wells_csv", "report_md"):
         if not p[key].exists():
             sys.exit(f"missing required input: {p[key]}")
 
@@ -115,7 +137,18 @@ def cmd_prepare(zone: str) -> None:
     schema = (ENGINE / "schemas" / "zone-brief.schema.json").read_text(encoding="utf-8")
     voice = (ENGINE / "design-system" / "voice.md").read_text(encoding="utf-8")
     architecture = (ENGINE / "design-system" / "architecture.md").read_text(encoding="utf-8")
-    full_report = p["report_v5"].read_text(encoding="utf-8")
+    full_report = p["report_md"].read_text(encoding="utf-8")
+
+    # Provenance: record which report version + sha this brief is built from, so the
+    # exec summaries can be flagged stale if the report changes (staleness contract).
+    rep_ver_m = re.search(r"_REPORT_V(\d+)", p["report_md"].name)
+    source_report = {
+        "version": f"V{rep_ver_m.group(1)}" if rep_ver_m else "unknown",
+        "sha256_12": _sha12(p["report_md"]),
+        "path": str(p["report_md"].relative_to(REPO)),
+    }
+    print(f"source report: {source_report['path']} ({source_report['version']}, "
+          f"sha {source_report['sha256_12']})")
 
     ref_path = ENGINE / "briefs" / "holon.yaml"
     reference = ref_path.read_text(encoding="utf-8") if ref_path.exists() else "(none)"
@@ -144,6 +177,9 @@ def cmd_prepare(zone: str) -> None:
     (p["build_dir"] / "prompt.md").write_text(prompt, encoding="utf-8")
     (p["build_dir"] / "coords.json").write_text(
         json.dumps(coords, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    (p["build_dir"] / "source_report.json").write_text(
+        json.dumps(source_report, ensure_ascii=False, indent=2), encoding="utf-8"
     )
     print(f"prepared: {p['build_dir']/'prompt.md'}")
     print(f"coords lookup: {len(coords)} wells -> {p['build_dir']/'coords.json'}")
@@ -231,6 +267,25 @@ def cmd_finalize(zone: str, raw: Path, out: Path | None = None) -> None:
         yaml.safe_load(final_text)
     except yaml.YAMLError as ex:
         sys.exit(f"coord injection produced invalid YAML: {ex}")
+
+    # Prepend provenance header (YAML comments survive parsing) so the brief — and the
+    # exec summaries generated from it — are traceable to a specific report version+sha.
+    # run_pipeline.sh compares source_report_sha256_12 to the current report to detect staleness.
+    src_file = p["build_dir"] / "source_report.json"
+    if src_file.exists():
+        src = json.loads(src_file.read_text(encoding="utf-8"))
+        from datetime import datetime
+        header = (
+            "# ─────────────────────────────────────────────────────────────\n"
+            f"# source_report_version: {src.get('version','unknown')}\n"
+            f"# source_report_sha256_12: {src.get('sha256_12','')}\n"
+            f"# source_report_path: {src.get('path','')}\n"
+            f"# generated: {datetime.now().strftime('%Y-%m-%d')}\n"
+            "# STALENESS CONTRACT: regenerate this brief AND the exec summaries\n"
+            "# (INTERNAL/PUBLIC) whenever the source report changes version or sha.\n"
+            "# ─────────────────────────────────────────────────────────────\n"
+        )
+        final_text = header + final_text
 
     p["out_brief"].parent.mkdir(parents=True, exist_ok=True)
     p["out_brief"].write_text(final_text, encoding="utf-8")

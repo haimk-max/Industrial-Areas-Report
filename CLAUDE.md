@@ -1,13 +1,33 @@
 # CLAUDE.md - Industrial Areas Report Project Governance
 
-> **Methodology layering**: This file is **prescriptive** (what we do). For per-feature **descriptive** history, see commit messages. For **open patterns awaiting 2nd-case validation, deferred decisions, and tooling roadmap**, see `LESSONS.md`. Promote items from `LESSONS.md` to `REQUIREMENTS.md` only after a 2nd real case validates the pattern.
-
 ## אילוצי סביבה (Environment — חשוב לכל סשן)
 
 - המשתמש עובד **אך ורק** דרך Claude Code on the web (GitHub integration) — **אין גישה לטרמינל**.
 - `~/.claude/` לא שורד בין סשנים (container חולף). כל זיכרון בין-סשן חייב להיות committed לריפו.
 - **זיכרון בין-סשן**: `HANDOVER.md` בשורש הריפו — קרא אותו בתחילת כל סשן.
 - **סקיל `/handover`**: מותקן ב-`.claude/skills/handover/SKILL.md` — הפעל בסוף כל סשן.
+
+## קונבנציות שפה
+
+- **קבצי Markdown** (CLAUDE.md, PROCESS.md, planning, todos): **עברית**.
+- **קוד** (Python, JS, shell, שמות משתנים, comments, docstrings): **אנגלית**.
+- **Commit messages**: אנגלית (convention של Git).
+- **כותרות סעיפים בדוחות**: עברית בלבד.
+
+## העדפות יציבות
+
+- סיים כל סשן עבודה ב-`/handover` (או בבקשה חופשית "תעשה handover") כדי לייצר הערת מסירה מסוננת.
+- ברירת מחדל: **שאל לפני commit או push**, גם אם הסשן כבר רץ זמן מה.
+- שינויים הרסניים (`reset --hard`, `force push`, מחיקת ענפים) — דורשים אישור מפורש, גם בריפו זה.
+
+## footguns בין-פרויקטיים
+
+<!-- הוסף כאן רק דפוסים שגרמו לבעיות יותר מפעם אחת -->
+—
+
+---
+
+> **Methodology layering**: This file is **prescriptive** (what we do). For per-feature **descriptive** history, see commit messages. For **open patterns awaiting 2nd-case validation, deferred decisions, and tooling roadmap**, see `LESSONS.md`. Promote items from `LESSONS.md` to `REQUIREMENTS.md` only after a 2nd real case validates the pattern.
 
 ---
 
@@ -27,11 +47,11 @@
 
 | אזור | מצב | תפקיד | מיקום |
 |------|-----|--------|--------|
-| **רעננה** | V2 מאושר | **תקדים סגנוני מאושר** (סגנון כתיבה, סדר משפחות, RTL, צבע גרפים) | `Raanana/` |
-| **חולון** | V4.2 ממתין לאישור הידרולוג | **stress-test מתודולוגי** (pipeline לאזור מורכב, PFAS gaps, monitoring gaps) — לא תבנית ל-16 אזורים | `Holon/` |
+| **רעננה** | V2 מאושר + V5 pipeline | **תקדים סגנוני מאושר** (V2: סגנון כתיבה, סדר משפחות, RTL, צבע גרפים). **אזור ה-2 שעבר V5 hybrid pipeline end-to-end** (RAANANA_REPORT_V5 — ממתין לאישור הידרולוג) | `Raanana/` |
+| **חולון** | V8 ממתין לאישור הידרולוג | **stress-test מתודולוגי** (pipeline לאזור מורכב, PFAS gaps, monitoring gaps) — לא תבנית ל-16 אזורים | `Holon/` |
 | 16 אזורים נוספים | ⏳ Phase 2 (Q3 2026+) | יבנו ב-**V5 hybrid pipeline** (METHODOLOGY המחייבת לאזורים חדשים) | (לבנייה אחר אישור) |
 
-**SSOT לטרמינולוגיה וסדר פייפליין**: `ZONE_REPORT_PROCESS_GUIDE.md` (V4.2)
+**SSOT לטרמינולוגיה וסדר פייפליין**: `ZONE_REPORT_PROCESS_GUIDE.md` (Hybrid Pipeline V5)
 **Methodology סטטיסטית**: `docs/STATISTICAL_OVERVIEW_METHODOLOGY.md`
 **Scripts README**: `scripts/report_designed/README.md`
 
@@ -139,11 +159,11 @@ Before implementing data processing:
   - ✓ Two HTML generators: `_V4.html` (canonical, ~180KB) + `_DESIGNED.html` (visual summary, ~139KB); both rely on `boreholes_override` from V4.md (CVOC=6, METALS=4, FUEL=6 panel caps; sorted by family severity desc)
   - ✓ Safety net: HTML generator auto-injects `![]()` image markdown when Opus omits it (figure caption present but image markdown missing)
   - ✓ SSOT: `ZONE_REPORT_PROCESS_GUIDE.md` for terminology + pipeline; `STATISTICAL_OVERVIEW_METHODOLOGY.md` redirects to §III
-  - ✓ Generic Zone Prompt Template: `scripts/templates/zone_report_prompt_template.md` (Anthropic XML-tag structure, 30 placeholders, `<figure_rules>` enforcing image-before-caption)
-  - ✓ Family ordering: FUEL always last; CVOC/METALS/PFAS by zone max_bucket descending (§IV)
+  - ✓ Generic Zone Prompt Template: `scripts/templates/zone_report_prompt_template_v5.md` (Anthropic XML-tag structure, 30 placeholders, `<figure_rules>` enforcing image-before-caption)
+  - ✓ Focus-first ordering (§IV): §3 by geographic focus (severity descending); families secondary within focus; "פערי כיסוי" last
   - ✓ Web search & PDF ingestion documented in PROCESS_GUIDE §I.2 + §I.5 (External Data/{zone}/ structure, 6 channels)
 
-- **Phase H+ Implementation** ✅ COMPLETE (2026-05-25):
+- **Phase H+ Implementation** ✅ COMPLETE (2026-05-28, PR #19 merged via a19a917):
   - ✅ PROCESS_GUIDE refactored: §I → Zone Context Pack (5 folders: scope/data/context/diagnosis/prompt)
   - ✅ §II → V5 Schema (6 sections, generic for all zones)
   - ✅ §II.5 → Zone Diagnosis (8 questions, pre-report step)
@@ -153,8 +173,14 @@ Before implementing data processing:
   - ✅ DATA_PIPELINE_SPEC.md created (6 CSVs schema)
   - ✅ REPORT_V5_SCHEMA.md created (V5 skeleton + templates)
   - ✅ CLAUDE.md §8 Scaling updated (hybrid pipeline workflow)
-  - ✅ Holon V5 report generation (REQ #13.6): Opus → figures → HTML designed
+  - ✅ Holon V5 report generation (REQ #13.6, 2026-05-28): Opus → figures → HTML designed (164KB+177KB)
   - ✅ Documentation sync: PROCESS.md (requirements tracking) + LESSONS.md (tech-debt roadmap)
+  - ✅ Data pipeline scripts (REQ #13.1): generate_holon_data_pack.py → 7 CSVs (15,173 rows)
+  - ✅ Reports Context Pack (REQ #13.2) + Source Candidates (REQ #13.3) + Zone Diagnosis (REQ #13.4) + Templates (REQ #13.5)
+  - ✅ Executive summaries (REQ #15): INTERNAL.html (64KB, 1,698 lines) + PUBLIC.html (52KB, 1,323 lines)
+  - ✅ Report Engine (REQ #16): 14-file generic report-engine/ for all 18 zones
+  - ✅ Brief YAML + Twin HTML generators (REQ #17, #18)
+  - ✅ Toolkit system (REQ #19): Tier A skills + Tier B pylib (signalkit) + Tier C playbooks (5/5), sanitized cross-references
 
 **Phase 3: Drilling Card & Report Generation** ✓ COMPLETE (R-001, R-004)
 - Goal: Generate R-001 and R-004 drilling cards; zone summary report
@@ -270,6 +296,11 @@ Before committing code or reports:
 - [ ] Comparison with zone baseline (other 17 zones) included
 - [ ] Markdown formatting clean (no orphaned links, proper heading hierarchy)
 
+### Documentation Sync (קבצי תיעוד מקבילים)
+- [ ] **`docs/TECHNICAL_OVERVIEW.md` עודכן** → עדכן גם `docs/TECHNICAL_OVERVIEW.en.md` (גרסת arc42 באנגלית). שני הקבצים חייבים לשקף את אותו מצב ארכיטקטורה. הגרסה האנגלית היא ה-canonical לקהל טכני חיצוני; העברית — לקהל הרשות.
+- [ ] **Mermaid diagrams ב-`.en.md`** תואמים את הארכיטקטורה בפועל (pipeline stages, gate numbers, Opus call count).
+- [ ] **ADRs ב-§8** עדכניים — כל החלטה ארכיטקטורית חדשה שנסגרה מתועדת (context / decision / consequences).
+
 ---
 
 ## 7. Incident Response
@@ -320,6 +351,7 @@ The framework supports any of the 18 industrial zones in the coastal aquifer mon
 4. **Generate zone diagnosis** (Opus call #1) → `{zone}/04_diagnosis/zone_diagnosis.md` (8 professional questions)
 5. **Generate V5 expert report** (Opus call #2) → `{zone}/output/{ZONE}_REPORT_V5.md` (6 sections + appendices, per `REPORT_V5_SCHEMA.md`)
 6. **Render final figures + HTML** → `scripts/generate_{zone}_full_html.py` + `generate_{zone}_designed.py` (boreholes_override path)
+   - **Map generation** (`svg_borehole_map_html()` in `scripts/report_designed/svg_charts.py`): bounds calculated DYNAMICALLY from data (east/north min/max in ITM meters, ±5% margin). No hardcoded zone-specific bounds — function is coordinate-system-agnostic.
 7. **Validate** per PROCESS_GUIDE §VII checklist (including Context Pack, Structured Data Pack, Zone Diagnosis, PFAS logic, monitoring gaps, C_max_5y separation)
 
 ### Existing zone-agnostic scripts (used inside Step 2 of V5 pipeline)
@@ -349,10 +381,10 @@ Each PDF sub-agent (hydrogeologist persona, model="sonnet") produces `_findings_
 
 ### Implementation Trigger
 - ✓ Methodology validated on Raanana (May 2026, hydrogeologist approval) — **style precedent**
-- ✓ V4.2 stress-tested on Holon — **methodological precedent, not a binding template**
-- 🔄 V5 hybrid pipeline documented (Phase H+, REQ #12 closed)
-- ⏳ V5 hybrid pipeline implementation (Phase H+ Implementation, REQ #13 — scripts + Holon V5 generation)
-- ⏳ After Holon V5 validation → systematic application to remaining 16 zones
+- ✓ Holon (V4.2→V8) stress-tested — **methodological precedent, validated end-to-end**
+- ✓ V5 hybrid pipeline documented (Phase H+, REQ #12 closed)
+- ✓ V5 hybrid pipeline implementation (Phase H+ Implementation, REQ #13 closed 2026-05-28 — PR #19 a19a917)
+- ⏳ Hydrogeologist review of Holon V8 → systematic application to remaining 16 zones
 - Requires Ministry of Environmental Protection coordination per zone
 
 ---
@@ -436,9 +468,14 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 4. ⏳ Hydrogeologist approval
 5. **Note**: V4.2 used prompt-driven workflow. New zones use V5 hybrid pipeline (Phase H+).
 
-**Phase H+ — V5 Hybrid Pipeline** 🔄 Documentation complete; Implementation planned:
+**Phase H+ — V5 Hybrid Pipeline** ✅ COMPLETE (Documentation + Implementation):
 - ✓ Documentation refactor (REQ #12, closed 2026-05-17)
-- ⏳ Implementation (REQ #13): data pipeline scripts (6 CSVs), context assembly, zone diagnosis prompt, V5 report prompt, Structured Anchors pilot (#13.5, PASS), Holon V5 generation
+- ✓ Implementation (REQ #13, closed 2026-05-28 via PR #19 / a19a917): data pipeline scripts (7 CSVs), context assembly, zone diagnosis prompt, V5 report prompt, Structured Anchors pilot (#13.5, PASS), Holon V5→V8 generation pipeline (256KB MD, 239KB HTML, 493KB DOCX)
+- ✓ Executive summaries (REQ #15): INTERNAL + PUBLIC HTML
+- ✓ Report engine (REQ #16): 14-file generic architecture
+- ✓ Brief + Twin HTML generators (REQ #17, #18)
+- ✓ Toolkit system (REQ #19, sanitization sub-task complete): 3 tiers (skills + pylib + 5 playbooks)
+- ⏳ Hydrogeologist review of Holon V8 (next step)
 
 **Open framework items**:
 - ⏳ Basemap integration (REQ-G1) — pending environment resolution
@@ -482,8 +519,10 @@ https://claude.ai/code/session_01VLoT2vE82jwapmUNCB4wRe
 **Project Status**:
 - Framework (Phases A–G): ✓ Complete — pipeline zone-agnostic, validated on Raanana, expert-approved
 - Phase 5 (Zone Application Framework): ✓ Complete on framework side; Holon V4.2 as stress-test (awaiting hydrogeologist)
-- Phase H+ (V5 Hybrid Pipeline Refactor): ✓ Documentation complete (REQ #12); ⏳ Implementation planned (REQ #13)
-- Phase 2 (full 18-zone activation): ⏳ Pending V5 implementation + Holon V5 + Ministry coordination
+- Phase H+ (V5 Hybrid Pipeline): ✅ COMPLETE — Documentation (REQ #12) + Implementation (REQ #13, PR #19 merged 2026-05-28 / a19a917)
+- Phase H+ QA Automation: ✅ COMPLETE (REQ #23, 2026-06-07 — `scripts/qa_pipeline.py` with 4 gates, all passing for Holon V5)
+- Raanana V5 (REQ #33): ✅ 2nd zone run end-to-end through V5 hybrid pipeline (2026-06-16, merged) — RAANANA_REPORT_V5 awaiting hydrogeologist review
+- Phase 2 (full 18-zone activation): ⏳ Pending Holon V8 + Raanana V5 hydrogeologist sign-off + Ministry coordination
 
-**Last Updated**: 2026-05-17 (Phase H+ documentation merged: V5 hybrid pipeline = binding methodology)  
+**Last Updated**: 2026-06-16 (REQ #31 CLOSED; REQ #32 — figure-caption 5-fig alignment + RTL fix scoped to report deliverables; REQ #33 — Raanana V5 pipeline merge + branch consolidation + toolkit move + qa Gate 6 zone-relative)  
 **Historical phases**: see `docs/HISTORY.md`

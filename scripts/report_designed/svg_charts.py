@@ -348,14 +348,13 @@ def svg_cvoc_panels(measurements: pd.DataFrame, severity: pd.DataFrame,
     """
     alert_boreholes = set(measurements['canonical_id'].unique())
     if boreholes_override:
-        # Keep V4.md selection but re-sort by CVOC severity desc, then cap at 6.
-        # This ensures the most severe CVOC wells are illustrated even when Opus
-        # mentions metals/fuel wells first in narrative order.
+        # Respect Opus's selection AND its order: the report narrative decides which
+        # findings matter. The engine only filters to wells that actually carry CVOC
+        # data (so a panel isn't empty) and caps at a grid-friendly maximum. NO
+        # severity re-sort — Opus already presents the most important wells first.
         cvoc_wells = set(measurements[measurements.param_code.isin(_CVOC_PARAMS)]['canonical_id'])
-        cvoc_sev = severity[severity.family == "CVOC"].set_index("borehole")["max_bucket"]
-        candidates = [w for w in boreholes_override if w in alert_boreholes and w in cvoc_wells]
-        candidates.sort(key=lambda w: cvoc_sev.get(w, 0), reverse=True)
-        top_wells = candidates[:6]
+        top_wells = [w for w in boreholes_override
+                     if w in alert_boreholes and w in cvoc_wells][:8]
     else:
         industry = severity[
             (severity.family == "CVOC") &
@@ -372,8 +371,8 @@ def svg_cvoc_panels(measurements: pd.DataFrame, severity: pd.DataFrame,
         ].copy()
         if well_data.empty:
             continue
-        panels.append(_time_series_panel(well_data, nm, dws=7.5,
-                                          width=400, height=260,
+        panels.append(_time_series_panel(well_data, nm, dws=7.5, dws_param="TCE",
+                                          width=400, height=276,
                                           param_order=_CVOC_PARAMS))
 
     if not panels:
@@ -402,15 +401,10 @@ def svg_chromium_panels(measurements: pd.DataFrame,
         return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני מתכות</div>'
 
     if boreholes_override:
-        # Re-sort by max Cr concentration desc (chromium-dominant wells first).
+        # Respect Opus's selection AND order; filter only to wells that carry metals
+        # data. No max-concentration re-sort — the narrative order is authoritative.
         available = set(metals_data['canonical_id'].unique())
-        well_max = (
-            metals_data[metals_data.param_code == "CHROMIUM AS CR"]
-            .groupby("canonical_id").concentration.max()
-        )
-        candidates = [w for w in boreholes_override if w in available]
-        candidates.sort(key=lambda w: well_max.get(w, 0), reverse=True)
-        wells = candidates[:4]
+        wells = [w for w in boreholes_override if w in available][:6]
     else:
         # Order wells by max Cr concentration (the headline contaminant)
         well_max = (
@@ -425,8 +419,8 @@ def svg_chromium_panels(measurements: pd.DataFrame,
         if well_data.empty:
             continue
         nm = well_data.iloc[0].name_he
-        panels.append(_time_series_panel(well_data, nm, dws=50.0,
-                                          width=440, height=270,
+        panels.append(_time_series_panel(well_data, nm, dws=50.0, dws_param="Cr",
+                                          width=440, height=286,
                                           param_order=_METALS_PARAMS))
 
     if not panels:
@@ -449,13 +443,10 @@ def svg_btex_panels(measurements: pd.DataFrame,
         return f'<div style="padding:30px;color:{SOFT};text-align:center">אין נתוני דלקים</div>'
 
     if boreholes_override:
-        # Re-sort by FUEL severity (max concentration) desc to surface fuel wells
-        # before industry wells that happen to have stray BTEX samples.
+        # Respect Opus's selection AND order; filter only to wells that carry fuel
+        # data. No max-concentration re-sort — the narrative order is authoritative.
         available = set(fuel_data['canonical_id'].unique())
-        well_max = fuel_data.groupby("canonical_id").concentration.max()
-        candidates = [w for w in boreholes_override if w in available]
-        candidates.sort(key=lambda w: well_max.get(w, 0), reverse=True)
-        top_wells = candidates[:6]
+        top_wells = [w for w in boreholes_override if w in available][:8]
     else:
         # Select representative FUEL boreholes by max concentration
         well_max = fuel_data.groupby("canonical_id").concentration.max().sort_values(ascending=False)
@@ -471,8 +462,8 @@ def svg_btex_panels(measurements: pd.DataFrame,
         if well_data.empty:
             continue
         nm = well_data.iloc[0].name_he
-        panels.append(_time_series_panel(well_data, nm, dws=5.0,
-                                          width=400, height=260,
+        panels.append(_time_series_panel(well_data, nm, dws=5.0, dws_param="Benzene",
+                                          width=400, height=276,
                                           param_order=param_order))
 
     if not panels:
@@ -491,7 +482,8 @@ _PARAM_STYLES = [
 
 
 def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
-                        width: int = 380, height: int = 240,
+                        dws_param: str = None,
+                        width: int = 380, height: int = 256,
                         param_order: list = None) -> str:
     """One SVG time-series panel: log Y, linear X (year), DWS dashed red line.
 
@@ -501,12 +493,20 @@ def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
         well_data: DataFrame with date, concentration, param_code
         name_he: Hebrew title shown above panel
         dws: Drinking-water-standard line value (red dashed)
+        dws_param: Parameter the DWS line refers to (e.g. "TCE"). Shown in the DWS
+                   label so a multi-parameter panel makes clear which standard the
+                   single red line represents.
         width/height: SVG dimensions
         param_order: List of param_code strings to draw in this order (top to bottom in legend).
                      If None, uses order found in well_data.
     """
     well_data = well_data.copy()
-    well_data["year"] = pd.to_datetime(well_data["date"]).dt.year
+    _dt = pd.to_datetime(well_data["date"])
+    well_data["year"] = _dt.dt.year
+    # Fractional year (year + day-of-year fraction) is the X coordinate, so two
+    # samples in the SAME calendar year separate horizontally instead of stacking
+    # into a vertical line that looks like a connector between two parameters.
+    well_data["xpos"] = _dt.dt.year + (_dt.dt.dayofyear - 1) / 365.25
 
     # Determine params present in this well, respecting the requested order
     available = list(well_data.param_code.unique())
@@ -517,8 +517,9 @@ def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
     if not params:
         params = available
 
-    # Plot area — generous title (top), axis labels (bottom), legend (very bottom)
-    pad_l, pad_r, pad_t, pad_b = 44, 14, 38, 56
+    # Plot area — generous title (top), axis labels (bottom), legend (very bottom).
+    # pad_b holds: year ticks, the "Year" axis title, and the two-row legend.
+    pad_l, pad_r, pad_t, pad_b = 46, 14, 38, 70
     x_left = pad_l
     x_right = width - pad_r
     y_top = pad_t
@@ -529,7 +530,11 @@ def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
     c_min = 0.1
     c_max = max(well_data.concentration.max() * 1.2, dws * 5)
 
-    parts = [f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">']
+    # direction:ltr on the root neutralizes any RTL HTML container so the numeric
+    # Y-axis labels stay anchored to the LEFT of the axis (the Hebrew title carries
+    # its own rtl-title class override).
+    parts = [f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" '
+             f'direction="ltr" xmlns="http://www.w3.org/2000/svg">']
     parts.append(
         '<style>'
         'text.rtl-title { direction:rtl; unicode-bidi:isolate; font-family:"Frank Ruhl Libre","Times New Roman",serif; }'
@@ -538,14 +543,18 @@ def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
         '</style>'
     )
 
-    # Year gridlines + tick labels
+    # Year gridlines + tick labels (INK so the time axis is clearly readable)
     for yr in [2012, 2014, 2016, 2018, 2020, 2022, 2024]:
         x = linear_x(yr, y_min_year, y_max_year, x_left, x_right)
         parts.append(f'<line x1="{x:.1f}" y1="{y_top}" x2="{x:.1f}" y2="{y_bot}" '
                      f'stroke="{RULE_LIGHT}" stroke-width="0.4"/>')
-        parts.append(f'<text x="{x:.1f}" y="{y_bot + 12}" '
-                     f'font-family="IBM Plex Mono,monospace" font-size="9" '
-                     f'text-anchor="middle" fill="{SOFT}">{yr}</text>')
+        parts.append(f'<text x="{x:.1f}" y="{y_bot + 13}" '
+                     f'font-family="IBM Plex Mono,monospace" font-size="9.5" '
+                     f'text-anchor="middle" fill="{INK}">{yr}</text>')
+    # X-axis title — makes explicit that the horizontal axis is time (years)
+    parts.append(f'<text x="{(x_left + x_right) / 2:.1f}" y="{y_bot + 28}" '
+                 f'font-family="Source Sans 3,sans-serif" font-size="9.5" '
+                 f'text-anchor="middle" fill="{SOFT}">Year</text>')
 
     # Log-scale gridlines
     for c in [0.1, 1, 10, 100, 1000, 10000, 100000]:
@@ -555,19 +564,21 @@ def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
         parts.append(f'<line x1="{x_left}" y1="{y:.1f}" x2="{x_right}" y2="{y:.1f}" '
                      f'stroke="{RULE_LIGHT}" stroke-width="0.4"/>')
         lbl = f"{c:g}" if c >= 1 else f"{c:.1f}"
-        parts.append(f'<text x="{x_left - 5}" y="{y + 3:.1f}" '
+        parts.append(f'<text x="{x_left - 6}" y="{y + 3:.1f}" '
                      f'font-family="IBM Plex Mono,monospace" font-size="9" '
-                     f'text-anchor="end" fill="{SOFT}">{lbl}</text>')
+                     f'text-anchor="end" fill="{INK}">{lbl}</text>')
 
-    # DWS line (red dashed)
+    # DWS line (red dashed). The label names the parameter the standard refers to,
+    # so a multi-parameter panel makes clear the single red line is e.g. TCE's DWS.
     if dws <= c_max:
         y_dws = log_y(dws, c_min, c_max, y_top, y_bot)
+        dws_lbl = f"DWS {dws_param} {dws:g}" if dws_param else f"DWS {dws:g}"
         parts.append(f'<line x1="{x_left}" y1="{y_dws:.1f}" x2="{x_right}" y2="{y_dws:.1f}" '
                      f'stroke="{RED}" stroke-width="1" stroke-dasharray="3 2"/>')
         # DWS label at right
         parts.append(f'<text x="{x_right - 4}" y="{y_dws - 3:.1f}" '
                      f'font-family="IBM Plex Mono,monospace" font-size="8.5" '
-                     f'text-anchor="end" fill="{RED}">DWS {dws:g}</text>')
+                     f'text-anchor="end" fill="{RED}">{esc(dws_lbl)}</text>')
 
     # Axes
     parts.append(f'<line x1="{x_left}" y1="{y_top}" x2="{x_left}" y2="{y_bot}" '
@@ -584,19 +595,33 @@ def _time_series_panel(well_data: pd.DataFrame, name_he: str, dws: float,
     # Data: one series per param, ordered per param_order
     for i, param in enumerate(params):
         style = _PARAM_STYLES[i % len(_PARAM_STYLES)]
-        grp = well_data[well_data.param_code == param].sort_values("year")
+        grp = well_data[well_data.param_code == param].sort_values("xpos")
         pts = []
+        last_xy = None
         for _, r in grp.iterrows():
             if r.concentration <= 0:
                 continue
-            x = linear_x(r.year, y_min_year, y_max_year, x_left, x_right)
+            x = linear_x(r.xpos, y_min_year, y_max_year, x_left, x_right)
             y = log_y(r.concentration, c_min, c_max, y_top, y_bot)
             pts.append(f"{x:.1f},{y:.1f}")
+            last_xy = (x, y)
             parts.append(_marker(x, y, style["marker"], style["color"]))
         if len(pts) >= 2:
             dash_attr = "" if style["dash"] == "none" else f' stroke-dasharray="{style["dash"]}"'
             parts.append(f'<polyline points="{" ".join(pts)}" '
                          f'fill="none" stroke="{style["color"]}" stroke-width="1.3"{dash_attr}/>')
+        # Inline end-of-curve label: identify which contaminant each curve is, directly
+        # on the curve (independent of the bottom legend, which can be clipped).
+        if last_xy is not None:
+            lx, ly = last_xy
+            near_right = lx > (x_left + x_right) / 2
+            tx = lx - 3 if near_right else lx + 3
+            anchor = "end" if near_right else "start"
+            parts.append(f'<text x="{tx:.1f}" y="{ly - 4:.1f}" '
+                         f'font-family="Source Sans 3,sans-serif" font-size="8" font-weight="600" '
+                         f'direction="ltr" unicode-bidi="bidi-override" '
+                         f'text-anchor="{anchor}" fill="{style["color"]}">'
+                         f'{esc(_short_param_name(param))}</text>')
 
     # Title (well name) — at top, single line, larger; RTL for Hebrew with mixed content
     parts.append(f'<text x="{width / 2:.1f}" y="20" font-family="Source Sans 3,sans-serif" '
@@ -828,88 +853,245 @@ def svg_borehole_classification_table(classification: pd.DataFrame, classificati
     return "".join(rows)
 
 
-def svg_borehole_map_html(classification: pd.DataFrame) -> str:
+def svg_borehole_map_html(classification: pd.DataFrame,
+                          zone_polygon: list | None = None) -> str:
     """Generate SVG map showing borehole locations colored by severity bucket.
 
-    Uses ITM coordinates (בקואורדינטות ITM).
+    Uses ITM coordinates (בקואורדינטות ITM) in meters.
+    Calculates bounds dynamically from data to support any zone.
+    Optionally draws the zone polygon boundary (ITM meters list of [east, north]).
+    Labels shown for high-severity wells (≥6).
     """
     if classification.empty:
         return '<div style="padding:20px;color:#6b6b6b;text-align:center">אין נתוני קידוחים זמינים</div>'
 
-    # ITM bounds for Holon area (approximate)
-    east_min, east_max = 180, 183
-    north_min, north_max = 655, 659
+    # Calculate ITM bounds dynamically from actual data (in meters)
+    valid_coords = classification[
+        (pd.notna(classification['east_itm'])) &
+        (pd.notna(classification['north_itm']))
+    ]
+
+    if valid_coords.empty:
+        return '<div style="padding:20px;color:#6b6b6b;text-align:center">אין נתוני קידוחים עם קואורדינטות</div>'
+
+    # Get data bounds, extended to include polygon vertices if provided
+    all_east = list(valid_coords['east_itm'])
+    all_north = list(valid_coords['north_itm'])
+    if zone_polygon:
+        all_east += [pt[0] for pt in zone_polygon]
+        all_north += [pt[1] for pt in zone_polygon]
+
+    data_east_min, data_east_max = min(all_east), max(all_east)
+    data_north_min, data_north_max = min(all_north), max(all_north)
+
+    # Add 7% margin around data
+    east_margin = (data_east_max - data_east_min) * 0.07
+    north_margin = (data_north_max - data_north_min) * 0.07
+
+    east_min = data_east_min - east_margin
+    east_max = data_east_max + east_margin
+    north_min = data_north_min - north_margin
+    north_max = data_north_max + north_margin
 
     # SVG dimensions
-    svg_width, svg_height = 600, 500
-    padding = 40
+    svg_width, svg_height = 800, 600
+    padding = 60
     plot_width = svg_width - 2 * padding
     plot_height = svg_height - 2 * padding
 
+    def to_svg(east_m, north_m):
+        """Convert ITM meters to SVG pixel coordinates."""
+        x = padding + (east_m - east_min) / (east_max - east_min) * plot_width
+        y = svg_height - padding - (north_m - north_min) / (north_max - north_min) * plot_height
+        return x, y
+
     # Color mapping for severity buckets
     color_map = {
-        0: GREY_1,  # No contamination
-        1: GREY_2,  # Low
-        2: GREY_2,  # Low-medium
-        3: GREY_3,  # Medium
-        4: GREY_3,  # Medium-high
-        5: INK_2,   # High
-        6: INK,     # Very high
-        7: RED_SOFT,  # Critical
-        8: RED,     # Extreme
+        0: GREY_1, 1: GREY_2, 2: GREY_2,
+        3: GREY_3, 4: GREY_3,
+        5: INK_2, 6: INK,
+        7: RED_SOFT, 8: RED,
     }
 
     lines = []
     lines.append(f'<svg viewBox="0 0 {svg_width} {svg_height}" xmlns="http://www.w3.org/2000/svg">')
+
+    # Background: light map color (like a standard topographic base)
     lines.append(f'<rect width="{svg_width}" height="{svg_height}" fill="{PAPER}"/>')
 
-    # Axes
-    lines.append(f'<line x1="{padding}" y1="{svg_height-padding}" x2="{svg_width-padding}" y2="{svg_height-padding}" stroke="{INK}" stroke-width="2"/>')
-    lines.append(f'<line x1="{padding}" y1="{padding}" x2="{padding}" y2="{svg_height-padding}" stroke="{INK}" stroke-width="2"/>')
+    # Plot area: slightly off-white base (open area / unbuilt land tone)
+    lines.append(f'<rect x="{padding}" y="{padding}" width="{plot_width}" height="{plot_height}" '
+                f'fill="#eee9e0" stroke="none"/>')
 
-    # Grid lines (light)
-    for east in range(int(east_min), int(east_max)+1):
+    # KM grid lines (every 500m)
+    east_start = int((east_min / 500 + 1)) * 500
+    north_start = int((north_min / 500 + 1)) * 500
+    for eg in range(east_start, int(east_max) + 500, 500):
+        gx, _ = to_svg(eg, north_min)
+        lines.append(f'<line x1="{gx:.1f}" y1="{padding}" x2="{gx:.1f}" y2="{svg_height-padding}" '
+                    f'stroke="#d0ccc4" stroke-width="0.6" stroke-dasharray="3,4"/>')
+    for ng in range(north_start, int(north_max) + 500, 500):
+        _, gy = to_svg(east_min, ng)
+        lines.append(f'<line x1="{padding}" y1="{gy:.1f}" x2="{svg_width-padding}" y2="{gy:.1f}" '
+                    f'stroke="#d0ccc4" stroke-width="0.6" stroke-dasharray="3,4"/>')
+
+    # Zone polygon (industrial area boundary from zone_polygons.json)
+    if zone_polygon and len(zone_polygon) >= 3:
+        pts = [to_svg(pt[0], pt[1]) for pt in zone_polygon]
+        poly_pts = " ".join(f"{x:.1f},{y:.1f}" for x, y in pts)
+        lines.append(f'<polygon points="{poly_pts}" '
+                    f'fill="#dde8d8" fill-opacity="0.55" '
+                    f'stroke="#6a9a64" stroke-width="1.8" stroke-dasharray="6,3" stroke-linejoin="round"/>')
+        # Label the polygon
+        cx = sum(p[0] for p in pts) / len(pts)
+        cy = min(p[1] for p in pts) - 8
+        lines.append(f'<text x="{cx:.0f}" y="{cy:.0f}" text-anchor="middle" '
+                    f'font-size="9" fill="#4a7a44" font-style="italic" direction="rtl" unicode-bidi="isolate">'
+                    f'גבולות אזה"ת</text>')
+
+    # Outer border of plot area
+    lines.append(f'<rect x="{padding}" y="{padding}" width="{plot_width}" height="{plot_height}" '
+                f'fill="none" stroke="{RULE_LIGHT}" stroke-width="1.2"/>')
+
+    # CSS styles
+    lines.append('<style>')
+    lines.append('.label { font-size: 8px; fill: #1a1a1a; pointer-events: none; }')
+    lines.append('.label-bg { fill: white; fill-opacity: 0.92; stroke: #d8d3c8; stroke-width: 0.4; }')
+    lines.append('.borehole:hover { r: 7; }')
+    lines.append('</style>')
+
+    # ITM coordinate ticks (smart intervals based on data range)
+    # For east-west (meters): show every 500m or 1000m depending on range
+    east_range = east_max - east_min
+    east_interval = 1000 if east_range > 5000 else 500
+    east_start = int((east_min / east_interval) + 0.5) * east_interval
+
+    for east in range(east_start, int(east_max) + east_interval, east_interval):
         x = padding + (east - east_min) / (east_max - east_min) * plot_width
-        lines.append(f'<line x1="{x}" y1="{padding}" x2="{x}" y2="{svg_height-padding}" stroke="{RULE_FAINT}" stroke-width="0.5"/>')
+        lines.append(f'<line x1="{x}" y1="{svg_height-padding}" x2="{x}" y2="{svg_height-padding+5}" stroke="{INK}" stroke-width="1"/>')
+        lines.append(f'<text x="{x}" y="{svg_height-padding+18}" text-anchor="middle" font-size="9" fill="{SOFT}">{east/1000:.1f}</text>')
 
-    for north in range(int(north_min), int(north_max)+1):
+    # For north-south (meters): similar logic
+    north_range = north_max - north_min
+    north_interval = 1000 if north_range > 5000 else 500
+    north_start = int((north_min / north_interval) + 0.5) * north_interval
+
+    for north in range(north_start, int(north_max) + north_interval, north_interval):
         y = svg_height - padding - (north - north_min) / (north_max - north_min) * plot_height
-        lines.append(f'<line x1="{padding}" y1="{y}" x2="{svg_width-padding}" y2="{y}" stroke="{RULE_FAINT}" stroke-width="0.5"/>')
+        lines.append(f'<line x1="{padding}" y1="{y}" x2="{padding-5}" y2="{y}" stroke="{INK}" stroke-width="1"/>')
+        lines.append(f'<text x="{padding-8}" y="{y+3}" text-anchor="end" font-size="9" fill="{SOFT}">{north/1000:.1f}</text>')
 
-    # Plot boreholes
-    for _, row in classification.iterrows():
+    # Plot border (axes)
+    lines.append(f'<line x1="{padding}" y1="{svg_height-padding}" x2="{svg_width-padding}" y2="{svg_height-padding}" stroke="{INK}" stroke-width="1.5"/>')
+    lines.append(f'<line x1="{padding}" y1="{padding}" x2="{padding}" y2="{svg_height-padding}" stroke="{INK}" stroke-width="1.5"/>')
+
+    # Sort by severity (low first) so high-severity dots render on top
+    sorted_classification = classification.sort_values('severity_bucket', ascending=True)
+
+    # First pass: draw all dots
+    points = []
+    for _, row in sorted_classification.iterrows():
         if pd.notna(row['east_itm']) and pd.notna(row['north_itm']):
-            x = padding + (row['east_itm'] - east_min) / (east_max - east_min) * plot_width
-            y = svg_height - padding - (row['north_itm'] - north_min) / (north_max - north_min) * plot_height
+            x, y = to_svg(row['east_itm'], row['north_itm'])
 
             bucket = int(row['severity_bucket'])
             color = color_map.get(bucket, GREY_3)
+            radius = 5 if bucket >= 5 else 3.5
 
-            lines.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4" fill="{color}" stroke="{INK}" stroke-width="0.5"/>')
+            name = row.get('borehole_name', '') or ''
+            points.append({'x': x, 'y': y, 'color': color, 'radius': radius,
+                          'bucket': bucket, 'name': str(name)})
 
-    # Axis labels — RTL for mixed Hebrew/English content
-    lines.append(f'<text x="{svg_width/2}" y="{svg_height-10}" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="12" fill="{INK}">מזרח (ITM)</text>')
-    lines.append(f'<text x="15" y="{svg_height/2}" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="12" fill="{INK}" transform="rotate(-90 15 {svg_height/2})">צפון (ITM)</text>')
+            lines.append(f'<circle class="borehole" cx="{x:.1f}" cy="{y:.1f}" r="{radius}" '
+                        f'fill="{color}" stroke="{INK}" stroke-width="0.7"/>')
+            lines.append(f'<title>{esc(str(name))} (אינדקס {bucket})</title>')
 
-    # Title — Hebrew, RTL
-    lines.append(f'<text x="{svg_width/2}" y="25" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="14" font-weight="bold" fill="{INK}">מיקומי קידוחים לפי אינדקס חומרה</text>')
+    # Second pass: labels ONLY for high-severity (≥6) to avoid clutter
+    # Use simple anti-overlap: track placed label rectangles
+    placed_labels = []
+    high_severity_points = sorted([p for p in points if p['bucket'] >= 6],
+                                   key=lambda p: -p['bucket'])
 
-    # Legend
-    legend_x = svg_width - 150
-    legend_y = 50
-    lines.append(f'<rect x="{legend_x}" y="{legend_y}" width="140" height="120" fill="{PAPER}" stroke="{RULE_LIGHT}"/>')
+    char_w = 6.0   # Hebrew glyph width at 8px font (wider than Latin)
+    pad_x = 4.0    # horizontal padding inside the white box
+    text_height = 12
+
+    label_draw = []  # defer drawing so all labels sit above all dots/boxes
+    for p in high_severity_points:
+        name = p['name']
+        if not name:
+            continue
+
+        text_width = len(name) * char_w
+        box_w = text_width + 2 * pad_x
+        half_w = box_w / 2
+
+        # Candidate CENTER positions for the label box relative to the dot.
+        # Using a center anchor makes geometry direction-independent (RTL-safe).
+        for off_x, off_y in [(half_w + 6, -10), (-half_w - 6, -10),
+                             (half_w + 6, 12), (-half_w - 6, 12),
+                             (half_w + 10, 1), (-half_w - 10, 1),
+                             (half_w + 6, -24), (-half_w - 6, -24)]:
+            cx = p['x'] + off_x
+            cy = p['y'] + off_y
+
+            box = (cx - half_w, cy - text_height + 2, cx + half_w, cy + 3)
+
+            # Reject if outside plot area
+            if (box[0] < padding or box[2] > svg_width - padding or
+                    box[1] < padding or box[3] > svg_height - padding):
+                continue
+
+            # Reject if overlapping an already-placed label
+            if any(not (box[2] < q[0] or box[0] > q[2] or
+                        box[3] < q[1] or box[1] > q[3]) for q in placed_labels):
+                continue
+
+            placed_labels.append(box)
+            label_draw.append((p['x'], p['y'], cx, cy, box, name))
+            break
+
+    # Leader lines first (under boxes)
+    for bx, by, cx, cy, box, name in label_draw:
+        # connect dot to the nearest horizontal edge of its label box
+        edge_x = box[0] if cx > bx else box[2]
+        lines.append(f'<line x1="{bx:.1f}" y1="{by:.1f}" x2="{edge_x:.1f}" y2="{cy-3:.1f}" '
+                    f'stroke="#999" stroke-width="0.5" opacity="0.7"/>')
+    # Boxes + text on top (center-anchored: RTL-safe)
+    for bx, by, cx, cy, box, name in label_draw:
+        lines.append(f'<rect class="label-bg" x="{box[0]:.1f}" y="{box[1]:.1f}" '
+                    f'width="{box[2]-box[0]:.1f}" height="{box[3]-box[1]:.1f}" rx="1.5"/>')
+        lines.append(f'<text class="label" x="{cx:.1f}" y="{cy:.1f}" '
+                    f'text-anchor="middle" direction="rtl" unicode-bidi="isolate">{esc(name)}</text>')
+
+    # Axis labels
+    lines.append(f'<text x="{svg_width/2}" y="{svg_height-15}" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="11" fill="{INK}">מזרח (ITM, ק"מ)</text>')
+    lines.append(f'<text x="20" y="{svg_height/2}" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="11" fill="{INK}" transform="rotate(-90 20 {svg_height/2})">צפון (ITM, ק"מ)</text>')
+
+    # Title
+    lines.append(f'<text x="{svg_width/2}" y="30" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="14" font-weight="bold" fill="{INK}">מיקומי קידוחים — אזה"ת חולון</text>')
+    lines.append(f'<text x="{svg_width/2}" y="46" text-anchor="middle" direction="rtl" unicode-bidi="isolate" font-size="10" fill="{SOFT}">צבע לפי אינדקס חומרה (0–8) · תוויות לקידוחים באינדקס ≥6</text>')
+
+    # Legend (bottom-right, compact)
+    legend_x = svg_width - padding - 130
+    legend_y = svg_height - padding - 110
+    lines.append(f'<rect x="{legend_x}" y="{legend_y}" width="120" height="100" fill="white" stroke="{RULE_LIGHT}" stroke-width="0.8" opacity="0.95"/>')
+    lines.append(f'<text x="{legend_x+115}" y="{legend_y+14}" text-anchor="end" direction="rtl" unicode-bidi="isolate" font-size="10" font-weight="bold" fill="{INK}">אינדקס חומרה</text>')
 
     legend_items = [
-        (RED, "אינדקס 8"),
-        (RED_SOFT, "אינדקס 7"),
-        (INK, "אינדקס 6"),
-        (INK_2, "אינדקס 5"),
+        (RED, 8, "8 — חמור מאוד"),
+        (RED_SOFT, 7, "7 — חמור"),
+        (INK, 6, "6 — גבוה"),
+        (INK_2, 5, "5 — בינוני-גבוה"),
+        (GREY_3, 3, "3–4 — בינוני"),
+        (GREY_2, 1, "0–2 — נמוך"),
     ]
 
-    for i, (color, label) in enumerate(legend_items):
-        ly = legend_y + 10 + i * 25
-        lines.append(f'<circle cx="{legend_x+10}" cy="{ly+6}" r="3" fill="{color}"/>')
-        lines.append(f'<text x="{legend_x+20}" y="{ly+8}" direction="rtl" unicode-bidi="isolate" font-size="11" fill="{INK}">{label}</text>')
+    for i, (color, bucket, label) in enumerate(legend_items):
+        ly = legend_y + 26 + i * 12
+        radius = 4 if bucket >= 5 else 2.5
+        lines.append(f'<circle cx="{legend_x+108}" cy="{ly}" r="{radius}" fill="{color}" stroke="{INK}" stroke-width="0.5"/>')
+        lines.append(f'<text x="{legend_x+100}" y="{ly+3}" text-anchor="end" direction="rtl" unicode-bidi="isolate" font-size="9" fill="{INK}">{label}</text>')
 
     lines.append('</svg>')
 

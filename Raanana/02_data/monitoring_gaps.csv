@@ -1,0 +1,103 @@
+canonical_well_id,parameter_canonical,last_measurement_date,is_active,reason_if_inactive,n_measurements_total,n_measurements_last_5y,coverage_note
+raanana_nd_paz_hanofer,MTBE,2024-10-01,true,,14,4,Only 4 measurements in 5y window
+raanana_nd_turbine,MTBE,2023-11-14,true,,5,1,Only 1 measurements in 5y window
+raanana_nd_turbine,CHLF,2023-11-14,true,,1,1,Only 1 measurements in 5y window
+raanana_nd_turbine,TCEY,2023-11-14,true,,1,1,Only 1 measurements in 5y window
+raanana_nd_turbine,PFBA,2025-07-30,true,,1,1,Only 1 measurements in 5y window
+raanana_nd_turbine,PFBS,2025-07-30,true,,1,1,Only 1 measurements in 5y window
+raanana_nd_turbine,PFDA,2025-07-30,true,,1,1,Only 1 measurements in 5y window
+raanana_nd_turbine,PFHpA,2025-07-30,true,,1,1,Only 1 measurements in 5y window
+raanana_nd_turbine,PFHxA,2025-07-30,true,,1,1,Only 1 measurements in 5y window
+raanana_nd_turbine,PFHxS,2025-07-30,true,,1,1,Only 1 measurements in 5y window
+raanana_nd_turbine,PFNA,2025-07-30,true,,1,1,Only 1 measurements in 5y window
+raanana_nd_turbine,PFOA,2025-07-30,true,,1,1,Only 1 measurements in 5y window
+raanana_nd_turbine,PFOS,2025-07-30,true,,1,1,Only 1 measurements in 5y window
+raanana_nd_turbine,PFPeA,2025-07-30,true,,1,1,Only 1 measurements in 5y window
+raanana_nt_1,CHLF,2025-07-29,true,,9,2,Only 2 measurements in 5y window
+raanana_nt_1,MTBE,2025-07-29,true,,8,2,Only 2 measurements in 5y window
+raanana_nt_1,OXYL,2017-06-11,true,,4,0,No recent measurements
+raanana_nt_1,PXYL,2015-06-28,true,,3,0,No recent measurements
+raanana_nt_1,TCEY,2025-07-29,true,,9,2,Only 2 measurements in 5y window
+raanana_nt_1,AS,2025-07-29,true,,8,3,Only 3 measurements in 5y window
+raanana_nt_1,BA,2025-07-29,true,,9,3,Only 3 measurements in 5y window
+raanana_nt_1,CD,2025-07-29,true,,8,3,Only 3 measurements in 5y window
+raanana_nt_1,CR,2025-07-29,true,,10,3,Only 3 measurements in 5y window
+raanana_nt_1,CU,2025-07-29,true,,9,3,Only 3 measurements in 5y window
+raanana_nt_1,FE++,2012-06-25,true,,1,0,No recent measurements
+raanana_nt_1,MN,2025-07-29,true,,10,3,Only 3 measurements in 5y window
+raanana_nt_1,NI,2025-07-29,true,,9,3,Only 3 measurements in 5y window
+raanana_nt_1,PB,2025-07-29,true,,8,3,Only 3 measurements in 5y window
+raanana_nt_1,FE,2025-07-29,true,,9,3,Only 3 measurements in 5y window
+raanana_nt_1,ZN,2025-07-29,true,,8,3,Only 3 measurements in 5y window
+raanana_nt_1,SE,2025-07-29,true,,4,3,Only 3 measurements in 5y window
+raanana_nt_2,CHLF,2025-07-29,true,,9,2,Only 2 measurements in 5y window
+raanana_nt_2,MTBE,2025-07-29,true,,8,2,Only 2 measurements in 5y window
+raanana_nt_2,OXYL,2017-06-11,true,,4,0,No recent measurements
+raanana_nt_2,PXYL,2015-06-28,true,,3,0,No recent measurements
+raanana_nt_2,TCEY,2025-07-29,true,,9,2,Only 2 measurements in 5y window
+raanana_nt_2,AS,2025-07-29,true,,8,3,Only 3 measurements in 5y window
+raanana_nt_2,BA,2025-07-29,true,,9,3,Only 3 measurements in 5y window
+raanana_nt_2,CD,2025-07-29,true,,8,3,Only 3 measurements in 5y window
+raanana_nt_2,CR,2025-07-29,true,,10,3,Only 3 measurements in 5y window
+raanana_nt_2,CU,2025-07-29,true,,9,3,Only 3 measurements in 5y window
+raanana_nt_2,FE++,2012-06-25,true,,1,0,No recent measurements
+raanana_nt_2,MN,2025-07-29,true,,10,3,Only 3 measurements in 5y window
+raanana_nt_2,NI,2025-07-29,true,,9,3,Only 3 measurements in 5y window
+raanana_nt_2,PB,2025-07-29,true,,8,3,Only 3 measurements in 5y window
+raanana_nt_2,FE,2025-07-29,true,,9,3,Only 3 measurements in 5y window
+raanana_nt_2,ZN,2025-07-29,true,,8,3,Only 3 measurements in 5y window
+raanana_nt_2,SE,2025-07-29,true,,4,3,Only 3 measurements in 5y window
+raanana_nt_3,CHLF,2025-07-29,true,,9,2,Only 2 measurements in 5y window
+raanana_nt_3,MTBE,2025-07-29,true,,8,2,Only 2 measurements in 5y window
+raanana_nt_3,OXYL,2017-06-11,true,,4,0,No recent measurements
+raanana_nt_3,PXYL,2015-06-28,true,,3,0,No recent measurements
+raanana_nt_3,TCEY,2025-07-29,true,,9,2,Only 2 measurements in 5y window
+raanana_nt_3,AS,2025-07-29,true,,7,2,Only 2 measurements in 5y window
+raanana_nt_3,BA,2025-07-29,true,,8,2,Only 2 measurements in 5y window
+raanana_nt_3,CD,2025-07-29,true,,7,2,Only 2 measurements in 5y window
+raanana_nt_3,CR,2025-07-29,true,,9,2,Only 2 measurements in 5y window
+raanana_nt_3,CU,2025-07-29,true,,8,2,Only 2 measurements in 5y window
+raanana_nt_3,FE++,2012-06-25,true,,1,0,No recent measurements
+raanana_nt_3,MN,2025-07-29,true,,9,2,Only 2 measurements in 5y window
+raanana_nt_3,NI,2025-07-29,true,,8,2,Only 2 measurements in 5y window
+raanana_nt_3,PB,2025-07-29,true,,7,2,Only 2 measurements in 5y window
+raanana_nt_3,FE,2025-07-29,true,,8,2,Only 2 measurements in 5y window
+raanana_nt_3,ZN,2025-07-29,true,,7,2,Only 2 measurements in 5y window
+raanana_nt_3,SE,2025-07-29,true,,3,2,Only 2 measurements in 5y window
+raanana_p_18,CHLF,2011-05-02,false,closed,1,0,No recent measurements
+raanana_p_18,MTBE,2011-05-02,false,closed,1,0,No recent measurements
+raanana_p_18,OXYL,2011-05-02,false,closed,1,0,No recent measurements
+raanana_p_18,PXYL,2011-05-02,false,closed,1,0,No recent measurements
+raanana_p_18,TCEY,2011-05-02,false,closed,1,0,No recent measurements
+raanana_p_18,AS,2011-05-02,false,closed,1,0,No recent measurements
+raanana_p_18,CD,2011-05-02,false,closed,1,0,No recent measurements
+raanana_p_18,CR,2011-05-02,false,closed,1,0,No recent measurements
+raanana_p_18,CU,2011-05-02,false,closed,1,0,No recent measurements
+raanana_p_18,FE++,2011-05-02,false,closed,1,0,No recent measurements
+raanana_p_18,MN,2011-05-02,false,closed,1,0,No recent measurements
+raanana_p_18,NI,2011-05-02,false,closed,1,0,No recent measurements
+raanana_p_18,PB,2011-05-02,false,closed,1,0,No recent measurements
+raanana_p_18,SE,2011-05-02,false,closed,1,0,No recent measurements
+raanana_p_18,ZN,2011-05-02,false,closed,1,0,No recent measurements
+raanana_p_25,AS,2025-03-02,true,,3,3,Only 3 measurements in 5y window
+raanana_p_25,BA,2025-03-02,true,,4,4,Only 4 measurements in 5y window
+raanana_p_25,CD,2025-03-02,true,,3,3,Only 3 measurements in 5y window
+raanana_p_25,CR,2025-03-02,true,,3,3,Only 3 measurements in 5y window
+raanana_p_25,CU,2025-03-02,true,,3,3,Only 3 measurements in 5y window
+raanana_p_25,FE,2025-03-02,true,,4,4,Only 4 measurements in 5y window
+raanana_p_25,MN,2025-03-02,true,,4,4,Only 4 measurements in 5y window
+raanana_p_25,MTBE,2025-03-02,true,,3,3,Only 3 measurements in 5y window
+raanana_p_25,NI,2025-03-02,true,,3,3,Only 3 measurements in 5y window
+raanana_p_25,PB,2025-03-02,true,,3,3,Only 3 measurements in 5y window
+raanana_p_25,SE,2025-03-02,true,,3,3,Only 3 measurements in 5y window
+raanana_p_25,ZN,2025-03-02,true,,3,3,Only 3 measurements in 5y window
+raanana_p_25,PFBA,2025-08-10,true,,2,2,Only 2 measurements in 5y window
+raanana_p_25,PFBS,2025-08-10,true,,2,2,Only 2 measurements in 5y window
+raanana_p_25,PFDA,2024-06-04,true,,1,1,Only 1 measurements in 5y window
+raanana_p_25,PFHpA,2025-08-10,true,,2,2,Only 2 measurements in 5y window
+raanana_p_25,PFHxA,2025-08-10,true,,2,2,Only 2 measurements in 5y window
+raanana_p_25,PFHxS,2025-08-10,true,,2,2,Only 2 measurements in 5y window
+raanana_p_25,PFNA,2025-08-10,true,,2,2,Only 2 measurements in 5y window
+raanana_p_25,PFOA,2025-08-10,true,,2,2,Only 2 measurements in 5y window
+raanana_p_25,PFOS,2025-08-10,true,,2,2,Only 2 measurements in 5y window
+raanana_p_25,PFPeA,2025-08-10,true,,1,1,Only 1 measurements in 5y window

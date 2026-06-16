@@ -153,13 +153,18 @@ def build_figure_html(fig_num: int, caption_text: str, svg: str) -> str:
     """Wrap an inline SVG in the design-language <figure> structure."""
     sublabel = FIGURE_SUBLABELS.get(fig_num, "")
     caption_html = md_utils.wrap_bidi(md_inline_to_html(caption_text))
+    # The SVG is embedded raw — NOT through wrap_bidi. wrap_bidi wraps Latin/numeric
+    # runs in <bdi>, which is an HTML element invalid inside SVG <text>; injecting it
+    # there silently breaks rendering of year ticks, DWS labels and contaminant
+    # labels. The chart engine already handles bidi internally (direction="ltr" root
+    # + rtl-title class). Caption text, being HTML, still goes through wrap_bidi.
     return (
         '<figure>\n'
         '  <div class="fig-h">\n'
         f'    <span class="ttl">איור {fig_num}</span>\n'
         f'    <span>{sublabel}</span>\n'
         '  </div>\n'
-        f'  <div class="frame">\n{md_utils.wrap_bidi(svg)}\n  </div>\n'
+        f'  <div class="frame">\n{svg}\n  </div>\n'
         f'  <figcaption><span class="lbl">איור {fig_num}</span><span>{caption_html}</span></figcaption>\n'
         '</figure>'
     )
@@ -223,23 +228,50 @@ def render_section(section_md: str, figures: dict) -> str:
     return f'<section>\n{header_html}\n{body_html}\n</section>'
 
 
-def build_figures() -> dict:
-    """Generate the 5 V5 figures via the shared chart engine."""
-    measurements = dl.load_measurements_alert()
-    trends = dl.load_trends_alert()
-    severity = dl.load_severity_index()
-    data_avail = dl.load_data_availability()
-    classification = dl.load_borehole_classification()
+def build_figures(zone: str = "holon", report_path: Path = None) -> dict:
+    """Generate the 5 V5 figures via the shared chart engine.
 
-    report_path = REPO_ROOT / "Holon" / "output" / "HOLON_REPORT_V5.md"
-    report_boreholes = dl.extract_report_boreholes(report_path, severity)
-    print(f"  boreholes_override from V5.md: {len(report_boreholes)} mentioned")
+    zone: zone name (e.g., "holon", "raanana") — used to load zone-specific data
+    report_path: the report whose borehole mentions drive panel selection. Must be
+    the SAME report being rendered (V7, V8, …) — otherwise the figures show a
+    different report's wells. Defaults to latest V5+ report.
+    """
+    measurements = dl.load_measurements_alert(zone=zone)
+    trends = dl.load_trends_alert(zone=zone)
+    severity = dl.load_severity_index(zone=zone)
+    data_avail = dl.load_data_availability(zone=zone)
+    classification = dl.load_borehole_classification(zone=zone)
+
+    if report_path is None:
+        # Auto-detect highest-version report (numeric); zone dir is capitalized.
+        out_dir = REPO_ROOT / zone.capitalize() / "output"
+        cands = []
+        for p in out_dir.glob(f"{zone.upper()}_REPORT_V*.md"):
+            m = re.search(r"_REPORT_V(\d+)", p.name)
+            if m:
+                cands.append((int(m.group(1)), p))
+        report_path = max(cands)[1] if cands else out_dir / f"{zone.upper()}_REPORT_V5.md"
+
+    report_boreholes = dl.extract_report_boreholes(report_path, severity, zone=zone)
+    print(f"  boreholes_override from {report_path.name}: {len(report_boreholes)} mentioned")
 
     alert_ids = set(measurements["canonical_id"].unique())
     severity_alert = severity[severity["borehole"].isin(alert_ids)].copy()
 
+    # Load zone polygon for map background
+    import json
+    _poly_path = REPO_ROOT / "zone_definitions" / "zone_polygons.json"
+    _zone_polygon = None
+    try:
+        with open(_poly_path, encoding="utf-8") as _f:
+            _poly_data = json.load(_f)
+        _zone_key = zone.lower()
+        _zone_polygon = _poly_data.get(_zone_key, _poly_data.get(zone.upper(), {})).get("polygon")
+    except Exception:
+        pass
+
     figures = {
-        1: sc.svg_borehole_map_html(classification),
+        1: sc.svg_borehole_map_html(classification, zone_polygon=_zone_polygon),
         2: sc.svg_cvoc_panels(measurements, severity, boreholes_override=report_boreholes),
         3: sc.svg_chromium_panels(measurements, boreholes_override=report_boreholes),
         4: sc.svg_btex_panels(measurements, boreholes_override=report_boreholes),
@@ -249,20 +281,39 @@ def build_figures() -> dict:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Generate Holon V5 designed HTML (full content)")
+    parser = argparse.ArgumentParser(description="Generate zone V5 designed HTML (full content)")
+    parser.add_argument("--zone", type=str, default="holon",
+                        help="Zone name (e.g., holon, raanana)")
     parser.add_argument("--report", type=Path,
-                        default=REPO_ROOT / "Holon" / "output" / "HOLON_REPORT_V5.md")
+                        help="Override report path (auto-detected from --zone if not provided)")
     parser.add_argument("--template", type=Path,
                         default=REPO_ROOT / "scripts" / "report_designed" / "template.html")
     parser.add_argument("--output", type=Path,
-                        default=REPO_ROOT / "Holon" / "output" / "HOLON_REPORT_V5.html")
+                        help="Override output path (auto-detected from --zone if not provided)")
     args = parser.parse_args()
+
+    # Auto-detect report/output paths if not provided.
+    # zone (lowercase) drives data_loader; zone_dir (capitalized) is the filesystem dir.
+    zone = args.zone.lower()
+    out_dir = REPO_ROOT / zone.capitalize() / "output"
+    if args.report is None:
+        # Pick the highest-version report (V5+) — numeric, not lexicographic.
+        cands = []
+        for p in out_dir.glob(f"{zone.upper()}_REPORT_V*.md"):
+            m = re.search(r"_REPORT_V(\d+)", p.name)
+            if m:
+                cands.append((int(m.group(1)), p))
+        args.report = max(cands)[1] if cands else out_dir / f"{zone.upper()}_REPORT_V5.md"
+    if args.output is None:
+        version_match = re.search(r"_REPORT_V(\d+)", args.report.name)
+        output_name = f"{zone.upper()}_REPORT_V{version_match.group(1)}" if version_match else f"{zone.upper()}_REPORT_V5"
+        args.output = out_dir / f"{output_name}.html"
 
     print(f"Reading V5 report: {args.report.name}")
     report_md = args.report.read_text(encoding="utf-8")
 
     print("Building SVG figures (shared engine)...")
-    figures = build_figures()
+    figures = build_figures(zone=zone, report_path=args.report)
 
     print("Extracting CSS head from template...")
     template = args.template.read_text(encoding="utf-8")
@@ -305,18 +356,38 @@ def main() -> None:
             continue  # version sub-header → masthead meta
         rendered_sections.append(render_section(bstripped, figures))
 
+    # Extract metadata for masthead (dynamic, from the data pack).
+    # Boreholes: classification rows. Measurements: TOTAL scoped count from the data
+    # pack (02_data/measurements_scoped.csv) — NOT the alert subset, which understates it.
+    _meta_class = dl.load_borehole_classification(zone=zone)
+    boreholes_count = len(_meta_class) if not _meta_class.empty else "?"
+    _scoped = REPO_ROOT / zone.capitalize() / "02_data" / "measurements_scoped.csv"
+    measurements_count = "?"
+    families_count = "?"
+    if _scoped.exists():
+        import csv as _csv
+        with _scoped.open(encoding="utf-8") as _fh:
+            _rows = list(_csv.DictReader(_fh))
+        measurements_count = len(_rows)
+        _fam_col = next((c for c in ("family", "parameter_family", "param_family") if _rows and c in _rows[0]), None)
+        if _fam_col:
+            families_count = len({r[_fam_col] for r in _rows if r.get(_fam_col)})
+    _meas_str = f"{measurements_count:,}" if isinstance(measurements_count, int) else "?"
+    version_label = re.search(r"_REPORT_(V\d+)", args.report.name)
+    version_label = version_label.group(1) if version_label else "V5"
+
     masthead = f'''<header class="masthead">
   <div class="top">
-    <span>HOLON / ZONE REPORT V5</span>
+    <span>{zone.upper()} / ZONE REPORT {version_label}</span>
     <span>גרסה מעוצבת · {datetime.now().strftime("%Y-%m-%d %H:%M")}</span>
   </div>
   <h1>{md_inline_to_html(report_title)}</h1>
   <p class="sub">{md_utils.wrap_bidi(md_inline_to_html(masthead_intro))}</p>
   <div class="meta">
-    <span><b>112</b> קידוחים פעילים</span>
-    <span><b>20,613</b> מדידות</span>
+    <span><b>{boreholes_count}</b> קידוחים</span>
+    <span><b>{_meas_str}</b> מדידות</span>
     <span><b>2010–2026</b> טווח</span>
-    <span><b>4</b> משפחות מזהמים</span>
+    <span><b>{families_count}</b> משפחות מזהמים</span>
   </div>
 </header>'''
 

@@ -17,11 +17,19 @@ You are a **senior hydrogeologist analyst** writing a regional groundwater quali
 - §I: 5 inputs (context pack, data pack, diagnosis, anchors, precedent)
 - §II: V5 schema (6 sections + methodology + limitations + appendices)
 - §III: Severity scale (9-level bucket, 5-label summary)
-- §IV: Family ordering (FUEL last; others by max_bucket descending)
+- §IV: Focus ordering — §3 לפי מוקד גיאוגרפי; משפחות משניות בתוך מוקד; כלל קישור מנגנוני; "פערי כיסוי" אחרון
 - §VI: Figure rules
 - §VII: Validation checklist
 
 **אכיפת טרמינולוגיה**: NO English operational terms (ALERT/WATCH/ELEVATED/STABLE). Use Hebrew labels (נמוך/בינוני/גבוה/גבוה מאוד) or descriptive phrasing.
+
+<terminology>
+**מילון מונחים מחייב** (SSOT: `docs/STYLE_GUIDE.md` §B.5). המונחים בעמודה הימנית בלבד; המונחים בעמודה השמאלית **אסורים** בפרוזה — ה-QA (Gate 5) חוסם אותם:
+
+{TERMINOLOGY_BLOCK}
+
+בנוסף: דירוג ודאות שיוך מקורות (§5) ייכתב תמיד **"רמת ודאות: גבוהה / בינונית / נמוכה"** — לעולם לא HIGH/MEDIUM/LOW בפרוזה העברית.
+</terminology>
 
 ---
 
@@ -63,16 +71,22 @@ Fuel boreholes: {FUEL_COUNT}
 Total active boreholes: {TOTAL_ACTIVE}
 Measurements (TPFAS/BETK excluded): {N_MEASUREMENTS}
 Year range: {YEAR_START}–{YEAR_END}
-Family max_buckets (for §IV ordering): CVOC={CVOC_MAX} | METALS={METALS_MAX} | PFAS={PFAS_MAX} | FUEL={FUEL_MAX}
+Focus order (from zone_diagnosis.md ## סדר מוקדים): {FOCUS_ORDER_LIST}
 Precedent zone (style reference): {PRECEDENT_ZONE}
 Report version: V5 Hybrid Pipeline
 </zone_metadata>
 
-<family_order>
-Per §IV: FUEL always last. Computed order for this zone:
-{FAMILY_ORDER_LIST}
-# Example: CVOC → METALS → PFAS → FUEL (Holon) or METALS → CVOC → PFAS → FUEL (other zone)
-</family_order>
+<focus_order>
+Per §IV: §3 = geographic foci ordered by focus severity descending. Families are secondary within each focus.
+Foci order for this zone (from zone_diagnosis.md "## סדר מוקדים" block):
+{FOCUS_ORDER_LIST}
+# Example row: 1 | מוקד אלביט / נת חולון | רח' ההסתדרות | CVOC | 8 | 1,4-dioxane | קישור: dioxane כמייצב TCA
+# Mechanical link rule: if family B is physicochemically linked to dominant family A within same focus
+# (VC from TCE decay, 1,4-dioxane as TCA stabilizer, LNAPL as electron donor for CVOC reductive dechlorination)
+# → present B immediately after A, before any unlinked family with higher severity.
+# Cross-focus links → treat as "signal crossing" with competing hypotheses.
+# Last section = "פערי כיסוי" (coverage gaps): PFAS without geographic data + spatial/parametric gaps.
+</focus_order>
 
 ---
 
@@ -102,8 +116,8 @@ Per §IV: FUEL always last. Computed order for this zone:
 </document>
 
 <document index="5">
-<source>{ZONE}/lean_workspace/04_deterministic_anchors/anchors_pilot.yaml (Structured Anchors PILOT)</source>
-<purpose>Deterministic markers (statistical + forensic): 31 statistical anchors + 27 forensic anchors. Validated; use as ground truth for contamination foci and source attribution.</purpose>
+<source>{ZONE}/lean_workspace/04_deterministic_anchors/statistical_signals_PILOT.yaml + forensic_anchors_PILOT.yaml (Structured Anchors PILOT)</source>
+<purpose>Deterministic markers split across two files — statistical signals (S-series) + forensic anchors (F-series). Validated; use as ground truth for contamination foci and source attribution. The zone diagnosis already cites these by ID (e.g. S6_002, F1_001).</purpose>
 <notes>Format: YAML list with anchor_id, zone, family, well_id, marker_type (statistical|forensic), confidence (high|medium|low), evidence_key, narrative_snippet.</notes>
 </document>
 
@@ -167,15 +181,17 @@ All CSVs are in `{ZONE}/02_data/`:
 - ~200 words
 
 ### Section 2: תמונת מצב אזורית ומערך הניטור
-- Geography (ITM coordinates, relative position)
-- Hydrogeology (aquifer type, flow direction)
+- **Hydrogeology** (aquifer type, flow direction, relative permeability): עומק מפלס, סוג שכבות, כיווני זרימה, חדירות יחסית. **NO DNAPL-depth discussion**; DNAPL assessment reserved for §3 forensics if warranted.
+- **Geographic & temporal context**: מיקום (ITM coordinates, relative position), גודל האזור, תאריך הקמת/התחלת הניטור, אופי התעשיות (סקטורים, מספר מתקנים).
 - Monitoring network ({TOTAL_ACTIVE} boreholes: composition, status)
 - Figure 1 required (map with wells + contamination foci)
 
 ### Section 3: מוקדי זיהום עיקריים (Contamination Foci / Families)
-- **Order**: by max_bucket descending ({FAMILY_ORDER_LIST}), FUEL always last
-- **Per focus/family**: name, leading boreholes, top contaminants (with sev index), table (3–5 key measurements), trends (Z/p/SNR for significant ones), possible sources (HIGH/MEDIUM/LOW), data gaps
+- **Order**: by geographic focus per §IV ({FOCUS_ORDER_LIST}); families secondary within each focus; "פערי כיסוי" last
+- **Header rule (HARD — Gate 5)**: each `### 3.N` heading MUST be a **geographic focus name** (facility/site/area, e.g. "מוקד סביבת מתקן אלביט / נת חולון"), **NOT** a bare family name. "CVOC" / "מתכות" / "דלק" alone as a 3.N heading FAILs the gate — the family is secondary *inside* the focus.
+- **Per focus/family**: name, leading boreholes, top contaminants (with sev index), table (3–5 key measurements), trends (Z/p/SNR for significant ones), possible sources (רמת ודאות גבוהה/בינונית/נמוכה), data gaps
 - **Key rule**: Summarize, don't enumerate all exceeding boreholes
+- **Table format (per focus)**: columns = קידוח | מזהם מוביל | ריכוז אחרון (מקס' היסטורי) | תאריך דיגום אחרון | מגמה. The central per-borehole value is the **latest** concentration with the **historical maximum in parentheses**, e.g. "נת חולון 11 | TCE | 840 (1,200) מקג"ל | עלייה". Drop the "% of standard" column from the table (% may still appear in prose for emphasis). Units once in the header where possible.
 - **PFAS**: mandatory section even if max_bucket=0 (coverage gap brief note)
 - Figure 2–5 required (one per major family: CVOC, METALS, FUEL; optionally PFAS)
 
@@ -186,8 +202,9 @@ All CSVs are in `{ZONE}/02_data/`:
 - Selection bias caveat: monitoring wells ≠ zone-wide representation
 
 ### Section 5: מקורות זיהום אפשריים (Source Attribution)
-- Table: focus | leading contaminant | suspected facility | confidence level (HIGH/MEDIUM/LOW)
-- Short narrative per HIGH-confidence attribution
+- Table: מוקד | מזהם מוביל | מתקן חשוד | **רמת ודאות (גבוהה/בינונית/נמוכה)**
+- **Ranking basis (required)**: open §5 with one sentence stating *how* confidence is assigned — e.g. "רמת הוודאות נקבעת לפי הצטברות הראיות: כתובת מאומתת + סקטור מאושר + קרבה הידרולוגית במעלה-הזרם = גבוהה; סקטור בלבד או קרבה ללא אישור = בינונית; היקש מסקטור/שם-קידוח בלבד = נמוכה." (criteria per STYLE_GUIDE §H.3)
+- Short narrative per **רמת-ודאות-גבוהה** attribution
 - Forensic evidence: decay chains, co-occurrence
 
 ### Section 6: המלצות (Recommendations)
@@ -217,11 +234,12 @@ All CSVs are in `{ZONE}/02_data/`:
 **Caveat**: If a recommendation doesn't fit the 4 domains (e.g., "increase inter-agency coordination"), place it in the domain it most supports or add a standalone note.
 
 ### Section 7: מתודולוגיה (Methodology — Concise)
-- Severity formula: `bucket(C_max_5y / DWS × 100)`, 9-level scale (full table in PROCESS_GUIDE §III)
-- Window: 5 years (2021–{YEAR_END})
-- Borehole count: {GENERAL_COUNT} general + {FUEL_COUNT} fuel = {TOTAL_ACTIVE}
-- Trend analysis: Mann-Kendall (tie-corrected variance, SNR gating, soft_trigger=2)
-- **Do NOT include 9-level table** — reference PROCESS_GUIDE §III
+Write this section in Hebrew prose, ≤10 lines, using the report-prose terminology rules (no raw tokens):
+- אינדקס חומרה: `C_max_5y / DWS × 100`, סולם 9 רמות (0–8) — הפנה למתודולוגיה המלאה, אל תשכפל את הטבלה
+- חלון: 5 שנים (2021–{YEAR_END})
+- מנין קידוחים: {GENERAL_COUNT} ניטור כללי + {FUEL_COUNT} דלק = {TOTAL_ACTIVE} (זה המספר היחיד שמותר לצמוד למילה "קידוחים")
+- ניתוח מגמות: Mann-Kendall (שונות מתוקנת-קשרים, סינון יחס אות/רעש, טריגר רך = שני ערכים עולים רצופים) — אין רגרסיה לינארית
+- **אל תכלול את טבלת 9 הרמות** — הפנה למסמכי המתודולוגיה הכלליים
 
 ### Section 8: מגבלות (Limitations)
 - Data gaps (PFAS coverage, temporal gaps, closed wells)
@@ -231,7 +249,7 @@ All CSVs are in `{ZONE}/02_data/`:
 ### Appendices
 - א: Boreholes classification table (name | family max_index | status | notes)
 - ב: External sources reviewed (PRTR, B144, web findings)
-- ג: Facility candidates index (with HIGH/MEDIUM/LOW confidence)
+- ג: Facility candidates index (with רמת ודאות גבוהה/בינונית/נמוכה)
 - ד: Abbreviations & terminology
 
 </output_format>
@@ -248,13 +266,12 @@ All CSVs are in `{ZONE}/02_data/`:
 **איור N**: Caption in Hebrew...
 ```
 
-**Standard figures** (6 minimum, per PROCESS_GUIDE §VI):
-1. `fig_01_severity_ledger.png` — Top contaminants per family
-2. `fig_02_severity_matrix.png` — Distribution across 5-level scale (0–8 buckets)
-3. `fig_03_[family1]_panels.png` — Time series for most contaminated family (e.g., CVOC)
-4. `fig_04_[family2]_panels.png` — Second family (e.g., METALS or FUEL)
-5. `fig_05_[family3]_panels.png` — Third family (or FUEL if not yet shown)
-6. `fig_06_monitoring_gaps.png` — Sampling timeline (closed wells, parameter coverage)
+**Standard figures** (5 minimum, per PROCESS_GUIDE §VI; generated dynamically by zone):
+1. `fig_01_severity_ledger.png` — Zone site map with severity by borehole + cleanup basemap context
+2. `fig_02_[family1]_time_series.png` — Time series for primary contamination family (e.g., CVOC panels)
+3. `fig_03_[family2]_time_series.png` — Second family (e.g., METALS or FUEL)
+4. `fig_04_[family3]_time_series.png` — Third family (or FUEL if primary + secondary are CVOC and METALS)
+5. `fig_05_monitoring_gaps.png` — Sampling timeline & coverage gaps (closed wells, parameter drops, PFAS gaps)
 
 **If a family is absent** (e.g., PFAS=0 boreholes): omit its figure AND omit the caption.
 **Anti-pattern**: Writing `**איור 3**:` without preceding `![]()`.
@@ -267,11 +284,18 @@ All CSVs are in `{ZONE}/02_data/`:
 
 - **Language**: Professional Hebrew. Technical terms in English only when standard (TCE, Mann-Kendall, etc.)
 - **Numbers**: Always % of standard (not absolute concentration alone). Example: "TCE 1,200 µg/L (2,400% of standard)"
-- **Citations**: Every claim → source. Format: "(severity_by_well_family.csv row 47)" or "(Historical Report 2021, p. 23)"
+- **Citations**: Every claim → source. For historical claims cite the report + page: "(דוח 2021, עמ' 23)". For monitoring data, cite the well + parameter in prose ("נמדד ב-נת חולון 11"); **NEVER cite raw pipeline filenames** (no `*.csv` / `*.json` / `*.yaml`) in the report — those are internal artifacts.
+- **Report-prose terminology (HARD — a QA gate FAILs on raw tokens)**: in the report PROSE, translate every internal token to Hebrew/standard wording, never the raw token. See the binding `<terminology>` block above (SSOT: STYLE_GUIDE §B.5) for the three mandatory substitutions (ריקבון→פירוק, שתיקה→הפסקת ניטור, קיצוני→אינדקס). In addition:
+  - `bucket` / `bucket(...)` → "אינדקס חומרה"
+  - `SNR gating` → "סינון יחס אות/רעש"; `soft_trigger` → "טריגר רך (שני ערכים עולים רצופים)"
+  - evidence codes `A+B` / `C-class` → **רמת ודאות גבוהה / בינונית / נמוכה** + Hebrew evidence description (NOT the English words HIGH/MEDIUM/LOW in Hebrew prose)
+  - English ops labels `ALERT / WATCH / ELEVATED / STABLE / NONE` → Hebrew ("מצב חירום", "מגמה יציבה", "אין מגמה")
+  - never write `Step N`, `Opus call`, `PROCESS_GUIDE`, `REPORT_V5_SCHEMA` in the report
+  - Allowed in prose: chemical names only (TCE, PFAS, MTBE, VC…). Confidence is Hebrew (גבוהה/בינונית/נמוכה), never HIGH/MEDIUM/LOW.
 - **Tone**: Neutral, professional. Avoid narrative arcs ("crisis", "alarming"). Describe findings, don't dramatize.
 - **Selection bias caveat**: Every statistical section must note that monitoring wells ≠ zone-wide representation
 - **Summarize, don't enumerate**: 3–5 key boreholes per focus; table for summary; paragraph for synthesis. **Never list all exceeding boreholes in prose.**
-- **Consistency**: Borehole count must match {TOTAL_ACTIVE} everywhere
+- **Consistency (STRICT — QA gate)**: the ONLY multi-digit number that may directly precede the word "קידוח/קידוחים" is **{TOTAL_ACTIVE}**. For any other count, keep a 2–3 digit number away from "קידוח": write "X מתוך {TOTAL_ACTIVE} הקידוחים", "כ-N נקודות ניטור", or "N חריגות". A distinct "NN קידוחים" elsewhere FAILs the gate.
 
 </style_guide>
 
@@ -283,13 +307,13 @@ Before submitting {ZONE}_REPORT_V5.md, verify (PROCESS_GUIDE §VII):
 
 - [ ] 6 sections + Methodology + Limitations + Appendices (V5 schema)
 - [ ] All numbers tied to source (CSV row or historical document page)
-- [ ] Family order correct ({FAMILY_ORDER_LIST}, FUEL last)
+- [ ] Focus order correct: §3 = geographic foci (חומרה יורדת); families secondary within focus; "פערי כיסוי" last (ראה §IV; order per {FOCUS_ORDER_LIST})
 - [ ] PFAS section present (full or coverage-gap note)
 - [ ] Severity scale consistent: 5-level summary; 9-bucket index in tables
 - [ ] **NO English operational terms** (ALERT, WATCH, ELEVATED, STABLE, NONE)
 - [ ] Methodology includes formula + borehole count ({TOTAL_ACTIVE}) + MK description
 - [ ] Borehole count consistent across all sections
-- [ ] Source confidence (HIGH/MEDIUM/LOW) on all facility attributions
+- [ ] Source confidence in Hebrew (רמת ודאות גבוהה/בינונית/נמוכה) on all facility attributions — never HIGH/MEDIUM/LOW in prose
 - [ ] Selection bias caveat present in Sec 4
 - [ ] Monitoring gaps + closed wells mentioned (Sec 4)
 - [ ] Figure captions present with correct numbering
@@ -310,7 +334,7 @@ Before submitting {ZONE}_REPORT_V5.md, verify (PROCESS_GUIDE §VII):
 3. Verify all paths exist before running Opus:
    - `{ZONE}/context_pack/03_context/` (reports_context.md, source_candidates_context.md)
    - `{ZONE}/context_pack/04_diagnosis/zone_diagnosis.md`
-   - `{ZONE}/lean_workspace/04_deterministic_anchors/anchors_pilot.yaml`
+   - `{ZONE}/lean_workspace/04_deterministic_anchors/statistical_signals_PILOT.yaml` + `forensic_anchors_PILOT.yaml`
    - `{ZONE}/02_data/` (all 6 CSVs)
 4. Run Opus with complete instantiated prompt
 5. Save output to `{ZONE}/output/{ZONE_NAME_EN}_REPORT_V5.md`

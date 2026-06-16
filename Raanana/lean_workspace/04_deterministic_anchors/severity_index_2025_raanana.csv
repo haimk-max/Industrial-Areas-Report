@@ -1,0 +1,18 @@
+borehole,name_he,family,max_bucket,contributing_param,contributing_pct,contributing_date
+raanana_nd_paz_hanofer,נד פז הנופר,FUEL,3,MTBE,50.0,2021-11-01
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,CVOC,0,CHLF,0.0,2023-11-14
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,FUEL,0,MTBE,0.0,2023-11-14
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,PFAS,8,PFHxS,1160.0,2025-07-30
+raanana_nt_1,נת רעננה 1,CVOC,8,TCEY,1966.4,2022-01-10
+raanana_nt_1,נת רעננה 1,FUEL,1,MTBE,3.7,2025-07-29
+raanana_nt_1,נת רעננה 1,METALS,3,BA,14.0,2024-09-04
+raanana_nt_2,נת רעננה 2,CVOC,4,TCEY,54.1,2025-07-29
+raanana_nt_2,נת רעננה 2,FUEL,0,MTBE,0.0,2022-01-10
+raanana_nt_2,נת רעננה 2,METALS,3,ZN,16.7,2022-01-10
+raanana_nt_3,נת רעננה 3,CVOC,1,CHLF,4.1,2025-07-29
+raanana_nt_3,נת רעננה 3,FUEL,1,MTBE,2.5,2024-09-04
+raanana_nt_3,נת רעננה 3,METALS,2,BA,9.8,2025-07-29
+raanana_p_25,פ רעננה 25,CVOC,5,TCEY,188.0,2023-09-11
+raanana_p_25,פ רעננה 25,FUEL,0,MTBE,0.0,2023-03-12
+raanana_p_25,פ רעננה 25,METALS,3,BA,10.0,2025-03-02
+raanana_p_25,פ רעננה 25,PFAS,0,PFBA,0.0,2024-06-04

@@ -1,7 +1,7 @@
 {
   "zone_id": "raanana",
   "zone_name_he": "אזה\"ת raanana",
-  "source": "/home/user/Industrial-Areas-Report/Raanana/data/measurements.csv",
+  "source": "/home/user/Industrial-Areas-Report/.claude/worktrees/raanana-v5/Raanana/data/measurements.csv",
   "boreholes_analyzed": [
     "raanana_p_25",
     "raanana_p_18",
@@ -522,13 +522,13 @@
         "signature": "Fuel_station",
         "confidence": "HIGH",
         "detected_indicators": [
+          "TOLU",
           "XYLE",
           "BENZ",
           "ETBN",
-          "TOLU",
           "MTBE"
         ],
-        "dominant_compound": "XYLE",
+        "dominant_compound": "TOLU",
         "max_concentration": 30.0,
         "notes": "BTEX contamination with MTBE — confirms fuel station source (gasoline)"
       }
@@ -539,22 +539,22 @@
         "confidence": "MEDIUM",
         "detected_indicators": [
           "6:2FT",
-          "PFHxS",
-          "PFHpS",
-          "FOSA",
-          "PFDS",
           "82FTS",
-          "PFOS",
+          "PFDS",
+          "FOSA",
           "PFBS",
-          "PFHxA",
+          "PFHxS",
+          "PFOS",
+          "PFHpS",
+          "PFNA",
           "PFPeA",
+          "PFHxA",
+          "PFDA",
+          "PFDoA",
           "PFHpA",
           "PFBA",
           "PFUnA",
-          "PFOA",
-          "PFNA",
-          "PFDoA",
-          "PFDA"
+          "PFOA"
         ],
         "dominant_compound": "PFHxS",
         "max_concentration": 1.16,
@@ -564,13 +564,13 @@
         "signature": "Fuel_station",
         "confidence": "HIGH",
         "detected_indicators": [
+          "TOLU",
           "XYLE",
           "BENZ",
           "ETBN",
-          "TOLU",
           "MTBE"
         ],
-        "dominant_compound": "XYLE",
+        "dominant_compound": "TOLU",
         "max_concentration": 5.0,
         "notes": "BTEX contamination with MTBE — confirms fuel station source (gasoline)"
       }
@@ -591,12 +591,12 @@
         "signature": "CVOC_industry",
         "confidence": "HIGH",
         "detected_indicators": [
-          "DCET1",
+          "CDCE",
           "DCEY",
-          "TECE",
           "TCEY",
           "TCET",
-          "CDCE"
+          "TECE",
+          "DCET1"
         ],
         "dominant_compound": "TCEY",
         "max_concentration": 817.0,
@@ -629,10 +629,10 @@
         "signature": "CVOC_industry",
         "confidence": "HIGH",
         "detected_indicators": [
-          "CCL4",
-          "TECE",
+          "CDCE",
           "TCEY",
-          "CDCE"
+          "TECE",
+          "CCL4"
         ],
         "dominant_compound": "TCEY",
         "max_concentration": 24.02,
@@ -654,10 +654,10 @@
         "signature": "Fuel_station",
         "confidence": "HIGH",
         "detected_indicators": [
+          "TOLU",
           "XYLE",
           "BENZ",
           "ETBN",
-          "TOLU",
           "MTBE"
         ],
         "dominant_compound": "XYLE",
@@ -668,13 +668,13 @@
         "signature": "CVOC_industry",
         "confidence": "HIGH",
         "detected_indicators": [
-          "DCET1",
+          "CDCE",
           "DCEY",
-          "CCL4",
-          "TECE",
-          "DCET",
           "TCEY",
-          "CDCE"
+          "TECE",
+          "CCL4",
+          "DCET",
+          "DCET1"
         ],
         "dominant_compound": "TECE",
         "max_concentration": 105.474,

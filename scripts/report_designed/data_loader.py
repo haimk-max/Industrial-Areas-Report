@@ -17,8 +17,29 @@ import re
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-LEAN_WORKSPACE = REPO_ROOT / "Holon" / "lean_workspace"
-REPORT_V4 = REPO_ROOT / "Holon" / "output" / "HOLON_REPORT_V4.md"
+# Zone-generic: pass zone name to override (default "holon" for backwards compatibility).
+# The repo convention is a CAPITALIZED zone directory (holon -> Holon), so always
+# capitalize when building filesystem paths.
+DEFAULT_ZONE = "holon"
+
+
+def _zone_dir(zone: str = DEFAULT_ZONE) -> Path:
+    """Return the zone's directory (capitalized per repo convention: holon -> Holon)."""
+    return REPO_ROOT / zone.capitalize()
+
+
+def _workspace_for_zone(zone: str = DEFAULT_ZONE) -> Path:
+    """Return workspace path for a given zone (V4 lean_workspace layout)."""
+    return _zone_dir(zone) / "lean_workspace"
+
+
+def _report_v4_path(zone: str = DEFAULT_ZONE) -> Path:
+    """Return path to zone's V4 report (legacy, used for extraction fallback)."""
+    return _zone_dir(zone) / "output" / f"{zone.upper()}_REPORT_V4.md"
+
+
+LEAN_WORKSPACE = _workspace_for_zone(DEFAULT_ZONE)
+REPORT_V4 = _report_v4_path(DEFAULT_ZONE)
 
 
 def _clarify_terms(text: str) -> str:
@@ -67,12 +88,14 @@ def _reorder_foci_fuel_last(four_foci_md: str) -> str:
     return "\n\n".join(f"{i+1}. {b}" for i, b in enumerate(reordered))
 
 
-def extract_narrative_sections(report_path: Path = REPORT_V4) -> dict:
-    """Extract key narrative sections from HOLON_REPORT_V4.md.
+def extract_narrative_sections(report_path: Path = None, zone: str = DEFAULT_ZONE) -> dict:
+    """Extract key narrative sections from zone's V4 report.
 
     Returns dict with narrative content for template substitution.
     Terminology cleanup: 'מורש'→'היסטורי' (clearer for non-specialist readers).
     """
+    if report_path is None:
+        report_path = _report_v4_path(zone)
     sections = {}
 
     if not report_path.exists():
@@ -123,24 +146,26 @@ def extract_narrative_sections(report_path: Path = REPORT_V4) -> dict:
     return sections
 
 
-def extract_report_boreholes(report_path: Path = REPORT_V4,
-                              severity_df: pd.DataFrame = None) -> list:
-    """Extract canonical_ids of boreholes explicitly mentioned in V4.md.
+def extract_report_boreholes(report_path: Path = None, severity_df: pd.DataFrame = None, zone: str = DEFAULT_ZONE) -> list:
+    """Extract canonical_ids of boreholes explicitly mentioned in zone's V4 report.
 
     Used to drive `boreholes_override` in svg_charts.py — Opus picks which
     boreholes to illustrate (via mentions in the narrative); the chart engine
     just renders them per style guide. See PROCESS_GUIDE §VIII.1.
 
-    Match strategy: scan V4.md for each name_he from severity_df.
-    Returns canonical_ids in the order they first appear in V4.md (de-duplicated).
+    Match strategy: scan V4 report for each name_he from severity_df.
+    Returns canonical_ids in the order they first appear (de-duplicated).
 
     Args:
-        report_path: path to V4.md
+        report_path: override path to V4 report; auto-detected if None
         severity_df: DataFrame with columns 'borehole' (canonical_id), 'name_he'
+        zone: zone name (used to auto-detect report path if report_path is None)
 
     Returns:
-        Ordered list of canonical_ids mentioned in V4.md, or [] if file/df missing.
+        Ordered list of canonical_ids mentioned in report, or [] if file/df missing.
     """
+    if report_path is None:
+        report_path = _report_v4_path(zone)
     if not report_path.exists() or severity_df is None or severity_df.empty:
         return []
 
@@ -160,82 +185,105 @@ def extract_report_boreholes(report_path: Path = REPORT_V4,
     return [cid for cid, _ in sorted(seen.items(), key=lambda kv: kv[1])]
 
 
-def load_measurements_alert(workspace: Path = LEAN_WORKSPACE) -> pd.DataFrame:
+def load_measurements_alert(zone: str = DEFAULT_ZONE, workspace: Path = None) -> pd.DataFrame:
     """Load ALERT measurements (25 boreholes, 4 families, 2,672 rows)."""
+    if workspace is None:
+        workspace = _workspace_for_zone(zone)
     path = workspace / "02_data_filtered" / "measurements_alert.csv"
     if path.exists():
         return pd.read_csv(path)
     return pd.DataFrame()
 
 
-def load_trends_alert(workspace: Path = LEAN_WORKSPACE) -> pd.DataFrame:
+def load_trends_alert(zone: str = DEFAULT_ZONE, workspace: Path = None) -> pd.DataFrame:
     """Load ALERT trends (Mann-Kendall analysis, 357 rows)."""
+    if workspace is None:
+        workspace = _workspace_for_zone(zone)
     path = workspace / "02_data_filtered" / "trends_alert.csv"
     if path.exists():
         return pd.read_csv(path)
     return pd.DataFrame()
 
 
-def load_severity_index(workspace: Path = LEAN_WORKSPACE) -> pd.DataFrame:
+def load_severity_index(zone: str = DEFAULT_ZONE, workspace: Path = None) -> pd.DataFrame:
     """Load pre-computed severity index (159 borehole × family pairs, bucket 0-8)."""
-    path = workspace / "04_deterministic_anchors" / "severity_index_2025_holon.csv"
+    if workspace is None:
+        workspace = _workspace_for_zone(zone)
+    anchors = workspace / "04_deterministic_anchors"
+    # Zone-specific filename first (e.g. severity_index_2025_raanana.csv);
+    # fall back to the legacy holon-named file so Holon behavior is unchanged.
+    path = anchors / f"severity_index_2025_{zone.lower()}.csv"
+    if not path.exists():
+        path = anchors / "severity_index_2025_holon.csv"
     if path.exists():
         return pd.read_csv(path)
     return pd.DataFrame()
 
 
-def load_param_level_severity(workspace: Path = LEAN_WORKSPACE) -> pd.DataFrame:
+def load_param_level_severity(zone: str = DEFAULT_ZONE, workspace: Path = None) -> pd.DataFrame:
     """Load parameter-level severity (per borehole × param, with concentration + DWS)."""
+    if workspace is None:
+        workspace = _workspace_for_zone(zone)
     path = workspace / "04_deterministic_anchors" / "severity_index_2025_holon_param_level.csv"
     if path.exists():
         return pd.read_csv(path)
     return pd.DataFrame()
 
 
-def load_alert_boreholes(workspace: Path = LEAN_WORKSPACE) -> pd.DataFrame:
+def load_alert_boreholes(zone: str = DEFAULT_ZONE, workspace: Path = None) -> pd.DataFrame:
     """Load 25 ALERT borehole IDs with alert criteria."""
+    if workspace is None:
+        workspace = _workspace_for_zone(zone)
     path = workspace / "02_data_filtered" / "alert_boreholes.csv"
     if path.exists():
         return pd.read_csv(path)
     return pd.DataFrame()
 
 
-def load_data_availability(workspace: Path = LEAN_WORKSPACE) -> pd.DataFrame:
+def load_data_availability(zone: str = DEFAULT_ZONE, workspace: Path = None) -> pd.DataFrame:
     """Load data availability index (monitoring gaps, stopped wells)."""
+    if workspace is None:
+        workspace = _workspace_for_zone(zone)
     path = workspace / "03_evidence_index" / "data_availability_index.csv"
     if path.exists():
         return pd.read_csv(path)
     return pd.DataFrame()
 
 
-def load_latest_per_borehole(workspace: Path = LEAN_WORKSPACE) -> pd.DataFrame:
+def load_latest_per_borehole(zone: str = DEFAULT_ZONE, workspace: Path = None) -> pd.DataFrame:
     """Load latest measurement per (borehole, param) pair."""
+    if workspace is None:
+        workspace = _workspace_for_zone(zone)
     path = workspace / "03_evidence_index" / "latest_per_borehole_param.csv"
     if path.exists():
         return pd.read_csv(path)
     return pd.DataFrame()
 
 
-def load_max_since_2018(workspace: Path = LEAN_WORKSPACE) -> pd.DataFrame:
+def load_max_since_2018(zone: str = DEFAULT_ZONE, workspace: Path = None) -> pd.DataFrame:
     """Load max concentration since 2018 per (borehole, param)."""
+    if workspace is None:
+        workspace = _workspace_for_zone(zone)
     path = workspace / "03_evidence_index" / "max_since_2018_index.csv"
     if path.exists():
         return pd.read_csv(path)
     return pd.DataFrame()
 
 
-def load_borehole_classification(workspace: Path = LEAN_WORKSPACE) -> pd.DataFrame:
+def load_borehole_classification(zone: str = DEFAULT_ZONE, workspace: Path = None) -> pd.DataFrame:
     """Load borehole classification for all boreholes (2021-2026 recent data)."""
+    if workspace is None:
+        workspace = _workspace_for_zone(zone)
     path = workspace / "04_deterministic_anchors" / "borehole_classification_all.csv"
     if path.exists():
         return pd.read_csv(path)
     return pd.DataFrame()
 
 
-def get_alert_count(trends: pd.DataFrame = None) -> int:
+def get_alert_count(zone: str = DEFAULT_ZONE, trends: pd.DataFrame = None) -> int:
     """Get count of ALERT wells from trends_alert."""
     if trends is None:
-        trends = load_trends_alert()
+        trends = load_trends_alert(zone=zone)
 
     if trends.empty:
         return 0

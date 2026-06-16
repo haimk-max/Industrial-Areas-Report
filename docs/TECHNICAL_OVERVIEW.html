@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>מסמך טכני — ארכיטקטורת המערכת לניתוח זיהום מי תהום</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#fdfcf9;
+    --ink:#1a1a1a;
+    --ink-2:#3a3a3a;
+    --soft:#6b6b6b;
+    --rule:#1a1a1a;
+    --rule-light:#cfcfcf;
+    --rule-faint:#e6e3dd;
+    --red:#a82a1c;
+    --grey-1:#f0ede6;
+    --grey-2:#d8d3c8;
+    --grey-4:#5a564f;
+  }
+  *{box-sizing:border-box}
+  html,body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Frank Ruhl Libre","Times New Roman",serif;
+    -webkit-font-smoothing:antialiased;font-feature-settings:"kern","liga","tnum";
+  }
+  body{padding:0 0 80px;font-size:16px;line-height:1.7}
+  bdi{unicode-bidi:isolate}
+  p,li,td,th,h1,h2,h3,h4,figcaption{unicode-bidi:isolate}
+  .doc{max-width:960px;margin:0 auto;padding:56px 48px 0}
+
+  /* ── כותרת ── */
+  .masthead{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:44px}
+  .masthead .top{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--soft);
+    padding-bottom:14px;border-bottom:1px solid var(--rule-light);margin-bottom:22px;
+  }
+  .masthead h1{font-weight:900;font-size:31px;line-height:1.18;margin:0 0 6px}
+  .masthead .tagline{
+    font-family:"Source Sans 3",sans-serif;font-size:13px;
+    color:var(--soft);font-weight:600;margin-bottom:14px;
+  }
+  .masthead .note{
+    font-size:14.5px;color:var(--ink-2);line-height:1.6;
+    border-right:3px solid var(--rule-light);padding:4px 14px;margin-top:14px;
+  }
+  .masthead .note strong{color:var(--ink)}
+
+  /* ── פרק ── */
+  section{margin:46px 0}
+  .sec-h{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;
+    padding-bottom:8px;border-bottom:1px solid var(--ink)}
+  .sec-h .num{font-family:"IBM Plex Mono",monospace;font-size:13px;
+    letter-spacing:.04em;color:var(--soft);flex-shrink:0;font-weight:500}
+  .sec-h h2{font-weight:700;font-size:22px;letter-spacing:-0.005em;margin:0;flex:1}
+
+  /* ── פרוזה ── */
+  p{line-height:1.72;color:var(--ink-2);margin:0 0 14px;text-align:justify;text-justify:inter-word}
+  p strong{color:var(--ink);font-weight:700}
+  h3{font-family:"Source Sans 3",sans-serif;font-weight:700;font-size:16px;margin:26px 0 10px;color:var(--ink)}
+
+  /* ── קוד ── */
+  code{
+    font-family:"IBM Plex Mono",monospace;font-size:.86em;
+    background:var(--grey-1);padding:1px 5px;border:1px solid var(--rule-faint);
+    unicode-bidi:isolate;direction:ltr;border-radius:2px;color:var(--ink);
+  }
+  pre{
+    direction:ltr;text-align:left;unicode-bidi:isolate;
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.6;
+    background:#1a1a1a;color:#f0ede6;
+    padding:18px 20px;margin:20px 0;overflow-x:auto;border-radius:3px;
+  }
+  pre code{background:none;border:none;padding:0;font-size:1em;color:inherit;unicode-bidi:isolate}
+  pre .c{color:#9aa0a6}        /* comment */
+  pre .k{color:#e6b450}        /* keyword/script */
+
+  /* ── דיאגרמת ארכיטקטורה ── */
+  .pipeline{
+    display:flex;flex-wrap:wrap;border:1px solid var(--ink);
+    background:var(--paper);margin:24px 0;
+  }
+  .pipeline .stage{
+    flex:1;min-width:140px;padding:16px 16px 14px;
+    border-left:1px solid var(--rule-light);display:flex;flex-direction:column;gap:4px;
+  }
+  .pipeline .stage:last-child{border-left:none}
+  .pipeline .stage .st-k{
+    font-family:"IBM Plex Mono",monospace;font-size:10px;
+    letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px;font-weight:500;
+  }
+  .pipeline .stage.det .st-k{color:var(--grey-4)}
+  .pipeline .stage.in  .st-k{color:var(--soft)}
+  .pipeline .stage.llm .st-k{color:var(--red)}
+  .pipeline .stage.qa  .st-k{color:var(--ink)}
+  .pipeline .stage .st-v{font-family:"Source Sans 3",sans-serif;font-size:13px;color:var(--ink-2);line-height:1.5}
+  .pipeline .stage .st-v b{color:var(--ink);font-weight:600;display:block;font-size:13.5px}
+  .pipeline .stage .st-sub{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--soft);margin-top:2px}
+
+  /* ── טבלאות ── */
+  table.tbl{width:100%;border-collapse:collapse;font-size:13.5px;
+    font-family:"Frank Ruhl Libre","Times New Roman",serif;margin:18px 0 22px}
+  table.tbl thead th{
+    border-top:1.5px solid var(--ink);border-bottom:1px solid var(--ink);
+    font-family:"Source Sans 3",sans-serif;font-size:11px;letter-spacing:.05em;
+    text-transform:uppercase;color:var(--soft);font-weight:600;
+    padding:9px 11px 8px;text-align:right;background:var(--grey-1);
+  }
+  table.tbl tbody td{padding:9px 11px;text-align:right;border-bottom:1px solid var(--rule-faint);
+    vertical-align:top;line-height:1.5;color:var(--ink-2)}
+  table.tbl tbody tr:last-child td{border-bottom:1.5px solid var(--ink)}
+  table.tbl strong{color:var(--ink);font-weight:700}
+  table.tbl td:first-child{font-weight:600;color:var(--ink)}
+  table.tbl td code, table.tbl th code{font-size:.88em}
+  .fail{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--red);font-weight:600}
+
+  /* ── הדגשה ── */
+  blockquote.note{
+    border-right:3px solid var(--ink);background:var(--grey-1);
+    padding:14px 18px;margin:22px 0;color:var(--ink-2);font-size:14.5px;line-height:1.65;
+  }
+  blockquote.note strong{color:var(--ink)}
+  blockquote.summary{
+    border:1px solid var(--ink);padding:18px 22px;margin:30px 0 0;
+    color:var(--ink);font-size:15.5px;line-height:1.7;background:var(--grey-1);
+  }
+  blockquote.summary strong{font-weight:700}
+
+  /* ── רשימה ── */
+  ul.tech{margin:14px 0 18px;padding-right:22px}
+  ul.tech li{margin-bottom:8px;line-height:1.6;color:var(--ink-2)}
+  ul.tech li strong{color:var(--ink)}
+
+  footer{max-width:960px;margin:0 auto;padding:28px 48px 0;
+    border-top:1px solid var(--rule-light);font-size:11.5px;color:var(--soft);
+    font-family:"Source Sans 3",sans-serif;line-height:1.6}
+  footer b{color:var(--ink);font-weight:600}
+
+  @media(max-width:700px){
+    .doc{padding:32px 20px 0}
+    .masthead h1{font-size:24px}
+    .pipeline .stage{flex-basis:100%;border-left:none;border-bottom:1px solid var(--rule-light)}
+    .pipeline .stage:last-child{border-bottom:none}
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+<header class="masthead">
+  <div class="top">
+    <span>השירות ההידרולוגי · <bdi>2026</bdi></span>
+    <span>מסמך טכני · <bdi>IAR/TECH/2026-01</bdi></span>
+  </div>
+  <h1>ארכיטקטורת המערכת לניתוח זיהום מי תהום</h1>
+  <div class="tagline">לאנשי פיתוח ומערכות מידע</div>
+  <div class="note">
+    <strong>מטרה:</strong> לתאר את הארכיטקטורה, מקורות המידע, חלוקת העבודה בין רכיבים דטרמיניסטיים ל-<bdi>LLM</bdi>, ושכבת הניהול והבקרה האוטומטית.<br/>
+    <strong>מצב:</strong> תשתית הושלמה; אומתה על שני אזורים (רעננה, חולון). הפייפליין גנרי (<code>--zone</code>).
+  </div>
+</header>
+
+
+<!-- §1 -->
+<section>
+  <div class="sec-h"><span class="num">1</span><h2>תמונת-על אדריכלית</h2></div>
+  <p>המערכת היא <strong>pipeline היברידי</strong> המורכב משלוש שכבות לוגיות. הזרימה נקראת מימין לשמאל: מקורות הקלט (מימין) זורמים דרך עיבוד דטרמיניסטי, שלושה גבולות <bdi>LLM</bdi> מבוקרים, ושכבת בקרה — אל התוצרים (משמאל).</p>
+
+  <div class="pipeline">
+    <div class="stage in">
+      <div class="st-k">שכבת קלט</div>
+      <div class="st-v">
+        <bdi>Excel / CSV</bdi><br/>
+        <bdi>PDF</bdi><br/>
+        מידע מקורות
+      </div>
+    </div>
+    <div class="stage det">
+      <div class="st-k">דטרמיניסטי</div>
+      <div class="st-v"><b>עיבוד ליבה</b>
+        <div class="st-sub">parse · trend<br/>forensics</div>
+      </div>
+    </div>
+    <div class="stage llm">
+      <div class="st-k">LLM מבוקר</div>
+      <div class="st-v"><b>שיפוט</b>
+        <div class="st-sub">Opus #1 / #2 / #3<br/>(prompt בנוי)</div>
+      </div>
+    </div>
+    <div class="stage qa">
+      <div class="st-k">QA Gates</div>
+      <div class="st-v"><b>בקרה</b>
+        <div class="st-sub">8 שערים<br/>חוסמים</div>
+      </div>
+    </div>
+    <div class="stage in">
+      <div class="st-k">פלט</div>
+      <div class="st-v">דו"ח מומחה<br/>דו"חות ניהוליים</div>
+    </div>
+  </div>
+
+  <p><strong>עקרון-העל:</strong> כל שלב הוא או <strong>דטרמיניסטי לחלוטין</strong> (אותו קלט ← אותו פלט, ניתן לבדיקה ב-<bdi>CI</bdi>) או <strong>גבול-<bdi>LLM</bdi> מפורש</strong> (<bdi>Opus call</bdi>). אין "אזורים אפורים". כל גבול-<bdi>LLM</bdi> ניזון מ-<code>prompt</code> בנוי שנגזר אוטומטית מהשלב הקודם, ומאומת בשער <bdi>QA</bdi> לפני ואחרי.</p>
+  <p><strong>Driver:</strong> <code>scripts/run_pipeline.sh &lt;ZONE&gt; &lt;stage&gt;</code> מריץ את השלבים הדטרמיניסטיים ועוצר בכל גבול-<bdi>LLM</bdi> עם הוראת-המשך. ה-<bdi>SSOT</bdi> לתהליך: <code>ZONE_REPORT_PROCESS_GUIDE.md §VIII</code>; מפת ההרצה: <code>ORCHESTRATION.md</code>.</p>
+</section>
+
+
+<!-- §2 -->
+<section>
+  <div class="sec-h"><span class="num">2</span><h2>מקורות המידע</h2></div>
+  <table class="tbl">
+    <thead><tr><th>מקור</th><th>פורמט</th><th>תפקיד</th><th>קלט עתידי</th></tr></thead>
+    <tbody>
+      <tr><td>מדידות ניטור</td><td><bdi>Excel / CSV</bdi></td><td>סדרת-זמן של ריכוזי מזהמים לכל קידוח × פרמטר</td><td><strong>חיבור ישיר ל-<bdi>DB</bdi></strong> של מערכת המידע</td></tr>
+      <tr><td>דו"חות קודמים</td><td><bdi>PDF</bdi></td><td>הקשר היסטורי, מסקנות קודמות, הידרוגאולוגיה</td><td>מאגר מסמכים מתויג / <bdi>RAG</bdi></td></tr>
+      <tr><td>מידע על מקורות זיהום</td><td><bdi>PDF / web</bdi></td><td>זיהוי מתקנים חשודים, חתימות מזהמים</td><td>מאגר מקורות + חיפוש מובנה</td></tr>
+    </tbody>
+  </table>
+  <p><strong>הערה ארכיטקטונית:</strong> שכבת הקלט מבודדת מאחורי <code>parse_excel.py</code> + <code>extract_zone_pdfs.py</code>. החלפת מקור הקלט (קבצים ← חיבור ישיר) משפיעה <strong>רק על שכבה זו</strong>; שאר הפייפליין צורך את ה-<bdi>Data Pack</bdi> המתוקנן (סעיף 3) ואינו מודע למקור.</p>
+  <p><strong>אידמפוטנטיות חילוץ <bdi>PDF</bdi>:</strong> כל קובץ נרשם ב-<code>_pdf_index.json</code> עם <code>extraction_ok</code> + timestamp. הרצה חוזרת מדלגת על קבצים שכבר חולצו אלא אם <code>--force</code>.</p>
+</section>
+
+
+<!-- §3 -->
+<section>
+  <div class="sec-h"><span class="num">3</span><h2>השלב הדטרמיניסטי — ה-Structured Data Pack</h2></div>
+  <p>הליבה הדטרמיניסטית מייצרת <strong>6–7 קבצי <bdi>CSV</bdi> מתוקננים</strong> ב-<code>{Zone}/02_data/</code>. זהו <strong>החוזה</strong> בין העיבוד הדטרמיניסטי לבין כל מה שבא אחריו (<bdi>LLM</bdi> + מחוללי דו"ח). הסכמה המלאה: <code>DATA_PIPELINE_SPEC.md</code>.</p>
+  <table class="tbl">
+    <thead><tr><th><bdi>CSV</bdi></th><th>תוכן</th><th>מפתח</th></tr></thead>
+    <tbody>
+      <tr><td><code>measurements_scoped</code></td><td>כל מדידה בקידוחי האזור + מקור (<bdi>source_file, page/row</bdi>)</td><td><bdi>well × parameter × date</bdi></td></tr>
+      <tr><td><code>latest_results</code></td><td>תוצאה אחרונה לכל קידוח × פרמטר + יחס-לתקן + severity</td><td><bdi>well × parameter</bdi></td></tr>
+      <tr><td><code>severity_by_well_family</code></td><td>אינדקס חומרה לפי <strong><bdi>C_max_5y</bdi></strong> (חלון 5 שנים), לא תוצאה אחרונה</td><td><bdi>well × family</bdi></td></tr>
+      <tr><td><code>trends_by_well_parameter</code></td><td>תוצאות <bdi>Mann-Kendall</bdi> (<bdi>Z, p, SNR, soft_trigger</bdi>)</td><td><bdi>well × parameter</bdi></td></tr>
+      <tr><td><code>monitoring_gaps</code></td><td>פערי כיסוי מרחביים/פרמטריים</td><td><bdi>well / parameter</bdi></td></tr>
+      <tr><td><code>figure_ready_series</code></td><td>סדרות מוכנות-לציור (ללא חישוב במחולל)</td><td><bdi>well × parameter × date</bdi></td></tr>
+    </tbody>
+  </table>
+
+  <h3>מתודולוגיה סטטיסטית (קבועה, לא ניתנת לשינוי ללא אישור מומחה)</h3>
+  <ul class="tech">
+    <li><strong>מגמות:</strong> <bdi>Mann-Kendall</bdi> (<bdi>tie-corrected variance, continuity-corrected Z</bdi>) עם <bdi>SNR gating</bdi> (≥0.3), <bdi>soft_trigger</bdi> = 2 ערכים עולים רצופים בחלון 5 שנים. <strong>לא</strong> רגרסיה לינארית, לא <bdi>ML</bdi>.</li>
+    <li><strong>חומרה:</strong> <code>bucket(C_max_5y / DWS × 100)</code>, סולם 0–8.</li>
+    <li><strong>פורנזיקה:</strong> שרשראות פירוק, חתימות מקור, זוגות <bdi>co-occurrence</bdi> — הסתברותי, עם רמת ביטחון (<bdi>HIGH/MEDIUM/LOW</bdi>). אינו ייחוס דטרמיניסטי.</li>
+    <li><strong>הדרה:</strong> <bdi>TPFAS</bdi> ו-<bdi>BETK</bdi> תמיד מודרים (סכומים מחושבים). <bdi>species</bdi> בודדים (<bdi>PFHxS, PFOA</bdi>) הם הייצוג הקנוני.</li>
+  </ul>
+  <p><strong>למה דטרמיניסטי דווקא כאן:</strong> החישובים האלה חייבים להיות מדויקים, ניתנים-לאימות מול דו"ח-המקור, וחזרתיים <bdi>byte-identical</bdi>. הם <strong>אינם</strong> מתאימים ל-<bdi>LLM</bdi> — לא רוצים ש"כמעט אותו מספר" יחזור בכל הרצה. הם העוגן שעליו נשען השיפוט.</p>
+  <pre><code><span class="k">parse_excel.py</span> → <span class="k">trend_analysis.py</span> → <span class="k">forensics_analyzer.py</span> → <span class="k">generate_zone_data_pack.py</span>
+<span class="c"># כל הסקריפטים מקבלים --zone</span></code></pre>
+</section>
+
+
+<!-- §4 -->
+<section>
+  <div class="sec-h"><span class="num">4</span><h2>השלב ה-LLM — שלושה גבולות Opus מבוקרים</h2></div>
+  <p>המשימות הדורשות שיפוט והקשר — שאינן נגזרות דטרמיניסטית מ-<bdi>CSV</bdi> — מבוצעות ע"י <bdi>Opus</bdi> בשלושה גבולות מוגדרים:</p>
+  <table class="tbl">
+    <thead><tr><th><bdi>Opus call</bdi></th><th>קלט</th><th>פלט</th><th>למה <bdi>LLM</bdi></th></tr></thead>
+    <tbody>
+      <tr><td><strong>#1 — אבחון אזורי</strong></td><td><bdi>Data Pack</bdi> + <bdi>Context Pack</bdi></td><td><code>zone_diagnosis.md</code> (8 שאלות + טבלת <bdi>סדר מוקדים</bdi>)</td><td>אשכול גיאוגרפי + קישור מנגנוני אינם דטרמיניסטיים מ-<bdi>CSV</bdi></td></tr>
+      <tr><td><strong>#2 — דו"ח מומחה</strong></td><td><bdi>Data Pack</bdi> + diagnosis + precedent</td><td><code>{ZONE}_REPORT_Vn.md</code> (6 פרקים + נספחים)</td><td>חיבור בין ממצאים, ניסוח מקצועי, נרטיב</td></tr>
+      <tr><td><strong>#3 — brief ניהולי</strong></td><td>הדו"ח המאושר</td><td><code>raw_brief.yaml</code> — דו"חות ניהוליים</td><td>המרת דו"ח עשיר לתקציר דו-קהלי</td></tr>
+    </tbody>
+  </table>
+
+  <h3>העיקרון הקריטי: prompt בנוי, לא שאלה פתוחה</h3>
+  <p>ה-<bdi>LLM</bdi> <strong>אינו</strong> מקבל הנחיה חופשית. כל <code>prompt</code> הוא <strong>ארטיפקט נגזר (derived)</strong> המיוצר ע"י <code>render_zone_prompt.py</code>:</p>
+  <ul class="tech">
+    <li>נגזר מתבנית קנונית (<code>zone_report_prompt_template_v5.md</code>)</li>
+    <li>מוזרק עם <bdi>metadata</bdi> מה-<bdi>Data Pack</bdi> (ספירת קידוחים, מדידות, טווח שנים)</li>
+    <li>מוזרק עם <code>{FOCUS_ORDER_LIST}</code> שנלקח מטבלת האבחון (חוזה בין-שלבי)</li>
+    <li>מוזרק עם בלוק הטרמינולוגיה מ-<bdi>SSOT</bdi> יחיד (<code>docs/STYLE_GUIDE.md §B.5</code>)</li>
+    <li>נושא <strong>חותמת provenance</strong>: <code>template_sha256_12</code> + <code>diagnosis_sha256_12</code></li>
+  </ul>
+  <blockquote class="note">
+    <strong>כלל-זהב:</strong> <code>prompt</code> מרונדר הוא <em>materialized copy</em>, לא reference. הוא נוטה לסחוף (<bdi>drift</bdi>) בשקט. לכן הוא (א) מתחדש מה-<bdi>SSOT</bdi> על-פי דרישה, ו-(ב) נבדק לטריות ב-<bdi>Gate 3</bdi> (השוואת <bdi>sha</bdi> חי מול חתום). זה מה שמונע ש-<bdi>Opus</bdi> יצרוך snapshot מיושן.
+  </blockquote>
+
+  <h3>מבנה הפרומפט — נקודות ההזרקה</h3>
+  <p>במקום להטמיע כאן את טקסט הפרומפט המלא (שהוא נגזר ומשתנה בין אזורים), להלן <strong>מה</strong> מוזרק לתבנית הקנונית בעת הרינדור. כל אסימון <code>{...}</code> בתבנית מוחלף בערך שנשאב <strong>מ-<bdi>SSOT</bdi> חי</strong> — לא מטקסט מועתק:</p>
+  <table class="tbl">
+    <thead><tr><th>אסימון בתבנית</th><th>מקור (<bdi>SSOT</bdi>)</th><th>תוכן מוזרק</th></tr></thead>
+    <tbody>
+      <tr><td><code>{TOTAL_ACTIVE}</code> <code>{N_MEASUREMENTS}</code> <code>{YEAR_START/END}</code></td><td><code>02_data/measurements_scoped.csv</code></td><td>ספירת קידוחים מנותחים, מדידות, טווח שנים — נשאב מה-<bdi>Data Pack</bdi> (לא ידני)</td></tr>
+      <tr><td><code>{FOCUS_ORDER_LIST}</code></td><td>טבלת <bdi>סדר מוקדים</bdi> ב-<code>zone_diagnosis.md</code></td><td>סדר המוקדים הגיאוגרפיים (החוזה הבין-שלבי אבחון←דו"ח)</td></tr>
+      <tr><td><code>{TERMINOLOGY_BLOCK}</code></td><td><code>docs/STYLE_GUIDE.md §B.5</code></td><td>בלוק ההחלפות הקנוני — אותו <bdi>SSOT</bdi> ש-<bdi>Gate 5</bdi> אוכף</td></tr>
+      <tr><td><code>{ZONE}</code> <code>{ZONE_NAME_HE}</code> <code>{PRECEDENT_ZONE}</code></td><td><bdi>CLI args</bdi></td><td>שם האזור, שם עברי, אזור-תקדים סגנוני</td></tr>
+    </tbody>
+  </table>
+  <p>התבנית הקנונית עצמה (מבנה 6 פרקים + <code>&lt;focus_order&gt;</code> + <code>&lt;figure_rules&gt;</code>) שמורה ב-<code>scripts/templates/zone_report_prompt_template_v5.md</code>; הרינדור ב-<code>scripts/render_zone_prompt.py</code>. הפרומפט המרונדר נכתב ל-<code>{Zone}/context_pack/05_prompt/</code> ונושא בראשו חותמת provenance:</p>
+  <pre><code><span class="c">&lt;!-- RENDERED ARTIFACT — DO NOT EDIT BY HAND.</span>
+<span class="c">     Generated by scripts/render_zone_prompt.py --step report …</span>
+     template=zone_report_prompt_template_v5.md
+     template_sha256_12=<span class="k">a1b2c3d4e5f6</span>
+     diagnosis_sha256_12=<span class="k">9f8e7d6c5b4a</span>
+     total_active=111  measurements=15173  years=2008-2025
+<span class="c">     Re-run after ANY change to the template or the zone diagnosis. --&gt;</span></code></pre>
+  <p>שתי החותמות (<code>template_sha</code>, <code>diagnosis_sha</code>) הן בדיוק מה ש-<bdi>Gate 3</bdi> משווה מול ה-<bdi>SSOT</bdi> החי — כך snapshot מיושן נחסם אוטומטית.</p>
+</section>
+
+
+<!-- §5 -->
+<section>
+  <div class="sec-h"><span class="num">5</span><h2>שכבת הניהול והבקרה — 8 שערי QA</h2></div>
+  <p>זוהי השכבה שהופכת תוצר-<bdi>LLM</bdi> ל<strong>תוצר אמין בסביבת ייצור</strong>. <code>scripts/qa_pipeline.py</code> מריץ שערים אוטומטיים שכל אחד <strong>חוסם</strong> המשך אם החוזה מופר.</p>
+  <table class="tbl">
+    <thead><tr><th>שער</th><th>שלב נבדק</th><th>מה נאכף</th><th>חסימה</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Gate 2</strong></td><td><bdi>Data Pack</bdi></td><td>6 <bdi>CSVs</bdi> קיימים, סכמה תקינה, כל נתון עם מקור, אין פערים שקטים</td><td class="fail">FAIL</td></tr>
+      <tr><td><strong>Gate 3</strong></td><td>שכבת <code>prompt</code></td><td><code>template_sha</code> + <code>diagnosis_sha</code> תואמים את ה-<bdi>SSOT</bdi> החי (טריות)</td><td class="fail">FAIL</td></tr>
+      <tr><td><strong>Gate 4</strong></td><td>אבחון</td><td>בלוק <bdi>סדר מוקדים</bdi> קיים, פרסבילי, ממוין לפי חומרת-מוקד</td><td class="fail">FAIL</td></tr>
+      <tr><td><strong>Gate 5</strong></td><td>דו"ח</td><td>מבנה 6 פרקים, ספירת קידוחים עקבית, טרמינולוגיה, <bdi>focus-first</bdi>, <bdi>PFAS</bdi> ב"פערי כיסוי"</td><td class="fail">FAIL</td></tr>
+      <tr><td><strong>Gate 6</strong></td><td><bdi>HTML/Word</bdi></td><td>מספר מעגלי-קידוח במפה ≥80% מהקידוחים בscope, <bdi>bounds</bdi> דינמיים</td><td class="fail">FAIL</td></tr>
+      <tr><td><strong>Gate 8</strong></td><td>דו"חות ניהוליים</td><td><bdi>brief↔report sha</bdi> תואם (טריות); אנונימיזציה (שמות מתקנים ב-<bdi>PUBLIC</bdi>)</td><td class="fail">FAIL</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:13.5px;color:var(--soft)">(<bdi>Gate 7</bdi> = <code>validate</code> = הרצת <bdi>all</bdi>.)</p>
+
+  <h3>שני חוזי-staleness קריטיים (footguns שתועדו ונאכפו)</h3>
+  <ol class="tech">
+    <li><bdi><strong>diagnosis → prompt</strong></bdi> (<bdi>Gate 3</bdi>): הרצה חוזרת של שלב 4 (אבחון) ללא רינדור-מחדש של <code>prompt</code> הדו"ח — תוצאה: <bdi>Opus</bdi> צורך snapshot מיושן של <code>focus_order</code>. <strong>נאכף:</strong> ה-<code>prompt</code> חותם <code>diagnosis_sha256_12</code>; <bdi>Gate 3</bdi> משווה לקובץ האבחון החי.</li>
+    <li><bdi><strong>report → brief</strong></bdi> (<bdi>Gate 8</bdi>): שינוי בדו"ח-המקור ללא רענון ה-<bdi>brief</bdi> — תוצאה: דו"חות ניהוליים מיושנים. <strong>נאכף:</strong> ה-<bdi>brief</bdi> נושא <code>source_report_sha256_12</code>; <bdi>Gate 8</bdi> משווה לדו"ח האחרון.</li>
+  </ol>
+
+  <h3>אכיפת אנונימיזציה (Gate 8)</h3>
+  <p>הגרסה הציבורית נסרקת מול <bdi>blocklist</bdi> (<code>sources[].name_internal</code>):</p>
+  <ul class="tech">
+    <li><strong>שם מתקן</strong> ב-<bdi>PUBLIC</bdi> ← <span class="fail">FAIL</span> (חוסם פרסום)</li>
+    <li><strong>שם קידוח אמיתי</strong> ב-<bdi>PUBLIC</bdi> ← <span style="color:var(--grey-4);font-weight:600;font-family:'IBM Plex Mono',monospace;font-size:11.5px">WARN</span> (מומלץ קוד <bdi>B-NN</bdi>; חריגים מאושרים אפשריים)</li>
+  </ul>
+  <p>זה מונע הישנות של דליפת מידע — לא הסתמכות על זיכרון אנושי.</p>
+</section>
+
+
+<!-- §6 -->
+<section>
+  <div class="sec-h"><span class="num">6</span><h2>למה השילוב הזה — ולא אחד מהקצוות</h2></div>
+  <table class="tbl">
+    <thead><tr><th>גישה</th><th>בעיה</th></tr></thead>
+    <tbody>
+      <tr><td><strong>הכל דטרמיניסטי</strong></td><td>לא ניתן לבצע אשכול גיאוגרפי, חיבור ממצאים, ניסוח מקצועי — דורש שיפוט</td></tr>
+      <tr><td><strong>הכל <bdi>LLM</bdi></strong></td><td>לא חזרתי, לא ניתן לאימות, "כמעט נכון" בחישובים קריטיים, סיכון לדליפה</td></tr>
+      <tr><td><strong>היברידי + שערים</strong></td><td>דיוק במקום שצריך + שיפוט במקום שצריך + חוזה אכוף ביניהם</td></tr>
+    </tbody>
+  </table>
+  <blockquote class="note">
+    <strong>המסקנה ההנדסית בת-ההכללה:</strong> תוצר <bdi>GenAI</bdi> אמין בסביבת ייצור = <em>דטרמיניזם בליבה</em> + <em><bdi>LLM</bdi> בגבולות מוגדרים</em> + <em>שערי בקרה שאוכפים את החוזה</em>. הדפוס אינו ייחודי לזיהום מי תהום — הוא ישים לכל זרימת-עבודה עם מסה של מידע מקצועי וצורך בתוצר עקבי ומבוקר.
+  </blockquote>
+</section>
+
+
+<!-- §7 -->
+<section>
+  <div class="sec-h"><span class="num">7</span><h2>גנריות, בדיקות, ותחזוקתיות</h2></div>
+  <ul class="tech">
+    <li><strong>גנריות (<code>--zone</code>):</strong> הפייפליין אינו נעוץ-בחולון. כל הסקריפטים מקבלים <code>--zone</code> וגוזרים נתיבים מהשם. אומת על רעננה (7 קידוחים) וחולון (111 קידוחים) — סף <bdi>Gate 6</bdi> הוא <bdi>zone-relative</bdi> (≥80% מהקידוחים), לא קבוע.</li>
+    <li><strong>מוסכמת <bdi>casing</bdi></strong> (חוב מתועד, <bdi>REQ #28</bdi>): סקריפטי-ליבה מקבלים <code>--zone holon</code> (אות קטנה); כלי-<bdi>V5</bdi> מקבלים <code>--zone Holon</code> (שם-ספרייה). מתועד ב-<code>ORCHESTRATION.md</code>.</li>
+    <li><strong>בדיקות:</strong> <code>tests/</code> כולל בדיקות יחידה + 3 <bdi>validators</bdi> לדו"ח (<bdi>chart_refs, tone, attribution</bdi>) + 13 בדיקות למחולל ה-<bdi>brief</bdi>. כל שינוי במחולל מאומת מול <bdi>reference frozen</bdi> (רגנרציה <bdi>byte-identical</bdi>).</li>
+    <li><strong>Audit trail:</strong> כל נתון — מקור (<bdi>source_file + page/row</bdi>); כל <code>prompt</code> — חותמת <bdi>sha</bdi>; כל גרסת דו"ח — <bdi>V-number</bdi>; כל ארטיפקט נגזר מסומן <code>DO NOT EDIT BY HAND</code>.</li>
+    <li><strong>מצב גנריות הסקריפטים</strong> (חוב 18-האזורים) מתועד בטבלה ב-<code>ORCHESTRATION.md</code>. סקריפטי <bdi>legacy</bdi> (<bdi>V4-era</bdi>) ב-<code>scripts/legacy/</code> — <bdi>ARCHIVED</bdi>.</li>
+  </ul>
+</section>
+
+
+<!-- §8 -->
+<section>
+  <div class="sec-h"><span class="num">8</span><h2>רצף הרצה מלא (חולון, לדוגמה)</h2></div>
+  <pre><code><span class="k">ZONE_NAME_HE='אזה״ת חולון' scripts/run_pipeline.sh Holon data</span>
+<span class="c">#   parse_excel ← trend ← forensics ← data_pack ← Gate 2</span>
+<span class="c"># … הרכבת 03_context/ ידנית (NotebookLM-like) …</span>
+
+<span class="k">scripts/run_pipeline.sh Holon render-diagnosis</span>   <span class="c"># Gate 3</span>
+<span class="c"># … OPUS #1 ← zone_diagnosis.md … ; qa_pipeline --gate 4</span>
+
+<span class="k">scripts/run_pipeline.sh Holon render-report</span>      <span class="c"># Gate 3 (טריות)</span>
+<span class="c"># … OPUS #2 ← HOLON_REPORT_Vn.md … ; qa_pipeline --gate 5</span>
+
+<span class="k">scripts/run_pipeline.sh Holon html</span>        <span class="c"># auto-detect Vn ; Gate 6</span>
+<span class="k">scripts/run_pipeline.sh Holon validate</span>     <span class="c"># Gate all</span>
+
+<span class="c"># … רק אחרי אישור מומחה: …</span>
+<span class="k">scripts/run_pipeline.sh Holon exec-summary</span> <span class="c"># 8a prepare → OPUS #3 → finalize → Gate 8</span></code></pre>
+  <p><strong>גבולות <bdi>Opus</bdi></strong> (לא ניתן לאטמט): <bdi><code>render-diagnosis</code>→#1</bdi>, <bdi><code>render-report</code>→#2</bdi>, <bdi><code>exec-summary</code>→#3</bdi>. הדרייבר עוצר שם.</p>
+</section>
+
+
+<!-- §9 -->
+<section>
+  <div class="sec-h"><span class="num">9</span><h2>נקודות פתוחות (chunks לפיתוח עתידי)</h2></div>
+  <table class="tbl">
+    <thead><tr><th>נושא</th><th>מצב</th><th>רכיב</th></tr></thead>
+    <tbody>
+      <tr><td>חיבור ישיר ל-<bdi>DB</bdi></td><td>מתוכנן</td><td>שכבת הקלט (סעיף 2)</td></tr>
+      <tr><td><bdi>RAG</bdi> על מאגר דו"חות</td><td>נדחה (מתועד)</td><td><bdi>Context Pack</bdi> assembly</td></tr>
+      <tr><td><bdi>OCR</bdi> ל-<bdi>PDF</bdi> סרוקים</td><td>חוסם נתונים (<bdi>TAHAL 2008</bdi>)</td><td><code>extract_zone_pdfs.py</code></td></tr>
+      <tr><td>איחוד מוסכמת <code>--zone</code></td><td>חוב <bdi>REQ #28</bdi></td><td><code>cli_common.py</code> + ליבה</td></tr>
+      <tr><td><bdi>basemap</bdi> לאריחי-מפה</td><td>נדחה (סביבה)</td><td><code>svg_charts.py</code></td></tr>
+    </tbody>
+  </table>
+  <h3>הרכיבים הניתנים לשימוש-חוזר (מחוץ לתחום זיהום מי תהום)</h3>
+  <ul class="tech">
+    <li>מנוע ניתוח דטרמיניסטי (מגמות/חומרה) — לכל סדרת-זמן סביבתית</li>
+    <li>דפוס <bdi>LLM</bdi> מבוקר (<code>prompt</code> בנוי + שערים) — לכל משימת ניסוח/סיווג עקבית</li>
+    <li>מחולל דו-קהלי (פנימי+ציבורי מאותו מקור) — לכל תוצר עם גרסת-פרסום</li>
+    <li>שכבת <bdi>QA</bdi> (<bdi>audit trail</bdi>, אנונימיזציה, <bdi>staleness</bdi>) — לכל זרימה רגולטורית</li>
+  </ul>
+
+  <blockquote class="summary">
+    <strong>לסיכום הנדסי:</strong> הערך אינו במחולל-דו"ח חד-פעמי, אלא ב<strong>ארכיטקטורה</strong> — הפרדה נקייה בין דטרמיניזם ל-<bdi>LLM</bdi>, חוזים אכופים בין שלבים, ושכבת בקרה שמונעת <bdi>drift</bdi>, <bdi>staleness</bdi> ודליפה. זה מה שהופך את הכלי ממדגם-הוכחה (<bdi>POC</bdi>) לרכיב תשתית שניתן לתחזק, להרחיב ל-18 אזורים, ולהטמיע במערכות הרשות.
+  </blockquote>
+</section>
+
+</div><!-- /.doc -->
+
+<footer>
+  <b>השירות ההידרולוגי</b> ·
+  מסמך טכני — ארכיטקטורת המערכת ·
+  <span>טיוטה · <bdi>06/2026</bdi> · <bdi>IAR/TECH/2026-01</bdi></span>
+</footer>
+</body>
+</html>

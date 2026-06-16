@@ -56,6 +56,24 @@
 - **Status**: 🟢 Ready to promote to REQUIREMENTS.md (2-case rule satisfied: Raanana sparse → web works; Holon rich → web times out twice).
 - **What changes in STYLE_GUIDE.md § H**: methodology should branch on extraction richness check (Step 0d count of `facilities_suspected[]`).
 
+### 1.7 Coordinate system SSOT violation (hardcoded bounds) — Fixed 2026-05-31
+- **Observation (Holon, post-V5)**: Map function `svg_borehole_map_html()` had hardcoded ITM bounds (east_min=180, east_max=183, north_min=655, north_max=659) intended for km-scale coordinates. But the deterministic data pipeline (`parse_excel.py`) correctly normalizes all borehole coordinates to ITM meters (180500–182615, 656455–660280). When the map consumed meter-format data with km-scale bounds, all boreholes rendered at millions of pixels off-canvas — invisible despite data being valid.
+- **Root cause**: Legacy script `build_holon_borehole_classification.py` was designed for km format; a comment ("data uses km-scale coords, e.g., 181.949") perpetuated the wrong assumption into the map generator even after the pipeline was fixed to use meters.
+- **SSOT violation**: Two conflicting coordinate representations — the pipeline's authoritative source (meters) vs. the map's hardcoded bounds (km) — created a silent data integrity failure.
+- **Solution applied (2026-05-31)**: Refactored `svg_borehole_map_html()` to calculate bounds dynamically from data (east_itm.min()/.max() in meters), add 5% margin, and compute smart axis tick intervals. Function now zone-agnostic and coordinate-system-agnostic. CLAUDE.md §8 updated to document dynamic bounds requirement. Commit a289da9.
+- **Lesson**: Hardcoded limits (scales, bounds, thresholds) are architectural debt. Replace with data-driven calculation. Especially dangerous when the comment describing the limit becomes stale (km assumption was documented in comments but reality was meters).
+- **2nd-case test**: Zone #3 generation will validate that dynamic bounds work for a different zone's coordinate range. If bounds calculation breaks (e.g., missing data columns, coordinate type issues), we'll discover it immediately.
+- **What changes in CLAUDE.md**: §8 § "Render final figures + HTML" — now explicitly states map bounds MUST be dynamic, not hardcoded per zone.
+- **Status**: ✅ Fixed for Holon. 🟢 Promoted to CLAUDE.md §8 (best practice codified).
+
+### 1.8 RTL text transform corrupted inline SVG (bdi-in-SVG) — Fixed 2026-06-10
+- **Observation (Holon, V7 figures)**: `_time_series_panel` correctly emitted year ticks, contaminant labels and "DWS <param>" labels (REQ #26), yet none rendered — the chart looked like the pre-REQ#26 version. The text was present in the HTML *source* but invisible.
+- **Root cause**: `build_figure_html` passed the inline SVG through `md_utils.wrap_bidi()`, a prose RTL helper that wraps Latin/numeric runs in `<bdi>`. `<bdi>` is an HTML element with no meaning inside SVG `<text>`; the SVG renderer drops the wrapped content. A transform scoped to "HTML text" was applied to a different representation (SVG) that merely looked like HTML.
+- **Solution applied (2026-06-10)**: Embed the SVG raw — the chart engine already handles bidi internally (`direction="ltr"` root + `rtl-title` class). Captions, being real HTML, still go through `wrap_bidi`. One-line removal + explanatory comment. Commit 1588ba7.
+- **Lesson**: A string transform must be scoped to the representation it understands. SVG and HTML share `<text>`-like syntax but are different grammars; "wrap all numbers for RTL" silently corrupts the one it wasn't written for. Same class as 1.7 (a value/transform applied across a boundary it shouldn't cross).
+- **2nd-case test**: Any future zone's HTML generation reuses `build_figure_html`; if a new SVG element type appears mangled, suspect a prose transform leaking into the SVG.
+- **Status**: ✅ Fixed for Holon. Watch for promotion to a generic "never run prose transforms over embedded SVG" note if a 2nd zone hits it.
+
 ---
 
 ## 2. Deferred Decisions (Trigger to Reopen)
@@ -93,17 +111,17 @@
 
 - **Future REQ** (`future-tech-debt-cleanup`): After Holon V5 complete + approved: "Holon directory consolidation" — move `04_deterministic_anchors` to `context_pack/`, unify paths, retire `lean_workspace`. Est. 2 hours. Lower priority.
 
-### 2.3b Methodology File Sync — 5 Files Lag V5 Refactor (2026-05-25)
-- **Issue**: 5 governance MD files last updated 2026-05-06 (before V5 PROCESS_GUIDE refactor on 2026-05-17):
-  - `REQUIREMENTS.md` — mentions "Holon = first application", predates V5 scope clarity
-  - `LESSONS.md` — section 2.3 (now 2.3a/2.3b) references old patterns
-  - `DATA_DICTIONARY.md` — schema may mix old/V5
+### 2.3b Methodology File Sync — Partial Update (2026-05-28)
+- **Status (2026-05-28)**: CLAUDE.md, README.md, REQUIREMENTS.md, PROCESS.md, LESSONS.md (this entry) synced to Phase H+ Implementation completion (PR #19 / a19a917). Remaining files unchanged:
+  - `DATA_DICTIONARY.md` — schema may still mix old/V5 (not audited; deferred)
   - `docs/STYLE_GUIDE.md` § H (facility discovery) — describes `facility_attribution.json` as primary source, but PROCESS_GUIDE §I deprecated this (artifact, not evidence)
   - `docs/CHART_SPEC.md` — Raanana-only examples, may not reflect svg_charts.py `boreholes_override` API
 
-- **Decision**: No urgent fix. SSOT for V5 work = `ZONE_REPORT_PROCESS_GUIDE.md` §I–IX. Old files used as reference/style guidance only.
+- **Decision**: No urgent fix on remaining 3 docs. SSOT for V5 work = `ZONE_REPORT_PROCESS_GUIDE.md` §I–IX + new `DATA_PIPELINE_SPEC.md` + `REPORT_V5_SCHEMA.md`. STYLE_GUIDE/CHART_SPEC used as reference/style guidance only.
 
-- **Trigger to revisit**: On next cycle (zone #3 or refresh). Audit for broken references + update examples. Low priority; deferred.
+- **Trigger to revisit**: On zone #3 (post-Holon hydrogeologist approval) — audit broken references + update examples. Low priority; deferred.
+
+- **History**: Originally flagged 2026-05-25 as "5 Files Lag V5 Refactor"; partial sync completed 2026-05-28 post-PR #19 merge.
 
 ### 2.4 ★ Water Authority ArcGIS Portal integration (deployment phase)
 - **Status**: System currently runs in a sandbox environment with no access to authoritative geographic data (Overpass / OSM tiles / govmap WMS — all blocked, 403 Forbidden). Zone polygons are loaded from one-off KMZ uploads converted via pyproj; street enumeration falls back to agent general knowledge; basemaps are offline ITM schematics.
@@ -144,6 +162,18 @@
 | **`discover-zone-data` skill** | Given coordinates/place name → discovers available data (Excel, PDFs, polygons) and stages them in zone directory structure | When the project pivots from "18 known zones" to "arbitrary input → report" |
 | **Dashboard generator** (script + skill) | Produces interactive zone dashboard alongside or instead of full markdown report | When dashboard format is specified by user |
 
+### 3.3a RAG / agent-rag — status (deferred, skeleton-only)
+
+`toolkit/skills/agent-rag/SKILL.md` is a **DRAFT skeleton**, not an implementation. It documents an intended
+context-assembly skill (`assemble` / `extract` / `augment`) but its own header says `Status: ⏳ IN PROGRESS
+(skeleton defined; Opus orchestration TBD)` and the "Kitchen / מימוש" section is pseudo-code. **There is no
+vector store, no embeddings, no semantic-search code anywhere in the repo** — despite the "RAG" name.
+
+- **Current reality**: context assembly in the V5 pipeline is done by *ad-hoc Opus sub-agents* writing
+  `_findings_*.json` (e.g., `Holon/data/external/`), plus manual NotebookLM-style curation. No retrieval system.
+- **Status**: Deferred (`PROCESS.md` REQ #14). When triggered → design doc + prototype. Not blocking any zone.
+- **Do not** treat `agent-rag` as a working tool; it is a placeholder for a future build decision.
+
 ### 3.4 Available skills referenced
 
 For convenience — skills available in this environment that are relevant here:
@@ -160,5 +190,9 @@ For convenience — skills available in this environment that are relevant here:
 
 ---
 
-**Last Update**: 2026-05-06 (initial creation during methodology hygiene phase)  
-**Next Review**: After Holon zone summary report is approved by expert hydrogeologist
+**Last Update**: 2026-06-10 (REQ #29 — stamp corrected; body actively updated through 2026-06-10, see §1.8)
+**Next Review**: After Holon V8 hydrogeologist sign-off → Phase 2 (16-zone activation)
+
+> **הערה (REQ #29)**: §2.3a (איחוד תיקיות Holon: `04_deterministic_anchors`→`context_pack/`) **עוקף חלקית** ע"י
+> REQ #28 — `02_data/` נמחקה ו-`lean_workspace/` נשמרה כבסיס-הראיות הפעיל. עדכון מלא של §2.3a נדחה
+> עד refactor ה-data_loader הבא (אם יוחלט). RAG: ראה §3 — `agent-rag` הוא skeleton-only (DRAFT), deferred רשמית (PROCESS.md #14).

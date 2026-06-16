@@ -1,0 +1,8 @@
+borehole_id,borehole_name,east_itm,north_itm,severity_bucket,families,num_families,classification,is_alert
+raanana_nd_paz_hanofer,נד פז הנופר,189174,677924,3.0,FUEL,1,STABLE,False
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,189345,678575,8.0,PFAS,1,STABLE,True
+raanana_nt_1,נת רעננה 1,188515,677986,8.0,CVOC;METALS;FUEL,3,STABLE,True
+raanana_nt_2,נת רעננה 2,188709,677884,4.0,CVOC;METALS,2,STABLE,False
+raanana_nt_3,נת רעננה 3,188888,678207,2.0,CVOC;METALS;FUEL,3,STABLE,False
+raanana_p_18,פ רעננה 18,188944,677740,0.0,,0,STABLE,False
+raanana_p_25,פ רעננה 25,187951,677569,5.0,CVOC;METALS,2,STABLE,True

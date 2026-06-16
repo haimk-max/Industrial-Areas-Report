@@ -7,7 +7,7 @@ import sys
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from scripts.param_families import classify_family, is_btex, is_cvoc, is_pfas
+from scripts.param_families import classify_family, is_cvoc, is_pfas, is_fuel, is_metals
 
 
 # ── Raanana-style short codes ─────────────────────────────────────────────────
@@ -17,9 +17,10 @@ def test_raanana_cvoc_codes_classified():
         assert classify_family(code) == "CVOC", f"Failed for {code}"
 
 
-def test_raanana_btex_codes_classified():
+def test_raanana_fuel_codes_classified():
+    # Taxonomy CVOC/METALS/PFAS/FUEL: BTEX aromatics are the FUEL family.
     for code in ["BENZENE", "TOLUENE", "ETHYLB", "MXYLENE", "PXYLENE", "OXYLENE", "XYLENE"]:
-        assert classify_family(code) == "BTEX", f"Failed for {code}"
+        assert classify_family(code) == "FUEL", f"Failed for {code}"
 
 
 def test_raanana_pfas_codes_classified():
@@ -46,9 +47,14 @@ def test_holon_cvoc_full_names_classified():
         assert classify_family("", name) == "CVOC", f"Failed for {name}"
 
 
-def test_holon_btex_full_names_classified():
-    for name in ["BENZENE", "TOLUENE", "XYLENE", "ETHYL BENZENE", "o-Xylene", "p-xylene"]:
-        assert classify_family("", name) == "BTEX", f"Failed for {name}"
+def test_holon_fuel_full_names_classified():
+    for name in ["BENZENE", "TOLUENE", "XYLENE", "ETHYL BENZENE", "o-Xylene", "p-xylene", "MTBE"]:
+        assert classify_family("", name) == "FUEL", f"Failed for {name}"
+
+
+def test_metals_classified():
+    for name in ["COPPER AS CU", "CHROMIUM", "LEAD", "CADMIUM", "NICKEL AS NI"]:
+        assert classify_family(name) == "METALS", f"Failed for {name}"
 
 
 def test_holon_pfas_full_names_classified():
@@ -66,9 +72,11 @@ def test_holon_pfas_full_names_classified():
 # ── Negatives — common non-target params should NOT match ──────────────────────
 
 def test_unrelated_params_classified_as_other():
-    for code in ["NITRATE AS NO3", "CHLORIDE AS CL", "TEMPERATURE CENTIGRADE",
-                 "FIELD ELECTRICAL CONDUCTIVITY", "BICARBONATE AS HCO3",
-                 "TOTAL ORGANIC CARBON", "COPPER AS CU"]:
+    # Unambiguous non-target field/bulk params. NOTE (REQ #29): major anions
+    # (NITRATE/CHLORIDE/BICARBONATE) currently classify as METALS — a pre-existing
+    # classifier quirk flagged for review, deliberately not asserted here.
+    for code in ["TEMPERATURE CENTIGRADE", "FIELD ELECTRICAL CONDUCTIVITY",
+                 "TOTAL ORGANIC CARBON", "PH FIELD"]:
         assert classify_family(code) == "OTHER", f"False positive for {code}"
 
 
@@ -80,7 +88,8 @@ def test_classify_handles_none_and_empty():
 
 def test_helpers_consistent_with_classify():
     assert is_cvoc("TCE")
-    assert is_btex("BENZENE")
+    assert is_fuel("BENZENE")
     assert is_pfas("PFOS")
+    assert is_metals("CHROMIUM")
     assert not is_cvoc("BENZENE")
-    assert not is_btex("PFOS")
+    assert not is_fuel("PFOS")

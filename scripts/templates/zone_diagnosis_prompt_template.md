@@ -28,18 +28,26 @@ This is **not** the final V5 report. This is the diagnostic reasoning stage:
 
 Write in professional Hebrew. Use standard abbreviations where appropriate: TCE, PCE, CVOC, MTBE, BTEX, PFAS, DNAPL, LNAPL, VC, DCE, TCA, NAPL.
 
+<terminology>
+**מילון מונחים מחייב** (SSOT: `docs/STYLE_GUIDE.md` §B.5). המונחים בעמודה הימנית בלבד; המונחים בעמודה השמאלית **אסורים** בפרוזה — ה-QA חוסם אותם:
+
+{TERMINOLOGY_BLOCK}
+</terminology>
+
 ---
 
 ## Inputs
 
 ### Required (appended as text blocks)
 
+> Paths below use the canonical V5 data-pack naming (`DATA_PIPELINE_SPEC.md`) and the deterministic-anchors location. The renderer (`scripts/render_zone_prompt.py --step diagnosis`) fills `{data_dir}`, `{workspace_dir}`, `{forensics_dir}`, `{context_dir}` to the real zone paths.
+
 | # | File | Purpose |
 |---|------|---------|
-| 1 | `{data_dir}/statistical_signals.yaml` | Statistical anchors (S1–S11 / S99) — navigation aid |
-| 2 | `{data_dir}/forensic_anchors.yaml` | Forensic anchors (F1–F12 / F99) — navigation aid |
-| 3 | `{data_dir}/trends.csv` | Mann-Kendall results per (well, parameter) |
-| 4 | `{data_dir}/measurements.csv` | Raw measurements |
+| 1 | `{workspace_dir}/statistical_signals_PILOT.yaml` | Statistical anchors (S1–S11 / S99) — navigation aid |
+| 2 | `{workspace_dir}/forensic_anchors_PILOT.yaml` | Forensic anchors (F1–F12 / F99) — navigation aid |
+| 3 | `{data_dir}/trends_by_well_parameter.csv` | Mann-Kendall results per (well, parameter) |
+| 4 | `{data_dir}/measurements_scoped.csv` | Scoped measurements (window-filtered) |
 | 5 | `{workspace_dir}/severity_index_2025_{zone_id}.csv` | Severity per (well, family) |
 | 6 | `{workspace_dir}/severity_index_2025_{zone_id}_param_level.csv` | Severity per (well, family, parameter) |
 | 7 | `{forensics_dir}/contamination_families.json` | Decay chains, source signatures, co-occurrence, critical exceedances |
@@ -78,13 +86,13 @@ Treat A/B as strong; C as context only; D/E as background unless corroborated by
 
 **Start from the pre-processed artifacts, not from raw CSVs.** The pre-processing layers exist precisely so the diagnostic agent does not have to swim through tens of thousands of raw rows. Use them in this order:
 
-1. **First, read the structured anchors** (`statistical_signals.yaml`, `forensic_anchors.yaml`) — these are the navigation index. They tell you WHERE to look.
+1. **First, read the structured anchors** (`statistical_signals_PILOT.yaml`, `forensic_anchors_PILOT.yaml`) — these are the navigation index. They tell you WHERE to look.
 2. **Then read the severity indices** (`severity_index_2025_{zone_id}.csv` and `_param_level.csv`) — these summarize the contamination picture per well per family.
 3. **Then read the forensics summary** (`contamination_families.json` — particularly `critical_exceedances` and any populated decay/signature/co-occurrence sections).
 4. **Then read the context pack** (`reports_context.md`, `source_candidates_context.md`, optional web findings).
-5. **Only return to raw data** (`trends.csv`, `measurements.csv`) **for targeted verification** — when an anchor points to a finding you want to confirm, or when a contradiction between sources needs resolution. **Do not read these files in bulk.** Use filtered queries (specific borehole + parameter) per the anchor's evidence_pointer.
+5. **Only return to raw data** (`trends_by_well_parameter.csv`, `measurements_scoped.csv`) **for targeted verification** — when an anchor points to a finding you want to confirm, or when a contradiction between sources needs resolution. **Do not read these files in bulk.** Use filtered queries (specific borehole + parameter) per the anchor's evidence_pointer.
 
-`trends.csv` and `measurements.csv` are TRUTH sources, but they are not the STARTING point. They are the verification layer beneath the navigation layer.
+`trends_by_well_parameter.csv` and `measurements_scoped.csv` are TRUTH sources, but they are not the STARTING point. They are the verification layer beneath the navigation layer.
 
 ---
 
@@ -148,7 +156,8 @@ While diagnosing the zone, actively look for:
 - PFAS finding or PFAS coverage gap;
 - difference between historical maximum, recent maximum, and latest value;
 - difference between point-source contamination and regional plume behavior;
-- tension between chemical fit, spatial/hydrogeological fit, historical activity, and current facility status.
+- tension between chemical fit, spatial/hydrogeological fit, historical activity, and current facility status;
+- **production wells** (drinking water extraction): which are active/affected in-zone or downstream? Any suspended? Why? Risk to water supply? Basic forensic analysis: which monitoring wells are nearby, which industries impact each production well, confidence level (רמת ודאות: גבוהה/בינונית/נמוכה).
 
 ---
 
@@ -156,7 +165,7 @@ While diagnosing the zone, actively look for:
 
 When referencing anchors, signals, or raw data:
 - Cite anchor / signal IDs inline: `(ראה S1_001, F1_002)`
-- For raw-data verification, cite the file + filter: `(trends.csv: borehole_id == 'X' AND parameter == 'Y')`
+- For raw-data verification, cite the file + filter: `(trends_by_well_parameter.csv: borehole_id == 'X' AND parameter == 'Y')`
 - For prior-report findings: `(reports_context.md §X)` or page reference if available
 - For external / web sources: `(web_findings_context.md, classification C)`
 
@@ -215,6 +224,27 @@ Practical guidance for the V5 report writer:
 - what must not be overclaimed;
 - alignment with the V5 schema (see `REPORT_V5_SCHEMA.md` if available).
 
+### 7. סדר מוקדים — בלוק חובה (חוזה בין-שלבי)
+
+> **זהו ארטיפקט מחייב, לא טקסט חופשי.** הוא נצרך ע"י שלב 5 (כתיבת הדוח) ונאכף ע"י Gate 4 + Gate 5. בלעדיו — Gate 4 חוסם.
+
+חתום את האבחון בבלוק בפורמט הקבוע הבא (פַּרסְבִיל). הסדר נקבע לפי **עיקרון §IV של `ZONE_REPORT_PROCESS_GUIDE.md`**: מוקדים גיאוגרפיים ממוינים לפי **חומרת-מוקד יורדת** (max_bucket); בתוך מוקד — משפחות לפי חומרה יורדת; **כלל הקישור המנגנוני תקף תוך-מוקד בלבד** (VC כתוצר TCE; 1,4-dioxane כמייצב TCA; LNAPL כתורם-אלקטרונים) — קשר חוצה-מוקדים מטופל כ"חציית סיגנל" בפרוזה, **לא** בהזזת מוקד בסדר. "פערי כיסוי" תמיד אחרון.
+
+```markdown
+## סדר מוקדים
+
+> **ארטיפקט חוזה בין-שלבי** — נדרש ע"י §II.5. Gate 4 מאמת קיום טבלה זו. Gate 5 בודק שכותרות §3 בדוח הן מוקדים גיאוגרפיים ממוינים לפי חומרה יורדת.
+>
+> **עיקרון הסדר (§IV)**: חומרת-מוקד יורדת (max_bucket); בתוך מוקד — משפחות לפי חומרה יורדת; קישור מנגנוני תוך-מוקד בלבד; "פערי כיסוי" אחרון.
+
+| # | שם המוקד | מיקום / רחוב | משפחה מובילה | max_bucket | משפחות נוספות | קישור מנגנוני |
+|---|----------|--------------|--------------|------------|----------------|----------------|
+| 1 | [שם המוקד הגיאוגרפי] | [רחוב / מתקן / אזור] | [CVOC/METALS/FUEL/PFAS] | [0-8] | [רשימה או —] | [תיאור תוך-מוקד או —] |
+| N | פערי כיסוי | — | PFAS (ואחרים) | — | — | — |
+```
+
+**שובר-שוויון** בין מוקדים עם max_bucket זהה: (1) היקף הפלאום; (2) ממצאי בריאות-ציבור קריטיים; (3) מספר קידוחים מושפעים. נמק את ההכרעה בהערת-טקסט מתחת לטבלה.
+
 ---
 
 ## Hard Requirements
@@ -230,6 +260,7 @@ Practical guidance for the V5 report writer:
 9. **No facility names from training data** — rely only on appended materials.
 10. **Output as Hebrew markdown only.** No YAML, no figures, no HTML, no governance-file updates (CLAUDE.md, PROCESS_GUIDE.md, REQUIREMENTS.md, etc.).
 11. **Do not write the final V5 report.** This is diagnosis only.
+12. **`## סדר מוקדים` block is MANDATORY** (see "### 7" above). It must be the last block, parseable, ordered by §IV (focus severity descending; mechanistic linkage within-focus only; "פערי כיסוי" last). Gate 4 blocks on its absence.
 
 ---
 
