@@ -172,12 +172,15 @@ Zone ranked **2nd of 18** in 2021 Water Authority contamination severity index (
 | Metric | Value |
 |---|---|
 | Boreholes (raw Excel) | 112 |
-| Measurements | 20,613 |
+| Boreholes selected (Tier 2, in polygon) | 111/112 — 47 general monitoring + 64 fuel |
+| Measurements (raw Excel) | 20,613 |
+| Measurements (scoped, after TPFAS/BETK exclusion) | ~15,170 |
 | Years covered | 2010–2025 |
-| Tier 2 (in polygon) | 111/112 |
 | Trend pairs analysed | 4,869 |
 | Classifications | INCREASING=48, DECREASING=80, STABLE=613, NONE=4,128 |
 | Co-occurrence pairs | 2,803 |
+
+> The report (`HOLON_REPORT_V8`) is built on the **scoped** figures (111 wells, ~15,170 measurements); the raw Excel counts above are the pre-selection totals.
 
 ---
 
