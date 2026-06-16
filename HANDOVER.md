@@ -34,6 +34,17 @@
 - **`--zone holon` (lowercase) שובר חלק מהשערים** (זוהה 2026-06-16): Gate 8 בונה נתיב `REPO_ROOT/zone/output` — ב-Linux case-sensitive, `holon/output` ≠ `Holon/output` → "דוח לא נמצא" (WARN שקרי). **הרץ qa_pipeline עם `--zone Holon`** (capitalized = שם הספרייה) כדי לאמת באמת.
 - **חצים בקובצי HTML עבריים (RTL) מתהפכים** (זוהה 2026-06-15): ` —` בתוך טקסט עברי RTL מוצג הפוך חזותית. תיקון משולש: (1) כינויים טכניים כולם-אנגלי (`<bdi>diagnosis → prompt</bdi>`) — עטוף ב-`<bdi>` לאלץ LTR; (2) `<pre>` — חובה `direction:ltr; unicode-bidi:isolate`; (3) חצי-תוצאה בפסקה עברית — `←` או em-dash (—) במקום `→`. כל HTML עברי עתידי: בדוק `grep -n "→"` ואמת שאין `→` חשוף מחוץ ל-`<bdi>`/`<pre>`.
 
+---
+
+## סטטוס סיום סשן (2026-06-16)
+
+**Professional Packaging — מוכן ל-Release**
+- ✅ PR #23 (REQ #34 + DOCS_MAP) merged to main (commit e59bff9)
+- ✅ Canonical branch (claude/create-base-report-directory-5DqAR) 182 commits ahead of main
+- ✅ QA Status: Gate 2 WARN (expected), Gate 8 PASS (anonymization), Gate 3 FAIL (known debt from REQ #32)
+- ⏳ Hydrogeologist review of Holon V8 + Raanana V5 (next gate)
+- 🔜 **שלב הבא**: Merge canonical → main עם tag v2.0.0-professional-packaging; סגור ענפים obsolete
+
 ## עבודה בתהליך (In flight)
 
 - **REQ #28 COMPLETE** (ba51451): גנריזציית מחוללי-HTML הושלמה.
