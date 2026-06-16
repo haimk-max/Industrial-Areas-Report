@@ -430,6 +430,23 @@ def _latest_report(zone: str, suffix: str) -> Optional[Path]:
     return best
 
 
+def _count_scoped_wells(zone: str) -> int:
+    """Count scoped wells for the zone (for zone-relative map checks).
+
+    Prefers 01_scope/zone_wells.csv, then 02_data/zone_wells.csv. Returns 0 if
+    neither is present (callers fall back to a fixed threshold).
+    """
+    for rel in ("01_scope/zone_wells.csv", "02_data/zone_wells.csv"):
+        p = REPO_ROOT / zone / rel
+        if p.exists():
+            try:
+                with open(p, encoding="utf-8") as fh:
+                    return max(0, sum(1 for _ in fh) - 1)  # minus header
+            except OSError:
+                continue
+    return 0
+
+
 def gate5_report(zone: str, report_path: Optional[Path] = None,
                  data_dir: Optional[Path] = None) -> QAResult:
     """Validate {ZONE}_REPORT_V5.md.
@@ -693,12 +710,21 @@ def gate6_output(zone: str, html_path: Optional[Path] = None,
         html = html_path.read_text(encoding="utf-8")
         result.info(f"HTML: {html_path.name} ({len(html):,} תווים)")
 
-        # SVG borehole count
+        # SVG borehole count — expected ≈ one circle per scoped well (+legend).
+        # Threshold is zone-relative (derived from the well count), not a fixed
+        # Holon-calibrated absolute, so small zones (e.g. Raanana, 7 wells) pass.
         circle_count = len(re.findall(r"<circle", html))
-        if circle_count < 50:
-            result.error(f"SVG מפה: {circle_count} עיגולים בלבד — נדרש ≥50 לייצוג תקין של הקידוחים")
+        n_wells = _count_scoped_wells(zone)
+        # Require at least ~80% of wells rendered (allow for missing-coordinate drops).
+        min_circles = max(3, int(n_wells * 0.8)) if n_wells else 50
+        if circle_count < min_circles:
+            result.error(
+                f"SVG מפה: {circle_count} עיגולים בלבד — נדרש ≥{min_circles} "
+                f"(כ-{n_wells} קידוחים בתחום) לייצוג תקין")
         else:
-            result.info(f"SVG מפה: {circle_count} עיגולי קידוח — תקין")
+            result.info(
+                f"SVG מפה: {circle_count} עיגולי קידוח — תקין "
+                f"(כ-{n_wells} קידוחים בתחום)")
 
         # BDI wrapping
         bdi_count = len(re.findall(r"<bdi", html))

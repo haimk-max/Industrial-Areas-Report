@@ -1,0 +1,16 @@
+{
+  "source_file": "הערכת פוטנציאל והיקף זיהום מי תהום מתעשייה באקויפר החוף-A.pdf + -B.pdf",
+  "title_he": "הערכת פוטנציאל והיקף זיהום מי תהום מתעשייה באקויפר החוף (תה\"ל 2008, חלקים A ו-B)",
+  "year": 2008,
+  "author_org_he": "תה\"ל (TAHAL Group)",
+  "extraction_status": "FAILED — scanned/image PDF, no text layer",
+  "summary_he": "שני קבצי ה-PDF של דוח תה\"ל 2008 (חלק A: 70 עמ', חלק B: 68 עמ') הם סריקות-תמונה ללא שכבת טקסט. חילוץ pdftotext החזיר ~0 תווים לכל קובץ. לכן לא ניתן היה לחלץ ממצאים אוטומטית. דוח תה\"ל 2008 הוא המקור ההיסטורי הארצי להערכת פוטנציאל זיהום באקויפר החוף; עבור רעננה ספציפית, הניטור החל ב-2011 ולכן דוח 2008 אינו מכיל נתוני קידוח לרעננה (ראה data_gap בדוח facility_attribution).",
+  "boreholes_mentioned": [],
+  "contamination_findings": [],
+  "facilities_suspected": [],
+  "hydrogeology_he": "לא חולץ — סריקת תמונה. רקע הידרוגיאולוגי ארצי לאקויפר החוף; אינו ספציפי לרעננה.",
+  "trends_described_he": [],
+  "recommendations_he": [],
+  "key_quotes_he": [],
+  "data_gap_note_he": "PDF סרוק ללא OCR. לחילוץ עתידי נדרש OCR (Claude PDF Beta / tesseract). אין נתוני קידוח לרעננה בדוח 2008 — ניטור רעננה החל 2011/2012 (מערך ניטור רעננה 2013)."
+}

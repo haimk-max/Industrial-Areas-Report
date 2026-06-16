@@ -1,0 +1,190 @@
+borehole,name_he,family,param_code,param_name,first_sample_date,last_sample_date,n_samples
+raanana_nd_paz_hanofer,נד פז הנופר,FUEL,BENZ,BENZENE,2011-03-02,2024-10-01,14
+raanana_nd_paz_hanofer,נד פז הנופר,FUEL,ETBN,ETHYL BENZENE,2011-03-02,2024-10-01,14
+raanana_nd_paz_hanofer,נד פז הנופר,FUEL,MTBE,MTBE,2011-03-02,2024-10-01,14
+raanana_nd_paz_hanofer,נד פז הנופר,FUEL,TOLU,TOLUENE,2011-03-02,2024-10-01,14
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,CVOC,CCL4,CARBON TETRACHLORIDE,2023-11-14,2023-11-14,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,CVOC,CHLF,CHLOROFORM,2023-11-14,2023-11-14,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,CVOC,DCB13,"1,3-dichlorobenzene",2023-11-14,2023-11-14,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,CVOC,MCBZ,MONOCHLOROBENZENE,2023-11-14,2023-11-14,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,CVOC,MDCB,"DICHLOR BENZEN 1,2",2023-11-14,2023-11-14,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,CVOC,PDCB,"DICHLOROBENZEN 1,4",2023-11-14,2023-11-14,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,CVOC,TCEN,"1,1,2-trichloroethane",2023-11-14,2023-11-14,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,CVOC,TCET,"TRICHLORO ETHANE 1,1,1",2023-11-14,2023-11-14,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,CVOC,TCEY,TRICHLORO ETHYLENE,2023-11-14,2023-11-14,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,CVOC,TEC12,"1,1,1,2-tetrachloroethane",2023-11-14,2023-11-14,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,CVOC,TEC22,"1,1,2,2-tetrachloroethane",2023-11-14,2023-11-14,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,CVOC,TRPR3,"1,2,3-trichloropropane",2023-11-14,2023-11-14,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,FUEL,BENZ,BENZENE,2011-06-28,2023-11-14,5
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,FUEL,ETBN,ETHYL BENZENE,2011-06-28,2023-11-14,5
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,FUEL,MTBE,MTBE,2011-06-28,2023-11-14,5
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,FUEL,TOLU,TOLUENE,2011-06-28,2023-11-14,5
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,FUEL,TRMB4,"1,2,4 TRIMETHYLBENZENE",2023-11-14,2023-11-14,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,FUEL,TRMB5,"1,3,5 TRIMETHYLBENZENE",2023-11-14,2023-11-14,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,PFAS,82FTS,8:2 Fluorotelomer sulfonic acid,2025-07-30,2025-07-30,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,PFAS,PFBA,Perfluorobytanoic acid,2025-07-30,2025-07-30,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,PFAS,PFBS,Perfluorobutane Sulfonic Acid,2025-07-30,2025-07-30,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,PFAS,PFDS,Perfluorodecanesulfonic acid,2025-07-30,2025-07-30,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,PFAS,PFHpS,Perfluoroheptane sulfonic acid,2025-07-30,2025-07-30,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,PFAS,PFHxA,Perfluorohexanoic acid,2025-07-30,2025-07-30,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,PFAS,PFHxS,Perfluorohexanesulfonic acid,2025-07-30,2025-07-30,1
+raanana_nd_turbine,נד תחנת טורבינות גז רעננה,PFAS,PFOA,Per-FluoroOctanoic Acid,2025-07-30,2025-07-30,1
+raanana_nt_1,נת רעננה 1,CVOC,CCL4,CARBON TETRACHLORIDE,2012-06-25,2025-07-29,7
+raanana_nt_1,נת רעננה 1,CVOC,CHLF,CHLOROFORM,2012-06-25,2025-07-29,9
+raanana_nt_1,נת רעננה 1,CVOC,DCB13,"1,3-dichlorobenzene",2012-06-25,2025-07-29,7
+raanana_nt_1,נת רעננה 1,CVOC,MCBZ,MONOCHLOROBENZENE,2012-06-25,2025-07-29,6
+raanana_nt_1,נת רעננה 1,CVOC,MDCB,"DICHLOR BENZEN 1,2",2012-06-25,2025-07-29,5
+raanana_nt_1,נת רעננה 1,CVOC,PDCB,"DICHLOROBENZEN 1,4",2012-06-25,2025-07-29,5
+raanana_nt_1,נת רעננה 1,CVOC,TCEN,"1,1,2-trichloroethane",2012-06-25,2025-07-29,5
+raanana_nt_1,נת רעננה 1,CVOC,TCET,"TRICHLORO ETHANE 1,1,1",2012-06-25,2025-07-29,7
+raanana_nt_1,נת רעננה 1,CVOC,TCEY,TRICHLORO ETHYLENE,2012-06-25,2025-07-29,9
+raanana_nt_1,נת רעננה 1,CVOC,TCFM,Trichlorofluoromethane,2012-06-25,2025-07-29,6
+raanana_nt_1,נת רעננה 1,CVOC,TEC12,"1,1,1,2-tetrachloroethane",2012-06-25,2016-02-29,4
+raanana_nt_1,נת רעננה 1,CVOC,TEC22,"1,1,2,2-tetrachloroethane",2012-06-25,2016-02-29,4
+raanana_nt_1,נת רעננה 1,CVOC,TECE,TETRACHLORO ETHYLENE,2012-06-25,2025-07-29,9
+raanana_nt_1,נת רעננה 1,CVOC,TRPR3,"1,2,3-trichloropropane",2012-06-25,2025-07-29,5
+raanana_nt_1,נת רעננה 1,FUEL,BENZ,BENZENE,2012-06-25,2025-07-29,8
+raanana_nt_1,נת רעננה 1,FUEL,ETBN,ETHYL BENZENE,2012-06-25,2025-07-29,7
+raanana_nt_1,נת רעננה 1,FUEL,MTBE,MTBE,2012-06-25,2025-07-29,8
+raanana_nt_1,נת רעננה 1,FUEL,TOLU,TOLUENE,2012-06-25,2025-07-29,8
+raanana_nt_1,נת רעננה 1,FUEL,TRMB4,"1,2,4 TRIMETHYLBENZENE",2012-06-25,2025-07-29,7
+raanana_nt_1,נת רעננה 1,FUEL,TRMB5,"1,3,5 TRIMETHYLBENZENE",2012-06-25,2025-07-29,6
+raanana_nt_1,נת רעננה 1,METALS,AL,ALUMINUM,2024-09-04,2025-07-29,2
+raanana_nt_1,נת רעננה 1,METALS,AS,ARSENIC AS AS,2012-06-25,2025-07-29,8
+raanana_nt_1,נת רעננה 1,METALS,BA,BARIUM AS BA,2012-06-25,2025-07-29,9
+raanana_nt_1,נת רעננה 1,METALS,CD,CADMIUM AS CD,2012-06-25,2025-07-29,8
+raanana_nt_1,נת רעננה 1,METALS,CR,CHROMIUM AS CR,2012-06-25,2025-07-29,10
+raanana_nt_1,נת רעננה 1,METALS,CU,COPPER AS CU,2012-06-25,2025-07-29,9
+raanana_nt_1,נת רעננה 1,METALS,FE,IRON TOTAL AS FE,2014-10-30,2025-07-29,9
+raanana_nt_1,נת רעננה 1,METALS,MN,MANGANESE TOTAL AS MN,2012-06-25,2025-07-29,10
+raanana_nt_1,נת רעננה 1,METALS,NI,NICKEL AS NI,2012-06-25,2025-07-29,9
+raanana_nt_1,נת רעננה 1,METALS,PB,LEAD AS PB,2012-06-25,2025-07-29,8
+raanana_nt_1,נת רעננה 1,METALS,SE,SELENIUM AS SE,2019-07-22,2025-07-29,4
+raanana_nt_1,נת רעננה 1,METALS,ZN,ZINC AS ZN,2015-06-28,2025-07-29,8
+raanana_nt_2,נת רעננה 2,CVOC,CCL4,CARBON TETRACHLORIDE,2012-06-25,2025-07-29,7
+raanana_nt_2,נת רעננה 2,CVOC,CHLF,CHLOROFORM,2012-06-25,2025-07-29,9
+raanana_nt_2,נת רעננה 2,CVOC,DCB13,"1,3-dichlorobenzene",2012-06-25,2025-07-29,7
+raanana_nt_2,נת רעננה 2,CVOC,MCBZ,MONOCHLOROBENZENE,2012-06-25,2025-07-29,6
+raanana_nt_2,נת רעננה 2,CVOC,MDCB,"DICHLOR BENZEN 1,2",2012-06-25,2025-07-29,5
+raanana_nt_2,נת רעננה 2,CVOC,PDCB,"DICHLOROBENZEN 1,4",2012-06-25,2025-07-29,5
+raanana_nt_2,נת רעננה 2,CVOC,TCEN,"1,1,2-trichloroethane",2012-06-25,2025-07-29,5
+raanana_nt_2,נת רעננה 2,CVOC,TCET,"TRICHLORO ETHANE 1,1,1",2012-06-25,2025-07-29,7
+raanana_nt_2,נת רעננה 2,CVOC,TCEY,TRICHLORO ETHYLENE,2012-06-25,2025-07-29,9
+raanana_nt_2,נת רעננה 2,CVOC,TCFM,Trichlorofluoromethane,2012-06-25,2025-07-29,6
+raanana_nt_2,נת רעננה 2,CVOC,TEC12,"1,1,1,2-tetrachloroethane",2012-06-25,2016-02-29,4
+raanana_nt_2,נת רעננה 2,CVOC,TEC22,"1,1,2,2-tetrachloroethane",2012-06-25,2016-02-29,4
+raanana_nt_2,נת רעננה 2,CVOC,TECE,TETRACHLORO ETHYLENE,2012-06-25,2025-07-29,9
+raanana_nt_2,נת רעננה 2,CVOC,TRPR3,"1,2,3-trichloropropane",2012-06-25,2025-07-29,5
+raanana_nt_2,נת רעננה 2,FUEL,BENZ,BENZENE,2012-06-25,2025-07-29,8
+raanana_nt_2,נת רעננה 2,FUEL,ETBN,ETHYL BENZENE,2012-06-25,2025-07-29,7
+raanana_nt_2,נת רעננה 2,FUEL,MTBE,MTBE,2012-06-25,2025-07-29,8
+raanana_nt_2,נת רעננה 2,FUEL,TOLU,TOLUENE,2012-06-25,2025-07-29,8
+raanana_nt_2,נת רעננה 2,FUEL,TRMB4,"1,2,4 TRIMETHYLBENZENE",2012-06-25,2025-07-29,7
+raanana_nt_2,נת רעננה 2,FUEL,TRMB5,"1,3,5 TRIMETHYLBENZENE",2012-06-25,2025-07-29,6
+raanana_nt_2,נת רעננה 2,METALS,AL,ALUMINUM,2024-09-03,2025-07-29,2
+raanana_nt_2,נת רעננה 2,METALS,AS,ARSENIC AS AS,2012-06-25,2025-07-29,8
+raanana_nt_2,נת רעננה 2,METALS,BA,BARIUM AS BA,2012-06-25,2025-07-29,9
+raanana_nt_2,נת רעננה 2,METALS,CD,CADMIUM AS CD,2012-06-25,2025-07-29,8
+raanana_nt_2,נת רעננה 2,METALS,CR,CHROMIUM AS CR,2012-06-25,2025-07-29,10
+raanana_nt_2,נת רעננה 2,METALS,CU,COPPER AS CU,2012-06-25,2025-07-29,9
+raanana_nt_2,נת רעננה 2,METALS,FE,IRON TOTAL AS FE,2014-10-30,2025-07-29,9
+raanana_nt_2,נת רעננה 2,METALS,MN,MANGANESE TOTAL AS MN,2012-06-25,2025-07-29,10
+raanana_nt_2,נת רעננה 2,METALS,NI,NICKEL AS NI,2012-06-25,2025-07-29,9
+raanana_nt_2,נת רעננה 2,METALS,PB,LEAD AS PB,2012-06-25,2025-07-29,8
+raanana_nt_2,נת רעננה 2,METALS,SE,SELENIUM AS SE,2019-07-22,2025-07-29,4
+raanana_nt_2,נת רעננה 2,METALS,ZN,ZINC AS ZN,2015-06-28,2025-07-29,8
+raanana_nt_3,נת רעננה 3,CVOC,CCL4,CARBON TETRACHLORIDE,2012-06-25,2025-07-29,7
+raanana_nt_3,נת רעננה 3,CVOC,CHLF,CHLOROFORM,2012-06-25,2025-07-29,9
+raanana_nt_3,נת רעננה 3,CVOC,DCB13,"1,3-dichlorobenzene",2012-06-25,2025-07-29,7
+raanana_nt_3,נת רעננה 3,CVOC,MCBZ,MONOCHLOROBENZENE,2012-06-25,2025-07-29,6
+raanana_nt_3,נת רעננה 3,CVOC,MDCB,"DICHLOR BENZEN 1,2",2012-06-25,2025-07-29,5
+raanana_nt_3,נת רעננה 3,CVOC,PDCB,"DICHLOROBENZEN 1,4",2012-06-25,2025-07-29,5
+raanana_nt_3,נת רעננה 3,CVOC,TCEN,"1,1,2-trichloroethane",2012-06-25,2025-07-29,5
+raanana_nt_3,נת רעננה 3,CVOC,TCET,"TRICHLORO ETHANE 1,1,1",2012-06-25,2025-07-29,7
+raanana_nt_3,נת רעננה 3,CVOC,TCEY,TRICHLORO ETHYLENE,2012-06-25,2025-07-29,9
+raanana_nt_3,נת רעננה 3,CVOC,TCFM,Trichlorofluoromethane,2012-06-25,2025-07-29,6
+raanana_nt_3,נת רעננה 3,CVOC,TEC12,"1,1,1,2-tetrachloroethane",2012-06-25,2016-02-29,4
+raanana_nt_3,נת רעננה 3,CVOC,TEC22,"1,1,2,2-tetrachloroethane",2012-06-25,2016-02-29,4
+raanana_nt_3,נת רעננה 3,CVOC,TECE,TETRACHLORO ETHYLENE,2012-06-25,2025-07-29,9
+raanana_nt_3,נת רעננה 3,CVOC,TRPR3,"1,2,3-trichloropropane",2012-06-25,2025-07-29,5
+raanana_nt_3,נת רעננה 3,FUEL,BENZ,BENZENE,2012-06-25,2025-07-29,8
+raanana_nt_3,נת רעננה 3,FUEL,ETBN,ETHYL BENZENE,2012-06-25,2025-07-29,7
+raanana_nt_3,נת רעננה 3,FUEL,MTBE,MTBE,2012-06-25,2025-07-29,8
+raanana_nt_3,נת רעננה 3,FUEL,TOLU,TOLUENE,2012-06-25,2025-07-29,8
+raanana_nt_3,נת רעננה 3,FUEL,TRMB4,"1,2,4 TRIMETHYLBENZENE",2012-06-25,2025-07-29,7
+raanana_nt_3,נת רעננה 3,FUEL,TRMB5,"1,3,5 TRIMETHYLBENZENE",2012-06-25,2025-07-29,6
+raanana_nt_3,נת רעננה 3,METALS,AL,ALUMINUM,2024-09-04,2025-07-29,2
+raanana_nt_3,נת רעננה 3,METALS,AS,ARSENIC AS AS,2012-06-25,2025-07-29,7
+raanana_nt_3,נת רעננה 3,METALS,BA,BARIUM AS BA,2012-06-25,2025-07-29,8
+raanana_nt_3,נת רעננה 3,METALS,CD,CADMIUM AS CD,2012-06-25,2025-07-29,7
+raanana_nt_3,נת רעננה 3,METALS,CR,CHROMIUM AS CR,2012-06-25,2025-07-29,9
+raanana_nt_3,נת רעננה 3,METALS,CU,COPPER AS CU,2012-06-25,2025-07-29,8
+raanana_nt_3,נת רעננה 3,METALS,FE,IRON TOTAL AS FE,2014-10-30,2025-07-29,8
+raanana_nt_3,נת רעננה 3,METALS,MN,MANGANESE TOTAL AS MN,2012-06-25,2025-07-29,9
+raanana_nt_3,נת רעננה 3,METALS,NI,NICKEL AS NI,2012-06-25,2025-07-29,8
+raanana_nt_3,נת רעננה 3,METALS,PB,LEAD AS PB,2012-06-25,2025-07-29,7
+raanana_nt_3,נת רעננה 3,METALS,SE,SELENIUM AS SE,2019-07-22,2025-07-29,3
+raanana_nt_3,נת רעננה 3,METALS,ZN,ZINC AS ZN,2015-06-28,2025-07-29,7
+raanana_p_18,פ רעננה 18,CVOC,CCL4,CARBON TETRACHLORIDE,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,CVOC,CHLF,CHLOROFORM,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,CVOC,DCB13,"1,3-dichlorobenzene",2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,CVOC,MCBZ,MONOCHLOROBENZENE,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,CVOC,MDCB,"DICHLOR BENZEN 1,2",2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,CVOC,PDCB,"DICHLOROBENZEN 1,4",2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,CVOC,TCEN,"1,1,2-trichloroethane",2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,CVOC,TCET,"TRICHLORO ETHANE 1,1,1",2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,CVOC,TCEY,TRICHLORO ETHYLENE,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,CVOC,TCFM,Trichlorofluoromethane,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,CVOC,TEC12,"1,1,1,2-tetrachloroethane",2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,CVOC,TEC22,"1,1,2,2-tetrachloroethane",2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,CVOC,TECE,TETRACHLORO ETHYLENE,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,CVOC,TRPR3,"1,2,3-trichloropropane",2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,FUEL,BENZ,BENZENE,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,FUEL,ETBN,ETHYL BENZENE,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,FUEL,MTBE,MTBE,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,FUEL,TOLU,TOLUENE,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,FUEL,TRMB4,"1,2,4 TRIMETHYLBENZENE",2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,FUEL,TRMB5,"1,3,5 TRIMETHYLBENZENE",2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,METALS,AL,ALUMINUM,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,METALS,AS,ARSENIC AS AS,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,METALS,CD,CADMIUM AS CD,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,METALS,CR,CHROMIUM AS CR,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,METALS,CU,COPPER AS CU,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,METALS,MN,MANGANESE TOTAL AS MN,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,METALS,NI,NICKEL AS NI,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,METALS,PB,LEAD AS PB,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,METALS,SE,SELENIUM AS SE,2011-05-02,2011-05-02,1
+raanana_p_18,פ רעננה 18,METALS,ZN,ZINC AS ZN,2011-05-02,2011-05-02,1
+raanana_p_25,פ רעננה 25,CVOC,CCL4,CARBON TETRACHLORIDE,2019-02-25,2025-03-02,6
+raanana_p_25,פ רעננה 25,CVOC,CHLF,CHLOROFORM,2019-02-25,2025-05-05,11
+raanana_p_25,פ רעננה 25,CVOC,MCBZ,MONOCHLOROBENZENE,2019-02-25,2025-03-02,6
+raanana_p_25,פ רעננה 25,CVOC,MDCB,"DICHLOR BENZEN 1,2",2019-02-25,2025-03-02,6
+raanana_p_25,פ רעננה 25,CVOC,PDCB,"DICHLOROBENZEN 1,4",2019-02-25,2025-03-02,6
+raanana_p_25,פ רעננה 25,CVOC,TCEN,"1,1,2-trichloroethane",2019-02-25,2025-03-02,6
+raanana_p_25,פ רעננה 25,CVOC,TCET,"TRICHLORO ETHANE 1,1,1",2019-02-25,2025-03-02,6
+raanana_p_25,פ רעננה 25,CVOC,TCEY,TRICHLORO ETHYLENE,2019-02-25,2025-11-10,18
+raanana_p_25,פ רעננה 25,CVOC,TECE,TETRACHLORO ETHYLENE,2019-02-25,2025-03-02,6
+raanana_p_25,פ רעננה 25,FUEL,BENZ,BENZENE,2019-02-25,2025-03-02,6
+raanana_p_25,פ רעננה 25,FUEL,ETBN,ETHYL BENZENE,2019-02-25,2025-03-02,6
+raanana_p_25,פ רעננה 25,FUEL,MTBE,MTBE,2023-03-12,2025-03-02,3
+raanana_p_25,פ רעננה 25,FUEL,TOLU,TOLUENE,2019-02-25,2025-03-02,6
+raanana_p_25,פ רעננה 25,METALS,AL,ALUMINUM,2023-03-12,2025-03-02,3
+raanana_p_25,פ רעננה 25,METALS,AS,ARSENIC AS AS,2023-03-12,2025-03-02,3
+raanana_p_25,פ רעננה 25,METALS,BA,BARIUM AS BA,2023-03-12,2025-03-02,4
+raanana_p_25,פ רעננה 25,METALS,CD,CADMIUM AS CD,2023-03-12,2025-03-02,3
+raanana_p_25,פ רעננה 25,METALS,CR,CHROMIUM AS CR,2023-03-12,2025-03-02,3
+raanana_p_25,פ רעננה 25,METALS,CU,COPPER AS CU,2023-03-12,2025-03-02,3
+raanana_p_25,פ רעננה 25,METALS,FE,IRON TOTAL AS FE,2023-03-12,2025-03-02,4
+raanana_p_25,פ רעננה 25,METALS,MN,MANGANESE TOTAL AS MN,2023-03-12,2025-03-02,4
+raanana_p_25,פ רעננה 25,METALS,MO,MOLYBDENUM,2023-03-12,2025-03-02,3
+raanana_p_25,פ רעננה 25,METALS,NI,NICKEL AS NI,2023-03-12,2025-03-02,3
+raanana_p_25,פ רעננה 25,METALS,PB,LEAD AS PB,2023-03-12,2025-03-02,3
+raanana_p_25,פ רעננה 25,METALS,SE,SELENIUM AS SE,2023-03-12,2025-03-02,3
+raanana_p_25,פ רעננה 25,METALS,U,URANIUM,2023-03-12,2025-03-02,3
+raanana_p_25,פ רעננה 25,METALS,ZN,ZINC AS ZN,2023-03-12,2025-03-02,3
+raanana_p_25,פ רעננה 25,PFAS,ADONA,Ammonium trifluor propionate,2024-06-04,2024-06-04,1
+raanana_p_25,פ רעננה 25,PFAS,PFBA,Perfluorobytanoic acid,2024-06-04,2025-08-10,2
+raanana_p_25,פ רעננה 25,PFAS,PFBS,Perfluorobutane Sulfonic Acid,2024-06-04,2025-08-10,2
+raanana_p_25,פ רעננה 25,PFAS,PFHxA,Perfluorohexanoic acid,2024-06-04,2025-08-10,2
+raanana_p_25,פ רעננה 25,PFAS,PFHxS,Perfluorohexanesulfonic acid,2024-06-04,2025-08-10,2
+raanana_p_25,פ רעננה 25,PFAS,PFOA,Per-FluoroOctanoic Acid,2024-06-04,2025-08-10,2

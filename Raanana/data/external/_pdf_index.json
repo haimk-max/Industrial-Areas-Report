@@ -1,0 +1,44 @@
+{
+  "zone_id": "raanana",
+  "extraction_date_utc": "2026-06-14T15:41:51+00:00",
+  "pdf_count": 4,
+  "pdfs": [
+    {
+      "filename": "water_authority_raanana_2013.pdf",
+      "source_dir": "Raanana/data/external",
+      "raw_text": "Raanana/data/external/_raw_text/water_authority_raanana_2013.txt",
+      "page_count": 31,
+      "char_count": 127118,
+      "extraction_ok": true,
+      "extraction_date_utc": "2026-06-14T15:41:51+00:00"
+    },
+    {
+      "filename": "בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.pdf",
+      "source_dir": "Base-Report",
+      "raw_text": "Raanana/data/external/_raw_text/בקרת איכות מים במערך ניטור אזורי תעשייה באקויפר החוף 2021.txt",
+      "page_count": 50,
+      "char_count": 144521,
+      "extraction_ok": true,
+      "extraction_date_utc": "2026-06-14T15:41:51+00:00"
+    },
+    {
+      "filename": "הערכת פוטנציאל והיקף זיהום מי תהום מתעשייה באקויפר החוף-A.pdf",
+      "source_dir": "Base-Report",
+      "raw_text": "Raanana/data/external/_raw_text/הערכת פוטנציאל והיקף זיהום מי תהום מתעשייה באקויפר החוף-A.txt",
+      "page_count": 70,
+      "char_count": 70,
+      "extraction_ok": true,
+      "extraction_date_utc": "2026-06-14T15:41:54+00:00"
+    },
+    {
+      "filename": "הערכת פוטנציאל והיקף זיהום מי תהום מתעשייה באקויפר החוף-B.pdf",
+      "source_dir": "Base-Report",
+      "raw_text": "Raanana/data/external/_raw_text/הערכת פוטנציאל והיקף זיהום מי תהום מתעשייה באקויפר החוף-B.txt",
+      "page_count": 68,
+      "char_count": 68,
+      "extraction_ok": true,
+      "extraction_date_utc": "2026-06-14T15:41:56+00:00"
+    }
+  ],
+  "last_extraction_utc": "2026-06-14T15:41:56+00:00"
+}
