@@ -1,0 +1,28 @@
+# SAMPLE XGBOOST RESULTS FOR HOLON PRODUCTION WELLS
+# This is a SYNTHETIC SAMPLE for demonstration and testing purposes.
+# Replace with real predictions from your XGBOOST model.
+# Generated: 2026-06-17
+# Scope: Private production wells (private_production) in Holon zone
+
+## WELL-LEVEL PREDICTIONS
+# canonical_well_id,predicted_risk_class,risk_probability,model_version,prediction_date_utc,comments
+מק_חולון_12,moderate,0.62,1.0.0,2026-06-17T10:30:00Z,Data from last 3 years; recent TCE
+מק_חולון_14,moderate,0.54,1.0.0,2026-06-17T10:30:00Z,Cr rising slowly; monitoring active
+פ_אזור_מקור_חקלאי,low,0.18,1.0.0,2026-06-17T10:30:00Z,Lowest contamination in zone; far from sources
+פ_מקוה_ישראל_רוטשילד,moderate,0.59,1.0.0,2026-06-17T10:30:00Z,TCE 120 µg/L; stable trend
+
+---
+
+## FEATURE IMPORTANCE (SHAP)
+# canonical_well_id,feature_name,feature_value,shap_contribution,contribution_direction,feature_category
+מק_חולון_12,latest_cvoc_concentration,8750 µg/L,0.35,↑ risk,contamination
+מק_חולון_12,severity_index_cvoc,8,0.18,↑ risk,contamination
+מק_חולון_12,trend_mann_kendall_z,1.87,0.09,↑ risk,trend
+מק_חולון_12,distance_to_facility_m,45,0.02,↑ risk,distance
+מק_חולון_14,latest_metals_concentration_cr,331 µg/L,0.20,↑ risk,contamination
+מק_חולון_14,distance_to_facility_m,120,0.18,↑ risk,distance
+מק_חולון_14,trend_mann_kendall_p,0.062,-0.02,↓ risk,trend
+פ_אזור_מקור_חקלאי,latest_cvoc_concentration,0 µg/L,-0.18,↓ risk,contamination
+פ_אזור_מקור_חקלאי,latest_metals_concentration,5 µg/L,-0.10,↓ risk,contamination
+פ_מקוה_ישראל_רוטשילד,latest_cvoc_concentration,120 µg/L,0.15,↑ risk,contamination
+פ_מקוה_ישראל_רוטשילד,trend_mann_kendall_p,0.34,-0.01,↓ risk,trend

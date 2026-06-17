@@ -1,0 +1,699 @@
+canonical_well_id,parameter_canonical,mann_kendall_z,mann_kendall_p,snr,soft_trigger_met,trend_classification,n_measurements,time_span_years,notes
+מק_חולון_12,BARIUM AS BA,,,0.0,0,NONE,1,5.0,Low measurement count
+מק_חולון_12,BICARBONATE AS HCO3,,,0.0,0,STABLE,1,5.0,Low measurement count
+מק_חולון_12,CALCIUM AS CA,,,0.0,0,NONE,1,5.0,Low measurement count
+מק_חולון_12,CHLORIDE AS CL,2.20454,0.0274863,1.27078,0,INCREASING,5,5.0,
+מק_חולון_12,CHROMIUM AS CR,,,0.0,0,STABLE,1,5.0,Low measurement count
+מק_חולון_12,COPPER AS CU,,,0.0,0,STABLE,1,5.0,Low measurement count
+מק_חולון_12,IRON TOTAL AS FE,,,0.0,0,STABLE,1,5.0,Low measurement count
+מק_חולון_12,MAGNESIUM AS MG,,,0.0,0,NONE,1,5.0,Low measurement count
+מק_חולון_12,MANGANESE TOTAL AS MN,,,0.0,0,NONE,1,5.0,Low measurement count
+מק_חולון_12,NITRATE AS NO3,1.30558,0.191695,1.39272,0,STABLE,5,5.0,
+מק_חולון_12,POTASSIUM AS K,,,0.0,0,NONE,1,5.0,Low measurement count
+מק_חולון_12,SODIUM AS NA,,,0.0,0,NONE,1,5.0,Low measurement count
+מק_חולון_12,SULFATE AS SO4,,,0.0,0,NONE,1,5.0,Low measurement count
+מק_חולון_12,ZINC AS ZN,,,0.0,0,DECREASING,1,5.0,Low measurement count
+מק_חולון_14,ARSENIC AS AS,,,0.0,0,INCREASING,1,5.0,Low measurement count
+מק_חולון_14,BARIUM AS BA,,,0.0,0,STABLE,1,5.0,Low measurement count
+מק_חולון_14,CALCIUM AS CA,,,0.0,0,INCREASING,1,5.0,Low measurement count
+מק_חולון_14,CARBON TETRACHLORIDE,-3.19652,0.00139095,1.0974,0,DECREASING,16,5.0,
+מק_חולון_14,CHLORIDE AS CL,0.0,1.0,0.0,0,NONE,7,5.0,
+מק_חולון_14,CHROMIUM AS CR,,,0.0,0,STABLE,1,5.0,Low measurement count
+מק_חולון_14,COPPER AS CU,,,0.0,0,STABLE,1,5.0,Low measurement count
+מק_חולון_14,"DICHLOROETHYLENE 1,1",-0.844389,0.398452,0.558236,0,STABLE,15,5.0,
+מק_חולון_14,DICHLOROMETHANE,,,0.0,0,NONE,6,5.0,
+מק_חולון_14,IRON TOTAL AS FE,,,0.0,0,STABLE,1,5.0,Low measurement count
+מק_חולון_14,MAGNESIUM AS MG,,,0.0,0,INCREASING,1,5.0,Low measurement count
+מק_חולון_14,NICKEL AS NI,,,0.0,0,STABLE,1,5.0,Low measurement count
+מק_חולון_14,NITRATE AS NO3,1.90532,0.0567382,1.24352,0,INCREASING,7,5.0,
+מק_חולון_14,POTASSIUM AS K,,,0.0,0,STABLE,1,5.0,Low measurement count
+מק_חולון_14,SODIUM AS NA,,,0.0,0,NONE,1,5.0,Low measurement count
+מק_חולון_14,TETRACHLORO ETHYLENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+מק_חולון_14,TOLUENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+מק_חולון_14,TRICHLORO ETHYLENE,-0.769683,0.441488,0.690279,0,STABLE,19,5.0,
+מק_חולון_14,XYLENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+מק_חולון_14,ZINC AS ZN,,,0.0,0,NONE,1,5.0,Low measurement count
+מק_חולון_23,CHLORIDE AS CL,,,0.0,0,STABLE,1,5.0,Low measurement count
+מק_חולון_23,NITRATE AS NO3,,,0.0,0,STABLE,1,5.0,Low measurement count
+נד_אגד_אזור_1, MTBE,0.838628,0.401678,0.238009,0,NONE,9,5.0,
+נד_אגד_אזור_1,BENZENE,0.838628,0.401678,0.65774,0,STABLE,9,5.0,
+נד_אגד_אזור_1,DISSOLVED OXYGEN AS O2,-1.64089,0.10082,1.02084,0,STABLE,10,5.0,
+נד_אגד_אזור_1,ETHYL BENZENE,-0.628971,0.529368,0.172708,0,NONE,9,5.0,
+נד_אגד_אזור_1,TOLUENE,2.09657,0.0360317,1.04336,0,INCREASING,9,5.0,
+נד_אגד_אזור_1,XYLENE,1.25794,0.208413,0.887554,0,STABLE,9,5.0,
+נד_אגד_אזור_10, MTBE,0.759555,0.447521,1.19327,0,STABLE,7,5.0,
+נד_אגד_אזור_10,BENZENE,-2.63878,0.00832051,1.53269,0,DECREASING,8,5.0,
+נד_אגד_אזור_10,DISSOLVED OXYGEN AS O2,-0.748054,0.454427,0.209888,0,NONE,8,5.0,
+נד_אגד_אזור_10,ETHYL BENZENE,-1.99481,0.0460634,1.75645,0,DECREASING,8,5.0,
+נד_אגד_אזור_10,TOLUENE,-1.66905,0.0951083,0.885727,0,STABLE,8,5.0,
+נד_אגד_אזור_10,XYLENE,-0.997406,0.318567,0.933239,0,STABLE,8,5.0,
+נד_אגד_אזור_11, MTBE,0.0,1.0,0.396166,0,STABLE,7,5.0,
+נד_אגד_אזור_11,BENZENE,-1.3672,0.171563,0.953832,0,STABLE,7,5.0,
+נד_אגד_אזור_11,DISSOLVED OXYGEN AS O2,-0.901127,0.367521,0.409992,0,STABLE,7,5.0,
+נד_אגד_אזור_11,ETHYL BENZENE,-1.00466,0.31506,0.876645,0,STABLE,7,5.0,
+נד_אגד_אזור_11,TOLUENE,-0.784063,0.433003,0.530564,0,STABLE,7,5.0,
+נד_אגד_אזור_11,XYLENE,-1.22956,0.218863,0.882514,0,STABLE,7,5.0,
+נד_אגד_אזור_12, MTBE,0.600751,0.548006,0.454375,0,STABLE,7,5.0,
+נד_אגד_אזור_12,BENZENE,0.0,1.0,0.0481334,0,NONE,7,5.0,
+נד_אגד_אזור_12,DISSOLVED OXYGEN AS O2,-0.901127,0.367521,0.44166,0,STABLE,7,5.0,
+נד_אגד_אזור_12,ETHYL BENZENE,0.901127,0.367521,1.27886,0,STABLE,7,5.0,
+נד_אגד_אזור_12,TOLUENE,0.0,1.0,0.465566,0,STABLE,7,5.0,
+נד_אגד_אזור_12,XYLENE,0.0,1.0,0.104773,0,NONE,7,5.0,
+נד_אגד_אזור_13, MTBE,-1.80225,0.0715054,1.15934,0,DECREASING,7,5.0,
+נד_אגד_אזור_13,BENZENE,-1.85577,0.0634865,0.985052,0,STABLE,8,5.0,
+נד_אגד_אזור_13,DISSOLVED OXYGEN AS O2,-1.13091,0.258095,0.977541,0,STABLE,8,5.0,
+נד_אגד_אזור_13,ETHYL BENZENE,-2.13615,0.0326668,1.01716,0,DECREASING,8,5.0,
+נד_אגד_אזור_13,TOLUENE,-1.41227,0.157871,0.554308,0,STABLE,8,5.0,
+נד_אגד_אזור_13,XYLENE,-1.74546,0.0809048,0.778421,0,STABLE,8,5.0,
+נד_אגד_אזור_14, MTBE,-1.97484,0.0482861,1.43741,0,DECREASING,7,5.0,
+נד_אגד_אזור_14,BENZENE,-1.3672,0.171563,1.76787,0,STABLE,7,5.0,
+נד_אגד_אזור_14,DISSOLVED OXYGEN AS O2,-1.2015,0.229556,0.785116,0,STABLE,7,5.0,
+נד_אגד_אזור_14,ETHYL BENZENE,-1.3672,0.171563,0.946011,0,STABLE,7,5.0,
+נד_אגד_אזור_14,TOLUENE,-1.67102,0.0947177,1.2825,0,DECREASING,7,5.0,
+נד_אגד_אזור_14,XYLENE,-1.67102,0.0947177,1.63473,0,DECREASING,7,5.0,
+נד_אגד_אזור_2, MTBE,-1.24676,0.212486,1.17269,0,STABLE,8,5.0,
+נד_אגד_אזור_2,BENZENE,-2.20416,0.0275134,0.553484,0,DECREASING,9,5.0,
+נד_אגד_אזור_2,DISSOLVED OXYGEN AS O2,-0.316228,0.75183,0.944337,0,STABLE,9,5.0,
+נד_אגד_אזור_2,ETHYL BENZENE,-2.67516,0.00746933,1.00768,0,DECREASING,9,5.0,
+נד_אגד_אזור_2,TOLUENE,-1.88691,0.0591721,1.18954,0,DECREASING,9,5.0,
+נד_אגד_אזור_2,XYLENE,-2.09657,0.0360317,0.918093,0,DECREASING,9,5.0,
+נד_אגד_אזור_3, MTBE,-2.51588,0.0118734,1.40642,0,DECREASING,9,5.0,
+נד_אגד_אזור_3,BENZENE,-1.88691,0.0591721,1.09746,0,DECREASING,9,5.0,
+נד_אגד_אזור_3,DISSOLVED OXYGEN AS O2,-1.26234,0.206827,0.640726,0,STABLE,10,5.0,
+נד_אגד_אזור_3,ETHYL BENZENE,-3.07282,0.00212049,1.11589,0,DECREASING,10,5.0,
+נד_אגד_אזור_3,TOLUENE,-0.452679,0.65078,0.685672,0,STABLE,10,5.0,
+נד_אגד_אזור_3,XYLENE,-0.628619,0.529599,0.376815,0,STABLE,10,5.0,
+נד_אגד_אזור_4, MTBE,-1.04828,0.294507,0.717232,0,STABLE,9,5.0,
+נד_אגד_אזור_4,BENZENE,0.0,1.0,0.875014,0,STABLE,9,5.0,
+נד_אגד_אזור_4,DISSOLVED OXYGEN AS O2,-1.64089,0.10082,0.975503,0,STABLE,10,5.0,
+נד_אגד_אזור_4,ETHYL BENZENE,0.209657,0.833935,0.7924,0,STABLE,9,5.0,
+נד_אגד_אזור_4,TOLUENE,0.628971,0.529368,0.935236,0,STABLE,9,5.0,
+נד_אגד_אזור_4,XYLENE,0.0,1.0,0.686878,0,STABLE,9,5.0,
+נד_אגד_אזור_5, MTBE,-2.49351,0.0126485,0.89323,0,DECREASING,8,5.0,
+נד_אגד_אזור_5,BENZENE,-2.49351,0.0126485,0.844726,0,DECREASING,8,5.0,
+נד_אגד_אזור_5,DISSOLVED OXYGEN AS O2,-0.249351,0.803089,0.681865,0,STABLE,8,5.0,
+נד_אגד_אזור_5,ETHYL BENZENE,-1.13091,0.258095,0.714495,0,STABLE,8,5.0,
+נד_אגד_אזור_5,TOLUENE,-0.879593,0.37908,0.683204,0,STABLE,8,5.0,
+נד_אגד_אזור_5,XYLENE,-0.748054,0.454427,0.709863,0,STABLE,8,5.0,
+נד_אגד_אזור_6, MTBE,2.30623,0.021098,1.05849,0,INCREASING,9,5.0,
+נד_אגד_אזור_6,BENZENE,0.546963,0.584404,0.370977,0,STABLE,10,5.0,
+נד_אגד_אזור_6,DISSOLVED OXYGEN AS O2,-1.26234,0.206827,0.806829,0,STABLE,10,5.0,
+נד_אגד_אזור_6,ETHYL BENZENE,-0.364642,0.715378,0.831573,0,STABLE,10,5.0,
+נד_אגד_אזור_6,TOLUENE,-0.105409,0.916051,0.607487,0,STABLE,9,5.0,
+נד_אגד_אזור_6,XYLENE,-0.449013,0.653422,0.405803,0,STABLE,10,5.0,
+נד_אגד_אזור_7, MTBE,-2.72554,0.00641963,1.82093,0,DECREASING,9,5.0,
+נד_אגד_אזור_7,BENZENE,-1.67726,0.0934925,1.43721,0,DECREASING,9,5.0,
+נד_אגד_אזור_7,DISSOLVED OXYGEN AS O2,-0.948683,0.342782,1.1589,0,STABLE,9,5.0,
+נד_אגד_אזור_7,ETHYL BENZENE,-2.24416,0.0248219,1.20634,0,DECREASING,8,5.0,
+נד_אגד_אזור_7,TOLUENE,-1.04828,0.294507,0.822349,0,STABLE,9,5.0,
+נד_אגד_אזור_7,XYLENE,-1.06399,0.287333,0.768556,0,STABLE,9,5.0,
+נד_אגד_אזור_8, MTBE,-0.901127,0.367521,0.107314,0,NONE,7,5.0,
+נד_אגד_אזור_8,BENZENE,-0.300376,0.763891,0.0598034,0,NONE,7,5.0,
+נד_אגד_אזור_8,DISSOLVED OXYGEN AS O2,-0.997406,0.318567,0.253847,0,NONE,8,5.0,
+נד_אגד_אזור_8,ETHYL BENZENE,-0.249351,0.803089,0.231568,0,NONE,8,5.0,
+נד_אגד_אזור_8,TOLUENE,-0.748054,0.454427,0.0393406,0,NONE,8,5.0,
+נד_אגד_אזור_8,XYLENE,-0.61859,0.536187,0.262003,0,NONE,8,5.0,
+נד_אגד_אזור_9, MTBE,-2.35064,0.0187411,1.28587,0,DECREASING,8,5.0,
+נד_אגד_אזור_9,BENZENE,-1.74546,0.0809048,0.871648,0,STABLE,8,5.0,
+נד_אגד_אזור_9,DISSOLVED OXYGEN AS O2,-0.419314,0.674987,0.244632,0,NONE,9,5.0,
+נד_אגד_אזור_9,ETHYL BENZENE,-2.21359,0.0268567,1.18791,0,DECREASING,9,5.0,
+נד_אגד_אזור_9,TOLUENE,-1.70238,0.0886833,0.00644621,0,NONE,9,5.0,
+נד_אגד_אזור_9,XYLENE,-1.14683,0.251452,0.297747,0,NONE,9,5.0,
+נד_דלק_הצבי_1, MTBE,-2.1798,0.0292725,1.18413,0,DECREASING,11,5.0,
+נד_דלק_הצבי_1,BENZENE,0.305129,0.760268,0.632987,0,STABLE,10,5.0,
+נד_דלק_הצבי_1,DISSOLVED OXYGEN AS O2,0.721336,0.470703,0.424109,0,STABLE,10,5.0,
+נד_דלק_הצבי_1,ETHYL BENZENE,0.0,1.0,0.631892,0,STABLE,10,5.0,
+נד_דלק_הצבי_1,LEAD AS PB,,,0.0,0,STABLE,1,5.0,Low measurement count
+נד_דלק_הצבי_1,TOLUENE,1.22474,0.220671,0.632442,0,STABLE,10,5.0,
+נד_דלק_הצבי_1,XYLENE,0.768615,0.442122,0.634558,0,STABLE,10,5.0,
+נד_דלק_הצבי_2, MTBE,-0.808224,0.418962,0.736317,0,STABLE,10,5.0,
+נד_דלק_הצבי_2,BENZENE,0.960769,0.336668,0.651095,0,STABLE,10,5.0,
+נד_דלק_הצבי_2,DISSOLVED OXYGEN AS O2,1.06399,0.287333,0.238789,0,NONE,9,5.0,
+נד_דלק_הצבי_2,ETHYL BENZENE,-1.35554,0.175244,0.75,0,STABLE,9,5.0,
+נד_דלק_הצבי_2,TOLUENE,1.2548,0.20955,0.221235,0,NONE,10,5.0,
+נד_דלק_הצבי_2,XYLENE,0.0,1.0,1.00873,0,STABLE,9,5.0,
+נד_דלק_השבעה_נ/1, MTBE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_דלק_השבעה_נ/1,BENZENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_דלק_השבעה_נ/1,DISSOLVED OXYGEN AS O2,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_דלק_השבעה_נ/1,ETHYL BENZENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_דלק_השבעה_נ/1,TOLUENE,,,0.0,0,NONE,2,5.0,Low measurement count
+נד_דלק_השבעה_נ/1,XYLENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_דלק_מובילי_גוש_דן_1, MTBE,,,0.0,0,DECREASING,2,5.0,Low measurement count
+נד_דלק_מובילי_גוש_דן_1,BENZENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_דלק_מובילי_גוש_דן_1,DISSOLVED OXYGEN AS O2,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_דלק_מובילי_גוש_דן_1,ETHYL BENZENE,,,0.0,0,NONE,2,5.0,Low measurement count
+נד_דלק_מובילי_גוש_דן_1,TOLUENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_דלק_מובילי_גוש_דן_1,XYLENE,,,0.0,0,NONE,2,5.0,Low measurement count
+נד_דלק_מובילי_גוש_דן_2, MTBE,-0.261116,0.794003,0.680414,0,STABLE,5,5.0,
+נד_דלק_מובילי_גוש_דן_2,BENZENE,-0.5547,0.5791,1.21716,0,STABLE,5,5.0,
+נד_דלק_מובילי_גוש_דן_2,DISSOLVED OXYGEN AS O2,0.244949,0.806496,0.730752,0,STABLE,5,5.0,
+נד_דלק_מובילי_גוש_דן_2,ETHYL BENZENE,-1.01058,0.312216,0.812163,0,STABLE,5,5.0,
+נד_דלק_מובילי_גוש_דן_2,TOLUENE,-1.01058,0.312216,0.98191,0,STABLE,5,5.0,
+נד_דלק_מובילי_גוש_דן_2,XYLENE,-1.01058,0.312216,0.971638,0,STABLE,5,5.0,
+נד_דלק_מרכבות_האש_1, MTBE,-0.808224,0.418962,0.695888,0,STABLE,10,5.0,
+נד_דלק_מרכבות_האש_1,BENZENE,-1.19004,0.23403,0.768695,0,STABLE,10,5.0,
+נד_דלק_מרכבות_האש_1,DISSOLVED OXYGEN AS O2,1.67726,0.0934925,1.225,0,INCREASING,9,5.0,
+נד_דלק_מרכבות_האש_1,ETHYL BENZENE,-1.79001,0.073452,1.25471,0,DECREASING,10,5.0,
+נד_דלק_מרכבות_האש_1,TOLUENE,-1.27625,0.201868,0.905304,0,STABLE,10,5.0,
+נד_דלק_מרכבות_האש_1,XYLENE,-1.95543,0.0505326,0.799788,0,STABLE,10,5.0,
+נד_דלק_מרכבות_האש_2, MTBE,-0.901127,0.367521,0.393226,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_2,BENZENE,0.0,1.0,0.87555,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_2,DISSOLVED OXYGEN AS O2,1.1272,0.259656,0.848628,0,STABLE,6,5.0,
+נד_דלק_מרכבות_האש_2,ETHYL BENZENE,0.455733,0.648582,0.843513,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_2,TOLUENE,-0.614779,0.538701,0.905648,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_2,XYLENE,0.0,1.0,0.0370807,0,NONE,7,5.0,
+נד_דלק_מרכבות_האש_3, MTBE,0.0,1.0,0.729942,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_3,BENZENE,-0.759555,0.447521,1.28108,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_3,DISSOLVED OXYGEN AS O2,1.2015,0.229556,1.30969,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_3,ETHYL BENZENE,-0.614779,0.538701,1.42058,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_3,TOLUENE,-0.614779,0.538701,1.03426,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_3,XYLENE,-0.455733,0.648582,1.08651,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_4, MTBE,0.0,1.0,0.016868,0,NONE,7,5.0,
+נד_דלק_מרכבות_האש_4,BENZENE,0.759555,0.447521,0.849355,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_4,DISSOLVED OXYGEN AS O2,1.2015,0.229556,1.21352,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_4,ETHYL BENZENE,-1.09769,0.272341,1.1227,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_4,TOLUENE,-0.759555,0.447521,0.608031,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_4,XYLENE,-1.09769,0.272341,1.02592,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_5, MTBE,-1.71464,0.0864107,1.55014,0,DECREASING,5,5.0,
+נד_דלק_מרכבות_האש_5,BENZENE,-0.505291,0.613354,0.39064,0,STABLE,5,5.0,
+נד_דלק_מרכבות_האש_5,DISSOLVED OXYGEN AS O2,1.51587,0.129551,1.0481,0,STABLE,5,5.0,
+נד_דלק_מרכבות_האש_5,ETHYL BENZENE,-0.505291,0.613354,0.134171,0,NONE,5,5.0,
+נד_דלק_מרכבות_האש_5,TOLUENE,-0.505291,0.613354,0.533761,0,STABLE,5,5.0,
+נד_דלק_מרכבות_האש_5,XYLENE,-0.505291,0.613354,0.551012,0,STABLE,5,5.0,
+נד_דלק_מרכבות_האש_6, MTBE,0.0,1.0,0.526189,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_6,BENZENE,-0.952661,0.340762,1.09033,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_6,DISSOLVED OXYGEN AS O2,0.901127,0.367521,0.952695,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_6,ETHYL BENZENE,-0.952661,0.340762,1.1313,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_6,TOLUENE,-0.952661,0.340762,1.41634,0,STABLE,7,5.0,
+נד_דלק_מרכבות_האש_6,XYLENE,-0.614779,0.538701,0.966616,0,STABLE,7,5.0,
+נד_דן_חולון_1, MTBE,0.0,1.0,3.92523e-16,0,NONE,5,5.0,
+נד_דן_חולון_1,BENZENE,-1.1094,0.267257,1.14164,0,STABLE,5,5.0,
+נד_דן_חולון_1,DISSOLVED OXYGEN AS O2,0.0,1.0,0.334355,0,STABLE,5,5.0,
+נד_דן_חולון_1,ETHYL BENZENE,,,0.0,0,NONE,5,5.0,
+נד_דן_חולון_1,TOLUENE,,,0.0,0,NONE,5,5.0,
+נד_דן_חולון_1,XYLENE,1.06066,0.288844,0.745356,0,STABLE,5,5.0,
+נד_דן_חולון_2, MTBE,-0.722315,0.470101,0.333333,0,STABLE,4,5.0,Low measurement count
+נד_דן_חולון_2,BENZENE,,,0.0,0,NONE,4,5.0,Low measurement count
+נד_דן_חולון_2,DISSOLVED OXYGEN AS O2,0.339683,0.734095,1.50778,0,STABLE,4,5.0,Low measurement count
+נד_דן_חולון_2,ETHYL BENZENE,,,0.0,0,NONE,4,5.0,Low measurement count
+נד_דן_חולון_2,TOLUENE,,,0.0,0,NONE,4,5.0,Low measurement count
+נד_דן_חולון_2,XYLENE,,,0.0,0,NONE,4,5.0,Low measurement count
+נד_המרכבה_ק2, MTBE,,,0.0,0,INCREASING,2,5.0,Low measurement count
+נד_המרכבה_ק2,BENZENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_המרכבה_ק2,DISSOLVED OXYGEN AS O2,,,0.0,0,DECREASING,2,5.0,Low measurement count
+נד_המרכבה_ק2,ETHYL BENZENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_המרכבה_ק2,TOLUENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_המרכבה_ק2,XYLENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_המרכבה_ק3, MTBE,-1.04447,0.29627,0.0,0,NONE,3,5.0,Low measurement count
+נד_המרכבה_ק3,BENZENE,-1.04447,0.29627,0.0,0,NONE,3,5.0,Low measurement count
+נד_המרכבה_ק3,DISSOLVED OXYGEN AS O2,1.04447,0.29627,0.0,0,NONE,3,5.0,Low measurement count
+נד_המרכבה_ק3,ETHYL BENZENE,-1.04447,0.29627,0.0,0,NONE,3,5.0,Low measurement count
+נד_המרכבה_ק3,TOLUENE,-1.04447,0.29627,0.0,0,NONE,3,5.0,Low measurement count
+נד_המרכבה_ק3,XYLENE,-1.04447,0.29627,0.0,0,NONE,3,5.0,Low measurement count
+נד_טן_חולון_1, MTBE,-1.1272,0.259656,0.812799,0,STABLE,6,5.0,
+נד_טן_חולון_1,BENZENE,-2.104,0.0353782,0.953491,0,DECREASING,6,5.0,
+נד_טן_חולון_1,DISSOLVED OXYGEN AS O2,2.104,0.0353782,1.45064,0,INCREASING,6,5.0,
+נד_טן_חולון_1,ETHYL BENZENE,-1.72146,0.0851679,1.01565,0,DECREASING,6,5.0,
+נד_טן_חולון_1,TOLUENE,-0.956365,0.338888,0.97565,0,STABLE,6,5.0,
+נד_טן_חולון_1,XYLENE,-1.87867,0.0602892,0.96405,0,STABLE,6,5.0,
+נד_נובר_מרכבה, MTBE,,,0.0,0,DECREASING,1,5.0,Low measurement count
+נד_נובר_מרכבה,BENZENE,,,0.0,0,NONE,1,5.0,Low measurement count
+נד_נובר_מרכבה,DISSOLVED OXYGEN AS O2,,,0.0,0,STABLE,1,5.0,Low measurement count
+נד_נובר_מרכבה,ETHYL BENZENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נד_נובר_מרכבה,TOLUENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נד_נובר_מרכבה,XYLENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נד_סונול_המלאכה_מ-1, MTBE,0.289683,0.772059,0.227965,0,NONE,8,5.0,
+נד_סונול_המלאכה_מ-1,BENZENE,0.0,1.0,0.661438,0,STABLE,7,5.0,
+נד_סונול_המלאכה_מ-1,DISSOLVED OXYGEN AS O2,0.375735,0.707114,0.350252,0,STABLE,6,5.0,
+נד_סונול_המלאכה_מ-1,ETHYL BENZENE,0.0,1.0,0.617679,0,STABLE,8,5.0,
+נד_סונול_המלאכה_מ-1,LEAD AS PB,,,0.0,0,STABLE,1,5.0,Low measurement count
+נד_סונול_המלאכה_מ-1,NAPTHALENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_סונול_המלאכה_מ-1,TOLUENE,1.27343,0.202866,0.378012,0,STABLE,8,5.0,
+נד_סונול_המלאכה_מ-1,XYLENE,0.376969,0.706197,0.72305,0,STABLE,8,5.0,
+נד_סונול_המלאכה_ק-1, MTBE,0.0,1.0,0.684881,0,STABLE,9,5.0,
+נד_סונול_המלאכה_ק-1,BENZENE,-0.289683,0.772059,0.173479,0,NONE,9,5.0,
+נד_סונול_המלאכה_ק-1,CHLOROFORM,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_סונול_המלאכה_ק-1,"DICHLOROETHYLENE 1,1",,,0.0,0,NONE,2,5.0,Low measurement count
+נד_סונול_המלאכה_ק-1,DISSOLVED OXYGEN AS O2,2.27866,0.0226871,1.26158,0,INCREASING,7,5.0,
+נד_סונול_המלאכה_ק-1,ETHYL BENZENE,0.231973,0.816559,0.680639,0,STABLE,9,5.0,
+נד_סונול_המלאכה_ק-1,LEAD AS PB,,,0.0,0,STABLE,1,5.0,Low measurement count
+נד_סונול_המלאכה_ק-1,NAPTHALENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_סונול_המלאכה_ק-1,TETRACHLORO ETHYLENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_סונול_המלאכה_ק-1,TOLUENE,1.20499,0.228207,0.531974,0,STABLE,9,5.0,
+נד_סונול_המלאכה_ק-1,"TRICHLORO ETHANE 1,1,1",,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_סונול_המלאכה_ק-1,TRICHLORO ETHYLENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_סונול_המלאכה_ק-1,XYLENE,0.105409,0.916051,0.813679,0,STABLE,9,5.0,
+נד_סונול_מרכבה_1, MTBE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נד_סונול_מרכבה_1,BENZENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נד_סונול_מרכבה_1,ETHYL BENZENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נד_סונול_מרכבה_1,TOLUENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נד_סונול_מרכבה_1,XYLENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נד_סונול_משמר_השבעה_3, MTBE,-0.784063,0.433003,1.11672,0,STABLE,7,5.0,
+נד_סונול_משמר_השבעה_3,BENZENE,-0.635107,0.525358,0.741182,0,STABLE,7,5.0,
+נד_סונול_משמר_השבעה_3,DISSOLVED OXYGEN AS O2,-0.600751,0.548006,1.39703,0,STABLE,7,5.0,
+נד_סונול_משמר_השבעה_3,ETHYL BENZENE,0.0,1.0,0.175566,0,NONE,7,5.0,
+נד_סונול_משמר_השבעה_3,TOLUENE,0.0,1.0,0.15457,0,NONE,7,5.0,
+נד_סונול_משמר_השבעה_3,XYLENE,-0.151911,0.879257,0.586337,0,STABLE,7,5.0,
+נד_סונול_משמר_השבעה_4, MTBE,-0.411113,0.68099,0.50025,0,STABLE,6,5.0,
+נד_סונול_משמר_השבעה_4,BENZENE,-0.411113,0.68099,0.50025,0,STABLE,6,5.0,
+נד_סונול_משמר_השבעה_4,DISSOLVED OXYGEN AS O2,0.191273,0.848312,0.381222,0,STABLE,6,5.0,
+נד_סונול_משמר_השבעה_4,ETHYL BENZENE,0.0,1.0,0.153661,0,NONE,6,5.0,
+נד_סונול_משמר_השבעה_4,TOLUENE,0.0,1.0,0.63088,0,STABLE,6,5.0,
+נד_סונול_משמר_השבעה_4,XYLENE,0.0,1.0,0.0538362,0,NONE,6,5.0,
+נד_סונול_משמר_השבעה_5, MTBE,0.375735,0.707114,0.936999,0,STABLE,6,5.0,
+נד_סונול_משמר_השבעה_5,BENZENE,-0.411113,0.68099,0.50025,0,STABLE,6,5.0,
+נד_סונול_משמר_השבעה_5,DISSOLVED OXYGEN AS O2,0.0,1.0,0.0,0,NONE,6,5.0,
+נד_סונול_משמר_השבעה_5,ETHYL BENZENE,-0.411113,0.68099,0.470152,0,STABLE,6,5.0,
+נד_סונול_משמר_השבעה_5,TOLUENE,0.0,1.0,0.0,0,NONE,6,5.0,
+נד_סונול_משמר_השבעה_5,XYLENE,0.0,1.0,0.104879,0,NONE,6,5.0,
+נד_פז_סיירים_1, MTBE,1.25327,0.210108,0.0194103,0,NONE,9,5.0,
+נד_פז_סיירים_1,BENZENE,1.7381,0.0821938,0.88114,0,STABLE,9,5.0,
+נד_פז_סיירים_1,DISSOLVED OXYGEN AS O2,-0.7298,0.465512,0.183153,0,NONE,9,5.0,
+נד_פז_סיירים_1,ETHYL BENZENE,-2.02778,0.0425828,0.762917,0,DECREASING,9,5.0,
+נד_פז_סיירים_1,TOLUENE,-0.968246,0.332922,0.75,0,STABLE,9,5.0,
+נד_פז_סיירים_1,XYLENE,-2.02778,0.0425828,0.943944,0,DECREASING,9,5.0,
+נד_פז_סיירים_2, MTBE,-2.1894,0.0285677,1.16309,0,DECREASING,9,5.0,
+נד_פז_סיירים_2,BENZENE,-1.72821,0.0839498,1.1554,0,DECREASING,9,5.0,
+נד_פז_סיירים_2,DISSOLVED OXYGEN AS O2,2.1894,0.0285677,1.22209,0,INCREASING,9,5.0,
+נד_פז_סיירים_2,ETHYL BENZENE,-0.628971,0.529368,0.173747,0,NONE,9,5.0,
+נד_פז_סיירים_2,TOLUENE,-0.978107,0.328022,0.110887,0,NONE,9,5.0,
+נד_פז_סיירים_2,XYLENE,0.104257,0.916965,0.423996,0,STABLE,9,5.0,
+נד_פז_סיירים_3, MTBE,1.72821,0.0839498,1.01947,0,INCREASING,9,5.0,
+נד_פז_סיירים_3,BENZENE,2.02778,0.0425828,1.10581,0,INCREASING,9,5.0,
+נד_פז_סיירים_3,DISSOLVED OXYGEN AS O2,1.98089,0.047604,1.11096,0,INCREASING,9,5.0,
+נד_פז_סיירים_3,ETHYL BENZENE,-2.02778,0.0425828,0.904534,0,DECREASING,9,5.0,
+נד_פז_סיירים_3,TOLUENE,-0.968246,0.332922,0.75,0,STABLE,9,5.0,
+נד_פז_סיירים_3,XYLENE,0.0,1.0,0.574696,0,STABLE,9,5.0,
+נד_פז_סיירים_4, MTBE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_פז_סיירים_4,BENZENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_פז_סיירים_4,ETHYL BENZENE,,,0.0,0,NONE,2,5.0,Low measurement count
+נד_פז_סיירים_4,TOLUENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נד_פז_סיירים_4,XYLENE,,,0.0,0,NONE,2,5.0,Low measurement count
+נד_פז_צבר_1, MTBE,-1.98089,0.047604,0.780466,0,DECREASING,9,5.0,
+נד_פז_צבר_1,BENZENE,0.209657,0.833935,0.304711,0,STABLE,9,5.0,
+נד_פז_צבר_1,DISSOLVED OXYGEN AS O2,-1.25794,0.208413,0.782271,0,STABLE,9,5.0,
+נד_פז_צבר_1,ETHYL BENZENE,-0.638394,0.523217,0.974694,0,STABLE,9,5.0,
+נד_פז_צבר_1,TOLUENE,1.41227,0.157871,0.797872,0,STABLE,8,5.0,
+נד_פז_צבר_1,XYLENE,0.419314,0.674987,0.491045,0,STABLE,9,5.0,
+נד_פז_צבר_2, MTBE,-2.46115,0.0138493,0.792466,0,DECREASING,9,5.0,
+נד_פז_צבר_2,BENZENE,-2.08135,0.0374023,0.998167,0,DECREASING,9,5.0,
+נד_פז_צבר_2,DISSOLVED OXYGEN AS O2,-0.521286,0.602168,0.704622,0,STABLE,9,5.0,
+נד_פז_צבר_2,ETHYL BENZENE,0.0,1.0,0.79498,0,STABLE,9,5.0,
+נד_פז_צבר_2,TOLUENE,0.312772,0.754454,0.750769,0,STABLE,9,5.0,
+נד_פז_צבר_2,XYLENE,0.104257,0.916965,0.907744,0,STABLE,9,5.0,
+נד_פז_צבר_5, MTBE,-0.722315,0.470101,1.72189,0,STABLE,4,5.0,Low measurement count
+נד_פז_צבר_5,BENZENE,-1.1619,0.245278,1.73205,0,STABLE,4,5.0,Low measurement count
+נד_פז_צבר_5,DISSOLVED OXYGEN AS O2,1.01905,0.30818,1.10277,0,STABLE,4,5.0,Low measurement count
+נד_פז_צבר_5,ETHYL BENZENE,-1.44463,0.148562,1.71461,0,STABLE,4,5.0,Low measurement count
+נד_פז_צבר_5,TOLUENE,-0.894427,0.371093,1.0,0,STABLE,4,5.0,Low measurement count
+נד_פז_צבר_5,XYLENE,-1.44463,0.148562,1.64658,0,STABLE,4,5.0,Low measurement count
+נד_פז_צבר_6, MTBE,-2.36774,0.0178973,1.19,0,DECREASING,9,5.0,
+נד_פז_צבר_6,BENZENE,-1.89484,0.0581134,1.08,0,DECREASING,9,5.0,
+נד_פז_צבר_6,DISSOLVED OXYGEN AS O2,1.4676,0.142213,1.21698,0,STABLE,9,5.0,
+נד_פז_צבר_6,ETHYL BENZENE,-1.15873,0.246566,0.912122,0,STABLE,8,5.0,
+נד_פז_צבר_6,TOLUENE,0.0,1.0,0.707107,0,STABLE,8,5.0,
+נד_פז_צבר_6,XYLENE,-1.15873,0.246566,0.63674,0,STABLE,8,5.0,
+נד_פז_קריית_שרת_1, MTBE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נד_פז_קריית_שרת_1,BENZENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נד_פז_קריית_שרת_1,DISSOLVED OXYGEN AS O2,,,0.0,0,STABLE,1,5.0,Low measurement count
+נד_פז_קריית_שרת_1,ETHYL BENZENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נד_פז_קריית_שרת_1,TOLUENE,,,0.0,0,NONE,1,5.0,Low measurement count
+נד_פז_קריית_שרת_1,XYLENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_ארן__מטל_חולון, MTBE,,,0.0,0,NONE,4,5.0,Low measurement count
+נת_ארן__מטל_חולון,ARSENIC AS AS,,,0.0,0,NONE,3,5.0,Low measurement count
+נת_ארן__מטל_חולון,BARIUM AS BA,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_ארן__מטל_חולון,BICARBONATE AS HCO3,1.22474,0.220671,1.11887,0,STABLE,5,5.0,
+נת_ארן__מטל_חולון,BORON AS B,-1.04447,0.29627,0.0,0,NONE,3,5.0,Low measurement count
+נת_ארן__מטל_חולון,BROMIDE AS BR,-0.734847,0.462433,0.116258,0,NONE,5,5.0,
+נת_ארן__מטל_חולון,CADMIUM AS CD,-0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+נת_ארן__מטל_חולון,CALCIUM AS CA,0.734847,0.462433,1.33767,0,STABLE,5,5.0,
+נת_ארן__מטל_חולון,CHLORIDE AS CL,0.0,1.0,0.79991,0,STABLE,5,5.0,
+נת_ארן__מטל_חולון,CHROMIUM AS CR,-0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+נת_ארן__מטל_חולון,"CIS 1,2 DICHLOROETHYLENE",,,0.0,0,NONE,4,5.0,Low measurement count
+נת_ארן__מטל_חולון,COBALT AS CO,-0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+נת_ארן__מטל_חולון,COPPER AS CU,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_ארן__מטל_חולון,DISSOLVED OXYGEN AS O2,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_ארן__מטל_חולון,IRON TOTAL AS FE,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_ארן__מטל_חולון,LEAD AS PB,,,0.0,0,NONE,3,5.0,Low measurement count
+נת_ארן__מטל_חולון,MAGNESIUM AS MG,1.22474,0.220671,1.5793,0,STABLE,5,5.0,
+נת_ארן__מטל_חולון,MANGANESE TOTAL AS MN,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_ארן__מטל_חולון,NICKEL AS NI,-1.04447,0.29627,0.0,0,NONE,3,5.0,Low measurement count
+נת_ארן__מטל_חולון,NITRATE AS NO3,-0.244949,0.806496,0.159953,0,NONE,5,5.0,
+נת_ארן__מטל_חולון,POTASSIUM AS K,-0.734847,0.462433,0.150511,0,NONE,5,5.0,
+נת_ארן__מטל_חולון,SELENIUM AS SE,,,0.0,0,NONE,3,5.0,Low measurement count
+נת_ארן__מטל_חולון,SODIUM AS NA,-1.22474,0.220671,1.38284,0,STABLE,5,5.0,
+נת_ארן__מטל_חולון,STRONTIUM AS SR,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_ארן__מטל_חולון,SULFATE AS SO4,-0.734847,0.462433,0.430959,0,STABLE,5,5.0,
+נת_ארן__מטל_חולון,TETRACHLORO ETHYLENE,0.0,1.0,1.0,0,STABLE,4,5.0,Low measurement count
+נת_ארן__מטל_חולון,TOLUENE,0.387298,0.698535,0.0,0,NONE,4,5.0,Low measurement count
+נת_ארן__מטל_חולון,"TRICHLORO ETHANE 1,1,1",,,0.0,0,NONE,4,5.0,Low measurement count
+נת_ארן__מטל_חולון,TRICHLORO ETHYLENE,0.894427,0.371093,1.0,0,STABLE,4,5.0,Low measurement count
+נת_ארן__מטל_חולון,XYLENE,0.0,1.0,0.720638,0,STABLE,4,5.0,Low measurement count
+נת_ארן__מטל_חולון,ZINC AS ZN,-0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+נת_ארן_מטל_חולון_1, MTBE,,,0.0,0,NONE,5,5.0,
+נת_ארן_מטל_חולון_1,ARSENIC AS AS,,,0.0,0,NONE,4,5.0,Low measurement count
+נת_ארן_מטל_חולון_1,BARIUM AS BA,0.0,1.0,0.470005,0,STABLE,4,5.0,Low measurement count
+נת_ארן_מטל_חולון_1,BICARBONATE AS HCO3,0.0,1.0,0.677839,0,STABLE,6,5.0,
+נת_ארן_מטל_חולון_1,BORON AS B,-1.69842,0.0894294,1.37412,0,DECREASING,4,5.0,Low measurement count
+נת_ארן_מטל_חולון_1,BROMIDE AS BR,0.375735,0.707114,1.2761,0,STABLE,6,5.0,
+נת_ארן_מטל_חולון_1,CALCIUM AS CA,0.751469,0.45237,1.4981,0,STABLE,6,5.0,
+נת_ארן_מטל_חולון_1,CHLORIDE AS CL,0.751469,0.45237,1.39804,0,STABLE,6,5.0,
+נת_ארן_מטל_חולון_1,CHROMIUM AS CR,0.0,1.0,1.0,0,STABLE,4,5.0,Low measurement count
+נת_ארן_מטל_חולון_1,"CIS 1,2 DICHLOROETHYLENE",1.06066,0.288844,0.745356,0,STABLE,5,5.0,
+נת_ארן_מטל_חולון_1,COPPER AS CU,-0.722315,0.470101,1.59752,0,STABLE,4,5.0,Low measurement count
+נת_ארן_מטל_חולון_1,"DICHLOROETHYLENE 1,1",1.06066,0.288844,0.745356,0,STABLE,5,5.0,
+נת_ארן_מטל_חולון_1,DISSOLVED OXYGEN AS O2,-0.339683,0.734095,1.37414,0,STABLE,4,5.0,Low measurement count
+נת_ארן_מטל_חולון_1,IRON TOTAL AS FE,-0.339683,0.734095,0.997392,0,STABLE,4,5.0,Low measurement count
+נת_ארן_מטל_חולון_1,LEAD AS PB,,,0.0,0,NONE,4,5.0,Low measurement count
+נת_ארן_מטל_חולון_1,MAGNESIUM AS MG,1.1272,0.259656,1.33417,0,STABLE,6,5.0,
+נת_ארן_מטל_חולון_1,MANGANESE TOTAL AS MN,0.339683,0.734095,1.38864,0,STABLE,4,5.0,Low measurement count
+נת_ארן_מטל_חולון_1,NICKEL AS NI,,,0.0,0,NONE,4,5.0,Low measurement count
+נת_ארן_מטל_חולון_1,NITRATE AS NO3,0.0,1.0,0.00397107,0,NONE,6,5.0,
+נת_ארן_מטל_חולון_1,POTASSIUM AS K,1.50294,0.132855,1.53212,0,STABLE,6,5.0,
+נת_ארן_מטל_חולון_1,SELENIUM AS SE,,,0.0,0,NONE,4,5.0,Low measurement count
+נת_ארן_מטל_חולון_1,SODIUM AS NA,0.375735,0.707114,0.693679,0,STABLE,6,5.0,
+נת_ארן_מטל_חולון_1,STRONTIUM AS SR,,,0.0,0,INCREASING,1,5.0,Low measurement count
+נת_ארן_מטל_חולון_1,SULFATE AS SO4,1.1272,0.259656,1.60939,0,STABLE,6,5.0,
+נת_ארן_מטל_חולון_1,TETRACHLORO ETHYLENE,1.1094,0.267257,0.879678,0,STABLE,5,5.0,
+נת_ארן_מטל_חולון_1,TOLUENE,0.261116,0.794003,0.739737,0,STABLE,5,5.0,
+נת_ארן_מטל_חולון_1,TRICHLORO ETHYLENE,1.1094,0.267257,0.750806,0,STABLE,5,5.0,
+נת_ארן_מטל_חולון_1,XYLENE,-0.5547,0.5791,0.940603,0,STABLE,5,5.0,
+נת_ארן_מטל_חולון_1,ZINC AS ZN,-1.44463,0.148562,1.71055,0,STABLE,4,5.0,Low measurement count
+נת_חולון_1, MTBE,0.0,1.0,0.585642,0,STABLE,4,5.0,Low measurement count
+נת_חולון_1,"1,1-dichloroethane",0.0,1.0,0.0548431,0,NONE,4,5.0,Low measurement count
+נת_חולון_1,ARSENIC AS AS,,,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_1,BARIUM AS BA,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_1,BENZENE,0.0,1.0,0.742357,0,STABLE,5,5.0,
+נת_חולון_1,BICARBONATE AS HCO3,-1.22474,0.220671,1.48936,0,STABLE,5,5.0,
+נת_חולון_1,BORON AS B,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_1,BROMIDE AS BR,-0.734847,0.462433,1.7137,0,STABLE,5,5.0,
+נת_חולון_1,CALCIUM AS CA,-1.22474,0.220671,0.916363,0,STABLE,5,5.0,
+נת_חולון_1,CARBON TETRACHLORIDE,0.894427,0.371093,1.0,0,STABLE,4,5.0,Low measurement count
+נת_חולון_1,CHLORIDE AS CL,-1.22474,0.220671,0.964117,0,STABLE,5,5.0,
+נת_חולון_1,CHLOROFORM,0.339683,0.734095,0.864871,0,STABLE,4,5.0,Low measurement count
+נת_חולון_1,CHROMIUM AS CR,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_1,"CIS 1,2 DICHLOROETHYLENE",0.0,1.0,0.267081,0,NONE,4,5.0,Low measurement count
+נת_חולון_1,COPPER AS CU,-1.04447,0.29627,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_1,"DICHLOROETHANE1,2",0.0,1.0,1.0,0,STABLE,4,5.0,Low measurement count
+נת_חולון_1,"DICHLOROETHYLENE 1,1",0.0,1.0,0.0335274,0,NONE,4,5.0,Low measurement count
+נת_חולון_1,DISSOLVED OXYGEN AS O2,-0.339683,0.734095,1.09401,0,STABLE,4,5.0,Low measurement count
+נת_חולון_1,MAGNESIUM AS MG,-0.734847,0.462433,0.321724,0,STABLE,5,5.0,
+נת_חולון_1,MANGANESE TOTAL AS MN,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_1,NAPTHALENE,,,0.0,0,NONE,4,5.0,Low measurement count
+נת_חולון_1,NICKEL AS NI,-0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_1,NITRATE AS NO3,0.734847,0.462433,0.925289,0,STABLE,5,5.0,
+נת_חולון_1,POTASSIUM AS K,1.71464,0.0864107,1.19608,0,INCREASING,5,5.0,
+נת_חולון_1,SELENIUM AS SE,,,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_1,SODIUM AS NA,-0.244949,0.806496,0.405112,0,STABLE,5,5.0,
+נת_חולון_1,STRONTIUM AS SR,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_1,SULFATE AS SO4,1.22474,0.220671,0.413394,0,STABLE,5,5.0,
+נת_חולון_1,TETRACHLORO ETHYLENE,-0.339683,0.734095,0.695173,0,STABLE,4,5.0,Low measurement count
+נת_חולון_1,TOLUENE,0.783349,0.433422,0.745356,0,STABLE,5,5.0,
+נת_חולון_1,"TRICHLORO ETHANE 1,1,1",,,0.0,0,NONE,4,5.0,Low measurement count
+נת_חולון_1,TRICHLORO ETHYLENE,1.69842,0.0894294,1.32418,0,INCREASING,4,5.0,Low measurement count
+נת_חולון_1,XYLENE,0.0,1.0,0.742556,0,STABLE,5,5.0,
+נת_חולון_1,ZINC AS ZN,-0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_11, MTBE,0.0,1.0,0.146852,0,NONE,4,5.0,Low measurement count
+נת_חולון_11,"1,1,2-trichloroethane",0.0,1.0,0.488042,0,STABLE,4,5.0,Low measurement count
+נת_חולון_11,"1,1-dichloroethane",-0.339683,0.734095,0.756706,0,STABLE,4,5.0,Low measurement count
+נת_חולון_11,"1,2-dichloropropane",0.0,1.0,0.634102,0,STABLE,4,5.0,Low measurement count
+נת_חולון_11,ARSENIC AS AS,,,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_11,BARIUM AS BA,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_11,BENZENE,0.894427,0.371093,1.0,0,STABLE,4,5.0,Low measurement count
+נת_חולון_11,BICARBONATE AS HCO3,0.244949,0.806496,0.455906,0,STABLE,5,5.0,
+נת_חולון_11,BORON AS B,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_11,BROMIDE AS BR,-1.22474,0.220671,1.22363,0,STABLE,5,5.0,
+נת_חולון_11,CALCIUM AS CA,0.244949,0.806496,0.90967,0,STABLE,5,5.0,
+נת_חולון_11,CARBON TETRACHLORIDE,0.894427,0.371093,1.0,0,STABLE,4,5.0,Low measurement count
+נת_חולון_11,CHLORIDE AS CL,-0.734847,0.462433,0.428832,0,STABLE,5,5.0,
+נת_חולון_11,CHLOROFORM,0.0,1.0,0.297997,0,NONE,4,5.0,Low measurement count
+נת_חולון_11,CHROMIUM AS CR,-0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_11,"CIS 1,2 DICHLOROETHYLENE",0.0,1.0,0.336778,0,STABLE,4,5.0,Low measurement count
+נת_חולון_11,COPPER AS CU,-0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_11,"DICHLOROETHANE1,2",-0.339683,0.734095,0.583403,0,STABLE,4,5.0,Low measurement count
+נת_חולון_11,"DICHLOROETHYLENE 1,1",0.339683,0.734095,1.57244,0,STABLE,4,5.0,Low measurement count
+נת_חולון_11,DISSOLVED OXYGEN AS O2,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_11,IRON TOTAL AS FE,-0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_11,LEAD AS PB,,,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_11,MAGNESIUM AS MG,0.0,1.0,0.527276,0,STABLE,5,5.0,
+נת_חולון_11,MANGANESE TOTAL AS MN,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_11,Methylene chloride ,,,0.0,0,NONE,4,5.0,Low measurement count
+נת_חולון_11,NICKEL AS NI,,,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_11,NITRATE AS NO3,0.244949,0.806496,0.399489,0,STABLE,5,5.0,
+נת_חולון_11,POTASSIUM AS K,0.0,1.0,0.495755,0,STABLE,5,5.0,
+נת_חולון_11,SELENIUM AS SE,,,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_11,SODIUM AS NA,0.734847,0.462433,0.173685,0,NONE,5,5.0,
+נת_חולון_11,SULFATE AS SO4,1.71464,0.0864107,1.32047,0,INCREASING,5,5.0,
+נת_חולון_11,TETRACHLORO ETHYLENE,0.339683,0.734095,0.679543,0,STABLE,4,5.0,Low measurement count
+נת_חולון_11,TOLUENE,0.387298,0.698535,0.0,0,NONE,4,5.0,Low measurement count
+נת_חולון_11,"TRANS-1,2 DICHLOROETHYLENE",,,0.0,0,NONE,4,5.0,Low measurement count
+נת_חולון_11,"TRICHLORO ETHANE 1,1,1",,,0.0,0,NONE,4,5.0,Low measurement count
+נת_חולון_11,TRICHLORO ETHYLENE,0.339683,0.734095,1.06169,0,STABLE,4,5.0,Low measurement count
+נת_חולון_11,VINYL CHLORIDE,0.894427,0.371093,1.0,0,STABLE,4,5.0,Low measurement count
+נת_חולון_11,XYLENE,0.0,1.0,0.250326,0,NONE,4,5.0,Low measurement count
+נת_חולון_11,ZINC AS ZN,-0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_11,dibromomethane,,,0.0,0,NONE,4,5.0,Low measurement count
+נת_חולון_12,ARSENIC AS AS,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_12,BARIUM AS BA,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_12,BORON AS B,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_12,CARBON TETRACHLORIDE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_12,CHROMIUM AS CR,,,0.0,0,NONE,1,5.0,Low measurement count
+נת_חולון_12,"CIS 1,2 DICHLOROETHYLENE",,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_12,COBALT AS CO,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_12,COPPER AS CU,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_12,"DICHLOROETHYLENE 1,1",,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_12,DISSOLVED OXYGEN AS O2,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_12,LEAD AS PB,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_12,MANGANESE TOTAL AS MN,,,0.0,0,DECREASING,1,5.0,Low measurement count
+נת_חולון_12,NICKEL AS NI,,,0.0,0,DECREASING,1,5.0,Low measurement count
+נת_חולון_12,SELENIUM AS SE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_12,TETRACHLORO ETHYLENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_12,TRICHLORO ETHYLENE,,,0.0,0,DECREASING,2,5.0,Low measurement count
+נת_חולון_12,XYLENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_12,ZINC AS ZN,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_14,"1,1-dichloroethane",0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_14,ARSENIC AS AS,,,0.0,0,DECREASING,2,5.0,Low measurement count
+נת_חולון_14,BARIUM AS BA,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_14,BENZENE,0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_14,BICARBONATE AS HCO3,-1.01905,0.30818,1.50449,0,STABLE,4,5.0,Low measurement count
+נת_חולון_14,BORON AS B,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_14,BROMIDE AS BR,0.0,1.0,0.690287,0,STABLE,4,5.0,Low measurement count
+נת_חולון_14,CALCIUM AS CA,1.01905,0.30818,1.5677,0,STABLE,4,5.0,Low measurement count
+נת_חולון_14,CARBON TETRACHLORIDE,0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_14,CHLORIDE AS CL,1.01905,0.30818,1.69,0,STABLE,4,5.0,Low measurement count
+נת_חולון_14,CHLOROFORM,1.04447,0.29627,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_14,CHROMIUM AS CR,,,0.0,0,INCREASING,2,5.0,Low measurement count
+נת_חולון_14,"CIS 1,2 DICHLOROETHYLENE",0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_14,COPPER AS CU,,,0.0,0,NONE,2,5.0,Low measurement count
+נת_חולון_14,"DICHLOROETHANE1,2",,,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_14,"DICHLOROETHYLENE 1,1",1.04447,0.29627,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_14,DISSOLVED OXYGEN AS O2,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_14,Dichlorodifluoromethane,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_14,ETHYL BENZENE,,,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_14,IRON TOTAL AS FE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_14,LEAD AS PB,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_14,MAGNESIUM AS MG,1.01905,0.30818,1.52213,0,STABLE,4,5.0,Low measurement count
+נת_חולון_14,MANGANESE TOTAL AS MN,,,0.0,0,DECREASING,2,5.0,Low measurement count
+נת_חולון_14,NAPTHALENE,,,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_14,NICKEL AS NI,,,0.0,0,NONE,2,5.0,Low measurement count
+נת_חולון_14,NITRATE AS NO3,1.01905,0.30818,1.56697,0,STABLE,4,5.0,Low measurement count
+נת_חולון_14,POTASSIUM AS K,1.01905,0.30818,1.67876,0,STABLE,4,5.0,Low measurement count
+נת_חולון_14,SELENIUM AS SE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_14,SODIUM AS NA,1.01905,0.30818,1.42118,0,STABLE,4,5.0,Low measurement count
+נת_חולון_14,SULFATE AS SO4,1.69842,0.0894294,1.57692,0,INCREASING,4,5.0,Low measurement count
+נת_חולון_14,TETRACHLORO ETHYLENE,1.04447,0.29627,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_14,TOLUENE,0.612372,0.540291,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_14,"TRICHLORO ETHANE 1,1,1",,,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_14,TRICHLORO ETHYLENE,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_14,XYLENE,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_14,ZINC AS ZN,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_16, MTBE,1.1619,0.245278,1.73205,0,STABLE,4,5.0,Low measurement count
+נת_חולון_16,"1,1-dichloroethane",1.44463,0.148562,1.16236,0,STABLE,4,5.0,Low measurement count
+נת_חולון_16,BARIUM AS BA,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_16,BICARBONATE AS HCO3,0.505291,0.613354,0.83507,0,STABLE,5,5.0,
+נת_חולון_16,BORON AS B,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_16,BROMIDE AS BR,0.734847,0.462433,0.777785,0,STABLE,5,5.0,
+נת_חולון_16,CALCIUM AS CA,1.22474,0.220671,0.973025,0,STABLE,5,5.0,
+נת_חולון_16,CHLORIDE AS CL,0.734847,0.462433,0.480644,0,STABLE,5,5.0,
+נת_חולון_16,CHROMIUM AS CR,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_16,"CIS 1,2 DICHLOROETHYLENE",1.01905,0.30818,1.02582,0,STABLE,4,5.0,Low measurement count
+נת_חולון_16,COPPER AS CU,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_16,"DICHLOROETHYLENE 1,1",0.0,1.0,0.81359,0,STABLE,4,5.0,Low measurement count
+נת_חולון_16,DISSOLVED OXYGEN AS O2,1.04447,0.29627,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_16,IRON TOTAL AS FE,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_16,MAGNESIUM AS MG,0.734847,0.462433,0.76553,0,STABLE,5,5.0,
+נת_חולון_16,MANGANESE TOTAL AS MN,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_16,NICKEL AS NI,,,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_16,NITRATE AS NO3,0.734847,0.462433,1.08536,0,STABLE,5,5.0,
+נת_חולון_16,POTASSIUM AS K,0.244949,0.806496,0.244517,0,NONE,5,5.0,
+נת_חולון_16,SODIUM AS NA,0.734847,0.462433,0.333439,0,STABLE,5,5.0,
+נת_חולון_16,SULFATE AS SO4,0.244949,0.806496,0.873768,0,STABLE,5,5.0,
+נת_חולון_16,TETRACHLORO ETHYLENE,1.01905,0.30818,0.986454,0,STABLE,4,5.0,Low measurement count
+נת_חולון_16,"TRANS-1,2 DICHLOROETHYLENE",1.44463,0.148562,1.20409,0,STABLE,4,5.0,Low measurement count
+נת_חולון_16,TRICHLORO ETHYLENE,1.01905,0.30818,0.988913,0,STABLE,4,5.0,Low measurement count
+נת_חולון_16,XYLENE,0.0,1.0,0.812025,0,STABLE,4,5.0,Low measurement count
+נת_חולון_16,ZINC AS ZN,0.0,1.0,0.0,0,NONE,3,5.0,Low measurement count
+נת_חולון_2, MTBE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,"1,1,2-trichloroethane",,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,"1,1-dichloroethane",,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,"1,2,4 TRIMETHYLBENZENE",,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,ARSENIC AS AS,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,BARIUM AS BA,,,0.0,0,DECREASING,2,5.0,Low measurement count
+נת_חולון_2,BENZENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,BORON AS B,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,CHLOROFORM,,,0.0,0,INCREASING,2,5.0,Low measurement count
+נת_חולון_2,CHROMIUM AS CR,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,"CIS 1,2 DICHLOROETHYLENE",,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,COPPER AS CU,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,"DICHLOROETHANE1,2",,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,"DICHLOROETHYLENE 1,1",,,0.0,0,DECREASING,2,5.0,Low measurement count
+נת_חולון_2,DISSOLVED OXYGEN AS O2,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,IRON TOTAL AS FE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,LEAD AS PB,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,MANGANESE TOTAL AS MN,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,NAPTHALENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,NICKEL AS NI,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,SELENIUM AS SE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,TETRACHLORO ETHYLENE,,,0.0,0,INCREASING,2,5.0,Low measurement count
+נת_חולון_2,TOLUENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,"TRANS-1,2 DICHLOROETHYLENE",,,0.0,0,INCREASING,2,5.0,Low measurement count
+נת_חולון_2,"TRICHLORO ETHANE 1,1,1",,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,TRICHLORO ETHYLENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,XYLENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_2,ZINC AS ZN,,,0.0,0,NONE,2,5.0,Low measurement count
+נת_חולון_21,CHLORIDE AS CL,0.339683,0.734095,0.697313,0,STABLE,4,5.0,Low measurement count
+נת_חולון_21,CHLOROFORM,0.339683,0.734095,1.08851,0,STABLE,4,5.0,Low measurement count
+נת_חולון_21,"CIS 1,2 DICHLOROETHYLENE",0.339683,0.734095,0.786119,0,STABLE,4,5.0,Low measurement count
+נת_חולון_21,"DICHLOROETHYLENE 1,1",0.339683,0.734095,0.990373,0,STABLE,4,5.0,Low measurement count
+נת_חולון_21,NITRATE AS NO3,0.339683,0.734095,1.0195,0,STABLE,4,5.0,Low measurement count
+נת_חולון_21,SULFATE AS SO4,0.339683,0.734095,1.11574,0,STABLE,4,5.0,Low measurement count
+נת_חולון_21,TETRACHLORO ETHYLENE,0.339683,0.734095,1.02747,0,STABLE,4,5.0,Low measurement count
+נת_חולון_21,"TRICHLORO ETHANE 1,1,1",0.0,1.0,0.381524,0,STABLE,4,5.0,Low measurement count
+נת_חולון_21,TRICHLORO ETHYLENE,0.339683,0.734095,1.00222,0,STABLE,4,5.0,Low measurement count
+נת_חולון_22, MTBE,-0.722315,0.470101,0.951993,0,STABLE,4,5.0,Low measurement count
+נת_חולון_22,"1,1-dichloroethane",1.69842,0.0894294,1.4046,0,INCREASING,4,5.0,Low measurement count
+נת_חולון_22,CALCIUM AS CA,-1.69842,0.0894294,1.70041,0,DECREASING,4,5.0,Low measurement count
+נת_חולון_22,CHLORIDE AS CL,1.01905,0.30818,1.26104,0,STABLE,4,5.0,Low measurement count
+נת_חולון_22,"CIS 1,2 DICHLOROETHYLENE",0.339683,0.734095,0.826347,0,STABLE,4,5.0,Low measurement count
+נת_חולון_22,"DICHLOROETHANE1,2",0.0,1.0,0.295351,0,NONE,4,5.0,Low measurement count
+נת_חולון_22,"DICHLOROETHYLENE 1,1",1.01905,0.30818,1.27406,0,STABLE,4,5.0,Low measurement count
+נת_חולון_22,MAGNESIUM AS MG,0.0,1.0,0.509372,0,STABLE,4,5.0,Low measurement count
+נת_חולון_22,NITRATE AS NO3,0.339683,0.734095,0.351801,0,STABLE,4,5.0,Low measurement count
+נת_חולון_22,POTASSIUM AS K,0.339683,0.734095,1.62936,0,STABLE,4,5.0,Low measurement count
+נת_חולון_22,SODIUM AS NA,0.0,1.0,0.615441,0,STABLE,4,5.0,Low measurement count
+נת_חולון_22,SULFATE AS SO4,0.339683,0.734095,0.319583,0,STABLE,4,5.0,Low measurement count
+נת_חולון_22,TETRACHLORO ETHYLENE,-0.339683,0.734095,0.509048,0,STABLE,4,5.0,Low measurement count
+נת_חולון_22,TRICHLORO ETHYLENE,0.339683,0.734095,0.358595,0,STABLE,4,5.0,Low measurement count
+נת_חולון_23,BICARBONATE AS HCO3,1.69842,0.0894294,1.32572,0,INCREASING,4,5.0,Low measurement count
+נת_חולון_23,BROMIDE AS BR,0.339683,0.734095,0.598165,0,STABLE,4,5.0,Low measurement count
+נת_חולון_23,CHLORIDE AS CL,-0.339683,0.734095,1.12309,0,STABLE,4,5.0,Low measurement count
+נת_חולון_23,NITRATE AS NO3,1.01905,0.30818,1.48241,0,STABLE,4,5.0,Low measurement count
+נת_חולון_23,SULFATE AS SO4,0.339683,0.734095,0.173399,0,NONE,4,5.0,Low measurement count
+נת_חולון_24, MTBE,1.01905,0.30818,1.40231,0,STABLE,4,5.0,Low measurement count
+נת_חולון_24,"1,1,2-trichloroethane",0.722315,0.470101,1.73139,0,STABLE,4,5.0,Low measurement count
+נת_חולון_24,"1,1-dichloroethane",0.0,1.0,0.235523,0,NONE,4,5.0,Low measurement count
+נת_חולון_24,"1,2,4 TRIMETHYLBENZENE",0.0,1.0,1.0,0,STABLE,4,5.0,Low measurement count
+נת_חולון_24,CHLORIDE AS CL,0.339683,0.734095,0.0965475,0,NONE,4,5.0,Low measurement count
+נת_חולון_24,CHLOROFORM,1.01905,0.30818,1.29764,0,STABLE,4,5.0,Low measurement count
+נת_חולון_24,"CIS 1,2 DICHLOROETHYLENE",0.339683,0.734095,0.950563,0,STABLE,4,5.0,Low measurement count
+נת_חולון_24,"DICHLOROETHYLENE 1,1",0.339683,0.734095,0.410767,0,STABLE,4,5.0,Low measurement count
+נת_חולון_24,ETHYL BENZENE,0.0,1.0,0.840168,0,STABLE,4,5.0,Low measurement count
+נת_חולון_24,NITRATE AS NO3,0.0,1.0,0.273951,0,NONE,4,5.0,Low measurement count
+נת_חולון_24,SULFATE AS SO4,0.0,1.0,0.0709331,0,NONE,4,5.0,Low measurement count
+נת_חולון_24,TETRACHLORO ETHYLENE,0.339683,0.734095,0.104187,0,NONE,4,5.0,Low measurement count
+נת_חולון_24,TOLUENE,0.722315,0.470101,1.22222,0,STABLE,4,5.0,Low measurement count
+נת_חולון_24,TRICHLORO ETHYLENE,0.339683,0.734095,0.246864,0,NONE,4,5.0,Low measurement count
+נת_חולון_24,XYLENE,0.0,1.0,0.634811,0,STABLE,4,5.0,Low measurement count
+נת_חולון_3,ARSENIC AS AS,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_3,BARIUM AS BA,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_3,BORON AS B,,,0.0,0,INCREASING,2,5.0,Low measurement count
+נת_חולון_3,CHLOROFORM,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_3,CHROMIUM AS CR,,,0.0,0,DECREASING,2,5.0,Low measurement count
+נת_חולון_3,"CIS 1,2 DICHLOROETHYLENE",,,0.0,0,NONE,2,5.0,Low measurement count
+נת_חולון_3,COBALT AS CO,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_3,COPPER AS CU,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_3,"DICHLOROETHYLENE 1,1",,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_3,DISSOLVED OXYGEN AS O2,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_3,IRON TOTAL AS FE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_3,LEAD AS PB,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_3,MANGANESE TOTAL AS MN,,,0.0,0,NONE,2,5.0,Low measurement count
+נת_חולון_3,NICKEL AS NI,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_3,SELENIUM AS SE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_3,TETRACHLORO ETHYLENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_3,TOLUENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_3,"TRICHLORO ETHANE 1,1,1",,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_3,TRICHLORO ETHYLENE,,,0.0,0,NONE,2,5.0,Low measurement count
+נת_חולון_3,Trichlorofluoromethane,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_3,XYLENE,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_3,ZINC AS ZN,,,0.0,0,STABLE,2,5.0,Low measurement count
+נת_חולון_5, MTBE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_5,"1,1,2-trichloroethane",,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_5,"1,1-dichloroethane",,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_5,ARSENIC AS AS,,,0.0,0,DECREASING,1,5.0,Low measurement count
+נת_חולון_5,BARIUM AS BA,,,0.0,0,INCREASING,1,5.0,Low measurement count
+נת_חולון_5,BENZENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_5,BORON AS B,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_5,CARBON TETRACHLORIDE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_5,CHLOROFORM,,,0.0,0,NONE,1,5.0,Low measurement count
+נת_חולון_5,CHROMIUM AS CR,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_5,"CIS 1,2 DICHLOROETHYLENE",,,0.0,0,NONE,1,5.0,Low measurement count
+נת_חולון_5,COPPER AS CU,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_5,"DICHLOROETHANE1,2",,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_5,"DICHLOROETHYLENE 1,1",,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_5,LEAD AS PB,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_5,MANGANESE TOTAL AS MN,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_5,NICKEL AS NI,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_5,SELENIUM AS SE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_5,TETRACHLORO ETHYLENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_5,TOLUENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_5,TRICHLORO ETHYLENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_6, MTBE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_6,ARSENIC AS AS,,,0.0,0,DECREASING,1,5.0,Low measurement count
+נת_חולון_6,BARIUM AS BA,,,0.0,0,INCREASING,1,5.0,Low measurement count
+נת_חולון_6,BENZENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_6,BORON AS B,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_6,CARBON TETRACHLORIDE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_6,CHLOROFORM,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_6,CHROMIUM AS CR,,,0.0,0,NONE,1,5.0,Low measurement count
+נת_חולון_6,COPPER AS CU,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_6,"DICHLOROETHANE1,2",,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_6,"DICHLOROETHYLENE 1,1",,,0.0,0,NONE,1,5.0,Low measurement count
+נת_חולון_6,LEAD AS PB,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_6,MANGANESE TOTAL AS MN,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_6,NICKEL AS NI,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_6,SELENIUM AS SE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_6,TETRACHLORO ETHYLENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_6,TOLUENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_6,"TRICHLORO ETHANE 1,1,1",,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_6,TRICHLORO ETHYLENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_6,XYLENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_7,"1,1-dichloroethane",,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_7,ARSENIC AS AS,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_7,BARIUM AS BA,,,0.0,0,INCREASING,1,5.0,Low measurement count
+נת_חולון_7,BORON AS B,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_7,CARBON TETRACHLORIDE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_7,CHLOROFORM,,,0.0,0,INCREASING,1,5.0,Low measurement count
+נת_חולון_7,CHROMIUM AS CR,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_7,"CIS 1,2 DICHLOROETHYLENE",,,0.0,0,NONE,1,5.0,Low measurement count
+נת_חולון_7,COPPER AS CU,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_7,"DICHLOROETHANE1,2",,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_7,"DICHLOROETHYLENE 1,1",,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_7,LEAD AS PB,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_7,MANGANESE TOTAL AS MN,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_7,Methylene chloride ,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_7,NICKEL AS NI,,,0.0,0,NONE,1,5.0,Low measurement count
+נת_חולון_7,SELENIUM AS SE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_חולון_7,TETRACHLORO ETHYLENE,,,0.0,0,NONE,1,5.0,Low measurement count
+נת_חולון_7,TOLUENE,,,0.0,0,NONE,1,5.0,Low measurement count
+נת_חולון_7,TRICHLORO ETHYLENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_מוסך_קטרפילר_חולון, MTBE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_מוסך_קטרפילר_חולון,BENZENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_מוסך_קטרפילר_חולון,DISSOLVED OXYGEN AS O2,,,0.0,0,NONE,1,5.0,Low measurement count
+נת_מוסך_קטרפילר_חולון,ETHYL BENZENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_מוסך_קטרפילר_חולון,NAPTHALENE,,,0.0,0,NONE,1,5.0,Low measurement count
+נת_מוסך_קטרפילר_חולון,TOLUENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_מוסך_קטרפילר_חולון,"TRANS-1,2 DICHLOROETHYLENE",,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_מוסך_קטרפילר_חולון,TRICHLORO ETHYLENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+נת_מוסך_קטרפילר_חולון,XYLENE,,,0.0,0,STABLE,1,5.0,Low measurement count
+פ_מקוה_ישראל_רוטשילד,CHLORIDE AS CL,0.0,1.0,0.041039,0,NONE,5,5.0,
+פ_מקוה_ישראל_רוטשילד,NITRATE AS NO3,-0.734847,0.462433,1.2635,0,STABLE,5,5.0,
