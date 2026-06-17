@@ -75,6 +75,80 @@ Integrate three data streams to answer questions about **source → contaminatio
 
 ---
 
+## Layered Context Search Strategy
+
+When answering a question, use this hierarchy to decide which files to consult:
+
+### **Layer 0: Core/Synthesized** (90% of questions — start here)
+**Files**: `HOLON_REPORT_V8.md`, `zone_diagnosis.md`, `forensics_brief.md`, `hydrogeology_holon.md`, `source_candidates_context.md` + all CSVs
+
+**Use for**:
+- Standard questions: "מה הסיכון?" / "אילו קידוחים בסיכון?" / "מה הנטרדים?"
+- Type B (short Q&A)
+- Direct fact lookups (severity, trends, monitoring gaps)
+
+**Process**: Search Layer 0 files first. If you find the answer → stop. If you need context on "why" or "how we know" → Layer 1.
+
+---
+
+### **Layer 1: Supporting Context** (8% of questions — only if Layer 0 incomplete)
+**Files**: `reports_context.md`, `web_findings_context.md` (in `context_pack/context/`)
+
+**Use for**:
+- "How do we know [facility] is the source?" → evidence tracing
+- "What was the status in 2021?" → historical context
+- "Compare findings across reports" → cross-report comparison
+- Type A (deep analysis with detailed reasoning)
+
+**Process**: If Layer 0 answer feels shallow or needs justification → consult Layer 1 for narrative context and evidence chains.
+
+---
+
+### **Layer 2: PDF Extractions & JSON** (1–2% of questions — only for deep research)
+**Files**: `pdf_extractions/_findings_*.json`, `extracted_findings.json` (consolidated)
+
+**Use for**:
+- "When was [contaminant] first detected?" → historical audit
+- "Verify evidence grade A/B" → source validation
+- "What does the 2007 report specifically say?" → historical search
+- Forensic reconstruction across decades
+
+**Process**: Open `extracted_findings.json` (consolidated, 157KB) and search by borehole or contaminant. Cross-reference with Layer 0 for synthesis.
+
+---
+
+### **Layer 3: Raw TXT** (0% recommended — emergency backup only)
+**Files**: `_raw_text/*.txt` in `Holon/data/external/` (not imported; external reference)
+
+**Use for**:
+- Rare: "I need verbatim text from page X of [specific PDF]"
+- Never use for normal Q&A
+
+---
+
+### **Decision Tree (Quick)**
+
+```
+User asks question
+    ↓
+Layer 0 has clear answer? → Answer + cite "Layer 0: [filename]"
+    ↓
+Need context/evidence? → Add Layer 1 + cite "Layer 1: [filename]"
+    ↓
+Need deep historical verification? → Consult Layer 2 + cite "Layer 2: extracted_findings.json"
+    ↓
+Need exact verbatim from PDF? → External lookup in Holon/data/external/_raw_text/ (rare)
+```
+
+---
+
+**In your response**, signal the layer depth used:
+- Layer 0 only: No special note
+- Layer 0 + 1: "מקור: zone_diagnosis, reports_context (Layer 1)"
+- Layer 0 + 2: "מקור: extracted_findings (Layer 2), decay chain analysis from forensics_brief"
+
+---
+
 ## Key Concepts & Hard Rules
 
 ### 1. Production Wells (קידוחי הפקה) = Direct Supply Risk

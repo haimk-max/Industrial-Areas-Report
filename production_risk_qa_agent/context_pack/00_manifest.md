@@ -1,14 +1,34 @@
 # מניפסט חבילת הקונטקסט — סוכן Q&A סיכון לקידוחי הפקה
 
-**תאריך**: 2026-06-17  
+**תאריך**: 2026-06-17 (עדכון v2: Layered Context)  
 **אזור**: חולון (Holon)  
-**משימה**: Q&A מבוסס-XGBOOST + ניתוח פורנזי לסיכון קידוחי הפקה
+**משימה**: Q&A מבוסס-XGBOOST + ניתוח פורנזי לסיכון קידוחי הפקה  
+**ארכיטקטורה**: **Layered 4-tier (עומק משכיל)**
 
 ---
 
-## מה כלול בחבילה (What's In)
+## ארכיטקטורה Layered — סקירה מהירה
 
-### 1. **CSV — נתונים כמותיים** (`data/`)
+קונטקסט מחולק ל-**4 שכבות** — סוכן בוחר איזו לנצל בכל שאלה:
+
+| שכבה | שם | שימוש | קבצים |
+|------|-----|--------|--------|
+| **L0** | Core/Synthesized | 90% שאלות | V8 Report, zone_diagnosis, forensics_brief, CSVs, LAYER_0_README |
+| **L1** | Supporting Context | 8% שאלות | reports_context, web_findings, LAYER_1_README |
+| **L2** | PDF Extractions | 1–2% שאלות | pdf_extractions/*.json, manifest |
+| **L3** | Raw TXT | <1% | external, _raw_text/ |
+
+**דוגמה L0**: "מה הסיכון לקידוח X?" → zone_diagnosis + V8  
+**דוגמה L1**: "איך אנחנו יודעים שתדיראן היא מקור?" → reports_context + evidence grades  
+**דוגמה L2**: "מתי בדיוק הגלו TCE בנת חולון 11?" → extracted_findings.json (כל דוחות עד 2021)
+
+---
+
+## מה כלול בחבילה (What's In) — לפי שכבה
+
+### **Layer 0: Core/Synthesized** (`context/`, `data/`, `xgboost/`)
+
+#### 1. **CSV — נתונים כמותיים** (`data/`)
 
 | קובץ | מקור | תוכן | משתמשים |
 |------|------|------|---------|
@@ -19,21 +39,56 @@
 | `monitoring_gaps.csv` | Holon/02_data | תאריכי ניטור אחרון, פער זמני (months), סטטוס (active/stopped) | זיהוי פערי ניטור |
 | `source_candidates_index.csv` | Holon/context_pack/03_context | מתקנים/תחנות משוערות, קואורדינטות, confidence (HIGH/MEDIUM/LOW), סוג | שיוך מקורות |
 
-### 2. **MD — הקשר נרטיבי** (`context/`)
+#### 2. **MD — Context (L0)** (`context/`)
 
 | קובץ | משימה | עומק |
 |------|-------|------|
+| `HOLON_REPORT_V8.md` | דוח סיכום מלא עם תוצאות לכל קידוח וסעיף ניתוח (45 KB) | **סינתזה מלאה** ← חדש |
 | `zone_diagnosis.md` | סיכום מקורות זיהום, מוקדים קריטיים, קידוחי הפקה בסכנה | סקר שלם |
+| `forensics_brief.md` | decay chains, co-occurrence, source signatures, PFAS gaps (156 שורות — גרסה מלאה) | עומק פורנזי |
 | `hydrogeology_holon.md` | זרימה טבעית (SW), קצב זרימה, עומק אקוויפר, שכבות חרסית | כללים הידרולוגיים |
 | `source_candidates_context.md` | תיאור מתקנים: קיימים, סגורים, סוגים (ציפוי, דלק, כימיקלים, מזון) | ראיות A-E |
-| `forensics_brief.md` | decay chains, co-occurrence, source signatures, PFAS gaps, migration patterns | עומק פורנזי |
+| `LAYER_0_README.md` | הנחיות — למתי להשתמש בL0, איך לנווט | מיקום שכבה |
 
-### 3. **XGBOOST Interface** (`xgboost/`)
+#### 3. **XGBOOST Interface** (`xgboost/`)
 
 | קובץ | תפקיד | פורמט |
 |------|--------|--------|
 | `XGBOOST_INPUT_SPEC.md` | סכמת הקלט הגנרית (placeholder) שעליה תזרום "המערכת ההיא" פלט XGBOOST | CSV schema |
 | `xgboost_results.SAMPLE.csv` | דוגמה סינתטית על קידוחי ההפקה האמיתיים של חולון | CSV (well predictions + SHAP) |
+
+---
+
+### **Layer 1: Supporting Context** (`context/`)
+
+| קובץ | משימה | עומק |
+|------|-------|------|
+| `reports_context.md` | הקשר דוחות עבר (TAHAL 2008, 2021 Water Authority) — כיצד הגיעו לממצאים (28 KB) | היסטוריה מובנה ← חדש |
+| `web_findings_context.md` | מצב נוכחי מקורות — פעילות/סגירה 2026 (7.4 KB) | סטטוס נוכחי ← חדש |
+| `LAYER_1_README.md` | הנחיות — מתי להשתמש בL1, דוגמאות | מיקום שכבה |
+
+---
+
+### **Layer 2: PDF Extractions** (`pdf_extractions/`)
+
+| קובץ | מקור PDF | גודל | תוכן |
+|------|----------|------|------|
+| `extracted_findings.json` | כל 5 דוחות מאוחדים | 157 KB | **אינדקס מלא** — חפש כאן ראשון |
+| `_findings_batyam2007.json` | TAHAL 2007 | 36 KB | ממצאים היסטוריים 2007 |
+| `_findings_finalreport.json` | דוח סכום | 24 KB | סיכום עם ממצאים |
+| `_findings_part1.json` | חלק 1 ניתוח | 34 KB | ניתוח חלק 1 |
+| `_findings_part2.json` | חלק 2 ניתוח | 24 KB | ניתוח חלק 2 |
+| `_findings_report2021.json` | Water Authority 2021 | 24 KB | דוח 2021 |
+| `00_pdf_extractions_manifest.md` | אינדקס | — | סכמה JSON + דוגמה + הנחיות |
+
+---
+
+### **Layer 3: Raw TXT** (External, ללא import)
+
+| קובץ | מקור | גודל | הערה |
+|------|------|------|------|
+| `_raw_text/*.txt` | Holon/data/external/ | 41–333 KB | גולמי, לא מובנה — backup בלבד |
+| `_raw_text/README.md` | חדש | — | "שימוש רק במקרה חירום" |
 
 ---
 
