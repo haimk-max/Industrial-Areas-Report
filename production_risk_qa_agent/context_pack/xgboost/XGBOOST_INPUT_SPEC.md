@@ -61,6 +61,7 @@ canonical_well_id | feature_name | feature_value | shap_contribution | contribut
 The Q&A system does NOT produce XGBOOST predictions. It consumes the above CSV files and outputs:
 - **Short answer text** (Hebrew, 2–4 sentences) to the user's question
 - **Standardized risk cards** for each affected production/supply well
+- **Deep analysis** (Type A) including risk per family, SHAP features, forensics, and structured monitoring-well lists
 
 See `SYSTEM_PROMPT.md` for output template.
 
@@ -114,24 +115,6 @@ canonical_well_id,feature_name,feature_value,shap_contribution,contribution_dire
 פ_אזור_מקור_חקלאי,latest_metals_concentration,5 µg/L,-0.10,↓ risk,contamination
 פ_מקוה_ישראל_רוטשילד,latest_cvoc_concentration,120 µg/L,0.15,↑ risk,contamination
 פ_מקוה_ישראל_רוטשילד,trend_mann_kendall_p,0.34,-0.01,↓ risk,trend
-```
-
-**Q&A System Usage**:
-When answering "What is the risk to our production wells?", the system:
-1. Reads the two XGBOOST CSVs
-2. Matches wells to `zone_wells.csv` (filter `well_type == private_production`)
-3. Reads severity + trends from deterministic data CSVs
-4. For each production well, outputs a risk card like:
-
-```
-**מק חולון 12 (קידוח מעורבב)**
-─────────────────────────────
-רמת סיכון: MODERATE (Severity 8, XGBOOST 62%)
-מזהמים מובילים: TCE (8,750 µg/L, 175,000% DWS), 1,1-DCE (1,939 µg/L)
-מקור משוער: נת חולון ± 50m (Cr+Ni + TCE decay chain) — רמת ודאות: בינונית
-מגמה: TCE יציב; PCE עולה (p=0.034)
-פער ניטור: אין (מעודכן 2026)
-המלצה: המשך ניטור רבעוני TCE + תרכובות דעיכה; זקוק לבדיקה מקורות
 ```
 
 ---

@@ -2,7 +2,7 @@
 # This is a SYNTHETIC SAMPLE for demonstration and testing purposes.
 # Replace with real predictions from your XGBOOST model.
 # Generated: 2026-06-17
-# Scope: Private production wells (private_production) in Holon zone
+# Scope: Private production wells (private_production) and key monitoring wells in Holon zone
 
 ## WELL-LEVEL PREDICTIONS
 # canonical_well_id,predicted_risk_class,risk_probability,model_version,prediction_date_utc,comments
@@ -10,6 +10,8 @@
 מק_חולון_14,moderate,0.54,1.0.0,2026-06-17T10:30:00Z,Cr rising slowly; monitoring active
 פ_אזור_מקור_חקלאי,low,0.18,1.0.0,2026-06-17T10:30:00Z,Lowest contamination in zone; far from sources
 פ_מקוה_ישראל_רוטשילד,moderate,0.59,1.0.0,2026-06-17T10:30:00Z,TCE 120 µg/L; stable trend
+מק_חולון_5,high,0.78,1.0.0,2026-06-17T10:30:00Z,High TCE + 1,1-DCE; decay chain active
+נד_אגד_אזור_16,moderate,0.65,1.0.0,2026-06-17T10:30:00Z,MTBE dominant; old spill signature
 
 ---
 
@@ -26,3 +28,9 @@
 פ_אזור_מקור_חקלאי,latest_metals_concentration,5 µg/L,-0.10,↓ risk,contamination
 פ_מקוה_ישראל_רוטשילד,latest_cvoc_concentration,120 µg/L,0.15,↑ risk,contamination
 פ_מקוה_ישראל_רוטשילד,trend_mann_kendall_p,0.34,-0.01,↓ risk,trend
+מק_חולון_5,latest_cvoc_concentration,1939 µg/L,0.42,↑ risk,contamination
+מק_חולון_5,severity_index_cvoc,7,0.22,↑ risk,contamination
+מק_חולון_5,decay_chain_indicator,1939_dce_ratio,0.15,↑ risk,contamination
+נד_אגד_אזור_16,latest_fuel_concentration,18750 µg/L,0.38,↑ risk,contamination
+נד_אגד_אזור_16,fuel_mtbe_dominance,high,0.17,↑ risk,contamination
+נד_אגד_אזור_16,distance_to_facility_m,85,0.10,↑ risk,distance

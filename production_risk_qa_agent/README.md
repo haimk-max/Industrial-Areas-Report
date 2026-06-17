@@ -1,140 +1,46 @@
-# Production Risk Q&A Agent — Holon Zone
+# Production Risk Q&A Agent — חבילת קונטקסט וסיסטם פרומפט
 
-**מערכת Q&A מקצועית לניתוח סיכון מים לקידוחי הפקה בחולון**
+**מטרה**: LLM-based Q&A component לשאלות סיכון זיקה מקור↔מוקד↔קידוחי הפקה.
+
+**סביבה**: אזור תעשייה חולון (111 קידוחים פעילים, 15,170 מדידות).
 
 ---
 
 ## מה זה?
 
-מערכת זו עוזרת **למהנדסי מים וברגולטורים** להבין את הקשר בין:
-- **מקורות זיהום תעשייתיים/דלק** בחולון
-- **מוקדי הזיהום** (פלאומים, אזורים מזוהמים)
-- **סיכון לקידוחי ההפקה** (אספקת מים לשתייה)
-
-**הקלט**: חבילת קונטקסט דטרמיניסטית (CSV מדידות + MD הקשר) + פלט מודל XGBOOST (סיווג סיכון).  
-**הפלט**: תשובות קצרות בעברית עם **כרטיסי סיכון** לכל קידוח הפקה.
+חבילה ניידת ומאוצרת המכילה:
+1. **Context Pack**: CSV (נתונים) + MD (הקשר נרטיבי) מאזור חולון
+2. **System Prompt**: הוראות ל-LLM לעיבוד שאלות סיכון בשני סגנונות
+3. **XGBOOST Interface**: סכמה צפויה לפלט מודל XGBOOST חיצוני
 
 ---
 
-## היכן משתמשים?
+## קבצים עיקריים
 
-**"המערכת ההיא"** (external system בלבד) — מערכת דיגיטלית עם:
-1. מודל XGBOOST לסיווג סיכון
-2. System Prompt לסוכן Claude / LLM
-3. קלט: שאלות על זיקה מקור↔מוקד↔הפקה (בעברית)
-4. פלט: תשובות מקצועיות קצרות (בעברית)
+### `SYSTEM_PROMPT.md`
+System prompt בעברית (הוראות לLLM).
 
-המערכת ההיא **קוראת** את:
-- `context_pack/data/*.csv` — נתונים דטרמיניסטיים (מדידות, trends, severity)
-- `context_pack/context/*.md` — הקשר מקצועי (diagnosis, hydrogeology, candidates)
-- `context_pack/xgboost/xgboost_results*.csv` — חזוי XGBOOST בזמן ריצה
+### `context_pack/00_manifest.md`
+מילון + טעימות נתונים. התחל כאן אם אתה חדש.
 
----
+### `context_pack/data/*.csv`
+נתונים כמותיים: zone_wells, severity, trends, monitoring_gaps, וכו'.
 
-## מבנה התיקייה
+### `context_pack/context/*.md`
+הקשר נרטיבי: zone_diagnosis, hydrogeology, forensics_brief.
 
-```
-production_risk_qa_agent/
-├── README.md (קובץ זה)
-├── SYSTEM_PROMPT.md ⭐ — System prompt לסוכן (אנגלית; פלט עברית)
-│
-├── context_pack/
-│   ├── 00_manifest.md — מה נכנס/לא נכנס + מילון נתונים
-│   ├── data/
-│   │   ├── zone_wells.csv — רישום קידוחים (כולל well_type)
-│   │   ├── severity_by_well_family.csv — אינדקס חומרה לפי משפחה
-│   │   ├── latest_results.csv — מדידה אחרונה לכל (well, param)
-│   │   ├── trends_by_well_parameter.csv — Mann-Kendall (אזהרה/יציב/יורד)
-│   │   ├── monitoring_gaps.csv — קידוחים שהופסק בהם ניטור + יתר פערים
-│   │   └── source_candidates_index.csv — 31 מועמד מקור עם רמות ודאות A–E
-│   ├── context/
-│   │   ├── zone_diagnosis.md — אבחון מקצועי של 7 מוקדי זיהום בחולון
-│   │   ├── hydrogeology_holon.md — כיוון זרימה + אילוצים
-│   │   ├── source_candidates_context.md — תיאור מעמיק של 9–12 מועמדים ראשיים
-│   │   └── forensics_brief.md — שרשראות פירוק, signatures, מגמות
-│   └── xgboost/
-│       ├── XGBOOST_INPUT_SPEC.md — סכמה צפויה (interface גנרי)
-│       └── xgboost_results.SAMPLE.csv — דוגמה סינתטית (קידוחי הפקה האמיתיים)
-│
-├── questions/
-│   └── test_questions.md — 5–8 שאלות מבחן על זיקה מקור↔מוקד↔הפקה
-│
-└── eval/
-    └── eval_run_2026-06-17.md — ראיית איכות: תשובות הסוכן + הערכה
-```
+### `questions/test_questions.md`
+8+ שאלות בדיקת איכות (Type A + Type B + validation).
 
 ---
 
-## איך לשתמש?
+## צעדים בעת שימוש
 
-### צעד 1: הכנה
-אם עדיין אין לך XGBOOST predictions:
-- השתמש ב-`xgboost_results.SAMPLE.csv` כ-template
-- מלא את `predicted_risk_class`, `risk_probability`, `shap_contribution` עם מנבאים אמיתיים
-
-### צעד 2: טעינת ה-System Prompt
-1. קרא את `SYSTEM_PROMPT.md` באופן מלא
-2. העתק אותו ל-**System Prompt** של הסוכן/LLM שלך
-3. **הסוכן משלך** (לא שלנו!) יקרא את המערכה ויענה על שאלות
-
-### צעד 3: הרצה
-שאל את הסוכן בעברית:
-
-```
-מהי הרמת סיכון של קידוחי ההפקה שלנו בחולון?
-אילו מתקנים הם המקורות הסביר ביותר לטיהור מי התהום שלנו?
-למה קידוח מסוים מציג TCE עולה?
-```
-
-### צעד 4: בדיקה
-1. פלט הסוכן צריך להיות **בעברית** ו**קצר** (2–4 משפטים + כרטיסי סיכון)
-2. בדוק שאין מונחים אסורים: bucket, ALERT, HIGH (בפרוזה)
-3. בדוק רמות ודאות A–E בשיוכי מקור
-4. אם XGBOOST ≠ severity דטרמיניסטי → הסוכן צריך לסמן זאת מפורשות
+1. קרא `context_pack/00_manifest.md`
+2. בדוק `SYSTEM_PROMPT.md`
+3. הרץ שאלה מ-`questions/test_questions.md`
 
 ---
 
-## דרישות
-
-- **CSV parseable** (UTF-8, headers)
-- **XGBOOST files optional** — אם אינם זמינים, הסוכן יוציא סיכון דטרמיניסטי בלבד
-- **LLM חזק** (Claude Opus / Sonnet) להבנת היבטים הידרוגיאולוגיים
-- **עברית** כשפת פלט
-
----
-
-## קבצים שאתה לא צריך
-
-- ❌ `CLAUDE.md`, `PROCESS.md` — governance של הפרויקט
-- ❌ דוחות `HOLON_REPORT_V*.md` — זו חבילה Q&A, לא דוח מלא
-- ❌ קבצי JSON גולמים (`facility_attribution.json`, `extracted_findings.json`) — כבר המרנו ל-MD
-
----
-
-## הערות
-
-1. **Privacy**: שמות מתקנים הם צדדיים / ממוקדים; בעדכון הקלט החדש, יתכן צורך לסתום שמות.
-2. **אזהרה**: קידוח הפקה הוא "sink הידרולוגי" שמושך מים מכל הכיוונים (לא רק downgradient). בהערכת מקור, השתמש בשילוב of מרחק + קצב זרימה + קצב משיכה — לא רק כלל כיוני.
-3. **PFAS**: כיסוי ניטור מינימלי (4/80 קידוחים בלבד). נדרשת תוכנית דגימה ממוקדת.
-4. **ניטור הופסק**: קידוחים קריטיים הופסק בהם ניטור ב-2021–2022 בשיא → עיוורון נתונים.
-
----
-
-## Support
-
-שאלות על הקלט / הקונטקסט?  
-→ `00_manifest.md` (מה נכנס/לא נכנס)  
-→ `SYSTEM_PROMPT.md` (מה הסוכן צריך לעשות)
-
-שאלות על הנתונים עצמם (מקורות, מתודולוגיה)?  
-→ דוחות מקור הפרויקט: `Holon/context_pack/03_context/`, `04_diagnosis/`  
-→ `zone_diagnosis.md` (אבחון מלא)
-
----
-
-**גרסה**: 1.0  
-**תאריך**: 2026-06-17  
-**אזור**: חולון (אזה״ת חולון, דרומית לתל אביב)  
-**קידוחים פעילים**: 111 (46 כללי + 63 דלק)  
-**מדידות**: ~15,170 (2010–2026, TPFAS/BETK בחרוג)  
-**משפחות מזהמים**: 4 (CVOC, FUEL, METALS, PFAS)
+**Version**: 1.0.0 (SAMPLE)
+EOF
