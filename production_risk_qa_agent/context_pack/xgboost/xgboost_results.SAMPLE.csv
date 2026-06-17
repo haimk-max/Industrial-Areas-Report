@@ -1,36 +1,38 @@
-# SAMPLE XGBOOST RESULTS FOR HOLON PRODUCTION WELLS
-# This is a SYNTHETIC SAMPLE for demonstration and testing purposes.
-# Replace with real predictions from your XGBOOST model.
-# Generated: 2026-06-17
-# Scope: Private production wells (private_production) and key monitoring wells in Holon zone
+# SAMPLE XGBOOST RESULTS — HOLON ZONE
+# SYNTHETIC SAMPLE for demonstration/testing only. Replace with real model output.
+# Generated: 2026-06-17 (v2 — aligned to real deterministic data in context_pack/data/)
+# Scope: The 2 real private_production wells + key monitoring/fuel hotspots (for context in Type A answers).
+# NOTE: risk_class roughly tracks the deterministic severity_index so XGBOOST acts as a CONSISTENT
+#       additional signal, not a contradiction. Where they diverge intentionally (פ_מקוה_ישראל),
+#       it is to exercise the "XGBOOST vs severity" reconciliation path.
 
 ## WELL-LEVEL PREDICTIONS
 # canonical_well_id,predicted_risk_class,risk_probability,model_version,prediction_date_utc,comments
-מק_חולון_12,moderate,0.62,1.0.0,2026-06-17T10:30:00Z,Data from last 3 years; recent TCE
-מק_חולון_14,moderate,0.54,1.0.0,2026-06-17T10:30:00Z,Cr rising slowly; monitoring active
-פ_אזור_מקור_חקלאי,low,0.18,1.0.0,2026-06-17T10:30:00Z,Lowest contamination in zone; far from sources
-פ_מקוה_ישראל_רוטשילד,moderate,0.59,1.0.0,2026-06-17T10:30:00Z,TCE 120 µg/L; stable trend
-מק_חולון_5,high,0.78,1.0.0,2026-06-17T10:30:00Z,High TCE + 1,1-DCE; decay chain active
-נד_אגד_אזור_16,moderate,0.65,1.0.0,2026-06-17T10:30:00Z,MTBE dominant; old spill signature
+פ_מקוה_ישראל_רוטשילד,moderate,0.55,1.0.0,2026-06-17T10:30:00Z,Production well; chloride 57% DWS + downgradient of regional CVOC plume (not yet arrived)
+פ_אזור_מקור_חקלאי,moderate,0.44,1.0.0,2026-06-17T10:30:00Z,Production well; sparse data but on 1,4-dioxane front advancing from industrial core
+נת_חולון_11,very_high,0.96,1.0.0,2026-06-17T10:30:00Z,Monitoring; TCE ~68,660% DWS (worst CVOC in zone); decay chain active
+נת_חולון_2,high,0.83,1.0.0,2026-06-17T10:30:00Z,Monitoring; TCE ~16,750% DWS; PCE+chloroform rising; monitoring stopped 2022
+נד_סונול_המלאכה_מ-1,very_high,0.92,1.0.0,2026-06-17T10:30:00Z,Fuel; TCE ~37,188% DWS + MTBE; mixed CVOC/fuel source
+נת_חולון_26,high,0.80,1.0.0,2026-06-17T10:30:00Z,Monitoring; Cr ~8,072% DWS (point anomaly); galvanic plating signature
 
 ---
 
 ## FEATURE IMPORTANCE (SHAP)
 # canonical_well_id,feature_name,feature_value,shap_contribution,contribution_direction,feature_category
-מק_חולון_12,latest_cvoc_concentration,8750 µg/L,0.35,↑ risk,contamination
-מק_חולון_12,severity_index_cvoc,8,0.18,↑ risk,contamination
-מק_חולון_12,trend_mann_kendall_z,1.87,0.09,↑ risk,trend
-מק_חולון_12,distance_to_facility_m,45,0.02,↑ risk,distance
-מק_חולון_14,latest_metals_concentration_cr,331 µg/L,0.20,↑ risk,contamination
-מק_חולון_14,distance_to_facility_m,120,0.18,↑ risk,distance
-מק_חולון_14,trend_mann_kendall_p,0.062,-0.02,↓ risk,trend
-פ_אזור_מקור_חקלאי,latest_cvoc_concentration,0 µg/L,-0.18,↓ risk,contamination
-פ_אזור_מקור_חקלאי,latest_metals_concentration,5 µg/L,-0.10,↓ risk,contamination
-פ_מקוה_ישראל_רוטשילד,latest_cvoc_concentration,120 µg/L,0.15,↑ risk,contamination
-פ_מקוה_ישראל_רוטשילד,trend_mann_kendall_p,0.34,-0.01,↓ risk,trend
-מק_חולון_5,latest_cvoc_concentration,1939 µg/L,0.42,↑ risk,contamination
-מק_חולון_5,severity_index_cvoc,7,0.22,↑ risk,contamination
-מק_חולון_5,decay_chain_indicator,1939_dce_ratio,0.15,↑ risk,contamination
-נד_אגד_אזור_16,latest_fuel_concentration,18750 µg/L,0.38,↑ risk,contamination
-נד_אגד_אזור_16,fuel_mtbe_dominance,high,0.17,↑ risk,contamination
-נד_אגד_אזור_16,distance_to_facility_m,85,0.10,↑ risk,distance
+פ_מקוה_ישראל_רוטשילד,latest_metals_concentration_chloride,230 mg/L (57.6% DWS),0.16,↑ risk,contamination
+פ_מקוה_ישראל_רוטשילד,distance_to_cvoc_plume_m,~2100,0.14,↑ risk,distance
+פ_מקוה_ישראל_רוטשילד,latest_cvoc_concentration,0 µg/L,-0.20,↓ risk,contamination
+פ_מקוה_ישראל_רוטשילד,pumping_sink_factor,active_supply,0.08,↑ risk,hydrogeology
+פ_אזור_מקור_חקלאי,dioxane_front_distance_m,~600,0.18,↑ risk,distance
+פ_אזור_מקור_חקלאי,monitoring_coverage_5y,sparse,0.12,↑ risk,monitoring_gap
+פ_אזור_מקור_חקלאי,latest_cvoc_concentration,no_data,0.00,~neutral,contamination
+נת_חולון_11,latest_cvoc_concentration,TCE 68,660% DWS,0.46,↑ risk,contamination
+נת_חולון_11,severity_index_cvoc,8,0.22,↑ risk,contamination
+נת_חולון_11,decay_chain_indicator,TCE+1,1-DCE+VC,0.12,↑ risk,contamination
+נת_חולון_2,latest_cvoc_concentration,TCE 16,750% DWS,0.34,↑ risk,contamination
+נת_חולון_2,trend_pce_chloroform,increasing,0.14,↑ risk,trend
+נת_חולון_2,monitoring_gap_years,stopped_2022,0.10,↑ risk,monitoring_gap
+נד_סונול_המלאכה_מ-1,latest_cvoc_concentration,TCE 37,188% DWS,0.40,↑ risk,contamination
+נד_סונול_המלאכה_מ-1,fuel_mtbe_cooccurrence,high,0.16,↑ risk,contamination
+נת_חולון_26,latest_metals_concentration_cr,Cr 8,072% DWS,0.38,↑ risk,contamination
+נת_חולון_26,galvanic_signature,Cr+Ni,0.14,↑ risk,contamination

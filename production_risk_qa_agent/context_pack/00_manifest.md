@@ -18,9 +18,9 @@
 | **L2** | PDF Extractions | 1–2% שאלות | pdf_extractions/*.json, manifest |
 | **L3** | Raw TXT | <1% | external, _raw_text/ |
 
-**דוגמה L0**: "מה הסיכון לקידוח X?" → zone_diagnosis + V8  
-**דוגמה L1**: "איך אנחנו יודעים שתדיראן היא מקור?" → reports_context + evidence grades  
-**דוגמה L2**: "מתי בדיוק הגלו TCE בנת חולון 11?" → extracted_findings.json (כל דוחות עד 2021)
+**דוגמה L0**: "מה הסיכון לקידוח X?" — zone_diagnosis + V8  
+**דוגמה L1**: "איך אנחנו יודעים שתדיראן היא מקור?" — reports_context + evidence grades  
+**דוגמה L2**: "מתי בדיוק הגלו TCE בנת חולון 11?" — extracted_findings.json (כל דוחות עד 2021)
 
 ---
 
@@ -105,7 +105,7 @@
 ## קונבנציות ומילון
 
 ### well_type (בקובץ zone_wells.csv)
-- `private_production` = קידוח הפקה (ממוקד בחקר סיכון → עדיפות דיווח)
+- `private_production` = קידוח הפקה (ממוקד בחקר סיכון — עדיפות דיווח)
 - `monitoring` = קידוח ניטור תעשייתי (בקרה)
 - `fuel_monitoring` = קידוח ניטור דלק (תחנות דלק)
 - `industrial_monitoring` = קידוח ניטור תעשייתי (מתקנים כימיים)
