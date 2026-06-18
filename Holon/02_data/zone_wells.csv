@@ -1,10 +1,10 @@
 canonical_well_id,name_he,itm_easting,itm_northing,well_type,zone_scope_source,monitoring_site
-יו_מקוה_ישראל_29/2,יו מקוה ישראל 29/2,180500,660280,monitoring,Holon_main_industrial,
-מק_חולון_12,מק חולון 12,182088,657195,monitoring,Holon_main_industrial,
-מק_חולון_14,מק חולון 14,180289,657578,monitoring,Holon_main_industrial,
-מק_חולון_23,מק חולון 23,182124,658134,monitoring,Holon_main_industrial,
-מק_חולון_5,מק חולון 5,181339,656645,monitoring,Holon_main_industrial,
-מק_מולדת_8,מק מולדת 8,182615,656613,monitoring,Holon_main_industrial,
+יו_מקוה_ישראל_29/2,יו מקוה ישראל 29/2,180500,660280,research_monitoring,Holon_main_industrial,
+מק_חולון_12,מק חולון 12,182088,657195,mekorot_production,Holon_main_industrial,
+מק_חולון_14,מק חולון 14,180289,657578,mekorot_production,Holon_main_industrial,
+מק_חולון_23,מק חולון 23,182124,658134,mekorot_production,Holon_main_industrial,
+מק_חולון_5,מק חולון 5,181339,656645,mekorot_production,Holon_main_industrial,
+מק_מולדת_8,מק מולדת 8,182615,656613,mekorot_production,Holon_main_industrial,
 נד_אגד_אזור_1,נד אגד אזור 1,181824,658242,fuel_monitoring,Holon_main_industrial,דלק
 נד_אגד_אזור_10,נד אגד אזור 10,181787,658217,fuel_monitoring,Holon_main_industrial,דלק
 נד_אגד_אזור_11,נד אגד אזור 11,181789,658234,fuel_monitoring,Holon_main_industrial,דלק

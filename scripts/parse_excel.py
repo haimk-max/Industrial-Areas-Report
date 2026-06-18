@@ -85,17 +85,87 @@ def _canonical_id(excel_name: str, crosswalk: list[dict]) -> str:
     return excel_name.replace(" ", "_").lower()
 
 
-def _borehole_type(purpose: str | None) -> str:
+# ── Borehole Classification (dual-check hierarchy) ──────────────────────────────
+# Maps Hebrew purpose ("ייעוד הקידוח") and name prefix to a well_type enum.
+# Both signals are independent: purpose is authoritative, name prefix confirms or
+# acts as fallback when purpose is missing/unrecognized. On disagreement the
+# purpose wins and a conflict is logged. SSOT: docs/BOREHOLE_CLASSIFICATION_GLOSSARY.md
+#
+# well_type values:
+#   mekorot_production    — חברת מקורות (public supply, prefix 'מק')
+#   private_production    — פרטי (agricultural/industrial, prefix 'פ')
+#   research_monitoring   — יוזום / מחקר (hydrological service, prefix 'יו'/'מח')
+#   industrial_monitoring — תעשיה (facility monitoring, prefix 'נת')
+#   fuel_monitoring       — דלק (fuel-storage monitoring, prefix 'נד')
+#   unknown               — neither purpose nor prefix recognized
+WELL_TYPES = {
+    "mekorot_production", "private_production", "research_monitoring",
+    "industrial_monitoring", "fuel_monitoring", "unknown",
+}
+
+# purpose substring → well_type (first match wins; substrings are unambiguous)
+_PURPOSE_MAP = {
+    "חברת מקורות": "mekorot_production",
+    "פרטי": "private_production",
+    "יוזום": "research_monitoring",
+    "מחקר": "research_monitoring",
+    "תעשיה": "industrial_monitoring",
+    "דלק": "fuel_monitoring",
+}
+
+# name prefix → well_type (matched as 'prefix ' or 'prefix_' to avoid false hits)
+_PREFIX_MAP = {
+    "מק": "mekorot_production",
+    "פ": "private_production",
+    "יו": "research_monitoring",
+    "מח": "research_monitoring",
+    "נת": "industrial_monitoring",
+    "נד": "fuel_monitoring",
+}
+
+
+def _classify_by_purpose(purpose: str | None) -> str:
     if not purpose:
         return "unknown"
     p = str(purpose).strip()
-    if "פרטי" in p:
-        return "private_production"
-    if "תעשיה" in p:
-        return "industrial_monitoring"
-    if "דלק" in p:
-        return "fuel_monitoring"
-    return "monitoring"
+    for key, value in _PURPOSE_MAP.items():
+        if key in p:
+            return value
+    return "unknown"
+
+
+def _classify_by_prefix(name: str | None) -> str:
+    if not name:
+        return "unknown"
+    n = str(name).strip()
+    # Longest prefixes first so 'מק'/'מח' win over the single-char 'פ' family.
+    for prefix in sorted(_PREFIX_MAP, key=len, reverse=True):
+        if n.startswith(prefix + " ") or n.startswith(prefix + "_"):
+            return _PREFIX_MAP[prefix]
+    return "unknown"
+
+
+def _borehole_type(purpose: str | None, name: str | None = None) -> tuple[str, str]:
+    """Classify a borehole via purpose (authoritative) + name prefix (fallback/confirm).
+
+    Returns (well_type, classification_source) where classification_source is one of
+    "purpose+prefix" | "purpose" | "purpose (prefix conflict)" | "prefix" | "unclassified".
+    """
+    by_purpose = _classify_by_purpose(purpose)
+    by_prefix = _classify_by_prefix(name)
+
+    if by_purpose != "unknown" and by_prefix != "unknown":
+        if by_purpose == by_prefix:
+            return by_purpose, "purpose+prefix"
+        log.warning("classification_conflict", borehole=name, purpose=purpose,
+                    by_purpose=by_purpose, by_prefix=by_prefix)
+        return by_purpose, "purpose (prefix conflict)"
+    if by_purpose != "unknown":
+        return by_purpose, "purpose"
+    if by_prefix != "unknown":
+        return by_prefix, "prefix"
+    log.warning("unclassified_borehole", borehole=name, purpose=purpose)
+    return "unknown", "unclassified"
 
 
 def _percent_of_standard(concentration: float, std: float | None) -> float | None:
@@ -177,6 +247,9 @@ def main() -> None:
 
             # Accumulate borehole metadata (take first occurrence)
             if canonical_id not in boreholes:
+                well_type, class_source = _borehole_type(
+                    _col_val(row, col["purpose"]), bh_name
+                )
                 boreholes[canonical_id] = {
                     "canonical_id": canonical_id,
                     "name_he": bh_name,
@@ -185,7 +258,8 @@ def main() -> None:
                     "itm_northing": int(round(itm_n)),
                     "basin": _col_val(row, col["basin"]) or "",
                     "purpose": _col_val(row, col["purpose"]) or "",
-                    "borehole_type": _borehole_type(_col_val(row, col["purpose"])),
+                    "borehole_type": well_type,
+                    "classification_source": class_source,
                     "monitoring_site": _col_val(row, col["monitoring_site"]) or "",
                     "contamination_type": _col_val(row, col["contamination_type"]) or "",
                 }
@@ -262,7 +336,8 @@ def main() -> None:
     # ── Write boreholes.csv ───────────────────────────────────────────────────
     bh_path = output_dir / "boreholes.csv"
     bh_fields = ["canonical_id", "name_he", "excel_borehole_id", "itm_easting", "itm_northing",
-                 "basin", "purpose", "borehole_type", "monitoring_site", "contamination_type"]
+                 "basin", "purpose", "borehole_type", "classification_source",
+                 "monitoring_site", "contamination_type"]
     with open(bh_path, "w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=bh_fields)
         writer.writeheader()

@@ -180,6 +180,89 @@ class QAResult:
         print(f"\n  Errors: {len(self.errors)}   Warnings: {len(self.warnings)}")
 
 
+# ── Gate 1.5: Borehole Classification Consistency ────────────────────────────
+
+# Valid well_type enum. SSOT: docs/BOREHOLE_CLASSIFICATION_GLOSSARY.md
+VALID_WELL_TYPES = {
+    "mekorot_production", "private_production", "research_monitoring",
+    "industrial_monitoring", "fuel_monitoring", "monitoring", "unknown",
+}
+
+
+def gate1_5_borehole_classification(zone: str) -> QAResult:
+    """Validate borehole classification in {zone}/data/boreholes.csv.
+
+    Checks (per docs/BOREHOLE_CLASSIFICATION_GLOSSARY.md):
+    - Every borehole_type is in the valid enum (else FAIL — schema violation)
+    - unknown rate ≤ 5% (else WARN — data-quality gap)
+    - purpose↔prefix conflicts flagged (WARN — needs source review)
+    - distribution reported as info
+    """
+    result = QAResult("1.5 (Borehole Classification)", zone)
+    bh_path = REPO_ROOT / zone / "data" / "boreholes.csv"
+
+    if not bh_path.exists():
+        result.error(f"boreholes.csv לא נמצא: {bh_path}")
+        return result
+
+    try:
+        with open(bh_path, encoding="utf-8") as f:
+            rows = list(csv.DictReader(f))
+    except Exception as e:
+        result.error(f"boreholes.csv: שגיאת קריאה — {e}")
+        return result
+
+    if not rows:
+        result.error("boreholes.csv ריק")
+        return result
+
+    total = len(rows)
+
+    # 1. Enum validity
+    invalid = [r for r in rows if r.get("borehole_type") not in VALID_WELL_TYPES]
+    if invalid:
+        names = [r.get("name_he", "?") for r in invalid[:5]]
+        result.error(f"borehole_type לא תקין ({len(invalid)}): {names}")
+    else:
+        result.info(f"כל {total} הקידוחים עם borehole_type תקין")
+
+    # 2. Unknown rate
+    unknown = [r for r in rows if r.get("borehole_type") == "unknown"]
+    if unknown:
+        rate = len(unknown) / total
+        msg = f"קידוחים לא מסווגים (unknown): {len(unknown)}/{total} ({rate:.0%})"
+        (result.warn if rate > 0.05 else result.info)(msg)
+
+    # 3. Generic-monitoring fallback (legacy mis-classification signal)
+    generic = [r for r in rows if r.get("borehole_type") == "monitoring"]
+    if generic:
+        result.warn(f"קידוחים בקטגוריית fallback 'monitoring': {len(generic)} — "
+                    f"בדוק purpose/קידומת (ייתכן סיווג חסר)")
+
+    # 4. purpose↔prefix conflicts (classification_source column, if present)
+    if "classification_source" in (rows[0].keys()):
+        conflicts = [r for r in rows
+                     if "conflict" in (r.get("classification_source") or "")]
+        if conflicts:
+            names = [r.get("name_he", "?") for r in conflicts[:5]]
+            result.warn(f"סתירת purpose↔קידומת ({len(conflicts)}): {names} — "
+                        f"דורש בדיקת מקור")
+        prefix_only = sum(1 for r in rows
+                          if r.get("classification_source") == "prefix")
+        if prefix_only:
+            result.info(f"{prefix_only} קידוחים סווגו לפי קידומת בלבד (ללא purpose)")
+
+    # 5. Distribution
+    dist: dict[str, int] = {}
+    for r in rows:
+        bt = r.get("borehole_type", "?")
+        dist[bt] = dist.get(bt, 0) + 1
+    dist_str = ", ".join(f"{k}={v}" for k, v in sorted(dist.items()))
+    result.info(f"התפלגות סיווג: {dist_str}")
+
+    return result
+
+
 # ── Gate 2: Structured Data Pack ─────────────────────────────────────────────
 
 def gate2_data_pack(zone: str, data_dir: Optional[Path] = None) -> QAResult:
@@ -1060,9 +1143,10 @@ def gate8_exec_summary(zone: str, brief_path: Optional[Path] = None) -> QAResult
 # ── Run all gates ─────────────────────────────────────────────────────────────
 
 def run_all_gates(zone: str, args) -> int:
-    """Run gates 2→3→4→5→6 in sequence. Returns exit code."""
+    """Run gates 1.5→2→3→4→5→6 in sequence. Returns exit code."""
     results = []
     gate_funcs = [
+        ("1.5", lambda: gate1_5_borehole_classification(zone)),
         ("2", lambda: gate2_data_pack(zone, getattr(args, "data_dir", None))),
         ("3", lambda: gate3_prompt_layer(zone)),
         ("4", lambda: gate4_diagnosis(zone, getattr(args, "diagnosis", None))),
@@ -1139,7 +1223,7 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="Example: python scripts/qa_pipeline.py --gate all --zone Holon",
     )
-    parser.add_argument("--gate", choices=["2", "3", "4", "5", "6", "8", "all"], required=True)
+    parser.add_argument("--gate", choices=["1.5", "2", "3", "4", "5", "6", "8", "all"], required=True)
     parser.add_argument("--zone", required=True, help="Zone directory name (e.g. Holon)")
     parser.add_argument("--report", type=Path, help="Override path to V5 report .md")
     parser.add_argument("--html", type=Path, help="Override path to HTML output")
@@ -1158,6 +1242,7 @@ def main():
         sys.exit(run_all_gates(zone, args))
 
     gate_map = {
+        "1.5": lambda: gate1_5_borehole_classification(zone),
         "2": lambda: gate2_data_pack(zone, args.data_dir),
         "3": lambda: gate3_prompt_layer(zone),
         "4": lambda: gate4_diagnosis(zone, args.diagnosis),
