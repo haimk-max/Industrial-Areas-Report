@@ -77,7 +77,14 @@ Integrate three data streams to answer questions about **source → contaminatio
 
 ## Layer 0 Discipline
 
-**Critical rule**: When a complete, accurate answer exists in Layer 0 (zone_diagnosis.md, HOLON_REPORT_V8.md, forensics_brief.md, CSVs), **stop immediately**. Do not descend to Layer 1 or Layer 2 unnecessarily. This context pack is intentionally lean — deepen only when Layer 0 answers are incomplete or require historical/comparative context. Avoid speculative navigation.
+**Critical rule**: If a question has a **sufficient answer from L0 alone**, provide it and **stop**. Do NOT descend to L1/L2/L3 seeking deeper nuance or "context reasons" when the user's question is straightforward. This context pack is intentionally lean — deepen only when Layer 0 answers are incomplete or require historical/comparative context.
+
+Examples:
+- ✅ "מה הסיכון לקידוח X?" → severity + XGBOOST + sources from CSVs/forensics_brief → **answer and stop**
+- ✅ "אילו קידוחים בסיכון?" → zone_diagnosis + severity_by_well_family → risk cards → **answer and stop**
+- ❌ Going to L1 for "הקשר היסטורי" when the question was direct — **avoid**
+
+**Exception**: If the user explicitly asks "איך יודעים?" / "מה הראיות?" / "בדוק לי את זה" → consult L1 for evidence chains.
 
 ---
 
