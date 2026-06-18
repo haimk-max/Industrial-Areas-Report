@@ -3,7 +3,7 @@
 > **מטרה**: SSOT לדרישות פתוחות וסגורות. עודכן בכל שינוי.
 > **כלל**: ראה CLAUDE.md §12.
 
-**עודכן אחרון**: 2026-06-18 (REQ #35 closed — generic dual-check borehole classification system + well-count corrections 48+63; REQ #34 closed — data integrity fix 47+64=111 + DOCS_MAP.md; REQ #33 closed — Raanana V5 pipeline merge)
+**עודכן אחרון**: 2026-06-18 (REQ #36 opened — time-dependent non-determinism in monitoring_gaps.csv, deferred; REQ #35 closed — generic dual-check borehole classification system + well-count corrections 48+63; REQ #34 closed — data integrity fix 47+64=111 + DOCS_MAP.md)
 
 ---
 
@@ -11,6 +11,7 @@
 
 | # | בעיה | תיאור | סטטוס | תאריך | קבצים |
 |---|------|--------|--------|-------|-------|
+| 36 | אי-דטרמיניות תלוית-זמן ב-monitoring_gaps.csv | `generate_zone_data_pack.py:324` קובע `is_active` לפי `(datetime.now() - last_measurement).days < 730` → הרצה-מחדש בימים שונים מפיקה CSV שונה גם בלי שינוי נתונים (קידוח חוצה גבול 730 יום מתהפך active→closed). זוהה במהלך אימות מיזוג REQ #35 (נד_פז_סיירים_4 התהפך ב-2026-06-18). 6 הקבצים האחרים של ה-Data Pack דטרמיניסטיים. **תיקון-שורש**: להחליף `datetime.now()` בעוגן-תאריך נגזר-נתונים (anchor date, למשל הדגימה האחרונה באזור) → פייפליין דטרמיניסטי מלא. **לא דחוף** — לא שגיאה, אלא נכון-לזמן; מתועד ב-HANDOVER footgun. | ⏳ Deferred | 2026-06-18 | scripts/generate_zone_data_pack.py |
 | 19 | Toolkit system — Testing + Integration | Validate `pip install -e ./toolkit/pylib` on current projects (Holon, Raanana). Write unit tests for pylib. Integrate skills into Claude Code. hydro-analyzer skill (4th). NOTE: All 5 playbooks now complete (zone_report_process_v5, data_pipeline_spec, zone_diagnosis_template, forensics_attribution_guide, monitoring_gaps_checklist). **Sub-task closed**: Cross-reference sanitization complete (c7ffab0, 2026-05-27) — 5/5 playbooks with unified 📍 [file](../../../path) format; root SSOT back-references added; duplicate content removed. אימות: `git grep -n "📍 \[" toolkit/playbooks/` → 5 hits. | ⚠️ Partial | 2026-05-27 | toolkit/ |
 | 14 | Agent RAG / Vector Store (Long-term Tooling) | Deferred: exploratory task for post-Holon completion. RAG infrastructure for enhanced context retrieval + semantic search on zone reports + forensic anchors. When triggered: design doc + prototype implementation. **Status clarified (REQ #29, 2026-06-10)**: `toolkit/skills/agent-rag/SKILL.md` is a DRAFT skeleton only — no vector store / embeddings / semantic-search code exists. Banner added to skill; roadmap entry in LESSONS.md §3.3a. Context assembly currently done by ad-hoc Opus sub-agents (`_findings_*.json`), not RAG. | ⏳ Deferred | 2026-05-25 | LESSONS.md §3.3a, toolkit/skills/agent-rag/SKILL.md |
 | 7 | Skills/אוטומציה לתהליכים חוזרים | אימוץ simplify (קוד כפול), init (regen CLAUDE.md), review (PR) | ⏳ Deferred | 2026-05-14 | אחרי בעיות 2–4 |
