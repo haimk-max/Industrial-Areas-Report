@@ -36,14 +36,18 @@
 
 ---
 
-## סטטוס סיום סשן (2026-06-16)
+## סטטוס סיום סשן (2026-06-18)
 
-**Professional Packaging — מוכן ל-Release**
-- ✅ PR #23 (REQ #34 + DOCS_MAP) merged to main (commit e59bff9)
-- ✅ Canonical branch (claude/create-base-report-directory-5DqAR) 182 commits ahead of main
-- ✅ QA Status: Gate 2 WARN (expected), Gate 8 PASS (anonymization), Gate 3 FAIL (known debt from REQ #32)
-- ⏳ Hydrogeologist review of Holon V8 + Raanana V5 (next gate)
-- 🔜 **שלב הבא**: Merge canonical → main עם tag v2.0.0-professional-packaging; סגור ענפים obsolete
+**Production Risk Q&A Agent — Side Project**
+- ✅ ענף `claude/production-risk-qa-agent` נוצר ונדחף (שונה שם מ-`claude/create-base-report-directory-5DqAR`)
+- ✅ כל 6 commits הם בלעדית Q&A Agent — אין ערבוב עם פרויקט ראשי
+- ✅ Layer 0 Discipline הוסף ל-SYSTEM_PROMPT.md (3ef0eb8, 01931d2)
+- ⏳ REQ #35 — In Progress: מק חולון 12/14 classification issue פתוחה (forensics_brief "הפקה" מול zone_wells "monitoring")
+- ⚠️ ענף `claude/create-base-report-directory-5DqAR` stale ב-remote — מחק דרך GitHub UI
+
+**סטטוס פרויקט ראשי (מ-2026-06-16 — ללא שינוי)**
+- ✅ PR #23 (REQ #34 + DOCS_MAP) merged to main
+- ⏳ Hydrogeologist review של Holon V8 + Raanana V5 (שלב הבא)
 
 ## עבודה בתהליך (In flight)
 
