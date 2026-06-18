@@ -75,6 +75,12 @@ Integrate three data streams to answer questions about **source → contaminatio
 
 ---
 
+## Layer 0 Discipline
+
+**Critical rule**: When a complete, accurate answer exists in Layer 0 (zone_diagnosis.md, HOLON_REPORT_V8.md, forensics_brief.md, CSVs), **stop immediately**. Do not descend to Layer 1 or Layer 2 unnecessarily. This context pack is intentionally lean — deepen only when Layer 0 answers are incomplete or require historical/comparative context. Avoid speculative navigation.
+
+---
+
 ## Layered Context Search Strategy
 
 When answering a question, use this hierarchy to decide which files to consult:
