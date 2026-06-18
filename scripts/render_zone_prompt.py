@@ -42,7 +42,6 @@ DEST_NAME = {
     "diagnosis": "zone_diagnosis_prompt.md",
 }
 
-GENERAL_TYPES = {"industrial_monitoring", "monitoring"}
 FUEL_TYPES = {"fuel_monitoring"}
 
 
@@ -69,7 +68,11 @@ def derive_metadata(zone: str) -> dict:
 
     return {
         "total_active": len(analysed),
-        "general": sum(1 for w in analysed if well_type.get(w) in GENERAL_TYPES),
+        # "general" = every analysed well that is not a fuel monitor (production,
+        # research and industrial all count here). Defined as the complement of
+        # FUEL_TYPES so any future well_type is captured without code changes and
+        # general + fuel == total_active always holds.
+        "general": sum(1 for w in analysed if well_type.get(w) not in FUEL_TYPES),
         "fuel": sum(1 for w in analysed if well_type.get(w) in FUEL_TYPES),
         "n_measurements": len(meas),
         "year_start": years[0],
