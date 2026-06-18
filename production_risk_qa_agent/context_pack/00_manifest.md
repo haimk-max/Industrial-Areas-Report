@@ -32,7 +32,7 @@
 
 | קובץ | מקור | תוכן | משתמשים |
 |------|------|------|---------|
-| `zone_wells.csv` | Holon/02_data | 111 קידוחים פעילים, canonical IDs, קואורדינטות ITM, well_type (private_production, monitoring, fuel_monitoring) | סינון קידוחי הפקה |
+| `zone_wells.csv` | Holon/02_data | 111 קידוחים פעילים, canonical IDs, קואורדינטות ITM, well_type (private_production, mekorot_production, research_monitoring, monitoring, industrial_monitoring, fuel_monitoring) | סינון קידוחי הפקה |
 | `severity_by_well_family.csv` | Holon/02_data | severity [0-8] לכל קידוח ומשפחת מזהם (CVOC, METALS, FUEL, PFAS) | הערכת סיכון דטרמיניסטי |
 | `latest_results.csv` | Holon/02_data | ריכוזים עדכניים (C_latest) וממוצעים (C_avg) לכל קידוח-parameter | קיום / התוכן מזהמים |
 | `trends_by_well_parameter.csv` | Holon/02_data | Mann-Kendall Z, p-value, slope, SNR, classification (ALERT/WATCH/STABLE/DECLINING/NONE) | זיהוי מגמות |
@@ -105,10 +105,12 @@
 ## קונבנציות ומילון
 
 ### well_type (בקובץ zone_wells.csv)
-- `private_production` = קידוח הפקה (ממוקד בחקר סיכון — עדיפות דיווח)
-- `monitoring` = קידוח ניטור תעשייתי (בקרה)
-- `fuel_monitoring` = קידוח ניטור דלק (תחנות דלק)
-- `industrial_monitoring` = קידוח ניטור תעשייתי (מתקנים כימיים)
+- `private_production` = קידוח הפקה פרטי — חקלאי/תעשייתי (סיכון ישיר לאספקה)
+- `mekorot_production` = קידוח הפקה של חברת מקורות — **אספקה ציבורית** (סיכון גבוה יותר; קידומת 'מק')
+- `research_monitoring` = קידוח יוזום/מחקר של השירות ההידרולוגי — ניטור-מחקר לא קבוע (קידומת 'יו' או 'מח'); לא חלק מרשת הניטור הבסיסית
+- `industrial_monitoring` = קידוח ניטור תעשייתי סטנדרטי (מתקנים כימיים; קידומת 'נת')
+- `fuel_monitoring` = קידוח ניטור דלק (תחנות דלק; קידומת 'נד')
+- `monitoring` = קידוח ניטור כללי (שאריות שלא סווגו)
 
 ### Severity Scale (0–8)
 | bucket | range | interpretation |
@@ -144,7 +146,7 @@
 ### zone_wells.csv (head)
 ```
 canonical_well_id,name_he,itm_easting,itm_northing,well_type,zone_scope_source,monitoring_site
-מק_חולון_12,מק חולון 12,182088,657195,monitoring,Holon_main_industrial,
+מק_חולון_12,מק חולון 12,182088,657195,mekorot_production,Holon_main_industrial,
 פ_אזור_מקור_חקלאי,פ אזור מקור חקלאי,182567,659210,private_production,Holon_main_industrial,
 ```
 

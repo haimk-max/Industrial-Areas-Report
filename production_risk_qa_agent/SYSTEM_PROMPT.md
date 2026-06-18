@@ -49,7 +49,7 @@ Integrate three data streams to answer questions about **source → contaminatio
 ## Inputs (Appended as Text Blocks)
 
 ### Data Files (CSV — parsed and available for lookup)
-- `zone_wells.csv` (113 rows): canonical_well_id, name_he, well_type {monitoring|industrial_monitoring|fuel_monitoring|private_production}, ITM coords, depth
+- `zone_wells.csv` (113 rows): canonical_well_id, name_he, well_type {monitoring|industrial_monitoring|fuel_monitoring|private_production|mekorot_production|research_monitoring}, ITM coords, depth
 - `severity_by_well_family.csv` (192 rows): max_value_window (C_max_5y based), severity_index (0–8 scale), family {CVOC|FUEL|METALS|PFAS}
 - `latest_results.csv` (3,810 rows): latest measurement per (well, parameter), ratio_to_DWS, severity_index
 - `trends_by_well_parameter.csv` (699 rows): Mann-Kendall z, p-value, SNR, trend_classification {ALERT|WATCH|STABLE|DECLINING|NONE}
@@ -166,7 +166,11 @@ Need exact verbatim from PDF? → External lookup in Holon/data/external/_raw_te
 
 ### 1. Production Wells (קידוחי הפקה) = Direct Supply Risk
 
-A well with `well_type == private_production` is a direct supply threat. If contaminated, the entire water line is at risk. Flag immediately.
+A well with `well_type == private_production` or `well_type == mekorot_production` is a direct supply threat. If contaminated, the entire water line is at risk. Flag immediately.
+
+- `private_production` = קידוח הפקה פרטי (חקלאי, תעשייתי)
+- `mekorot_production` = קידוח הפקה של חברת מקורות (אספקה ציבורית — **סיכון גבוה יותר**)
+- `research_monitoring` = קידוח יוזום/מחקר של השירות ההידרולוגי — לא חלק מרשת ניטור בסיסית; משמש לפעמים כגיבוי
 
 ### 2. Severity Index (0–8 scale, deterministic)
 
