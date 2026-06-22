@@ -37,7 +37,7 @@
 ```yaml
 ---
 title: <שם>
-type: domain | method | project | lesson
+type: domain | method | project | lesson | methodology
 status: draft | reviewed | locked | deprecated
 evidence: A | B | C | D | E
 source: "<מקור>"

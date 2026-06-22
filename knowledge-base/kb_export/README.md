@@ -9,6 +9,7 @@
 - `02_Methods/` — שיטות (מקשרות ל-`toolkit/`).
 - `03_Projects/` — דפוסי-פרויקט בני-שימוש-חוזר.
 - `_Lessons/` — לקחים חוצי-פרויקט.
+- `_Methodology/` — מתודולוגיית עבודה domain-agnostic (ניתנת-להרמה ל-KB עצמאי בעתיד).
 
 ## בסיס מתודולוגי
 דפוס ה-LLM-Wiki של Karpathy (`raw → wiki → file-back`, Markdown, ללא RAG) **+ שכבת ממשל רגולטורית**.
